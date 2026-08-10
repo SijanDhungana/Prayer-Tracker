@@ -9,9 +9,13 @@ import { PRAYERS, type Prayer } from "./types";
 export type Route =
   | { name: "list" }
   | { name: "compare"; prayer: Prayer | null }
-  | { name: "masjid"; id: string };
+  | { name: "masjid"; id: string }
+  | { name: "signin" }
+  | { name: "admin" };
 
 export const listPath = "#/";
+export const signInPath = "#/signin";
+export const adminPath = "#/admin/suggestions";
 export const comparePath = (prayer?: Prayer) =>
   prayer ? `#/compare/${prayer}` : "#/compare";
 export const masjidPath = (id: string) => `#/masjid/${encodeURIComponent(id)}`;
@@ -21,6 +25,9 @@ const isPrayer = (value: string): value is Prayer =>
 
 export function parseRoute(hash: string): Route {
   const path = hash.replace(/^#/, "");
+
+  if (/^\/signin\/?$/.test(path)) return { name: "signin" };
+  if (/^\/admin\/suggestions\/?$/.test(path)) return { name: "admin" };
 
   const masjid = /^\/masjid\/(.+)$/.exec(path);
   if (masjid) return { name: "masjid", id: decodeURIComponent(masjid[1]) };

@@ -1,33 +1,63 @@
+import { useMemo } from "react";
 import LocationPicker from "./components/LocationPicker";
 import Nav from "./components/Nav";
-import { masjids } from "./data/masjids";
+import { masjids as baseMasjids } from "./data/masjids";
 import type { Point } from "./lib/distance";
+import { AuthProvider } from "./lib/auth";
+import { applyOverrides, useApprovedTimes } from "./lib/overrides";
 import { useReferencePoint } from "./lib/location";
 import { nextIqamahPrayer } from "./lib/prayer";
 import { listPath, useHashRoute } from "./lib/route";
 import { todayIn } from "./lib/time";
+import AdminSuggestions from "./views/AdminSuggestions";
 import ComparePrayer from "./views/ComparePrayer";
 import MasjidDetail from "./views/MasjidDetail";
 import MasjidList from "./views/MasjidList";
+import SignIn from "./views/SignIn";
 
 export default function App() {
+  return (
+    <AuthProvider>
+      <Shell />
+    </AuthProvider>
+  );
+}
+
+function Shell() {
   const today = todayIn();
   const route = useHashRoute();
   const reference = useReferencePoint();
 
+  // Approved corrections win over the scraper's baseline, and land as soon as
+  // they're approved — no commit, no redeploy.
+  const approved = useApprovedTimes();
+  const masjids = useMemo(
+    () => applyOverrides(baseMasjids, approved),
+    [approved],
+  );
+
+  const chrome = route.name !== "masjid";
+
   return (
     <div className="min-h-screen bg-stone-50 text-stone-900">
       <div className="mx-auto max-w-2xl px-4 py-6">
-        {route.name !== "masjid" && (
+        {chrome && (
           <div className="mb-6 space-y-3">
             <Nav route={route} />
-            <LocationPicker reference={reference} />
+            {route.name !== "signin" && route.name !== "admin" && (
+              <LocationPicker reference={reference} />
+            )}
           </div>
         )}
 
-        {route.name === "masjid" ? (
+        {route.name === "signin" ? (
+          <SignIn />
+        ) : route.name === "admin" ? (
+          <AdminSuggestions date={today} />
+        ) : route.name === "masjid" ? (
           <MasjidDetailRoute
             id={route.id}
+            masjids={masjids}
             date={today}
             from={reference.point}
             fromLabel={reference.label}
@@ -49,11 +79,13 @@ export default function App() {
 
 function MasjidDetailRoute({
   id,
+  masjids,
   date,
   from,
   fromLabel,
 }: {
   id: string;
+  masjids: typeof baseMasjids;
   date: Date;
   from: Point;
   fromLabel: string;

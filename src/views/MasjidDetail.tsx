@@ -119,7 +119,6 @@ export default function MasjidDetail({
       {suggesting ? (
         <SuggestTimeForm
           masjid={masjid}
-          date={date}
           adhan={adhan}
           iqamah={iqamah}
           initialPrayer={suggesting}
