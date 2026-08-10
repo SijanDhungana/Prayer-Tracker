@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "scrape": "tsx scrape.ts"
+    "scrape": "tsx scrape.ts",
+    "geocode": "tsx scripts/geocode.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.112.2",
