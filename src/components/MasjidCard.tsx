@@ -1,7 +1,7 @@
-import { adhanTimes } from "../lib/prayer";
+import { adhanTimes, iqamahTimes } from "../lib/prayer";
 import { masjidPath } from "../lib/route";
 import { formatDistance } from "../lib/distance";
-import type { Masjid } from "../lib/types";
+import { PRAYERS, type Masjid } from "../lib/types";
 import PrayerTimeRow from "./PrayerTimeRow";
 
 export default function MasjidCard({
@@ -13,7 +13,9 @@ export default function MasjidCard({
   date: Date;
   km: number;
 }) {
-  const times = adhanTimes(masjid, date);
+  const adhan = adhanTimes(masjid, date);
+  const iqamah = iqamahTimes(masjid, date);
+  const known = PRAYERS.filter((p) => iqamah[p] != null).length;
 
   return (
     <li className="rounded-xl border border-stone-200 bg-white p-4 shadow-sm">
@@ -30,17 +32,33 @@ export default function MasjidCard({
       <p className="mt-1 text-sm text-stone-600">{masjid.address}</p>
 
       <div className="mt-3 border-t border-stone-100 pt-3">
-        <PrayerTimeRow times={times} />
-        <p className="mt-2 text-[11px] text-stone-400">
-          Adhan times, calculated for this location
-        </p>
+        <PrayerTimeRow iqamah={iqamah} adhan={adhan} />
+
+        {known === 0 ? (
+          <p className="mt-2 rounded-lg bg-amber-50 px-2 py-1.5 text-[11px] text-amber-800">
+            Iqamah times not collected yet — small times are the calculated
+            adhan.{" "}
+            <a
+              className="font-medium underline underline-offset-2"
+              href={masjid.website}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Check the masjid&rsquo;s site
+            </a>
+          </p>
+        ) : (
+          <p className="mt-2 text-[11px] text-stone-400">
+            Iqamah in bold · adhan below
+          </p>
+        )}
       </div>
 
       <a
         className="mt-3 inline-block text-sm font-medium text-emerald-700 underline underline-offset-2"
         href={masjidPath(masjid.id)}
       >
-        Iqamah times →
+        Full day →
       </a>
     </li>
   );
