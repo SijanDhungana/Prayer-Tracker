@@ -1,5 +1,6 @@
 import { adhanTimes, iqamahTimes, sunriseTime } from "../lib/prayer";
 import { listPath } from "../lib/route";
+import { formatDistance, haversineKm, type Point } from "../lib/distance";
 import { formatCalendarDate, formatIsoDate, formatTime } from "../lib/time";
 import { PRAYERS, PRAYER_LABELS, type Masjid } from "../lib/types";
 
@@ -11,9 +12,13 @@ function mapsUrl(masjid: Masjid) {
 export default function MasjidDetail({
   masjid,
   date,
+  from,
+  fromLabel,
 }: {
   masjid: Masjid;
   date: Date;
+  from: Point;
+  fromLabel: string;
 }) {
   const adhan = adhanTimes(masjid, date);
   const iqamah = iqamahTimes(masjid, date);
@@ -35,6 +40,9 @@ export default function MasjidDetail({
         {masjid.name}
       </h1>
       <p className="mt-1 text-sm text-stone-600">{masjid.address}</p>
+      <p className="mt-1 text-sm text-stone-500">
+        {formatDistance(haversineKm(from, masjid))} from {fromLabel}
+      </p>
 
       <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm font-medium text-emerald-700">
         <a

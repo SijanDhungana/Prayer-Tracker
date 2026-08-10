@@ -1,5 +1,8 @@
+import LocationPicker from "./components/LocationPicker";
 import Nav from "./components/Nav";
 import { masjids } from "./data/masjids";
+import type { Point } from "./lib/distance";
+import { useReferencePoint } from "./lib/location";
 import { nextIqamahPrayer } from "./lib/prayer";
 import { listPath, useHashRoute } from "./lib/route";
 import { todayIn } from "./lib/time";
@@ -10,33 +13,51 @@ import MasjidList from "./views/MasjidList";
 export default function App() {
   const today = todayIn();
   const route = useHashRoute();
+  const reference = useReferencePoint();
 
   return (
     <div className="min-h-screen bg-stone-50 text-stone-900">
       <div className="mx-auto max-w-2xl px-4 py-6">
         {route.name !== "masjid" && (
-          <div className="mb-6">
+          <div className="mb-6 space-y-3">
             <Nav route={route} />
+            <LocationPicker reference={reference} />
           </div>
         )}
 
         {route.name === "masjid" ? (
-          <MasjidDetailRoute id={route.id} date={today} />
+          <MasjidDetailRoute
+            id={route.id}
+            date={today}
+            from={reference.point}
+            fromLabel={reference.label}
+          />
         ) : route.name === "compare" ? (
           <ComparePrayer
             masjids={masjids}
             date={today}
             prayer={route.prayer ?? nextIqamahPrayer(masjids, today)}
+            from={reference.point}
           />
         ) : (
-          <MasjidList masjids={masjids} date={today} />
+          <MasjidList masjids={masjids} date={today} from={reference.point} />
         )}
       </div>
     </div>
   );
 }
 
-function MasjidDetailRoute({ id, date }: { id: string; date: Date }) {
+function MasjidDetailRoute({
+  id,
+  date,
+  from,
+  fromLabel,
+}: {
+  id: string;
+  date: Date;
+  from: Point;
+  fromLabel: string;
+}) {
   const masjid = masjids.find((m) => m.id === id);
 
   if (!masjid) {
@@ -53,5 +74,12 @@ function MasjidDetailRoute({ id, date }: { id: string; date: Date }) {
     );
   }
 
-  return <MasjidDetail masjid={masjid} date={date} />;
+  return (
+    <MasjidDetail
+      masjid={masjid}
+      date={date}
+      from={from}
+      fromLabel={fromLabel}
+    />
+  );
 }

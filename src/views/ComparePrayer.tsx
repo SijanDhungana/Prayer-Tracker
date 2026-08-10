@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { adhanTimes, iqamahTime } from "../lib/prayer";
 import { masjidPath } from "../lib/route";
 import { formatTime, zonedTimeOnDate } from "../lib/time";
+import { formatDistance, haversineKm, type Point } from "../lib/distance";
 import { PRAYER_LABELS, type Masjid, type Prayer } from "../lib/types";
 import PrayerPicker from "../components/PrayerPicker";
 
@@ -9,21 +10,27 @@ type Row = {
   masjid: Masjid;
   adhan: Date;
   iqamah: Date | null;
+  km: number;
 };
 
 type SortOrder = "earliest" | "latest";
+
+const RADII = [2, 5, 10, 25];
 
 export default function ComparePrayer({
   masjids,
   date,
   prayer,
+  from,
 }: {
   masjids: Masjid[];
   date: Date;
   prayer: Prayer;
+  from: Point;
 }) {
   const [order, setOrder] = useState<SortOrder>("earliest");
   const [after, setAfter] = useState("");
+  const [withinKm, setWithinKm] = useState<number | null>(null);
 
   const rows = useMemo<Row[]>(
     () =>
@@ -33,29 +40,37 @@ export default function ComparePrayer({
           masjid,
           adhan,
           iqamah: iqamahTime(masjid.iqamah[prayer], adhan, date),
+          km: haversineKm(from, masjid),
         };
       }),
-    [masjids, date, prayer],
+    [masjids, date, prayer, from],
   );
 
   const cutoff = after ? zonedTimeOnDate(date, after) : null;
 
   const visible = useMemo(() => {
-    // A masjid with no time for this prayer can't satisfy an "after" filter,
-    // so it drops out entirely once one is set; otherwise it sorts last.
-    const kept = cutoff
-      ? rows.filter((r) => r.iqamah != null && r.iqamah.getTime() >= cutoff.getTime())
-      : rows;
+    const kept = rows.filter((row) => {
+      if (withinKm != null && row.km > withinKm) return false;
+      // A masjid with no time for this prayer can't satisfy an "after" filter,
+      // so it drops out once one is set; otherwise it sorts last.
+      if (!cutoff) return true;
+      return row.iqamah != null && row.iqamah.getTime() >= cutoff.getTime();
+    });
 
-    return [...kept].sort((a, b) => {
+    return kept.sort((a, b) => {
       if (!a.iqamah || !b.iqamah) return a.iqamah ? -1 : b.iqamah ? 1 : 0;
       const diff = a.iqamah.getTime() - b.iqamah.getTime();
       return order === "earliest" ? diff : -diff;
     });
-  }, [rows, cutoff, order]);
+  }, [rows, cutoff, withinKm, order]);
 
   const label = PRAYER_LABELS[prayer];
   const article = /^[AEIOU]/.test(label) ? "an" : "a";
+
+  const constraints = [
+    cutoff ? `at or after ${formatTime(cutoff)}` : null,
+    withinKm != null ? `within ${withinKm} km` : null,
+  ].filter(Boolean);
 
   return (
     <section>
@@ -89,13 +104,34 @@ export default function ComparePrayer({
           />
         </label>
 
-        {after && (
+        <label className="flex items-center gap-2 text-sm text-stone-600">
+          <span>Within</span>
+          <select
+            value={withinKm ?? ""}
+            onChange={(e) =>
+              setWithinKm(e.target.value ? Number(e.target.value) : null)
+            }
+            className="rounded-lg bg-white px-2 py-1.5 text-sm text-stone-900 ring-1 ring-stone-200"
+          >
+            <option value="">Any distance</option>
+            {RADII.map((km) => (
+              <option key={km} value={km}>
+                {km} km
+              </option>
+            ))}
+          </select>
+        </label>
+
+        {(after || withinKm != null) && (
           <button
             type="button"
-            onClick={() => setAfter("")}
+            onClick={() => {
+              setAfter("");
+              setWithinKm(null);
+            }}
             className="text-sm font-medium text-emerald-700 underline underline-offset-2"
           >
-            Clear
+            Clear filters
           </button>
         )}
       </div>
@@ -105,13 +141,13 @@ export default function ComparePrayer({
       </p>
 
       {visible.length === 0 ? (
-        <p className="mt-4 rounded-xl border border-dashed border-stone-300 p-6 text-center text-sm text-stone-600">
-          No masjid has {article} {label} iqamah at or after{" "}
-          {cutoff ? formatTime(cutoff) : after}. Try an earlier time.
+        <p className="mt-2 rounded-xl border border-dashed border-stone-300 p-6 text-center text-sm text-stone-600">
+          No masjid has {article} {label} iqamah {constraints.join(" and ")}.
+          Try relaxing a filter.
         </p>
       ) : (
         <ul className="mt-2 divide-y divide-stone-100 overflow-hidden rounded-xl border border-stone-200 bg-white">
-          {visible.map(({ masjid, adhan, iqamah }) => (
+          {visible.map(({ masjid, adhan, iqamah, km }) => (
             <li key={masjid.id}>
               <a
                 href={masjidPath(masjid.id)}
@@ -122,7 +158,7 @@ export default function ComparePrayer({
                     {masjid.name}
                   </span>
                   <span className="mt-0.5 block text-xs text-stone-500">
-                    Adhan {formatTime(adhan)}
+                    {formatDistance(km)} · Adhan {formatTime(adhan)}
                   </span>
                 </span>
                 <span className="shrink-0 text-lg font-semibold tabular-nums text-stone-900">

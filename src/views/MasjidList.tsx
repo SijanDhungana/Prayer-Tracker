@@ -1,14 +1,26 @@
+import { useMemo } from "react";
 import MasjidCard from "../components/MasjidCard";
+import { haversineKm, type Point } from "../lib/distance";
 import { formatCalendarDate } from "../lib/time";
 import type { Masjid } from "../lib/types";
 
 export default function MasjidList({
   masjids,
   date,
+  from,
 }: {
   masjids: Masjid[];
   date: Date;
+  from: Point;
 }) {
+  const nearest = useMemo(
+    () =>
+      masjids
+        .map((masjid) => ({ masjid, km: haversineKm(from, masjid) }))
+        .sort((a, b) => a.km - b.km),
+    [masjids, from],
+  );
+
   return (
     <>
       <header>
@@ -16,7 +28,7 @@ export default function MasjidList({
           Toronto Masjid Times
         </h1>
         <p className="mt-1 text-sm text-stone-600">
-          {formatCalendarDate(date)} · {masjids.length} masjids
+          {formatCalendarDate(date)} · {masjids.length} masjids, nearest first
         </p>
         <p className="mt-2 text-xs text-stone-500">
           Adhan times are calculated. Iqamah times are community-collected —
@@ -25,8 +37,8 @@ export default function MasjidList({
       </header>
 
       <ul className="mt-6 space-y-3">
-        {masjids.map((m) => (
-          <MasjidCard key={m.id} masjid={m} date={date} />
+        {nearest.map(({ masjid, km }) => (
+          <MasjidCard key={masjid.id} masjid={masjid} date={date} km={km} />
         ))}
       </ul>
     </>
