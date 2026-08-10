@@ -28,9 +28,12 @@ jobs:
       - run: npx playwright install --with-deps chromium
 
       # Fails loudly rather than burning a whole run to produce nothing.
+      # The secret goes through env, never interpolated into the shell command.
       - name: Check for API key
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
-          if [ -z "${{ secrets.ANTHROPIC_API_KEY }}" ]; then
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
             echo "::error::ANTHROPIC_API_KEY repo secret is not set — add it under Settings → Secrets and variables → Actions."
             exit 1
           fi
