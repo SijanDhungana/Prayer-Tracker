@@ -10,6 +10,7 @@
     "scrape": "tsx scrape.ts"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.112.2",
     "adhan": "^4.4.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
