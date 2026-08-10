@@ -9,11 +9,13 @@ import { PRAYERS, type Prayer } from "./types";
 export type Route =
   | { name: "list" }
   | { name: "compare"; prayer: Prayer | null }
+  | { name: "map" }
   | { name: "masjid"; id: string }
   | { name: "signin" }
   | { name: "admin" };
 
 export const listPath = "#/";
+export const mapPath = "#/map";
 export const signInPath = "#/signin";
 export const adminPath = "#/admin/suggestions";
 export const comparePath = (prayer?: Prayer) =>
@@ -26,6 +28,7 @@ const isPrayer = (value: string): value is Prayer =>
 export function parseRoute(hash: string): Route {
   const path = hash.replace(/^#/, "");
 
+  if (/^\/map\/?$/.test(path)) return { name: "map" };
   if (/^\/signin\/?$/.test(path)) return { name: "signin" };
   if (/^\/admin\/suggestions\/?$/.test(path)) return { name: "admin" };
 

@@ -1,9 +1,17 @@
-import { adminPath, comparePath, listPath, signInPath, type Route } from "../lib/route";
+import {
+  adminPath,
+  comparePath,
+  listPath,
+  mapPath,
+  signInPath,
+  type Route,
+} from "../lib/route";
 import { useAuth } from "../lib/auth";
 import { authConfigured } from "../lib/supabase";
 
 const TABS: { label: string; href: string; matches: Route["name"][] }[] = [
   { label: "Masjids", href: listPath, matches: ["list"] },
+  { label: "Map", href: mapPath, matches: ["map"] },
   { label: "Compare a prayer", href: comparePath(), matches: ["compare"] },
 ];
 

@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import type { Point } from "./distance";
 
 export interface Preset extends Point {
@@ -21,6 +21,9 @@ export const PRESETS: Preset[] = [
 export const DEFAULT_PRESET = PRESETS[0];
 
 export type GeoStatus = "idle" | "locating" | "active" | "error";
+
+/** How long to sit on "Locating…" before offering the button back. */
+const WAIT_FOR_PERMISSION_MS = 15_000;
 
 export interface ReferencePoint {
   point: Point;
@@ -57,7 +60,12 @@ export function useReferencePoint(): ReferencePoint {
   const preset =
     PRESETS.find((p) => p.id === presetId) ?? DEFAULT_PRESET;
 
+  // Identifies the newest request, so a stale callback can't overwrite a
+  // choice the user has made since.
+  const request = useRef(0);
+
   const selectPreset = useCallback((id: string) => {
+    request.current += 1;
     setPresetId(id);
     setDevice(null);
     setStatus("idle");
@@ -71,18 +79,37 @@ export function useReferencePoint(): ReferencePoint {
       return;
     }
 
+    const id = (request.current += 1);
+    const current = () => request.current === id;
+
     setStatus("locating");
     setError(null);
 
+    // getCurrentPosition's own `timeout` bounds acquiring a fix, not the
+    // permission prompt — a prompt the user swipes away from calls back
+    // neither way. Without this the button reads "Locating…" forever.
+    const giveUp = window.setTimeout(() => {
+      if (!current()) return;
+      setStatus("error");
+      setError(`Still waiting on location permission. Using ${preset.label}.`);
+    }, WAIT_FOR_PERMISSION_MS);
+
     navigator.geolocation.getCurrentPosition(
       (position) => {
+        window.clearTimeout(giveUp);
+        // Deliberately still accepted after the watchdog fired: someone who
+        // grants permission late should get their location, not a dead end.
+        if (!current()) return;
         setDevice({
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         });
         setStatus("active");
+        setError(null);
       },
       (err) => {
+        window.clearTimeout(giveUp);
+        if (!current()) return;
         setStatus("error");
         setError(`${messageFor(err)} Using ${preset.label}.`);
       },
