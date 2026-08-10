@@ -1,31 +1,38 @@
-import MasjidCard from "./components/MasjidCard";
 import { masjids } from "./data/masjids";
-import { formatCalendarDate, todayIn } from "./lib/time";
+import { masjidIdFrom, useHashRoute } from "./lib/route";
+import { todayIn } from "./lib/time";
+import MasjidDetail from "./views/MasjidDetail";
+import MasjidList from "./views/MasjidList";
 
 export default function App() {
   const today = todayIn();
+  const route = useHashRoute();
+
+  const selectedId = masjidIdFrom(route);
+  const selected = selectedId
+    ? masjids.find((m) => m.id === selectedId)
+    : undefined;
 
   return (
     <div className="min-h-screen bg-stone-50 text-stone-900">
       <div className="mx-auto max-w-2xl px-4 py-6">
-        <header>
-          <h1 className="text-2xl font-semibold tracking-tight">
-            Toronto Masjid Times
-          </h1>
-          <p className="mt-1 text-sm text-stone-600">
-            {formatCalendarDate(today)} · {masjids.length} masjids
-          </p>
-          <p className="mt-2 text-xs text-stone-500">
-            Adhan times are calculated. Iqamah times are community-collected —
-            confirm with the masjid before relying on them.
-          </p>
-        </header>
-
-        <ul className="mt-6 space-y-3">
-          {masjids.map((m) => (
-            <MasjidCard key={m.id} masjid={m} date={today} />
-          ))}
-        </ul>
+        {selectedId && !selected ? (
+          <div>
+            <p className="text-sm text-stone-600">
+              No masjid with id “{selectedId}”.
+            </p>
+            <a
+              href="#"
+              className="mt-3 inline-block text-sm font-medium text-emerald-700 underline underline-offset-2"
+            >
+              ← All masjids
+            </a>
+          </div>
+        ) : selected ? (
+          <MasjidDetail masjid={selected} date={today} />
+        ) : (
+          <MasjidList masjids={masjids} date={today} />
+        )}
       </div>
     </div>
   );

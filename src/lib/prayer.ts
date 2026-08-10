@@ -5,8 +5,8 @@ import {
   PrayerTimes,
   type CalculationParameters,
 } from "adhan";
-import type { CalcConfig, Masjid, Prayer } from "./types";
-import { todayIn } from "./time";
+import { PRAYERS, type CalcConfig, type IqamahRule, type Masjid, type Prayer } from "./types";
+import { todayIn, zonedTimeOnDate } from "./time";
 
 type MethodKey = keyof typeof CalculationMethod;
 
@@ -56,4 +56,39 @@ export function adhanTimes(
 export function sunriseTime(masjid: Masjid, date: Date = todayIn()): Date {
   const coords = new Coordinates(masjid.lat, masjid.lng);
   return new PrayerTimes(coords, date, parametersFor(masjid.calc)).sunrise;
+}
+
+/**
+ * Resolve one iqamah rule to an instant — CLAUDE.md §7.
+ *
+ * `fixed` is a wall-clock time the masjid sets; `offset` is N minutes after
+ * that prayer's adhan (how Maghrib is almost always run). Returns null when
+ * there is no rule or the stored time is malformed, so callers show "—"
+ * rather than a wrong time.
+ */
+export function iqamahTime(
+  rule: IqamahRule | undefined,
+  adhan: Date,
+  date: Date = todayIn(),
+): Date | null {
+  if (!rule) return null;
+  if (rule.type === "offset") {
+    return new Date(adhan.getTime() + rule.minutes * 60_000);
+  }
+  return zonedTimeOnDate(date, rule.time);
+}
+
+/** Every iqamah a masjid holds on `date`, keyed by prayer. */
+export function iqamahTimes(
+  masjid: Masjid,
+  date: Date = todayIn(),
+): Record<Prayer, Date | null> {
+  const adhan = adhanTimes(masjid, date);
+
+  return Object.fromEntries(
+    PRAYERS.map((prayer) => [
+      prayer,
+      iqamahTime(masjid.iqamah[prayer], adhan[prayer], date),
+    ]),
+  ) as Record<Prayer, Date | null>;
 }
