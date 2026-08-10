@@ -6,7 +6,10 @@
     "lat": 43.766,
     "lng": -79.1965,
     "website": "http://www.masjidali.ca/",
-    "calc": { "method": "NorthAmerica", "madhab": "shafi" },
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
     "iqamah": {},
     "jumuah": [],
     "lastVerified": null,
@@ -20,7 +23,10 @@
     "lat": 43.7648,
     "lng": -79.1861,
     "website": "https://amiccanada.ca/",
-    "calc": { "method": "NorthAmerica", "madhab": "shafi" },
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
     "iqamah": {},
     "jumuah": [],
     "lastVerified": null,
@@ -34,7 +40,10 @@
     "lat": 43.7856,
     "lng": -79.1697,
     "website": "http://www.spiritualsocietycanada.com/",
-    "calc": { "method": "NorthAmerica", "madhab": "shafi" },
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
     "iqamah": {},
     "jumuah": [],
     "lastVerified": null,
@@ -48,7 +57,10 @@
     "lat": 43.7695,
     "lng": -79.1815,
     "website": "https://masjidomarfarooq.com/",
-    "calc": { "method": "NorthAmerica", "madhab": "shafi" },
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
     "iqamah": {},
     "jumuah": [],
     "lastVerified": null,
@@ -62,12 +74,27 @@
     "lat": 43.8212,
     "lng": -79.1352,
     "website": "http://masjidzakariya.com/",
-    "calc": { "method": "NorthAmerica", "madhab": "shafi" },
-    "iqamah": {},
-    "jumuah": [],
-    "lastVerified": null,
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:30"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "01:50"
+      },
+      {
+        "khutbah": "03:30"
+      }
+    ],
+    "lastVerified": "2026-08-10",
     "needsReview": true,
-    "source": "seed"
+    "source": "scrape"
   },
   {
     "id": "central-mosque-scarborough",
@@ -76,7 +103,10 @@
     "lat": 43.757,
     "lng": -79.2265,
     "website": "http://www.centralmosque.ca/",
-    "calc": { "method": "NorthAmerica", "madhab": "shafi" },
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
     "iqamah": {},
     "jumuah": [],
     "lastVerified": null,
@@ -90,12 +120,43 @@
     "lat": 43.734,
     "lng": -79.2245,
     "website": "https://masjidbilal.ca/",
-    "calc": { "method": "NorthAmerica", "madhab": "shafi" },
-    "iqamah": {},
-    "jumuah": [],
-    "lastVerified": null,
-    "needsReview": true,
-    "source": "seed"
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:30"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:45"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "19:15"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "20:33"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "22:15"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "14:00"
+      },
+      {
+        "khutbah": "15:30"
+      }
+    ],
+    "lastVerified": "2026-08-10",
+    "needsReview": false,
+    "source": "scrape"
   },
   {
     "id": "masjid-al-jannah-slifo",
@@ -104,7 +165,10 @@
     "lat": 43.7737,
     "lng": -79.228,
     "website": "http://www.slifo.ca/",
-    "calc": { "method": "NorthAmerica", "madhab": "shafi" },
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
     "iqamah": {},
     "jumuah": [],
     "lastVerified": null,
@@ -118,7 +182,10 @@
     "lat": 43.8069,
     "lng": -79.2513,
     "website": "http://www.islamicfoundation.ca/",
-    "calc": { "method": "NorthAmerica", "madhab": "shafi" },
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
     "iqamah": {},
     "jumuah": [],
     "lastVerified": null,
@@ -132,7 +199,10 @@
     "lat": 43.75,
     "lng": -79.257,
     "website": "http://www.smacanada.ca/",
-    "calc": { "method": "NorthAmerica", "madhab": "shafi" },
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
     "iqamah": {},
     "jumuah": [],
     "lastVerified": null,
@@ -146,12 +216,40 @@
     "lat": 43.7285,
     "lng": -79.2705,
     "website": "http://mah.ad-din.site/",
-    "calc": { "method": "NorthAmerica", "madhab": "shafi" },
-    "iqamah": {},
-    "jumuah": [],
-    "lastVerified": null,
-    "needsReview": true,
-    "source": "seed"
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:40"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:45"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "19:15"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "20:35"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "22:15"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "14:00"
+      }
+    ],
+    "lastVerified": "2026-08-10",
+    "needsReview": false,
+    "source": "scrape"
   },
   {
     "id": "sunatul-jamaat-ontario",
@@ -160,12 +258,39 @@
     "lat": 43.7175,
     "lng": -79.2665,
     "website": "https://www.sunatuljamaat.com",
-    "calc": { "method": "NorthAmerica", "madhab": "shafi" },
-    "iqamah": {},
-    "jumuah": [],
-    "lastVerified": null,
-    "needsReview": true,
-    "source": "seed"
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:40"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:45"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:50"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "22:15"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "14:00"
+      },
+      {
+        "khutbah": "15:15"
+      }
+    ],
+    "lastVerified": "2026-08-10",
+    "needsReview": false,
+    "source": "scrape"
   },
   {
     "id": "islamic-institute-toronto",
@@ -174,12 +299,40 @@
     "lat": 43.8039,
     "lng": -79.2211,
     "website": "https://islam.ca",
-    "calc": { "method": "NorthAmerica", "madhab": "shafi" },
-    "iqamah": {},
-    "jumuah": [],
-    "lastVerified": null,
-    "needsReview": true,
-    "source": "seed"
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:15"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "14:10"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:00"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "20:30"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "22:15"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:30"
+      }
+    ],
+    "lastVerified": "2026-08-10",
+    "needsReview": false,
+    "source": "scrape"
   },
   {
     "id": "madinah-masjid",
@@ -188,12 +341,43 @@
     "lat": 43.682,
     "lng": -79.3375,
     "website": "https://madinahmasjid.ca",
-    "calc": { "method": "NorthAmerica", "madhab": "shafi" },
-    "iqamah": {},
-    "jumuah": [],
-    "lastVerified": null,
-    "needsReview": true,
-    "source": "seed"
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:45"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:45"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:45"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "20:35"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "22:00"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:55"
+      },
+      {
+        "khutbah": "15:30"
+      }
+    ],
+    "lastVerified": "2026-08-10",
+    "needsReview": false,
+    "source": "scrape"
   },
   {
     "id": "masjid-toronto-dundas",
@@ -202,7 +386,10 @@
     "lat": 43.6555,
     "lng": -79.3862,
     "website": "https://masjidtoronto.org",
-    "calc": { "method": "NorthAmerica", "madhab": "shafi" },
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
     "iqamah": {},
     "jumuah": [],
     "lastVerified": null,
@@ -216,12 +403,43 @@
     "lat": 43.6606,
     "lng": -79.4361,
     "website": "https://islaminfo.com",
-    "calc": { "method": "NorthAmerica", "madhab": "shafi" },
-    "iqamah": {},
-    "jumuah": [],
-    "lastVerified": null,
-    "needsReview": true,
-    "source": "seed"
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:15"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:45"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:00"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "20:31"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "22:15"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:30"
+      },
+      {
+        "khutbah": "14:30"
+      }
+    ],
+    "lastVerified": "2026-08-10",
+    "needsReview": false,
+    "source": "scrape"
   },
   {
     "id": "abu-huraira-center",
@@ -230,7 +448,10 @@
     "lat": 43.7785,
     "lng": -79.3425,
     "website": "https://www.abuhuraira.org",
-    "calc": { "method": "NorthAmerica", "madhab": "shafi" },
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
     "iqamah": {},
     "jumuah": [],
     "lastVerified": null,
@@ -244,7 +465,10 @@
     "lat": 43.7085,
     "lng": -79.5865,
     "website": "https://istiqamamasjid.com",
-    "calc": { "method": "NorthAmerica", "madhab": "shafi" },
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
     "iqamah": {},
     "jumuah": [],
     "lastVerified": null,
