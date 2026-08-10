@@ -38,7 +38,9 @@ export interface SuggestionRow {
   id: number;
   masjid_id: string;
   slot: string;
-  suggested_time: string;
+  /** One of these is set, never both — see supabase/003_offset_suggestions.sql. */
+  suggested_time: string | null;
+  offset_minutes: number | null;
   note: string | null;
   status: "pending" | "approved" | "rejected";
   created_by: string;

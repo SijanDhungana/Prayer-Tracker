@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { SUPABASE_ANON_KEY, SUPABASE_URL, authConfigured } from "./supabase";
-import { PRAYERS, type Masjid, type Prayer } from "./types";
+import { PRAYERS, type IqamahRule, type Masjid, type Prayer } from "./types";
 
 export interface ApprovedTime {
   masjid_id: string;
   slot: string;
-  suggested_time: string;
+  /** Exactly one of these is set. */
+  suggested_time: string | null;
+  offset_minutes: number | null;
 }
 
 const isPrayer = (slot: string): slot is Prayer =>
@@ -39,10 +41,20 @@ export function applyOverrides(
     let jumuah = masjid.jumuah;
 
     for (const row of rows) {
+      // An offset tracks that day's adhan; a clock time is absolute.
+      const rule: IqamahRule | null =
+        row.offset_minutes != null
+          ? { type: "offset", minutes: row.offset_minutes }
+          : row.suggested_time != null
+            ? { type: "fixed", time: row.suggested_time }
+            : null;
+      if (!rule) continue;
+
       if (row.slot === "jumuah") {
-        jumuah = [{ khutbah: row.suggested_time }];
+        // Friday khutbah is announced as a clock time, never as an offset.
+        if (rule.type === "fixed") jumuah = [{ khutbah: rule.time }];
       } else if (isPrayer(row.slot)) {
-        iqamah[row.slot] = { type: "fixed", time: row.suggested_time };
+        iqamah[row.slot] = rule;
       }
     }
 
@@ -69,7 +81,7 @@ export function useApprovedTimes(): {
     // every visitor, and pulling in the client library just to read a public
     // view would put ~60 kB in front of the prayer times.
     fetch(
-      `${SUPABASE_URL}/rest/v1/approved_times?select=masjid_id,slot,suggested_time`,
+      `${SUPABASE_URL}/rest/v1/approved_times?select=masjid_id,slot,suggested_time,offset_minutes`,
       {
         headers: {
           apikey: SUPABASE_ANON_KEY,

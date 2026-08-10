@@ -57,10 +57,20 @@ create table public.suggestions (
   masjid_id      text not null,
   slot           text not null
                  check (slot in ('fajr','dhuhr','asr','maghrib','isha','jumuah')),
+  -- A suggestion is either a clock time or an offset from that prayer's adhan,
+  -- never both. Maghrib follows sunset, so a fixed time for it is wrong by
+  -- tomorrow while "5 minutes after" stays correct all year.
   -- 24-hour HH:mm, enforced at the column so a malformed time cannot be stored
   -- even if a client skips validation.
-  suggested_time text not null
+  suggested_time text
                  check (suggested_time ~ '^([01][0-9]|2[0-3]):[0-5][0-9]$'),
+  offset_minutes integer
+                 check (offset_minutes is null
+                        or (offset_minutes >= 0 and offset_minutes <= 90)),
+  constraint suggestion_has_exactly_one_form check (
+    (suggested_time is not null and offset_minutes is null)
+    or (suggested_time is null and offset_minutes is not null)
+  ),
   note           text,
   status         text not null default 'pending'
                  check (status in ('pending','approved','rejected')),
@@ -141,6 +151,7 @@ create view public.approved_times as
     masjid_id,
     slot,
     suggested_time,
+    offset_minutes,
     reviewed_at
   from public.suggestions
   where status = 'approved'

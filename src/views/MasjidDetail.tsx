@@ -1,5 +1,10 @@
 import { useState } from "react";
-import { adhanTimes, iqamahTimes, sunriseTime } from "../lib/prayer";
+import {
+  adhanTimes,
+  effectiveRule,
+  iqamahTimes,
+  sunriseTime,
+} from "../lib/prayer";
 import { listPath } from "../lib/route";
 import { formatDistance, haversineKm, type Point } from "../lib/distance";
 import { formatCalendarDate, formatIsoDate, formatTime } from "../lib/time";
@@ -92,7 +97,10 @@ export default function MasjidDetail({
               </td>
               <td className="py-2.5 text-right text-base font-semibold tabular-nums">
                 {iqamah[prayer] ? (
-                  formatTime(iqamah[prayer]!)
+                  <>
+                    {formatTime(iqamah[prayer]!)}
+                    <RuleNote masjid={masjid} prayer={prayer} />
+                  </>
                 ) : (
                   <button
                     type="button"
@@ -145,6 +153,26 @@ export default function MasjidDetail({
         before relying on either.
       </p>
     </article>
+  );
+}
+
+/**
+ * Says how a time was arrived at when it wasn't simply announced: an offset
+ * tracks that day's adhan, and the Maghrib fallback is not something a masjid
+ * confirmed. A plain recorded clock time needs no explanation.
+ */
+function RuleNote({ masjid, prayer }: { masjid: Masjid; prayer: Prayer }) {
+  const { rule, isDefault } = effectiveRule(masjid, prayer);
+  if (!rule || rule.type !== "offset") return null;
+
+  const gap =
+    rule.minutes === 0 ? "right after adhan" : `${rule.minutes} min after adhan`;
+
+  return (
+    <span className="block text-[11px] font-normal text-stone-400">
+      {gap}
+      {isDefault && " (assumed)"}
+    </span>
   );
 }
 
