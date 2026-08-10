@@ -19,7 +19,14 @@ export type IqamahRule =
 export interface CalcConfig {
   /** Key of adhan's CalculationMethod, e.g. "NorthAmerica". */
   method: string;
+  /** Only changes Asr — "hanafi" runs it roughly an hour later. */
   madhab: "hanafi" | "shafi";
+  /**
+   * Per-prayer nudges in minutes, for masjids that publish times a minute or
+   * two off the pure calculation (usually rounding up). Optional; omitted
+   * means no adjustment.
+   */
+  adjustments?: Partial<Record<Prayer, number>>;
 }
 
 export interface JumuahSession {

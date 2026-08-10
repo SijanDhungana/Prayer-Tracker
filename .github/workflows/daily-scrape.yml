@@ -1,0 +1,49 @@
+# .github/workflows/daily-scrape.yml
+# Runs the scraper once a day on GitHub's servers (free for public repos) and
+# commits the refreshed src/data/masjids.json. No server or laptop needed.
+
+name: Daily prayer-time scrape
+
+on:
+  schedule:
+    - cron: "0 9 * * *" # 09:00 UTC daily — adjust to taste
+  workflow_dispatch: {} # lets you also run it manually from the Actions tab
+
+permissions:
+  contents: write # needed to commit the updated JSON back
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm ci
+
+      # Install the headless browser Playwright drives.
+      - run: npx playwright install --with-deps chromium
+
+      # Fails loudly rather than burning a whole run to produce nothing.
+      - name: Check for API key
+        run: |
+          if [ -z "${{ secrets.ANTHROPIC_API_KEY }}" ]; then
+            echo "::error::ANTHROPIC_API_KEY repo secret is not set — add it under Settings → Secrets and variables → Actions."
+            exit 1
+          fi
+
+      - name: Run scraper
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: npx tsx scrape.ts
+
+      - name: Commit refreshed times
+        run: |
+          git config user.name  "prayer-times-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add src/data/masjids.json
+          git diff --staged --quiet || git commit -m "chore: refresh prayer times ($(date -u +%F))"
+          git push

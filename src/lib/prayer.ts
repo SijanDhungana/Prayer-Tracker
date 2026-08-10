@@ -29,6 +29,11 @@ function parametersFor(calc: CalcConfig): CalculationParameters {
 
   const params = CalculationMethod[key]();
   params.madhab = calc.madhab === "shafi" ? Madhab.Shafi : Madhab.Hanafi;
+
+  if (calc.adjustments) {
+    params.adjustments = { ...params.adjustments, ...calc.adjustments };
+  }
+
   return params;
 }
 
