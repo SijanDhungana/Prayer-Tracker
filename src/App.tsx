@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { Suspense, lazy, useMemo } from "react";
 import LocationPicker from "./components/LocationPicker";
 import Nav from "./components/Nav";
 import { masjids as baseMasjids } from "./data/masjids";
@@ -14,6 +14,11 @@ import ComparePrayer from "./views/ComparePrayer";
 import MasjidDetail from "./views/MasjidDetail";
 import MasjidList from "./views/MasjidList";
 import SignIn from "./views/SignIn";
+
+// Leaflet and its stylesheet are bigger than everything else here combined,
+// and most visits never open the map. Split so a visitor checking a time
+// pays nothing for it.
+const MapView = lazy(() => import("./views/MapView"));
 
 export default function App() {
   return (
@@ -63,6 +68,14 @@ function Shell() {
             fromLabel={reference.label}
             onPublished={refreshApproved}
           />
+        ) : route.name === "map" ? (
+          <Suspense
+            fallback={
+              <p className="text-sm text-stone-500">Loading the map…</p>
+            }
+          >
+            <MapView masjids={masjids} date={today} reference={reference} />
+          </Suspense>
         ) : route.name === "compare" ? (
           <ComparePrayer
             masjids={masjids}
