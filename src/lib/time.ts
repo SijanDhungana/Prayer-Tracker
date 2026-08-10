@@ -89,6 +89,37 @@ export function zonedTimeOnDate(
   return new Date(refined);
 }
 
+/**
+ * Minutes past midnight on `timeZone`'s clock.
+ *
+ * Not `date.getHours()` — that reads the runtime's zone, which is only Toronto
+ * by luck. Comparing a stored "HH:mm" against an instant has to happen on the
+ * same clock or the comparison is meaningless.
+ */
+export function minutesOfDay(date: Date, timeZone: string = TZ): number {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone,
+    hour12: false,
+    hour: "2-digit",
+    minute: "2-digit",
+  }).formatToParts(date);
+
+  const part = (type: Intl.DateTimeFormatPartTypes) =>
+    Number(parts.find((p) => p.type === type)?.value);
+
+  return (part("hour") % 24) * 60 + part("minute");
+}
+
+/** Minutes past midnight for a stored "HH:mm", or null if malformed. */
+export function clockMinutes(hhmm: string): number | null {
+  const match = /^(\d{1,2}):(\d{2})$/.exec(hhmm.trim());
+  if (!match) return null;
+  const hours = Number(match[1]);
+  const minutes = Number(match[2]);
+  if (hours > 23 || minutes > 59) return null;
+  return hours * 60 + minutes;
+}
+
 /** "4:45 AM" */
 export function formatTime(date: Date, timeZone: string = TZ): string {
   return new Intl.DateTimeFormat("en-US", {
