@@ -78,6 +78,28 @@ export function iqamahTime(
   return zonedTimeOnDate(date, rule.time);
 }
 
+/**
+ * The prayer worth showing first: the earliest one that still has an iqamah
+ * ahead of `now` at any masjid in the list. Falls back to Fajr once the day's
+ * congregations are all done.
+ */
+export function nextIqamahPrayer(
+  masjids: Masjid[],
+  date: Date = todayIn(),
+  now: Date = new Date(),
+): Prayer {
+  const schedules = masjids.map((m) => iqamahTimes(m, date));
+
+  return (
+    PRAYERS.find((prayer) =>
+      schedules.some((times) => {
+        const time = times[prayer];
+        return time != null && time.getTime() > now.getTime();
+      }),
+    ) ?? "fajr"
+  );
+}
+
 /** Every iqamah a masjid holds on `date`, keyed by prayer. */
 export function iqamahTimes(
   masjid: Masjid,

@@ -1,4 +1,5 @@
 import { adhanTimes, iqamahTimes, sunriseTime } from "../lib/prayer";
+import { listPath } from "../lib/route";
 import { formatCalendarDate, formatIsoDate, formatTime } from "../lib/time";
 import { PRAYERS, PRAYER_LABELS, type Masjid } from "../lib/types";
 
@@ -24,7 +25,7 @@ export default function MasjidDetail({
   return (
     <article>
       <a
-        href="#"
+        href={listPath}
         className="text-sm font-medium text-emerald-700 underline underline-offset-2"
       >
         ← All masjids
