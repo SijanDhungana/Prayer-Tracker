@@ -1,0 +1,126 @@
+[
+  {
+    "id": "madinah-masjid",
+    "name": "Madinah Masjid",
+    "address": "65 Thorncliffe Park Dr, East York, ON",
+    "lat": 43.7048,
+    "lng": -79.3488,
+    "website": "https://madinahmasjid.ca",
+    "calc": { "method": "NorthAmerica", "madhab": "hanafi" },
+    "iqamah": {
+      "fajr": { "type": "fixed", "time": "05:00" },
+      "dhuhr": { "type": "fixed", "time": "13:45" },
+      "asr": { "type": "fixed", "time": "19:00" },
+      "maghrib": { "type": "offset", "minutes": 5 },
+      "isha": { "type": "fixed", "time": "22:40" }
+    },
+    "jumuah": [{ "khutbah": "13:30" }, { "khutbah": "14:30" }],
+    "lastVerified": null,
+    "needsReview": true,
+    "source": "seed"
+  },
+  {
+    "id": "masjid-al-istiqama",
+    "name": "Masjid Al-Istiqama",
+    "address": "Toronto, ON",
+    "lat": 43.7,
+    "lng": -79.45,
+    "website": "https://istiqamamasjid.com",
+    "calc": { "method": "NorthAmerica", "madhab": "hanafi" },
+    "iqamah": {
+      "fajr": { "type": "fixed", "time": "05:30" },
+      "dhuhr": { "type": "fixed", "time": "13:45" },
+      "asr": { "type": "fixed", "time": "18:00" },
+      "maghrib": { "type": "offset", "minutes": 5 },
+      "isha": { "type": "fixed", "time": "22:15" }
+    },
+    "jumuah": [{ "khutbah": "13:30" }],
+    "lastVerified": null,
+    "needsReview": true,
+    "source": "seed"
+  },
+  {
+    "id": "masjid-toronto-dundas",
+    "name": "Masjid Toronto (Dundas)",
+    "address": "168 Dundas St W, Toronto, ON M5G 1C6",
+    "lat": 43.6555,
+    "lng": -79.3862,
+    "website": "https://masjidtoronto.org",
+    "calc": { "method": "NorthAmerica", "madhab": "hanafi" },
+    "iqamah": {
+      "fajr": { "type": "fixed", "time": "05:15" },
+      "dhuhr": { "type": "fixed", "time": "13:15" },
+      "asr": { "type": "fixed", "time": "18:30" },
+      "maghrib": { "type": "offset", "minutes": 5 },
+      "isha": { "type": "fixed", "time": "20:30" }
+    },
+    "jumuah": [
+      { "khutbah": "12:30" },
+      { "khutbah": "13:30" },
+      { "khutbah": "14:30" }
+    ],
+    "lastVerified": null,
+    "needsReview": true,
+    "source": "seed"
+  },
+  {
+    "id": "islamic-institute-toronto",
+    "name": "Islamic Institute of Toronto",
+    "address": "1630 Neilson Rd, Scarborough, ON",
+    "lat": 43.8039,
+    "lng": -79.2211,
+    "website": "https://islam.ca",
+    "calc": { "method": "NorthAmerica", "madhab": "hanafi" },
+    "iqamah": {
+      "fajr": { "type": "fixed", "time": "05:15" },
+      "dhuhr": { "type": "fixed", "time": "13:30" },
+      "asr": { "type": "fixed", "time": "18:45" },
+      "maghrib": { "type": "offset", "minutes": 5 },
+      "isha": { "type": "fixed", "time": "22:30" }
+    },
+    "jumuah": [{ "khutbah": "13:00" }, { "khutbah": "14:15" }],
+    "lastVerified": null,
+    "needsReview": true,
+    "source": "seed"
+  },
+  {
+    "id": "abu-huraira-center",
+    "name": "Abu Huraira Center",
+    "address": "630 Rexdale Blvd, Etobicoke, ON",
+    "lat": 43.7223,
+    "lng": -79.5876,
+    "website": "https://abuhurairacenter.com",
+    "calc": { "method": "NorthAmerica", "madhab": "hanafi" },
+    "iqamah": {
+      "fajr": { "type": "fixed", "time": "05:00" },
+      "dhuhr": { "type": "fixed", "time": "13:30" },
+      "asr": { "type": "fixed", "time": "18:45" },
+      "maghrib": { "type": "offset", "minutes": 5 },
+      "isha": { "type": "fixed", "time": "22:45" }
+    },
+    "jumuah": [{ "khutbah": "13:00" }, { "khutbah": "14:15" }],
+    "lastVerified": null,
+    "needsReview": true,
+    "source": "seed"
+  },
+  {
+    "id": "iidci-bloor",
+    "name": "Islamic Information & Dawah Centre International",
+    "address": "1168 Bloor St W, Toronto, ON",
+    "lat": 43.6606,
+    "lng": -79.4361,
+    "website": "https://dawahcentre.ca",
+    "calc": { "method": "NorthAmerica", "madhab": "hanafi" },
+    "iqamah": {
+      "fajr": { "type": "fixed", "time": "05:15" },
+      "dhuhr": { "type": "fixed", "time": "13:30" },
+      "asr": { "type": "fixed", "time": "18:30" },
+      "maghrib": { "type": "offset", "minutes": 5 },
+      "isha": { "type": "fixed", "time": "20:45" }
+    },
+    "jumuah": [{ "khutbah": "13:15" }],
+    "lastVerified": null,
+    "needsReview": true,
+    "source": "seed"
+  }
+]
