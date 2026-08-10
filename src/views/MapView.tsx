@@ -64,6 +64,13 @@ export default function MapView({
   const onDevice = status === "active";
   const ready = mapStatus === "ready";
 
+  // The freshest reference point, for the map-creation effect — which runs
+  // once and would otherwise close over a stale first-render value. On a
+  // revisit the location is already resolved, so this lets the map be born
+  // centred correctly instead of on the downtown default.
+  const pointRef = useRef(point);
+  pointRef.current = point;
+
   // The tap that opened the map is the click §9 asks for, so ask once on
   // arrival. A refusal is not an error state here — the preset still works.
   const asked = useRef(false);
@@ -105,7 +112,7 @@ export default function MapView({
         if (cancelled || !holder.current || map.current) return;
 
         const instance = new google.maps.Map(holder.current, {
-          center: point,
+          center: pointRef.current,
           zoom: 12,
           // A map inside a scrolling page shouldn't hijack the scroll on the
           // way past; a deliberate two-finger gesture or a tap still zooms —
@@ -121,7 +128,16 @@ export default function MapView({
 
         map.current = instance;
         infoWindow.current = new google.maps.InfoWindow();
-        setMapStatus("ready");
+
+        // Wait for the first render before declaring the map ready. Camera
+        // moves (fitBounds) issued before that first `idle` are dropped by
+        // the Maps API — which is exactly what stranded the very first visit
+        // on the downtown default: geolocation resolved, but the recentre
+        // fired too early to take. Since `ready` gates every camera move,
+        // holding it until `idle` guarantees they all land.
+        google.maps.event.addListenerOnce(instance, "idle", () => {
+          if (!cancelled) setMapStatus("ready");
+        });
       })
       .catch(() => {
         if (!cancelled) setMapStatus("error");
