@@ -42,6 +42,8 @@ interface Masjid {
   lat: number;
   lng: number;
   address?: string;
+  /** Page the times actually live on, when it isn't the homepage. */
+  timesUrl?: string;
   calc: { method: string; madhab: "hanafi" | "shafi" };
   iqamah?: Record<string, IqamahRule | undefined>;
   jumuah?: { khutbah: string }[];
@@ -75,6 +77,14 @@ Return ONLY a JSON object, no prose, no markdown fences, with this exact shape:
 Rules:
 - Iqamah = the congregation/jamaah time, NOT the athan/adhan/"begins" time. If both
   are shown, take the iqamah column.
+- CONVERT TO 24-HOUR TIME. Masjid schedules usually omit am/pm. Use these facts:
+  Fajr is before sunrise (03:00-07:00). Dhuhr, Asr, Maghrib and Isha are ALL in the
+  afternoon or evening — every one of them is 12:00 or later in 24-hour time, and
+  they run in ascending order. So a Dhuhr shown as "1:45" is 13:45, an Asr shown as
+  "7:00" is 19:00, a Maghrib shown as "8:30" is 20:30, an Isha shown as "10:25" is
+  22:25. Never return 01:45 for Dhuhr or 08:30 for Maghrib.
+- Jummah/Friday khutbah is a midday prayer: always between 11:00 and 17:00 in
+  24-hour time. A Jummah shown as "1:50" is 13:50, never 01:50.
 - If a time is genuinely not on the page, use null. Do not guess.
 - If you cannot find prayer times at all, return found=false and all nulls.`;
 
@@ -85,9 +95,11 @@ async function extractFromSite(url: string): Promise<any | null> {
       userAgent:
         "MasjidTimesBot/1.0 (personal prayer-time aggregator; contact: you@example.com)",
     });
-    await page.goto(url, { waitUntil: "networkidle", timeout: 30000 });
-    // Give slow widgets a moment to paint their times.
-    await page.waitForTimeout(2500);
+    // "networkidle" never settles on pages that poll or stream analytics, which
+    // times the whole read out even though the times rendered long ago. Wait for
+    // the DOM instead, then give widget JS a fixed window to paint.
+    await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 });
+    await page.waitForTimeout(5000);
 
     const screenshot = await page.screenshot({ fullPage: true }); // Buffer (PNG)
     const text = (await page.innerText("body")).slice(0, 6000);
@@ -204,6 +216,22 @@ function rejectImpossible(masjid: Masjid, iqamah: Record<string, string | null>)
   return rejected;
 }
 
+/**
+ * Jummah replaces Dhuhr, so a khutbah is always around midday. Anything outside
+ * this window is a misread — in practice an afternoon time the model failed to
+ * convert to 24-hour ("1:50" written as 01:50 instead of 13:50).
+ */
+const JUMUAH_EARLIEST = 11 * 60;
+const JUMUAH_LATEST = 17 * 60;
+
+function plausibleJumuah(times: string[]): string[] {
+  return times.filter((t) => {
+    if (!isTime(t)) return false;
+    const minutes = clockMinutes(t);
+    return minutes >= JUMUAH_EARLIEST && minutes <= JUMUAH_LATEST;
+  });
+}
+
 function looksValid(result: any): boolean {
   if (!result?.found || (result.confidence ?? 0) < 0.5) return false;
   const iq = result.iqamah ?? {};
@@ -225,9 +253,10 @@ async function main() {
   }).format(new Date());
 
   for (const m of masjids) {
-    if (!m.website) continue;
+    const target = m.timesUrl ?? m.website;
+    if (!target) continue;
     console.log(`Scraping ${m.name} …`);
-    const result = await extractFromSite(m.website);
+    const result = await extractFromSite(target);
 
     if (result && looksValid(result)) {
       const scraped: Record<string, string | null> = { ...result.iqamah };
@@ -250,8 +279,14 @@ async function main() {
 
       m.iqamah = merged;
 
-      if (Array.isArray(result.jumuah) && result.jumuah.every(isTime)) {
-        m.jumuah = result.jumuah.map((t: string) => ({ khutbah: t }));
+      if (Array.isArray(result.jumuah)) {
+        const usable = plausibleJumuah(result.jumuah);
+        if (usable.length === result.jumuah.length && usable.length > 0) {
+          m.jumuah = result.jumuah.map((t: string) => ({ khutbah: t }));
+        } else if (result.jumuah.length > 0) {
+          // Keep the previous Friday times rather than writing a bad read.
+          rejected.push(`jumuah ${result.jumuah.join("/")} implausible`);
+        }
       }
 
       m.lastVerified = today;

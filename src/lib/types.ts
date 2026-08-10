@@ -40,6 +40,8 @@ export interface Masjid {
   lat: number;
   lng: number;
   website: string;
+  /** Page the scraper should read when the times aren't on the homepage. */
+  timesUrl?: string;
   calc: CalcConfig;
   iqamah: Partial<Record<Prayer, IqamahRule>>;
   jumuah: JumuahSession[];
