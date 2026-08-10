@@ -26,6 +26,12 @@ export default function SuggestTimeForm({
 }) {
   const { session, isAdmin } = useAuth();
   const [prayer, setPrayer] = useState<Slot>(initialPrayer);
+  // Maghrib follows sunset, so an offset is the form that stays right all year
+  // — it opens on that. Every other prayer is announced as a clock time.
+  const [mode, setMode] = useState<"clock" | "offset">(
+    initialPrayer === "maghrib" ? "offset" : "clock",
+  );
+  const [offset, setOffset] = useState("5");
   const [time, setTime] = useState("");
   const [note, setNote] = useState("");
   const [busy, setBusy] = useState(false);
@@ -39,12 +45,24 @@ export default function SuggestTimeForm({
         ? formatTime(iqamah[prayer]!)
         : null;
 
-  const warning = time ? warnIfBeforeAdhan(prayer, time, adhan) : null;
+  // An offset is measured from the adhan, so it cannot precede it — the
+  // warning only has meaning for a clock time.
+  const warning =
+    mode === "clock" && time ? warnIfBeforeAdhan(prayer, time, adhan) : null;
+
+  const offsetMinutes = Number(offset);
+  const offsetValid =
+    mode === "offset" &&
+    offset.trim() !== "" &&
+    Number.isInteger(offsetMinutes) &&
+    offsetMinutes >= 0 &&
+    offsetMinutes <= 90;
 
   // An admin's entry goes live the moment it is saved, with nobody downstream
   // to catch a slip. So the invariant the scraper and the reviewer both enforce
   // becomes a hard stop here rather than a caution.
-  const blocked = isAdmin && warning !== null;
+  const blocked =
+    (isAdmin && warning !== null) || (mode === "offset" && !offsetValid);
 
   if (!authConfigured) {
     return (
@@ -108,7 +126,9 @@ export default function SuggestTimeForm({
         const { error } = await (await pending).from("suggestions").insert({
           masjid_id: masjid.id,
           slot: prayer,
-          suggested_time: time,
+          // Exactly one of these, matching the database constraint.
+          suggested_time: mode === "offset" ? null : time,
+          offset_minutes: mode === "offset" ? offsetMinutes : null,
           note: note.trim() || null,
           created_by: session.user.id,
           ...review,
@@ -133,7 +153,13 @@ export default function SuggestTimeForm({
         Prayer
         <select
           value={prayer}
-          onChange={(e) => setPrayer(e.target.value as Slot)}
+          onChange={(e) => {
+            const next = e.target.value as Slot;
+            setPrayer(next);
+            // Jumu'ah is always announced as a clock time; Maghrib as an offset.
+            if (next === "jumuah") setMode("clock");
+            else if (next === "maghrib") setMode("offset");
+          }}
           className="mt-1 block w-full rounded-lg bg-stone-50 px-3 py-2 text-base font-normal text-stone-900 ring-1 ring-stone-200"
         >
           {PRAYERS.map((p) => (
@@ -145,16 +171,59 @@ export default function SuggestTimeForm({
         </select>
       </label>
 
-      <label className="mt-3 block text-sm font-medium text-stone-700">
-        Iqamah time
-        <input
-          type="time"
-          required
-          value={time}
-          onChange={(e) => setTime(e.target.value)}
-          className="mt-1 block w-full rounded-lg bg-stone-50 px-3 py-2 text-base font-normal tabular-nums text-stone-900 ring-1 ring-stone-200"
-        />
-      </label>
+      {prayer !== "jumuah" && (
+        <div className="mt-4 grid grid-cols-2 gap-1 rounded-xl bg-stone-200/60 p-1">
+          {(["offset", "clock"] as const).map((m) => (
+            <button
+              key={m}
+              type="button"
+              onClick={() => setMode(m)}
+              className={
+                "rounded-lg py-2 text-center text-sm font-medium transition-colors " +
+                (mode === m
+                  ? "bg-white text-stone-900 shadow-sm"
+                  : "text-stone-600 hover:text-stone-900")
+              }
+            >
+              {m === "offset" ? "After adhan" : "Set time"}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {mode === "offset" ? (
+        <>
+          <label className="mt-3 block text-sm font-medium text-stone-700">
+            Minutes after the adhan
+            <input
+              type="number"
+              inputMode="numeric"
+              min={0}
+              max={90}
+              required
+              value={offset}
+              onChange={(e) => setOffset(e.target.value)}
+              className="mt-1 block w-full rounded-lg bg-stone-50 px-3 py-2 text-base font-normal tabular-nums text-stone-900 ring-1 ring-stone-200"
+            />
+          </label>
+          <p className="mt-1 text-xs text-stone-500">
+            {offsetValid
+              ? `Today that is ${formatTime(new Date(adhan[prayer as Prayer].getTime() + offsetMinutes * 60000))}. It follows the adhan every day, so it stays right as sunset moves.`
+              : "Enter a whole number of minutes between 0 and 90."}
+          </p>
+        </>
+      ) : (
+        <label className="mt-3 block text-sm font-medium text-stone-700">
+          Iqamah time
+          <input
+            type="time"
+            required
+            value={time}
+            onChange={(e) => setTime(e.target.value)}
+            className="mt-1 block w-full rounded-lg bg-stone-50 px-3 py-2 text-base font-normal tabular-nums text-stone-900 ring-1 ring-stone-200"
+          />
+        </label>
+      )}
 
       <p className="mt-1 text-xs text-stone-500">
         {showing

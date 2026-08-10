@@ -15,7 +15,9 @@ export default function MasjidCard({
 }) {
   const adhan = adhanTimes(masjid, date);
   const iqamah = iqamahTimes(masjid, date);
-  const known = PRAYERS.filter((p) => iqamah[p] != null).length;
+  // Counts recorded data, not resolved times — Maghrib always resolves now
+  // because of the +2 default, and a default is not a collected time.
+  const known = PRAYERS.filter((p) => masjid.iqamah[p]).length;
 
   return (
     <li className="rounded-xl border border-stone-200 bg-white p-4 shadow-sm">

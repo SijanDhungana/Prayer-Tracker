@@ -12,6 +12,14 @@ type Filter = "pending" | "approved" | "rejected" | "all";
 const label = (slot: string) =>
   slot === "jumuah" ? "Jumu'ah" : (PRAYER_LABELS[slot as Prayer] ?? slot);
 
+/** A suggestion is either a clock time or "N minutes after the adhan". */
+const describe = (row: SuggestionRow) =>
+  row.offset_minutes != null
+    ? row.offset_minutes === 0
+      ? "right after adhan"
+      : `${row.offset_minutes} min after adhan`
+    : (row.suggested_time ?? "—");
+
 /**
  * What the app currently shows and what the calculation says, so an admin can
  * judge a suggestion without leaving the page. The masjid's own site is one tap
@@ -29,7 +37,10 @@ function Context({ row, date }: { row: SuggestionRow; date: Date }) {
   }
 
   const adhan = adhanTimes(masjid, date);
+  // Only a clock time can land before its own adhan. An offset is measured
+  // from the adhan, so it never can.
   const impossible =
+    row.suggested_time != null &&
     row.slot !== "jumuah" &&
     PRAYERS.includes(row.slot as Prayer) &&
     (clockMinutes(row.suggested_time) ?? 0) <
@@ -179,7 +190,7 @@ export default function AdminSuggestions({ date }: { date: Date }) {
             >
               <div className="flex items-baseline justify-between gap-3">
                 <h2 className="text-base font-semibold">
-                  {label(row.slot)} → {row.suggested_time}
+                  {label(row.slot)} → {describe(row)}
                 </h2>
                 <span
                   className={
