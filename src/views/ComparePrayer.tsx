@@ -1,5 +1,10 @@
 import { useMemo, useState } from "react";
-import { adhanTimes, iqamahTime } from "../lib/prayer";
+import {
+  DEFAULT_MAGHRIB_OFFSET_MINUTES,
+  adhanTimes,
+  effectiveRule,
+  iqamahTime,
+} from "../lib/prayer";
 import { masjidPath } from "../lib/route";
 import { formatTime, zonedTimeOnDate } from "../lib/time";
 import { formatDistance, haversineKm, type Point } from "../lib/distance";
@@ -10,6 +15,8 @@ type Row = {
   masjid: Masjid;
   adhan: Date;
   iqamah: Date | null;
+  /** True when the time came from the Maghrib fallback, not from the masjid. */
+  assumed: boolean;
   km: number;
 };
 
@@ -36,10 +43,14 @@ export default function ComparePrayer({
     () =>
       masjids.map((masjid) => {
         const adhan = adhanTimes(masjid, date)[prayer];
+        // effectiveRule, not the raw stored rule — otherwise the Maghrib
+        // fallback exists everywhere except the one view built to compare it.
+        const { rule, isDefault } = effectiveRule(masjid, prayer);
         return {
           masjid,
           adhan,
-          iqamah: iqamahTime(masjid.iqamah[prayer], adhan, date),
+          iqamah: iqamahTime(rule, adhan, date),
+          assumed: isDefault,
           km: haversineKm(from, masjid),
         };
       }),
@@ -147,7 +158,7 @@ export default function ComparePrayer({
         </p>
       ) : (
         <ul className="mt-2 divide-y divide-stone-100 overflow-hidden rounded-xl border border-stone-200 bg-white">
-          {visible.map(({ masjid, adhan, iqamah, km }) => (
+          {visible.map(({ masjid, adhan, iqamah, assumed, km }) => (
             <li key={masjid.id}>
               <a
                 href={masjidPath(masjid.id)}
@@ -161,8 +172,15 @@ export default function ComparePrayer({
                     {formatDistance(km)} · Adhan {formatTime(adhan)}
                   </span>
                 </span>
-                <span className="shrink-0 text-lg font-semibold tabular-nums text-stone-900">
-                  {iqamah ? formatTime(iqamah) : "—"}
+                <span className="shrink-0 text-right">
+                  <span className="block text-lg font-semibold tabular-nums text-stone-900">
+                    {iqamah ? formatTime(iqamah) : "—"}
+                  </span>
+                  {assumed && (
+                    <span className="block text-[11px] font-normal text-stone-400">
+                      assumed +{DEFAULT_MAGHRIB_OFFSET_MINUTES} min
+                    </span>
+                  )}
                 </span>
               </a>
             </li>
