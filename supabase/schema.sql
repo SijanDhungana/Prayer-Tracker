@@ -94,12 +94,25 @@ create policy "admins change roles"
 
 -- suggestions ----------------------------------------------------------
 
--- Signed in is the bar for suggesting. The row must be theirs and must start
--- pending — a user cannot insert something already marked approved.
+-- Signed in is the bar for suggesting. The row must be theirs, and for a normal
+-- user it must start pending — they cannot insert something already approved.
+-- An admin may publish directly, since making them approve their own submission
+-- adds a round trip without adding a second pair of eyes; the row still records
+-- who published it.
 create policy "signed-in users may suggest"
   on public.suggestions for insert
   to authenticated
-  with check (auth.uid() = created_by and status = 'pending');
+  with check (
+    auth.uid() = created_by
+    and (
+      status = 'pending'
+      or (
+        public.is_admin()
+        and status = 'approved'
+        and reviewed_by = auth.uid()
+      )
+    )
+  );
 
 create policy "users read their own suggestions"
   on public.suggestions for select

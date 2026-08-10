@@ -14,14 +14,17 @@ export default function SuggestTimeForm({
   iqamah,
   initialPrayer,
   onClose,
+  onPublished,
 }: {
   masjid: Masjid;
   adhan: Record<Prayer, Date>;
   iqamah: Record<Prayer, Date | null>;
   initialPrayer: Slot;
   onClose: () => void;
+  /** Called after an admin publishes, so the page can re-read the times. */
+  onPublished?: () => void;
 }) {
-  const { session } = useAuth();
+  const { session, isAdmin } = useAuth();
   const [prayer, setPrayer] = useState<Slot>(initialPrayer);
   const [time, setTime] = useState("");
   const [note, setNote] = useState("");
@@ -37,6 +40,11 @@ export default function SuggestTimeForm({
         : null;
 
   const warning = time ? warnIfBeforeAdhan(prayer, time, adhan) : null;
+
+  // An admin's entry goes live the moment it is saved, with nobody downstream
+  // to catch a slip. So the invariant the scraper and the reviewer both enforce
+  // becomes a hard stop here rather than a caution.
+  const blocked = isAdmin && warning !== null;
 
   if (!authConfigured) {
     return (
@@ -69,8 +77,9 @@ export default function SuggestTimeForm({
     return (
       <Panel onClose={onClose}>
         <p className="text-sm text-stone-700">
-          Thank you — sent for review. It goes live once an admin confirms it
-          against the masjid.
+          {isAdmin
+            ? "Published. Everyone sees this time now."
+            : "Thank you — sent for review. It goes live once an admin confirms it against the masjid."}
         </p>
       </Panel>
     );
@@ -82,25 +91,42 @@ export default function SuggestTimeForm({
       onSubmit={async (e) => {
         e.preventDefault();
         const pending = getSupabase();
-        if (!pending || !session) return;
+        if (!pending || !session || blocked) return;
         setBusy(true);
         setError(null);
+
+        // An admin writes the row already approved — the policy permits it only
+        // for an admin, and only with their own id as the reviewer.
+        const review = isAdmin
+          ? {
+              status: "approved" as const,
+              reviewed_by: session.user.id,
+              reviewed_at: new Date().toISOString(),
+            }
+          : {};
+
         const { error } = await (await pending).from("suggestions").insert({
           masjid_id: masjid.id,
           slot: prayer,
           suggested_time: time,
           note: note.trim() || null,
           created_by: session.user.id,
+          ...review,
         });
         setBusy(false);
-        if (error) setError(error.message);
-        else setSent(true);
+        if (error) {
+          setError(error.message);
+        } else {
+          setSent(true);
+          if (isAdmin) onPublished?.();
+        }
       }}
     >
-      <Header onClose={onClose} />
+      <Header onClose={onClose} title={isAdmin ? "Set the time" : "Suggest a time"} />
       <p className="mt-1 text-sm text-stone-600">
-        Know this masjid&rsquo;s iqamah? An admin will confirm it against the
-        masjid before it goes live.
+        {isAdmin
+          ? "You're an admin, so this publishes straight away — no review step."
+          : "Know this masjid's iqamah? An admin will confirm it against the masjid before it goes live."}
       </p>
 
       <label className="mt-4 block text-sm font-medium text-stone-700">
@@ -137,8 +163,14 @@ export default function SuggestTimeForm({
       </p>
 
       {warning && (
-        <p className="mt-3 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800">
+        <p
+          className={
+            "mt-3 rounded-lg px-3 py-2 text-xs " +
+            (blocked ? "bg-red-50 text-red-800" : "bg-amber-50 text-amber-800")
+          }
+        >
           {warning}
+          {blocked && " This publishes immediately, so it can't be saved as-is."}
         </p>
       )}
 
@@ -162,19 +194,31 @@ export default function SuggestTimeForm({
 
       <button
         type="submit"
-        disabled={busy}
+        disabled={busy || blocked}
         className="mt-4 w-full rounded-lg bg-emerald-700 px-4 py-2.5 text-sm font-semibold text-white hover:bg-emerald-800 disabled:opacity-60"
       >
-        {busy ? "Sending…" : "Send suggestion"}
+        {busy
+          ? isAdmin
+            ? "Publishing…"
+            : "Sending…"
+          : isAdmin
+            ? "Publish time"
+            : "Send suggestion"}
       </button>
     </form>
   );
 }
 
-function Header({ onClose }: { onClose: () => void }) {
+function Header({
+  onClose,
+  title = "Suggest a time",
+}: {
+  onClose: () => void;
+  title?: string;
+}) {
   return (
     <div className="flex items-baseline justify-between gap-3">
-      <h3 className="text-base font-semibold">Suggest a time</h3>
+      <h3 className="text-base font-semibold">{title}</h3>
       <button
         type="button"
         onClick={onClose}
