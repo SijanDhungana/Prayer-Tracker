@@ -54,8 +54,12 @@ export function applyOverrides(
  * Approved corrections for everyone, guests included. Starts empty so the page
  * renders from the static data immediately; the merge happens when this lands.
  */
-export function useApprovedTimes(): ApprovedTime[] {
+export function useApprovedTimes(): {
+  approved: ApprovedTime[];
+  refresh: () => void;
+} {
   const [approved, setApproved] = useState<ApprovedTime[]>([]);
+  const [nonce, setNonce] = useState(0);
 
   useEffect(() => {
     if (!authConfigured) return;
@@ -80,7 +84,7 @@ export function useApprovedTimes(): ApprovedTime[] {
       .catch(() => {});
 
     return () => controller.abort();
-  }, []);
+  }, [nonce]);
 
-  return approved;
+  return { approved, refresh: () => setNonce((n) => n + 1) };
 }

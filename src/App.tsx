@@ -30,7 +30,7 @@ function Shell() {
 
   // Approved corrections win over the scraper's baseline, and land as soon as
   // they're approved — no commit, no redeploy.
-  const approved = useApprovedTimes();
+  const { approved, refresh: refreshApproved } = useApprovedTimes();
   const masjids = useMemo(
     () => applyOverrides(baseMasjids, approved),
     [approved],
@@ -61,6 +61,7 @@ function Shell() {
             date={today}
             from={reference.point}
             fromLabel={reference.label}
+            onPublished={refreshApproved}
           />
         ) : route.name === "compare" ? (
           <ComparePrayer
@@ -83,12 +84,14 @@ function MasjidDetailRoute({
   date,
   from,
   fromLabel,
+  onPublished,
 }: {
   id: string;
   masjids: typeof baseMasjids;
   date: Date;
   from: Point;
   fromLabel: string;
+  onPublished: () => void;
 }) {
   const masjid = masjids.find((m) => m.id === id);
 
@@ -112,6 +115,7 @@ function MasjidDetailRoute({
       date={date}
       from={from}
       fromLabel={fromLabel}
+      onPublished={onPublished}
     />
   );
 }

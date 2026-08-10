@@ -16,11 +16,13 @@ export default function MasjidDetail({
   date,
   from,
   fromLabel,
+  onPublished,
 }: {
   masjid: Masjid;
   date: Date;
   from: Point;
   fromLabel: string;
+  onPublished?: () => void;
 }) {
   const adhan = adhanTimes(masjid, date);
   const iqamah = iqamahTimes(masjid, date);
@@ -123,6 +125,7 @@ export default function MasjidDetail({
           iqamah={iqamah}
           initialPrayer={suggesting}
           onClose={() => setSuggesting(null)}
+          onPublished={onPublished}
         />
       ) : (
         <button
