@@ -1,39 +1,44 @@
 import { forwardRef, useEffect, useMemo, useRef, useState } from "react";
-import L from "leaflet";
-import "leaflet/dist/leaflet.css";
 
 import PrayerTimeRow from "../components/PrayerTimeRow";
 import { formatDistance, haversineKm } from "../lib/distance";
+import { googleMapsConfigured, loadGoogleMaps } from "../lib/googleMaps";
 import type { ReferencePoint } from "../lib/location";
 import { adhanTimes, iqamahTimes } from "../lib/prayer";
 import { masjidPath } from "../lib/route";
 import { formatIsoDate } from "../lib/time";
 import type { Masjid } from "../lib/types";
 
-/**
- * Leaflet's default marker points at PNGs by relative URL, which a bundler
- * rewrites out from under it. Drawing the pin inline sidesteps that and keeps
- * the map to one network dependency: the tiles.
- */
-function pin(selected: boolean): L.DivIcon {
+/** A pin as an SVG data URI — no icon files to ship, no extra request. */
+function pinIcon(selected: boolean): google.maps.Icon {
   const fill = selected ? "#b45309" : "#047857";
-  return L.divIcon({
-    className: "",
-    html: `<svg width="26" height="34" viewBox="0 0 26 34" xmlns="http://www.w3.org/2000/svg">
-      <path d="M13 0C5.82 0 0 5.82 0 13c0 9.75 13 21 13 21s13-11.25 13-21C26 5.82 20.18 0 13 0z" fill="${fill}"/>
-      <circle cx="13" cy="13" r="4.75" fill="#fff"/>
-    </svg>`,
-    iconSize: [26, 34],
-    iconAnchor: [13, 34],
-  });
+  const svg = `<svg width="26" height="34" viewBox="0 0 26 34" xmlns="http://www.w3.org/2000/svg">
+    <path d="M13 0C5.82 0 0 5.82 0 13c0 9.75 13 21 13 21s13-11.25 13-21C26 5.82 20.18 0 13 0z" fill="${fill}"/>
+    <circle cx="13" cy="13" r="4.75" fill="#fff"/>
+  </svg>`;
+  return {
+    url: "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg),
+    scaledSize: new google.maps.Size(26, 34),
+    anchor: new google.maps.Point(13, 34),
+  };
 }
 
-const ME_ICON = L.divIcon({
-  className: "",
-  html: `<span style="display:block;width:16px;height:16px;border-radius:9999px;background:#2563eb;box-shadow:0 0 0 4px rgba(37,99,235,.25),0 0 0 1.5px #fff inset"></span>`,
-  iconSize: [16, 16],
-  iconAnchor: [8, 8],
-});
+// A function, not a module-level constant: `google` doesn't exist until the
+// script has loaded, and this module is evaluated the moment the map route
+// is opened — well before that.
+function meIcon(): google.maps.Icon {
+  const svg = `<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="8" cy="8" r="7" fill="#2563eb" fill-opacity="0.25"/>
+    <circle cx="8" cy="8" r="5" fill="#2563eb" stroke="#fff" stroke-width="1.5"/>
+  </svg>`;
+  return {
+    url: "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg),
+    scaledSize: new google.maps.Size(16, 16),
+    anchor: new google.maps.Point(8, 8),
+  };
+}
+
+type MapStatus = "unconfigured" | "loading" | "ready" | "error";
 
 export default function MapView({
   masjids,
@@ -45,15 +50,19 @@ export default function MapView({
   reference: ReferencePoint;
 }) {
   const holder = useRef<HTMLDivElement>(null);
-  const map = useRef<L.Map | null>(null);
-  const pins = useRef<L.LayerGroup | null>(null);
-  const me = useRef<L.Marker | null>(null);
+  const map = useRef<google.maps.Map | null>(null);
+  const infoWindow = useRef<google.maps.InfoWindow | null>(null);
+  const markers = useRef<google.maps.Marker[]>([]);
+  const me = useRef<google.maps.Marker | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [ready, setReady] = useState(false);
+  const [mapStatus, setMapStatus] = useState<MapStatus>(
+    googleMapsConfigured ? "loading" : "unconfigured",
+  );
 
   const { point, label, status, useDeviceLocation } = reference;
   const locating = status === "locating";
   const onDevice = status === "active";
+  const ready = mapStatus === "ready";
 
   // The tap that opened the map is the click §9 asks for, so ask once on
   // arrival. A refusal is not an error state here — the preset still works.
@@ -85,62 +94,86 @@ export default function MapView({
     }
   }, [selectedId]);
 
-  // Create the map once. Leaflet owns this DOM node outright, so React must
-  // never render children into it.
+  // Load the script and create the map once. Google Maps owns this DOM node
+  // outright, so React must never render children into it.
   useEffect(() => {
-    if (!holder.current || map.current) return;
+    if (!googleMapsConfigured || !holder.current || map.current) return;
+    let cancelled = false;
 
-    const instance = L.map(holder.current, {
-      center: [point.lat, point.lng],
-      zoom: 12,
-      zoomControl: true,
-      // A map inside a scrolling page shouldn't hijack the scroll on the way
-      // past; a deliberate two-finger gesture or a tap still zooms.
-      scrollWheelZoom: false,
-    });
+    loadGoogleMaps()
+      .then(() => {
+        if (cancelled || !holder.current || map.current) return;
 
-    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 19,
-      attribution: "&copy; OpenStreetMap contributors",
-    }).addTo(instance);
+        const instance = new google.maps.Map(holder.current, {
+          center: point,
+          zoom: 12,
+          // A map inside a scrolling page shouldn't hijack the scroll on the
+          // way past; a deliberate two-finger gesture or a tap still zooms —
+          // Google's equivalent of Leaflet's scrollWheelZoom: false.
+          gestureHandling: "cooperative",
+          streetViewControl: false,
+          mapTypeControl: false,
+          fullscreenControl: false,
+        });
 
-    // Tapping bare map is the natural "never mind" for the open card.
-    instance.on("click", () => setSelectedId(null));
+        // Tapping bare map is the natural "never mind" for the open card.
+        instance.addListener("click", () => setSelectedId(null));
 
-    map.current = instance;
-    pins.current = L.layerGroup().addTo(instance);
-    setReady(true);
+        map.current = instance;
+        infoWindow.current = new google.maps.InfoWindow();
+        setMapStatus("ready");
+      })
+      .catch(() => {
+        if (!cancelled) setMapStatus("error");
+      });
 
     return () => {
-      instance.remove();
-      map.current = null;
-      pins.current = null;
-      me.current = null;
+      cancelled = true;
     };
     // point is the initial centre only — recentring is handled below.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Tear the map down on unmount. The JS API has no destroy method; clearing
+  // listeners and markers and letting the detached DOM node get garbage
+  // collected is the documented approach.
+  useEffect(() => {
+    return () => {
+      for (const marker of markers.current) marker.setMap(null);
+      markers.current = [];
+      me.current?.setMap(null);
+      me.current = null;
+      if (map.current) google.maps.event.clearInstanceListeners(map.current);
+      map.current = null;
+      infoWindow.current = null;
+    };
+  }, []);
+
   // Redraw the pins when the list, the selection, or the distances change.
   useEffect(() => {
-    const layer = pins.current;
-    if (!ready || !layer) return;
+    const instance = map.current;
+    const info = infoWindow.current;
+    if (!ready || !instance) return;
 
-    layer.clearLayers();
-    for (const { masjid, km } of nearest) {
-      L.marker([masjid.lat, masjid.lng], {
-        icon: pin(masjid.id === selectedId),
+    for (const marker of markers.current) marker.setMap(null);
+    markers.current = nearest.map(({ masjid, km }) => {
+      const marker = new google.maps.Marker({
+        position: { lat: masjid.lat, lng: masjid.lng },
+        map: instance,
+        icon: pinIcon(masjid.id === selectedId),
         title: masjid.name,
-        alt: masjid.name,
-        riseOnHover: true,
-      })
-        .on("click", () => setSelectedId(masjid.id))
-        .bindTooltip(`${masjid.name} · ${formatDistance(km)}`, {
-          direction: "top",
-          offset: [0, -32],
-        })
-        .addTo(layer);
-    }
+        zIndex: masjid.id === selectedId ? 1000 : undefined,
+      });
+
+      marker.addListener("click", () => setSelectedId(masjid.id));
+      marker.addListener("mouseover", () => {
+        info?.setContent(`${masjid.name} · ${formatDistance(km)}`);
+        info?.open({ map: instance, anchor: marker });
+      });
+      marker.addListener("mouseout", () => info?.close());
+
+      return marker;
+    });
   }, [ready, nearest, selectedId]);
 
   // Follow the reference point: drop the "you" marker and frame the masjids
@@ -149,24 +182,36 @@ export default function MapView({
     const instance = map.current;
     if (!ready || !instance) return;
 
-    me.current?.remove();
+    me.current?.setMap(null);
     me.current = onDevice
-      ? L.marker([point.lat, point.lng], {
-          icon: ME_ICON,
+      ? new google.maps.Marker({
+          position: point,
+          map: instance,
+          icon: meIcon(),
           title: "Your location",
-          zIndexOffset: 1000,
-        }).addTo(instance)
+          zIndex: 2000,
+        })
       : null;
 
-    const close = nearest.slice(0, 5).map(({ masjid }): L.LatLngTuple => [
-      masjid.lat,
-      masjid.lng,
-    ]);
+    const bounds = new google.maps.LatLngBounds();
+    bounds.extend(point);
+    for (const { masjid } of nearest.slice(0, 5)) {
+      bounds.extend({ lat: masjid.lat, lng: masjid.lng });
+    }
 
-    instance.fitBounds(L.latLngBounds([[point.lat, point.lng], ...close]), {
-      padding: [40, 40],
-      maxZoom: 14,
-    });
+    // fitBounds has no maxZoom of its own — cap the zoom it lands on once,
+    // or two nearby masjids fill the screen with nothing else to see.
+    const capZoom = google.maps.event.addListenerOnce(
+      instance,
+      "bounds_changed",
+      () => {
+        const zoom = instance.getZoom();
+        if (zoom != null && zoom > 15) instance.setZoom(15);
+      },
+    );
+    instance.fitBounds(bounds, 40);
+
+    return () => google.maps.event.removeListener(capZoom);
   }, [ready, onDevice, point.lat, point.lng, nearest]);
 
   return (
@@ -180,12 +225,26 @@ export default function MapView({
           : `Masjids around ${label}. Tap a pin for its times.`}
       </p>
 
-      <div
-        ref={holder}
-        role="application"
-        aria-label="Map of nearby masjids"
-        className="mt-4 h-[55vh] min-h-[320px] w-full overflow-hidden rounded-xl border border-stone-200 bg-stone-100 z-0"
-      />
+      <div className="relative mt-4">
+        <div
+          ref={holder}
+          role="application"
+          aria-label="Map of nearby masjids"
+          className="h-[55vh] min-h-[320px] w-full overflow-hidden rounded-xl border border-stone-200 bg-stone-100"
+        />
+
+        {mapStatus === "unconfigured" && (
+          <MapOverlay>
+            The map isn&rsquo;t set up yet — it needs a Google Maps API key.
+          </MapOverlay>
+        )}
+        {mapStatus === "loading" && <MapOverlay>Loading the map…</MapOverlay>}
+        {mapStatus === "error" && (
+          <MapOverlay>
+            Couldn&rsquo;t load the map. The list below still works.
+          </MapOverlay>
+        )}
+      </div>
 
       {selected ? (
         <SelectedCard
@@ -216,6 +275,14 @@ export default function MapView({
         </ul>
       )}
     </section>
+  );
+}
+
+function MapOverlay({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="pointer-events-none absolute inset-0 flex items-center justify-center rounded-xl bg-stone-100/90 p-6 text-center text-sm text-stone-600">
+      {children}
+    </div>
   );
 }
 
