@@ -1,0 +1,89 @@
+# .github/workflows/apply-correction.yml
+#
+# Turns an approved suggestion into a committed change.
+#
+# On a suggestion issue, comment:
+#   /approve         apply the suggested time
+#   /approve 05:35   apply a different time (you checked and it's not quite right)
+#   /deny            close it, change nothing
+#
+# Only the repository owner can do this, and the correction is still validated
+# before it lands — an approval cannot push an impossible time into the data.
+
+name: Apply time correction
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write # commit the corrected JSON
+  issues: write # reply and close
+
+jobs:
+  apply:
+    # Issue comments only (not pull requests), from the repo owner, that start
+    # with one of the commands. Anything else is ignored entirely.
+    if: >
+      github.event.issue.pull_request == null &&
+      github.event.comment.author_association == 'OWNER' &&
+      (startsWith(github.event.comment.body, '/approve') ||
+       startsWith(github.event.comment.body, '/deny'))
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - run: npm ci
+
+      - name: Apply the correction
+        id: apply
+        env:
+          # Through env, never interpolated into the shell — an issue body is
+          # text anyone can type.
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          COMMENT_BODY: ${{ github.event.comment.body }}
+        run: |
+          set +e
+          npx tsx scripts/apply-correction.ts > verdict.txt 2>&1
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+          cat verdict.txt
+
+      - name: Commit the change
+        id: commit
+        run: |
+          git config user.name  "prayer-times-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add src/data/masjids.json
+          if git diff --staged --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "fix: apply time correction from #${{ github.event.issue.number }}"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Reply on the issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: ${{ github.event.issue.number }}
+        run: |
+          {
+            if [ "${{ steps.apply.outputs.code }}" = "0" ]; then
+              cat verdict.txt
+              if [ "${{ steps.commit.outputs.changed }}" = "true" ]; then
+                printf '\nThe site will pick this up on the next deploy.\n'
+              fi
+            else
+              printf '**Not applied.**\n\n'
+              cat verdict.txt
+              printf '\nNothing was changed. Fix the issue body and comment `/approve` again.\n'
+            fi
+          } > reply.md
+          gh issue comment "$ISSUE" --body-file reply.md
+          if [ "${{ steps.apply.outputs.code }}" = "0" ]; then
+            gh issue close "$ISSUE"
+          fi

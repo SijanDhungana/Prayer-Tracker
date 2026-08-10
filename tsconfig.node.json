@@ -16,5 +16,5 @@
     "strict": true,
     "skipLibCheck": true
   },
-  "include": ["vite.config.ts", "scrape.ts"]
+  "include": ["vite.config.ts", "scrape.ts", "scripts/**/*.ts"]
 }
