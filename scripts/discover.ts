@@ -206,9 +206,26 @@ function pickBest(hits: Hit[]): Hit | null {
   return worship ?? hits[0] ?? null;
 }
 
+/**
+ * OSM has no single agreed key for a website: mappers use `website`,
+ * `contact:website`, or plain `url` more or less interchangeably. Reading only
+ * the first leaves masjids looking site-less when OSM knows the address, and a
+ * masjid with no website is one the scraper can never read times from.
+ */
+const WEBSITE_TAGS = ["website", "contact:website", "url"] as const;
+
+function websiteFrom(tags: Record<string, string> | null | undefined): string {
+  for (const key of WEBSITE_TAGS) {
+    const tidied = tidyWebsite(tags?.[key]);
+    if (tidied) return tidied;
+  }
+  return "";
+}
+
 function tidyWebsite(raw: string | undefined): string {
   if (!raw) return "";
-  const url = raw.trim();
+  // Mappers sometimes list several, semicolon-separated; the first wins.
+  const url = raw.split(";")[0].trim();
   if (!url) return "";
   return /^https?:\/\//i.test(url) ? url : `https://${url}`;
 }
@@ -278,7 +295,7 @@ async function main() {
     ids.add(id);
     known.push(entry.name);
 
-    const website = tidyWebsite(placed.hit.extratags?.website);
+    const website = websiteFrom(placed.hit.extratags);
     const masjid: Masjid = {
       id,
       name: entry.name,
