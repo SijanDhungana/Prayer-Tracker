@@ -12,6 +12,7 @@ import { useSettings } from "../lib/settings";
 import type { ReferencePoint } from "../lib/location";
 import { adhanTimes, iqamahTimes } from "../lib/prayer";
 import { prayerPath } from "../lib/route";
+import { asrSchoolMismatch } from "../lib/trust";
 import { formatTime } from "../lib/time";
 import { PRAYERS, PRAYER_LABELS, type Masjid, type Prayer } from "../lib/types";
 
@@ -111,6 +112,9 @@ export default function NextUp({
           km: haversineKm(from, masjid),
           minutesAway:
             iqamah == null ? null : (iqamah.getTime() - minute.getTime()) / 60_000,
+          // §10.1: this masjid's congregation starts before Asr begins by the
+          // visitor's own school.
+          otherSchool: asrSchoolMismatch(masjid, prayer, today),
         };
       }),
     [masjids, from, today, prayer, minute],
@@ -140,14 +144,21 @@ export default function NextUp({
   const starred = visible.filter((r) => isFavourite(r.masjid.id));
   const rest = visible.filter((r) => !isFavourite(r.masjid.id));
 
-  // The soonest congregation still ahead — the ring's target line (§9).
-  const target = useMemo(
-    () =>
-      [...rows]
-        .filter((r) => r.minutesAway != null && r.minutesAway > 0)
-        .sort((a, b) => a.minutesAway! - b.minutesAway!)[0] ?? null,
-    [rows],
-  );
+  /**
+   * The soonest congregation still ahead — the ring's target line (§9).
+   *
+   * Masjids on the other Asr school are ranked last rather than dropped.
+   * Their jamaah begins before Asr has started for a Hanafi visitor, so
+   * offering it as "the soonest congregation you can catch" would be
+   * recommending a prayer they cannot pray — but it is still a real jamaah,
+   * and the right answer if there is nothing else.
+   */
+  const target = useMemo(() => {
+    const ahead = rows
+      .filter((r) => r.minutesAway != null && r.minutesAway > 0)
+      .sort((a, b) => a.minutesAway! - b.minutesAway!);
+    return ahead.find((r) => !r.otherSchool) ?? ahead[0] ?? null;
+  }, [rows]);
 
   const countdown = passed ? "started" : countdownText(second, countdownTo);
   const relative = (minutes: number | null) =>
@@ -174,12 +185,23 @@ export default function NextUp({
           {target ? (
             <a
               href={`#/map/${target.masjid.id}`}
-              className="mt-3 inline-block text-meta text-ink-2 underline-offset-2 hover:underline"
+              className="inline-block underline-offset-2 hover:underline"
             >
-              {target.masjid.name}
-              <span className="block font-num text-ink-3">
-                Iqamah {formatTime(target.iqamah!)}
+              <span className="block text-meta uppercase tracking-[0.08em] text-ink-3">
+                Soonest congregation
               </span>
+              <span className="mt-0.5 block text-body text-ink">
+                {target.masjid.name}
+              </span>
+              <span className="block font-num text-meta text-ink-3">
+                Iqamah {formatTime(target.iqamah!)} ·{" "}
+                {relative(target.minutesAway)}
+              </span>
+              {target.otherSchool && (
+                <span className="mt-0.5 block text-meta text-caution">
+                  Uses the standard Asr calculation
+                </span>
+              )}
             </a>
           ) : (
             <span className="mt-3 block text-meta text-ink-3">
@@ -314,6 +336,11 @@ export default function NextUp({
               adhan={row.adhan}
               km={row.km}
               relative={relative(row.minutesAway)}
+              note={
+                row.otherSchool ? (
+                  <span className="text-caution">standard Asr</span>
+                ) : undefined
+              }
               favourite={false}
               onToggleFavourite={() => toggle(row.masjid.id)}
             />
