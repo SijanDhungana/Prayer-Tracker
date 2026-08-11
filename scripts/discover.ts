@@ -18,7 +18,7 @@
  */
 import { readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
-import { dirname, resolve } from "node:path";
+import { basename, dirname, resolve } from "node:path";
 import type { Masjid } from "./prayer-invariant";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -43,6 +43,16 @@ const SAME_PLACE_KM = 0.2;
 interface Pending {
   name: string;
   near?: string;
+  /**
+   * The masjid's site, when whoever added the name already knew it.
+   *
+   * OSM's coverage of `website` is patchy, and a masjid with no URL is one the
+   * scraper can never read times from — so a URL supplied by hand is better
+   * evidence than a blank tag and wins over it. OSM is still consulted for
+   * everything else: address and coordinates, which are what the lookup is
+   * actually for.
+   */
+  website?: string;
   /** Written back when a lookup fails, so the next run has the history. */
   note?: string;
 }
@@ -167,11 +177,22 @@ function formatAddress(hit: Hit): string {
     : hit.display_name.split(",").slice(0, 4).join(",").trim();
 }
 
-/** Queries to try in order — most specific first. */
-function queriesFor(entry: Pending): string[] {
-  const queries = [];
-  if (entry.near) queries.push(`${entry.name}, ${entry.near}`);
-  queries.push(`${entry.name}, Ontario, Canada`);
+/**
+ * Queries to try in order — most specific first.
+ *
+ * Masjids here are conventionally stored under both their names, as in
+ * "Islamic Society of Ajax (Masjid Quba)", because people know them by one or
+ * the other. A geocoder does not: it matches a label, and two names joined by
+ * brackets match neither. So the bracketed form is also tried stripped, while
+ * the entry keeps the full name for display.
+ */
+export function queriesFor(entry: Pending): string[] {
+  const short = entry.name.replace(/\s*\([^)]*\)\s*/g, " ").trim();
+  const names = short && short !== entry.name ? [entry.name, short] : [entry.name];
+
+  const queries: string[] = [];
+  if (entry.near) queries.push(...names.map((n) => `${n}, ${entry.near}`));
+  queries.push(...names.map((n) => `${n}, Ontario, Canada`));
   return queries;
 }
 
@@ -222,7 +243,7 @@ function websiteFrom(tags: Record<string, string> | null | undefined): string {
   return "";
 }
 
-function tidyWebsite(raw: string | undefined): string {
+export function tidyWebsite(raw: string | undefined): string {
   if (!raw) return "";
   // Mappers sometimes list several, semicolon-separated; the first wins.
   const url = raw.split(";")[0].trim();
@@ -295,7 +316,7 @@ async function main() {
     ids.add(id);
     known.push(entry.name);
 
-    const website = websiteFrom(placed.hit.extratags);
+    const website = tidyWebsite(entry.website) || websiteFrom(placed.hit.extratags);
     const masjid: Masjid = {
       id,
       name: entry.name,
@@ -333,7 +354,10 @@ async function main() {
   }
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+// Only run when invoked directly, so the helpers above stay importable.
+if (process.argv[1] && import.meta.url.endsWith(basename(process.argv[1]))) {
+  main().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}

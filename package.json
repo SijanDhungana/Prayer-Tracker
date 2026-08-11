@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "scrape": "tsx scrape.ts",
     "geocode": "tsx scripts/geocode.ts",
-    "check:jumuah": "tsx scripts/check-jumuah.ts"
+    "check:jumuah": "tsx scripts/check-jumuah.ts",
+    "check:discover": "tsx scripts/check-discover.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.112.2",

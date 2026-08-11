@@ -73,5 +73,19 @@
     "name": "Woodstock Masjid",
     "near": "Woodstock, Ontario",
     "note": "no match in OpenStreetMap"
+  },
+  {
+    "name": "Jamia Masjid Sayyidah Zainab",
+    "near": "Ajax, Ontario",
+    "website": "https://ajaxmosque.ca"
+  },
+  {
+    "name": "Masjid Al-Aqsaa",
+    "website": "https://masjidalaqsaa.com"
+  },
+  {
+    "name": "Islamic Society of Ajax (Masjid Quba)",
+    "near": "Ajax, Ontario",
+    "website": "https://www.ajaxmasjid.ca"
   }
 ]
