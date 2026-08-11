@@ -9,6 +9,9 @@ const base = (jumuah: string[]): Masjid =>
     lastVerified: null,
   }) as Masjid;
 
+/** The stored shape has jumuah optional, so read it the way callers must. */
+const times = (m: Masjid) => (m.jumuah ?? []).map((s) => s.khutbah);
+
 let failed = 0;
 const check = (name: string, got: unknown, want: unknown) => {
   const ok = JSON.stringify(got) === JSON.stringify(want);
@@ -22,7 +25,7 @@ const check = (name: string, got: unknown, want: unknown) => {
   const m = base([]);
   const r = mergeJumuah(m, ["14:30", "13:30", "14:30", "15:30"]);
   check("three sittings, deduped and ordered",
-    m.jumuah.map((s) => s.khutbah), ["13:30", "14:30", "15:30"]);
+    times(m), ["13:30", "14:30", "15:30"]);
   check("  reports what it added", r.added, "3: 13:30/14:30/15:30");
 }
 
@@ -31,7 +34,7 @@ const check = (name: string, got: unknown, want: unknown) => {
   const m = base(["13:00", "14:00", "15:00"]);
   const r = mergeJumuah(m, ["13:00", "25:99"]);
   check("partial read never overwrites known sittings",
-    m.jumuah.map((s) => s.khutbah), ["13:00", "14:00", "15:00"]);
+    times(m), ["13:00", "14:00", "15:00"]);
   check("  but is flagged", r.rejected, "jumu'ah 25:99 implausible");
 }
 
@@ -40,7 +43,7 @@ const check = (name: string, got: unknown, want: unknown) => {
   const m = base([]);
   const r = mergeJumuah(m, ["13:15", "09:00"]);
   check("publishes survivors when nothing is on file",
-    m.jumuah.map((s) => s.khutbah), ["13:15"]);
+    times(m), ["13:15"]);
   check("  and flags the dropped one", r.rejected, "jumu'ah 09:00 implausible");
 }
 
@@ -48,7 +51,7 @@ const check = (name: string, got: unknown, want: unknown) => {
 {
   const m = base([]);
   mergeJumuah(m, ["13:30"]);
-  check("single sitting stays single", m.jumuah.map((s) => s.khutbah), ["13:30"]);
+  check("single sitting stays single", times(m), ["13:30"]);
 }
 
 // Nothing found and nothing stored: say so, don't silently pass.
@@ -62,7 +65,7 @@ const check = (name: string, got: unknown, want: unknown) => {
 {
   const m = base(["13:30"]);
   const r = mergeJumuah(m, []);
-  check("empty read keeps existing sittings", m.jumuah.map((s) => s.khutbah), ["13:30"]);
+  check("empty read keeps existing sittings", times(m), ["13:30"]);
   check("  and is not called missing", r.missing, false);
 }
 
@@ -77,7 +80,7 @@ const check = (name: string, got: unknown, want: unknown) => {
 {
   const m = base(["13:30"]);
   const r = mergeJumuah(m, "13:30");
-  check("non-array read is survived", m.jumuah.map((s) => s.khutbah), ["13:30"]);
+  check("non-array read is survived", times(m), ["13:30"]);
   check("  and reported as not missing", r.missing, false);
 }
 
