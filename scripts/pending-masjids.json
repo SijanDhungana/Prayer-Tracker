@@ -77,15 +77,18 @@
   {
     "name": "Jamia Masjid Sayyidah Zainab",
     "near": "Ajax, Ontario",
-    "website": "https://ajaxmosque.ca"
+    "website": "https://ajaxmosque.ca",
+    "note": "no match in OpenStreetMap"
   },
   {
     "name": "Masjid Al-Aqsaa",
-    "website": "https://masjidalaqsaa.com"
+    "website": "https://masjidalaqsaa.com",
+    "note": "no match in OpenStreetMap"
   },
   {
     "name": "Islamic Society of Ajax (Masjid Quba)",
     "near": "Ajax, Ontario",
-    "website": "https://www.ajaxmasjid.ca"
+    "website": "https://www.ajaxmasjid.ca",
+    "note": "no match in OpenStreetMap"
   }
 ]
