@@ -10,12 +10,14 @@ export type Route =
   | { name: "list" }
   | { name: "compare"; prayer: Prayer | null }
   | { name: "map" }
+  | { name: "plan" }
   | { name: "masjid"; id: string }
   | { name: "signin" }
   | { name: "admin" };
 
 export const listPath = "#/";
 export const mapPath = "#/map";
+export const planPath = "#/plan";
 export const signInPath = "#/signin";
 export const adminPath = "#/admin/suggestions";
 export const comparePath = (prayer?: Prayer) =>
@@ -29,6 +31,7 @@ export function parseRoute(hash: string): Route {
   const path = hash.replace(/^#/, "");
 
   if (/^\/map\/?$/.test(path)) return { name: "map" };
+  if (/^\/plan\/?$/.test(path)) return { name: "plan" };
   if (/^\/signin\/?$/.test(path)) return { name: "signin" };
   if (/^\/admin\/suggestions\/?$/.test(path)) return { name: "admin" };
 
