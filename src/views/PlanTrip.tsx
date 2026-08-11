@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import AddressInput from "../components/AddressInput";
+import TripMap from "../components/TripMap";
 import { formatDistance, haversineKm, type Point } from "../lib/distance";
 import { googleMapsConfigured } from "../lib/googleMaps";
 import type { ReferencePoint } from "../lib/location";
@@ -19,6 +20,7 @@ import {
   DEFAULT_STOP_MINUTES,
   LONG_WAIT_MINUTES,
   planTrip,
+  planWhenToLeave,
   type Candidate,
   type Option,
   type PlanResult,
@@ -35,8 +37,11 @@ type Phase = "idle" | "working" | "done" | "error";
 
 /** Where the journey starts: the device's position, or somewhere typed. */
 type OriginMode = "here" | "address";
-/** When it starts: right now, or a chosen clock time today. */
-type DepartMode = "now" | "later";
+/**
+ * When it starts: right now, a chosen clock time — or unknown, with the
+ * planner working backward from the iqamah to the latest workable departure.
+ */
+type DepartMode = "now" | "later" | "latest";
 
 export default function PlanTrip({
   masjids,
@@ -70,6 +75,8 @@ export default function PlanTrip({
   const [originLabel, setOriginLabel] = useState<string | null>(null);
   const [originResolved, setOriginResolved] = useState<Point | null>(null);
   const [searched, setSearched] = useState(0);
+  // Remounts Results per successful plan, so the map's selection resets.
+  const [planKey, setPlanKey] = useState(0);
 
   // A chosen departure is a clock time today; anything unparseable falls back
   // to leaving now rather than silently planning for midnight.
@@ -169,14 +176,25 @@ export default function PlanTrip({
         });
       });
 
+      // "Tell me when": each candidate gets its own departure, worked back
+      // from its iqamah. The legs were priced at current traffic — close
+      // enough for departures within the next couple of hours, and the
+      // alternative is a paid matrix call per candidate.
       setResult(
-        planTrip(
-          candidates,
-          { now, deadline: deadlineAt, prayer },
-          directMinutes,
-          priority,
-        ),
+        departMode === "latest"
+          ? planWhenToLeave(
+              candidates,
+              { now, deadline: deadlineAt, prayer },
+              directMinutes,
+            )
+          : planTrip(
+              candidates,
+              { now, deadline: deadlineAt, prayer },
+              directMinutes,
+              priority,
+            ),
       );
+      setPlanKey((k) => k + 1);
       setPhase("done");
     } catch (err) {
       setError(
@@ -255,10 +273,17 @@ export default function PlanTrip({
             options={[
               { value: "now", label: "Now" },
               { value: "later", label: "A set time" },
+              { value: "latest", label: "Tell me when" },
             ]}
             value={departMode}
             onChange={(mode) => setDepartMode(mode as DepartMode)}
           />
+          {departMode === "latest" && (
+            <p className="mt-1.5 text-xs text-stone-500">
+              We&rsquo;ll work back from each masjid&rsquo;s iqamah and tell
+              you the latest you can set off.
+            </p>
+          )}
           {departMode === "later" && (
             <>
               <input
@@ -316,7 +341,7 @@ export default function PlanTrip({
           </label>
         </div>
 
-        <fieldset>
+        <fieldset className={departMode === "latest" ? "hidden" : undefined}>
           <legend className="text-sm font-medium text-stone-700">
             What matters more?
           </legend>
@@ -358,7 +383,9 @@ export default function PlanTrip({
 
       {result && phase === "done" && (
         <Results
+          key={planKey}
           result={result}
+          mode={departMode}
           priority={priority}
           prayer={prayer}
           destLabel={destLabel}
@@ -455,6 +482,7 @@ function PriorityChip({
 
 function Results({
   result,
+  mode,
   priority,
   prayer,
   destLabel,
@@ -464,6 +492,7 @@ function Results({
   searched,
 }: {
   result: PlanResult;
+  mode: DepartMode;
   priority: Priority;
   prayer: Prayer;
   destLabel: string | null;
@@ -474,6 +503,16 @@ function Results({
 }) {
   const label = PRAYER_LABELS[prayer];
   const nothing = result.viable.length === 0 && result.compromises.length === 0;
+
+  // The option whose route is drawn. Starts on the best one.
+  const first = result.viable[0] ?? result.compromises[0] ?? null;
+  const [selectedId, setSelectedId] = useState<string | null>(
+    first ? first.masjid.id : null,
+  );
+  const selected =
+    [...result.viable, ...result.compromises].find(
+      (option) => option.masjid.id === selectedId,
+    ) ?? first;
 
   return (
     <div className="mt-6">
@@ -499,6 +538,14 @@ function Results({
         </p>
       )}
 
+      {selected && destPoint && (
+        <TripMap
+          from={from}
+          masjid={selected.masjid}
+          destination={destPoint}
+        />
+      )}
+
       {nothing ? (
         <p className="mt-3 rounded-xl border border-dashed border-stone-300 p-6 text-center text-sm text-stone-600">
           {searched === 0
@@ -510,36 +557,45 @@ function Results({
           {result.viable.length > 0 ? (
             <>
               <h2 className="mt-4 text-sm font-semibold text-stone-900">
-                {priority === "destination"
-                  ? "Gets you there on time"
-                  : `Catches ${label} in jamaah`}
+                {mode === "latest"
+                  ? `Catches ${label} and still gets you there`
+                  : priority === "destination"
+                    ? "Gets you there on time"
+                    : `Catches ${label} in jamaah`}
               </h2>
               <ul className="mt-2 space-y-3">
                 {result.viable.map((option) => (
                   <OptionCard
                     key={option.masjid.id}
                     option={option}
+                    mode={mode}
                     prayer={prayer}
                     from={from}
                     destPoint={destPoint}
+                    selected={selected?.masjid.id === option.masjid.id}
+                    onShow={() => setSelectedId(option.masjid.id)}
                   />
                 ))}
               </ul>
             </>
           ) : (
             <p className="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">
-              {priority === "destination"
-                ? "Nothing gets you there on time with a prayer stop. Closest options below."
-                : `No masjid on this route makes ${label} in jamaah. Closest options below.`}
+              {mode === "latest"
+                ? `No departure catches ${label} and still makes your deadline. Closest options below.`
+                : priority === "destination"
+                  ? "Nothing gets you there on time with a prayer stop. Closest options below."
+                  : `No masjid on this route makes ${label} in jamaah. Closest options below.`}
             </p>
           )}
 
           {result.compromises.length > 0 && (
             <>
               <h2 className="mt-6 text-sm font-semibold text-stone-900">
-                {priority === "destination"
-                  ? "Would make you late"
-                  : "Misses the jamaah"}
+                {mode === "latest"
+                  ? "Not quite"
+                  : priority === "destination"
+                    ? "Would make you late"
+                    : "Misses the jamaah"}
               </h2>
               <p className="text-xs text-stone-500">
                 Shown so the call is yours, not the app&rsquo;s.
@@ -549,9 +605,12 @@ function Results({
                   <OptionCard
                     key={option.masjid.id}
                     option={option}
+                    mode={mode}
                     prayer={prayer}
                     from={from}
                     destPoint={destPoint}
+                    selected={selected?.masjid.id === option.masjid.id}
+                    onShow={() => setSelectedId(option.masjid.id)}
                     muted
                   />
                 ))}
@@ -571,15 +630,21 @@ function Results({
 
 function OptionCard({
   option,
+  mode,
   prayer,
   from,
   destPoint,
+  selected = false,
+  onShow,
   muted = false,
 }: {
   option: Option;
+  mode: DepartMode;
   prayer: Prayer;
   from: Point;
   destPoint: Point | null;
+  selected?: boolean;
+  onShow?: () => void;
   muted?: boolean;
 }) {
   const { masjid, timeline } = option;
@@ -589,9 +654,22 @@ function OptionCard({
     <li
       className={
         "rounded-xl border bg-white p-4 " +
-        (muted ? "border-stone-200 opacity-90" : "border-emerald-200 shadow-sm")
+        (selected
+          ? "border-emerald-400 ring-1 ring-emerald-400 "
+          : muted
+            ? "border-stone-200 "
+            : "border-emerald-200 ") +
+        (muted ? "opacity-90" : "shadow-sm")
       }
     >
+      {mode === "latest" && (
+        <p className="mb-2 rounded-lg bg-emerald-50 px-3 py-2 text-sm font-semibold text-emerald-900">
+          Leave by{" "}
+          <span className="text-lg tabular-nums">
+            {formatTime(timeline.leaveNow)}
+          </span>
+        </p>
+      )}
       <div className="flex items-baseline justify-between gap-3">
         <h3 className="min-w-0 text-base font-semibold text-stone-900">
           {masjid.name}
@@ -645,16 +723,27 @@ function OptionCard({
           </p>
         )}
 
-      {destPoint && (
-        <a
-          href={directionsUrl(from, masjid, destPoint)}
-          target="_blank"
-          rel="noreferrer"
-          className="mt-3 inline-block text-sm font-medium text-emerald-700 underline underline-offset-2"
-        >
-          Directions via this masjid →
-        </a>
-      )}
+      <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm font-medium">
+        {!selected && onShow && (
+          <button
+            type="button"
+            onClick={onShow}
+            className="text-emerald-700 underline underline-offset-2"
+          >
+            Show on map
+          </button>
+        )}
+        {destPoint && (
+          <a
+            href={directionsUrl(from, masjid, destPoint)}
+            target="_blank"
+            rel="noreferrer"
+            className="text-emerald-700 underline underline-offset-2"
+          >
+            Directions via this masjid →
+          </a>
+        )}
+      </div>
     </li>
   );
 }

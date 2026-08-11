@@ -262,3 +262,75 @@ export function planTrip(
 
   return { viable, compromises, directArrival, directMeetsDeadline };
 }
+
+/**
+ * The reverse question: not "I'm leaving now, what works?" but "how late can
+ * I leave and still catch the jamaah AND arrive on time?"
+ *
+ * Worked backward from the iqamah: leave at
+ * `iqamah − buffer − drive(origin → masjid)`, walk in on the buffer, pray,
+ * drive on. If that instant has already passed, the jamaah is no longer
+ * catchable — the option is evaluated leaving right now instead, and lands in
+ * the compromise list with its real cost shown.
+ */
+export function whenToLeave(
+  candidate: Candidate,
+  inputs: TripInputs,
+  directMinutes: number,
+): Option | null {
+  // No iqamah means there is nothing to time a departure against.
+  if (!candidate.iqamah) return null;
+
+  const buffer =
+    inputs.arrivalBufferMinutes ?? DEFAULT_ARRIVAL_BUFFER_MINUTES;
+  const latest = new Date(
+    candidate.iqamah.getTime() -
+      (buffer + candidate.legs.toMasjid) * 60_000,
+  );
+
+  const departure = latest >= inputs.now ? latest : inputs.now;
+  return evaluate(candidate, { ...inputs, now: departure }, directMinutes);
+}
+
+/**
+ * Rank candidates by the departure question. Both rules are hard here — the
+ * whole point of asking "when do I leave" is making the prayer AND the
+ * deadline — so viable means both, and the best option is the one that lets
+ * you stay longest before setting off.
+ */
+export function planWhenToLeave(
+  candidates: Candidate[],
+  inputs: TripInputs,
+  directMinutes: number,
+): PlanResult {
+  const directArrival = addMinutes(inputs.now, directMinutes);
+  const directMeetsDeadline =
+    inputs.deadline == null || directArrival <= inputs.deadline;
+
+  const viable: Option[] = [];
+  const compromises: Option[] = [];
+
+  for (const candidate of candidates) {
+    const option = whenToLeave(candidate, inputs, directMinutes);
+    if (!option || option.missesPrayerWindow) continue;
+    (option.catchesJamaah && option.meetsDeadline
+      ? viable
+      : compromises
+    ).push(option);
+  }
+
+  // Latest departure first — more time before you have to move. Ties break
+  // toward arriving sooner.
+  viable.sort(
+    (a, b) =>
+      b.timeline.leaveNow.getTime() - a.timeline.leaveNow.getTime() ||
+      a.timeline.arriveDestination.getTime() -
+        b.timeline.arriveDestination.getTime(),
+  );
+  // The prayer is the anchor of the question being asked, so a compromise
+  // that still catches the jamaah (but runs late) outranks one that gives
+  // the jamaah up.
+  compromises.sort((a, b) => compareCompromises(a, b, "prayer"));
+
+  return { viable, compromises, directArrival, directMeetsDeadline };
+}
