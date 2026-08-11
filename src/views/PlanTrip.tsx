@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import DestinationInput from "../components/DestinationInput";
 import { formatDistance, haversineKm, type Point } from "../lib/distance";
 import { googleMapsConfigured } from "../lib/googleMaps";
 import { adhanTimes, iqamahTimes } from "../lib/prayer";
@@ -10,6 +11,7 @@ import {
   drivingMinutes,
   drivingMinutesTo,
   geocode,
+  type GeocodeResult,
 } from "../lib/travel";
 import {
   DEFAULT_ARRIVAL_BUFFER_MINUTES,
@@ -41,6 +43,9 @@ export default function PlanTrip({
 }) {
   const today = todayIn();
   const [destination, setDestination] = useState("");
+  // Set when a suggestion is picked, so submitting doesn't pay to geocode
+  // text Google already resolved.
+  const [picked, setPicked] = useState<GeocodeResult | null>(null);
   const [deadline, setDeadline] = useState("");
   const [prayer, setPrayer] = useState<Prayer>(() => currentPrayer(masjids, today));
   const [priority, setPriority] = useState<Priority>("destination");
@@ -62,7 +67,7 @@ export default function PlanTrip({
 
     try {
       const now = new Date();
-      const target = await geocode(destination.trim());
+      const target = picked ?? (await geocode(destination.trim()));
       setDestLabel(target.label);
       setDestPoint(target.point);
 
@@ -163,16 +168,18 @@ export default function PlanTrip({
       </p>
 
       <form onSubmit={plan} className="mt-4 space-y-3">
-        <label className="block">
-          <span className="text-sm font-medium text-stone-700">Destination</span>
-          <input
-            type="text"
+        <span className="block text-sm font-medium text-stone-700">
+          Destination
+        </span>
+        <div className="-mt-2">
+          <DestinationInput
             value={destination}
-            onChange={(e) => setDestination(e.target.value)}
+            onChange={setDestination}
+            onResolved={setPicked}
+            bias={from}
             placeholder="Costco, 50 Overlea Blvd"
-            className="mt-1 w-full rounded-lg bg-white px-3 py-2 text-sm text-stone-900 ring-1 ring-stone-200 placeholder:text-stone-400"
           />
-        </label>
+        </div>
 
         <div className="flex flex-wrap gap-3">
           <label className="min-w-0 flex-1">

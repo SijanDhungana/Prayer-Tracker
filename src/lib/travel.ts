@@ -13,6 +13,95 @@ import type { Masjid } from "./types";
 /** Bias geocoding toward the region the app actually covers. */
 const REGION = "ca";
 
+/** Autocomplete is limited to Canada — the whole country, for now. */
+const REGION_CODES = ["ca"];
+
+export interface PlaceSuggestion {
+  id: string;
+  /** Usually the business or building name. */
+  primary: string;
+  /** City, street — whatever distinguishes it from a namesake. */
+  secondary: string;
+  /** Carried so selecting it can resolve coordinates on the same session. */
+  prediction: google.maps.places.PlacePrediction;
+}
+
+/**
+ * A billing session for one destination lookup.
+ *
+ * Google charges autocomplete per session, not per keystroke: every request
+ * sharing a token, plus the final details fetch, counts once. Typing
+ * "Costco Overlea" without one would be billed as fifteen separate lookups.
+ */
+export async function newPlacesSession(): Promise<google.maps.places.AutocompleteSessionToken> {
+  // Awaits the SDK: constructing this before the script has run throws, and
+  // since it's the first thing a search does, that would stop the script ever
+  // being fetched at all.
+  await loadGoogleMaps();
+  return new google.maps.places.AutocompleteSessionToken();
+}
+
+/**
+ * Address suggestions for what's been typed so far.
+ *
+ * Throws when the key can't use Places; callers are expected to fall back to
+ * a plain typed address rather than block the trip on it.
+ */
+export async function placeSuggestions(
+  input: string,
+  sessionToken: google.maps.places.AutocompleteSessionToken,
+  bias?: Point,
+): Promise<PlaceSuggestion[]> {
+  await loadGoogleMaps();
+
+  const { suggestions } =
+    await google.maps.places.AutocompleteSuggestion.fetchAutocompleteSuggestions(
+      {
+        input,
+        sessionToken,
+        includedRegionCodes: REGION_CODES,
+        // Nudge results toward where the traveller is, so "Costco" offers the
+        // nearby one first rather than one across the country.
+        ...(bias
+          ? { origin: new google.maps.LatLng(bias.lat, bias.lng) }
+          : {}),
+      },
+    );
+
+  return suggestions
+    .map((suggestion) => suggestion.placePrediction)
+    .filter((prediction): prediction is google.maps.places.PlacePrediction =>
+      Boolean(prediction),
+    )
+    .map((prediction) => ({
+      id: prediction.placeId,
+      primary: prediction.mainText?.text ?? prediction.text.text,
+      secondary: prediction.secondaryText?.text ?? "",
+      prediction,
+    }));
+}
+
+/**
+ * Turn a chosen suggestion into coordinates, closing the billing session.
+ * Cheaper and more exact than geocoding the text again.
+ */
+export async function resolveSuggestion(
+  suggestion: PlaceSuggestion,
+): Promise<GeocodeResult> {
+  const place = suggestion.prediction.toPlace();
+  await place.fetchFields({ fields: ["location", "formattedAddress"] });
+
+  const location = place.location;
+  if (!location) throw new Error("That place has no location on file.");
+
+  return {
+    point: { lat: location.lat(), lng: location.lng() },
+    label:
+      place.formattedAddress ??
+      [suggestion.primary, suggestion.secondary].filter(Boolean).join(", "),
+  };
+}
+
 export interface GeocodeResult {
   point: Point;
   /** Google's tidied-up version of what was typed. */
