@@ -14,7 +14,7 @@ const DEBOUNCE_MS = 250;
 /** Below this, suggestions are noise. */
 const MIN_QUERY = 3;
 
-export default function DestinationInput({
+export default function AddressInput({
   value,
   onChange,
   onResolved,
