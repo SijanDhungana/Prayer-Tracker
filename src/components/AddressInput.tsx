@@ -154,14 +154,14 @@ export default function AddressInput({
         aria-activedescendant={
           active >= 0 ? `${listId}-${active}` : undefined
         }
-        className="w-full rounded-lg bg-white px-3 py-2 text-sm text-stone-900 ring-1 ring-stone-200 placeholder:text-stone-400"
+        className="w-full rounded-lg bg-surface px-3 py-2 text-sm text-ink ring-1 ring-line placeholder:text-ink-3"
       />
 
       {open && (
         <ul
           id={listId}
           role="listbox"
-          className="absolute z-20 mt-1 max-h-72 w-full overflow-auto rounded-lg border border-stone-200 bg-white py-1 shadow-lg"
+          className="absolute z-20 mt-1 max-h-72 w-full overflow-auto rounded-lg border border-line bg-surface py-1 shadow-lg"
         >
           {suggestions.map((suggestion, index) => (
             <li
@@ -181,14 +181,14 @@ export default function AddressInput({
                 onMouseEnter={() => setActive(index)}
                 className={
                   "block w-full px-3 py-2 text-left text-sm " +
-                  (index === active ? "bg-stone-100" : "hover:bg-stone-50")
+                  (index === active ? "bg-surface-sunk" : "hover:bg-surface-sunk")
                 }
               >
-                <span className="block truncate font-medium text-stone-900">
+                <span className="block truncate font-medium text-ink">
                   {suggestion.primary}
                 </span>
                 {suggestion.secondary && (
-                  <span className="block truncate text-xs text-stone-500">
+                  <span className="block truncate text-xs text-ink-3">
                     {suggestion.secondary}
                   </span>
                 )}

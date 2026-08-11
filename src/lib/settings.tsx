@@ -38,10 +38,30 @@ export const ASR_NOTES: Record<AsrPreference, string> = {
   standard: "Shadow once an object's length — Shafi, Maliki and Hanbali.",
 };
 
+/**
+ * Light, dark, or whatever the device says — design spec §4.
+ *
+ * "system" is the default and writes no attribute at all, leaving the
+ * prefers-color-scheme block in tokens.css to decide. An explicit choice
+ * stamps data-theme on <html>, which both token blocks are written to
+ * respect, so the switch wins in either direction.
+ */
+export type Theme = "system" | "light" | "dark";
+
+export const THEME_LABELS: Record<Theme, string> = {
+  system: "System",
+  light: "Light",
+  dark: "Dark",
+};
+
 const STORAGE_KEY = "prayer-tracker:asr";
+const THEME_KEY = "prayer-tracker:theme";
 
 const isPreference = (value: unknown): value is AsrPreference =>
   value === "masjid" || value === "hanafi" || value === "standard";
+
+const isTheme = (value: unknown): value is Theme =>
+  value === "system" || value === "light" || value === "dark";
 
 /** Reading storage can throw in private-mode Safari, so never let it break boot. */
 function readStored(): AsrPreference {
@@ -53,18 +73,32 @@ function readStored(): AsrPreference {
   }
 }
 
+function readTheme(): Theme {
+  try {
+    const stored = window.localStorage.getItem(THEME_KEY);
+    return isTheme(stored) ? stored : "system";
+  } catch {
+    return "system";
+  }
+}
+
 interface Settings {
   asr: AsrPreference;
   setAsr: (value: AsrPreference) => void;
+  theme: Theme;
+  setTheme: (value: Theme) => void;
 }
 
 const SettingsContext = createContext<Settings>({
   asr: "masjid",
   setAsr: () => {},
+  theme: "system",
+  setTheme: () => {},
 });
 
 export function SettingsProvider({ children }: { children: ReactNode }) {
   const [asr, setAsrState] = useState<AsrPreference>(readStored);
+  const [theme, setThemeState] = useState<Theme>(readTheme);
 
   const setAsr = useCallback((value: AsrPreference) => {
     setAsrState(value);
@@ -75,6 +109,23 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
+  const setTheme = useCallback((value: Theme) => {
+    setThemeState(value);
+    try {
+      window.localStorage.setItem(THEME_KEY, value);
+    } catch {
+      // Storage off: the choice still holds for this visit.
+    }
+  }, []);
+
+  // "system" removes the attribute rather than setting it to a value, so the
+  // prefers-color-scheme block is what applies — not a third code path.
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === "system") root.removeAttribute("data-theme");
+    else root.setAttribute("data-theme", theme);
+  }, [theme]);
+
   // Keep two open tabs in step: a preference changed in one is a preference,
   // not a per-tab mode.
   useEffect(() => {
@@ -82,12 +133,18 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
       if (event.key === STORAGE_KEY && isPreference(event.newValue)) {
         setAsrState(event.newValue);
       }
+      if (event.key === THEME_KEY && isTheme(event.newValue)) {
+        setThemeState(event.newValue);
+      }
     };
     window.addEventListener("storage", onStorage);
     return () => window.removeEventListener("storage", onStorage);
   }, []);
 
-  const value = useMemo(() => ({ asr, setAsr }), [asr, setAsr]);
+  const value = useMemo(
+    () => ({ asr, setAsr, theme, setTheme }),
+    [asr, setAsr, theme, setTheme],
+  );
 
   return (
     <SettingsContext.Provider value={value}>{children}</SettingsContext.Provider>

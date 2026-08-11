@@ -27,8 +27,8 @@ export default function TrustBadge({
       className={
         "rounded-full px-2 py-0.5 text-[11px] font-medium " +
         (status.warn
-          ? "bg-amber-50 text-amber-800"
-          : "bg-stone-100 text-stone-500")
+          ? "bg-caution-wash text-caution"
+          : "bg-surface-sunk text-ink-3")
       }
     >
       {status.label}
@@ -50,5 +50,5 @@ export function TrustNote({
   const status = trustStatus(masjid, today);
   if (!status.warn) return null;
 
-  return <span className="text-amber-700"> · {status.label.toLowerCase()}</span>;
+  return <span className="text-caution"> · {status.label.toLowerCase()}</span>;
 }

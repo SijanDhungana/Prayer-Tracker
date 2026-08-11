@@ -67,7 +67,7 @@ export default function SuggestTimeForm({
   if (!authConfigured) {
     return (
       <Panel onClose={onClose}>
-        <p className="text-sm text-stone-600">
+        <p className="text-sm text-ink-2">
           Suggestions aren&rsquo;t available on this deployment yet.
         </p>
       </Panel>
@@ -77,13 +77,13 @@ export default function SuggestTimeForm({
   if (!session) {
     return (
       <Panel onClose={onClose}>
-        <p className="text-sm text-stone-600">
+        <p className="text-sm text-ink-2">
           Sign in to suggest a time. Accounts exist so corrections can be traced
           and reviewed before they reach anyone&rsquo;s prayer.
         </p>
         <a
           href={signInPath}
-          className="mt-4 block w-full rounded-lg bg-emerald-700 px-4 py-2.5 text-center text-sm font-semibold text-white hover:bg-emerald-800"
+          className="mt-4 block w-full rounded-lg bg-brand px-4 py-2.5 text-center text-sm font-semibold text-brand-ink hover:bg-brand-press"
         >
           Sign in
         </a>
@@ -94,7 +94,7 @@ export default function SuggestTimeForm({
   if (sent) {
     return (
       <Panel onClose={onClose}>
-        <p className="text-sm text-stone-700">
+        <p className="text-sm text-ink-2">
           {isAdmin
             ? "Published. Everyone sees this time now."
             : "Thank you — sent for review. It goes live once an admin confirms it against the masjid."}
@@ -105,7 +105,7 @@ export default function SuggestTimeForm({
 
   return (
     <form
-      className="mt-4 rounded-xl border border-stone-200 bg-white p-4"
+      className="mt-4 rounded-xl border border-line bg-surface p-4"
       onSubmit={async (e) => {
         e.preventDefault();
         const pending = getSupabase();
@@ -143,13 +143,13 @@ export default function SuggestTimeForm({
       }}
     >
       <Header onClose={onClose} title={isAdmin ? "Set the time" : "Suggest a time"} />
-      <p className="mt-1 text-sm text-stone-600">
+      <p className="mt-1 text-sm text-ink-2">
         {isAdmin
           ? "You're an admin, so this publishes straight away — no review step."
           : "Know this masjid's iqamah? An admin will confirm it against the masjid before it goes live."}
       </p>
 
-      <label className="mt-4 block text-sm font-medium text-stone-700">
+      <label className="mt-4 block text-sm font-medium text-ink-2">
         Prayer
         <select
           value={prayer}
@@ -160,7 +160,7 @@ export default function SuggestTimeForm({
             if (next === "jumuah") setMode("clock");
             else if (next === "maghrib") setMode("offset");
           }}
-          className="mt-1 block w-full rounded-lg bg-stone-50 px-3 py-2 text-base font-normal text-stone-900 ring-1 ring-stone-200"
+          className="mt-1 block w-full rounded-lg bg-surface-sunk px-3 py-2 text-base font-normal text-ink ring-1 ring-line"
         >
           {PRAYERS.map((p) => (
             <option key={p} value={p}>
@@ -172,7 +172,7 @@ export default function SuggestTimeForm({
       </label>
 
       {prayer !== "jumuah" && (
-        <div className="mt-4 grid grid-cols-2 gap-1 rounded-xl bg-stone-200/60 p-1">
+        <div className="mt-4 grid grid-cols-2 gap-1 rounded-xl bg-surface-sunk p-1">
           {(["offset", "clock"] as const).map((m) => (
             <button
               key={m}
@@ -181,8 +181,8 @@ export default function SuggestTimeForm({
               className={
                 "rounded-lg py-2 text-center text-sm font-medium transition-colors " +
                 (mode === m
-                  ? "bg-white text-stone-900 shadow-sm"
-                  : "text-stone-600 hover:text-stone-900")
+                  ? "bg-surface text-ink shadow-sm"
+                  : "text-ink-2 hover:text-ink")
               }
             >
               {m === "offset" ? "After adhan" : "Set time"}
@@ -193,7 +193,7 @@ export default function SuggestTimeForm({
 
       {mode === "offset" ? (
         <>
-          <label className="mt-3 block text-sm font-medium text-stone-700">
+          <label className="mt-3 block text-sm font-medium text-ink-2">
             Minutes after the adhan
             <input
               type="number"
@@ -203,29 +203,29 @@ export default function SuggestTimeForm({
               required
               value={offset}
               onChange={(e) => setOffset(e.target.value)}
-              className="mt-1 block w-full rounded-lg bg-stone-50 px-3 py-2 text-base font-normal tabular-nums text-stone-900 ring-1 ring-stone-200"
+              className="mt-1 block w-full rounded-lg bg-surface-sunk px-3 py-2 text-base font-normal tabular-nums text-ink ring-1 ring-line"
             />
           </label>
-          <p className="mt-1 text-xs text-stone-500">
+          <p className="mt-1 text-xs text-ink-3">
             {offsetValid
               ? `Today that is ${formatTime(new Date(adhan[prayer as Prayer].getTime() + offsetMinutes * 60000))}. It follows the adhan every day, so it stays right as sunset moves.`
               : "Enter a whole number of minutes between 0 and 90."}
           </p>
         </>
       ) : (
-        <label className="mt-3 block text-sm font-medium text-stone-700">
+        <label className="mt-3 block text-sm font-medium text-ink-2">
           Iqamah time
           <input
             type="time"
             required
             value={time}
             onChange={(e) => setTime(e.target.value)}
-            className="mt-1 block w-full rounded-lg bg-stone-50 px-3 py-2 text-base font-normal tabular-nums text-stone-900 ring-1 ring-stone-200"
+            className="mt-1 block w-full rounded-lg bg-surface-sunk px-3 py-2 text-base font-normal tabular-nums text-ink ring-1 ring-line"
           />
         </label>
       )}
 
-      <p className="mt-1 text-xs text-stone-500">
+      <p className="mt-1 text-xs text-ink-3">
         {showing
           ? `Currently showing ${showing}.`
           : "Nothing is showing for this prayer yet."}
@@ -235,7 +235,7 @@ export default function SuggestTimeForm({
         <p
           className={
             "mt-3 rounded-lg px-3 py-2 text-xs " +
-            (blocked ? "bg-red-50 text-red-800" : "bg-amber-50 text-amber-800")
+            (blocked ? "bg-danger-wash text-danger" : "bg-caution-wash text-caution")
           }
         >
           {warning}
@@ -243,20 +243,20 @@ export default function SuggestTimeForm({
         </p>
       )}
 
-      <label className="mt-3 block text-sm font-medium text-stone-700">
+      <label className="mt-3 block text-sm font-medium text-ink-2">
         How do you know?{" "}
-        <span className="font-normal text-stone-500">(optional)</span>
+        <span className="font-normal text-ink-3">(optional)</span>
         <input
           type="text"
           value={note}
           onChange={(e) => setNote(e.target.value)}
           placeholder="Sign at the masjid, called the office, their website…"
-          className="mt-1 block w-full rounded-lg bg-stone-50 px-3 py-2 text-base font-normal text-stone-900 ring-1 ring-stone-200 placeholder:text-stone-400"
+          className="mt-1 block w-full rounded-lg bg-surface-sunk px-3 py-2 text-base font-normal text-ink ring-1 ring-line placeholder:text-ink-3"
         />
       </label>
 
       {error && (
-        <p className="mt-3 rounded-lg bg-red-50 px-3 py-2 text-xs text-red-800">
+        <p className="mt-3 rounded-lg bg-danger-wash px-3 py-2 text-xs text-danger">
           {error}
         </p>
       )}
@@ -264,7 +264,7 @@ export default function SuggestTimeForm({
       <button
         type="submit"
         disabled={busy || blocked}
-        className="mt-4 w-full rounded-lg bg-emerald-700 px-4 py-2.5 text-sm font-semibold text-white hover:bg-emerald-800 disabled:opacity-60"
+        className="mt-4 w-full rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-brand-ink hover:bg-brand-press disabled:opacity-60"
       >
         {busy
           ? isAdmin
@@ -291,7 +291,7 @@ function Header({
       <button
         type="button"
         onClick={onClose}
-        className="text-sm text-stone-500 hover:text-stone-900"
+        className="text-sm text-ink-3 hover:text-ink"
       >
         Close
       </button>
@@ -307,7 +307,7 @@ function Panel({
   onClose: () => void;
 }) {
   return (
-    <div className="mt-4 rounded-xl border border-stone-200 bg-white p-4">
+    <div className="mt-4 rounded-xl border border-line bg-surface p-4">
       <Header onClose={onClose} />
       <div className="mt-2">{children}</div>
     </div>

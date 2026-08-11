@@ -61,7 +61,7 @@ function Shell() {
   const chrome = route.name !== "masjid";
 
   return (
-    <div className="min-h-screen bg-stone-50 text-stone-900">
+    <div className="min-h-screen bg-surface-sunk text-ink">
       <div className="mx-auto max-w-2xl px-4 py-6">
         {chrome && (
           <div className="mb-6 space-y-3">
@@ -92,7 +92,7 @@ function Shell() {
         ) : route.name === "map" ? (
           <Suspense
             fallback={
-              <p className="text-sm text-stone-500">Loading the map…</p>
+              <p className="text-sm text-ink-3">Loading the map…</p>
             }
           >
             <MapView masjids={masjids} date={today} reference={reference} />
@@ -100,7 +100,7 @@ function Shell() {
         ) : route.name === "plan" ? (
           <Suspense
             fallback={
-              <p className="text-sm text-stone-500">Loading trip planning…</p>
+              <p className="text-sm text-ink-3">Loading trip planning…</p>
             }
           >
             <PlanTrip masjids={masjids} reference={reference} />
@@ -144,10 +144,10 @@ function MasjidDetailRoute({
   if (!masjid) {
     return (
       <div>
-        <p className="text-sm text-stone-600">No masjid with id “{id}”.</p>
+        <p className="text-sm text-ink-2">No masjid with id “{id}”.</p>
         <a
           href={listPath}
-          className="mt-3 inline-block text-sm font-medium text-emerald-700 underline underline-offset-2"
+          className="mt-3 inline-block text-sm font-medium text-brand underline underline-offset-2"
         >
           ← All masjids
         </a>

@@ -1,0 +1,119 @@
+/**
+ * Design tokens — the single source of truth (design spec §4).
+ *
+ * No hard-coded colour, size or radius belongs anywhere else in the codebase.
+ * Values here are the spec's verbatim; the only additions are the
+ * [data-theme] blocks, which the Settings switch needs in order to override
+ * the system preference in both directions.
+ */
+
+:root {
+  /* ---- Surfaces & ink (light) ---- */
+  --paper:        #F7F8F5;  /* page background */
+  --surface:      #FFFFFF;  /* cards, sheets, bars */
+  --surface-sunk: #EDEFEA;  /* segmented control track, input wells */
+  --line:         #E1E4DD;  /* hairlines, card borders */
+  --line-strong:  #C9CEC5;
+
+  --ink:          #131C19;  /* primary text, times */
+  --ink-2:        #4B5651;  /* secondary text, labels */
+  --ink-3:        #6B7570;  /* meta: distances, captions */
+
+  /* ---- Brand ---- */
+  --brand:        #0B5C45;
+  --brand-press:  #084535;
+  --brand-wash:   #E6F1EC;
+  --brand-ink:    #FFFFFF;
+
+  /* ---- Prayer windows (the accent system) ---- */
+  --fajr:      #3B4A8C;  --fajr-wash:    #E9EBF6;
+  --dhuhr:     #96690A;  --dhuhr-wash:   #F7EEDB;
+  --asr:       #9E4E24;  --asr-wash:     #F7E9E1;
+  --maghrib:   #8B3350;  --maghrib-wash: #F7E6EC;
+  --isha:      #383162;  --isha-wash:    #EAE8F3;
+
+  /* --now / --now-wash are reassigned at runtime to the current window.
+     Never use a prayer token directly for chrome — always go through --now. */
+  --now:      var(--asr);
+  --now-wash: var(--asr-wash);
+
+  /* ---- Status ---- */
+  --ok:      #0B5C45;
+  --caution: #8A5A00;  --caution-wash: #FBF2DC;
+  --danger:  #9E2B25;  --danger-wash:  #F8E7E5;
+
+  /* ---- Type ---- */
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-text:    "Instrument Sans", system-ui, sans-serif;
+  --font-num:     "IBM Plex Mono", ui-monospace, monospace;
+
+  --t--1: 0.8125rem;  /* 13 — meta, captions */
+  --t-0:  1rem;       /* 16 — body, list rows */
+  --t-1:  1.125rem;   /* 18 — masjid names */
+  --t-2:  1.375rem;   /* 22 — section headings */
+  --t-3:  1.75rem;    /* 28 — page titles */
+  --t-4:  2.25rem;    /* 36 — times in the now bar */
+  --t-5:  clamp(2.75rem, 11vw, 4rem);  /* the countdown */
+
+  /* ---- Space (4px base) ---- */
+  --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px;
+  --s-5: 24px; --s-6: 32px; --s-7: 48px; --s-8: 64px;
+
+  /* ---- Shape & depth ---- */
+  --r-sm: 8px; --r-md: 12px; --r-lg: 16px; --r-full: 999px;
+  --elev-bar: 0 1px 0 var(--line), 0 6px 24px -18px rgb(0 0 0 / 0.5);
+
+  /* ---- Motion ---- */
+  --fast: 120ms; --base: 200ms; --ease: cubic-bezier(0.2, 0, 0, 1);
+}
+
+/**
+ * Dark values, defined once and applied from two places: the system
+ * preference, and an explicit choice of Dark in Settings. Keeping them in a
+ * single custom property block would need @apply-style indirection that CSS
+ * does not have, so the two selectors share one declaration list instead.
+ */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0D1512; --surface: #161F1B; --surface-sunk: #202B26;
+    --line: #263129;  --line-strong: #364439;
+    --ink: #ECF1EE;   --ink-2: #A9B4AE;  --ink-3: #8A958F;
+    --brand: #3FA383; --brand-press: #58B99A; --brand-wash: #14261F; --brand-ink: #06120E;
+    --fajr: #8D9BDC; --fajr-wash: #1A1E33;
+    --dhuhr: #DCAE4A; --dhuhr-wash: #2B2413;
+    --asr: #DE8C5E; --asr-wash: #2E1D14;
+    --maghrib: #D97794; --maghrib-wash: #2D1721;
+    --isha: #9A90DA; --isha-wash: #1E1A31;
+    --ok: #3FA383;
+    --caution: #DCAE4A; --caution-wash: #2B2413;
+    --danger: #E0796F;  --danger-wash: #2E1614;
+  }
+}
+
+:root[data-theme="dark"] {
+  --paper: #0D1512; --surface: #161F1B; --surface-sunk: #202B26;
+  --line: #263129;  --line-strong: #364439;
+  --ink: #ECF1EE;   --ink-2: #A9B4AE;  --ink-3: #8A958F;
+  --brand: #3FA383; --brand-press: #58B99A; --brand-wash: #14261F; --brand-ink: #06120E;
+  --fajr: #8D9BDC; --fajr-wash: #1A1E33;
+  --dhuhr: #DCAE4A; --dhuhr-wash: #2B2413;
+  --asr: #DE8C5E; --asr-wash: #2E1D14;
+  --maghrib: #D97794; --maghrib-wash: #2D1721;
+  --isha: #9A90DA; --isha-wash: #1E1A31;
+  --ok: #3FA383;
+  --caution: #DCAE4A; --caution-wash: #2B2413;
+  --danger: #E0796F;  --danger-wash: #2E1614;
+}
+
+/**
+ * The prayer accent transitions over 600ms when the window changes (§7), but
+ * only then — the class is added by the clock hook, never left on, so no
+ * ordinary render animates.
+ */
+:root.window-changing {
+  transition: --now var(--base) linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root.window-changing { transition: none; }
+}

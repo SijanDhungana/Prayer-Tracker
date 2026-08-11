@@ -1,1 +1,125 @@
 @import "tailwindcss";
+@import "./fonts.css";
+@import "./tokens.css";
+
+/**
+ * Bridge the design tokens into Tailwind's utility namespace, so `bg-surface`
+ * or `text-ink-3` resolve to the same custom properties rather than to a
+ * parallel palette. Tokens stay the single source of truth (design spec §4);
+ * this only gives them utility names.
+ */
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-surface-sunk: var(--surface-sunk);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+
+  --color-brand: var(--brand);
+  --color-brand-press: var(--brand-press);
+  --color-brand-wash: var(--brand-wash);
+  --color-brand-ink: var(--brand-ink);
+
+  --color-now: var(--now);
+  --color-now-wash: var(--now-wash);
+
+  --color-ok: var(--ok);
+  --color-caution: var(--caution);
+  --color-caution-wash: var(--caution-wash);
+  --color-danger: var(--danger);
+  --color-danger-wash: var(--danger-wash);
+
+  --font-display: var(--font-display);
+  --font-text: var(--font-text);
+  --font-num: var(--font-num);
+
+  --text-meta: var(--t--1);
+  --text-body: var(--t-0);
+  --text-name: var(--t-1);
+  --text-section: var(--t-2);
+  --text-title: var(--t-3);
+  --text-bigtime: var(--t-4);
+  --text-countdown: var(--t-5);
+
+  --radius-sm: var(--r-sm);
+  --radius-md: var(--r-md);
+  --radius-lg: var(--r-lg);
+  --radius-full: var(--r-full);
+}
+
+/* Sizing in rem throughout, so a 200% browser font setting scales the layout
+   rather than clipping it (§4, §11). */
+html {
+  color-scheme: light dark;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: var(--t-0);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Display face is for page titles, the countdown, and section headings only. */
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+h1,
+h2 {
+  letter-spacing: -0.02em;
+}
+
+/**
+ * Every clock time, countdown and distance (§4). Tabular figures are what
+ * let a column of times be scanned vertically — the timetable-board quality
+ * the design is built on.
+ */
+.num {
+  font-family: var(--font-num);
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+}
+
+/* §11: visible focus on everything, never removed without a replacement. */
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+
+/* The first focusable element on the page; visible only once focused. */
+.skip-link {
+  position: absolute;
+  left: var(--s-4);
+  top: var(--s-4);
+  z-index: 50;
+  padding: var(--s-2) var(--s-3);
+  border-radius: var(--r-sm);
+  background: var(--brand);
+  color: var(--brand-ink);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -43,8 +43,8 @@ export default function Nav({ route }: { route: Route }) {
               className={
                 "rounded-full px-3 py-1.5 text-sm font-medium transition-colors " +
                 (active
-                  ? "bg-emerald-700 text-white"
-                  : "bg-white text-stone-600 ring-1 ring-stone-200 hover:text-stone-900")
+                  ? "bg-brand text-brand-ink"
+                  : "bg-surface text-ink-2 ring-1 ring-line hover:text-ink")
               }
             >
               {tab.label}
@@ -54,7 +54,7 @@ export default function Nav({ route }: { route: Route }) {
       </nav>
 
       {authConfigured && (
-        <p className="text-xs text-stone-500">
+        <p className="text-xs text-ink-3">
           {session ? (
             <>
               Signed in as {email}
@@ -62,7 +62,7 @@ export default function Nav({ route }: { route: Route }) {
               <button
                 type="button"
                 onClick={() => void signOut()}
-                className="font-medium text-emerald-700 underline underline-offset-2"
+                className="font-medium text-brand underline underline-offset-2"
               >
                 Sign out
               </button>
@@ -72,7 +72,7 @@ export default function Nav({ route }: { route: Route }) {
               Browsing as a guest ·{" "}
               <a
                 href={signInPath}
-                className="font-medium text-emerald-700 underline underline-offset-2"
+                className="font-medium text-brand underline underline-offset-2"
               >
                 Sign in to suggest a time
               </a>

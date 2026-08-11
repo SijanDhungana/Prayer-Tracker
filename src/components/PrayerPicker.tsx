@@ -5,7 +5,7 @@ import { PRAYERS, PRAYER_LABELS, type Prayer } from "../lib/types";
 export default function PrayerPicker({ selected }: { selected: Prayer }) {
   return (
     <div
-      className="grid grid-cols-5 gap-1 rounded-xl bg-stone-200/60 p-1"
+      className="grid grid-cols-5 gap-1 rounded-xl bg-surface-sunk p-1"
       role="tablist"
       aria-label="Prayer"
     >
@@ -20,8 +20,8 @@ export default function PrayerPicker({ selected }: { selected: Prayer }) {
             className={
               "rounded-lg py-2 text-center text-sm font-medium transition-colors " +
               (active
-                ? "bg-white text-stone-900 shadow-sm"
-                : "text-stone-600 hover:text-stone-900")
+                ? "bg-surface text-ink shadow-sm"
+                : "text-ink-2 hover:text-ink")
             }
           >
             {PRAYER_LABELS[prayer]}

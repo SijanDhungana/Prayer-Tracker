@@ -9,9 +9,9 @@ export default function LocationPicker({
   const usingDevice = status === "active";
 
   return (
-    <div className="rounded-xl border border-stone-200 bg-white p-3">
+    <div className="rounded-xl border border-line bg-surface p-3">
       <div className="flex flex-wrap items-center gap-2">
-        <label className="text-sm text-stone-600" htmlFor="reference-point">
+        <label className="text-sm text-ink-2" htmlFor="reference-point">
           Distances from
         </label>
 
@@ -19,7 +19,7 @@ export default function LocationPicker({
           id="reference-point"
           value={usingDevice ? "device" : presetId}
           onChange={(e) => selectPreset(e.target.value)}
-          className="min-w-0 flex-1 rounded-lg bg-stone-50 px-2 py-1.5 text-sm font-medium text-stone-900 ring-1 ring-stone-200"
+          className="min-w-0 flex-1 rounded-lg bg-surface-sunk px-2 py-1.5 text-sm font-medium text-ink ring-1 ring-line"
         >
           {usingDevice && <option value="device">My location</option>}
           {PRESETS.map((preset) => (
@@ -34,14 +34,14 @@ export default function LocationPicker({
             type="button"
             onClick={useDeviceLocation}
             disabled={status === "locating"}
-            className="rounded-lg px-2.5 py-1.5 text-sm font-medium text-emerald-700 ring-1 ring-emerald-200 hover:bg-emerald-50 disabled:opacity-60"
+            className="rounded-lg px-2.5 py-1.5 text-sm font-medium text-brand ring-1 ring-brand-wash hover:bg-brand-wash disabled:opacity-60"
           >
             {status === "locating" ? "Locating…" : "Use my location"}
           </button>
         )}
       </div>
 
-      {error && <p className="mt-2 text-xs text-amber-700">{error}</p>}
+      {error && <p className="mt-2 text-xs text-caution">{error}</p>}
     </div>
   );
 }

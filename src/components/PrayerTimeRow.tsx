@@ -16,19 +16,19 @@ export default function PrayerTimeRow({
     <dl className="grid grid-cols-5 gap-1 text-center">
       {PRAYERS.map((prayer) => (
         <div key={prayer}>
-          <dt className="text-[11px] font-medium uppercase tracking-wide text-stone-500">
+          <dt className="text-[11px] font-medium uppercase tracking-wide text-ink-3">
             {PRAYER_LABELS[prayer]}
           </dt>
           <dd>
             <span
               className={
                 "mt-0.5 block text-base font-semibold tabular-nums " +
-                (iqamah[prayer] ? "text-stone-900" : "text-stone-300")
+                (iqamah[prayer] ? "text-ink" : "text-ink-3")
               }
             >
               {iqamah[prayer] ? formatTime(iqamah[prayer]!) : "—"}
             </span>
-            <span className="block text-[11px] tabular-nums text-stone-400">
+            <span className="block text-[11px] tabular-nums text-ink-3">
               {formatTime(adhan[prayer])}
             </span>
           </dd>

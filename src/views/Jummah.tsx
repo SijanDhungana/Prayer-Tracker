@@ -101,7 +101,7 @@ export default function Jummah({
   return (
     <section>
       <h1 className="text-2xl font-semibold tracking-tight">Jumu&rsquo;ah</h1>
-      <p className="mt-1 text-sm text-stone-600">
+      <p className="mt-1 text-sm text-ink-2">
         Every Friday khutbah we have on file. Masjids with several sittings are
         listed once for each.
       </p>
@@ -112,29 +112,29 @@ export default function Jummah({
           onClick={() =>
             setOrder((o) => (o === "earliest" ? "latest" : "earliest"))
           }
-          className="rounded-lg bg-white px-3 py-2 text-sm font-medium text-stone-700 ring-1 ring-stone-200 hover:text-stone-900"
+          className="rounded-lg bg-surface px-3 py-2 text-sm font-medium text-ink-2 ring-1 ring-line hover:text-ink"
         >
           {order === "earliest" ? "Earliest first ↑" : "Latest first ↓"}
         </button>
 
-        <label className="flex items-center gap-2 text-sm text-stone-600">
+        <label className="flex items-center gap-2 text-sm text-ink-2">
           <span>Khutbah after</span>
           <input
             type="time"
             value={after}
             onChange={(e) => setAfter(e.target.value)}
-            className="rounded-lg bg-white px-2 py-1.5 text-sm tabular-nums text-stone-900 ring-1 ring-stone-200"
+            className="rounded-lg bg-surface px-2 py-1.5 text-sm tabular-nums text-ink ring-1 ring-line"
           />
         </label>
 
-        <label className="flex items-center gap-2 text-sm text-stone-600">
+        <label className="flex items-center gap-2 text-sm text-ink-2">
           <span>Within</span>
           <select
             value={withinKm ?? ""}
             onChange={(e) =>
               setWithinKm(e.target.value ? Number(e.target.value) : null)
             }
-            className="rounded-lg bg-white px-2 py-1.5 text-sm text-stone-900 ring-1 ring-stone-200"
+            className="rounded-lg bg-surface px-2 py-1.5 text-sm text-ink ring-1 ring-line"
           >
             <option value="">Any distance</option>
             {RADII.map((km) => (
@@ -152,42 +152,42 @@ export default function Jummah({
               setAfter("");
               setWithinKm(null);
             }}
-            className="text-sm font-medium text-emerald-700 underline underline-offset-2"
+            className="text-sm font-medium text-brand underline underline-offset-2"
           >
             Clear filters
           </button>
         )}
       </div>
 
-      <p className="mt-4 text-xs text-stone-500">
+      <p className="mt-4 text-xs text-ink-3">
         {visible.length} sitting{visible.length === 1 ? "" : "s"} across{" "}
         {masjidsShown} masjid{masjidsShown === 1 ? "" : "s"}
       </p>
 
       {visible.length === 0 ? (
-        <p className="mt-2 rounded-xl border border-dashed border-stone-300 p-6 text-center text-sm text-stone-600">
+        <p className="mt-2 rounded-xl border border-dashed border-line-strong p-6 text-center text-sm text-ink-2">
           No Jumu&rsquo;ah {constraints.join(" and ")}. Try relaxing a filter.
         </p>
       ) : (
-        <ul className="mt-2 divide-y divide-stone-100 overflow-hidden rounded-xl border border-stone-200 bg-white">
+        <ul className="mt-2 divide-y divide-line overflow-hidden rounded-xl border border-line bg-surface">
           {visible.map((row) => (
             <li key={`${row.masjid.id}-${row.index}`}>
               <a
                 href={masjidPath(row.masjid.id)}
-                className="flex items-baseline justify-between gap-3 p-4 hover:bg-stone-50"
+                className="flex items-baseline justify-between gap-3 p-4 hover:bg-surface-sunk"
               >
                 <span className="min-w-0">
-                  <span className="block truncate font-medium text-stone-900">
+                  <span className="block truncate font-medium text-ink">
                     {row.masjid.name}
                   </span>
-                  <span className="mt-0.5 block text-xs text-stone-500">
+                  <span className="mt-0.5 block text-xs text-ink-3">
                     {formatDistance(row.km)}
                     {row.total > 1 && ` · ${row.index} of ${row.total} sittings`}
                     {/* CLAUDE.md §14: age travels with the time. */}
                     <TrustNote masjid={row.masjid} today={date} />
                   </span>
                 </span>
-                <span className="shrink-0 text-lg font-semibold tabular-nums text-stone-900">
+                <span className="shrink-0 text-lg font-semibold tabular-nums text-ink">
                   {formatClock(row.khutbah)}
                 </span>
               </a>
@@ -197,14 +197,14 @@ export default function Jummah({
       )}
 
       {silent.length > 0 && (
-        <p className="mt-3 text-xs text-stone-500">
+        <p className="mt-3 text-xs text-ink-3">
           {silent.length} masjid{silent.length === 1 ? "" : "s"} not listed —
           we don&rsquo;t have their Friday times yet. They almost certainly hold
           Jumu&rsquo;ah; check their own site.
         </p>
       )}
 
-      <p className="mt-4 text-xs text-stone-500">
+      <p className="mt-4 text-xs text-ink-3">
         Times are when the khutbah begins, collected from each masjid&rsquo;s
         own site. Confirm with the masjid before relying on them.
       </p>

@@ -9,12 +9,29 @@ import { masjidPath } from "../lib/route";
 import { formatIsoDate } from "../lib/time";
 import type { Masjid } from "../lib/types";
 
+/**
+ * A design token's current value.
+ *
+ * An SVG data URI is rasterised outside the document, so it cannot inherit a
+ * custom property — the value has to be read and inlined. Reading it here
+ * rather than hard-coding a hex keeps the map on the same palette as
+ * everything else, including in dark mode (design spec §4).
+ */
+function token(name: string, fallback: string): string {
+  if (typeof document === "undefined") return fallback;
+  const value = getComputedStyle(document.documentElement)
+    .getPropertyValue(name)
+    .trim();
+  return value || fallback;
+}
+
 /** A pin as an SVG data URI — no icon files to ship, no extra request. */
 function pinIcon(selected: boolean): google.maps.Icon {
-  const fill = selected ? "#b45309" : "#047857";
+  // §8.2: pins use the current prayer window's accent.
+  const fill = selected ? token("--now", "#9E4E24") : token("--brand", "#0B5C45");
   const svg = `<svg width="26" height="34" viewBox="0 0 26 34" xmlns="http://www.w3.org/2000/svg">
     <path d="M13 0C5.82 0 0 5.82 0 13c0 9.75 13 21 13 21s13-11.25 13-21C26 5.82 20.18 0 13 0z" fill="${fill}"/>
-    <circle cx="13" cy="13" r="4.75" fill="#fff"/>
+    <circle cx="13" cy="13" r="4.75" fill="${token("--surface", "#fff")}"/>
   </svg>`;
   return {
     url: "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg),
@@ -27,9 +44,12 @@ function pinIcon(selected: boolean): google.maps.Icon {
 // script has loaded, and this module is evaluated the moment the map route
 // is opened — well before that.
 function meIcon(): google.maps.Icon {
+  // Deliberately the Fajr blue rather than the brand green: "you" must not
+  // read as another masjid pin.
+  const me = token("--fajr", "#3B4A8C");
   const svg = `<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="8" cy="8" r="7" fill="#2563eb" fill-opacity="0.25"/>
-    <circle cx="8" cy="8" r="5" fill="#2563eb" stroke="#fff" stroke-width="1.5"/>
+    <circle cx="8" cy="8" r="7" fill="${me}" fill-opacity="0.25"/>
+    <circle cx="8" cy="8" r="5" fill="${me}" stroke="${token("--surface", "#fff")}" stroke-width="1.5"/>
   </svg>`;
   return {
     url: "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg),
@@ -235,7 +255,7 @@ export default function MapView({
       <h1 className="text-2xl font-semibold tracking-tight">Nearby</h1>
       {/* The picker above owns location control — repeating its button and its
           error here just gives the same choice two places to live. */}
-      <p className="mt-1 text-sm text-stone-600">
+      <p className="mt-1 text-sm text-ink-2">
         {locating
           ? "Finding your location…"
           : `Masjids around ${label}. Tap a pin for its times.`}
@@ -246,7 +266,7 @@ export default function MapView({
           ref={holder}
           role="application"
           aria-label="Map of nearby masjids"
-          className="h-[55vh] min-h-[320px] w-full overflow-hidden rounded-xl border border-stone-200 bg-stone-100"
+          className="h-[55vh] min-h-[320px] w-full overflow-hidden rounded-xl border border-line bg-surface-sunk"
         />
 
         {mapStatus === "unconfigured" && (
@@ -271,18 +291,18 @@ export default function MapView({
           onClose={() => setSelectedId(null)}
         />
       ) : (
-        <ul className="mt-4 divide-y divide-stone-100 overflow-hidden rounded-xl border border-stone-200 bg-white">
+        <ul className="mt-4 divide-y divide-line overflow-hidden rounded-xl border border-line bg-surface">
           {nearest.slice(0, 5).map(({ masjid, km }) => (
             <li key={masjid.id}>
               <button
                 type="button"
                 onClick={() => setSelectedId(masjid.id)}
-                className="flex w-full items-baseline justify-between gap-3 p-3.5 text-left hover:bg-stone-50"
+                className="flex w-full items-baseline justify-between gap-3 p-3.5 text-left hover:bg-surface-sunk"
               >
-                <span className="min-w-0 truncate text-sm font-medium text-stone-900">
+                <span className="min-w-0 truncate text-sm font-medium text-ink">
                   {masjid.name}
                 </span>
-                <span className="shrink-0 text-sm tabular-nums text-stone-500">
+                <span className="shrink-0 text-sm tabular-nums text-ink-3">
                   {formatDistance(km)}
                 </span>
               </button>
@@ -296,7 +316,7 @@ export default function MapView({
 
 function MapOverlay({ children }: { children: React.ReactNode }) {
   return (
-    <div className="pointer-events-none absolute inset-0 flex items-center justify-center rounded-xl bg-stone-100/90 p-6 text-center text-sm text-stone-600">
+    <div className="pointer-events-none absolute inset-0 flex items-center justify-center rounded-xl bg-surface-sunk p-6 text-center text-sm text-ink-2">
       {children}
     </div>
   );
@@ -313,35 +333,35 @@ const SelectedCard = forwardRef<
   return (
     <div
       ref={ref}
-      className="mt-4 rounded-xl border border-stone-200 bg-white p-4 shadow-sm"
+      className="mt-4 rounded-xl border border-line bg-surface p-4 shadow-sm"
     >
       <div className="flex items-baseline justify-between gap-3">
-        <h2 className="min-w-0 text-base font-semibold text-stone-900">
+        <h2 className="min-w-0 text-base font-semibold text-ink">
           {masjid.name}
         </h2>
         <button
           type="button"
           onClick={onClose}
           aria-label="Close"
-          className="shrink-0 text-sm font-medium text-stone-400 hover:text-stone-600"
+          className="shrink-0 text-sm font-medium text-ink-3 hover:text-ink-2"
         >
           ✕
         </button>
       </div>
-      <p className="mt-1 text-sm text-stone-600">
+      <p className="mt-1 text-sm text-ink-2">
         {formatDistance(km)} · {masjid.address}
       </p>
 
-      <div className="mt-3 border-t border-stone-100 pt-3">
+      <div className="mt-3 border-t border-line pt-3">
         <PrayerTimeRow iqamah={iqamah} adhan={adhan} />
-        <p className="mt-2 text-[11px] text-stone-400">
+        <p className="mt-2 text-[11px] text-ink-3">
           Iqamah in bold · adhan below
           {masjid.lastVerified &&
             ` · verified ${formatIsoDate(masjid.lastVerified)}`}
         </p>
       </div>
 
-      <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm font-medium text-emerald-700">
+      <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm font-medium text-brand">
         <a className="underline underline-offset-2" href={masjidPath(masjid.id)}>
           Full day →
         </a>

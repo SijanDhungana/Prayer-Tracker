@@ -92,7 +92,7 @@ export default function NextUp({
         <h1 className="text-2xl font-semibold tracking-tight">
           {congregation.isTomorrow ? `Tomorrow — ${label}` : label}
         </h1>
-        <p className="mt-1 text-sm text-stone-600">
+        <p className="mt-1 text-sm text-ink-2">
           {congregation.isTomorrow
             ? "Today’s congregations are done."
             : "Congregations you can still make, soonest first."}
@@ -105,20 +105,20 @@ export default function NextUp({
           )}
         </p>
         {congregation.prayer === "jumuah" && (
-          <p className="mt-1 text-xs text-stone-500">
+          <p className="mt-1 text-xs text-ink-3">
             It&rsquo;s Friday — showing Jumu&rsquo;ah rather than Dhuhr.
           </p>
         )}
       </header>
 
-      <label className="mt-4 flex items-center gap-2 text-sm text-stone-600">
+      <label className="mt-4 flex items-center gap-2 text-sm text-ink-2">
         <span>Within</span>
         <select
           value={withinKm ?? ""}
           onChange={(e) =>
             setWithinKm(e.target.value ? Number(e.target.value) : null)
           }
-          className="rounded-lg bg-white px-2 py-1.5 text-sm text-stone-900 ring-1 ring-stone-200"
+          className="rounded-lg bg-surface px-2 py-1.5 text-sm text-ink ring-1 ring-line"
         >
           {RADII.map((km) => (
             <option key={km} value={km}>
@@ -128,17 +128,17 @@ export default function NextUp({
           <option value="">Any distance</option>
         </select>
         {beyond > 0 && (
-          <span className="text-xs text-stone-500">{beyond} further out</span>
+          <span className="text-xs text-ink-3">{beyond} further out</span>
         )}
       </label>
 
       {groups.upcoming.length === 0 && groups.justStarted.length === 0 ? (
-        <p className="mt-4 rounded-xl border border-dashed border-stone-300 p-6 text-center text-sm text-stone-600">
+        <p className="mt-4 rounded-xl border border-dashed border-line-strong p-6 text-center text-sm text-ink-2">
           {beyond > 0
             ? `No masjid within ${withinKm} km still has ${label} ahead of it — try widening the radius.`
             : `No masjid on file still has ${label} ahead of it.`}{" "}
           <a
-            className="font-medium text-emerald-700 underline underline-offset-2"
+            className="font-medium text-brand underline underline-offset-2"
             href={comparePath()}
           >
             Compare another prayer
@@ -173,7 +173,7 @@ export default function NextUp({
         isJumuah={congregation.prayer === "jumuah"}
       />
 
-      <p className="mt-4 text-xs text-stone-500">
+      <p className="mt-4 text-xs text-ink-3">
         Adhan times are calculated. Iqamah times are community-collected —
         confirm with the masjid before relying on them.
       </p>
@@ -197,12 +197,12 @@ function Group({
   return (
     <div className="mt-6">
       {title && (
-        <h2 className="text-sm font-semibold text-stone-900">{title}</h2>
+        <h2 className="text-sm font-semibold text-ink">{title}</h2>
       )}
-      {note && <p className="text-xs text-stone-500">{note}</p>}
+      {note && <p className="text-xs text-ink-3">{note}</p>}
       <ul
         className={
-          "divide-y divide-stone-100 overflow-hidden rounded-xl border border-stone-200 bg-white " +
+          "divide-y divide-line overflow-hidden rounded-xl border border-line bg-surface " +
           (title ? "mt-2" : "")
         }
       >
@@ -230,15 +230,15 @@ function Row({
       <a
         href={masjidPath(masjid.id)}
         className={
-          "flex items-center justify-between gap-3 p-4 hover:bg-stone-50 " +
-          (started ? "bg-amber-50/40" : "")
+          "flex items-center justify-between gap-3 p-4 hover:bg-surface-sunk " +
+          (started ? "bg-caution-wash" : "")
         }
       >
         <span className="min-w-0">
-          <span className="block truncate font-medium text-stone-900">
+          <span className="block truncate font-medium text-ink">
             {masjid.name}
           </span>
-          <span className="mt-0.5 block text-xs text-stone-500">
+          <span className="mt-0.5 block text-xs text-ink-3">
             {formatDistance(km)}
             {sitting && ` · ${sitting.index} of ${sitting.total} sittings`}
             {/* CLAUDE.md §14: never show a time without how old it is. An
@@ -249,14 +249,14 @@ function Row({
         </span>
 
         <span className="shrink-0 text-right">
-          <span className="block text-lg font-semibold tabular-nums text-stone-900">
+          <span className="block text-lg font-semibold tabular-nums text-ink">
             {iqamah ? formatTime(iqamah) : "—"}
           </span>
           {minutesAway != null && (
             <span
               className={
                 "block text-xs tabular-nums " +
-                (started ? "text-amber-700" : "text-emerald-700")
+                (started ? "text-caution" : "text-brand")
               }
             >
               {started
@@ -265,7 +265,7 @@ function Row({
             </span>
           )}
           {assumed && (
-            <span className="block text-[11px] text-stone-400">
+            <span className="block text-[11px] text-ink-3">
               assumed +{DEFAULT_MAGHRIB_OFFSET_MINUTES} min
             </span>
           )}
@@ -290,7 +290,7 @@ function Tail({
   if (missed === 0 && unknown === 0) return null;
 
   return (
-    <p className="mt-3 text-xs text-stone-500">
+    <p className="mt-3 text-xs text-ink-3">
       {missed > 0 && (
         <>
           {missed} masjid{missed === 1 ? "" : "s"} already held {prayer}.
@@ -302,7 +302,7 @@ function Tail({
           {unknown} {unknown === 1 ? "has" : "have"} no {prayer} time on file
           {isJumuah && " — they almost certainly hold it"}.{" "}
           <a
-            className="font-medium text-emerald-700 underline underline-offset-2"
+            className="font-medium text-brand underline underline-offset-2"
             href={isJumuah ? jummahPath : listPath}
           >
             {isJumuah ? "See all Friday times" : "See all masjids"}

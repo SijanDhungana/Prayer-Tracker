@@ -16,14 +16,14 @@ export default function SignIn() {
     return (
       <section>
         <h1 className="text-2xl font-semibold tracking-tight">Sign in</h1>
-        <p className="mt-3 rounded-xl border border-dashed border-stone-300 p-6 text-sm text-stone-600">
+        <p className="mt-3 rounded-xl border border-dashed border-line-strong p-6 text-sm text-ink-2">
           Accounts aren&rsquo;t set up on this deployment yet. Prayer times work
           normally without one — signing in is only needed to suggest a
           correction.
         </p>
         <a
           href={listPath}
-          className="mt-4 inline-block text-sm font-medium text-emerald-700 underline underline-offset-2"
+          className="mt-4 inline-block text-sm font-medium text-brand underline underline-offset-2"
         >
           ← All masjids
         </a>
@@ -35,12 +35,12 @@ export default function SignIn() {
     return (
       <section>
         <h1 className="text-2xl font-semibold tracking-tight">Signed in</h1>
-        <p className="mt-2 text-sm text-stone-600">
+        <p className="mt-2 text-sm text-ink-2">
           You&rsquo;re signed in as {signedInAs}.
         </p>
         <a
           href={listPath}
-          className="mt-4 inline-block text-sm font-medium text-emerald-700 underline underline-offset-2"
+          className="mt-4 inline-block text-sm font-medium text-brand underline underline-offset-2"
         >
           ← All masjids
         </a>
@@ -53,13 +53,13 @@ export default function SignIn() {
       <h1 className="text-2xl font-semibold tracking-tight">
         {mode === "in" ? "Sign in" : "Create an account"}
       </h1>
-      <p className="mt-1 text-sm text-stone-600">
+      <p className="mt-1 text-sm text-ink-2">
         An account is only needed to suggest a prayer time. Browsing works
         without one.
       </p>
 
       <form
-        className="mt-5 rounded-xl border border-stone-200 bg-white p-4"
+        className="mt-5 rounded-xl border border-line bg-surface p-4"
         onSubmit={async (e) => {
           e.preventDefault();
           setBusy(true);
@@ -81,7 +81,7 @@ export default function SignIn() {
           }
         }}
       >
-        <label className="block text-sm font-medium text-stone-700">
+        <label className="block text-sm font-medium text-ink-2">
           Email
           <input
             type="email"
@@ -89,11 +89,11 @@ export default function SignIn() {
             autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="mt-1 block w-full rounded-lg bg-stone-50 px-3 py-2 text-base font-normal text-stone-900 ring-1 ring-stone-200"
+            className="mt-1 block w-full rounded-lg bg-surface-sunk px-3 py-2 text-base font-normal text-ink ring-1 ring-line"
           />
         </label>
 
-        <label className="mt-3 block text-sm font-medium text-stone-700">
+        <label className="mt-3 block text-sm font-medium text-ink-2">
           Password
           <input
             type="password"
@@ -102,17 +102,17 @@ export default function SignIn() {
             autoComplete={mode === "in" ? "current-password" : "new-password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="mt-1 block w-full rounded-lg bg-stone-50 px-3 py-2 text-base font-normal text-stone-900 ring-1 ring-stone-200"
+            className="mt-1 block w-full rounded-lg bg-surface-sunk px-3 py-2 text-base font-normal text-ink ring-1 ring-line"
           />
         </label>
 
         {error && (
-          <p className="mt-3 rounded-lg bg-red-50 px-3 py-2 text-xs text-red-800">
+          <p className="mt-3 rounded-lg bg-danger-wash px-3 py-2 text-xs text-danger">
             {error}
           </p>
         )}
         {notice && (
-          <p className="mt-3 rounded-lg bg-emerald-50 px-3 py-2 text-xs text-emerald-800">
+          <p className="mt-3 rounded-lg bg-brand-wash px-3 py-2 text-xs text-brand-press">
             {notice}
           </p>
         )}
@@ -120,7 +120,7 @@ export default function SignIn() {
         <button
           type="submit"
           disabled={busy}
-          className="mt-4 w-full rounded-lg bg-emerald-700 px-4 py-2.5 text-sm font-semibold text-white hover:bg-emerald-800 disabled:opacity-60"
+          className="mt-4 w-full rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-brand-ink hover:bg-brand-press disabled:opacity-60"
         >
           {busy ? "…" : mode === "in" ? "Sign in" : "Create account"}
         </button>
@@ -133,7 +133,7 @@ export default function SignIn() {
           setError(null);
           setNotice(null);
         }}
-        className="mt-3 text-sm font-medium text-emerald-700 underline underline-offset-2"
+        className="mt-3 text-sm font-medium text-brand underline underline-offset-2"
       >
         {mode === "in"
           ? "No account? Create one"

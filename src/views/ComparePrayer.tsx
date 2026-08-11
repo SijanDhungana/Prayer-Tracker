@@ -86,7 +86,7 @@ export default function ComparePrayer({
   return (
     <section>
       <h1 className="text-2xl font-semibold tracking-tight">Compare a prayer</h1>
-      <p className="mt-1 text-sm text-stone-600">
+      <p className="mt-1 text-sm text-ink-2">
         Every masjid&rsquo;s {label} congregation today.
       </p>
 
@@ -100,29 +100,29 @@ export default function ComparePrayer({
           onClick={() =>
             setOrder((o) => (o === "earliest" ? "latest" : "earliest"))
           }
-          className="rounded-lg bg-white px-3 py-2 text-sm font-medium text-stone-700 ring-1 ring-stone-200 hover:text-stone-900"
+          className="rounded-lg bg-surface px-3 py-2 text-sm font-medium text-ink-2 ring-1 ring-line hover:text-ink"
         >
           {order === "earliest" ? "Earliest first ↑" : "Latest first ↓"}
         </button>
 
-        <label className="flex items-center gap-2 text-sm text-stone-600">
+        <label className="flex items-center gap-2 text-sm text-ink-2">
           <span>Iqamah after</span>
           <input
             type="time"
             value={after}
             onChange={(e) => setAfter(e.target.value)}
-            className="rounded-lg bg-white px-2 py-1.5 text-sm tabular-nums text-stone-900 ring-1 ring-stone-200"
+            className="rounded-lg bg-surface px-2 py-1.5 text-sm tabular-nums text-ink ring-1 ring-line"
           />
         </label>
 
-        <label className="flex items-center gap-2 text-sm text-stone-600">
+        <label className="flex items-center gap-2 text-sm text-ink-2">
           <span>Within</span>
           <select
             value={withinKm ?? ""}
             onChange={(e) =>
               setWithinKm(e.target.value ? Number(e.target.value) : null)
             }
-            className="rounded-lg bg-white px-2 py-1.5 text-sm text-stone-900 ring-1 ring-stone-200"
+            className="rounded-lg bg-surface px-2 py-1.5 text-sm text-ink ring-1 ring-line"
           >
             <option value="">Any distance</option>
             {RADII.map((km) => (
@@ -140,44 +140,44 @@ export default function ComparePrayer({
               setAfter("");
               setWithinKm(null);
             }}
-            className="text-sm font-medium text-emerald-700 underline underline-offset-2"
+            className="text-sm font-medium text-brand underline underline-offset-2"
           >
             Clear filters
           </button>
         )}
       </div>
 
-      <p className="mt-4 text-xs text-stone-500">
+      <p className="mt-4 text-xs text-ink-3">
         Showing {visible.length} of {rows.length} masjids
       </p>
 
       {visible.length === 0 ? (
-        <p className="mt-2 rounded-xl border border-dashed border-stone-300 p-6 text-center text-sm text-stone-600">
+        <p className="mt-2 rounded-xl border border-dashed border-line-strong p-6 text-center text-sm text-ink-2">
           No masjid has {article} {label} iqamah {constraints.join(" and ")}.
           Try relaxing a filter.
         </p>
       ) : (
-        <ul className="mt-2 divide-y divide-stone-100 overflow-hidden rounded-xl border border-stone-200 bg-white">
+        <ul className="mt-2 divide-y divide-line overflow-hidden rounded-xl border border-line bg-surface">
           {visible.map(({ masjid, adhan, iqamah, assumed, km }) => (
             <li key={masjid.id}>
               <a
                 href={masjidPath(masjid.id)}
-                className="flex items-baseline justify-between gap-3 p-4 hover:bg-stone-50"
+                className="flex items-baseline justify-between gap-3 p-4 hover:bg-surface-sunk"
               >
                 <span className="min-w-0">
-                  <span className="block truncate font-medium text-stone-900">
+                  <span className="block truncate font-medium text-ink">
                     {masjid.name}
                   </span>
-                  <span className="mt-0.5 block text-xs text-stone-500">
+                  <span className="mt-0.5 block text-xs text-ink-3">
                     {formatDistance(km)} · Adhan {formatTime(adhan)}
                   </span>
                 </span>
                 <span className="shrink-0 text-right">
-                  <span className="block text-lg font-semibold tabular-nums text-stone-900">
+                  <span className="block text-lg font-semibold tabular-nums text-ink">
                     {iqamah ? formatTime(iqamah) : "—"}
                   </span>
                   {assumed && (
-                    <span className="block text-[11px] font-normal text-stone-400">
+                    <span className="block text-[11px] font-normal text-ink-3">
                       assumed +{DEFAULT_MAGHRIB_OFFSET_MINUTES} min
                     </span>
                   )}

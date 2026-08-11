@@ -44,39 +44,39 @@ function Jumuah({
 
   return (
     <section className="mt-6">
-      <h2 className="text-sm font-medium text-stone-500">
+      <h2 className="text-sm font-medium text-ink-3">
         Friday · Jumu&rsquo;ah
       </h2>
 
       {sessions.length === 0 ? (
-        <p className="mt-2 rounded-xl border border-dashed border-stone-300 p-4 text-sm text-stone-600">
+        <p className="mt-2 rounded-xl border border-dashed border-line-strong p-4 text-sm text-ink-2">
           No Friday times on file yet.{" "}
           <button
             type="button"
             onClick={onSuggest}
-            className="font-medium text-emerald-700 underline underline-offset-2"
+            className="font-medium text-brand underline underline-offset-2"
           >
             Suggest one
           </button>
         </p>
       ) : (
         <>
-          <ul className="mt-2 divide-y divide-stone-100 overflow-hidden rounded-xl border border-stone-200 bg-white">
+          <ul className="mt-2 divide-y divide-line overflow-hidden rounded-xl border border-line bg-surface">
             {sessions.map((session, index) => (
               <li
                 key={`${session.khutbah}-${index}`}
                 className="flex items-baseline justify-between gap-3 px-4 py-3"
               >
-                <span className="text-sm text-stone-600">
+                <span className="text-sm text-ink-2">
                   {sessions.length > 1 ? `${ordinal(index + 1)} khutbah` : "Khutbah"}
                 </span>
-                <span className="text-lg font-semibold tabular-nums text-stone-900">
+                <span className="text-lg font-semibold tabular-nums text-ink">
                   {formatClock(session.khutbah)}
                 </span>
               </li>
             ))}
           </ul>
-          <p className="mt-1.5 text-xs text-stone-500">
+          <p className="mt-1.5 text-xs text-ink-3">
             {sessions.length === 1
               ? "One sitting."
               : `${sessions.length} sittings.`}{" "}
@@ -119,7 +119,7 @@ export default function MasjidDetail({
     <article>
       <a
         href={listPath}
-        className="text-sm font-medium text-emerald-700 underline underline-offset-2"
+        className="text-sm font-medium text-brand underline underline-offset-2"
       >
         ← All masjids
       </a>
@@ -127,8 +127,8 @@ export default function MasjidDetail({
       <h1 className="mt-4 text-2xl font-semibold tracking-tight">
         {masjid.name}
       </h1>
-      <p className="mt-1 text-sm text-stone-600">{masjid.address}</p>
-      <p className="mt-1 text-sm text-stone-500">
+      <p className="mt-1 text-sm text-ink-2">{masjid.address}</p>
+      <p className="mt-1 text-sm text-ink-3">
         {formatDistance(haversineKm(from, masjid))} from {fromLabel}
       </p>
 
@@ -136,7 +136,7 @@ export default function MasjidDetail({
         <TrustBadge masjid={masjid} today={date} />
       </div>
 
-      <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm font-medium text-emerald-700">
+      <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm font-medium text-brand">
         <a
           className="underline underline-offset-2"
           href={mapsUrl(masjid)}
@@ -157,13 +157,13 @@ export default function MasjidDetail({
         )}
       </div>
 
-      <h2 className="mt-6 text-sm font-medium text-stone-500">
+      <h2 className="mt-6 text-sm font-medium text-ink-3">
         {formatCalendarDate(date)}
       </h2>
 
       <table className="mt-2 w-full border-collapse text-sm">
         <thead>
-          <tr className="border-b border-stone-200 text-left text-xs uppercase tracking-wide text-stone-500">
+          <tr className="border-b border-line text-left text-xs uppercase tracking-wide text-ink-3">
             <th className="py-2 font-medium">Prayer</th>
             <th className="py-2 text-right font-medium">Adhan</th>
             <th className="py-2 text-right font-medium">Iqamah</th>
@@ -171,11 +171,11 @@ export default function MasjidDetail({
         </thead>
         <tbody>
           {PRAYERS.map((prayer) => (
-            <tr key={prayer} className="border-b border-stone-100">
+            <tr key={prayer} className="border-b border-line">
               <th scope="row" className="py-2.5 text-left font-medium">
                 {PRAYER_LABELS[prayer]}
               </th>
-              <td className="py-2.5 text-right tabular-nums text-stone-600">
+              <td className="py-2.5 text-right tabular-nums text-ink-2">
                 {formatTime(adhan[prayer])}
               </td>
               <td className="py-2.5 text-right text-base font-semibold tabular-nums">
@@ -188,7 +188,7 @@ export default function MasjidDetail({
                   <button
                     type="button"
                     onClick={() => setSuggesting(prayer)}
-                    className="text-sm font-medium text-emerald-700 underline underline-offset-2"
+                    className="text-sm font-medium text-brand underline underline-offset-2"
                   >
                     Suggest
                   </button>
@@ -196,10 +196,10 @@ export default function MasjidDetail({
               </td>
             </tr>
           ))}
-          <tr className="border-b border-stone-100 text-stone-500">
+          <tr className="border-b border-line text-ink-3">
             <th scope="row" className="py-2.5 text-left font-normal">
               Sunrise
-              <span className="block text-xs text-stone-400">Fajr ends</span>
+              <span className="block text-xs text-ink-3">Fajr ends</span>
             </th>
             <td className="py-2.5 text-right tabular-nums">
               {formatTime(sunrise)}
@@ -224,14 +224,14 @@ export default function MasjidDetail({
         <button
           type="button"
           onClick={() => setSuggesting(firstMissing(iqamah))}
-          className="mt-4 w-full rounded-lg bg-white px-4 py-2.5 text-sm font-medium text-stone-700 ring-1 ring-stone-200 hover:text-stone-900"
+          className="mt-4 w-full rounded-lg bg-surface px-4 py-2.5 text-sm font-medium text-ink-2 ring-1 ring-line hover:text-ink"
         >
           Suggest a time
         </button>
       )}
 
       {status.warn && (
-        <p className="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800">
+        <p className="mt-4 rounded-lg bg-caution-wash px-3 py-2 text-xs text-caution">
           {status.level === "unverified"
             ? "Nobody has confirmed these times yet — treat them as a starting point and check with the masjid."
             : `These times have not been checked in ${daysStale} days. The masjid may have changed its schedule since.`}
@@ -239,14 +239,14 @@ export default function MasjidDetail({
       )}
 
       {masjid.needsReview && !status.warn && (
-        <p className="mt-4 rounded-lg bg-stone-100 px-3 py-2 text-xs text-stone-600">
+        <p className="mt-4 rounded-lg bg-surface-sunk px-3 py-2 text-xs text-ink-2">
           Some of this masjid&rsquo;s times could not be read on the last
           check, so the day below may be incomplete. Anything missing shows a
           dash.
         </p>
       )}
 
-      <p className="mt-4 text-xs text-stone-500">
+      <p className="mt-4 text-xs text-ink-3">
         {verified
           ? `Iqamah times last verified ${verified}.`
           : "Iqamah times have not been verified yet."}{" "}
@@ -270,7 +270,7 @@ function RuleNote({ masjid, prayer }: { masjid: Masjid; prayer: Prayer }) {
     rule.minutes === 0 ? "right after adhan" : `${rule.minutes} min after adhan`;
 
   return (
-    <span className="block text-[11px] font-normal text-stone-400">
+    <span className="block text-[11px] font-normal text-ink-3">
       {gap}
       {isDefault && " (assumed)"}
     </span>

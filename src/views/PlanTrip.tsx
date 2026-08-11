@@ -232,7 +232,7 @@ export default function PlanTrip({
     return (
       <section>
         <h1 className="text-2xl font-semibold tracking-tight">Plan a trip</h1>
-        <p className="mt-3 rounded-xl border border-dashed border-stone-300 p-6 text-center text-sm text-stone-600">
+        <p className="mt-3 rounded-xl border border-dashed border-line-strong p-6 text-center text-sm text-ink-2">
           Trip planning needs a Google Maps API key. Everything else on the
           site works without it.
         </p>
@@ -243,7 +243,7 @@ export default function PlanTrip({
   return (
     <section>
       <h1 className="text-2xl font-semibold tracking-tight">Plan a trip</h1>
-      <p className="mt-1 text-sm text-stone-600">
+      <p className="mt-1 text-sm text-ink-2">
         Where are you headed? We&rsquo;ll find masjids on the way and work out
         whether you can pray and still get there.
       </p>
@@ -260,17 +260,17 @@ export default function PlanTrip({
           />
           {originMode === "here" ? (
             reference.status === "active" ? (
-              <p className="mt-1.5 text-xs text-emerald-700">
+              <p className="mt-1.5 text-xs text-brand">
                 Using your device&rsquo;s location.
               </p>
             ) : (
-              <p className="mt-1.5 text-xs text-stone-500">
+              <p className="mt-1.5 text-xs text-ink-3">
                 Set above, or{" "}
                 <button
                   type="button"
                   onClick={reference.useDeviceLocation}
                   disabled={reference.status === "locating"}
-                  className="font-medium text-emerald-700 underline underline-offset-2 disabled:opacity-60"
+                  className="font-medium text-brand underline underline-offset-2 disabled:opacity-60"
                 >
                   {reference.status === "locating"
                     ? "locating…"
@@ -303,7 +303,7 @@ export default function PlanTrip({
             onChange={(mode) => setDepartMode(mode as DepartMode)}
           />
           {departMode === "latest" && (
-            <p className="mt-1.5 text-xs text-stone-500">
+            <p className="mt-1.5 text-xs text-ink-3">
               We&rsquo;ll work back from each masjid&rsquo;s iqamah and tell
               you the latest you can set off.
             </p>
@@ -314,10 +314,10 @@ export default function PlanTrip({
                 type="time"
                 value={departAt}
                 onChange={(e) => setDepartAt(e.target.value)}
-                className="mt-1.5 w-full rounded-lg bg-white px-3 py-2 text-sm tabular-nums text-stone-900 ring-1 ring-stone-200"
+                className="mt-1.5 w-full rounded-lg bg-surface px-3 py-2 text-sm tabular-nums text-ink ring-1 ring-line"
               />
               {departAt && departureTime < new Date() && (
-                <p className="mt-1.5 text-xs text-amber-700">
+                <p className="mt-1.5 text-xs text-caution">
                   That&rsquo;s earlier today — the plan uses today&rsquo;s
                   prayer times, and traffic is estimated for now.
                 </p>
@@ -338,23 +338,23 @@ export default function PlanTrip({
 
         <div className="flex flex-wrap gap-3">
           <label className="min-w-0 flex-1">
-            <span className="text-sm font-medium text-stone-700">
-              Arrive by <span className="font-normal text-stone-400">(optional)</span>
+            <span className="text-sm font-medium text-ink-2">
+              Arrive by <span className="font-normal text-ink-3">(optional)</span>
             </span>
             <input
               type="time"
               value={deadline}
               onChange={(e) => setDeadline(e.target.value)}
-              className="mt-1 w-full rounded-lg bg-white px-3 py-2 text-sm tabular-nums text-stone-900 ring-1 ring-stone-200"
+              className="mt-1 w-full rounded-lg bg-surface px-3 py-2 text-sm tabular-nums text-ink ring-1 ring-line"
             />
           </label>
 
           <label className="min-w-0 flex-1">
-            <span className="text-sm font-medium text-stone-700">Prayer</span>
+            <span className="text-sm font-medium text-ink-2">Prayer</span>
             <select
               value={chosenPrayer}
               onChange={(e) => setPrayer(e.target.value as PlanPrayer)}
-              className="mt-1 w-full rounded-lg bg-white px-3 py-2 text-sm text-stone-900 ring-1 ring-stone-200"
+              className="mt-1 w-full rounded-lg bg-surface px-3 py-2 text-sm text-ink ring-1 ring-line"
             >
               {prayerOptions.map((option) => (
                 <option key={option.value} value={option.value}>
@@ -363,7 +363,7 @@ export default function PlanTrip({
               ))}
             </select>
             {chosenPrayer === "jumuah" && !jumuahPreview && (
-              <p className="mt-1.5 text-xs text-stone-500">
+              <p className="mt-1.5 text-xs text-ink-3">
                 We&rsquo;ll aim for whichever sitting you can still catch.
               </p>
             )}
@@ -375,7 +375,7 @@ export default function PlanTrip({
             dangerous if mistaken for a real journey — so it says which it is
             rather than relying on the admin remembering what day it is. */}
         {jumuahPreview && (
-          <p className="rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800">
+          <p className="rounded-lg bg-caution-wash px-3 py-2 text-xs text-caution">
             <span className="font-semibold">Admin preview.</span> Jumu&rsquo;ah
             isn&rsquo;t held today — this plans against Friday&rsquo;s sittings
             on today&rsquo;s date, so treat the result as a check of the data,
@@ -384,7 +384,7 @@ export default function PlanTrip({
         )}
 
         <fieldset className={departMode === "latest" ? "hidden" : undefined}>
-          <legend className="text-sm font-medium text-stone-700">
+          <legend className="text-sm font-medium text-ink-2">
             What matters more?
           </legend>
           <div className="mt-1.5 flex gap-2">
@@ -406,19 +406,19 @@ export default function PlanTrip({
         <button
           type="submit"
           disabled={phase === "working" || !destination.trim() || !originReady}
-          className="w-full rounded-lg bg-emerald-700 px-4 py-2.5 text-sm font-semibold text-white hover:bg-emerald-800 disabled:opacity-50"
+          className="w-full rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-brand-ink hover:bg-brand-press disabled:opacity-50"
         >
           {phase === "working" ? "Working it out…" : "Find a way"}
         </button>
       </form>
 
-      <p className="mt-2 text-xs text-stone-500">
+      <p className="mt-2 text-xs text-ink-3">
         Assumes {DEFAULT_STOP_MINUTES} minutes at the masjid and{" "}
         {DEFAULT_ARRIVAL_BUFFER_MINUTES} minutes to park and walk in.
       </p>
 
       {error && (
-        <p className="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">
+        <p className="mt-4 rounded-lg bg-caution-wash px-3 py-2 text-sm text-caution">
           {error}
         </p>
       )}
@@ -451,7 +451,7 @@ function Field({
 }) {
   return (
     <div>
-      <span className="block text-sm font-medium text-stone-700">{label}</span>
+      <span className="block text-sm font-medium text-ink-2">{label}</span>
       <div className="mt-1.5">{children}</div>
     </div>
   );
@@ -477,8 +477,8 @@ function Segmented({
           className={
             "min-w-0 flex-1 truncate rounded-lg px-3 py-2 text-sm font-medium transition-colors " +
             (value === option.value
-              ? "bg-emerald-700 text-white"
-              : "bg-white text-stone-700 ring-1 ring-stone-200 hover:text-stone-900")
+              ? "bg-brand text-brand-ink"
+              : "bg-surface text-ink-2 ring-1 ring-line hover:text-ink")
           }
         >
           {option.label}
@@ -507,14 +507,14 @@ function PriorityChip({
       className={
         "min-w-0 flex-1 rounded-lg px-3 py-2 text-left text-sm transition-colors " +
         (active
-          ? "bg-emerald-700 text-white"
-          : "bg-white text-stone-700 ring-1 ring-stone-200 hover:text-stone-900")
+          ? "bg-brand text-brand-ink"
+          : "bg-surface text-ink-2 ring-1 ring-line hover:text-ink")
       }
     >
       <span className="block font-medium">{label}</span>
       <span
         className={
-          "block text-[11px] " + (active ? "text-emerald-100" : "text-stone-500")
+          "block text-[11px] " + (active ? "text-brand-wash" : "text-ink-3")
         }
       >
         {hint}
@@ -563,21 +563,21 @@ function Results({
   return (
     <div className="mt-6">
       {preview && (
-        <p className="mb-3 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800">
+        <p className="mb-3 rounded-lg bg-caution-wash px-3 py-2 text-xs text-caution">
           Planned against Friday&rsquo;s sittings on a day they aren&rsquo;t
           held — a data check, not a trip.
         </p>
       )}
       {destLabel && (
-        <p className="text-sm text-stone-600">
+        <p className="text-sm text-ink-2">
           {originLabel && (
             <>
-              From <span className="font-medium text-stone-900">{originLabel}</span>{" "}
+              From <span className="font-medium text-ink">{originLabel}</span>{" "}
               to{" "}
             </>
           )}
           {!originLabel && "To "}
-          <span className="font-medium text-stone-900">{destLabel}</span>
+          <span className="font-medium text-ink">{destLabel}</span>
           {result.directArrival && (
             <>
               {" "}
@@ -599,7 +599,7 @@ function Results({
       )}
 
       {nothing ? (
-        <p className="mt-3 rounded-xl border border-dashed border-stone-300 p-6 text-center text-sm text-stone-600">
+        <p className="mt-3 rounded-xl border border-dashed border-line-strong p-6 text-center text-sm text-ink-2">
           {searched === 0
             ? "No masjids sit anywhere near that route. Try a destination across town, or check the Map tab."
             : `None of the ${searched} masjids on that route can fit ${label} in — the prayer window closes before you'd arrive.`}
@@ -608,7 +608,7 @@ function Results({
         <>
           {result.viable.length > 0 ? (
             <>
-              <h2 className="mt-4 text-sm font-semibold text-stone-900">
+              <h2 className="mt-4 text-sm font-semibold text-ink">
                 {mode === "latest"
                   ? `Catches ${label} and still gets you there`
                   : priority === "destination"
@@ -631,7 +631,7 @@ function Results({
               </ul>
             </>
           ) : (
-            <p className="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">
+            <p className="mt-4 rounded-lg bg-caution-wash px-3 py-2 text-sm text-caution">
               {mode === "latest"
                 ? `No departure catches ${label} and still makes your deadline. Closest options below.`
                 : priority === "destination"
@@ -642,14 +642,14 @@ function Results({
 
           {result.compromises.length > 0 && (
             <>
-              <h2 className="mt-6 text-sm font-semibold text-stone-900">
+              <h2 className="mt-6 text-sm font-semibold text-ink">
                 {mode === "latest"
                   ? "Not quite"
                   : priority === "destination"
                     ? "Would make you late"
                     : "Misses the jamaah"}
               </h2>
-              <p className="text-xs text-stone-500">
+              <p className="text-xs text-ink-3">
                 Shown so the call is yours, not the app&rsquo;s.
               </p>
               <ul className="mt-2 space-y-3">
@@ -672,7 +672,7 @@ function Results({
         </>
       )}
 
-      <p className="mt-4 text-xs text-stone-500">
+      <p className="mt-4 text-xs text-ink-3">
         Drive times are Google&rsquo;s traffic estimates and iqamah times are
         community-collected — leave yourself room.
       </p>
@@ -705,17 +705,17 @@ function OptionCard({
   return (
     <li
       className={
-        "rounded-xl border bg-white p-4 " +
+        "rounded-xl border bg-surface p-4 " +
         (selected
-          ? "border-emerald-400 ring-1 ring-emerald-400 "
+          ? "border-brand ring-1 ring-brand "
           : muted
-            ? "border-stone-200 "
-            : "border-emerald-200 ") +
+            ? "border-line "
+            : "border-brand-wash ") +
         (muted ? "opacity-90" : "shadow-sm")
       }
     >
       {mode === "latest" && (
-        <p className="mb-2 rounded-lg bg-emerald-50 px-3 py-2 text-sm font-semibold text-emerald-900">
+        <p className="mb-2 rounded-lg bg-brand-wash px-3 py-2 text-sm font-semibold text-brand-press">
           Leave by{" "}
           <span className="text-lg tabular-nums">
             {formatTime(timeline.leaveNow)}
@@ -723,10 +723,10 @@ function OptionCard({
         </p>
       )}
       <div className="flex items-baseline justify-between gap-3">
-        <h3 className="min-w-0 text-base font-semibold text-stone-900">
+        <h3 className="min-w-0 text-base font-semibold text-ink">
           {masjid.name}
         </h3>
-        <span className="shrink-0 text-xs tabular-nums text-stone-500">
+        <span className="shrink-0 text-xs tabular-nums text-ink-3">
           {formatDistance(haversineKm(from, masjid))}
         </span>
       </div>
@@ -745,7 +745,7 @@ function OptionCard({
         </Badge>
       </div>
 
-      <ol className="mt-3 space-y-1 border-t border-stone-100 pt-3 text-sm">
+      <ol className="mt-3 space-y-1 border-t border-line pt-3 text-sm">
         <Step time={timeline.leaveNow} text="Leave" />
         <Step time={timeline.arriveMasjid} text="Reach the masjid" />
         {timeline.waitMinutes >= 1 && (
@@ -765,10 +765,10 @@ function OptionCard({
 
       {timeline.couldLeaveAt &&
         timeline.waitMinutes > LONG_WAIT_MINUTES && (
-          <p className="mt-2 rounded-lg bg-stone-50 px-2.5 py-1.5 text-xs text-stone-600">
+          <p className="mt-2 rounded-lg bg-surface-sunk px-2.5 py-1.5 text-xs text-ink-2">
             That&rsquo;s a {Math.round(timeline.waitMinutes)} minute wait —
             leave at{" "}
-            <span className="font-semibold tabular-nums text-stone-900">
+            <span className="font-semibold tabular-nums text-ink">
               {formatTime(timeline.couldLeaveAt)}
             </span>{" "}
             instead and walk in just before the iqamah.
@@ -780,7 +780,7 @@ function OptionCard({
           <button
             type="button"
             onClick={onShow}
-            className="text-emerald-700 underline underline-offset-2"
+            className="text-brand underline underline-offset-2"
           >
             Show on map
           </button>
@@ -790,7 +790,7 @@ function OptionCard({
             href={directionsUrl(from, masjid, destPoint)}
             target="_blank"
             rel="noreferrer"
-            className="text-emerald-700 underline underline-offset-2"
+            className="text-brand underline underline-offset-2"
           >
             Directions via this masjid →
           </a>
@@ -816,14 +816,14 @@ function Step({
       <span
         className={
           "w-[4.5rem] shrink-0 tabular-nums " +
-          (emphasis ? "font-semibold text-stone-900" : "text-stone-500")
+          (emphasis ? "font-semibold text-ink" : "text-ink-3")
         }
       >
         {formatTime(time)}
       </span>
-      <span className={emphasis ? "font-medium text-stone-900" : "text-stone-700"}>
+      <span className={emphasis ? "font-medium text-ink" : "text-ink-2"}>
         {text}
-        {note && <span className="ml-1.5 text-xs text-stone-400">({note})</span>}
+        {note && <span className="ml-1.5 text-xs text-ink-3">({note})</span>}
       </span>
     </li>
   );
@@ -837,9 +837,9 @@ function Badge({
   children: React.ReactNode;
 }) {
   const tones = {
-    good: "bg-emerald-50 text-emerald-800",
-    warn: "bg-amber-50 text-amber-800",
-    neutral: "bg-stone-100 text-stone-600",
+    good: "bg-brand-wash text-brand-press",
+    warn: "bg-caution-wash text-caution",
+    neutral: "bg-surface-sunk text-ink-2",
   };
   return (
     <span
