@@ -56,6 +56,7 @@ export const THEME_LABELS: Record<Theme, string> = {
 
 const STORAGE_KEY = "prayer-tracker:asr";
 const THEME_KEY = "prayer-tracker:theme";
+const HOME_KEY = "prayer-tracker:home-masjid";
 
 const isPreference = (value: unknown): value is AsrPreference =>
   value === "masjid" || value === "hanafi" || value === "standard";
@@ -73,6 +74,22 @@ function readStored(): AsrPreference {
   }
 }
 
+/**
+ * The masjid you actually attend.
+ *
+ * Distinct from favourites: favourites are a shortlist, this is *the* one, so
+ * its next congregation can be answered without scanning a list at all. An id
+ * that no longer exists in the directory resolves to nothing rather than
+ * throwing — masjids can be renamed or merged between deploys.
+ */
+function readHome(): string | null {
+  try {
+    return window.localStorage.getItem(HOME_KEY);
+  } catch {
+    return null;
+  }
+}
+
 function readTheme(): Theme {
   try {
     const stored = window.localStorage.getItem(THEME_KEY);
@@ -87,6 +104,8 @@ interface Settings {
   setAsr: (value: AsrPreference) => void;
   theme: Theme;
   setTheme: (value: Theme) => void;
+  homeMasjidId: string | null;
+  setHomeMasjidId: (value: string | null) => void;
 }
 
 const SettingsContext = createContext<Settings>({
@@ -94,11 +113,14 @@ const SettingsContext = createContext<Settings>({
   setAsr: () => {},
   theme: "system",
   setTheme: () => {},
+  homeMasjidId: null,
+  setHomeMasjidId: () => {},
 });
 
 export function SettingsProvider({ children }: { children: ReactNode }) {
   const [asr, setAsrState] = useState<AsrPreference>(readStored);
   const [theme, setThemeState] = useState<Theme>(readTheme);
+  const [homeMasjidId, setHomeState] = useState<string | null>(readHome);
 
   const setAsr = useCallback((value: AsrPreference) => {
     setAsrState(value);
@@ -113,6 +135,16 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     setThemeState(value);
     try {
       window.localStorage.setItem(THEME_KEY, value);
+    } catch {
+      // Storage off: the choice still holds for this visit.
+    }
+  }, []);
+
+  const setHomeMasjidId = useCallback((value: string | null) => {
+    setHomeState(value);
+    try {
+      if (value) window.localStorage.setItem(HOME_KEY, value);
+      else window.localStorage.removeItem(HOME_KEY);
     } catch {
       // Storage off: the choice still holds for this visit.
     }
@@ -136,14 +168,15 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
       if (event.key === THEME_KEY && isTheme(event.newValue)) {
         setThemeState(event.newValue);
       }
+      if (event.key === HOME_KEY) setHomeState(event.newValue);
     };
     window.addEventListener("storage", onStorage);
     return () => window.removeEventListener("storage", onStorage);
   }, []);
 
   const value = useMemo(
-    () => ({ asr, setAsr, theme, setTheme }),
-    [asr, setAsr, theme, setTheme],
+    () => ({ asr, setAsr, theme, setTheme, homeMasjidId, setHomeMasjidId }),
+    [asr, setAsr, theme, setTheme, homeMasjidId, setHomeMasjidId],
   );
 
   return (

@@ -1,3 +1,4 @@
+import HomeMasjidCard from "../components/HomeMasjidCard";
 import LocationChip from "../components/LocationChip";
 import SegmentedControl from "../components/SegmentedControl";
 import Icon from "../components/Icon";
@@ -36,7 +37,9 @@ export default function Settings({
   date: Date;
   reference: ReferencePoint;
 }) {
-  const { asr, setAsr, theme, setTheme } = useSettings();
+  const { asr, setAsr, theme, setTheme, homeMasjidId, setHomeMasjidId } =
+    useSettings();
+  const home = masjids.find((m) => m.id === homeMasjidId) ?? null;
   const { session, email, isAdmin, signOut } = useAuth();
 
   // Any masjid will do to illustrate the gap — they sit within a few minutes
@@ -99,6 +102,33 @@ export default function Settings({
               Times shown are today&rsquo;s Asr adhan at {sample.name}.
             </p>
           )}
+        </div>
+
+        <div className="border-t border-line px-4 py-4">
+          <label
+            htmlFor="home-masjid"
+            className="block text-body font-medium text-ink"
+          >
+            My masjid
+          </label>
+          <p className="mt-1 text-meta text-ink-2">
+            The one you usually attend. Its next congregation is pinned to the
+            top of Next up.
+          </p>
+          <select
+            id="home-masjid"
+            value={homeMasjidId ?? ""}
+            onChange={(e) => setHomeMasjidId(e.target.value || null)}
+            className="mt-2 min-h-[44px] w-full rounded-md border border-line bg-surface-2 px-3 text-body text-ink"
+          >
+            <option value="">None</option>
+            {masjids.map((m) => (
+              <option key={m.id} value={m.id}>
+                {m.name}
+              </option>
+            ))}
+          </select>
+          {home && <HomeMasjidCard masjid={home} compact />}
         </div>
 
         <Row label="Default location">

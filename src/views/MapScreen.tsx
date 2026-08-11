@@ -11,7 +11,8 @@ import type { ReferencePoint } from "../lib/location";
 import { adhanTimes, iqamahTimes } from "../lib/prayer";
 import { mapPath, masjidPath } from "../lib/route";
 import { formatTime } from "../lib/time";
-import { PRAYER_LABELS, type Masjid } from "../lib/types";
+import FreshnessDot from "../components/FreshnessDot";
+import { PRAYERS, PRAYER_LABELS, type Masjid, type Prayer } from "../lib/types";
 
 /**
  * The map owns the whole viewport — design spec v2 §8.1.
@@ -169,7 +170,10 @@ export default function MapScreen({
       });
       marker.addListener("click", () => {
         setSelectedId(masjid.id);
-        setSnap("peek");
+        // Raise the sheet ourselves. Peek is 120px — barely the handle and a
+        // line — so leaving it there made tapping a pin look like nothing had
+        // happened until you dragged the sheet up by hand.
+        setSnap("half");
       });
       return marker;
     });
@@ -263,35 +267,14 @@ export default function MapScreen({
 
       <BottomSheet snap={snap} onSnapChange={setSnap} label="Masjid results">
         {selected ? (
-          <div className="px-4 pb-4">
-            <p className="text-name font-medium text-ink">
-              {selected.masjid.name}
-            </p>
-            <p className="font-num text-meta text-ink-3">
-              {formatDistance(selected.km)}
-              {selected.iqamah && ` · Iqamah ${formatTime(selected.iqamah)}`}
-            </p>
-            <div className="mt-3 flex gap-2">
-              <a
-                href={masjidPath(selected.masjid.id)}
-                className="flex min-h-[44px] flex-1 items-center justify-center rounded-md bg-brand px-4 font-medium text-brand-ink"
-              >
-                Details
-              </a>
-              <button
-                type="button"
-                onClick={() => toggle(selected.masjid.id)}
-                aria-pressed={isFavourite(selected.masjid.id)}
-                aria-label="Favourite"
-                className="flex h-11 w-11 items-center justify-center rounded-md border border-line text-ink-2"
-              >
-                <Icon
-                  name={isFavourite(selected.masjid.id) ? "star-filled" : "star"}
-                  size={18}
-                />
-              </button>
-            </div>
-          </div>
+          <SelectedMasjid
+            masjid={selected.masjid}
+            km={selected.km}
+            date={date}
+            favourite={isFavourite(selected.masjid.id)}
+            onToggleFavourite={() => toggle(selected.masjid.id)}
+            currentPrayer={prayer}
+          />
         ) : (
           <>
             <p className="px-4 pb-2 text-meta text-ink-3" aria-live="polite">
@@ -337,6 +320,108 @@ export default function MapScreen({
           onPublished={onPublished}
         />
       )}
+    </div>
+  );
+}
+
+/**
+ * What a tapped pin shows: the masjid's actual iqamah times.
+ *
+ * It used to show a "Details" button, which made the map two taps from the
+ * only thing anyone opens it for. The times are small enough to just print,
+ * so they are printed; the full screen is still one tap away for the address,
+ * Jumu'ah sittings and corrections.
+ */
+function SelectedMasjid({
+  masjid,
+  km,
+  date,
+  favourite,
+  onToggleFavourite,
+  currentPrayer,
+}: {
+  masjid: Masjid;
+  km: number;
+  date: Date;
+  favourite: boolean;
+  onToggleFavourite: () => void;
+  currentPrayer: Prayer;
+}) {
+  const iqamah = iqamahTimes(masjid, date);
+  const adhan = adhanTimes(masjid, date);
+
+  return (
+    <div
+      className="px-4"
+      style={{ paddingBottom: "calc(88px + env(safe-area-inset-bottom))" }}
+    >
+      <div className="flex items-start gap-3">
+        <span className="min-w-0 flex-1">
+          <span className="flex items-center gap-2">
+            <FreshnessDot masjid={masjid} today={date} showLabel={false} />
+            <span className="truncate text-name font-medium text-ink">
+              {masjid.name}
+            </span>
+          </span>
+          <span className="mt-0.5 block font-num text-meta text-ink-3">
+            {formatDistance(km)}
+          </span>
+        </span>
+        <button
+          type="button"
+          onClick={onToggleFavourite}
+          aria-pressed={favourite}
+          aria-label={favourite ? "Remove from your masjids" : "Add to your masjids"}
+          className={
+            "flex h-11 w-11 shrink-0 items-center justify-center rounded-md " +
+            (favourite ? "text-brand" : "text-ink-3")
+          }
+        >
+          <Icon name={favourite ? "star-filled" : "star"} size={18} />
+        </button>
+      </div>
+
+      {/* §5: iqamah is the primary number, adhan small and grey beneath, and
+          the current prayer's column is tinted and named rather than bolded. */}
+      <ul className="mt-3 grid grid-cols-5 gap-1">
+        {PRAYERS.map((p) => {
+          const current = p === currentPrayer;
+          return (
+            <li
+              key={p}
+              className="rounded-md py-2 text-center"
+              style={
+                current
+                  ? { background: "var(--now-wash)", color: "var(--now)" }
+                  : undefined
+              }
+            >
+              <span className="block text-[11px] uppercase tracking-[0.08em] text-ink-3">
+                {PRAYER_LABELS[p]}
+              </span>
+              <span
+                className={
+                  "mt-0.5 block font-num text-body font-medium " +
+                  (current ? "" : "text-ink")
+                }
+              >
+                {iqamah[p] ? formatTime(iqamah[p]!) : "—"}
+              </span>
+              <span className="block font-num text-[11px] text-ink-3">
+                {formatTime(adhan[p])}
+              </span>
+            </li>
+          );
+        })}
+      </ul>
+      <p className="mt-1 text-meta text-ink-3">Iqamah · adhan below</p>
+
+      <a
+        href={masjidPath(masjid.id)}
+        className="mt-3 flex min-h-[44px] items-center justify-center rounded-md border border-line font-medium text-ink-2"
+      >
+        Full details, Jumu'ah and directions →
+      </a>
     </div>
   );
 }

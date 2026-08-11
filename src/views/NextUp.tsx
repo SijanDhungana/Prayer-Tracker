@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import DayRing from "../components/DayRing";
+import HomeMasjidCard from "../components/HomeMasjidCard";
 import Icon from "../components/Icon";
 import LocationChip from "../components/LocationChip";
 import SegmentedControl from "../components/SegmentedControl";
@@ -7,6 +8,7 @@ import TimeRow from "../components/TimeRow";
 import { useClock } from "../lib/clock";
 import { haversineKm, type Point } from "../lib/distance";
 import { useFavourites } from "../lib/favourites";
+import { useSettings } from "../lib/settings";
 import type { ReferencePoint } from "../lib/location";
 import { adhanTimes, iqamahTimes } from "../lib/prayer";
 import { prayerPath } from "../lib/route";
@@ -40,6 +42,8 @@ export default function NextUp({
 }) {
   const { second, minute, today, windows, position } = useClock();
   const { favourites, isFavourite, toggle } = useFavourites();
+  const { homeMasjidId } = useSettings();
+  const home = masjids.find((m) => m.id === homeMasjidId) ?? null;
 
   const reference0 = masjids[0];
 
@@ -56,6 +60,7 @@ export default function NextUp({
     return PRAYERS.find((p) => times[p] > minute) ?? "fajr";
   }, [reference0, today, minute]);
 
+
   const [chosen, setChosen] = useState<Prayer | null>(initialPrayer);
   const prayer = chosen ?? nextPrayer;
 
@@ -64,9 +69,33 @@ export default function NextUp({
   const [withinKm, setWithinKm] = useState<number | null>(DEFAULT_RADIUS_KM);
 
   const adhanForFocus = reference0 ? adhanTimes(reference0, today)[prayer] : null;
-  // A prayer the visitor picked deliberately may already have passed; the
-  // ring says how long ago rather than pretending it is imminent.
-  const passed = adhanForFocus != null && adhanForFocus <= minute;
+
+  /**
+   * The instant the countdown runs to.
+   *
+   * Normally today's adhan for the focused prayer. But after the last Isha
+   * there is nothing left today, and the ring's default focus falls back to
+   * Fajr — whose time today is fifteen hours *past* by midnight. Rolling to
+   * tomorrow's is what makes the small hours read "in 5 h 12 min" instead of
+   * "started".
+   *
+   * A prayer the visitor picked deliberately is left alone: if they select
+   * Dhuhr at 6pm they mean today's Dhuhr, and the ring says it has started
+   * rather than silently jumping to tomorrow.
+   */
+  const countdownTo = useMemo(() => {
+    if (!reference0 || !adhanForFocus) return null;
+    if (adhanForFocus > minute) return adhanForFocus;
+    if (chosen) return null; // deliberate pick of a past prayer
+    const tomorrow = new Date(
+      today.getFullYear(),
+      today.getMonth(),
+      today.getDate() + 1,
+    );
+    return adhanTimes(reference0, tomorrow)[prayer];
+  }, [reference0, adhanForFocus, minute, chosen, today, prayer]);
+
+  const passed = countdownTo == null;
 
   // Rows are recomputed on the minute, not the second: distances and iqamah
   // times don't change sixty times a minute, and §12 asks that they not be
@@ -120,7 +149,7 @@ export default function NextUp({
     [rows],
   );
 
-  const countdown = passed ? "started" : countdownText(second, adhanForFocus);
+  const countdown = passed ? "started" : countdownText(second, countdownTo);
   const relative = (minutes: number | null) =>
     minutes == null ? undefined : formatRelative(minutes);
 
@@ -130,6 +159,8 @@ export default function NextUp({
         <span className="font-display text-name font-semibold">Masjid Times</span>
         <LocationChip reference={reference} />
       </header>
+
+      {home && <HomeMasjidCard masjid={home} />}
 
       <div className="mt-6">
         <DayRing
@@ -143,8 +174,7 @@ export default function NextUp({
           {target ? (
             <a
               href={`#/map/${target.masjid.id}`}
-              className="mt-3 block text-ink-2 underline-offset-2 hover:underline"
-              style={{ fontSize: "min(var(--t--1), 3.4cqw)", maxWidth: "60cqw" }}
+              className="mt-3 inline-block text-meta text-ink-2 underline-offset-2 hover:underline"
             >
               {target.masjid.name}
               <span className="block font-num text-ink-3">
@@ -152,8 +182,7 @@ export default function NextUp({
               </span>
             </a>
           ) : (
-            <span className="mt-3 block text-ink-3"
-              style={{ fontSize: "min(var(--t--1), 3.4cqw)", maxWidth: "60cqw" }}>
+            <span className="mt-3 block text-meta text-ink-3">
               No congregation left today for {PRAYER_LABELS[prayer]}
             </span>
           )}
