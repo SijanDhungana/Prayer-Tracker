@@ -7,7 +7,12 @@ import {
 } from "../lib/prayer";
 import { listPath } from "../lib/route";
 import { formatDistance, haversineKm, type Point } from "../lib/distance";
-import { formatCalendarDate, formatIsoDate, formatTime } from "../lib/time";
+import {
+  formatCalendarDate,
+  formatClock,
+  formatIsoDate,
+  formatTime,
+} from "../lib/time";
 import { PRAYERS, PRAYER_LABELS, type Masjid, type Prayer } from "../lib/types";
 import SuggestTimeForm from "../components/SuggestTimeForm";
 
@@ -15,6 +20,73 @@ function mapsUrl(masjid: Masjid) {
   const query = encodeURIComponent(`${masjid.name}, ${masjid.address}`);
   return `https://www.google.com/maps/search/?api=1&query=${query}`;
 }
+
+/**
+ * The masjid's Friday sittings.
+ *
+ * Shown as a list rather than a single time because the count genuinely
+ * varies — one at a small masjid, four where space is tight — and the later
+ * sittings are the whole reason someone checks: they are what you attend when
+ * you cannot get away at one o'clock. Numbering them makes it obvious at a
+ * glance how many there are.
+ */
+function Jumuah({
+  masjid,
+  onSuggest,
+}: {
+  masjid: Masjid;
+  onSuggest: () => void;
+}) {
+  const sessions = masjid.jumuah ?? [];
+
+  return (
+    <section className="mt-6">
+      <h2 className="text-sm font-medium text-stone-500">
+        Friday · Jumu&rsquo;ah
+      </h2>
+
+      {sessions.length === 0 ? (
+        <p className="mt-2 rounded-xl border border-dashed border-stone-300 p-4 text-sm text-stone-600">
+          No Friday times on file yet.{" "}
+          <button
+            type="button"
+            onClick={onSuggest}
+            className="font-medium text-emerald-700 underline underline-offset-2"
+          >
+            Suggest one
+          </button>
+        </p>
+      ) : (
+        <>
+          <ul className="mt-2 divide-y divide-stone-100 overflow-hidden rounded-xl border border-stone-200 bg-white">
+            {sessions.map((session, index) => (
+              <li
+                key={`${session.khutbah}-${index}`}
+                className="flex items-baseline justify-between gap-3 px-4 py-3"
+              >
+                <span className="text-sm text-stone-600">
+                  {sessions.length > 1 ? `${ordinal(index + 1)} khutbah` : "Khutbah"}
+                </span>
+                <span className="text-lg font-semibold tabular-nums text-stone-900">
+                  {formatClock(session.khutbah)}
+                </span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-1.5 text-xs text-stone-500">
+            {sessions.length === 1
+              ? "One sitting."
+              : `${sessions.length} sittings.`}{" "}
+            Times are when the khutbah begins.
+          </p>
+        </>
+      )}
+    </section>
+  );
+}
+
+const ORDINALS = ["1st", "2nd", "3rd", "4th", "5th", "6th"];
+const ordinal = (n: number) => ORDINALS[n - 1] ?? `${n}th`;
 
 export default function MasjidDetail({
   masjid,
@@ -127,6 +199,8 @@ export default function MasjidDetail({
           </tr>
         </tbody>
       </table>
+
+      <Jumuah masjid={masjid} onSuggest={() => setSuggesting("jumuah")} />
 
       {suggesting ? (
         <SuggestTimeForm

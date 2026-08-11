@@ -130,6 +130,24 @@ export function formatTime(date: Date, timeZone: string = TZ): string {
 }
 
 /**
+ * "13:30" → "1:30 PM".
+ *
+ * For stored clock times that belong to a weekday rather than to today —
+ * Friday's khutbah, say — where turning the string into a Date first would
+ * mean inventing a date it does not have. Malformed input is returned
+ * unchanged rather than silently becoming a plausible wrong time.
+ */
+export function formatClock(hhmm: string): string {
+  const minutes = clockMinutes(hhmm);
+  if (minutes == null) return hhmm;
+
+  const hours24 = Math.floor(minutes / 60);
+  const hours12 = hours24 % 12 || 12;
+  const suffix = hours24 < 12 ? "AM" : "PM";
+  return `${hours12}:${String(minutes % 60).padStart(2, "0")} ${suffix}`;
+}
+
+/**
  * "August 10, 2026" from a stored ISO date like `lastVerified`.
  *
  * Parsed by hand because `new Date("2026-08-10")` is midnight *UTC*, which

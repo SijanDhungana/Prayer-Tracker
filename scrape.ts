@@ -75,7 +75,7 @@ Return ONLY a JSON object, no prose, no markdown fences, with this exact shape:
     "maghrib": "HH:mm" | null,
     "isha": "HH:mm" | null
   },
-  "jumuah": ["HH:mm", ...]        // Friday khutbah time(s), may be empty
+  "jumuah": ["HH:mm", ...]        // every Friday khutbah time, may be empty
 }
 Rules:
 - Iqamah = the congregation/jamaah time, NOT the athan/adhan/"begins" time. If both
@@ -88,6 +88,19 @@ Rules:
   22:25. Never return 01:45 for Dhuhr or 08:30 for Maghrib.
 - Jummah/Friday khutbah is a midday prayer: always between 11:00 and 17:00 in
   24-hour time. A Jummah shown as "1:50" is 13:50, never 01:50.
+- MANY MASJIDS HOLD MORE THAN ONE JUMMAH. Two, three, even four sittings are
+  normal where space is tight. List EVERY one, in the order they happen. They
+  are often labelled "1st Jummah"/"2nd Jummah", "First Shift"/"Second Shift",
+  "Jummah 1"/"Jummah 2", or just given as several times in a row. Returning
+  only the first when the page shows several is a mistake — someone who cannot
+  make the early sitting needs the later one.
+- Jummah is often NOT in the daily timetable. Look for it in its own box,
+  banner, heading or sidebar elsewhere on the page, and include what you find
+  there even if the daily table has no Friday column.
+- If a sitting lists both a khutbah/bayan time and a salah/iqamah time, take
+  the KHUTBAH time — that is when someone needs to be in the building.
+- Do not return the same Jummah time twice, and do not pad the list out with
+  weekday Dhuhr. If the page shows exactly one Jummah, return exactly one.
 - If a time is genuinely not on the page, use null. Do not guess.
 - If you cannot find prayer times at all, return found=false and all nulls.`;
 
@@ -511,6 +524,72 @@ async function findTimes(
   return { ok: false, reason: firstReason };
 }
 
+/**
+ * Fold a read's Friday times into a masjid, one sitting at a time.
+ *
+ * A masjid may hold anywhere from one to four Jummah sittings, and the later
+ * ones matter most — they exist for the people who cannot get away at 1pm. So
+ * the read is treated as a set rather than a single value: duplicates dropped
+ * (pages often print the same time in a banner and a table), order restored,
+ * and each time judged on its own.
+ *
+ * When some sittings read badly, what happens next depends on what we already
+ * have. Against existing Friday times, a partial read is refused outright:
+ * overwriting three known sittings with the one that survived would quietly
+ * delete two real congregations. With nothing on file, the survivors are
+ * published — an incomplete list beats a blank — and the masjid is flagged
+ * either way.
+ */
+export function mergeJumuah(
+  masjid: Masjid,
+  read: unknown,
+): { rejected: string; missing: boolean; added: string } {
+  const existing = masjid.jumuah?.length ?? 0;
+
+  if (!Array.isArray(read)) {
+    return { rejected: "", missing: existing === 0, added: "" };
+  }
+
+  const seen = new Set<string>();
+  const usable: string[] = [];
+  const bad: string[] = [];
+
+  for (const entry of read) {
+    const time = typeof entry === "string" ? entry.trim() : "";
+    if (!jumuahIsPlausible(time)) {
+      bad.push(typeof entry === "string" ? entry : JSON.stringify(entry));
+      continue;
+    }
+    if (seen.has(time)) continue;
+    seen.add(time);
+    usable.push(time);
+  }
+
+  // Zero-padded "HH:mm" sorts lexicographically exactly as it does in time.
+  usable.sort();
+
+  const rejected = bad.length ? `jumu'ah ${bad.join("/")} implausible` : "";
+
+  // A bad sitting alongside real ones we already trust: keep what we have.
+  if (bad.length && existing > 0) {
+    return { rejected, missing: false, added: "" };
+  }
+
+  if (usable.length) {
+    const before = masjid.jumuah?.map((s) => s.khutbah).join("/") ?? "";
+    masjid.jumuah = usable.map((khutbah) => ({ khutbah }));
+    const after = usable.join("/");
+    return {
+      rejected,
+      missing: false,
+      // Only worth a line in the summary when the sittings actually changed.
+      added: before === after ? "" : `${usable.length}: ${after}`,
+    };
+  }
+
+  return { rejected, missing: existing === 0, added: "" };
+}
+
 async function main() {
   const masjids: Masjid[] = JSON.parse(await readFile(DATA_FILE, "utf8"));
   // Toronto's date, not the runner's UTC one — after 8pm they differ.
@@ -577,23 +656,23 @@ async function main() {
 
       m.iqamah = merged;
 
-      if (Array.isArray(result.jumuah)) {
-        const usable = result.jumuah.filter(jumuahIsPlausible);
-        if (usable.length === result.jumuah.length && usable.length > 0) {
-          m.jumuah = result.jumuah.map((t: string) => ({ khutbah: t }));
-        } else if (result.jumuah.length > 0) {
-          // Keep the previous Friday times rather than writing a bad read.
-          rejected.push(`jumuah ${result.jumuah.join("/")} implausible`);
-        }
-      }
+      // Friday is the one prayer a masjid may hold several times over, and the
+      // later sittings are exactly what someone who can't leave work early
+      // needs. So the sessions are treated as a set: deduplicated, put in
+      // chronological order, and each judged on its own.
+      const jumuah = mergeJumuah(m, result.jumuah);
+      if (jumuah.rejected) rejected.push(jumuah.rejected);
 
       m.lastVerified = today;
-      m.needsReview = rejected.length > 0 || found.missing.length > 0;
+      m.needsReview =
+        rejected.length > 0 || found.missing.length > 0 || jumuah.missing;
       m.source = "scrape";
 
       const notes = [
         found.missing.length ? `not published: ${found.missing.join(", ")}` : "",
         rejected.length ? `rejected: ${rejected.join(", ")}` : "",
+        jumuah.missing ? "no jumu'ah found" : "",
+        jumuah.added ? `jumu'ah ${jumuah.added}` : "",
         kept ? `${kept} kept from previous` : "",
       ].filter(Boolean);
 

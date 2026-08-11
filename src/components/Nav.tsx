@@ -4,6 +4,7 @@ import {
   listPath,
   mapPath,
   planPath,
+  settingsPath,
   signInPath,
   type Route,
 } from "../lib/route";
@@ -15,6 +16,7 @@ const TABS: { label: string; href: string; matches: Route["name"][] }[] = [
   { label: "Map", href: mapPath, matches: ["map"] },
   { label: "Plan a trip", href: planPath, matches: ["plan"] },
   { label: "Compare a prayer", href: comparePath(), matches: ["compare"] },
+  { label: "Settings", href: settingsPath, matches: ["settings"] },
 ];
 
 export default function Nav({ route }: { route: Route }) {

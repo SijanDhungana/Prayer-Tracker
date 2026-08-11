@@ -7,12 +7,18 @@ import { AuthProvider } from "./lib/auth";
 import { applyOverrides, useApprovedTimes } from "./lib/overrides";
 import { useReferencePoint } from "./lib/location";
 import { nextIqamahPrayer } from "./lib/prayer";
+import {
+  SettingsProvider,
+  applyAsrPreference,
+  useSettings,
+} from "./lib/settings";
 import { listPath, useHashRoute } from "./lib/route";
 import { todayIn } from "./lib/time";
 import AdminSuggestions from "./views/AdminSuggestions";
 import ComparePrayer from "./views/ComparePrayer";
 import MasjidDetail from "./views/MasjidDetail";
 import MasjidList from "./views/MasjidList";
+import Settings from "./views/Settings";
 import SignIn from "./views/SignIn";
 
 // Leaflet and its stylesheet are bigger than everything else here combined,
@@ -26,7 +32,9 @@ const PlanTrip = lazy(() => import("./views/PlanTrip"));
 export default function App() {
   return (
     <AuthProvider>
-      <Shell />
+      <SettingsProvider>
+        <Shell />
+      </SettingsProvider>
     </AuthProvider>
   );
 }
@@ -39,9 +47,13 @@ function Shell() {
   // Approved corrections win over the scraper's baseline, and land as soon as
   // they're approved — no commit, no redeploy.
   const { approved, refresh: refreshApproved } = useApprovedTimes();
+  const { asr } = useSettings();
+  // One place to apply both: every view below reads this list, so neither an
+  // approved correction nor the visitor's Asr school can be missed by a view
+  // that forgot to ask for it.
   const masjids = useMemo(
-    () => applyOverrides(baseMasjids, approved),
-    [approved],
+    () => applyAsrPreference(applyOverrides(baseMasjids, approved), asr),
+    [approved, asr],
   );
 
   const chrome = route.name !== "masjid";
@@ -52,14 +64,18 @@ function Shell() {
         {chrome && (
           <div className="mb-6 space-y-3">
             <Nav route={route} />
-            {route.name !== "signin" && route.name !== "admin" && (
-              <LocationPicker reference={reference} />
-            )}
+            {route.name !== "signin" &&
+              route.name !== "admin" &&
+              route.name !== "settings" && (
+                <LocationPicker reference={reference} />
+              )}
           </div>
         )}
 
         {route.name === "signin" ? (
           <SignIn />
+        ) : route.name === "settings" ? (
+          <Settings masjids={masjids} date={today} />
         ) : route.name === "admin" ? (
           <AdminSuggestions date={today} />
         ) : route.name === "masjid" ? (

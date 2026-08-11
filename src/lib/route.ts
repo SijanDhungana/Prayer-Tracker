@@ -13,12 +13,14 @@ export type Route =
   | { name: "plan" }
   | { name: "masjid"; id: string }
   | { name: "signin" }
+  | { name: "settings" }
   | { name: "admin" };
 
 export const listPath = "#/";
 export const mapPath = "#/map";
 export const planPath = "#/plan";
 export const signInPath = "#/signin";
+export const settingsPath = "#/settings";
 export const adminPath = "#/admin/suggestions";
 export const comparePath = (prayer?: Prayer) =>
   prayer ? `#/compare/${prayer}` : "#/compare";
@@ -33,6 +35,7 @@ export function parseRoute(hash: string): Route {
   if (/^\/map\/?$/.test(path)) return { name: "map" };
   if (/^\/plan\/?$/.test(path)) return { name: "plan" };
   if (/^\/signin\/?$/.test(path)) return { name: "signin" };
+  if (/^\/settings\/?$/.test(path)) return { name: "settings" };
   if (/^\/admin\/suggestions\/?$/.test(path)) return { name: "admin" };
 
   const masjid = /^\/masjid\/(.+)$/.exec(path);
