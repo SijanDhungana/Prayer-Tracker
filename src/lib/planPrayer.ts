@@ -19,21 +19,32 @@ export function prayerLabel(prayer: PlanPrayer): string {
   return prayer === "jumuah" ? "Jumu'ah" : PRAYER_LABELS[prayer];
 }
 
+export function isFriday(date: Date): boolean {
+  return date.getDay() === 5;
+}
+
 /**
  * The choices worth offering today. Jumu'ah is included only when `today`
  * actually is a Friday — any other day there is no congregation to plan a
  * stop around, and offering one would just be confusing rather than useful.
  * Placed right after Dhuhr, its natural chronological position.
+ *
+ * `anyDay` lifts the Friday restriction so an admin can exercise the Jumu'ah
+ * route on the other six days — checking that a masjid's newly collected
+ * sittings actually plan sensibly shouldn't mean waiting until Friday to
+ * find out. The resulting plan is fictional on any other day, so callers
+ * that pass this must say so on screen; see PlanTrip's preview notice.
  */
 export function planPrayerOptions(
   today: Date,
+  { anyDay = false }: { anyDay?: boolean } = {},
 ): { value: PlanPrayer; label: string }[] {
   const options: { value: PlanPrayer; label: string }[] = PRAYERS.map((p) => ({
     value: p,
     label: PRAYER_LABELS[p],
   }));
 
-  if (today.getDay() === 5) {
+  if (isFriday(today) || anyDay) {
     const afterDhuhr = options.findIndex((o) => o.value === "dhuhr") + 1;
     options.splice(afterDhuhr, 0, { value: "jumuah", label: "Jumu'ah" });
   }
@@ -60,7 +71,7 @@ export function currentPlanPrayer(masjids: Masjid[], today: Date): PlanPrayer {
     if (minutesOfDay(times[prayer]) <= nowMinutes) current = prayer;
   }
 
-  return today.getDay() === 5 && current === "dhuhr" ? "jumuah" : current;
+  return isFriday(today) && current === "dhuhr" ? "jumuah" : current;
 }
 
 /** A masjid's Friday sittings as real instants on `today`, earliest first. */

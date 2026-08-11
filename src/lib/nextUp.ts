@@ -8,6 +8,7 @@
  */
 import { haversineKm, type Point } from "./distance";
 import {
+  isFriday,
   jumuahTimesOn,
   nextJumuahTime,
   resolvePlanIqamah,
@@ -29,7 +30,7 @@ export const JUST_STARTED_MINUTES = 20;
  */
 export function congregationSequence(date: Date): PlanPrayer[] {
   return PRAYERS.map((prayer) =>
-    prayer === "dhuhr" && date.getDay() === 5 ? "jumuah" : prayer,
+    prayer === "dhuhr" && isFriday(date) ? "jumuah" : prayer,
   );
 }
 

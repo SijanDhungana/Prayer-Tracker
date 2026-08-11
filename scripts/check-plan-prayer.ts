@@ -2,6 +2,7 @@ import {
   currentPlanPrayer,
   jumuahTimesOn,
   nextJumuahTime,
+  isFriday,
   planPrayerOptions,
   planPrayerWindowEnds,
   prayerLabel,
@@ -44,6 +45,32 @@ check("sanity: chosen dates are the right weekdays", [friday.getDay(), monday.ge
   const opts = planPrayerOptions(friday).map((o) => o.value);
   check("Jumu'ah appears on a Friday", opts.includes("jumuah"), true);
   check("Jumu'ah sits right after Dhuhr", opts[opts.indexOf("dhuhr") + 1], "jumuah");
+}
+
+// --- admin: Jumu'ah on any day -------------------------------------------
+check("isFriday agrees with the fixtures", [isFriday(friday), isFriday(monday)], [true, false]);
+{
+  // A non-admin on a Monday must not see it.
+  const opts = planPrayerOptions(monday, { anyDay: false }).map((o) => o.value);
+  check("anyDay:false leaves the Friday gate in place", opts.includes("jumuah"), false);
+}
+{
+  const opts = planPrayerOptions(monday, { anyDay: true }).map((o) => o.value);
+  check("anyDay:true offers Jumu'ah on a Monday", opts.includes("jumuah"), true);
+  check("  still in its chronological slot after Dhuhr",
+    opts[opts.indexOf("dhuhr") + 1], "jumuah");
+  check("  and adds exactly one option", opts.length, 6);
+}
+{
+  // The flag must never double up the option on a day it already applies.
+  const opts = planPrayerOptions(friday, { anyDay: true }).map((o) => o.value);
+  check("anyDay on a Friday does not duplicate Jumu'ah",
+    opts.filter((o) => o === "jumuah").length, 1);
+}
+{
+  // The default must stay closed: omitting the argument is the public path.
+  const opts = planPrayerOptions(monday).map((o) => o.value);
+  check("omitting the options object keeps Jumu'ah hidden", opts.includes("jumuah"), false);
 }
 
 // --- jumuahTimesOn / nextJumuahTime --------------------------------------

@@ -1,12 +1,14 @@
 import { useState } from "react";
 
 import AddressInput from "../components/AddressInput";
+import { useAuth } from "../lib/auth";
 import TripMap from "../components/TripMap";
 import { formatDistance, haversineKm, type Point } from "../lib/distance";
 import { googleMapsConfigured } from "../lib/googleMaps";
 import type { ReferencePoint } from "../lib/location";
 import {
   currentPlanPrayer,
+  isFriday,
   planPrayerOptions,
   planPrayerWindowEnds,
   prayerLabel,
@@ -75,6 +77,19 @@ export default function PlanTrip({
     currentPlanPrayer(masjids, today),
   );
   const [priority, setPriority] = useState<Priority>("destination");
+
+  // Admins can plan a Jumu'ah trip on any day, to check that newly collected
+  // sittings actually route sensibly without waiting for Friday.
+  const { isAdmin } = useAuth();
+  const prayerOptions = planPrayerOptions(today, { anyDay: isAdmin });
+  // Derived rather than stored: if the Jumu'ah option disappears — signing
+  // out, a role change — a selection of it must not quietly survive into a
+  // plan that no longer offers it.
+  const chosenPrayer = prayerOptions.some((o) => o.value === prayer)
+    ? prayer
+    : currentPlanPrayer(masjids, today);
+  // A Jumu'ah plan on any other day is a rehearsal, not a journey.
+  const jumuahPreview = chosenPrayer === "jumuah" && !isFriday(today);
 
   const [phase, setPhase] = useState<Phase>("idle");
   const [error, setError] = useState<string | null>(null);
@@ -163,13 +178,13 @@ export default function PlanTrip({
       // candidates are all within half an hour of each other, and paying for
       // a per-masjid prediction isn't worth the couple of minutes it'd shave.
       const iqamahByMasjid = shortlist.map((masjid) =>
-        resolvePlanIqamah(masjid, prayer, now, today),
+        resolvePlanIqamah(masjid, chosenPrayer, now, today),
       );
       const departAfter = representativeDeparture(now, iqamahByMasjid);
       const inbound = await drivingMinutesTo(points, target.point, departAfter);
 
       const deadlineAt = deadline ? zonedTimeOnDate(today, deadline) : null;
-      const windowEnds = planPrayerWindowEnds(shortlist, prayer, today);
+      const windowEnds = planPrayerWindowEnds(shortlist, chosenPrayer, today);
 
       const candidates: Candidate[] = [];
       shortlist.forEach((masjid, index) => {
@@ -193,12 +208,12 @@ export default function PlanTrip({
         departMode === "latest"
           ? planWhenToLeave(
               candidates,
-              { now, deadline: deadlineAt, prayer },
+              { now, deadline: deadlineAt, prayer: chosenPrayer },
               directMinutes,
             )
           : planTrip(
               candidates,
-              { now, deadline: deadlineAt, prayer },
+              { now, deadline: deadlineAt, prayer: chosenPrayer },
               directMinutes,
               priority,
             ),
@@ -337,23 +352,36 @@ export default function PlanTrip({
           <label className="min-w-0 flex-1">
             <span className="text-sm font-medium text-stone-700">Prayer</span>
             <select
-              value={prayer}
+              value={chosenPrayer}
               onChange={(e) => setPrayer(e.target.value as PlanPrayer)}
               className="mt-1 w-full rounded-lg bg-white px-3 py-2 text-sm text-stone-900 ring-1 ring-stone-200"
             >
-              {planPrayerOptions(today).map((option) => (
+              {prayerOptions.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
                 </option>
               ))}
             </select>
-            {prayer === "jumuah" && (
+            {chosenPrayer === "jumuah" && !jumuahPreview && (
               <p className="mt-1.5 text-xs text-stone-500">
                 We&rsquo;ll aim for whichever sitting you can still catch.
               </p>
             )}
           </label>
         </div>
+
+        {/* A Jumu'ah plan on a Tuesday is arithmetic on times nobody will
+            pray. Useful for checking a masjid's sittings route sensibly, and
+            dangerous if mistaken for a real journey — so it says which it is
+            rather than relying on the admin remembering what day it is. */}
+        {jumuahPreview && (
+          <p className="rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800">
+            <span className="font-semibold">Admin preview.</span> Jumu&rsquo;ah
+            isn&rsquo;t held today — this plans against Friday&rsquo;s sittings
+            on today&rsquo;s date, so treat the result as a check of the data,
+            not a trip.
+          </p>
+        )}
 
         <fieldset className={departMode === "latest" ? "hidden" : undefined}>
           <legend className="text-sm font-medium text-stone-700">
@@ -401,7 +429,8 @@ export default function PlanTrip({
           result={result}
           mode={departMode}
           priority={priority}
-          prayer={prayer}
+          prayer={chosenPrayer}
+          preview={jumuahPreview}
           destLabel={destLabel}
           destPoint={destPoint}
           originLabel={originLabel}
@@ -499,6 +528,7 @@ function Results({
   mode,
   priority,
   prayer,
+  preview,
   destLabel,
   destPoint,
   originLabel,
@@ -509,6 +539,8 @@ function Results({
   mode: DepartMode;
   priority: Priority;
   prayer: PlanPrayer;
+  /** The plan is an admin rehearsal against a day Jumu'ah isn't held. */
+  preview: boolean;
   destLabel: string | null;
   destPoint: Point | null;
   originLabel: string | null;
@@ -530,6 +562,12 @@ function Results({
 
   return (
     <div className="mt-6">
+      {preview && (
+        <p className="mb-3 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800">
+          Planned against Friday&rsquo;s sittings on a day they aren&rsquo;t
+          held — a data check, not a trip.
+        </p>
+      )}
       {destLabel && (
         <p className="text-sm text-stone-600">
           {originLabel && (
