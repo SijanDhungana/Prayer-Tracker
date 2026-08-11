@@ -40,14 +40,18 @@ export default function MasjidCard({
           <p className="mt-2 rounded-lg bg-amber-50 px-2 py-1.5 text-[11px] text-amber-800">
             Iqamah times not collected yet — small times are the calculated
             adhan.{" "}
-            <a
-              className="font-medium underline underline-offset-2"
-              href={masjid.website}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Check the masjid&rsquo;s site
-            </a>
+            {/* Newly discovered masjids may have no website on file yet;
+                a link to nowhere is worse than no link. */}
+            {masjid.website && (
+              <a
+                className="font-medium underline underline-offset-2"
+                href={masjid.website}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Check the masjid&rsquo;s site
+              </a>
+            )}
           </p>
         ) : (
           <p className="mt-2 text-[11px] text-stone-400">

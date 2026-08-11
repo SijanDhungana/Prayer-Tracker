@@ -1,0 +1,38 @@
+# .github/workflows/discover.yml
+# Resolves the names in scripts/pending-masjids.json into full masjids.json
+# entries — address, coordinates, and the website OpenStreetMap has on file —
+# then commits the result. Manual only: it runs when someone has added names.
+#
+# Free and keyless (Nominatim). The daily scraper picks up prayer times from
+# any website this finds, on its next run.
+
+name: Discover new masjids
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm ci
+
+      - name: Look up pending masjids
+        run: npx tsx scripts/discover.ts
+
+      - name: Commit new masjids
+        run: |
+          git config user.name  "prayer-times-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add src/data/masjids.json scripts/pending-masjids.json
+          git diff --staged --quiet || git commit -m "chore: add discovered masjids ($(date -u +%F))"
+          git push

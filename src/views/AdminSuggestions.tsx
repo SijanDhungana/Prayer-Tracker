@@ -50,15 +50,20 @@ function Context({ row, date }: { row: SuggestionRow; date: Date }) {
     <>
       <p className="mt-1 text-xs text-stone-500">
         {masjid.name} ·{" "}
-        <a
-          className="underline underline-offset-2"
-          href={masjid.website}
-          target="_blank"
-          rel="noreferrer"
-        >
-          check their site
-        </a>{" "}
-        ·{" "}
+        {/* A discovered masjid may have no website on file to check against. */}
+        {masjid.website && (
+          <>
+            <a
+              className="underline underline-offset-2"
+              href={masjid.website}
+              target="_blank"
+              rel="noreferrer"
+            >
+              check their site
+            </a>{" "}
+            ·{" "}
+          </>
+        )}
         <a className="underline underline-offset-2" href={masjidPath(masjid.id)}>
           open in app
         </a>
