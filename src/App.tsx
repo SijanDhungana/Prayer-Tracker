@@ -16,6 +16,7 @@ import { listPath, useHashRoute } from "./lib/route";
 import { todayIn } from "./lib/time";
 import AdminSuggestions from "./views/AdminSuggestions";
 import ComparePrayer from "./views/ComparePrayer";
+import Jummah from "./views/Jummah";
 import MasjidDetail from "./views/MasjidDetail";
 import MasjidList from "./views/MasjidList";
 import Settings from "./views/Settings";
@@ -103,6 +104,8 @@ function Shell() {
           >
             <PlanTrip masjids={masjids} reference={reference} />
           </Suspense>
+        ) : route.name === "jummah" ? (
+          <Jummah masjids={masjids} from={reference.point} />
         ) : route.name === "compare" ? (
           <ComparePrayer
             masjids={masjids}

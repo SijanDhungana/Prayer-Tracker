@@ -1,6 +1,7 @@
 import {
   adminPath,
   comparePath,
+  jummahPath,
   listPath,
   mapPath,
   planPath,
@@ -16,6 +17,7 @@ const TABS: { label: string; href: string; matches: Route["name"][] }[] = [
   { label: "Map", href: mapPath, matches: ["map"] },
   { label: "Plan a trip", href: planPath, matches: ["plan"] },
   { label: "Compare a prayer", href: comparePath(), matches: ["compare"] },
+  { label: "Jumu’ah", href: jummahPath, matches: ["jummah"] },
   { label: "Settings", href: settingsPath, matches: ["settings"] },
 ];
 
