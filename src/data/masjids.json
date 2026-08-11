@@ -10,11 +10,35 @@
       "method": "NorthAmerica",
       "madhab": "shafi"
     },
-    "iqamah": {},
-    "jumuah": [],
-    "lastVerified": null,
-    "needsReview": true,
-    "source": "seed"
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:30"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:45"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:30"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "22:10"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "14:00"
+      },
+      {
+        "khutbah": "14:55"
+      }
+    ],
+    "lastVerified": "2026-08-11",
+    "needsReview": false,
+    "source": "scrape"
   },
   {
     "id": "al-misbah-islamic-centre",
@@ -27,11 +51,40 @@
       "method": "NorthAmerica",
       "madhab": "shafi"
     },
-    "iqamah": {},
-    "jumuah": [],
-    "lastVerified": null,
-    "needsReview": true,
-    "source": "seed"
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:40"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:45"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:45"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 4
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "22:00"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:45"
+      },
+      {
+        "khutbah": "14:45"
+      }
+    ],
+    "lastVerified": "2026-08-11",
+    "needsReview": false,
+    "source": "scrape",
+    "timesUrl": "https://amiccanada.ca/#prayer-times"
   },
   {
     "id": "spiritual-society-canada",
@@ -44,11 +97,42 @@
       "method": "NorthAmerica",
       "madhab": "shafi"
     },
-    "iqamah": {},
-    "jumuah": [],
-    "lastVerified": null,
-    "needsReview": true,
-    "source": "seed"
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:45"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:45"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "19:30"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 5
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "22:20"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:50"
+      },
+      {
+        "khutbah": "14:45"
+      },
+      {
+        "khutbah": "15:35"
+      }
+    ],
+    "lastVerified": "2026-08-11",
+    "needsReview": false,
+    "source": "scrape"
   },
   {
     "id": "masjid-omar-farooq",
@@ -81,12 +165,35 @@
     "iqamah": {
       "fajr": {
         "type": "fixed",
-        "time": "05:30"
+        "time": "05:50"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:45"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:45"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 3
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "22:10"
       }
     },
-    "jumuah": [],
-    "lastVerified": "2026-08-10",
-    "needsReview": true,
+    "jumuah": [
+      {
+        "khutbah": "13:50"
+      },
+      {
+        "khutbah": "15:30"
+      }
+    ],
+    "lastVerified": "2026-08-11",
+    "needsReview": false,
     "source": "scrape"
   },
   {
@@ -120,7 +227,7 @@
     "iqamah": {
       "fajr": {
         "type": "fixed",
-        "time": "05:30"
+        "time": "05:45"
       },
       "dhuhr": {
         "type": "fixed",
@@ -132,11 +239,11 @@
       },
       "maghrib": {
         "type": "offset",
-        "minutes": 5
+        "minutes": 6
       },
       "isha": {
         "type": "fixed",
-        "time": "22:15"
+        "time": "22:00"
       }
     },
     "jumuah": [
@@ -147,7 +254,7 @@
         "khutbah": "15:30"
       }
     ],
-    "lastVerified": "2026-08-10",
+    "lastVerified": "2026-08-11",
     "needsReview": false,
     "source": "scrape"
   },
@@ -196,11 +303,42 @@
       "method": "NorthAmerica",
       "madhab": "shafi"
     },
-    "iqamah": {},
-    "jumuah": [],
-    "lastVerified": null,
-    "needsReview": true,
-    "source": "seed"
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:50"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:45"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "19:20"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 6
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "22:00"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:45"
+      },
+      {
+        "khutbah": "15:00"
+      },
+      {
+        "khutbah": "15:45"
+      }
+    ],
+    "lastVerified": "2026-08-11",
+    "needsReview": false,
+    "source": "scrape"
   },
   {
     "id": "masjid-al-hidaya",
@@ -216,7 +354,7 @@
     "iqamah": {
       "fajr": {
         "type": "fixed",
-        "time": "05:40"
+        "time": "05:50"
       },
       "dhuhr": {
         "type": "fixed",
@@ -224,15 +362,15 @@
       },
       "asr": {
         "type": "fixed",
-        "time": "19:15"
+        "time": "19:00"
       },
       "maghrib": {
         "type": "offset",
-        "minutes": 7
+        "minutes": 6
       },
       "isha": {
         "type": "fixed",
-        "time": "22:15"
+        "time": "22:00"
       }
     },
     "jumuah": [
@@ -240,7 +378,7 @@
         "khutbah": "14:00"
       }
     ],
-    "lastVerified": "2026-08-10",
+    "lastVerified": "2026-08-11",
     "needsReview": false,
     "source": "scrape"
   },
@@ -281,7 +419,7 @@
         "khutbah": "15:15"
       }
     ],
-    "lastVerified": "2026-08-10",
+    "lastVerified": "2026-08-11",
     "needsReview": false,
     "source": "scrape"
   },
@@ -323,7 +461,7 @@
         "khutbah": "13:30"
       }
     ],
-    "lastVerified": "2026-08-10",
+    "lastVerified": "2026-08-11",
     "needsReview": false,
     "source": "scrape"
   },
@@ -353,7 +491,7 @@
       },
       "maghrib": {
         "type": "offset",
-        "minutes": 7
+        "minutes": 6
       },
       "isha": {
         "type": "fixed",
@@ -368,7 +506,7 @@
         "khutbah": "15:30"
       }
     ],
-    "lastVerified": "2026-08-10",
+    "lastVerified": "2026-08-11",
     "needsReview": false,
     "source": "scrape"
   },
@@ -383,11 +521,42 @@
       "method": "NorthAmerica",
       "madhab": "shafi"
     },
-    "iqamah": {},
-    "jumuah": [],
-    "lastVerified": null,
-    "needsReview": true,
-    "source": "seed"
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:30"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:40"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:00"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 6
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "22:00"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "12:10"
+      },
+      {
+        "khutbah": "13:10"
+      },
+      {
+        "khutbah": "14:10"
+      }
+    ],
+    "lastVerified": "2026-08-11",
+    "needsReview": false,
+    "source": "scrape"
   },
   {
     "id": "iidci-bloor",
@@ -415,7 +584,7 @@
       },
       "maghrib": {
         "type": "offset",
-        "minutes": 2
+        "minutes": 3
       },
       "isha": {
         "type": "fixed",
@@ -430,7 +599,7 @@
         "khutbah": "14:30"
       }
     ],
-    "lastVerified": "2026-08-10",
+    "lastVerified": "2026-08-11",
     "needsReview": false,
     "source": "scrape"
   },
@@ -462,10 +631,32 @@
       "method": "NorthAmerica",
       "madhab": "shafi"
     },
-    "iqamah": {},
-    "jumuah": [],
-    "lastVerified": null,
-    "needsReview": true,
-    "source": "seed"
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:30"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:45"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:00"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "22:15"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:30"
+      }
+    ],
+    "lastVerified": "2026-08-11",
+    "needsReview": false,
+    "source": "scrape",
+    "timesUrl": "https://istiqamamasjid.com/#pyayer"
   }
 ]
