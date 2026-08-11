@@ -5,8 +5,15 @@ import {
   PrayerTimes,
   type CalculationParameters,
 } from "adhan";
-import { PRAYERS, type CalcConfig, type IqamahRule, type Masjid, type Prayer } from "./types";
-import { todayIn, zonedTimeOnDate } from "./time";
+import {
+  PRAYERS,
+  type CalcConfig,
+  type IqamahRule,
+  type JumuahSession,
+  type Masjid,
+  type Prayer,
+} from "./types";
+import { clockMinutes, todayIn, zonedTimeOnDate } from "./time";
 
 type MethodKey = keyof typeof CalculationMethod;
 
@@ -133,6 +140,29 @@ export function effectiveRule(
   }
 
   return { rule: undefined, isDefault: false };
+}
+
+/**
+ * A masjid's Friday sittings, earliest first.
+ *
+ * The stored order cannot be trusted: a scrape reads a page in whatever order
+ * the markup happens to run, and a manually entered or approved time is
+ * appended wherever it lands. Masjid Bilal is on file right now as 15:30 then
+ * 14:00. Anything that numbers the sittings — "1st khutbah", "2 of 3" — is
+ * making a claim about time, so it has to sort by time rather than trust the
+ * array, or it will tell someone the 3:30 sitting is the first one.
+ *
+ * Malformed times sort last rather than being dropped: the detail view should
+ * still show a time a human can read and correct.
+ */
+export function orderedJumuah(masjid: Masjid): JumuahSession[] {
+  return [...(masjid.jumuah ?? [])].sort((a, b) => {
+    const left = clockMinutes(a.khutbah);
+    const right = clockMinutes(b.khutbah);
+    if (left == null) return right == null ? 0 : 1;
+    if (right == null) return -1;
+    return left - right;
+  });
 }
 
 /** Every iqamah a masjid holds on `date`, keyed by prayer. */

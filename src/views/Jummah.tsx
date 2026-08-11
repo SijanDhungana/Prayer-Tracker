@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { orderedJumuah } from "../lib/prayer";
 import { masjidPath } from "../lib/route";
 import { clockMinutes, formatClock } from "../lib/time";
 import { formatDistance, haversineKm, type Point } from "../lib/distance";
@@ -44,7 +45,7 @@ export default function Jummah({
     const silent: Masjid[] = [];
 
     for (const masjid of masjids) {
-      const sessions = masjid.jumuah ?? [];
+      const sessions = orderedJumuah(masjid);
       if (sessions.length === 0) {
         silent.push(masjid);
         continue;

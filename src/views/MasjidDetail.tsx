@@ -3,6 +3,7 @@ import {
   adhanTimes,
   effectiveRule,
   iqamahTimes,
+  orderedJumuah,
   sunriseTime,
 } from "../lib/prayer";
 import { listPath } from "../lib/route";
@@ -37,7 +38,7 @@ function Jumuah({
   masjid: Masjid;
   onSuggest: () => void;
 }) {
-  const sessions = masjid.jumuah ?? [];
+  const sessions = orderedJumuah(masjid);
 
   return (
     <section className="mt-6">
