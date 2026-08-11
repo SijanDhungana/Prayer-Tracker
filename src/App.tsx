@@ -19,6 +19,7 @@ import ComparePrayer from "./views/ComparePrayer";
 import Jummah from "./views/Jummah";
 import MasjidDetail from "./views/MasjidDetail";
 import MasjidList from "./views/MasjidList";
+import NextUp from "./views/NextUp";
 import Settings from "./views/Settings";
 import SignIn from "./views/SignIn";
 
@@ -113,8 +114,10 @@ function Shell() {
             prayer={route.prayer ?? nextIqamahPrayer(masjids, today)}
             from={reference.point}
           />
-        ) : (
+        ) : route.name === "list" ? (
           <MasjidList masjids={masjids} date={today} from={reference.point} />
+        ) : (
+          <NextUp masjids={masjids} date={today} from={reference.point} />
         )}
       </div>
     </div>

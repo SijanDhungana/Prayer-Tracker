@@ -7,6 +7,7 @@ import { PRAYERS, type Prayer } from "./types";
  * working without pulling in a router.
  */
 export type Route =
+  | { name: "next" }
   | { name: "list" }
   | { name: "compare"; prayer: Prayer | null }
   | { name: "jummah" }
@@ -17,7 +18,10 @@ export type Route =
   | { name: "settings" }
   | { name: "admin" };
 
-export const listPath = "#/";
+// "Next up" is the home screen — CLAUDE.md §8a — so the full directory
+// gets a path of its own.
+export const nextPath = "#/";
+export const listPath = "#/masjids";
 export const jummahPath = "#/jummah";
 export const mapPath = "#/map";
 export const planPath = "#/plan";
@@ -34,6 +38,7 @@ const isPrayer = (value: string): value is Prayer =>
 export function parseRoute(hash: string): Route {
   const path = hash.replace(/^#/, "");
 
+  if (/^\/masjids\/?$/.test(path)) return { name: "list" };
   if (/^\/jummah\/?$/.test(path)) return { name: "jummah" };
   if (/^\/map\/?$/.test(path)) return { name: "map" };
   if (/^\/plan\/?$/.test(path)) return { name: "plan" };
@@ -52,7 +57,7 @@ export function parseRoute(hash: string): Route {
     return { name: "compare", prayer: prayer && isPrayer(prayer) ? prayer : null };
   }
 
-  return { name: "list" };
+  return { name: "next" };
 }
 
 export function useHashRoute(): Route {

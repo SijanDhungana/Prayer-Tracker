@@ -11,7 +11,8 @@
     "geocode": "tsx scripts/geocode.ts",
     "check:jumuah": "tsx scripts/check-jumuah.ts",
     "check:discover": "tsx scripts/check-discover.ts",
-    "check:plan-prayer": "tsx scripts/check-plan-prayer.ts"
+    "check:plan-prayer": "tsx scripts/check-plan-prayer.ts",
+    "check:next-up": "tsx scripts/check-next-up.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.112.2",

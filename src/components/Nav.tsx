@@ -4,6 +4,7 @@ import {
   jummahPath,
   listPath,
   mapPath,
+  nextPath,
   planPath,
   settingsPath,
   signInPath,
@@ -13,7 +14,8 @@ import { useAuth } from "../lib/auth";
 import { authConfigured } from "../lib/supabase";
 
 const TABS: { label: string; href: string; matches: Route["name"][] }[] = [
-  { label: "Masjids", href: listPath, matches: ["list"] },
+  { label: "Next up", href: nextPath, matches: ["next"] },
+  { label: "All masjids", href: listPath, matches: ["list"] },
   { label: "Map", href: mapPath, matches: ["map"] },
   { label: "Plan a trip", href: planPath, matches: ["plan"] },
   { label: "Compare a prayer", href: comparePath(), matches: ["compare"] },
