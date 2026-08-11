@@ -239,7 +239,7 @@ export default function MasjidDetail({
       )}
 
       {masjid.needsReview && !status.warn && (
-        <p className="mt-4 rounded-lg bg-surface-sunk px-3 py-2 text-xs text-ink-2">
+        <p className="mt-4 rounded-lg bg-surface-2 px-3 py-2 text-xs text-ink-2">
           Some of this masjid&rsquo;s times could not be read on the last
           check, so the day below may be incomplete. Anything missing shows a
           dash.

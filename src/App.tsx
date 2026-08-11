@@ -61,7 +61,7 @@ function Shell() {
   const chrome = route.name !== "masjid";
 
   return (
-    <div className="min-h-screen bg-surface-sunk text-ink">
+    <div className="min-h-screen bg-surface-2 text-ink">
       <div className="mx-auto max-w-2xl px-4 py-6">
         {chrome && (
           <div className="mb-6 space-y-3">

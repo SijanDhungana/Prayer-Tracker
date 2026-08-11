@@ -69,7 +69,7 @@ export default function Settings({
             <label
               key={option}
               className={
-                "flex cursor-pointer items-center gap-3 p-4 hover:bg-surface-sunk " +
+                "flex cursor-pointer items-center gap-3 p-4 hover:bg-surface-2 " +
                 (index > 0 ? "border-t border-line " : "") +
                 (selected ? "bg-brand-wash hover:bg-brand-wash" : "")
               }
@@ -104,11 +104,11 @@ export default function Settings({
 
       <h2 className="mt-8 text-base font-semibold">Theme</h2>
       <p className="mt-1 text-sm text-ink-2">
-        System follows your device, which most people leave on a schedule.
+        The app is designed dark. System follows your device.
       </p>
 
       <div className="mt-3 flex gap-2" role="radiogroup" aria-label="Theme">
-        {(["system", "light", "dark"] as Theme[]).map((option) => (
+        {(["system", "dark", "light"] as Theme[]).map((option) => (
           <button
             key={option}
             type="button"
@@ -127,7 +127,7 @@ export default function Settings({
         ))}
       </div>
 
-      <p className="mt-4 rounded-xl bg-surface-sunk px-4 py-3 text-xs text-ink-2">
+      <p className="mt-4 rounded-xl bg-surface-2 px-4 py-3 text-xs text-ink-2">
         This changes the <strong>adhan</strong> times the app calculates. It
         does not change any masjid&rsquo;s iqamah — those are clock times each
         masjid sets itself, and they are shown exactly as published.

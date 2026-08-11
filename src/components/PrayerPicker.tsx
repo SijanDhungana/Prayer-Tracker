@@ -5,7 +5,7 @@ import { PRAYERS, PRAYER_LABELS, type Prayer } from "../lib/types";
 export default function PrayerPicker({ selected }: { selected: Prayer }) {
   return (
     <div
-      className="grid grid-cols-5 gap-1 rounded-xl bg-surface-sunk p-1"
+      className="grid grid-cols-5 gap-1 rounded-xl bg-surface-2 p-1"
       role="tablist"
       aria-label="Prayer"
     >

@@ -204,7 +204,7 @@ export default function AdminSuggestions({ date }: { date: Date }) {
                       ? "bg-caution-wash text-caution"
                       : row.status === "approved"
                         ? "bg-brand-wash text-brand-press"
-                        : "bg-surface-sunk text-ink-2")
+                        : "bg-surface-2 text-ink-2")
                   }
                 >
                   {row.status}

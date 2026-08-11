@@ -181,7 +181,7 @@ export default function AddressInput({
                 onMouseEnter={() => setActive(index)}
                 className={
                   "block w-full px-3 py-2 text-left text-sm " +
-                  (index === active ? "bg-surface-sunk" : "hover:bg-surface-sunk")
+                  (index === active ? "bg-surface-2" : "hover:bg-surface-2")
                 }
               >
                 <span className="block truncate font-medium text-ink">

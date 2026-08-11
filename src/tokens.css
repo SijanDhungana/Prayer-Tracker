@@ -1,119 +1,143 @@
 /**
- * Design tokens — the single source of truth (design spec §4).
+ * Design tokens — the single source of truth (design spec v2 §4).
  *
  * No hard-coded colour, size or radius belongs anywhere else in the codebase.
- * Values here are the spec's verbatim; the only additions are the
- * [data-theme] blocks, which the Settings switch needs in order to override
- * the system preference in both directions.
+ *
+ * The app is dark-first: the dark palette *is* :root, and light is an
+ * override. Three selectors are therefore needed rather than two —
+ *
+ *   :root                                   dark, the base
+ *   @media (prefers-color-scheme: light)    light, when the system asks and
+ *     :root:not([data-theme="dark"])        the user hasn't overridden it
+ *   [data-theme="light"]                    light, chosen explicitly
+ *   [data-theme="dark"]                     dark, chosen explicitly — needed
+ *                                           so an explicit dark beats a light
+ *                                           system preference
+ *
+ * Theme = "system" writes no attribute at all, leaving the media query in
+ * charge; that is why it is the default and why there is no third code path.
  */
 
 :root {
-  /* ---- Surfaces & ink (light) ---- */
-  --paper:        #F7F8F5;  /* page background */
-  --surface:      #FFFFFF;  /* cards, sheets, bars */
-  --surface-sunk: #EDEFEA;  /* segmented control track, input wells */
-  --line:         #E1E4DD;  /* hairlines, card borders */
-  --line-strong:  #C9CEC5;
+  /* ---- Dark is the base theme ---- */
+  --paper:        #0A0F0D;  /* app background, behind everything */
+  --surface:      #141B18;  /* cards, sheets, bars */
+  --surface-2:    #1D2723;  /* raised: segmented track, inputs, sheet handle */
+  --line:         #263129;
+  --line-strong:  #38463D;
 
-  --ink:          #131C19;  /* primary text, times */
-  --ink-2:        #4B5651;  /* secondary text, labels */
-  --ink-3:        #6B7570;  /* meta: distances, captions */
+  --ink:          #F1F5F2;  /* primary text, iqamah times */
+  --ink-2:        #AEB9B3;  /* secondary text, labels */
+  --ink-3:        #85918B;  /* meta: distances, captions */
 
-  /* ---- Brand ---- */
-  --brand:        #0B5C45;
-  --brand-press:  #084535;
-  --brand-wash:   #E6F1EC;
-  --brand-ink:    #FFFFFF;
+  --brand:        #3FA383;  /* primary actions, active nav */
+  --brand-press:  #58BE99;
+  --brand-wash:   #14261F;
+  --brand-ink:    #06120E;  /* text on --brand */
 
-  /* ---- Prayer windows (the accent system) ---- */
-  --fajr:      #3B4A8C;  --fajr-wash:    #E9EBF6;
-  --dhuhr:     #96690A;  --dhuhr-wash:   #F7EEDB;
-  --asr:       #9E4E24;  --asr-wash:     #F7E9E1;
-  --maghrib:   #8B3350;  --maghrib-wash: #F7E6EC;
-  --isha:      #383162;  --isha-wash:    #EAE8F3;
+  /* ---- Prayer windows: the accent system ---- */
+  --fajr:    #7F8FE0;  --fajr-wash:    #171A2C;  /* first light, blue hour */
+  --dhuhr:   #E0B457;  --dhuhr-wash:   #2A2314;  /* high sun */
+  --asr:     #E08B5C;  --asr-wash:     #2B1C14;  /* lengthening shadow */
+  --maghrib: #D9738F;  --maghrib-wash: #2B161E;  /* sunset */
+  --isha:    #9A90DA;  --isha-wash:    #1C1930;  /* night */
 
-  /* --now / --now-wash are reassigned at runtime to the current window.
+  /* Reassigned on <html> at runtime to the current window.
      Never use a prayer token directly for chrome — always go through --now. */
   --now:      var(--asr);
   --now-wash: var(--asr-wash);
 
-  /* ---- Status ---- */
-  --ok:      #0B5C45;
-  --caution: #8A5A00;  --caution-wash: #FBF2DC;
-  --danger:  #9E2B25;  --danger-wash:  #F8E7E5;
+  --ok:      #3FA383;
+  --caution: #E0B457;  --caution-wash: #2A2314;
+  --danger:  #E07A6F;  --danger-wash:  #2C1614;
 
   /* ---- Type ---- */
-  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
-  --font-text:    "Instrument Sans", system-ui, sans-serif;
-  --font-num:     "IBM Plex Mono", ui-monospace, monospace;
+  --font-display: "Bricolage Grotesque", "Bricolage Fallback", system-ui, sans-serif;
+  --font-text:    "Instrument Sans", "Instrument Fallback", system-ui, sans-serif;
+  --font-num:     "IBM Plex Mono", "Plex Fallback", ui-monospace, monospace;
 
-  --t--1: 0.8125rem;  /* 13 — meta, captions */
+  --t--1: 0.8125rem;  /* 13 — meta, captions, tab labels */
   --t-0:  1rem;       /* 16 — body, list rows */
   --t-1:  1.125rem;   /* 18 — masjid names */
   --t-2:  1.375rem;   /* 22 — section headings */
-  --t-3:  1.75rem;    /* 28 — page titles */
-  --t-4:  2.25rem;    /* 36 — times in the now bar */
-  --t-5:  clamp(2.75rem, 11vw, 4rem);  /* the countdown */
+  --t-3:  1.75rem;    /* 28 — page titles, prayer name in ring */
+  --t-4:  2.25rem;    /* 36 — times in the compact now bar */
+  --t-5:  clamp(2.5rem, 13vw, 3.75rem);  /* the ring countdown */
 
   /* ---- Space (4px base) ---- */
-  --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px;
+  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px;
   --s-5: 24px; --s-6: 32px; --s-7: 48px; --s-8: 64px;
 
   /* ---- Shape & depth ---- */
-  --r-sm: 8px; --r-md: 12px; --r-lg: 16px; --r-full: 999px;
-  --elev-bar: 0 1px 0 var(--line), 0 6px 24px -18px rgb(0 0 0 / 0.5);
+  --r-sm: 10px; --r-md: 14px; --r-lg: 20px; --r-xl: 28px; --r-full: 999px;
+  --elev-float: 0 8px 32px -12px rgb(0 0 0 / 0.7), 0 0 0 1px var(--line);
+  --elev-sheet: 0 -12px 40px -16px rgb(0 0 0 / 0.8);
 
   /* ---- Motion ---- */
-  --fast: 120ms; --base: 200ms; --ease: cubic-bezier(0.2, 0, 0, 1);
+  --fast: 120ms; --base: 220ms; --slow: 400ms;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --spring: cubic-bezier(0.32, 0.72, 0, 1);  /* sheet drags */
+
+  color-scheme: dark;
 }
 
-/**
- * Dark values, defined once and applied from two places: the system
- * preference, and an explicit choice of Dark in Settings. Keeping them in a
- * single custom property block would need @apply-style indirection that CSS
- * does not have, so the two selectors share one declaration list instead.
- */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #0D1512; --surface: #161F1B; --surface-sunk: #202B26;
-    --line: #263129;  --line-strong: #364439;
-    --ink: #ECF1EE;   --ink-2: #A9B4AE;  --ink-3: #8A958F;
-    --brand: #3FA383; --brand-press: #58B99A; --brand-wash: #14261F; --brand-ink: #06120E;
-    --fajr: #8D9BDC; --fajr-wash: #1A1E33;
-    --dhuhr: #DCAE4A; --dhuhr-wash: #2B2413;
-    --asr: #DE8C5E; --asr-wash: #2E1D14;
-    --maghrib: #D97794; --maghrib-wash: #2D1721;
-    --isha: #9A90DA; --isha-wash: #1E1A31;
-    --ok: #3FA383;
-    --caution: #DCAE4A; --caution-wash: #2B2413;
-    --danger: #E0796F;  --danger-wash: #2E1614;
+/* The light palette, declared once and referenced by all three light-mode
+   selectors below. Duplicated rather than nested because CSS has no way to
+   apply one custom-property block from another. */
+[data-theme="light"] {
+  --paper: #F4F6F2; --surface: #FFFFFF; --surface-2: #EAEEE8;
+  --line: #E1E5DD;  --line-strong: #C7CEC4;
+  --ink: #121A16;   --ink-2: #4A554F;  --ink-3: #68736D;
+  --brand: #0B5C45; --brand-press: #084535; --brand-wash: #E6F1EC; --brand-ink: #FFFFFF;
+  --fajr: #3B4A8C;  --fajr-wash: #E9EBF6;
+  --dhuhr: #8C6208; --dhuhr-wash: #F7EEDB;
+  --asr: #9E4E24;   --asr-wash: #F7E9E1;
+  --maghrib: #8B3350; --maghrib-wash: #F7E6EC;
+  --isha: #383162;  --isha-wash: #EAE8F3;
+  --caution: #8A5A00; --caution-wash: #FBF2DC;
+  --danger: #9E2B25;  --danger-wash: #F8E7E5;
+  --elev-float: 0 6px 24px -14px rgb(0 0 0 / 0.35), 0 0 0 1px var(--line);
+  --elev-sheet: 0 -10px 32px -18px rgb(0 0 0 / 0.3);
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --paper: #F4F6F2; --surface: #FFFFFF; --surface-2: #EAEEE8;
+    --line: #E1E5DD;  --line-strong: #C7CEC4;
+    --ink: #121A16;   --ink-2: #4A554F;  --ink-3: #68736D;
+    --brand: #0B5C45; --brand-press: #084535; --brand-wash: #E6F1EC; --brand-ink: #FFFFFF;
+    --fajr: #3B4A8C;  --fajr-wash: #E9EBF6;
+    --dhuhr: #8C6208; --dhuhr-wash: #F7EEDB;
+    --asr: #9E4E24;   --asr-wash: #F7E9E1;
+    --maghrib: #8B3350; --maghrib-wash: #F7E6EC;
+    --isha: #383162;  --isha-wash: #EAE8F3;
+    --caution: #8A5A00; --caution-wash: #FBF2DC;
+    --danger: #9E2B25;  --danger-wash: #F8E7E5;
+    --elev-float: 0 6px 24px -14px rgb(0 0 0 / 0.35), 0 0 0 1px var(--line);
+    --elev-sheet: 0 -10px 32px -18px rgb(0 0 0 / 0.3);
+
+    color-scheme: light;
   }
 }
 
+/* An explicit dark choice has to beat a light system preference, so the base
+   values are repeated at a selector the media query above cannot outrank. */
 :root[data-theme="dark"] {
-  --paper: #0D1512; --surface: #161F1B; --surface-sunk: #202B26;
-  --line: #263129;  --line-strong: #364439;
-  --ink: #ECF1EE;   --ink-2: #A9B4AE;  --ink-3: #8A958F;
-  --brand: #3FA383; --brand-press: #58B99A; --brand-wash: #14261F; --brand-ink: #06120E;
-  --fajr: #8D9BDC; --fajr-wash: #1A1E33;
-  --dhuhr: #DCAE4A; --dhuhr-wash: #2B2413;
-  --asr: #DE8C5E; --asr-wash: #2E1D14;
-  --maghrib: #D97794; --maghrib-wash: #2D1721;
-  --isha: #9A90DA; --isha-wash: #1E1A31;
-  --ok: #3FA383;
-  --caution: #DCAE4A; --caution-wash: #2B2413;
-  --danger: #E0796F;  --danger-wash: #2E1614;
-}
+  --paper: #0A0F0D; --surface: #141B18; --surface-2: #1D2723;
+  --line: #263129;  --line-strong: #38463D;
+  --ink: #F1F5F2;   --ink-2: #AEB9B3;  --ink-3: #85918B;
+  --brand: #3FA383; --brand-press: #58BE99; --brand-wash: #14261F; --brand-ink: #06120E;
+  --fajr: #7F8FE0;  --fajr-wash: #171A2C;
+  --dhuhr: #E0B457; --dhuhr-wash: #2A2314;
+  --asr: #E08B5C;   --asr-wash: #2B1C14;
+  --maghrib: #D9738F; --maghrib-wash: #2B161E;
+  --isha: #9A90DA;  --isha-wash: #1C1930;
+  --caution: #E0B457; --caution-wash: #2A2314;
+  --danger: #E07A6F;  --danger-wash: #2C1614;
+  --elev-float: 0 8px 32px -12px rgb(0 0 0 / 0.7), 0 0 0 1px var(--line);
+  --elev-sheet: 0 -12px 40px -16px rgb(0 0 0 / 0.8);
 
-/**
- * The prayer accent transitions over 600ms when the window changes (§7), but
- * only then — the class is added by the clock hook, never left on, so no
- * ordinary render animates.
- */
-:root.window-changing {
-  transition: --now var(--base) linear;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  :root.window-changing { transition: none; }
+  color-scheme: dark;
 }

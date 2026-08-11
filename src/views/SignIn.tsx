@@ -89,7 +89,7 @@ export default function SignIn() {
             autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="mt-1 block w-full rounded-lg bg-surface-sunk px-3 py-2 text-base font-normal text-ink ring-1 ring-line"
+            className="mt-1 block w-full rounded-lg bg-surface-2 px-3 py-2 text-base font-normal text-ink ring-1 ring-line"
           />
         </label>
 
@@ -102,7 +102,7 @@ export default function SignIn() {
             autoComplete={mode === "in" ? "current-password" : "new-password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="mt-1 block w-full rounded-lg bg-surface-sunk px-3 py-2 text-base font-normal text-ink ring-1 ring-line"
+            className="mt-1 block w-full rounded-lg bg-surface-2 px-3 py-2 text-base font-normal text-ink ring-1 ring-line"
           />
         </label>
 

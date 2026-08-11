@@ -266,7 +266,7 @@ export default function MapView({
           ref={holder}
           role="application"
           aria-label="Map of nearby masjids"
-          className="h-[55vh] min-h-[320px] w-full overflow-hidden rounded-xl border border-line bg-surface-sunk"
+          className="h-[55vh] min-h-[320px] w-full overflow-hidden rounded-xl border border-line bg-surface-2"
         />
 
         {mapStatus === "unconfigured" && (
@@ -297,7 +297,7 @@ export default function MapView({
               <button
                 type="button"
                 onClick={() => setSelectedId(masjid.id)}
-                className="flex w-full items-baseline justify-between gap-3 p-3.5 text-left hover:bg-surface-sunk"
+                className="flex w-full items-baseline justify-between gap-3 p-3.5 text-left hover:bg-surface-2"
               >
                 <span className="min-w-0 truncate text-sm font-medium text-ink">
                   {masjid.name}
@@ -316,7 +316,7 @@ export default function MapView({
 
 function MapOverlay({ children }: { children: React.ReactNode }) {
   return (
-    <div className="pointer-events-none absolute inset-0 flex items-center justify-center rounded-xl bg-surface-sunk p-6 text-center text-sm text-ink-2">
+    <div className="pointer-events-none absolute inset-0 flex items-center justify-center rounded-xl bg-surface-2 p-6 text-center text-sm text-ink-2">
       {children}
     </div>
   );

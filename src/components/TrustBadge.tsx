@@ -28,7 +28,7 @@ export default function TrustBadge({
         "rounded-full px-2 py-0.5 text-[11px] font-medium " +
         (status.warn
           ? "bg-caution-wash text-caution"
-          : "bg-surface-sunk text-ink-3")
+          : "bg-surface-2 text-ink-3")
       }
     >
       {status.label}

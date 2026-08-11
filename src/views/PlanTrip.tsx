@@ -765,7 +765,7 @@ function OptionCard({
 
       {timeline.couldLeaveAt &&
         timeline.waitMinutes > LONG_WAIT_MINUTES && (
-          <p className="mt-2 rounded-lg bg-surface-sunk px-2.5 py-1.5 text-xs text-ink-2">
+          <p className="mt-2 rounded-lg bg-surface-2 px-2.5 py-1.5 text-xs text-ink-2">
             That&rsquo;s a {Math.round(timeline.waitMinutes)} minute wait —
             leave at{" "}
             <span className="font-semibold tabular-nums text-ink">
@@ -839,7 +839,7 @@ function Badge({
   const tones = {
     good: "bg-brand-wash text-brand-press",
     warn: "bg-caution-wash text-caution",
-    neutral: "bg-surface-sunk text-ink-2",
+    neutral: "bg-surface-2 text-ink-2",
   };
   return (
     <span

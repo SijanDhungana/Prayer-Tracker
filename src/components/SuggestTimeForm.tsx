@@ -160,7 +160,7 @@ export default function SuggestTimeForm({
             if (next === "jumuah") setMode("clock");
             else if (next === "maghrib") setMode("offset");
           }}
-          className="mt-1 block w-full rounded-lg bg-surface-sunk px-3 py-2 text-base font-normal text-ink ring-1 ring-line"
+          className="mt-1 block w-full rounded-lg bg-surface-2 px-3 py-2 text-base font-normal text-ink ring-1 ring-line"
         >
           {PRAYERS.map((p) => (
             <option key={p} value={p}>
@@ -172,7 +172,7 @@ export default function SuggestTimeForm({
       </label>
 
       {prayer !== "jumuah" && (
-        <div className="mt-4 grid grid-cols-2 gap-1 rounded-xl bg-surface-sunk p-1">
+        <div className="mt-4 grid grid-cols-2 gap-1 rounded-xl bg-surface-2 p-1">
           {(["offset", "clock"] as const).map((m) => (
             <button
               key={m}
@@ -203,7 +203,7 @@ export default function SuggestTimeForm({
               required
               value={offset}
               onChange={(e) => setOffset(e.target.value)}
-              className="mt-1 block w-full rounded-lg bg-surface-sunk px-3 py-2 text-base font-normal tabular-nums text-ink ring-1 ring-line"
+              className="mt-1 block w-full rounded-lg bg-surface-2 px-3 py-2 text-base font-normal tabular-nums text-ink ring-1 ring-line"
             />
           </label>
           <p className="mt-1 text-xs text-ink-3">
@@ -220,7 +220,7 @@ export default function SuggestTimeForm({
             required
             value={time}
             onChange={(e) => setTime(e.target.value)}
-            className="mt-1 block w-full rounded-lg bg-surface-sunk px-3 py-2 text-base font-normal tabular-nums text-ink ring-1 ring-line"
+            className="mt-1 block w-full rounded-lg bg-surface-2 px-3 py-2 text-base font-normal tabular-nums text-ink ring-1 ring-line"
           />
         </label>
       )}
@@ -251,7 +251,7 @@ export default function SuggestTimeForm({
           value={note}
           onChange={(e) => setNote(e.target.value)}
           placeholder="Sign at the masjid, called the office, their website…"
-          className="mt-1 block w-full rounded-lg bg-surface-sunk px-3 py-2 text-base font-normal text-ink ring-1 ring-line placeholder:text-ink-3"
+          className="mt-1 block w-full rounded-lg bg-surface-2 px-3 py-2 text-base font-normal text-ink ring-1 ring-line placeholder:text-ink-3"
         />
       </label>
 

@@ -162,7 +162,7 @@ export default function ComparePrayer({
             <li key={masjid.id}>
               <a
                 href={masjidPath(masjid.id)}
-                className="flex items-baseline justify-between gap-3 p-4 hover:bg-surface-sunk"
+                className="flex items-baseline justify-between gap-3 p-4 hover:bg-surface-2"
               >
                 <span className="min-w-0">
                   <span className="block truncate font-medium text-ink">

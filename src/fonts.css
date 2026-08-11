@@ -57,3 +57,39 @@
   src: url('/fonts/plexmono-500.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+
+/**
+ * Metric-matched fallbacks, so the swap from system font to webfont doesn't
+ * reflow the page (design spec v2 §4).
+ *
+ * The percentages are measured, not guessed: size-adjust is each webfont's
+ * xAvgCharWidth over the fallback's, and the ascent/descent overrides are the
+ * webfont's own metrics divided back through that scale so line boxes match
+ * too. Recompute with scripts/font-metrics.py if a face is ever swapped.
+ */
+@font-face {
+  font-family: "Bricolage Fallback";
+  src: local("Arial");
+  size-adjust: 103.69%;
+  ascent-override: 89.69%;
+  descent-override: 26.04%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Instrument Fallback";
+  src: local("Arial");
+  size-adjust: 106.72%;
+  ascent-override: 90.89%;
+  descent-override: 23.43%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Plex Fallback";
+  src: local("Courier New");
+  size-adjust: 100%;
+  ascent-override: 102.5%;
+  descent-override: 27.5%;
+  line-gap-override: 0%;
+}

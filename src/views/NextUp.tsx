@@ -230,7 +230,7 @@ function Row({
       <a
         href={masjidPath(masjid.id)}
         className={
-          "flex items-center justify-between gap-3 p-4 hover:bg-surface-sunk " +
+          "flex items-center justify-between gap-3 p-4 hover:bg-surface-2 " +
           (started ? "bg-caution-wash" : "")
         }
       >

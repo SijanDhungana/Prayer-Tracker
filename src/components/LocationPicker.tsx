@@ -19,7 +19,7 @@ export default function LocationPicker({
           id="reference-point"
           value={usingDevice ? "device" : presetId}
           onChange={(e) => selectPreset(e.target.value)}
-          className="min-w-0 flex-1 rounded-lg bg-surface-sunk px-2 py-1.5 text-sm font-medium text-ink ring-1 ring-line"
+          className="min-w-0 flex-1 rounded-lg bg-surface-2 px-2 py-1.5 text-sm font-medium text-ink ring-1 ring-line"
         >
           {usingDevice && <option value="device">My location</option>}
           {PRESETS.map((preset) => (

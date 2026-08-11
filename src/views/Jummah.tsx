@@ -174,7 +174,7 @@ export default function Jummah({
             <li key={`${row.masjid.id}-${row.index}`}>
               <a
                 href={masjidPath(row.masjid.id)}
-                className="flex items-baseline justify-between gap-3 p-4 hover:bg-surface-sunk"
+                className="flex items-baseline justify-between gap-3 p-4 hover:bg-surface-2"
               >
                 <span className="min-w-0">
                   <span className="block truncate font-medium text-ink">

@@ -111,7 +111,7 @@ export default function TripMap({
       ref={holder}
       role="application"
       aria-label={`Route via ${masjid.name}`}
-      className="mt-4 h-72 w-full overflow-hidden rounded-xl border border-line bg-surface-sunk"
+      className="mt-4 h-72 w-full overflow-hidden rounded-xl border border-line bg-surface-2"
     />
   );
 }

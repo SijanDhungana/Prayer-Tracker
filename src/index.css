@@ -11,7 +11,7 @@
 @theme inline {
   --color-paper: var(--paper);
   --color-surface: var(--surface);
-  --color-surface-sunk: var(--surface-sunk);
+  --color-surface-2: var(--surface-2);
   --color-line: var(--line);
   --color-line-strong: var(--line-strong);
 
@@ -48,14 +48,17 @@
   --radius-sm: var(--r-sm);
   --radius-md: var(--r-md);
   --radius-lg: var(--r-lg);
+  --radius-xl: var(--r-xl);
   --radius-full: var(--r-full);
+
+  --shadow-float: var(--elev-float);
+  --shadow-sheet: var(--elev-sheet);
 }
 
 /* Sizing in rem throughout, so a 200% browser font setting scales the layout
    rather than clipping it (§4, §11). */
-html {
-  color-scheme: light dark;
-}
+/* color-scheme is set per-theme in tokens.css so form controls, scrollbars
+   and the canvas behind the page all follow the chosen palette. */
 
 body {
   background: var(--paper);
