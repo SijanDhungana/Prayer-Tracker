@@ -1,0 +1,25 @@
+# .github/workflows/ci.yml
+# Runs the same build Vercel runs, on every push and pull request, so a
+# broken build fails here — visibly, on the commit — instead of showing up
+# as a red Vercel deployment after the fact.
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
