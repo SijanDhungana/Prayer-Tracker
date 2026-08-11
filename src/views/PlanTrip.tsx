@@ -1,0 +1,589 @@
+import { useState } from "react";
+
+import { formatDistance, haversineKm, type Point } from "../lib/distance";
+import { googleMapsConfigured } from "../lib/googleMaps";
+import { adhanTimes, iqamahTimes } from "../lib/prayer";
+import { formatTime, minutesOfDay, todayIn, zonedTimeOnDate } from "../lib/time";
+import {
+  candidatesAlongRoute,
+  directionsUrl,
+  drivingMinutes,
+  drivingMinutesTo,
+  geocode,
+} from "../lib/travel";
+import {
+  DEFAULT_ARRIVAL_BUFFER_MINUTES,
+  DEFAULT_STOP_MINUTES,
+  LONG_WAIT_MINUTES,
+  planTrip,
+  type Candidate,
+  type Option,
+  type PlanResult,
+  type Priority,
+} from "../lib/tripPlan";
+import { PRAYERS, PRAYER_LABELS, type Masjid, type Prayer } from "../lib/types";
+
+/** How far off the straight line a masjid can sit and still count. */
+const CORRIDOR_KM = 6;
+/** Cap on masjids priced per search — each one costs a matrix element. */
+const MAX_CANDIDATES = 8;
+
+type Phase = "idle" | "working" | "done" | "error";
+
+export default function PlanTrip({
+  masjids,
+  from,
+  fromLabel,
+}: {
+  masjids: Masjid[];
+  from: Point;
+  fromLabel: string;
+}) {
+  const today = todayIn();
+  const [destination, setDestination] = useState("");
+  const [deadline, setDeadline] = useState("");
+  const [prayer, setPrayer] = useState<Prayer>(() => currentPrayer(masjids, today));
+  const [priority, setPriority] = useState<Priority>("destination");
+
+  const [phase, setPhase] = useState<Phase>("idle");
+  const [error, setError] = useState<string | null>(null);
+  const [result, setResult] = useState<PlanResult | null>(null);
+  const [destLabel, setDestLabel] = useState<string | null>(null);
+  const [destPoint, setDestPoint] = useState<Point | null>(null);
+  const [searched, setSearched] = useState(0);
+
+  async function plan(event: React.FormEvent) {
+    event.preventDefault();
+    if (!destination.trim()) return;
+
+    setPhase("working");
+    setError(null);
+    setResult(null);
+
+    try {
+      const now = new Date();
+      const target = await geocode(destination.trim());
+      setDestLabel(target.label);
+      setDestPoint(target.point);
+
+      const shortlist = candidatesAlongRoute(
+        masjids,
+        from,
+        target.point,
+        CORRIDOR_KM,
+        MAX_CANDIDATES,
+      );
+      setSearched(shortlist.length);
+
+      if (shortlist.length === 0) {
+        setResult({
+          viable: [],
+          compromises: [],
+          directArrival: null,
+          directMeetsDeadline: true,
+        });
+        setPhase("done");
+        return;
+      }
+
+      // Leg 1 and the direct drive share an origin, so one call covers both:
+      // the destination rides along as the last entry.
+      const points = shortlist.map((m) => ({ lat: m.lat, lng: m.lng }));
+      const outbound = await drivingMinutes(
+        from,
+        [...points, target.point],
+        now,
+      );
+      const directMinutes = outbound[outbound.length - 1];
+      if (directMinutes == null) {
+        throw new Error("Couldn't find a route to that destination.");
+      }
+
+      // Leg 2 leaves after praying. One representative departure — the
+      // candidates are all within half an hour of each other, and paying for
+      // a per-masjid prediction isn't worth the couple of minutes it'd shave.
+      const iqamahByMasjid = shortlist.map(
+        (masjid) => iqamahTimes(masjid, today)[prayer],
+      );
+      const departAfter = representativeDeparture(now, iqamahByMasjid);
+      const inbound = await drivingMinutesTo(points, target.point, departAfter);
+
+      const deadlineAt = deadline ? zonedTimeOnDate(today, deadline) : null;
+      const windowEnds = prayerWindowEnds(shortlist, prayer, today);
+
+      const candidates: Candidate[] = [];
+      shortlist.forEach((masjid, index) => {
+        const toMasjid = outbound[index];
+        const toDestination = inbound[index];
+        // A masjid Google can't route to is dropped, not guessed at.
+        if (toMasjid == null || toDestination == null) return;
+        candidates.push({
+          masjid,
+          legs: { toMasjid, toDestination },
+          iqamah: iqamahByMasjid[index],
+          prayerWindowEnds: windowEnds[index],
+        });
+      });
+
+      setResult(
+        planTrip(
+          candidates,
+          { now, deadline: deadlineAt, prayer },
+          directMinutes,
+          priority,
+        ),
+      );
+      setPhase("done");
+    } catch (err) {
+      setError(
+        err instanceof Error ? err.message : "Something went wrong planning that trip.",
+      );
+      setPhase("error");
+    }
+  }
+
+  if (!googleMapsConfigured) {
+    return (
+      <section>
+        <h1 className="text-2xl font-semibold tracking-tight">Plan a trip</h1>
+        <p className="mt-3 rounded-xl border border-dashed border-stone-300 p-6 text-center text-sm text-stone-600">
+          Trip planning needs a Google Maps API key. Everything else on the
+          site works without it.
+        </p>
+      </section>
+    );
+  }
+
+  return (
+    <section>
+      <h1 className="text-2xl font-semibold tracking-tight">Plan a trip</h1>
+      <p className="mt-1 text-sm text-stone-600">
+        Where are you headed? We&rsquo;ll find masjids on the way and work out
+        whether you can pray and still get there.
+      </p>
+
+      <form onSubmit={plan} className="mt-4 space-y-3">
+        <label className="block">
+          <span className="text-sm font-medium text-stone-700">Destination</span>
+          <input
+            type="text"
+            value={destination}
+            onChange={(e) => setDestination(e.target.value)}
+            placeholder="Costco, 50 Overlea Blvd"
+            className="mt-1 w-full rounded-lg bg-white px-3 py-2 text-sm text-stone-900 ring-1 ring-stone-200 placeholder:text-stone-400"
+          />
+        </label>
+
+        <div className="flex flex-wrap gap-3">
+          <label className="min-w-0 flex-1">
+            <span className="text-sm font-medium text-stone-700">
+              Arrive by <span className="font-normal text-stone-400">(optional)</span>
+            </span>
+            <input
+              type="time"
+              value={deadline}
+              onChange={(e) => setDeadline(e.target.value)}
+              className="mt-1 w-full rounded-lg bg-white px-3 py-2 text-sm tabular-nums text-stone-900 ring-1 ring-stone-200"
+            />
+          </label>
+
+          <label className="min-w-0 flex-1">
+            <span className="text-sm font-medium text-stone-700">Prayer</span>
+            <select
+              value={prayer}
+              onChange={(e) => setPrayer(e.target.value as Prayer)}
+              className="mt-1 w-full rounded-lg bg-white px-3 py-2 text-sm text-stone-900 ring-1 ring-stone-200"
+            >
+              {PRAYERS.map((p) => (
+                <option key={p} value={p}>
+                  {PRAYER_LABELS[p]}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+
+        <fieldset>
+          <legend className="text-sm font-medium text-stone-700">
+            What matters more?
+          </legend>
+          <div className="mt-1.5 flex gap-2">
+            <PriorityChip
+              active={priority === "destination"}
+              onClick={() => setPriority("destination")}
+              label="Getting there on time"
+              hint="Prayer if it fits"
+            />
+            <PriorityChip
+              active={priority === "prayer"}
+              onClick={() => setPriority("prayer")}
+              label="Catching the jamaah"
+              hint="Arrive late if needed"
+            />
+          </div>
+        </fieldset>
+
+        <button
+          type="submit"
+          disabled={phase === "working" || !destination.trim()}
+          className="w-full rounded-lg bg-emerald-700 px-4 py-2.5 text-sm font-semibold text-white hover:bg-emerald-800 disabled:opacity-50"
+        >
+          {phase === "working" ? "Working it out…" : "Find a way"}
+        </button>
+      </form>
+
+      <p className="mt-2 text-xs text-stone-500">
+        Starting from {fromLabel}. Assumes {DEFAULT_STOP_MINUTES} minutes at the
+        masjid and {DEFAULT_ARRIVAL_BUFFER_MINUTES} minutes to park and walk in.
+      </p>
+
+      {error && (
+        <p className="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">
+          {error}
+        </p>
+      )}
+
+      {result && phase === "done" && (
+        <Results
+          result={result}
+          priority={priority}
+          prayer={prayer}
+          destLabel={destLabel}
+          destPoint={destPoint}
+          from={from}
+          searched={searched}
+        />
+      )}
+    </section>
+  );
+}
+
+function PriorityChip({
+  active,
+  onClick,
+  label,
+  hint,
+}: {
+  active: boolean;
+  onClick: () => void;
+  label: string;
+  hint: string;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={active}
+      className={
+        "min-w-0 flex-1 rounded-lg px-3 py-2 text-left text-sm transition-colors " +
+        (active
+          ? "bg-emerald-700 text-white"
+          : "bg-white text-stone-700 ring-1 ring-stone-200 hover:text-stone-900")
+      }
+    >
+      <span className="block font-medium">{label}</span>
+      <span
+        className={
+          "block text-[11px] " + (active ? "text-emerald-100" : "text-stone-500")
+        }
+      >
+        {hint}
+      </span>
+    </button>
+  );
+}
+
+function Results({
+  result,
+  priority,
+  prayer,
+  destLabel,
+  destPoint,
+  from,
+  searched,
+}: {
+  result: PlanResult;
+  priority: Priority;
+  prayer: Prayer;
+  destLabel: string | null;
+  destPoint: Point | null;
+  from: Point;
+  searched: number;
+}) {
+  const label = PRAYER_LABELS[prayer];
+  const nothing = result.viable.length === 0 && result.compromises.length === 0;
+
+  return (
+    <div className="mt-6">
+      {destLabel && (
+        <p className="text-sm text-stone-600">
+          To <span className="font-medium text-stone-900">{destLabel}</span>
+          {result.directArrival && (
+            <>
+              {" "}
+              · straight there by{" "}
+              <span className="tabular-nums">
+                {formatTime(result.directArrival)}
+              </span>
+            </>
+          )}
+        </p>
+      )}
+
+      {nothing ? (
+        <p className="mt-3 rounded-xl border border-dashed border-stone-300 p-6 text-center text-sm text-stone-600">
+          {searched === 0
+            ? "No masjids sit anywhere near that route. Try a destination across town, or check the Map tab."
+            : `None of the ${searched} masjids on that route can fit ${label} in — the prayer window closes before you'd arrive.`}
+        </p>
+      ) : (
+        <>
+          {result.viable.length > 0 ? (
+            <>
+              <h2 className="mt-4 text-sm font-semibold text-stone-900">
+                {priority === "destination"
+                  ? "Gets you there on time"
+                  : `Catches ${label} in jamaah`}
+              </h2>
+              <ul className="mt-2 space-y-3">
+                {result.viable.map((option) => (
+                  <OptionCard
+                    key={option.masjid.id}
+                    option={option}
+                    prayer={prayer}
+                    from={from}
+                    destPoint={destPoint}
+                  />
+                ))}
+              </ul>
+            </>
+          ) : (
+            <p className="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">
+              {priority === "destination"
+                ? "Nothing gets you there on time with a prayer stop. Closest options below."
+                : `No masjid on this route makes ${label} in jamaah. Closest options below.`}
+            </p>
+          )}
+
+          {result.compromises.length > 0 && (
+            <>
+              <h2 className="mt-6 text-sm font-semibold text-stone-900">
+                {priority === "destination"
+                  ? "Would make you late"
+                  : "Misses the jamaah"}
+              </h2>
+              <p className="text-xs text-stone-500">
+                Shown so the call is yours, not the app&rsquo;s.
+              </p>
+              <ul className="mt-2 space-y-3">
+                {result.compromises.slice(0, 3).map((option) => (
+                  <OptionCard
+                    key={option.masjid.id}
+                    option={option}
+                    prayer={prayer}
+                    from={from}
+                    destPoint={destPoint}
+                    muted
+                  />
+                ))}
+              </ul>
+            </>
+          )}
+        </>
+      )}
+
+      <p className="mt-4 text-xs text-stone-500">
+        Drive times are Google&rsquo;s traffic estimates and iqamah times are
+        community-collected — leave yourself room.
+      </p>
+    </div>
+  );
+}
+
+function OptionCard({
+  option,
+  prayer,
+  from,
+  destPoint,
+  muted = false,
+}: {
+  option: Option;
+  prayer: Prayer;
+  from: Point;
+  destPoint: Point | null;
+  muted?: boolean;
+}) {
+  const { masjid, timeline } = option;
+  const label = PRAYER_LABELS[prayer];
+
+  return (
+    <li
+      className={
+        "rounded-xl border bg-white p-4 " +
+        (muted ? "border-stone-200 opacity-90" : "border-emerald-200 shadow-sm")
+      }
+    >
+      <div className="flex items-baseline justify-between gap-3">
+        <h3 className="min-w-0 text-base font-semibold text-stone-900">
+          {masjid.name}
+        </h3>
+        <span className="shrink-0 text-xs tabular-nums text-stone-500">
+          {formatDistance(haversineKm(from, masjid))}
+        </span>
+      </div>
+
+      <div className="mt-1 flex flex-wrap gap-1.5">
+        <Badge tone={option.catchesJamaah ? "good" : "warn"}>
+          {option.catchesJamaah ? `${label} in jamaah` : `Misses ${label} jamaah`}
+        </Badge>
+        <Badge tone={option.meetsDeadline ? "good" : "warn"}>
+          {option.meetsDeadline
+            ? "On time"
+            : `${Math.round(option.minutesLate)} min late`}
+        </Badge>
+        <Badge tone="neutral">
+          +{Math.round(timeline.detourMinutes)} min detour
+        </Badge>
+      </div>
+
+      <ol className="mt-3 space-y-1 border-t border-stone-100 pt-3 text-sm">
+        <Step time={timeline.leaveNow} text="Leave" />
+        <Step time={timeline.arriveMasjid} text="Reach the masjid" />
+        {timeline.waitMinutes >= 1 && (
+          <Step
+            time={timeline.prayStart}
+            text={`${label} iqamah`}
+            note={`wait ${Math.round(timeline.waitMinutes)} min`}
+          />
+        )}
+        <Step time={timeline.departMasjid} text="Back on the road" />
+        <Step
+          time={timeline.arriveDestination}
+          text="Arrive"
+          emphasis
+        />
+      </ol>
+
+      {timeline.couldLeaveAt &&
+        timeline.waitMinutes > LONG_WAIT_MINUTES && (
+          <p className="mt-2 rounded-lg bg-stone-50 px-2.5 py-1.5 text-xs text-stone-600">
+            That&rsquo;s a {Math.round(timeline.waitMinutes)} minute wait —
+            leave at{" "}
+            <span className="font-semibold tabular-nums text-stone-900">
+              {formatTime(timeline.couldLeaveAt)}
+            </span>{" "}
+            instead and walk in just before the iqamah.
+          </p>
+        )}
+
+      {destPoint && (
+        <a
+          href={directionsUrl(from, masjid, destPoint)}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-3 inline-block text-sm font-medium text-emerald-700 underline underline-offset-2"
+        >
+          Directions via this masjid →
+        </a>
+      )}
+    </li>
+  );
+}
+
+function Step({
+  time,
+  text,
+  note,
+  emphasis = false,
+}: {
+  time: Date;
+  text: string;
+  note?: string;
+  emphasis?: boolean;
+}) {
+  return (
+    <li className="flex items-baseline gap-3">
+      <span
+        className={
+          "w-[4.5rem] shrink-0 tabular-nums " +
+          (emphasis ? "font-semibold text-stone-900" : "text-stone-500")
+        }
+      >
+        {formatTime(time)}
+      </span>
+      <span className={emphasis ? "font-medium text-stone-900" : "text-stone-700"}>
+        {text}
+        {note && <span className="ml-1.5 text-xs text-stone-400">({note})</span>}
+      </span>
+    </li>
+  );
+}
+
+function Badge({
+  tone,
+  children,
+}: {
+  tone: "good" | "warn" | "neutral";
+  children: React.ReactNode;
+}) {
+  const tones = {
+    good: "bg-emerald-50 text-emerald-800",
+    warn: "bg-amber-50 text-amber-800",
+    neutral: "bg-stone-100 text-stone-600",
+  };
+  return (
+    <span
+      className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${tones[tone]}`}
+    >
+      {children}
+    </span>
+  );
+}
+
+/**
+ * A single departure time to price the homeward leg with.
+ *
+ * The candidates' iqamahs are all within about half an hour, so the latest of
+ * them plus the stop is close enough for a traffic prediction — and it errs
+ * toward the busier end rather than flattering the estimate.
+ */
+function representativeDeparture(now: Date, iqamahs: (Date | null)[]): Date {
+  const times = iqamahs.filter((t): t is Date => t != null && t > now);
+  const anchor =
+    times.length > 0
+      ? new Date(Math.max(...times.map((t) => t.getTime())))
+      : now;
+  return new Date(anchor.getTime() + DEFAULT_STOP_MINUTES * 60_000);
+}
+
+/**
+ * When each prayer's window shuts — the next prayer's adhan, since a prayer
+ * is only valid until then. Isha is left open: it runs into the night, and
+ * cutting it at midnight would wrongly rule out late trips.
+ */
+function prayerWindowEnds(
+  masjids: Masjid[],
+  prayer: Prayer,
+  today: Date,
+): (Date | null)[] {
+  const order = PRAYERS.indexOf(prayer);
+  const next = PRAYERS[order + 1];
+  if (!next) return masjids.map(() => null);
+  return masjids.map((masjid) => adhanTimes(masjid, today)[next]);
+}
+
+/** Default the picker to the prayer you're most likely planning around. */
+function currentPrayer(masjids: Masjid[], today: Date): Prayer {
+  const reference = masjids[0];
+  if (!reference) return "dhuhr";
+
+  const times = adhanTimes(reference, today);
+  const nowMinutes = minutesOfDay(new Date());
+
+  // The last prayer whose adhan has passed — that's the one you still owe.
+  let current: Prayer = "fajr";
+  for (const prayer of PRAYERS) {
+    if (minutesOfDay(times[prayer]) <= nowMinutes) current = prayer;
+  }
+  return current;
+}

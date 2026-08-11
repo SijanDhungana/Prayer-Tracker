@@ -19,6 +19,9 @@ import SignIn from "./views/SignIn";
 // and most visits never open the map. Split so a visitor checking a time
 // pays nothing for it.
 const MapView = lazy(() => import("./views/MapView"));
+// Same reasoning: trip planning pulls in the Maps SDK, and most visits are
+// someone checking a time rather than routing a journey.
+const PlanTrip = lazy(() => import("./views/PlanTrip"));
 
 export default function App() {
   return (
@@ -75,6 +78,18 @@ function Shell() {
             }
           >
             <MapView masjids={masjids} date={today} reference={reference} />
+          </Suspense>
+        ) : route.name === "plan" ? (
+          <Suspense
+            fallback={
+              <p className="text-sm text-stone-500">Loading trip planning…</p>
+            }
+          >
+            <PlanTrip
+              masjids={masjids}
+              from={reference.point}
+              fromLabel={reference.label}
+            />
           </Suspense>
         ) : route.name === "compare" ? (
           <ComparePrayer
