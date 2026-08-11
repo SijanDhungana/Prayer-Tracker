@@ -55,7 +55,10 @@ export function loadGoogleMaps(): Promise<typeof google> {
     script.src =
       "https://maps.googleapis.com/maps/api/js?key=" +
       encodeURIComponent(GOOGLE_MAPS_API_KEY) +
-      "&v=weekly&loading=async";
+      // `places` powers the destination autocomplete. Requesting it here
+      // rather than lazily keeps it to one script fetch, and the app degrades
+      // to plain typed addresses if the key can't use it.
+      "&libraries=places&v=weekly&loading=async";
     script.onload = () => resolve(window.google);
     script.onerror = () => reject(new Error("Failed to load Google Maps."));
     document.head.appendChild(script);
