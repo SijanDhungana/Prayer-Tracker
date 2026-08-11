@@ -601,7 +601,8 @@
     ],
     "lastVerified": "2026-08-11",
     "needsReview": false,
-    "source": "scrape"
+    "source": "scrape",
+    "timesUrl": "https://islaminfo.com/prayer-times"
   },
   {
     "id": "abu-huraira-center",
@@ -670,11 +671,39 @@
       "method": "NorthAmerica",
       "madhab": "hanafi"
     },
-    "iqamah": {},
-    "jumuah": [],
-    "lastVerified": null,
-    "needsReview": true,
-    "source": "seed"
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:40"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:45"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "19:15"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 4
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "22:10"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "14:00"
+      },
+      {
+        "khutbah": "15:15"
+      }
+    ],
+    "lastVerified": "2026-08-11",
+    "needsReview": false,
+    "source": "scrape"
   },
   {
     "id": "baitul-mukarram",
@@ -704,11 +733,39 @@
       "method": "NorthAmerica",
       "madhab": "hanafi"
     },
-    "iqamah": {},
-    "jumuah": [],
-    "lastVerified": null,
-    "needsReview": true,
-    "source": "seed"
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:45"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:45"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "19:00"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 4
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "22:00"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:45"
+      },
+      {
+        "khutbah": "15:30"
+      }
+    ],
+    "lastVerified": "2026-08-11",
+    "needsReview": false,
+    "source": "scrape"
   },
   {
     "id": "ibrahim-jame-mosque",
@@ -755,11 +812,42 @@
       "method": "NorthAmerica",
       "madhab": "hanafi"
     },
-    "iqamah": {},
-    "jumuah": [],
-    "lastVerified": null,
-    "needsReview": true,
-    "source": "seed"
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:45"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:45"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:45"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 4
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "22:00"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:45"
+      },
+      {
+        "khutbah": "14:45"
+      },
+      {
+        "khutbah": "15:45"
+      }
+    ],
+    "lastVerified": "2026-08-11",
+    "needsReview": false,
+    "source": "scrape"
   },
   {
     "id": "markham-masjid",
@@ -789,11 +877,40 @@
       "method": "NorthAmerica",
       "madhab": "hanafi"
     },
-    "iqamah": {},
-    "jumuah": [],
-    "lastVerified": null,
-    "needsReview": true,
-    "source": "seed"
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:30"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:45"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:45"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 6
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "22:00"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:35"
+      },
+      {
+        "khutbah": "14:00"
+      }
+    ],
+    "lastVerified": "2026-08-11",
+    "needsReview": false,
+    "source": "scrape",
+    "timesUrl": "https://masjidelnoor.ca/#prayer-times"
   },
   {
     "id": "masjid-vaughan",
