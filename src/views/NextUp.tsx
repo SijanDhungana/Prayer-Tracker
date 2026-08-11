@@ -12,7 +12,7 @@ import { prayerLabel } from "../lib/planPrayer";
 import { DEFAULT_MAGHRIB_OFFSET_MINUTES } from "../lib/prayer";
 import { comparePath, jummahPath, listPath, masjidPath } from "../lib/route";
 import { formatTime } from "../lib/time";
-import { isStale } from "../lib/trust";
+import { TrustNote } from "../components/TrustBadge";
 import type { Masjid } from "../lib/types";
 
 /**
@@ -224,9 +224,6 @@ function Row({
   started: boolean;
 }) {
   const { masjid, iqamah, minutesAway, km, sitting, assumed } = row;
-  // An assumed time is already caveated by its own label; saying "unconfirmed"
-  // on top of it just stacks two hedges on one row.
-  const stale = !assumed && isStale(masjid.lastVerified, date);
 
   return (
     <li>
@@ -244,10 +241,10 @@ function Row({
           <span className="mt-0.5 block text-xs text-stone-500">
             {formatDistance(km)}
             {sitting && ` · ${sitting.index} of ${sitting.total} sittings`}
-            {/* CLAUDE.md §14: never show a time without how old it is. */}
-            {stale && (
-              <span className="text-amber-700"> · unconfirmed</span>
-            )}
+            {/* CLAUDE.md §14: never show a time without how old it is. An
+                assumed time already carries its own caveat below, so it is
+                not hedged twice. */}
+            {!assumed && <TrustNote masjid={masjid} today={date} />}
           </span>
         </span>
 

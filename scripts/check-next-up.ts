@@ -6,7 +6,7 @@ import {
   nextCongregation,
   nextUpRows,
 } from "../src/lib/nextUp";
-import { daysSinceVerified, isStale, verifiedAgo } from "../src/lib/trust";
+import { daysSinceVerified, isStale, trustStatus, verifiedAgo } from "../src/lib/trust";
 import { zonedTimeOnDate } from "../src/lib/time";
 import type { Masjid } from "../src/lib/types";
 
@@ -128,6 +128,27 @@ check("46 days is stale", isStale("2026-07-02", new Date(2026, 7, 17)), true);
 check("45 days exactly is not yet stale", isStale("2026-07-03", new Date(2026, 7, 17)), false);
 check("verifiedAgo reads naturally", verifiedAgo("2026-08-16", monday), "yesterday");
 check("a future date is not reported as freshness", verifiedAgo("2026-09-01", monday), null);
+
+// --- trustStatus: one verdict every view shares ---------------------------
+const day = (iso: string, needsReview = false) => ({ lastVerified: iso, needsReview });
+{
+  const t = new Date(2026, 7, 17);
+  check("never verified leads, and warns",
+    trustStatus({ lastVerified: null }, t), { level:"unverified", label:"Not verified yet", warn:true });
+  check("a future date is treated as unverified, not fresh",
+    trustStatus(day("2026-09-01"), t).level, "unverified");
+  check("past the stale window it warns with the age",
+    trustStatus(day("2026-06-01"), t), { level:"stale", label:"Checked 77 days ago", warn:true });
+  // The whole point of ranking age above the flag: a masjid checked today
+  // with one unread field is not the same as one nobody has ever checked.
+  check("a fresh record with the scraper's flag is 'partly confirmed', not a warning",
+    trustStatus(day("2026-08-17", true), t), { level:"flagged", label:"Partly confirmed", warn:false });
+  check("age still wins over the flag when the record is old",
+    trustStatus(day("2026-06-01", true), t).level, "stale");
+  check("a clean fresh record just reports its age",
+    trustStatus(day("2026-08-17"), t), { level:"checked", label:"Checked today", warn:false });
+}
+check("a future date counts as stale too", isStale("2026-09-01", new Date(2026, 7, 17)), true);
 
 console.log(failed ? `\n${failed} FAILED` : "\nall passed");
 process.exit(failed ? 1 : 0);

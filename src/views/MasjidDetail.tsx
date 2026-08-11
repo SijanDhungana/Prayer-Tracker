@@ -16,6 +16,8 @@ import {
 } from "../lib/time";
 import { PRAYERS, PRAYER_LABELS, type Masjid, type Prayer } from "../lib/types";
 import SuggestTimeForm from "../components/SuggestTimeForm";
+import TrustBadge from "../components/TrustBadge";
+import { daysSinceVerified, trustStatus } from "../lib/trust";
 
 function mapsUrl(masjid: Masjid) {
   const query = encodeURIComponent(`${masjid.name}, ${masjid.address}`);
@@ -108,6 +110,8 @@ export default function MasjidDetail({
   const verified = masjid.lastVerified
     ? formatIsoDate(masjid.lastVerified)
     : null;
+  const status = trustStatus(masjid, date);
+  const daysStale = daysSinceVerified(masjid.lastVerified, date);
 
   const [suggesting, setSuggesting] = useState<Prayer | "jumuah" | null>(null);
 
@@ -127,6 +131,10 @@ export default function MasjidDetail({
       <p className="mt-1 text-sm text-stone-500">
         {formatDistance(haversineKm(from, masjid))} from {fromLabel}
       </p>
+
+      <div className="mt-2">
+        <TrustBadge masjid={masjid} today={date} />
+      </div>
 
       <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm font-medium text-emerald-700">
         <a
@@ -222,10 +230,26 @@ export default function MasjidDetail({
         </button>
       )}
 
+      {status.warn && (
+        <p className="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800">
+          {status.level === "unverified"
+            ? "Nobody has confirmed these times yet — treat them as a starting point and check with the masjid."
+            : `These times have not been checked in ${daysStale} days. The masjid may have changed its schedule since.`}
+        </p>
+      )}
+
+      {masjid.needsReview && !status.warn && (
+        <p className="mt-4 rounded-lg bg-stone-100 px-3 py-2 text-xs text-stone-600">
+          Some of this masjid&rsquo;s times could not be read on the last
+          check, so the day below may be incomplete. Anything missing shows a
+          dash.
+        </p>
+      )}
+
       <p className="mt-4 text-xs text-stone-500">
         {verified
           ? `Iqamah times last verified ${verified}.`
-          : "Iqamah times have not been verified yet — treat them as a starting point only."}{" "}
+          : "Iqamah times have not been verified yet."}{" "}
         Adhan times are calculated for this location. Confirm with the masjid
         before relying on either.
       </p>

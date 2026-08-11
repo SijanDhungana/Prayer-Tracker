@@ -106,7 +106,7 @@ function Shell() {
             <PlanTrip masjids={masjids} reference={reference} />
           </Suspense>
         ) : route.name === "jummah" ? (
-          <Jummah masjids={masjids} from={reference.point} />
+          <Jummah masjids={masjids} date={today} from={reference.point} />
         ) : route.name === "compare" ? (
           <ComparePrayer
             masjids={masjids}

@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { orderedJumuah } from "../lib/prayer";
 import { masjidPath } from "../lib/route";
+import { TrustNote } from "../components/TrustBadge";
 import { clockMinutes, formatClock } from "../lib/time";
 import { formatDistance, haversineKm, type Point } from "../lib/distance";
 import type { Masjid } from "../lib/types";
@@ -28,9 +29,11 @@ const RADII = [2, 5, 10, 25];
 
 export default function Jummah({
   masjids,
+  date,
   from,
 }: {
   masjids: Masjid[];
+  date: Date;
   from: Point;
 }) {
   const [order, setOrder] = useState<SortOrder>("earliest");
@@ -180,6 +183,8 @@ export default function Jummah({
                   <span className="mt-0.5 block text-xs text-stone-500">
                     {formatDistance(row.km)}
                     {row.total > 1 && ` · ${row.index} of ${row.total} sittings`}
+                    {/* CLAUDE.md §14: age travels with the time. */}
+                    <TrustNote masjid={row.masjid} today={date} />
                   </span>
                 </span>
                 <span className="shrink-0 text-lg font-semibold tabular-nums text-stone-900">

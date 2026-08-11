@@ -3,6 +3,7 @@ import { masjidPath } from "../lib/route";
 import { formatDistance } from "../lib/distance";
 import { PRAYERS, type Masjid } from "../lib/types";
 import PrayerTimeRow from "./PrayerTimeRow";
+import TrustBadge from "./TrustBadge";
 
 export default function MasjidCard({
   masjid,
@@ -32,6 +33,15 @@ export default function MasjidCard({
         </span>
       </div>
       <p className="mt-1 text-sm text-stone-600">{masjid.address}</p>
+
+      {/* When nothing has been collected the card already says so below, at
+          more length and with somewhere to go about it. A "Not verified yet"
+          pill above that is the same news twice. */}
+      {known > 0 && (
+        <div className="mt-2">
+          <TrustBadge masjid={masjid} today={date} />
+        </div>
+      )}
 
       <div className="mt-3 border-t border-stone-100 pt-3">
         <PrayerTimeRow iqamah={iqamah} adhan={adhan} />
