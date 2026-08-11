@@ -1,8 +1,9 @@
 import { useState } from "react";
 
-import DestinationInput from "../components/DestinationInput";
+import AddressInput from "../components/AddressInput";
 import { formatDistance, haversineKm, type Point } from "../lib/distance";
 import { googleMapsConfigured } from "../lib/googleMaps";
+import type { ReferencePoint } from "../lib/location";
 import { adhanTimes, iqamahTimes } from "../lib/prayer";
 import { formatTime, minutesOfDay, todayIn, zonedTimeOnDate } from "../lib/time";
 import {
@@ -32,16 +33,27 @@ const MAX_CANDIDATES = 8;
 
 type Phase = "idle" | "working" | "done" | "error";
 
+/** Where the journey starts: the device's position, or somewhere typed. */
+type OriginMode = "here" | "address";
+/** When it starts: right now, or a chosen clock time today. */
+type DepartMode = "now" | "later";
+
 export default function PlanTrip({
   masjids,
-  from,
-  fromLabel,
+  reference,
 }: {
   masjids: Masjid[];
-  from: Point;
-  fromLabel: string;
+  reference: ReferencePoint;
 }) {
   const today = todayIn();
+
+  const [originMode, setOriginMode] = useState<OriginMode>("here");
+  const [originText, setOriginText] = useState("");
+  const [originPicked, setOriginPicked] = useState<GeocodeResult | null>(null);
+
+  const [departMode, setDepartMode] = useState<DepartMode>("now");
+  const [departAt, setDepartAt] = useState("");
+
   const [destination, setDestination] = useState("");
   // Set when a suggestion is picked, so submitting doesn't pay to geocode
   // text Google already resolved.
@@ -55,7 +67,24 @@ export default function PlanTrip({
   const [result, setResult] = useState<PlanResult | null>(null);
   const [destLabel, setDestLabel] = useState<string | null>(null);
   const [destPoint, setDestPoint] = useState<Point | null>(null);
+  const [originLabel, setOriginLabel] = useState<string | null>(null);
+  const [originResolved, setOriginResolved] = useState<Point | null>(null);
   const [searched, setSearched] = useState(0);
+
+  // A chosen departure is a clock time today; anything unparseable falls back
+  // to leaving now rather than silently planning for midnight.
+  const departureTime =
+    departMode === "later" && departAt
+      ? (zonedTimeOnDate(today, departAt) ?? new Date())
+      : new Date();
+
+  const originReady =
+    originMode === "here" || originPicked != null || originText.trim() !== "";
+
+  // Says what "here" actually resolves to, rather than promising a device
+  // location the browser may never have given us.
+  const locationLabel =
+    reference.status === "active" ? "My location" : reference.label;
 
   async function plan(event: React.FormEvent) {
     event.preventDefault();
@@ -66,10 +95,20 @@ export default function PlanTrip({
     setResult(null);
 
     try {
-      const now = new Date();
+      const now = departureTime;
+      // "Here" means the reference point the picker resolved — the device's
+      // position when it was shared, the chosen neighbourhood otherwise.
+      const start =
+        originMode === "here"
+          ? { point: reference.point, label: reference.label }
+          : (originPicked ?? (await geocode(originText.trim())));
+      const from = start.point;
+
       const target = picked ?? (await geocode(destination.trim()));
       setDestLabel(target.label);
       setDestPoint(target.point);
+      setOriginLabel(start.label);
+      setOriginResolved(from);
 
       const shortlist = candidatesAlongRoute(
         masjids,
@@ -167,19 +206,86 @@ export default function PlanTrip({
         whether you can pray and still get there.
       </p>
 
-      <form onSubmit={plan} className="mt-4 space-y-3">
-        <span className="block text-sm font-medium text-stone-700">
-          Destination
-        </span>
-        <div className="-mt-2">
-          <DestinationInput
+      <form onSubmit={plan} className="mt-4 space-y-4">
+        <Field label="Leaving from">
+          <Segmented
+            options={[
+              { value: "here", label: locationLabel },
+              { value: "address", label: "An address" },
+            ]}
+            value={originMode}
+            onChange={(mode) => setOriginMode(mode as OriginMode)}
+          />
+          {originMode === "here" ? (
+            reference.status === "active" ? (
+              <p className="mt-1.5 text-xs text-emerald-700">
+                Using your device&rsquo;s location.
+              </p>
+            ) : (
+              <p className="mt-1.5 text-xs text-stone-500">
+                Set above, or{" "}
+                <button
+                  type="button"
+                  onClick={reference.useDeviceLocation}
+                  disabled={reference.status === "locating"}
+                  className="font-medium text-emerald-700 underline underline-offset-2 disabled:opacity-60"
+                >
+                  {reference.status === "locating"
+                    ? "locating…"
+                    : "use my location"}
+                </button>
+                .
+              </p>
+            )
+          ) : (
+            <div className="mt-1.5">
+              <AddressInput
+                value={originText}
+                onChange={setOriginText}
+                onResolved={setOriginPicked}
+                bias={reference.point}
+                placeholder="Where you're setting off from"
+              />
+            </div>
+          )}
+        </Field>
+
+        <Field label="Leaving at">
+          <Segmented
+            options={[
+              { value: "now", label: "Now" },
+              { value: "later", label: "A set time" },
+            ]}
+            value={departMode}
+            onChange={(mode) => setDepartMode(mode as DepartMode)}
+          />
+          {departMode === "later" && (
+            <>
+              <input
+                type="time"
+                value={departAt}
+                onChange={(e) => setDepartAt(e.target.value)}
+                className="mt-1.5 w-full rounded-lg bg-white px-3 py-2 text-sm tabular-nums text-stone-900 ring-1 ring-stone-200"
+              />
+              {departAt && departureTime < new Date() && (
+                <p className="mt-1.5 text-xs text-amber-700">
+                  That&rsquo;s earlier today — the plan uses today&rsquo;s
+                  prayer times, and traffic is estimated for now.
+                </p>
+              )}
+            </>
+          )}
+        </Field>
+
+        <Field label="Going to">
+          <AddressInput
             value={destination}
             onChange={setDestination}
             onResolved={setPicked}
-            bias={from}
+            bias={reference.point}
             placeholder="Costco, 50 Overlea Blvd"
           />
-        </div>
+        </Field>
 
         <div className="flex flex-wrap gap-3">
           <label className="min-w-0 flex-1">
@@ -232,7 +338,7 @@ export default function PlanTrip({
 
         <button
           type="submit"
-          disabled={phase === "working" || !destination.trim()}
+          disabled={phase === "working" || !destination.trim() || !originReady}
           className="w-full rounded-lg bg-emerald-700 px-4 py-2.5 text-sm font-semibold text-white hover:bg-emerald-800 disabled:opacity-50"
         >
           {phase === "working" ? "Working it out…" : "Find a way"}
@@ -240,8 +346,8 @@ export default function PlanTrip({
       </form>
 
       <p className="mt-2 text-xs text-stone-500">
-        Starting from {fromLabel}. Assumes {DEFAULT_STOP_MINUTES} minutes at the
-        masjid and {DEFAULT_ARRIVAL_BUFFER_MINUTES} minutes to park and walk in.
+        Assumes {DEFAULT_STOP_MINUTES} minutes at the masjid and{" "}
+        {DEFAULT_ARRIVAL_BUFFER_MINUTES} minutes to park and walk in.
       </p>
 
       {error && (
@@ -257,11 +363,58 @@ export default function PlanTrip({
           prayer={prayer}
           destLabel={destLabel}
           destPoint={destPoint}
-          from={from}
+          originLabel={originLabel}
+          from={originResolved ?? reference.point}
           searched={searched}
         />
       )}
     </section>
+  );
+}
+
+function Field({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div>
+      <span className="block text-sm font-medium text-stone-700">{label}</span>
+      <div className="mt-1.5">{children}</div>
+    </div>
+  );
+}
+
+function Segmented({
+  options,
+  value,
+  onChange,
+}: {
+  options: { value: string; label: string }[];
+  value: string;
+  onChange: (value: string) => void;
+}) {
+  return (
+    <div className="flex gap-2">
+      {options.map((option) => (
+        <button
+          key={option.value}
+          type="button"
+          onClick={() => onChange(option.value)}
+          aria-pressed={value === option.value}
+          className={
+            "min-w-0 flex-1 truncate rounded-lg px-3 py-2 text-sm font-medium transition-colors " +
+            (value === option.value
+              ? "bg-emerald-700 text-white"
+              : "bg-white text-stone-700 ring-1 ring-stone-200 hover:text-stone-900")
+          }
+        >
+          {option.label}
+        </button>
+      ))}
+    </div>
   );
 }
 
@@ -306,6 +459,7 @@ function Results({
   prayer,
   destLabel,
   destPoint,
+  originLabel,
   from,
   searched,
 }: {
@@ -314,6 +468,7 @@ function Results({
   prayer: Prayer;
   destLabel: string | null;
   destPoint: Point | null;
+  originLabel: string | null;
   from: Point;
   searched: number;
 }) {
@@ -324,7 +479,14 @@ function Results({
     <div className="mt-6">
       {destLabel && (
         <p className="text-sm text-stone-600">
-          To <span className="font-medium text-stone-900">{destLabel}</span>
+          {originLabel && (
+            <>
+              From <span className="font-medium text-stone-900">{originLabel}</span>{" "}
+              to{" "}
+            </>
+          )}
+          {!originLabel && "To "}
+          <span className="font-medium text-stone-900">{destLabel}</span>
           {result.directArrival && (
             <>
               {" "}

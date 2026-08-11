@@ -85,11 +85,7 @@ function Shell() {
               <p className="text-sm text-stone-500">Loading trip planning…</p>
             }
           >
-            <PlanTrip
-              masjids={masjids}
-              from={reference.point}
-              fromLabel={reference.label}
-            />
+            <PlanTrip masjids={masjids} reference={reference} />
           </Suspense>
         ) : route.name === "compare" ? (
           <ComparePrayer
