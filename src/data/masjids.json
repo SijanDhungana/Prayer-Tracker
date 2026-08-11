@@ -839,7 +839,7 @@
     "address": "Harmony Road North, Oshawa, ON, L1K 0X1",
     "lat": 43.949224,
     "lng": -78.853355,
-    "website": "",
+    "website": "http://www.oshawamosque.com",
     "calc": {
       "method": "NorthAmerica",
       "madhab": "hanafi"
@@ -904,7 +904,7 @@
     "address": "2900 Denison Street, Markham, ON, L3S 2J3",
     "lat": 43.841865,
     "lng": -79.264513,
-    "website": "",
+    "website": "https://markhammasjid.ca",
     "calc": {
       "method": "NorthAmerica",
       "madhab": "hanafi"
@@ -964,7 +964,7 @@
     "address": "9954 Keele Street, Vaughan, ON, L6A 1A0",
     "lat": 43.853567,
     "lng": -79.512732,
-    "website": "",
+    "website": "https://www.masjidvaughan.ca",
     "calc": {
       "method": "NorthAmerica",
       "madhab": "hanafi"
@@ -998,7 +998,7 @@
     "address": "Usman Road, Pickering, ON, L1V 2P8",
     "lat": 43.853496,
     "lng": -79.076416,
-    "website": "",
+    "website": "https://masjid.ca",
     "calc": {
       "method": "NorthAmerica",
       "madhab": "hanafi"
@@ -1015,7 +1015,7 @@
     "address": "Oak Street, Toronto, ON, M9N 3V9",
     "lat": 43.707914,
     "lng": -79.532267,
-    "website": "",
+    "website": "https://torontotic.com",
     "calc": {
       "method": "NorthAmerica",
       "madhab": "hanafi"
@@ -1032,7 +1032,7 @@
     "address": "1170 Townline Road, Cambridge, ON, N1T 2G3",
     "lat": 43.402141,
     "lng": -80.276778,
-    "website": "",
+    "website": "http://www.townlinemuslimcentre.ca",
     "calc": {
       "method": "NorthAmerica",
       "madhab": "hanafi"
