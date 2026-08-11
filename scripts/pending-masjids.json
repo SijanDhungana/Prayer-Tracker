@@ -1,31 +1,77 @@
 [
-  { "name": "Al Bukhari Community Centre", "near": "Greater Toronto Area, Ontario" },
-  { "name": "Anjuman E Anwarul Islam of Malton", "near": "Malton, Mississauga, Ontario" },
-  { "name": "Baitul Mukarram", "near": "Greater Toronto Area, Ontario" },
-  { "name": "Cambridge Muslim Society", "near": "Cambridge, Ontario" },
-  { "name": "Darul Uloom Canada", "near": "Ontario" },
-  { "name": "Galt Islamic Centre", "near": "Cambridge, Ontario" },
-  { "name": "Ibrahim Jame Mosque", "near": "Markham, Ontario" },
-  { "name": "International Muslims Organization of Toronto", "near": "Etobicoke, Toronto, Ontario" },
-  { "name": "Islamic Centre of Oshawa", "near": "Oshawa, Ontario" },
-  { "name": "Islamic Society of Toronto", "near": "Toronto, Ontario" },
-  { "name": "Jame Masjid Huzaifah", "near": "Greater Toronto Area, Ontario" },
-  { "name": "Lantern of Knowledge Academy", "near": "Greater Toronto Area, Ontario" },
-  { "name": "Markham Masjid", "near": "Markham, Ontario" },
-  { "name": "Masjid El Noor", "near": "Toronto, Ontario" },
-  { "name": "Masjid ut Taqwa Islamic Organization", "near": "Greater Toronto Area, Ontario" },
-  { "name": "Masjid Vaughan", "near": "Vaughan, Ontario" },
-  { "name": "Masjidur Rahmah", "near": "Greater Toronto Area, Ontario" },
-  { "name": "Mosquee Madani", "near": "Greater Toronto Area, Ontario" },
-  { "name": "Muslim Association of Brantford", "near": "Brantford, Ontario" },
-  { "name": "Muslim Society of Guelph", "near": "Guelph, Ontario" },
-  { "name": "Pickering Islamic Centre", "near": "Pickering, Ontario" },
-  { "name": "SMCC Musallah", "near": "Greater Toronto Area, Ontario" },
-  { "name": "Subhan Masjid", "near": "Ajax, Ontario" },
-  { "name": "Thorncliffe Musallah", "near": "Thorncliffe Park, Toronto, Ontario" },
-  { "name": "Towfiq Islamic Centre", "near": "Greater Toronto Area, Ontario" },
-  { "name": "Townline Muslim Centre", "near": "Cambridge, Ontario" },
-  { "name": "Vaughan Islamic Community Centre", "near": "Vaughan, Ontario" },
-  { "name": "Windsor Islamic Association", "near": "Windsor, Ontario" },
-  { "name": "Woodstock Masjid", "near": "Woodstock, Ontario" }
+  {
+    "name": "Al Bukhari Community Centre",
+    "near": "Greater Toronto Area, Ontario",
+    "note": "no match in OpenStreetMap"
+  },
+  {
+    "name": "Darul Uloom Canada",
+    "near": "Ontario",
+    "note": "no match in OpenStreetMap"
+  },
+  {
+    "name": "Galt Islamic Centre",
+    "near": "Cambridge, Ontario",
+    "note": "no match in OpenStreetMap"
+  },
+  {
+    "name": "International Muslims Organization of Toronto",
+    "near": "Etobicoke, Toronto, Ontario",
+    "note": "no match in OpenStreetMap"
+  },
+  {
+    "name": "Jame Masjid Huzaifah",
+    "near": "Greater Toronto Area, Ontario",
+    "note": "no match in OpenStreetMap"
+  },
+  {
+    "name": "Lantern of Knowledge Academy",
+    "near": "Greater Toronto Area, Ontario",
+    "note": "no match in OpenStreetMap"
+  },
+  {
+    "name": "Masjid ut Taqwa Islamic Organization",
+    "near": "Greater Toronto Area, Ontario",
+    "note": "no match in OpenStreetMap"
+  },
+  {
+    "name": "Mosquee Madani",
+    "near": "Greater Toronto Area, Ontario",
+    "note": "no match in OpenStreetMap"
+  },
+  {
+    "name": "Muslim Association of Brantford",
+    "near": "Brantford, Ontario",
+    "note": "no match in OpenStreetMap"
+  },
+  {
+    "name": "Muslim Society of Guelph",
+    "near": "Guelph, Ontario",
+    "note": "no match in OpenStreetMap"
+  },
+  {
+    "name": "SMCC Musallah",
+    "near": "Greater Toronto Area, Ontario",
+    "note": "no match in OpenStreetMap"
+  },
+  {
+    "name": "Subhan Masjid",
+    "near": "Ajax, Ontario",
+    "note": "no match in OpenStreetMap"
+  },
+  {
+    "name": "Thorncliffe Musallah",
+    "near": "Thorncliffe Park, Toronto, Ontario",
+    "note": "no match in OpenStreetMap"
+  },
+  {
+    "name": "Vaughan Islamic Community Centre",
+    "near": "Vaughan, Ontario",
+    "note": "no match in OpenStreetMap"
+  },
+  {
+    "name": "Woodstock Masjid",
+    "near": "Woodstock, Ontario",
+    "note": "no match in OpenStreetMap"
+  }
 ]

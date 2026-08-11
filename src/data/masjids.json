@@ -658,5 +658,243 @@
     "needsReview": false,
     "source": "scrape",
     "timesUrl": "https://istiqamamasjid.com/#pyayer"
+  },
+  {
+    "id": "anjuman-e-anwarul-islam-of-malton",
+    "name": "Anjuman E Anwarul Islam of Malton",
+    "address": "7097 Airport Road, Mississauga, ON, L4T 2G7",
+    "lat": 43.706385,
+    "lng": -79.644483,
+    "website": "https://maltonmasjid.ad-din.site/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {},
+    "jumuah": [],
+    "lastVerified": null,
+    "needsReview": true,
+    "source": "seed"
+  },
+  {
+    "id": "baitul-mukarram",
+    "name": "Baitul Mukarram",
+    "address": "3340 Danforth Avenue, Toronto, ON, M1L 1C6",
+    "lat": 43.693876,
+    "lng": -79.277725,
+    "website": "https://baitulmukarramtoronto.ca/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {},
+    "jumuah": [],
+    "lastVerified": null,
+    "needsReview": true,
+    "source": "seed"
+  },
+  {
+    "id": "cambridge-muslim-society",
+    "name": "Cambridge Muslim Society",
+    "address": "252 Elgin Street North, Cambridge, ON, N1R 7H9",
+    "lat": 43.374014,
+    "lng": -80.303962,
+    "website": "https://www.cambridgemuslimsociety.org",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {},
+    "jumuah": [],
+    "lastVerified": null,
+    "needsReview": true,
+    "source": "seed"
+  },
+  {
+    "id": "ibrahim-jame-mosque",
+    "name": "Ibrahim Jame Mosque",
+    "address": "778 King Street East, Hamilton, ON, L8M 1A6",
+    "lat": 43.251214,
+    "lng": -79.844176,
+    "website": "https://www.ibrahimjamemosque.com/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {},
+    "jumuah": [],
+    "lastVerified": null,
+    "needsReview": true,
+    "source": "seed"
+  },
+  {
+    "id": "islamic-centre-of-oshawa",
+    "name": "Islamic Centre of Oshawa",
+    "address": "Harmony Road North, Oshawa, ON, L1K 0X1",
+    "lat": 43.949224,
+    "lng": -78.853355,
+    "website": "",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {},
+    "jumuah": [],
+    "lastVerified": null,
+    "needsReview": true,
+    "source": "seed"
+  },
+  {
+    "id": "islamic-society-of-toronto",
+    "name": "Islamic Society of Toronto",
+    "address": "Thorncliffe Park Drive, Toronto, ON, M4H 1H1",
+    "lat": 43.706105,
+    "lng": -79.35084,
+    "website": "https://www.islamicsocietyoftoronto.com/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {},
+    "jumuah": [],
+    "lastVerified": null,
+    "needsReview": true,
+    "source": "seed"
+  },
+  {
+    "id": "markham-masjid",
+    "name": "Markham Masjid",
+    "address": "2900 Denison Street, Markham, ON, L3S 2J3",
+    "lat": 43.841865,
+    "lng": -79.264513,
+    "website": "",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {},
+    "jumuah": [],
+    "lastVerified": null,
+    "needsReview": true,
+    "source": "seed"
+  },
+  {
+    "id": "masjid-el-noor",
+    "name": "Masjid El Noor",
+    "address": "277 Scott Road, Toronto, ON, M6M 1T9",
+    "lat": 43.689655,
+    "lng": -79.471943,
+    "website": "https://masjidelnoor.ca/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {},
+    "jumuah": [],
+    "lastVerified": null,
+    "needsReview": true,
+    "source": "seed"
+  },
+  {
+    "id": "masjid-vaughan",
+    "name": "Masjid Vaughan",
+    "address": "9954 Keele Street, Vaughan, ON, L6A 1A0",
+    "lat": 43.853567,
+    "lng": -79.512732,
+    "website": "",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {},
+    "jumuah": [],
+    "lastVerified": null,
+    "needsReview": true,
+    "source": "seed"
+  },
+  {
+    "id": "masjidur-rahmah",
+    "name": "Masjidur Rahmah",
+    "address": "Callaghan Lane, Toronto, ON, M5A 2A6",
+    "lat": 43.659869,
+    "lng": -79.366342,
+    "website": "",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {},
+    "jumuah": [],
+    "lastVerified": null,
+    "needsReview": true,
+    "source": "seed"
+  },
+  {
+    "id": "pickering-islamic-centre",
+    "name": "Pickering Islamic Centre",
+    "address": "Usman Road, Pickering, ON, L1V 2P8",
+    "lat": 43.853496,
+    "lng": -79.076416,
+    "website": "",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {},
+    "jumuah": [],
+    "lastVerified": null,
+    "needsReview": true,
+    "source": "seed"
+  },
+  {
+    "id": "towfiq-islamic-centre",
+    "name": "Towfiq Islamic Centre",
+    "address": "Oak Street, Toronto, ON, M9N 3V9",
+    "lat": 43.707914,
+    "lng": -79.532267,
+    "website": "",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {},
+    "jumuah": [],
+    "lastVerified": null,
+    "needsReview": true,
+    "source": "seed"
+  },
+  {
+    "id": "townline-muslim-centre",
+    "name": "Townline Muslim Centre",
+    "address": "1170 Townline Road, Cambridge, ON, N1T 2G3",
+    "lat": 43.402141,
+    "lng": -80.276778,
+    "website": "",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {},
+    "jumuah": [],
+    "lastVerified": null,
+    "needsReview": true,
+    "source": "seed"
+  },
+  {
+    "id": "windsor-islamic-association",
+    "name": "Windsor Islamic Association",
+    "address": "McKay Avenue, Windsor, ON, N9E 1A3",
+    "lat": 42.274382,
+    "lng": -83.031323,
+    "website": "",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {},
+    "jumuah": [],
+    "lastVerified": null,
+    "needsReview": true,
+    "source": "seed"
   }
 ]
