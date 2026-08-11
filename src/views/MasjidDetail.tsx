@@ -64,14 +64,16 @@ export default function MasjidDetail({
         >
           Directions
         </a>
-        <a
-          className="underline underline-offset-2"
-          href={masjid.website}
-          target="_blank"
-          rel="noreferrer"
-        >
-          Official site
-        </a>
+        {masjid.website && (
+          <a
+            className="underline underline-offset-2"
+            href={masjid.website}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Official site
+          </a>
+        )}
       </div>
 
       <h2 className="mt-6 text-sm font-medium text-stone-500">
