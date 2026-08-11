@@ -42,7 +42,9 @@ import {
 // Swap to "claude-haiku-4-5-20251001" to cut cost; confirm the current id at
 // https://docs.claude.com/en/docs/about-claude/models
 const MODEL = "claude-sonnet-5";
-const DATA_FILE = "./src/data/masjids.json";
+// Overridable so the crawl can be exercised against local fixtures without
+// touching the real directory, the same way discover.ts and geocode.ts work.
+const DATA_FILE = process.env.SCRAPE_DATA ?? "./src/data/masjids.json";
 const POLITE_DELAY_MS = 3000; // be kind to masjid servers between requests
 
 const anthropic = new Anthropic(); // reads ANTHROPIC_API_KEY from env
@@ -90,10 +92,8 @@ Rules:
 - If you cannot find prayer times at all, return found=false and all nulls.`;
 
 /** Anchor text or href that suggests a page carries a prayer timetable. */
-const TIMES_LINK = /prayer|salah|salaah|namaz|iqamah|iqama|jamaah|timing|timetable|times/i;
-
-/** Tried when the site offers no obvious link to follow. */
-const CANDIDATE_PATHS = ["/prayer-times", "/prayer-timings", "/timetable"];
+const TIMES_LINK =
+  /prayer|salah|salaah|salat|namaz|iqamah|iqama|jamaah|timing|timetable|times|schedule/i;
 
 /** At most this many pages per masjid, so discovery stays cheap and polite. */
 const MAX_PAGES_PER_MASJID = 3;
@@ -434,13 +434,22 @@ export function checkResult(result: any): Verdict {
 }
 
 /**
- * Read a masjid's times, hunting for the right page if the first one has none.
+ * Read a masjid's times, hunting for the right page if the homepage has none.
  *
- * Many masjids keep a welcome page at the root and the timetable somewhere like
- * /prayer-times. Rather than requiring a human to find that once per masjid, try
- * the known URL, then any same-origin link that looks like a timetable, then a
- * couple of conventional paths. The winning URL is returned so it can be saved
- * and used directly tomorrow.
+ * Start at the homepage, always: most masjids put today's times right there,
+ * and it is the one URL we know exists. From there follow only links the page
+ * actually offers — "View Full Prayer Times", "Prayer Schedule" and the like.
+ *
+ * Nothing here invents a URL. An earlier version tried conventional paths
+ * (/prayer-times, /timetable) when a site offered no obvious link, which meant
+ * masjids whose homepage read poorly were reported as a 404 on a page that had
+ * never existed — Abu Huraira and Masjid Al-Jannah both failed that way,
+ * hiding whatever the real problem was. A guessed path can only ever confirm
+ * a guess; a link on the page is evidence.
+ *
+ * The winning URL is returned so it can be saved and tried again tomorrow —
+ * after the homepage, since a saved subpage is usually a month-long grid that
+ * reads worse than today's times on the front page.
  */
 async function findTimes(
   browser: Browser,
@@ -449,9 +458,9 @@ async function findTimes(
   | { ok: true; result: any; url: string; missing: string[]; capture: Capture }
   | { ok: false; reason: string }
 > {
-  const start = masjid.timesUrl ?? masjid.website;
+  const homepage = masjid.website || masjid.timesUrl!;
   const tried = new Set<string>();
-  const queue: string[] = [start];
+  const queue: string[] = [homepage];
   // The most informative failure seen, so a masjid that fails everywhere still
   // reports why rather than "flagged for review".
   let firstReason = "site could not be opened";
@@ -488,11 +497,13 @@ async function findTimes(
         };
       }
 
-      const origin = new URL(url).origin;
-      queue.push(
-        ...capture.timesLinks,
-        ...CANDIDATE_PATHS.map((path) => `${origin}${path}`),
-      );
+      // The page where times were found last time, if it isn't where we just
+      // looked. Not a guess — it earned its place by returning valid times on
+      // an earlier run — so it goes ahead of anything found today.
+      const remembered =
+        masjid.timesUrl && masjid.timesUrl !== url ? [masjid.timesUrl] : [];
+
+      queue.push(...remembered, ...capture.timesLinks);
     }
     await new Promise((r) => setTimeout(r, POLITE_DELAY_MS));
   }
@@ -526,8 +537,12 @@ async function main() {
 
     const { result, capture } = found;
 
-    // Remember where the times actually were, so tomorrow goes straight there.
-    if (found.url !== (m.timesUrl ?? m.website)) {
+    // Remember where the times actually were, so tomorrow can try there too.
+    // When the homepage itself was the winner, drop any stale subpage: keeping
+    // it would leave the file pointing at a page we no longer need.
+    if (found.url === m.website) {
+      delete m.timesUrl;
+    } else if (found.url !== m.timesUrl) {
       m.timesUrl = found.url;
       console.log(`  → found times at ${found.url}`);
     }
