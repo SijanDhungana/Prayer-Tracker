@@ -6,6 +6,9 @@
  * unless the age is shown. Wrong times can make someone miss a prayer, so
  * age is part of the time, not decoration around it.
  */
+import { adhanTimes, iqamahTimes } from "./prayer";
+import type { Masjid, Prayer } from "./types";
+
 
 /** Past this, a stored time is old enough that it should say so out loud. */
 export const STALE_AFTER_DAYS = 45;
@@ -48,6 +51,114 @@ export function isStale(
 ): boolean {
   const days = daysSinceVerified(lastVerified, today);
   return days == null || days < 0 || days > STALE_AFTER_DAYS;
+}
+
+/**
+ * The four freshness states — design spec v2 §5.
+ *
+ * v2 tightens the stale threshold from 45 days to 14 and adds a "recent"
+ * middle state, so the label carries the age rather than just a pass/fail.
+ * STALE_AFTER_DAYS above is kept for the older trustStatus() callers until
+ * they are migrated.
+ */
+export type FreshnessLevel = "verified" | "recent" | "stale" | "none";
+
+export const RECENT_AFTER_DAYS = 14;
+
+export interface Freshness {
+  level: FreshnessLevel;
+  label: string;
+}
+
+/** "2 Jun" — for a stale date, which reads better than "73 days ago". */
+function shortDate(iso: string): string {
+  const match = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso);
+  if (!match) return iso;
+  return new Intl.DateTimeFormat("en-GB", {
+    day: "numeric",
+    month: "short",
+  }).format(new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3])));
+}
+
+export function freshness(
+  masjid: { lastVerified: string | null; iqamah?: Record<string, unknown> },
+  today: Date,
+): Freshness {
+  // Nothing collected at all outranks any date: the times on screen are
+  // calculated adhan, not a masjid's decision, and that is the thing worth
+  // saying (§5).
+  const collected = Object.keys(masjid.iqamah ?? {}).length > 0;
+  if (!collected) return { level: "none", label: "No iqamah times yet" };
+
+  const days = daysSinceVerified(masjid.lastVerified, today);
+  if (days == null || days < 0) {
+    return { level: "none", label: "No iqamah times yet" };
+  }
+  if (days === 0) return { level: "verified", label: "Checked today" };
+  if (days <= RECENT_AFTER_DAYS) {
+    return {
+      level: "recent",
+      label: days === 1 ? "Checked yesterday" : `Checked ${days} days ago`,
+    };
+  }
+  return {
+    level: "stale",
+    label: `Last checked ${shortDate(masjid.lastVerified!)}`,
+  };
+}
+
+/**
+ * Whether a masjid's stored iqamah lands before the adhan the *visitor's*
+ * school calculates — design spec v2 §10.1.
+ *
+ * Real and visible today: with Hanafi Asr selected, Masjid Toronto shows an
+ * iqamah of 6:00 PM against an adhan of 6:20 PM, and counts down to a
+ * congregation that by the visitor's own calculation has not begun. The
+ * masjid follows the standard school; the visitor does not. Neither is wrong,
+ * and the app must not present it as an error — it should say which school is
+ * in play and count against the masjid's own adhan.
+ *
+ * Only Asr can do this: it is the one prayer whose calculation depends on the
+ * school, so a mismatch anywhere else would be a data error rather than a
+ * difference of madhab, and is deliberately not swallowed by this note.
+ */
+export function asrSchoolMismatch(
+  masjid: Masjid,
+  prayer: Prayer,
+  today: Date,
+): boolean {
+  if (prayer !== "asr") return false;
+
+  const iqamah = iqamahTimes(masjid, today).asr;
+  if (!iqamah) return false;
+
+  // The comparison that matters is against the adhan the visitor is being
+  // shown, which applyAsrPreference may already have rewritten. An iqamah
+  // before it is the symptom; the two schools are the cause.
+  return iqamah < adhanTimes(masjid, today).asr;
+}
+
+/**
+ * The adhan a countdown for this row should run against.
+ *
+ * Normally the visitor's own — but when their school puts Asr later than the
+ * masjid's own congregation, counting down to the visitor's adhan would be
+ * counting down to a jamaah that has already happened. §10.1: use the
+ * masjid's.
+ */
+export function countdownAdhan(
+  masjid: Masjid,
+  prayer: Prayer,
+  today: Date,
+): Date {
+  const shown = adhanTimes(masjid, today)[prayer];
+  if (!asrSchoolMismatch(masjid, prayer, today)) return shown;
+
+  const standard: Masjid = {
+    ...masjid,
+    calc: { ...masjid.calc, madhab: "shafi" },
+  };
+  return adhanTimes(standard, today)[prayer];
 }
 
 export type TrustLevel = "unverified" | "stale" | "flagged" | "checked";

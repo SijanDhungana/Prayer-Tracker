@@ -35,14 +35,22 @@ export interface ReferencePoint {
   useDeviceLocation: () => void;
 }
 
+/**
+ * What to say when the browser won't give us a position.
+ *
+ * Design spec v2 §10.2: a denial is not an error, it is a fallback that
+ * worked. The old copy ("Location permission denied.") was rendered as
+ * persistent red text on every screen forever. These read as information,
+ * are shown once in a toast, and never in red.
+ */
 function messageFor(error: GeolocationPositionError): string {
   switch (error.code) {
     case error.PERMISSION_DENIED:
-      return "Location permission denied.";
+      return "Using Downtown Toronto. Change it from the location chip.";
     case error.TIMEOUT:
-      return "Timed out finding your location.";
+      return "Couldn't find your location in time. Using Downtown Toronto.";
     default:
-      return "Couldn't get your location.";
+      return "Couldn't get your location. Using Downtown Toronto.";
   }
 }
 

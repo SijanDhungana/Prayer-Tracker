@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../lib/auth";
 import { authConfigured } from "../lib/supabase";
-import { listPath } from "../lib/route";
+import { nextPath } from "../lib/route";
 
 export default function SignIn() {
   const { signIn, signUp, email: signedInAs } = useAuth();
@@ -22,7 +22,7 @@ export default function SignIn() {
           correction.
         </p>
         <a
-          href={listPath}
+          href={nextPath}
           className="mt-4 inline-block text-sm font-medium text-brand underline underline-offset-2"
         >
           ← All masjids
@@ -39,7 +39,7 @@ export default function SignIn() {
           You&rsquo;re signed in as {signedInAs}.
         </p>
         <a
-          href={listPath}
+          href={nextPath}
           className="mt-4 inline-block text-sm font-medium text-brand underline underline-offset-2"
         >
           ← All masjids

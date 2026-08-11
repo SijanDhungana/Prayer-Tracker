@@ -1,179 +1,302 @@
-import { useEffect, useMemo, useState } from "react";
-import { formatDistance, type Point } from "../lib/distance";
-import {
-  formatCountdown,
-  formatSince,
-  groupRows,
-  nextCongregation,
-  nextUpRows,
-  type NextUpRow,
-} from "../lib/nextUp";
-import { prayerLabel } from "../lib/planPrayer";
-import { DEFAULT_MAGHRIB_OFFSET_MINUTES } from "../lib/prayer";
-import { comparePath, jummahPath, listPath, masjidPath } from "../lib/route";
+import { useMemo, useState } from "react";
+import DayRing from "../components/DayRing";
+import Icon from "../components/Icon";
+import LocationChip from "../components/LocationChip";
+import SegmentedControl from "../components/SegmentedControl";
+import TimeRow from "../components/TimeRow";
+import { useClock } from "../lib/clock";
+import { haversineKm, type Point } from "../lib/distance";
+import { useFavourites } from "../lib/favourites";
+import type { ReferencePoint } from "../lib/location";
+import { adhanTimes, iqamahTimes } from "../lib/prayer";
+import { prayerPath } from "../lib/route";
 import { formatTime } from "../lib/time";
-import { TrustNote } from "../components/TrustBadge";
-import type { Masjid } from "../lib/types";
+import { PRAYERS, PRAYER_LABELS, type Masjid, type Prayer } from "../lib/types";
 
 /**
- * How often the countdowns re-render. "In 12 min" going stale is the whole
- * failure mode of this screen, and half a minute is fine for a number shown
- * to the minute.
- */
-const TICK_MS = 30_000;
-
-/**
- * Radii offered, and the one used by default.
+ * Next up — the home screen, and the app's answer to its dominant question
+ * (design spec v2 §8.2).
  *
- * A radius is not optional polish here. At Maghrib almost every masjid's
- * iqamah is a few minutes after the same adhan, so a pure soonest-first sort
- * puts a masjid 54 km away above one 300 m away — technically sooner, and
- * useless. The spec's own acceptance test asks which *nearby* masjids are
- * still catchable, so distance has to bound the list before time orders it.
- * Whatever falls outside is counted, never silently dropped.
+ * This screen absorbs "Compare a prayer": the prayer selector below the ring
+ * re-points both the ring and the list, so "what's next" and "compare Isha
+ * across the city" are the same screen rather than two.
  */
-const RADII = [2, 5, 10, 25];
-const DEFAULT_RADIUS_KM = 10;
+const RADII = [5, 10, 25, 50];
+/** §10.3: a Toronto app must not silently list a masjid in Windsor. */
+const DEFAULT_RADIUS_KM = 25;
 
-function useNow(intervalMs = TICK_MS): Date {
-  const [now, setNow] = useState(() => new Date());
-
-  useEffect(() => {
-    const id = setInterval(() => setNow(new Date()), intervalMs);
-    return () => clearInterval(id);
-  }, [intervalMs]);
-
-  return now;
-}
+type SortOrder = "earliest" | "latest";
 
 export default function NextUp({
   masjids,
-  date,
   from,
+  reference,
+  initialPrayer,
 }: {
   masjids: Masjid[];
-  date: Date;
   from: Point;
+  reference: ReferencePoint;
+  initialPrayer: Prayer | null;
 }) {
-  const now = useNow();
+  const { second, minute, today, windows, position } = useClock();
+  const { favourites, isFavourite, toggle } = useFavourites();
+
+  const reference0 = masjids[0];
+
+  /**
+   * The prayer the ring counts down to: the next one whose adhan is still
+   * ahead. Not the current *window* — at 5:30 PM you are inside Asr, and
+   * counting down to an Asr that began fourteen minutes ago just reads
+   * "now". The window still drives the accent colour; this drives the
+   * numbers (§9).
+   */
+  const nextPrayer = useMemo<Prayer>(() => {
+    if (!reference0) return "fajr";
+    const times = adhanTimes(reference0, today);
+    return PRAYERS.find((p) => times[p] > minute) ?? "fajr";
+  }, [reference0, today, minute]);
+
+  const [chosen, setChosen] = useState<Prayer | null>(initialPrayer);
+  const prayer = chosen ?? nextPrayer;
+
+  const [order, setOrder] = useState<SortOrder>("earliest");
+  const [after, setAfter] = useState("");
   const [withinKm, setWithinKm] = useState<number | null>(DEFAULT_RADIUS_KM);
 
-  const congregation = useMemo(
-    () => nextCongregation(masjids, date, now),
-    [masjids, date, now],
+  const adhanForFocus = reference0 ? adhanTimes(reference0, today)[prayer] : null;
+  // A prayer the visitor picked deliberately may already have passed; the
+  // ring says how long ago rather than pretending it is imminent.
+  const passed = adhanForFocus != null && adhanForFocus <= minute;
+
+  // Rows are recomputed on the minute, not the second: distances and iqamah
+  // times don't change sixty times a minute, and §12 asks that they not be
+  // recomputed on every tick.
+  const rows = useMemo(
+    () =>
+      masjids.map((masjid) => {
+        const iqamah = iqamahTimes(masjid, today)[prayer];
+        return {
+          masjid,
+          iqamah,
+          adhan: adhanTimes(masjid, today)[prayer],
+          km: haversineKm(from, masjid),
+          minutesAway:
+            iqamah == null ? null : (iqamah.getTime() - minute.getTime()) / 60_000,
+        };
+      }),
+    [masjids, from, today, prayer, minute],
   );
 
-  const all = useMemo(
-    () => nextUpRows(masjids, congregation, from, now),
-    [masjids, congregation, from, now],
+  const cutoff = after ? Number(after.slice(0, 2)) * 60 + Number(after.slice(3)) : null;
+
+  const visible = useMemo(() => {
+    const kept = rows.filter((row) => {
+      if (withinKm != null && row.km > withinKm) return false;
+      if (cutoff != null) {
+        if (!row.iqamah) return false;
+        const mins = row.iqamah.getHours() * 60 + row.iqamah.getMinutes();
+        if (mins < cutoff) return false;
+      }
+      return true;
+    });
+
+    return kept.sort((a, b) => {
+      if (!a.iqamah || !b.iqamah) return a.iqamah ? -1 : b.iqamah ? 1 : 0;
+      const diff = a.iqamah.getTime() - b.iqamah.getTime();
+      return order === "earliest" ? diff : -diff;
+    });
+  }, [rows, withinKm, cutoff, order]);
+
+  const beyond = rows.length - visible.length;
+  const starred = visible.filter((r) => isFavourite(r.masjid.id));
+  const rest = visible.filter((r) => !isFavourite(r.masjid.id));
+
+  // The soonest congregation still ahead — the ring's target line (§9).
+  const target = useMemo(
+    () =>
+      [...rows]
+        .filter((r) => r.minutesAway != null && r.minutesAway > 0)
+        .sort((a, b) => a.minutesAway! - b.minutesAway!)[0] ?? null,
+    [rows],
   );
 
-  const near = useMemo(
-    () => (withinKm == null ? all : all.filter((row) => row.km <= withinKm)),
-    [all, withinKm],
-  );
-
-  const groups = useMemo(() => groupRows(near), [near]);
-  const beyond = all.length - near.length;
-
-  const label = prayerLabel(congregation.prayer);
-
-  // Adhan is near enough identical across the city (CLAUDE.md §2), so the
-  // nearest masjid's is the honest one to put in the header. Taken from the
-  // unfiltered set so tightening the radius never blanks the header.
-  const nearest = useMemo(
-    () => [...all].sort((a, b) => a.km - b.km)[0],
-    [all],
-  );
+  const countdown = passed ? "started" : countdownText(second, adhanForFocus);
+  const relative = (minutes: number | null) =>
+    minutes == null ? undefined : formatRelative(minutes);
 
   return (
     <section>
-      <header>
-        <h1 className="text-2xl font-semibold tracking-tight">
-          {congregation.isTomorrow ? `Tomorrow — ${label}` : label}
-        </h1>
-        <p className="mt-1 text-sm text-ink-2">
-          {congregation.isTomorrow
-            ? "Today’s congregations are done."
-            : "Congregations you can still make, soonest first."}
-          {nearest && (
-            <>
-              {" "}
-              Adhan{" "}
-              <span className="tabular-nums">{formatTime(nearest.adhan)}</span>.
-            </>
-          )}
-        </p>
-        {congregation.prayer === "jumuah" && (
-          <p className="mt-1 text-xs text-ink-3">
-            It&rsquo;s Friday — showing Jumu&rsquo;ah rather than Dhuhr.
-          </p>
-        )}
+      <header className="flex items-center justify-between gap-3">
+        <span className="font-display text-name font-semibold">Masjid Times</span>
+        <LocationChip reference={reference} />
       </header>
 
-      <label className="mt-4 flex items-center gap-2 text-sm text-ink-2">
-        <span>Within</span>
-        <select
-          value={withinKm ?? ""}
-          onChange={(e) =>
-            setWithinKm(e.target.value ? Number(e.target.value) : null)
-          }
-          className="rounded-lg bg-surface px-2 py-1.5 text-sm text-ink ring-1 ring-line"
+      <div className="mt-6">
+        <DayRing
+          windows={windows}
+          position={position}
+          countdown={countdown}
+          focus={prayer}
+          adhan={adhanForFocus}
+          onSelectPrayer={setChosen}
         >
-          {RADII.map((km) => (
-            <option key={km} value={km}>
-              {km} km
-            </option>
-          ))}
-          <option value="">Any distance</option>
-        </select>
-        {beyond > 0 && (
-          <span className="text-xs text-ink-3">{beyond} further out</span>
-        )}
-      </label>
+          {target ? (
+            <a
+              href={`#/map/${target.masjid.id}`}
+              className="mt-3 block text-ink-2 underline-offset-2 hover:underline"
+              style={{ fontSize: "min(var(--t--1), 3.4cqw)", maxWidth: "60cqw" }}
+            >
+              {target.masjid.name}
+              <span className="block font-num text-ink-3">
+                Iqamah {formatTime(target.iqamah!)}
+              </span>
+            </a>
+          ) : (
+            <span className="mt-3 block text-ink-3"
+              style={{ fontSize: "min(var(--t--1), 3.4cqw)", maxWidth: "60cqw" }}>
+              No congregation left today for {PRAYER_LABELS[prayer]}
+            </span>
+          )}
+        </DayRing>
+      </div>
 
-      {groups.upcoming.length === 0 && groups.justStarted.length === 0 ? (
-        <p className="mt-4 rounded-xl border border-dashed border-line-strong p-6 text-center text-sm text-ink-2">
-          {beyond > 0
-            ? `No masjid within ${withinKm} km still has ${label} ahead of it — try widening the radius.`
-            : `No masjid on file still has ${label} ahead of it.`}{" "}
-          <a
-            className="font-medium text-brand underline underline-offset-2"
-            href={comparePath()}
+      {/* The accessible twin: re-rendered on the minute, never aria-live (§9). */}
+      <p className="sr-only">
+        {countdown} until {PRAYER_LABELS[prayer]}
+        {adhanForFocus ? ` at ${formatTime(adhanForFocus)}` : ""}.
+        {target
+          ? ` Next congregation at ${target.masjid.name}, ${formatTime(target.iqamah!)}.`
+          : ""}
+      </p>
+
+      <div className="mt-6">
+        <SegmentedControl
+          label="Prayer"
+          scrollable
+          accent="now"
+          value={prayer}
+          onChange={(p) => {
+            setChosen(p);
+            // Keep the URL shareable — §3's #/?prayer=asr.
+            window.history.replaceState(null, "", prayerPath(p));
+          }}
+          options={PRAYERS.map((p) => ({ value: p, label: PRAYER_LABELS[p] }))}
+        />
+      </div>
+
+      <div className="mt-4 flex flex-wrap items-center gap-2">
+        <button
+          type="button"
+          onClick={() => setOrder((o) => (o === "earliest" ? "latest" : "earliest"))}
+          className="flex min-h-[44px] items-center gap-1.5 rounded-full border border-line bg-surface px-3 text-meta font-medium text-ink-2 hover:text-ink"
+        >
+          <Icon name="sliders" size={16} />
+          {order === "earliest" ? "Earliest first" : "Latest first"}
+        </button>
+
+        <label className="flex min-h-[44px] items-center gap-2 rounded-full border border-line bg-surface px-3 text-meta text-ink-2">
+          <span>Iqamah after</span>
+          <input
+            type="time"
+            value={after}
+            onChange={(e) => setAfter(e.target.value)}
+            className="bg-transparent font-num text-ink outline-none"
+          />
+        </label>
+
+        <label className="flex min-h-[44px] items-center gap-2 rounded-full border border-line bg-surface px-3 text-meta text-ink-2">
+          <span>Within</span>
+          <select
+            value={withinKm ?? ""}
+            onChange={(e) =>
+              setWithinKm(e.target.value ? Number(e.target.value) : null)
+            }
+            className="bg-transparent text-ink outline-none"
           >
-            Compare another prayer
-          </a>
-          .
-        </p>
-      ) : (
+            {RADII.map((km) => (
+              <option key={km} value={km}>
+                {km} km
+              </option>
+            ))}
+            <option value="">Any distance</option>
+          </select>
+        </label>
+      </div>
+
+      <p className="mt-3 text-meta text-ink-3" aria-live="polite">
+        {PRAYER_LABELS[prayer]} adhan{" "}
+        {adhanForFocus ? formatTime(adhanForFocus) : "—"}. Soonest congregation
+        first.
+        {beyond > 0 && (
+          <>
+            {" "}
+            <button
+              type="button"
+              onClick={() => setWithinKm(null)}
+              className="font-medium text-brand underline underline-offset-2"
+            >
+              {beyond} further out →
+            </button>
+          </>
+        )}
+      </p>
+      <p className="mt-1 text-meta text-ink-3">Iqamah · adhan below</p>
+
+      {starred.length > 0 && (
         <>
-          {groups.justStarted.length > 0 && (
-            <Group
-              title="Started just now"
-              note="You may still catch the jamaah."
-              rows={groups.justStarted}
-              date={date}
-              started
-            />
-          )}
-          {groups.upcoming.length > 0 && (
-            <Group
-              title={groups.justStarted.length > 0 ? "Still to come" : undefined}
-              rows={groups.upcoming}
-              date={date}
-            />
-          )}
+          <h2 className="mt-5 font-display text-section font-semibold">
+            Your masjids
+          </h2>
+          <ul className="mt-2 overflow-hidden rounded-lg border border-line bg-surface">
+            {starred.map((row) => (
+              <TimeRow
+                key={row.masjid.id}
+                masjid={row.masjid}
+                today={today}
+                iqamah={row.iqamah}
+                adhan={row.adhan}
+                km={row.km}
+                relative={relative(row.minutesAway)}
+                favourite
+                onToggleFavourite={() => toggle(row.masjid.id)}
+              />
+            ))}
+          </ul>
         </>
       )}
 
-      <Tail
-        missed={groups.missed.length}
-        unknown={groups.unknown.length}
-        prayer={label}
-        isJumuah={congregation.prayer === "jumuah"}
-      />
+      <h2 className="mt-5 font-display text-section font-semibold">
+        {starred.length > 0 ? "Also nearby" : "Congregations"}
+      </h2>
 
-      <p className="mt-4 text-xs text-ink-3">
+      {rest.length === 0 ? (
+        <p className="mt-2 rounded-lg border border-line bg-surface p-6 text-center text-body text-ink-2">
+          No masjid within {withinKm ?? "any"} km has a {PRAYER_LABELS[prayer]}{" "}
+          iqamah on file.
+        </p>
+      ) : (
+        <ul className="mt-2 overflow-hidden rounded-lg border border-line bg-surface">
+          {rest.map((row) => (
+            <TimeRow
+              key={row.masjid.id}
+              masjid={row.masjid}
+              today={today}
+              iqamah={row.iqamah}
+              adhan={row.adhan}
+              km={row.km}
+              relative={relative(row.minutesAway)}
+              favourite={false}
+              onToggleFavourite={() => toggle(row.masjid.id)}
+            />
+          ))}
+        </ul>
+      )}
+
+      {favourites.length === 0 && (
+        <p className="mt-3 text-meta text-ink-3">Star a masjid to pin it here.</p>
+      )}
+
+      <p className="mt-5 text-meta text-ink-3">
         Adhan times are calculated. Iqamah times are community-collected —
         confirm with the masjid before relying on them.
       </p>
@@ -181,134 +304,32 @@ export default function NextUp({
   );
 }
 
-function Group({
-  title,
-  note,
-  rows,
-  date,
-  started = false,
-}: {
-  title?: string;
-  note?: string;
-  rows: NextUpRow[];
-  date: Date;
-  started?: boolean;
-}) {
-  return (
-    <div className="mt-6">
-      {title && (
-        <h2 className="text-sm font-semibold text-ink">{title}</h2>
-      )}
-      {note && <p className="text-xs text-ink-3">{note}</p>}
-      <ul
-        className={
-          "divide-y divide-line overflow-hidden rounded-xl border border-line bg-surface " +
-          (title ? "mt-2" : "")
-        }
-      >
-        {rows.map((row) => (
-          <Row key={row.masjid.id} row={row} date={date} started={started} />
-        ))}
-      </ul>
-    </div>
-  );
+/**
+ * The ring's hero number (§9): "2:50:49" with seconds under an hour, "2:50"
+ * above it. A plain function, not a hook — it derives from the clock value it
+ * is handed, so it can be called conditionally.
+ */
+function countdownText(now: Date, target: Date | null): string {
+  if (!target) return "—";
+  const ms = target.getTime() - now.getTime();
+  if (ms <= 0) return "now";
+
+  const total = Math.floor(ms / 1000);
+  const h = Math.floor(total / 3600);
+  const m = Math.floor((total % 3600) / 60);
+  const s = total % 60;
+
+  return h > 0
+    ? `${h}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`
+    : `${m}:${String(s).padStart(2, "0")}`;
 }
 
-function Row({
-  row,
-  date,
-  started,
-}: {
-  row: NextUpRow;
-  date: Date;
-  started: boolean;
-}) {
-  const { masjid, iqamah, minutesAway, km, sitting, assumed } = row;
-
-  return (
-    <li>
-      <a
-        href={masjidPath(masjid.id)}
-        className={
-          "flex items-center justify-between gap-3 p-4 hover:bg-surface-2 " +
-          (started ? "bg-caution-wash" : "")
-        }
-      >
-        <span className="min-w-0">
-          <span className="block truncate font-medium text-ink">
-            {masjid.name}
-          </span>
-          <span className="mt-0.5 block text-xs text-ink-3">
-            {formatDistance(km)}
-            {sitting && ` · ${sitting.index} of ${sitting.total} sittings`}
-            {/* CLAUDE.md §14: never show a time without how old it is. An
-                assumed time already carries its own caveat below, so it is
-                not hedged twice. */}
-            {!assumed && <TrustNote masjid={masjid} today={date} />}
-          </span>
-        </span>
-
-        <span className="shrink-0 text-right">
-          <span className="block text-lg font-semibold tabular-nums text-ink">
-            {iqamah ? formatTime(iqamah) : "—"}
-          </span>
-          {minutesAway != null && (
-            <span
-              className={
-                "block text-xs tabular-nums " +
-                (started ? "text-caution" : "text-brand")
-              }
-            >
-              {started
-                ? formatSince(minutesAway)
-                : formatCountdown(minutesAway)}
-            </span>
-          )}
-          {assumed && (
-            <span className="block text-[11px] text-ink-3">
-              assumed +{DEFAULT_MAGHRIB_OFFSET_MINUTES} min
-            </span>
-          )}
-        </span>
-      </a>
-    </li>
-  );
-}
-
-/** The masjids that aren't answers, counted rather than listed. */
-function Tail({
-  missed,
-  unknown,
-  prayer,
-  isJumuah,
-}: {
-  missed: number;
-  unknown: number;
-  prayer: string;
-  isJumuah: boolean;
-}) {
-  if (missed === 0 && unknown === 0) return null;
-
-  return (
-    <p className="mt-3 text-xs text-ink-3">
-      {missed > 0 && (
-        <>
-          {missed} masjid{missed === 1 ? "" : "s"} already held {prayer}.
-        </>
-      )}
-      {missed > 0 && unknown > 0 && " "}
-      {unknown > 0 && (
-        <>
-          {unknown} {unknown === 1 ? "has" : "have"} no {prayer} time on file
-          {isJumuah && " — they almost certainly hold it"}.{" "}
-          <a
-            className="font-medium text-brand underline underline-offset-2"
-            href={isJumuah ? jummahPath : listPath}
-          >
-            {isJumuah ? "See all Friday times" : "See all masjids"}
-          </a>
-        </>
-      )}
-    </p>
-  );
+function formatRelative(minutes: number): string {
+  const m = Math.round(minutes);
+  if (m < 0) return `${Math.abs(m)} min ago`;
+  if (m === 0) return "now";
+  if (m < 60) return `in ${m} min`;
+  const h = Math.floor(m / 60);
+  const rest = m % 60;
+  return rest === 0 ? `in ${h} h` : `in ${h} h ${rest} min`;
 }

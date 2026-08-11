@@ -598,6 +598,8 @@ function Results({
         />
       )}
 
+      {!nothing && <Verdict result={result} label={label} />}
+
       {nothing ? (
         <p className="mt-3 rounded-xl border border-dashed border-line-strong p-6 text-center text-sm text-ink-2">
           {searched === 0
@@ -677,6 +679,38 @@ function Results({
         community-collected — leave yourself room.
       </p>
     </div>
+  );
+}
+
+/**
+ * The one-line answer, above everything — design spec v2 §8.3.
+ *
+ * Someone who has just asked "can I fit prayer in" wants a yes or a no before
+ * they want a timeline. The best option decides the wording: green when it
+ * works, caution when it costs them time.
+ */
+function Verdict({ result, label }: { result: PlanResult; label: string }) {
+  const best = result.viable[0] ?? result.compromises[0];
+  if (!best) return null;
+
+  const works = result.viable.length > 0;
+  const late = Math.round(best.minutesLate);
+
+  return (
+    <p
+      className={
+        "mt-4 rounded-md px-4 py-3 text-body font-medium " +
+        (works ? "bg-brand-wash text-brand" : "bg-caution-wash text-caution")
+      }
+      role="status"
+    >
+      {works
+        ? `You can make ${label} at ${best.masjid.name}` +
+          (best.meetsDeadline ? " and still arrive on time." : ".")
+        : late > 0
+          ? `You'd arrive ${late} minute${late === 1 ? "" : "s"} late.`
+          : `No option here catches ${label} in jamaah.`}
+    </p>
   );
 }
 

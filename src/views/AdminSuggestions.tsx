@@ -5,7 +5,7 @@ import { masjids } from "../data/masjids";
 import { adhanTimes } from "../lib/prayer";
 import { clockMinutes, formatTime, minutesOfDay } from "../lib/time";
 import { PRAYER_LABELS, PRAYERS, type Prayer } from "../lib/types";
-import { listPath, masjidPath, signInPath } from "../lib/route";
+import { masjidPath, settingsPath, signInPath } from "../lib/route";
 
 type Filter = "pending" | "approved" | "rejected" | "all";
 
@@ -140,7 +140,7 @@ export default function AdminSuggestions({ date }: { date: Date }) {
             : "Sign in with an admin account to review suggestions."}
         </p>
         <a
-          href={session ? listPath : signInPath}
+          href={session ? settingsPath : signInPath}
           className="mt-4 inline-block text-sm font-medium text-brand underline underline-offset-2"
         >
           {session ? "← All masjids" : "Sign in"}
@@ -184,7 +184,8 @@ export default function AdminSuggestions({ date }: { date: Date }) {
         <p className="mt-6 text-sm text-ink-3">Loading…</p>
       ) : rows.length === 0 ? (
         <p className="mt-4 rounded-xl border border-dashed border-line-strong p-6 text-center text-sm text-ink-2">
-          Nothing {filter === "all" ? "here" : filter} right now.
+          Nothing {filter === "all" ? "here" : filter}. New submissions land
+          here for review.
         </p>
       ) : (
         <ul className="mt-4 space-y-3">

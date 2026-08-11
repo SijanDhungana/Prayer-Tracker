@@ -1,31 +1,36 @@
 import { useMemo, useState } from "react";
-import { orderedJumuah } from "../lib/prayer";
-import { masjidPath } from "../lib/route";
-import { TrustNote } from "../components/TrustBadge";
-import { clockMinutes, formatClock } from "../lib/time";
+import FreshnessDot from "../components/FreshnessDot";
+import Icon from "../components/Icon";
+import { useClock } from "../lib/clock";
 import { formatDistance, haversineKm, type Point } from "../lib/distance";
+import { useFavourites } from "../lib/favourites";
+import { orderedJumuah } from "../lib/prayer";
+import { isFriday } from "../lib/planPrayer";
+import { masjidPath } from "../lib/route";
+import { clockMinutes, formatClock, zonedTimeOnDate } from "../lib/time";
 import type { Masjid } from "../lib/types";
 
 /**
- * One row per *sitting*, not per masjid — CLAUDE.md §8c.
+ * Jumu'ah — design spec v2 §8.4.
  *
- * A masjid running three khutbahs is three different answers to "which one can
- * I make", and collapsing them into a row would bury the late one that is
- * usually the reason someone is looking.
+ * The one change of substance from the old screen: a masjid's sittings are
+ * grouped under a single name with a rule connecting them, rather than
+ * repeated as three unrelated rows. Three rows all reading "Masjid Toronto"
+ * makes the reader do the grouping the screen should have done for them.
  */
-type Row = {
-  masjid: Masjid;
-  khutbah: string;
-  minutes: number;
-  /** 1-based position among that masjid's sittings, for "2nd of 3". */
-  index: number;
-  total: number;
-  km: number;
-};
+const RADII = [5, 10, 25, 50];
+/** §10.3: a Toronto app must not silently list a masjid in Windsor. */
+const DEFAULT_RADIUS_KM = 25;
 
 type SortOrder = "earliest" | "latest";
 
-const RADII = [2, 5, 10, 25];
+interface Group {
+  masjid: Masjid;
+  km: number;
+  sittings: { khutbah: string; minutes: number }[];
+  /** Sort key: the group's earliest or latest sitting, per the chosen order. */
+  key: number;
+}
 
 export default function Jummah({
   masjids,
@@ -36,178 +41,227 @@ export default function Jummah({
   date: Date;
   from: Point;
 }) {
+  const { minute } = useClock();
+  const { isFavourite, toggle } = useFavourites();
   const [order, setOrder] = useState<SortOrder>("earliest");
   const [after, setAfter] = useState("");
-  const [withinKm, setWithinKm] = useState<number | null>(null);
+  const [withinKm, setWithinKm] = useState<number | null>(DEFAULT_RADIUS_KM);
 
-  const { rows, silent } = useMemo(() => {
-    const rows: Row[] = [];
-    // Masjids we hold no Friday times for. Counted rather than hidden — a
-    // visitor should know the list is partial, not assume these masjids have
-    // no Jumu'ah.
-    const silent: Masjid[] = [];
+  const cutoff = after ? clockMinutes(after) : null;
+
+  const { groups, sittingCount, silent } = useMemo(() => {
+    const groups: Group[] = [];
+    let sittingCount = 0;
+    let silent = 0;
 
     for (const masjid of masjids) {
       const sessions = orderedJumuah(masjid);
       if (sessions.length === 0) {
-        silent.push(masjid);
+        silent++;
         continue;
       }
 
       const km = haversineKm(from, masjid);
-      sessions.forEach((session, i) => {
-        const minutes = clockMinutes(session.khutbah);
-        // A malformed stored time can't be sorted or filtered, and guessing at
-        // one is how someone ends up at a masjid an hour late.
-        if (minutes == null) return;
-        rows.push({
-          masjid,
-          khutbah: session.khutbah,
-          minutes,
-          index: i + 1,
-          total: sessions.length,
-          km,
-        });
+      if (withinKm != null && km > withinKm) continue;
+
+      const sittings = sessions
+        .map((s) => ({ khutbah: s.khutbah, minutes: clockMinutes(s.khutbah) }))
+        .filter((s): s is { khutbah: string; minutes: number } => s.minutes != null)
+        .filter((s) => cutoff == null || s.minutes >= cutoff);
+
+      if (sittings.length === 0) continue;
+
+      sittingCount += sittings.length;
+      groups.push({
+        masjid,
+        km,
+        sittings,
+        key:
+          order === "earliest"
+            ? Math.min(...sittings.map((s) => s.minutes))
+            : Math.max(...sittings.map((s) => s.minutes)),
       });
     }
 
-    return { rows, silent };
-  }, [masjids, from]);
+    groups.sort((a, b) =>
+      order === "earliest"
+        ? a.key - b.key || a.km - b.km
+        : b.key - a.key || a.km - b.km,
+    );
 
-  const cutoff = after ? clockMinutes(after) : null;
+    return { groups, sittingCount, silent };
+  }, [masjids, from, withinKm, cutoff, order]);
 
-  const visible = useMemo(() => {
-    const kept = rows.filter((row) => {
-      if (withinKm != null && row.km > withinKm) return false;
-      if (cutoff != null && row.minutes < cutoff) return false;
-      return true;
-    });
-
-    return kept.sort((a, b) => {
-      const diff = a.minutes - b.minutes;
-      if (diff !== 0) return order === "earliest" ? diff : -diff;
-      // Same time at two masjids: the nearer one is the more useful answer.
-      return a.km - b.km;
-    });
-  }, [rows, cutoff, withinKm, order]);
-
-  const masjidsShown = new Set(visible.map((row) => row.masjid.id)).size;
-
-  const constraints = [
-    cutoff != null ? `at or after ${formatClock(after)}` : null,
-    withinKm != null ? `within ${withinKm} km` : null,
-  ].filter(Boolean);
+  // §8.4: on a Friday, pin what's next rather than making the reader scan.
+  const nextToday = useMemo(() => {
+    if (!isFriday(date)) return null;
+    let best: { masjid: Masjid; at: Date } | null = null;
+    for (const group of groups) {
+      for (const sitting of group.sittings) {
+        const at = zonedTimeOnDate(date, sitting.khutbah);
+        if (!at || at <= minute) continue;
+        if (!best || at < best.at) best = { masjid: group.masjid, at };
+      }
+    }
+    return best;
+  }, [groups, date, minute]);
 
   return (
     <section>
-      <h1 className="text-2xl font-semibold tracking-tight">Jumu&rsquo;ah</h1>
-      <p className="mt-1 text-sm text-ink-2">
-        Every Friday khutbah we have on file. Masjids with several sittings are
-        listed once for each.
+      <h1 className="font-display text-title font-semibold">Jumu&rsquo;ah</h1>
+      <p className="mt-1 text-body text-ink-2">
+        Every Friday khutbah on file. Masjids with several sittings appear once
+        for each.
       </p>
 
-      <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-3">
+      {nextToday && (
+        <p
+          className="mt-4 rounded-md px-4 py-3 text-body"
+          style={{ background: "var(--now-wash)", color: "var(--now)" }}
+        >
+          <span className="font-medium">Today</span> · next khutbah{" "}
+          {relative(nextToday.at.getTime() - minute.getTime())} at{" "}
+          {nextToday.masjid.name}
+        </p>
+      )}
+
+      <div className="mt-4 flex flex-wrap items-center gap-2">
         <button
           type="button"
           onClick={() =>
             setOrder((o) => (o === "earliest" ? "latest" : "earliest"))
           }
-          className="rounded-lg bg-surface px-3 py-2 text-sm font-medium text-ink-2 ring-1 ring-line hover:text-ink"
+          className="flex min-h-[44px] items-center gap-1.5 rounded-full border border-line bg-surface px-3 text-meta font-medium text-ink-2 hover:text-ink"
         >
-          {order === "earliest" ? "Earliest first ↑" : "Latest first ↓"}
+          <Icon name="sliders" size={16} />
+          {order === "earliest" ? "Earliest first" : "Latest first"}
         </button>
 
-        <label className="flex items-center gap-2 text-sm text-ink-2">
+        <label className="flex min-h-[44px] items-center gap-2 rounded-full border border-line bg-surface px-3 text-meta text-ink-2">
           <span>Khutbah after</span>
           <input
             type="time"
             value={after}
             onChange={(e) => setAfter(e.target.value)}
-            className="rounded-lg bg-surface px-2 py-1.5 text-sm tabular-nums text-ink ring-1 ring-line"
+            className="bg-transparent font-num text-ink outline-none"
           />
         </label>
 
-        <label className="flex items-center gap-2 text-sm text-ink-2">
+        <label className="flex min-h-[44px] items-center gap-2 rounded-full border border-line bg-surface px-3 text-meta text-ink-2">
           <span>Within</span>
           <select
             value={withinKm ?? ""}
             onChange={(e) =>
               setWithinKm(e.target.value ? Number(e.target.value) : null)
             }
-            className="rounded-lg bg-surface px-2 py-1.5 text-sm text-ink ring-1 ring-line"
+            className="bg-transparent text-ink outline-none"
           >
-            <option value="">Any distance</option>
             {RADII.map((km) => (
               <option key={km} value={km}>
                 {km} km
               </option>
             ))}
+            <option value="">Any distance</option>
           </select>
         </label>
-
-        {(after || withinKm != null) && (
-          <button
-            type="button"
-            onClick={() => {
-              setAfter("");
-              setWithinKm(null);
-            }}
-            className="text-sm font-medium text-brand underline underline-offset-2"
-          >
-            Clear filters
-          </button>
-        )}
       </div>
 
-      <p className="mt-4 text-xs text-ink-3">
-        {visible.length} sitting{visible.length === 1 ? "" : "s"} across{" "}
-        {masjidsShown} masjid{masjidsShown === 1 ? "" : "s"}
+      <p className="mt-3 text-meta text-ink-3" aria-live="polite">
+        {sittingCount} sitting{sittingCount === 1 ? "" : "s"} across{" "}
+        {groups.length} masjid{groups.length === 1 ? "" : "s"}
       </p>
 
-      {visible.length === 0 ? (
-        <p className="mt-2 rounded-xl border border-dashed border-line-strong p-6 text-center text-sm text-ink-2">
-          No Jumu&rsquo;ah {constraints.join(" and ")}. Try relaxing a filter.
+      {groups.length === 0 ? (
+        <p className="mt-2 rounded-lg border border-line bg-surface p-6 text-center text-body text-ink-2">
+          No Jumu&rsquo;ah matches those filters. Try relaxing one.
         </p>
       ) : (
-        <ul className="mt-2 divide-y divide-line overflow-hidden rounded-xl border border-line bg-surface">
-          {visible.map((row) => (
-            <li key={`${row.masjid.id}-${row.index}`}>
-              <a
-                href={masjidPath(row.masjid.id)}
-                className="flex items-baseline justify-between gap-3 p-4 hover:bg-surface-2"
-              >
-                <span className="min-w-0">
-                  <span className="block truncate font-medium text-ink">
-                    {row.masjid.name}
-                  </span>
-                  <span className="mt-0.5 block text-xs text-ink-3">
-                    {formatDistance(row.km)}
-                    {row.total > 1 && ` · ${row.index} of ${row.total} sittings`}
-                    {/* CLAUDE.md §14: age travels with the time. */}
-                    <TrustNote masjid={row.masjid} today={date} />
+        <ul className="mt-2 overflow-hidden rounded-lg border border-line bg-surface">
+          {groups.map((group) => (
+            <li
+              key={group.masjid.id}
+              className="border-b border-line last:border-b-0"
+            >
+              <div className="flex items-start gap-3 px-4 pt-3">
+                <span className="min-w-0 flex-1">
+                  <a
+                    href={masjidPath(group.masjid.id)}
+                    className="flex items-center gap-2"
+                  >
+                    <FreshnessDot
+                      masjid={group.masjid}
+                      today={date}
+                      showLabel={false}
+                    />
+                    <span className="truncate text-name font-medium text-ink">
+                      {group.masjid.name}
+                    </span>
+                  </a>
+                  <span className="mt-0.5 block font-num text-meta text-ink-3">
+                    {formatDistance(group.km)}
                   </span>
                 </span>
-                <span className="shrink-0 text-lg font-semibold tabular-nums text-ink">
-                  {formatClock(row.khutbah)}
-                </span>
-              </a>
+                <button
+                  type="button"
+                  onClick={() => toggle(group.masjid.id)}
+                  aria-pressed={isFavourite(group.masjid.id)}
+                  aria-label={`Favourite ${group.masjid.name}`}
+                  className={
+                    "flex h-11 w-11 shrink-0 items-center justify-center " +
+                    (isFavourite(group.masjid.id) ? "text-brand" : "text-ink-3")
+                  }
+                >
+                  <Icon
+                    name={isFavourite(group.masjid.id) ? "star-filled" : "star"}
+                    size={18}
+                  />
+                </button>
+              </div>
+
+              {/* One rule down the left ties a masjid's sittings together
+                  instead of leaving three unrelated rows (§8.4). */}
+              <ul className="mb-3 ml-[26px] mt-1 border-l border-line pl-3">
+                {group.sittings.map((sitting, i) => (
+                  <li
+                    key={`${sitting.khutbah}-${i}`}
+                    className="flex items-baseline justify-between gap-3 py-1.5"
+                  >
+                    <span className="text-meta text-ink-3">
+                      {group.sittings.length > 1
+                        ? `Sitting ${i + 1} of ${group.sittings.length}`
+                        : "Khutbah"}
+                    </span>
+                    <span className="font-num text-section font-medium text-ink">
+                      {formatClock(sitting.khutbah)}
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </li>
           ))}
         </ul>
       )}
 
-      {silent.length > 0 && (
-        <p className="mt-3 text-xs text-ink-3">
-          {silent.length} masjid{silent.length === 1 ? "" : "s"} not listed —
-          we don&rsquo;t have their Friday times yet. They almost certainly hold
-          Jumu&rsquo;ah; check their own site.
+      {silent > 0 && (
+        <p className="mt-3 text-meta text-ink-3">
+          {silent} masjid{silent === 1 ? "" : "s"} not listed — we don&rsquo;t
+          have their Friday times yet. They almost certainly hold Jumu&rsquo;ah;
+          check their own site.
         </p>
       )}
 
-      <p className="mt-4 text-xs text-ink-3">
+      <p className="mt-5 text-meta text-ink-3">
         Times are when the khutbah begins, collected from each masjid&rsquo;s
         own site. Confirm with the masjid before relying on them.
       </p>
     </section>
   );
+}
+
+function relative(ms: number): string {
+  const m = Math.round(ms / 60_000);
+  if (m <= 0) return "now";
+  if (m < 60) return `in ${m} min`;
+  const h = Math.floor(m / 60);
+  return m % 60 === 0 ? `in ${h} h` : `in ${h} h ${m % 60} min`;
 }
