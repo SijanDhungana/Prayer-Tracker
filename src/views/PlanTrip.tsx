@@ -5,8 +5,15 @@ import TripMap from "../components/TripMap";
 import { formatDistance, haversineKm, type Point } from "../lib/distance";
 import { googleMapsConfigured } from "../lib/googleMaps";
 import type { ReferencePoint } from "../lib/location";
-import { adhanTimes, iqamahTimes } from "../lib/prayer";
-import { formatTime, minutesOfDay, todayIn, zonedTimeOnDate } from "../lib/time";
+import {
+  currentPlanPrayer,
+  planPrayerOptions,
+  planPrayerWindowEnds,
+  prayerLabel,
+  resolvePlanIqamah,
+  type PlanPrayer,
+} from "../lib/planPrayer";
+import { formatTime, todayIn, zonedTimeOnDate } from "../lib/time";
 import {
   candidatesAlongRoute,
   directionsUrl,
@@ -26,7 +33,7 @@ import {
   type PlanResult,
   type Priority,
 } from "../lib/tripPlan";
-import { PRAYERS, PRAYER_LABELS, type Masjid, type Prayer } from "../lib/types";
+import type { Masjid } from "../lib/types";
 
 /** How far off the straight line a masjid can sit and still count. */
 const CORRIDOR_KM = 6;
@@ -64,7 +71,9 @@ export default function PlanTrip({
   // text Google already resolved.
   const [picked, setPicked] = useState<GeocodeResult | null>(null);
   const [deadline, setDeadline] = useState("");
-  const [prayer, setPrayer] = useState<Prayer>(() => currentPrayer(masjids, today));
+  const [prayer, setPrayer] = useState<PlanPrayer>(() =>
+    currentPlanPrayer(masjids, today),
+  );
   const [priority, setPriority] = useState<Priority>("destination");
 
   const [phase, setPhase] = useState<Phase>("idle");
@@ -153,14 +162,14 @@ export default function PlanTrip({
       // Leg 2 leaves after praying. One representative departure — the
       // candidates are all within half an hour of each other, and paying for
       // a per-masjid prediction isn't worth the couple of minutes it'd shave.
-      const iqamahByMasjid = shortlist.map(
-        (masjid) => iqamahTimes(masjid, today)[prayer],
+      const iqamahByMasjid = shortlist.map((masjid) =>
+        resolvePlanIqamah(masjid, prayer, now, today),
       );
       const departAfter = representativeDeparture(now, iqamahByMasjid);
       const inbound = await drivingMinutesTo(points, target.point, departAfter);
 
       const deadlineAt = deadline ? zonedTimeOnDate(today, deadline) : null;
-      const windowEnds = prayerWindowEnds(shortlist, prayer, today);
+      const windowEnds = planPrayerWindowEnds(shortlist, prayer, today);
 
       const candidates: Candidate[] = [];
       shortlist.forEach((masjid, index) => {
@@ -329,15 +338,20 @@ export default function PlanTrip({
             <span className="text-sm font-medium text-stone-700">Prayer</span>
             <select
               value={prayer}
-              onChange={(e) => setPrayer(e.target.value as Prayer)}
+              onChange={(e) => setPrayer(e.target.value as PlanPrayer)}
               className="mt-1 w-full rounded-lg bg-white px-3 py-2 text-sm text-stone-900 ring-1 ring-stone-200"
             >
-              {PRAYERS.map((p) => (
-                <option key={p} value={p}>
-                  {PRAYER_LABELS[p]}
+              {planPrayerOptions(today).map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
                 </option>
               ))}
             </select>
+            {prayer === "jumuah" && (
+              <p className="mt-1.5 text-xs text-stone-500">
+                We&rsquo;ll aim for whichever sitting you can still catch.
+              </p>
+            )}
           </label>
         </div>
 
@@ -494,14 +508,14 @@ function Results({
   result: PlanResult;
   mode: DepartMode;
   priority: Priority;
-  prayer: Prayer;
+  prayer: PlanPrayer;
   destLabel: string | null;
   destPoint: Point | null;
   originLabel: string | null;
   from: Point;
   searched: number;
 }) {
-  const label = PRAYER_LABELS[prayer];
+  const label = prayerLabel(prayer);
   const nothing = result.viable.length === 0 && result.compromises.length === 0;
 
   // The option whose route is drawn. Starts on the best one.
@@ -640,7 +654,7 @@ function OptionCard({
 }: {
   option: Option;
   mode: DepartMode;
-  prayer: Prayer;
+  prayer: PlanPrayer;
   from: Point;
   destPoint: Point | null;
   selected?: boolean;
@@ -648,7 +662,7 @@ function OptionCard({
   muted?: boolean;
 }) {
   const { masjid, timeline } = option;
-  const label = PRAYER_LABELS[prayer];
+  const label = prayerLabel(prayer);
 
   return (
     <li
@@ -814,34 +828,3 @@ function representativeDeparture(now: Date, iqamahs: (Date | null)[]): Date {
   return new Date(anchor.getTime() + DEFAULT_STOP_MINUTES * 60_000);
 }
 
-/**
- * When each prayer's window shuts — the next prayer's adhan, since a prayer
- * is only valid until then. Isha is left open: it runs into the night, and
- * cutting it at midnight would wrongly rule out late trips.
- */
-function prayerWindowEnds(
-  masjids: Masjid[],
-  prayer: Prayer,
-  today: Date,
-): (Date | null)[] {
-  const order = PRAYERS.indexOf(prayer);
-  const next = PRAYERS[order + 1];
-  if (!next) return masjids.map(() => null);
-  return masjids.map((masjid) => adhanTimes(masjid, today)[next]);
-}
-
-/** Default the picker to the prayer you're most likely planning around. */
-function currentPrayer(masjids: Masjid[], today: Date): Prayer {
-  const reference = masjids[0];
-  if (!reference) return "dhuhr";
-
-  const times = adhanTimes(reference, today);
-  const nowMinutes = minutesOfDay(new Date());
-
-  // The last prayer whose adhan has passed — that's the one you still owe.
-  let current: Prayer = "fajr";
-  for (const prayer of PRAYERS) {
-    if (minutesOfDay(times[prayer]) <= nowMinutes) current = prayer;
-  }
-  return current;
-}

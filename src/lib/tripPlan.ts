@@ -6,7 +6,7 @@
  * the answer is exact, explainable, and testable. The fuzzy part (asking
  * Google how long a drive takes) is somebody else's job — see travel.ts.
  */
-import type { Masjid, Prayer } from "./types";
+import type { Masjid } from "./types";
 
 /** Time inside the masjid: park, pray the jamaah, get back to the car. */
 export const DEFAULT_STOP_MINUTES = 10;
@@ -22,7 +22,16 @@ export interface TripInputs {
   now: Date;
   /** Latest acceptable arrival at the destination, or null if open-ended. */
   deadline: Date | null;
-  prayer: Prayer;
+  /**
+   * Which prayer this plan is for. The engine below never reads it — every
+   * rule runs on `candidate.iqamah` and `candidate.prayerWindowEnds`, which
+   * are already resolved instants by the time they get here — so this is
+   * carried through for the caller's own bookkeeping only. Untyped as a
+   * plain string so resolving what a prayer even means (a masjid's Jumu'ah
+   * has several sittings; a daily prayer has one) stays entirely the
+   * caller's problem, not this module's.
+   */
+  prayer: string;
   /** Minutes spent at the masjid. */
   stopMinutes?: number;
   /** Minutes of slack required before iqamah. */

@@ -10,7 +10,8 @@
     "scrape": "tsx scrape.ts",
     "geocode": "tsx scripts/geocode.ts",
     "check:jumuah": "tsx scripts/check-jumuah.ts",
-    "check:discover": "tsx scripts/check-discover.ts"
+    "check:discover": "tsx scripts/check-discover.ts",
+    "check:plan-prayer": "tsx scripts/check-plan-prayer.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.112.2",
