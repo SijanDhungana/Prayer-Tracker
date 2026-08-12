@@ -41,7 +41,8 @@ export default function DayRing({
   position,
   /** Ticking countdown, pre-formatted — the ring doesn't own a clock. */
   countdown,
-  /** Which prayer the numbers describe. */
+  /** "until" normally; "since" while the focused window is open. */
+  countdownLabel = "until",
   focus,
   adhan,
   onSelectPrayer,
@@ -50,6 +51,7 @@ export default function DayRing({
   windows: PrayerWindow[];
   position: WindowPosition;
   countdown: string;
+  countdownLabel?: string;
   focus: Prayer;
   adhan: Date | null;
   onSelectPrayer?: (prayer: Prayer) => void;
@@ -168,7 +170,7 @@ export default function DayRing({
               className="mt-1 text-ink-2"
               style={{ fontSize: "min(var(--t-0), 3.6cqw)" }}
             >
-              until
+              {countdownLabel}
             </span>
             <span
               className="font-display font-semibold"

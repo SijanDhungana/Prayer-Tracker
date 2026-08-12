@@ -20,11 +20,25 @@ export function nextIqamahAt(
   masjid: Masjid,
   today: Date,
   now: Date,
-): { prayer: Prayer; at: Date } | null {
+): { prayer: Prayer; at: Date; tomorrow: boolean } | null {
   const times = iqamahTimes(masjid, today);
   for (const prayer of PRAYERS) {
     const at = times[prayer];
-    if (at && at > now) return { prayer, at };
+    if (at && at > now) return { prayer, at, tomorrow: false };
+  }
+
+  // Nothing left today is not the same as nothing to show. At 11pm the useful
+  // answer is tomorrow's Fajr, not "no congregations left today" — the day
+  // has not ended, and the next jamaah is a few hours away.
+  const next = new Date(
+    today.getFullYear(),
+    today.getMonth(),
+    today.getDate() + 1,
+  );
+  const later = iqamahTimes(masjid, next);
+  for (const prayer of PRAYERS) {
+    const at = later[prayer];
+    if (at) return { prayer, at, tomorrow: true };
   }
   return null;
 }
@@ -52,12 +66,13 @@ export default function HomeMasjidCard({
       <p className="mt-1 text-meta text-ink-3">
         {next ? (
           <>
-            Next: {PRAYER_LABELS[next.prayer]}{" "}
+            Next: {PRAYER_LABELS[next.prayer]}
+            {next.tomorrow && " tomorrow"}{" "}
             <span className="font-num text-ink-2">{formatTime(next.at)}</span>{" "}
             {relative}
           </>
         ) : (
-          "No congregations left today."
+          "No iqamah times on file."
         )}
       </p>
     );
@@ -84,6 +99,9 @@ export default function HomeMasjidCard({
         <span className="mt-2 flex items-baseline justify-between gap-3">
           <span className="text-body" style={{ color: "var(--now)" }}>
             {PRAYER_LABELS[next.prayer]} iqamah
+            {next.tomorrow && (
+              <span className="block text-meta text-ink-3">tomorrow</span>
+            )}
           </span>
           <span className="text-right">
             <span className="block font-num text-bigtime font-medium text-ink">
@@ -94,7 +112,7 @@ export default function HomeMasjidCard({
         </span>
       ) : (
         <span className="mt-2 block text-body text-ink-2">
-          No congregations left today.
+          No iqamah times on file for this masjid yet.
         </span>
       )}
     </a>

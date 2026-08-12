@@ -72,31 +72,49 @@ export default function NextUp({
   const adhanForFocus = reference0 ? adhanTimes(reference0, today)[prayer] : null;
 
   /**
-   * The instant the countdown runs to.
+   * Whether the focused prayer's window is open right now.
    *
-   * Normally today's adhan for the focused prayer. But after the last Isha
-   * there is nothing left today, and the ring's default focus falls back to
-   * Fajr — whose time today is fifteen hours *past* by midnight. Rolling to
-   * tomorrow's is what makes the small hours read "in 5 h 12 min" instead of
-   * "started".
-   *
-   * A prayer the visitor picked deliberately is left alone: if they select
-   * Dhuhr at 6pm they mean today's Dhuhr, and the ring says it has started
-   * rather than silently jumping to tomorrow.
+   * This is the only state where "started" means anything: Isha at 11pm has
+   * begun and can still be prayed. Fajr at 11pm has not "started" — its
+   * window closed at sunrise eighteen hours ago, and the thing the visitor
+   * wants to know is how long until the next one.
    */
-  const countdownTo = useMemo(() => {
-    if (!reference0 || !adhanForFocus) return null;
-    if (adhanForFocus > minute) return adhanForFocus;
-    if (chosen) return null; // deliberate pick of a past prayer
-    const tomorrow = new Date(
-      today.getFullYear(),
-      today.getMonth(),
-      today.getDate() + 1,
-    );
-    return adhanTimes(reference0, tomorrow)[prayer];
-  }, [reference0, adhanForFocus, minute, chosen, today, prayer]);
+  const inProgress = useMemo(() => {
+    const window = windows.find((w) => w.prayer === prayer);
+    return window != null && minute >= window.start && minute < window.end;
+  }, [windows, prayer, minute]);
 
-  const passed = countdownTo == null;
+  /**
+   * The instant the countdown runs to: the next occurrence of the focused
+   * prayer, today's if it is still ahead and tomorrow's once it has passed.
+   *
+   * Deliberately not "today's, or nothing" — at 11pm nobody selecting Fajr
+   * means this morning's. Tomorrow's is the only reading that makes sense,
+   * and computing it from today's date rather than the window keeps it right
+   * in the small hours too, when today's Fajr is still ahead.
+   */
+  /**
+   * Whether the focused prayer has finished for today and we are looking at
+   * tomorrow's. The whole screen moves together: it would be incoherent for
+   * the ring to count down to tomorrow's Fajr while the list underneath said
+   * "no congregation left today".
+   */
+  const rollsOver =
+    !inProgress && adhanForFocus != null && adhanForFocus <= minute;
+
+  const listDate = useMemo(
+    () =>
+      rollsOver
+        ? new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1)
+        : today,
+    [rollsOver, today],
+  );
+
+  const countdownTo = useMemo(() => {
+    if (!reference0) return null;
+    if (inProgress) return null;
+    return adhanTimes(reference0, listDate)[prayer];
+  }, [reference0, inProgress, listDate, prayer]);
 
   // Rows are recomputed on the minute, not the second: distances and iqamah
   // times don't change sixty times a minute, and §12 asks that they not be
@@ -104,20 +122,20 @@ export default function NextUp({
   const rows = useMemo(
     () =>
       masjids.map((masjid) => {
-        const iqamah = iqamahTimes(masjid, today)[prayer];
+        const iqamah = iqamahTimes(masjid, listDate)[prayer];
         return {
           masjid,
           iqamah,
-          adhan: adhanTimes(masjid, today)[prayer],
+          adhan: adhanTimes(masjid, listDate)[prayer],
           km: haversineKm(from, masjid),
           minutesAway:
             iqamah == null ? null : (iqamah.getTime() - minute.getTime()) / 60_000,
           // §10.1: this masjid's congregation starts before Asr begins by the
           // visitor's own school.
-          otherSchool: asrSchoolMismatch(masjid, prayer, today),
+          otherSchool: asrSchoolMismatch(masjid, prayer, listDate),
         };
       }),
-    [masjids, from, today, prayer, minute],
+    [masjids, from, listDate, prayer, minute],
   );
 
   const cutoff = after ? Number(after.slice(0, 2)) * 60 + Number(after.slice(3)) : null;
@@ -160,7 +178,9 @@ export default function NextUp({
     return ahead.find((r) => !r.otherSchool) ?? ahead[0] ?? null;
   }, [rows]);
 
-  const countdown = passed ? "started" : countdownText(second, countdownTo);
+  const countdown = inProgress
+    ? countdownText(adhanForFocus ?? second, second)
+    : countdownText(second, countdownTo);
   const relative = (minutes: number | null) =>
     minutes == null ? undefined : formatRelative(minutes);
 
@@ -178,6 +198,7 @@ export default function NextUp({
           windows={windows}
           position={position}
           countdown={countdown}
+          countdownLabel={inProgress ? "since" : "until"}
           focus={prayer}
           adhan={adhanForFocus}
           onSelectPrayer={setChosen}
@@ -205,7 +226,8 @@ export default function NextUp({
             </a>
           ) : (
             <span className="mt-3 block text-meta text-ink-3">
-              No congregation left today for {PRAYER_LABELS[prayer]}
+              No {PRAYER_LABELS[prayer]} congregation on file
+              {rollsOver ? " for tomorrow" : " left today"}
             </span>
           )}
         </DayRing>
@@ -213,7 +235,7 @@ export default function NextUp({
 
       {/* The accessible twin: re-rendered on the minute, never aria-live (§9). */}
       <p className="sr-only">
-        {countdown} until {PRAYER_LABELS[prayer]}
+        {countdown} {inProgress ? "since" : "until"} {PRAYER_LABELS[prayer]}
         {adhanForFocus ? ` at ${formatTime(adhanForFocus)}` : ""}.
         {target
           ? ` Next congregation at ${target.masjid.name}, ${formatTime(target.iqamah!)}.`
@@ -276,8 +298,8 @@ export default function NextUp({
 
       <p className="mt-3 text-meta text-ink-3" aria-live="polite">
         {PRAYER_LABELS[prayer]} adhan{" "}
-        {adhanForFocus ? formatTime(adhanForFocus) : "—"}. Soonest congregation
-        first.
+        {countdownTo ? formatTime(countdownTo) : "—"}
+        {rollsOver && " tomorrow"}. Soonest congregation first.
         {beyond > 0 && (
           <>
             {" "}

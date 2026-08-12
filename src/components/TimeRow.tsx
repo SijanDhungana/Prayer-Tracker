@@ -79,10 +79,20 @@ export default function TimeRow({
   );
 
   const className =
-    "flex min-h-[72px] w-full items-center gap-3 px-4 py-3 text-left transition-colors hover:bg-surface-2";
+    "flex min-h-[72px] flex-1 items-center gap-3 py-3 pl-4 text-left transition-colors hover:bg-surface-2 " +
+    // Without a star the row owns its right edge; with one, the star's column
+    // does, and the time needs to stop short of it.
+    (onToggleFavourite ? "pr-1" : "pr-4");
 
   return (
-    <li className="relative border-b border-line last:border-b-0">
+    // The star is a *sibling column*, not an overlay. It used to be absolutely
+    // positioned at the row's top-right, which is exactly where the iqamah
+    // time sits — so on every row the star sat on top of the "PM".
+    //
+    // A sibling rather than a child because a <button> inside an <a> is
+    // invalid, and because giving it its own 44px column is what guarantees
+    // the two can never collide however long the time string gets.
+    <li className="flex items-stretch border-b border-line last:border-b-0">
       {onSelect ? (
         <button type="button" onClick={onSelect} className={className}>
           {body}
@@ -94,8 +104,6 @@ export default function TimeRow({
       )}
 
       {onToggleFavourite && (
-        // Outside the row's own control so it isn't a button inside a button;
-        // 44px hit area per §12.
         <button
           type="button"
           onClick={onToggleFavourite}
@@ -106,7 +114,7 @@ export default function TimeRow({
               : `Add ${masjid.name} to your masjids`
           }
           className={
-            "absolute right-0 top-0 flex h-11 w-11 items-center justify-center " +
+            "flex w-11 shrink-0 items-center justify-center " +
             (favourite ? "text-brand" : "text-ink-3 hover:text-ink")
           }
         >
