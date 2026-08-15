@@ -35,6 +35,26 @@ const activeTab = (route: Route): Route["name"] =>
   route.name === "suggestions" ? "settings" : route.name;
 
 /**
+ * Start fetching the Maps SDK the moment a finger lands on Map or Plan,
+ * before the tap completes and the route changes.
+ *
+ * §8.1 keeps the SDK off the boot path, and this respects that — nothing is
+ * requested until the user reaches for a screen that needs it. But touchstart
+ * fires a few hundred milliseconds before the navigation, and the chunk and
+ * the script can be in flight during that gap instead of after it. Failures
+ * are ignored on purpose: this is a head start, and the map does its own
+ * loading and error reporting when it mounts.
+ */
+function warmMaps(tab: Route["name"]) {
+  if (tab !== "map" && tab !== "plan") return;
+  void import("../lib/googleMaps")
+    .then((m) => {
+      if (m.googleMapsConfigured) void m.loadGoogleMaps().catch(() => {});
+    })
+    .catch(() => {});
+}
+
+/**
  * One nav component that switches mode by breakpoint — §6 is explicit that
  * rendering both and hiding one with CSS duplicates every focusable element,
  * which doubles the tab order for keyboard and screen-reader users.
@@ -124,6 +144,8 @@ function TabBar({ active }: { active: Route["name"] }) {
               <a
                 href={tab.href}
                 aria-current={current ? "page" : undefined}
+                onTouchStart={() => warmMaps(tab.name)}
+                onPointerEnter={() => warmMaps(tab.name)}
                 className="flex min-h-[56px] flex-col items-center justify-center gap-0.5 rounded-full"
               >
                 {centre ? (

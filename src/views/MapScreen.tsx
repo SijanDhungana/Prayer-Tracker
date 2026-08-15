@@ -12,6 +12,7 @@ import { adhanTimes, iqamahTimes } from "../lib/prayer";
 import { mapPath, masjidPath } from "../lib/route";
 import { formatTime } from "../lib/time";
 import FreshnessDot from "../components/FreshnessDot";
+import { nextIqamahAt } from "../components/HomeMasjidCard";
 import { PRAYERS, PRAYER_LABELS, type Masjid, type Prayer } from "../lib/types";
 
 /**
@@ -32,23 +33,111 @@ function token(name: string, fallback: string): string {
   );
 }
 
-/** A 32px teardrop in --now with a white glyph (§8.1). */
-function pinIcon(selected: boolean, favourite: boolean): google.maps.Icon {
-  const size = selected ? 40 : 32;
-  const fill = token("--now", "#E08B5C");
-  const ring = favourite
-    ? `<circle cx="16" cy="14" r="12.5" fill="none" stroke="${token("--brand", "#3FA383")}" stroke-width="2"/>`
-    : "";
-  const svg = `<svg width="32" height="42" viewBox="0 0 32 42" xmlns="http://www.w3.org/2000/svg">
-    <path d="M16 0C7.2 0 0 7.2 0 16c0 12 16 26 16 26s16-14 16-26C32 7.2 24.8 0 16 0z" fill="${fill}"/>
-    ${ring}
-    <circle cx="16" cy="15" r="5" fill="#fff"/>
+/**
+ * Pins are labelled pills, not teardrops.
+ *
+ * A dot tells you a masjid is there, which you could have guessed. The thing
+ * worth knowing at a glance is *when the next jamaah is*, so — the way a
+ * lettings map prints the nightly price right on the pin — each pin prints
+ * that masjid's own next iqamah. Scanning the map then answers "which one can
+ * I still make" without tapping anything.
+ *
+ * "Its own" matters: at 6:50pm one masjid's Asr at 7:00 is still ahead while
+ * another's at 6:30 has gone, so the pins deliberately name different prayers
+ * at the same moment. That difference *is* the answer, and it is why the
+ * prayer is named on the pill rather than assumed from a global header.
+ */
+
+/**
+ * Data-URI SVG renders in its own document and cannot reach the page's
+ * webfonts, so the pill is drawn in a system stack and measured in the same
+ * stack — guessing a per-character width clipped the longer labels.
+ */
+const PIN_FONT_STACK =
+  '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif';
+const PIN_FONT = `600 12px ${PIN_FONT_STACK}`;
+
+let measurer: CanvasRenderingContext2D | null = null;
+const widthCache = new Map<string, number>();
+
+function textWidth(text: string): number {
+  const cached = widthCache.get(text);
+  if (cached != null) return cached;
+
+  measurer ??= document.createElement("canvas").getContext("2d");
+  if (!measurer) return text.length * 7;
+
+  measurer.font = PIN_FONT;
+  const width = measurer.measureText(text).width;
+  widthCache.set(text, width);
+  return width;
+}
+
+interface PillState {
+  label: string;
+  selected: boolean;
+  favourite: boolean;
+  /** Nothing left today — shown muted, since it answers "not this one". */
+  dim: boolean;
+}
+
+function pillIcon({ label, selected, favourite, dim }: PillState): google.maps.Icon {
+  const height = 26;
+  const tail = 6;
+  const width = Math.ceil(textWidth(label)) + 20;
+
+  const surface = token("--surface", "#ffffff");
+  const ink = token("--ink", "#12130F");
+  const background = selected ? ink : surface;
+  const foreground = selected ? surface : dim ? token("--ink-3", "#6B6F66") : ink;
+  const stroke = selected
+    ? ink
+    : favourite
+      ? token("--brand", "#3FA383")
+      : token("--line", "#DDE1D8");
+  const strokeWidth = favourite && !selected ? 2 : 1;
+
+  const mid = width / 2;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height + tail}" viewBox="0 0 ${width} ${height + tail}">
+    <g>
+      <path d="M${mid - 5} ${height - 1} L${mid} ${height + tail - 1} L${mid + 5} ${height - 1} Z" fill="${background}" stroke="${stroke}" stroke-width="${strokeWidth}" stroke-linejoin="round"/>
+      <rect x="${strokeWidth / 2}" y="${strokeWidth / 2}" width="${width - strokeWidth}" height="${height - strokeWidth}" rx="${(height - strokeWidth) / 2}" fill="${background}" stroke="${stroke}" stroke-width="${strokeWidth}"/>
+      <text x="${mid}" y="${height / 2}" text-anchor="middle" dominant-baseline="central"
+            font-family='${PIN_FONT_STACK}' font-size="12" font-weight="600" fill="${foreground}">${escapeXml(label)}</text>
+    </g>
+  </svg>`;
+
+  return {
+    url: "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg),
+    scaledSize: new google.maps.Size(width, height + tail),
+    anchor: new google.maps.Point(mid, height + tail),
+  };
+}
+
+function escapeXml(text: string): string {
+  return text.replace(
+    /[&<>"']/g,
+    (c) =>
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&apos;" })[c]!,
+  );
+}
+
+/** Google's own blue, so the dot reads as "you" without explanation. */
+function youAreHereIcon(): google.maps.Icon {
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+    <circle cx="11" cy="11" r="10" fill="#4285F4" fill-opacity="0.22"/>
+    <circle cx="11" cy="11" r="6" fill="#4285F4" stroke="#fff" stroke-width="2.5"/>
   </svg>`;
   return {
     url: "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg),
-    scaledSize: new google.maps.Size(size, size * 1.3),
-    anchor: new google.maps.Point(size / 2, size * 1.3),
+    scaledSize: new google.maps.Size(22, 22),
+    anchor: new google.maps.Point(11, 11),
   };
+}
+
+/** "Asr 7:00" — the meridiem is dropped because the prayer name carries it. */
+function pillLabel(prayer: Prayer, at: Date): string {
+  return `${PRAYER_LABELS[prayer]} ${formatTime(at).replace(/\s*(AM|PM)$/i, "")}`;
 }
 
 type MapStatus = "unconfigured" | "loading" | "ready" | "error";
@@ -68,7 +157,10 @@ export default function MapScreen({
 }) {
   const holder = useRef<HTMLDivElement>(null);
   const map = useRef<google.maps.Map | null>(null);
-  const markers = useRef<google.maps.Marker[]>([]);
+  const markers = useRef(
+    new Map<string, { marker: google.maps.Marker; key: string }>(),
+  );
+  const you = useRef<google.maps.Marker | null>(null);
   const { minute, position } = useClock();
   const { isFavourite, toggle } = useFavourites();
 
@@ -80,6 +172,8 @@ export default function MapScreen({
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [onlyFavourites, setOnlyFavourites] = useState(false);
   const [onlyJumuah, setOnlyJumuah] = useState(false);
+  /** Bumped by "Try again" so the creation effect runs a second time. */
+  const [attempt, setAttempt] = useState(0);
 
   const { point } = reference;
   const pointRef = useRef(point);
@@ -95,6 +189,9 @@ export default function MapScreen({
         km: haversineKm(point, masjid),
         iqamah: iqamahTimes(masjid, date)[prayer],
         adhan: adhanTimes(masjid, date)[prayer],
+        // What the pin prints: this masjid's own next congregation, which
+        // rolls to tomorrow's Fajr once today's are done.
+        next: nextIqamahAt(masjid, date, minute),
       }))
       .filter(({ masjid }) => {
         if (onlyFavourites && !isFavourite(masjid.id)) return false;
@@ -106,7 +203,7 @@ export default function MapScreen({
         );
       })
       .sort((a, b) => a.km - b.km);
-  }, [masjids, point, date, prayer, query, onlyFavourites, onlyJumuah, isFavourite]);
+  }, [masjids, point, date, prayer, query, onlyFavourites, onlyJumuah, isFavourite, minute]);
 
   const detail = masjidId
     ? (masjids.find((m) => m.id === masjidId) ?? null)
@@ -130,43 +227,97 @@ export default function MapScreen({
         });
         instance.addListener("click", () => setSelectedId(null));
         map.current = instance;
-        // Camera moves before the first idle are dropped by the Maps API.
-        google.maps.event.addListenerOnce(instance, "idle", () => {
+
+        /**
+         * Ready on whichever comes first.
+         *
+         * Camera moves before the first idle are dropped by the Maps API, so
+         * idle is the honest signal — but everything the user can see is
+         * gated behind it, pins included, and a single event that never
+         * arrives leaves the screen blank for good. `tilesloaded` means the
+         * map is genuinely painted and is the better of the two to trust;
+         * either one is enough.
+         */
+        const ready = () => {
           if (!cancelled) setStatus("ready");
-        });
+        };
+        google.maps.event.addListenerOnce(instance, "idle", ready);
+        google.maps.event.addListenerOnce(instance, "tilesloaded", ready);
       })
       .catch(() => !cancelled && setStatus("error"));
 
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [attempt]);
 
   useEffect(() => {
+    const live = markers.current;
     return () => {
-      for (const marker of markers.current) marker.setMap(null);
-      markers.current = [];
+      for (const { marker } of live.values()) marker.setMap(null);
+      live.clear();
+      you.current?.setMap(null);
+      you.current = null;
       if (map.current) google.maps.event.clearInstanceListeners(map.current);
       map.current = null;
     };
   }, []);
 
-  // Pins follow the filtered results, so the map and the sheet never disagree.
+  /**
+   * Pins follow the filtered results, so the map and the sheet never disagree.
+   *
+   * Reconciled rather than rebuilt. The labels tick over as congregations pass,
+   * so this effect now runs every minute; tearing all 32 markers down and
+   * re-adding them at that rate made the pins visibly blink, and dropped any
+   * pin the user was mid-tap on. Markers are keyed by masjid and only the ones
+   * whose drawn state actually changed get a new icon.
+   */
   useEffect(() => {
     const instance = map.current;
     if (status !== "ready" || !instance) return;
 
-    for (const marker of markers.current) marker.setMap(null);
-    markers.current = rows.map(({ masjid, km, iqamah }) => {
+    const live = markers.current;
+    const seen = new Set<string>();
+
+    for (const { masjid, km, next } of rows) {
+      seen.add(masjid.id);
+      const selected = masjid.id === selectedId;
+      const favourite = isFavourite(masjid.id);
+      const label = next ? pillLabel(next.prayer, next.at) : "No times";
+      const state: PillState = {
+        label,
+        selected,
+        favourite,
+        dim: next?.tomorrow ?? true,
+      };
+      const key = `${label}|${selected}|${favourite}|${state.dim}`;
+
+      const title = `${masjid.name}, ${formatDistance(km)}${
+        next
+          ? `, next ${PRAYER_LABELS[next.prayer]} iqamah ${formatTime(next.at)}${next.tomorrow ? " tomorrow" : ""}`
+          : ", no iqamah times on file"
+      }`;
+
+      const existing = live.get(masjid.id);
+      if (existing) {
+        if (existing.key !== key) {
+          existing.marker.setIcon(pillIcon(state));
+          existing.marker.setTitle(title);
+          existing.key = key;
+        }
+        // Sooner congregations sit above later ones so the pill that still
+        // matters is the one you can read where they overlap.
+        existing.marker.setZIndex(zIndexFor(selected, next?.at ?? null));
+        continue;
+      }
+
       const marker = new google.maps.Marker({
         position: { lat: masjid.lat, lng: masjid.lng },
         map: instance,
-        icon: pinIcon(masjid.id === selectedId, isFavourite(masjid.id)),
+        icon: pillIcon(state),
         // §12: pins are in the accessibility tree with a real label.
-        title: `${masjid.name}, ${formatDistance(km)}${
-          iqamah ? `, ${PRAYER_LABELS[prayer]} iqamah ${formatTime(iqamah)}` : ""
-        }`,
-        zIndex: masjid.id === selectedId ? 1000 : undefined,
+        title,
+        zIndex: zIndexFor(selected, next?.at ?? null),
       });
       marker.addListener("click", () => {
         setSelectedId(masjid.id);
@@ -175,13 +326,57 @@ export default function MapScreen({
         // happened until you dragged the sheet up by hand.
         setSnap("half");
       });
-      return marker;
-    });
-  }, [status, rows, selectedId, prayer, isFavourite]);
+      live.set(masjid.id, { marker, key });
+    }
 
+    for (const [id, entry] of live) {
+      if (seen.has(id)) continue;
+      entry.marker.setMap(null);
+      live.delete(id);
+    }
+  }, [status, rows, selectedId, isFavourite]);
+
+  /** The blue "you are here" dot, only once a real fix has come back. */
+  useEffect(() => {
+    const instance = map.current;
+    if (status !== "ready" || !instance) return;
+
+    if (reference.status !== "active") {
+      you.current?.setMap(null);
+      you.current = null;
+      return;
+    }
+
+    if (!you.current) {
+      you.current = new google.maps.Marker({
+        map: instance,
+        icon: youAreHereIcon(),
+        clickable: false,
+        title: "Your location",
+        zIndex: 2000,
+      });
+      // Finding you is only useful if the map then shows where that is.
+      instance.panTo(point);
+    }
+    you.current.setPosition(point);
+  }, [status, reference.status, point.lat, point.lng]);
+
+  /**
+   * The crosshair asks for a location before it recentres on one.
+   *
+   * It used to pan to the reference point, which without a fix is downtown
+   * Toronto — so on a phone in Scarborough the button appeared broken: it
+   * moved the map somewhere that was not where you are, and nothing on the
+   * map ever showed your position. Location is still never requested on load,
+   * only from this tap (§9).
+   */
   const recenter = () => {
+    // Recentring is the button's original job and still happens either way:
+    // on your position once we have one, on the chosen neighbourhood until
+    // then, so a denied or unavailable fix still leaves the button useful.
     map.current?.panTo(point);
-    map.current?.setZoom(13);
+    map.current?.setZoom(reference.status === "active" ? 14 : 12);
+    if (reference.status !== "active") reference.useDeviceLocation();
   };
 
   const selected = selectedId
@@ -197,13 +392,37 @@ export default function MapScreen({
         className="absolute inset-0 bg-surface-2"
       />
 
-      {status !== "ready" && (
+      {/*
+        Loading is a skeleton, not a message.
+
+        The first open pays for a cold fetch of the Maps SDK — a second or
+        more on mobile — and the old treatment put the word "Loading" in a
+        bordered box over a blank grey rectangle, which reads as a failure.
+        People backed out and came in again, which appeared to fix it only
+        because the script was cached by then. A shimmering surface reads as
+        "coming", so the same wait no longer looks broken.
+      */}
+      {status === "loading" && (
+        <div className="pointer-events-none absolute inset-0 z-10 animate-pulse bg-surface-2" />
+      )}
+
+      {(status === "unconfigured" || status === "error") && (
         <div className="absolute inset-x-4 top-24 z-20 rounded-lg border border-line bg-surface p-4 text-center text-body text-ink-2">
           {status === "unconfigured"
             ? "The map needs a Google Maps API key. The list below still works."
-            : status === "error"
-              ? "Couldn't load the map. The list below still works."
-              : "Loading the map…"}
+            : "Couldn't load the map. The list below still works."}
+          {status === "error" && (
+            <button
+              type="button"
+              onClick={() => {
+                setStatus("loading");
+                setAttempt((n) => n + 1);
+              }}
+              className="mt-3 flex min-h-[44px] w-full items-center justify-center rounded-md border border-line font-medium text-ink"
+            >
+              Try again
+            </button>
+          )}
         </div>
       )}
 
@@ -258,11 +477,25 @@ export default function MapScreen({
       <button
         type="button"
         onClick={recenter}
-        aria-label="Recentre the map"
-        className="absolute right-4 z-20 flex h-11 w-11 items-center justify-center rounded-full border border-line bg-surface text-ink-2 shadow-float hover:text-ink"
+        disabled={reference.status === "locating"}
+        aria-label={
+          reference.status === "active"
+            ? "Centre the map on your location"
+            : reference.status === "locating"
+              ? "Finding your location"
+              : "Show my location"
+        }
+        className={
+          "absolute right-4 z-20 flex h-11 w-11 items-center justify-center rounded-full border bg-surface shadow-float " +
+          (reference.status === "active"
+            ? "border-line text-brand"
+            : "border-line text-ink-2 hover:text-ink")
+        }
         style={{ bottom: "calc(50vh + 24px)" }}
       >
-        <Icon name="crosshair" size={20} />
+        <span className={reference.status === "locating" ? "animate-pulse" : ""}>
+          <Icon name="crosshair" size={20} />
+        </span>
       </button>
 
       <BottomSheet snap={snap} onSnapChange={setSnap} label="Masjid results">
@@ -455,6 +688,20 @@ function Chip({
       {label}
     </button>
   );
+}
+
+/**
+ * Stacking order for overlapping pills: selected on top, then soonest first.
+ *
+ * Pins in a dense area cover each other, and the one worth reading is the
+ * congregation you can still get to, not whichever masjid happens to sit
+ * lowest on the map.
+ */
+function zIndexFor(selected: boolean, at: Date | null): number {
+  if (selected) return 1_000_000;
+  if (!at) return 0;
+  // Nearer in time wins; minutes-from-epoch descending keeps it monotonic.
+  return Math.max(1, 900_000 - Math.floor(at.getTime() / 60_000) / 1000);
 }
 
 function relative(ms: number): string {

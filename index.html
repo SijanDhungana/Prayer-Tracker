@@ -13,6 +13,14 @@
           href="/fonts/instrument-400.woff2" crossorigin />
     <link rel="preload" as="font" type="font/woff2"
           href="/fonts/plexmono-500.woff2" crossorigin />
+    <!--
+      The Maps SDK itself must not load on boot (design spec v2 §8.1), but the
+      DNS lookup and TLS handshake for it can be done ahead of time for free.
+      The first open of the map paid for both on top of the download, which is
+      what made it feel like it had failed.
+    -->
+    <link rel="preconnect" href="https://maps.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://maps.gstatic.com" crossorigin />
     <script>
       // Apply a saved theme before first paint. Without this the page renders
       // in the system theme and then snaps to the chosen one, which is worse
