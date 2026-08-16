@@ -734,8 +734,7 @@
     "lastVerified": "2026-08-16",
     "needsReview": false,
     "source": "scrape",
-    "platform": "unknown",
-    "timesUrl": "https://islaminfo.com/prayertimings"
+    "platform": "unknown"
   },
   {
     "id": "abu-huraira-center",
@@ -1186,7 +1185,7 @@
     },
     "jumuah": [
       {
-        "khutbah": "13:35"
+        "khutbah": "14:00"
       }
     ],
     "lastVerified": "2026-08-16",
