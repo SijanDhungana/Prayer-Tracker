@@ -23,3 +23,8 @@ jobs:
 
       - run: npm ci
       - run: npm run build
+      # The scraper's own logic — Jumu'ah merging, the Ad-Din mapping, the
+      # invariant checks — has no other guard. It runs unattended against a
+      # worship app's data, so its unit suites belong in front of a merge
+      # rather than being remembered by hand.
+      - run: npm run check

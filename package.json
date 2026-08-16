@@ -12,7 +12,9 @@
     "check:jumuah": "tsx scripts/check-jumuah.ts",
     "check:discover": "tsx scripts/check-discover.ts",
     "check:plan-prayer": "tsx scripts/check-plan-prayer.ts",
-    "check:next-up": "tsx scripts/check-next-up.ts"
+    "check:next-up": "tsx scripts/check-next-up.ts",
+    "check:addin": "tsx scripts/check-addin.ts",
+    "check": "npm run check:jumuah && npm run check:discover && npm run check:plan-prayer && npm run check:next-up && npm run check:addin"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.112.2",

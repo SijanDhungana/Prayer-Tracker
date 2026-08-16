@@ -30,6 +30,17 @@ export interface Masjid {
   lastVerified?: string | null;
   needsReview?: boolean;
   source?: string;
+  /**
+   * Which prayer-time platform the site runs, when known. "ad-din" plus an
+   * `adDinMasjidId` lets the scraper read the masjid's own JSON instead of
+   * photographing the widget; everything else falls through to the crawl.
+   */
+  platform?: "ad-din" | "athanplus" | "plain-html" | "pdf" | "custom" | "unknown";
+  adDinMasjidId?: number | null;
+  /** The id is a guess from a directory listing — do not use the fast path. */
+  adDinUnverified?: boolean;
+  /** The site disallows automated access — never scrape, update by hand. */
+  manualOnly?: boolean;
 }
 
 export const isTime = (t: unknown): t is string =>

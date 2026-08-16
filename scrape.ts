@@ -464,6 +464,126 @@ export function checkResult(result: any): Verdict {
  * after the homepage, since a saved subpage is usually a month-long grid that
  * reads worse than today's times on the front page.
  */
+/**
+ * ── Ad-Din fast path ────────────────────────────────────────────────────
+ *
+ * Nine of these masjids run on Ad-Din, whose widget fetches the day's times
+ * from a JSON endpoint. Rather than photograph the widget and ask a vision
+ * model to read the digits back, we load the page in the same real browser
+ * and listen for the response the page is already receiving. The numbers then
+ * come from the masjid's own data rather than from an image of it, so a "3"
+ * can never come back as an "8".
+ *
+ * The browser is not incidental here. That endpoint sits behind Cloudflare and
+ * wants an `Addin-Api-Key` header plus a `cf_clearance` cookie, neither of
+ * which a bare fetch can obtain; the page's own JavaScript supplies both once
+ * a real browser has been let through.
+ *
+ * Returns the same shape `readTimes` produces, so validation, the Maghrib
+ * offset conversion and the Jumu'ah merge downstream are entirely unchanged —
+ * this swaps out how the times are *read*, not what is done with them.
+ */
+const AD_DIN_ENDPOINT = "GetPrayerTimesOfDay";
+
+export function mapAdDinResponse(raw: any): { iqamah: Record<string, string | null>; jumuah: string[] } | null {
+  // Ad-Din wraps the payload inconsistently across deployments.
+  const day = raw?.data ?? raw?.result ?? raw;
+  if (!day || typeof day !== "object") return null;
+
+  /**
+   * Field names vary by deployment, so each prayer is looked up under every
+   * spelling seen rather than one guessed key. A miss returns null and the
+   * prayer is simply left to the previous value — the merge never writes a
+   * null through.
+   */
+  const pick = (...names: string[]): string | null => {
+    for (const name of names) {
+      for (const key of Object.keys(day)) {
+        if (key.toLowerCase() !== name.toLowerCase()) continue;
+        const value = day[key];
+        const time = normaliseAdDinTime(
+          typeof value === "object" && value ? (value.iqamah ?? value.iqama ?? value.jamaat) : value,
+        );
+        if (time) return time;
+      }
+    }
+    return null;
+  };
+
+  const iqamah = {
+    fajr: pick("fajrIqamah", "fajrIqama", "fajrJamaat", "fajr"),
+    dhuhr: pick("dhuhrIqamah", "zuhrIqamah", "duhrIqamah", "dhuhrIqama", "zuhrIqama", "dhuhr", "zuhr"),
+    asr: pick("asrIqamah", "asrIqama", "asrJamaat", "asr"),
+    maghrib: pick("maghribIqamah", "maghribIqama", "maghribJamaat", "maghrib"),
+    isha: pick("ishaIqamah", "ishaIqama", "eshaIqamah", "ishaJamaat", "isha"),
+  };
+
+  return Object.values(iqamah).some((v) => v != null)
+    ? // Jumu'ah lives on a different Ad-Din endpoint, so it is deliberately
+      // left empty: mergeJumuah keeps whatever sittings are already on file
+      // rather than this path erasing them.
+      { iqamah, jumuah: [] }
+    : null;
+}
+
+/** Ad-Din returns "17:45:00", "5:45 PM" or "05:45" depending on deployment. */
+export function normaliseAdDinTime(value: unknown): string | null {
+  if (typeof value !== "string") return null;
+  const text = value.trim();
+
+  const twelve = /^(\d{1,2}):(\d{2})(?::\d{2})?\s*(AM|PM)$/i.exec(text);
+  if (twelve) {
+    let hours = Number(twelve[1]) % 12;
+    if (twelve[3].toUpperCase() === "PM") hours += 12;
+    return `${String(hours).padStart(2, "0")}:${twelve[2]}`;
+  }
+
+  const twentyFour = /^(\d{1,2}):(\d{2})(?::\d{2})?$/.exec(text);
+  if (!twentyFour) return null;
+  const hours = Number(twentyFour[1]);
+  if (hours > 23) return null;
+  return `${String(hours).padStart(2, "0")}:${twentyFour[2]}`;
+}
+
+async function readFromAdDin(
+  browser: Browser,
+  masjidId: number,
+): Promise<{ iqamah: Record<string, string | null>; jumuah: string[] } | null> {
+  const page = await browser.newPage({
+    viewport: { width: 1280, height: 900 },
+  });
+  try {
+    const waiting = page.waitForResponse(
+      (res) =>
+        res.url().includes(AD_DIN_ENDPOINT) &&
+        res.url().includes(`masjidId=${masjidId}`),
+      { timeout: 20000 },
+    );
+
+    await page.goto(`https://portal.ad-din.ca/public/mediumdisplay/${masjidId}`, {
+      waitUntil: "domcontentloaded",
+      timeout: 30000,
+    });
+
+    const response = await waiting;
+    if (!response.ok()) {
+      console.log(`  · Ad-Din ${masjidId} returned HTTP ${response.status()}`);
+      return null;
+    }
+
+    const json = await response.json();
+    // Logged once per masjid so the field mapping above can be checked against
+    // what the endpoint actually sends, rather than assumed.
+    console.log(`  · Ad-Din ${masjidId} raw: ${JSON.stringify(json).slice(0, 240)}`);
+    return mapAdDinResponse(json);
+  } catch (error) {
+    console.log(`  · Ad-Din ${masjidId} — ${(error as Error).message.split("\n")[0]}`);
+    return null;
+  } finally {
+    await page.close();
+  }
+}
+
 async function findTimes(
   browser: Browser,
   masjid: Masjid,
@@ -471,6 +591,28 @@ async function findTimes(
   | { ok: true; result: any; url: string; missing: string[]; capture: Capture }
   | { ok: false; reason: string }
 > {
+  // Try the masjid's own data before photographing a rendering of it. A miss
+  // falls through to the crawl below rather than failing the masjid, so a
+  // wrong id or a changed endpoint costs a few seconds, not a day's times.
+  // `adDinUnverified` means the id is a directory guess, not something anyone
+  // checked. A wrong id does not error — it returns another masjid's times,
+  // which is the worst outcome available here, so the guess is not acted on.
+  if (masjid.platform === "ad-din" && masjid.adDinMasjidId && !masjid.adDinUnverified) {
+    const direct = await readFromAdDin(browser, masjid.adDinMasjidId);
+    if (direct) {
+      const verdict = checkResult({ found: true, confidence: 1, ...direct });
+      if (verdict.ok) {
+        return {
+          ok: true,
+          result: { found: true, confidence: 1, ...direct },
+          url: masjid.website || masjid.timesUrl!,
+          missing: verdict.missing,
+          capture: { shot: "Ad-Din API" } as unknown as Capture,
+        };
+      }
+    }
+  }
+
   const homepage = masjid.website || masjid.timesUrl!;
   const tried = new Set<string>();
   const queue: string[] = [homepage];
@@ -601,6 +743,21 @@ async function main() {
 
   for (const m of masjids) {
     if (!m.website && !m.timesUrl) continue;
+
+    /**
+     * Some masjids are off-limits to the crawler and stay that way.
+     *
+     * Spiritual Society of Canada's robots.txt disallows automated access.
+     * The scraper has been reading it daily regardless, which is not ours to
+     * decide — a site saying no is a no, whatever a real browser is able to
+     * get away with. Their times stay in the file and stay usable; they are
+     * only ever updated by hand from here on.
+     */
+    if (m.manualOnly) {
+      console.log(`Skipping ${m.name} — manual only (site disallows automated access)`);
+      continue;
+    }
+
     console.log(`Scraping ${m.name} …`);
 
     const found = await findTimes(browser, m);

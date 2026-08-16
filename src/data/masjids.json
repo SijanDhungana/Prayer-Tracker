@@ -42,7 +42,8 @@
     ],
     "lastVerified": "2026-08-15",
     "needsReview": true,
-    "source": "scrape"
+    "source": "scrape",
+    "platform": "plain-html"
   },
   {
     "id": "al-misbah-islamic-centre",
@@ -88,7 +89,8 @@
     "lastVerified": "2026-08-15",
     "needsReview": false,
     "source": "scrape",
-    "timesUrl": "https://amiccanada.ca/#prayer-times"
+    "timesUrl": "https://amiccanada.ca/#prayer-times",
+    "platform": "athanplus"
   },
   {
     "id": "spiritual-society-canada",
@@ -136,7 +138,9 @@
     ],
     "lastVerified": "2026-08-15",
     "needsReview": false,
-    "source": "scrape"
+    "source": "scrape",
+    "platform": "ad-din",
+    "manualOnly": true
   },
   {
     "id": "masjid-omar-farooq",
@@ -181,7 +185,9 @@
     ],
     "lastVerified": "2026-08-15",
     "needsReview": false,
-    "source": "scrape"
+    "source": "scrape",
+    "platform": "ad-din",
+    "adDinMasjidId": 95
   },
   {
     "id": "masjid-zakariya",
@@ -226,7 +232,9 @@
     ],
     "lastVerified": "2026-08-15",
     "needsReview": false,
-    "source": "scrape"
+    "source": "scrape",
+    "platform": "ad-din",
+    "adDinMasjidId": 359
   },
   {
     "id": "central-mosque-scarborough",
@@ -264,7 +272,8 @@
     "jumuah": [],
     "lastVerified": "2026-08-14",
     "needsReview": true,
-    "source": "manual"
+    "source": "manual",
+    "platform": "athanplus"
   },
   {
     "id": "masjid-bilal",
@@ -309,7 +318,8 @@
     ],
     "lastVerified": "2026-08-15",
     "needsReview": false,
-    "source": "scrape"
+    "source": "scrape",
+    "platform": "unknown"
   },
   {
     "id": "masjid-al-jannah-slifo",
@@ -354,7 +364,8 @@
     ],
     "lastVerified": "2026-08-14",
     "needsReview": true,
-    "source": "manual"
+    "source": "manual",
+    "platform": "ad-din"
   },
   {
     "id": "islamic-foundation-toronto",
@@ -399,7 +410,9 @@
     ],
     "lastVerified": "2026-08-15",
     "needsReview": false,
-    "source": "scrape"
+    "source": "scrape",
+    "platform": "ad-din",
+    "adDinMasjidId": 14
   },
   {
     "id": "scarborough-muslim-association",
@@ -447,7 +460,8 @@
     ],
     "lastVerified": "2026-08-15",
     "needsReview": true,
-    "source": "scrape"
+    "source": "scrape",
+    "platform": "pdf"
   },
   {
     "id": "masjid-al-hidaya",
@@ -489,7 +503,8 @@
     ],
     "lastVerified": "2026-08-15",
     "needsReview": false,
-    "source": "scrape"
+    "source": "scrape",
+    "platform": "ad-din"
   },
   {
     "id": "sunatul-jamaat-ontario",
@@ -534,7 +549,8 @@
     ],
     "lastVerified": "2026-08-15",
     "needsReview": true,
-    "source": "scrape"
+    "source": "scrape",
+    "platform": "unknown"
   },
   {
     "id": "islamic-institute-toronto",
@@ -576,7 +592,8 @@
     ],
     "lastVerified": "2026-08-15",
     "needsReview": false,
-    "source": "scrape"
+    "source": "scrape",
+    "platform": "unknown"
   },
   {
     "id": "madinah-masjid",
@@ -621,7 +638,8 @@
     ],
     "lastVerified": "2026-08-15",
     "needsReview": false,
-    "source": "scrape"
+    "source": "scrape",
+    "platform": "unknown"
   },
   {
     "id": "masjid-toronto-dundas",
@@ -669,7 +687,8 @@
     ],
     "lastVerified": "2026-08-15",
     "needsReview": false,
-    "source": "scrape"
+    "source": "scrape",
+    "platform": "unknown"
   },
   {
     "id": "iidci-bloor",
@@ -714,7 +733,8 @@
     ],
     "lastVerified": "2026-08-15",
     "needsReview": false,
-    "source": "scrape"
+    "source": "scrape",
+    "platform": "unknown"
   },
   {
     "id": "abu-huraira-center",
@@ -752,7 +772,8 @@
     "jumuah": [],
     "lastVerified": "2026-08-14",
     "needsReview": true,
-    "source": "manual"
+    "source": "manual",
+    "platform": "unknown"
   },
   {
     "id": "masjid-al-istiqama",
@@ -795,7 +816,8 @@
     "lastVerified": "2026-08-15",
     "needsReview": true,
     "source": "scrape",
-    "timesUrl": "https://istiqamamasjid.com/#pyayer"
+    "timesUrl": "https://istiqamamasjid.com/#pyayer",
+    "platform": "unknown"
   },
   {
     "id": "anjuman-e-anwarul-islam-of-malton",
@@ -840,7 +862,8 @@
     ],
     "lastVerified": "2026-08-15",
     "needsReview": false,
-    "source": "scrape"
+    "source": "scrape",
+    "platform": "ad-din"
   },
   {
     "id": "baitul-mukarram",
@@ -888,7 +911,8 @@
     ],
     "lastVerified": "2026-08-15",
     "needsReview": false,
-    "source": "scrape"
+    "source": "scrape",
+    "platform": "unknown"
   },
   {
     "id": "cambridge-muslim-society",
@@ -933,7 +957,8 @@
     ],
     "lastVerified": "2026-08-15",
     "needsReview": false,
-    "source": "scrape"
+    "source": "scrape",
+    "platform": "ad-din"
   },
   {
     "id": "ibrahim-jame-mosque",
@@ -975,7 +1000,8 @@
     ],
     "lastVerified": "2026-07-27",
     "needsReview": true,
-    "source": "manual"
+    "source": "manual",
+    "platform": "unknown"
   },
   {
     "id": "islamic-centre-of-oshawa",
@@ -1023,7 +1049,8 @@
     ],
     "lastVerified": "2026-08-15",
     "needsReview": true,
-    "source": "scrape"
+    "source": "scrape",
+    "platform": "unknown"
   },
   {
     "id": "islamic-society-of-toronto",
@@ -1071,7 +1098,8 @@
     ],
     "lastVerified": "2026-08-15",
     "needsReview": false,
-    "source": "scrape"
+    "source": "scrape",
+    "platform": "unknown"
   },
   {
     "id": "markham-masjid",
@@ -1119,7 +1147,8 @@
     ],
     "lastVerified": "2026-08-15",
     "needsReview": true,
-    "source": "scrape"
+    "source": "scrape",
+    "platform": "unknown"
   },
   {
     "id": "masjid-el-noor",
@@ -1162,7 +1191,10 @@
     "lastVerified": "2026-08-15",
     "needsReview": false,
     "source": "scrape",
-    "timesUrl": "https://masjidelnoor.ca/#prayer-times"
+    "timesUrl": "https://masjidelnoor.ca/#prayer-times",
+    "platform": "ad-din",
+    "adDinMasjidId": 11,
+    "adDinUnverified": true
   },
   {
     "id": "masjid-vaughan",
@@ -1204,7 +1236,8 @@
     ],
     "lastVerified": "2026-08-15",
     "needsReview": true,
-    "source": "scrape"
+    "source": "scrape",
+    "platform": "plain-html"
   },
   {
     "id": "masjidur-rahmah",
@@ -1249,7 +1282,8 @@
     ],
     "lastVerified": "2026-08-14",
     "needsReview": true,
-    "source": "manual"
+    "source": "manual",
+    "platform": "unknown"
   },
   {
     "id": "pickering-islamic-centre",
@@ -1297,7 +1331,8 @@
     ],
     "lastVerified": "2026-08-14",
     "needsReview": true,
-    "source": "manual"
+    "source": "manual",
+    "platform": "custom"
   },
   {
     "id": "towfiq-islamic-centre",
@@ -1342,7 +1377,8 @@
     ],
     "lastVerified": "2026-08-15",
     "needsReview": true,
-    "source": "scrape"
+    "source": "scrape",
+    "platform": "unknown"
   },
   {
     "id": "townline-muslim-centre",
@@ -1387,7 +1423,8 @@
     ],
     "lastVerified": "2026-08-15",
     "needsReview": true,
-    "source": "scrape"
+    "source": "scrape",
+    "platform": "unknown"
   },
   {
     "id": "windsor-islamic-association",
@@ -1436,6 +1473,7 @@
     "lastVerified": "2026-08-15",
     "needsReview": true,
     "source": "scrape",
-    "timesUrl": "https://windsorislamicassociation.com/prayer-times"
+    "timesUrl": "https://windsorislamicassociation.com/prayer-times",
+    "platform": "unknown"
   }
 ]
