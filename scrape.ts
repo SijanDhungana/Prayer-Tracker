@@ -573,8 +573,11 @@ async function readFromAdDin(
 
     const json = await response.json();
     // Logged once per masjid so the field mapping above can be checked against
-    // what the endpoint actually sends, rather than assumed.
-    console.log(`  · Ad-Din ${masjidId} raw: ${JSON.stringify(json).slice(0, 240)}`);
+    // what the endpoint actually sends, rather than assumed. Full response,
+    // not a snippet — the first real run showed times nested under
+    // prayerOfDay rather than the flat keys guessed here, and a 240-char
+    // slice cut off before that nesting was visible.
+    console.log(`  · Ad-Din ${masjidId} raw: ${JSON.stringify(json)}`);
     return mapAdDinResponse(json);
   } catch (error) {
     console.log(`  · Ad-Din ${masjidId} — ${(error as Error).message.split("\n")[0]}`);
