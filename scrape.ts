@@ -359,14 +359,28 @@ async function readTimes(capture: Capture): Promise<any | null> {
  * often the model picked up a neighbouring column or yesterday's row. Drop the
  * offending prayer rather than the whole read; the previous value survives.
  */
-function rejectImpossible(masjid: Masjid, iqamah: Record<string, string | null>) {
+/**
+ * Two independent adhan-calculation runs do not have to agree to the minute —
+ * angle-assumption and rounding differences between implementations are
+ * normal. Madinah Masjid and Markham Masjid were both flagged here on
+ * consecutive days for an Isha exactly one minute earlier than this app's
+ * calculated adhan; a hand-verification of both sites on 2026-08-17 confirmed
+ * their published Isha was correct as scraped. That was never a bad read, it
+ * was this check being stricter than the astronomy underneath it actually is.
+ * A few minutes of slack keeps rejecting the case this function exists for —
+ * a time from the wrong column or the wrong day — without punishing a
+ * masjid for a real iqamah that lands just before this app's own estimate.
+ */
+const ADHAN_ROUNDING_TOLERANCE_MINUTES = 3;
+
+export function rejectImpossible(masjid: Masjid, iqamah: Record<string, string | null>) {
   const adhan = adhanMinutesFor(masjid);
   const rejected: string[] = [];
 
   for (const prayer of PRAYERS) {
     const scraped = iqamah[prayer];
     if (!scraped || !isTime(scraped)) continue;
-    if (clockMinutes(scraped) < adhan[prayer]) {
+    if (clockMinutes(scraped) < adhan[prayer] - ADHAN_ROUNDING_TOLERANCE_MINUTES) {
       rejected.push(`${prayer} ${scraped} < adhan`);
       iqamah[prayer] = null;
     }

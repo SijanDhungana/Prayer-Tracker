@@ -1,0 +1,416 @@
+{
+  "asOfDate": "2026-08-17",
+  "timezone": "America/Toronto",
+  "source": "Manual verification via live browser session (Claude in Chrome), one page load per masjid",
+  "notes": [
+    "fajr/zuhr/asr/isha are the iqamah clock times observed today; these are set manually by each masjid and change infrequently outside seasonal adjustments.",
+    "maghrib_offset_min is iqamah minus adhan (sunset) in minutes, per the app's rule of storing Maghrib as an offset rather than a fixed time.",
+    "jumuah entries are khutbah/salah pairs where both were visible; some sites only showed one time (treated as salah/iqamah).",
+    "review_flag is present only on entries with an unresolved data-quality question worth a human check before trusting blindly."
+  ],
+  "masjids": [
+    {
+      "name": "Masjid Ali (Eslah Islamic Association)",
+      "website": "masjidali.ca",
+      "fajr": "5:45 AM",
+      "zuhr": "1:45 PM",
+      "asr": "6:30 PM",
+      "maghrib_offset_min": 0,
+      "isha": "10:10 PM",
+      "jumuah": [
+        { "khutbah": "1:30 PM", "salah": "2:00 PM" },
+        { "khutbah": "2:35 PM", "salah": "2:55 PM" }
+      ]
+    },
+    {
+      "name": "Al-Misbah Islamic Centre",
+      "website": "amiccanada.ca",
+      "fajr": "5:40 AM",
+      "zuhr": "1:45 PM",
+      "asr": "6:45 PM",
+      "maghrib_offset_min": 2,
+      "isha": "9:45 PM",
+      "jumuah": [
+        { "salah": "1:45 PM" },
+        { "salah": "2:45 PM" }
+      ]
+    },
+    {
+      "name": "Spiritual Society of Canada",
+      "website": "spiritualsocietycanada.com",
+      "note": "SKIPPED — robots.txt disallows automated access; manual update only",
+      "manual_only": true
+    },
+    {
+      "name": "Masjid Omar Farooq (Anjuman Khadimul Muslimein)",
+      "website": "masjidomarfarooq.com",
+      "fajr": "5:45 AM",
+      "zuhr": "2:00 PM",
+      "asr": "6:45 PM",
+      "maghrib_offset_min": 2,
+      "isha": "9:45 PM",
+      "jumuah": [
+        { "khutbah": "1:30 PM", "salah": "2:10 PM" },
+        { "khutbah": "2:55 PM", "salah": "3:15 PM" }
+      ]
+    },
+    {
+      "name": "Masjid Zakariya",
+      "website": "masjidzakariya.com",
+      "fajr": "5:50 AM",
+      "zuhr": "1:45 PM",
+      "asr": "6:45 PM",
+      "maghrib_offset_min": 0,
+      "isha": "10:10 PM",
+      "jumuah": [
+        { "khutbah": "1:30 PM", "salah": "1:50 PM" },
+        { "khutbah": "3:10 PM", "salah": "3:30 PM" }
+      ]
+    },
+    {
+      "name": "Central Mosque Scarborough (Jaame Masjid)",
+      "website": "centralmosque.ca",
+      "fajr": "5:45 AM",
+      "zuhr": "1:45 PM",
+      "asr": "7:00 PM",
+      "maghrib_offset_min": 3,
+      "isha": "10:00 PM",
+      "jumuah": [
+        { "salah": "1:45 PM" },
+        { "salah": "2:45 PM" },
+        { "salah": "3:30 PM" }
+      ]
+    },
+    {
+      "name": "Masjid Bilal Muslim Association",
+      "website": "masjidbilal.ca",
+      "fajr": "5:45 AM",
+      "zuhr": "1:45 PM",
+      "asr": "7:00 PM",
+      "maghrib_offset_min": 5,
+      "isha": "10:00 PM",
+      "jumuah": [
+        { "salah": "2:00 PM" },
+        { "salah": "3:30 PM" }
+      ]
+    },
+    {
+      "name": "Masjid Al-Jannah (Sri Lanka Islamic Foundation of Ontario)",
+      "website": "slifo.ca",
+      "fajr": "5:30 AM",
+      "zuhr": "2:00 PM",
+      "asr": "6:30 PM",
+      "maghrib_offset_min": 8,
+      "isha": "10:00 PM",
+      "jumuah": [
+        { "salah": "3:10 PM", "note": "Jumuah 1 time not captured" }
+      ]
+    },
+    {
+      "name": "Islamic Foundation of Toronto",
+      "website": "islamicfoundation.ca",
+      "fajr": "5:30 AM",
+      "zuhr": "1:45 PM",
+      "asr": "6:45 PM",
+      "maghrib_offset_min": 1,
+      "isha": "10:00 PM",
+      "jumuah": [
+        { "khutbah": "1:30 PM", "salah": "2:00 PM" },
+        { "khutbah": "2:35 PM", "salah": "2:45 PM" }
+      ]
+    },
+    {
+      "name": "Scarborough Muslim Association (Jame Abu Bakr Siddique)",
+      "website": "smacanada.ca",
+      "fajr": "5:50 AM",
+      "zuhr": "1:45 PM",
+      "asr": "7:00 PM",
+      "maghrib_offset_min": 4,
+      "isha": "10:00 PM",
+      "jumuah": [
+        { "khutbah": "1:25 PM", "salah": "1:45 PM" },
+        { "khutbah": "2:50 PM", "salah": "3:00 PM" }
+      ]
+    },
+    {
+      "name": "Masjid Al-Hidaya (Toronto Markaz)",
+      "website": "mah.ad-din.site",
+      "fajr": "5:50 AM",
+      "zuhr": "1:45 PM",
+      "asr": "7:00 PM",
+      "maghrib_offset_min": 3,
+      "isha": "10:00 PM",
+      "jumuah": [
+        { "khutbah": "1:30 PM", "salah": "2:00 PM" }
+      ]
+    },
+    {
+      "name": "Sunatul Jamaat of Ontario",
+      "website": "sunatuljamaat.com",
+      "fajr": "5:40 AM",
+      "zuhr": "1:45 PM",
+      "asr": "6:50 PM",
+      "maghrib_offset_min": 0,
+      "isha": "10:15 PM",
+      "jumuah": [
+        { "khutbah": "1:30 PM", "salah": "2:00 PM" },
+        { "khutbah": "2:45 PM", "salah": "3:15 PM" }
+      ]
+    },
+    {
+      "name": "Islamic Institute of Toronto",
+      "website": "islam.ca",
+      "fajr": "5:15 AM",
+      "zuhr": "2:10 PM",
+      "asr": "6:00 PM",
+      "maghrib_offset_min": 0,
+      "isha": "10:15 PM",
+      "jumuah": []
+    },
+    {
+      "name": "Madinah Masjid (Jamiatul Muslemin of Toronto)",
+      "website": "madinahmasjid.ca",
+      "fajr": "5:45 AM",
+      "zuhr": "1:45 PM",
+      "asr": "6:45 PM",
+      "maghrib_offset_min": 3,
+      "isha": "9:45 PM",
+      "jumuah": [
+        { "khutbah": "1:40 PM", "salah": "1:55 PM" },
+        { "khutbah": "3:30 PM", "salah": "3:30 PM" }
+      ]
+    },
+    {
+      "name": "Masjid Toronto (Dundas)",
+      "website": "masjidtoronto.com",
+      "fajr": "5:45 AM",
+      "zuhr": "1:40 PM",
+      "asr": "6:00 PM",
+      "maghrib_offset_min": 4,
+      "isha": "10:00 PM",
+      "jumuah": []
+    },
+    {
+      "name": "Islamic Information & Dawah Centre International",
+      "website": "islaminfo.com",
+      "fajr": "5:30 AM",
+      "zuhr": "1:45 PM",
+      "asr": "5:45 PM",
+      "maghrib_offset_min": 0,
+      "isha": "10:00 PM",
+      "jumuah": [
+        { "khutbah": "1:00 PM", "salah": "1:30 PM" },
+        { "khutbah": "2:00 PM", "salah": "2:30 PM" }
+      ]
+    },
+    {
+      "name": "Abu Huraira Center",
+      "website": "abuhuraira.org",
+      "fajr": "5:30 AM",
+      "zuhr": "1:45 PM",
+      "asr": "5:45 PM",
+      "maghrib_offset_min": 10,
+      "isha": "9:45 PM",
+      "jumuah": [
+        { "salah": "2:00 PM" },
+        { "salah": "3:00 PM" }
+      ]
+    },
+    {
+      "name": "Masjid Al-Istiqama",
+      "website": "istiqamamasjid.com",
+      "fajr": "5:45 AM",
+      "zuhr": "1:45 PM",
+      "asr": "6:00 PM",
+      "maghrib_offset_min": 0,
+      "isha": "10:00 PM",
+      "jumuah": [
+        { "salah": "1:30 PM" }
+      ]
+    },
+    {
+      "name": "Anjuman E Anwarul Islam of Malton",
+      "website": "maltonmasjid.ad-din.site",
+      "fajr": "5:50 AM",
+      "zuhr": "1:45 PM",
+      "asr": "7:00 PM",
+      "maghrib_offset_min": 3,
+      "isha": "10:00 PM",
+      "jumuah": [
+        { "khutbah": "1:23 PM", "salah": "2:00 PM" },
+        { "khutbah": "1:23 PM", "salah": "3:15 PM" }
+      ]
+    },
+    {
+      "name": "Baitul Mukarram",
+      "website": "bmis.ca",
+      "fajr": "5:50 AM",
+      "zuhr": "2:00 PM",
+      "asr": "7:00 PM",
+      "maghrib_offset_min": 4,
+      "isha": "10:00 PM",
+      "jumuah": [
+        { "salah": "1:45 PM" },
+        { "salah": "2:45 PM" },
+        { "salah": "3:45 PM" }
+      ]
+    },
+    {
+      "name": "Cambridge Muslim Society",
+      "website": "cambridgemuslimsociety.org",
+      "fajr": "5:45 AM",
+      "zuhr": "1:45 PM",
+      "asr": "7:00 PM",
+      "maghrib_offset_min": 3,
+      "isha": "10:00 PM",
+      "jumuah": [
+        { "khutbah": "1:30 PM", "salah": "1:45 PM" },
+        { "khutbah": "3:30 PM", "salah": "3:30 PM" }
+      ]
+    },
+    {
+      "name": "Ibrahim Jame Mosque",
+      "website": "ibrahimjamemosque.com",
+      "fajr": "5:30 AM",
+      "zuhr": "1:35 PM",
+      "asr": "6:35 PM",
+      "maghrib_offset_min": 4,
+      "isha": "10:05 PM",
+      "jumuah": [
+        { "khutbah": "1:30 PM", "salah": "2:00 PM" }
+      ]
+    },
+    {
+      "name": "Islamic Centre of Oshawa",
+      "website": "oshawamosque.com",
+      "fajr": "5:45 AM",
+      "zuhr": "1:45 PM",
+      "asr": "6:45 PM",
+      "maghrib_offset_min": 0,
+      "isha": "10:00 PM",
+      "jumuah": [
+        { "khutbah": "1:15 PM", "salah": "1:45 PM" }
+      ]
+    },
+    {
+      "name": "Islamic Society of Toronto (Darus Salaam)",
+      "website": "islamicsocietyoftoronto.com",
+      "fajr": "5:45 AM",
+      "zuhr": "1:45 PM",
+      "asr": "6:30 PM",
+      "maghrib_offset_min": 3,
+      "isha": "9:45 PM",
+      "jumuah": [
+        { "salah": "1:45 PM" },
+        { "salah": "2:45 PM" },
+        { "salah": "3:45 PM" }
+      ]
+    },
+    {
+      "name": "Markham Masjid",
+      "website": "markhammasjid.ca",
+      "fajr": "5:45 AM",
+      "zuhr": "1:45 PM",
+      "asr": "6:45 PM",
+      "maghrib_offset_min": 0,
+      "isha": "9:45 PM",
+      "jumuah": [
+        { "salah": "1:45 PM" },
+        { "salah": "2:30 PM" },
+        { "salah": "3:15 PM" }
+      ]
+    },
+    {
+      "name": "Masjid El Noor",
+      "website": "masjidelnoor.ca",
+      "fajr": "5:30 AM",
+      "zuhr": "1:45 PM",
+      "asr": "6:30 PM",
+      "maghrib_offset_min": 3,
+      "isha": "10:00 PM",
+      "jumuah": []
+    },
+    {
+      "name": "Masjid Vaughan",
+      "website": "masjidvaughan.ca",
+      "fajr": "5:45 AM",
+      "zuhr": "1:35 PM",
+      "asr": "6:25 PM",
+      "maghrib_offset_min": 5,
+      "isha": "10:00 PM",
+      "jumuah": [
+        { "khutbah": "1:35 PM", "salah": "2:00 PM" }
+      ]
+    },
+    {
+      "name": "Masjidur Rahmah (Central Toronto Islamic Foundation)",
+      "website": "centraltorontoislamicfoundation.com",
+      "fajr": "5:30 AM",
+      "zuhr": "2:00 PM",
+      "asr": "6:45 PM",
+      "maghrib_offset_min": 3,
+      "isha": "10:00 PM",
+      "jumuah": [
+        { "khutbah": "1:21 PM", "salah": "2:00 PM" },
+        { "khutbah": "2:35 PM", "salah": "3:00 PM" }
+      ]
+    },
+    {
+      "name": "Pickering Islamic Centre (Masjid Usman)",
+      "website": "masjid.ca",
+      "fajr": "5:45 AM",
+      "zuhr": "2:00 PM",
+      "asr": "6:45 PM",
+      "maghrib_offset_min": 3,
+      "isha": "10:00 PM",
+      "jumuah": [
+        { "khutbah": "1:25 PM", "salah": "2:00 PM" },
+        { "khutbah": "3:20 PM", "salah": "3:45 PM" },
+        { "khutbah": "4:25 PM", "salah": "4:45 PM" }
+      ]
+    },
+    {
+      "name": "Towfiq Islamic Centre",
+      "website": "torontotic.com",
+      "fajr": "5:15 AM",
+      "zuhr": "1:40 PM",
+      "asr": "5:30 PM",
+      "maghrib_offset_min": 3,
+      "isha": "9:45 PM",
+      "jumuah": [
+        { "khutbah": "12:55 PM", "salah": "1:30 PM" },
+        { "khutbah": "1:45 PM", "salah": "2:30 PM" }
+      ],
+      "review_flag": "Asr adhan (5:20 PM) looks Shafi-appropriate, not Hanafi — likely calc.madhab mismatch"
+    },
+    {
+      "name": "Townline Muslim Centre",
+      "website": "townlinemuslimcentre.ca",
+      "fajr": "5:45 AM",
+      "zuhr": "2:00 PM",
+      "asr": "6:45 PM",
+      "maghrib_offset_min": 0,
+      "isha": "10:15 PM",
+      "jumuah": [
+        { "khutbah": "1:30 PM", "salah": "2:00 PM" },
+        { "khutbah": "2:50 PM", "salah": "3:20 PM" }
+      ],
+      "review_flag": "Maghrib iqamah not shown separately on site — offset assumed 0, verify"
+    },
+    {
+      "name": "Windsor Islamic Association",
+      "website": "windsorislamicassociation.com",
+      "fajr": "5:45 AM",
+      "zuhr": "2:00 PM",
+      "asr": "6:15 PM",
+      "maghrib_offset_min": 10,
+      "isha": "10:10 PM",
+      "jumuah": [
+        { "salah": "12:45 PM" },
+        { "salah": "1:45 PM" },
+        { "salah": "3:00 PM" }
+      ],
+      "review_flag": "Asr adhan (5:26 PM) looks early for Hanafi — check calc.madhab, same pattern as Towfiq"
+    }
+  ]
+}
