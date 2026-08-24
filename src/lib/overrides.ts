@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { SUPABASE_ANON_KEY, SUPABASE_URL, authConfigured } from "./supabase";
+import { TZ } from "./time";
 import { PRAYERS, type IqamahRule, type Masjid, type Prayer } from "./types";
 
 export interface ApprovedTime {
@@ -8,17 +9,68 @@ export interface ApprovedTime {
   /** Exactly one of these is set. */
   suggested_time: string | null;
   offset_minutes: number | null;
+  /** When an admin approved it. Absent on rows written before this was read. */
+  reviewed_at?: string | null;
 }
 
 const isPrayer = (slot: string): slot is Prayer =>
   (PRAYERS as readonly string[]).includes(slot);
 
 /**
+ * The calendar date, in Toronto, that an ISO timestamp falls on.
+ *
+ * `reviewed_at` is a timestamptz and `lastVerified` is a bare date, so they
+ * can only be compared once both are on the same clock. Returns null for
+ * anything unparseable, which the caller treats as "no date" rather than as
+ * a very old one.
+ */
+function reviewedOn(iso: string | null | undefined): string | null {
+  if (!iso) return null;
+  const at = new Date(iso);
+  if (Number.isNaN(at.getTime())) return null;
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: TZ,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(at);
+}
+
+/**
+ * Whether an approved correction still speaks for a masjid.
+ *
+ * A correction is someone confirming a time against the masjid, so it beats
+ * the scraper — but only until the underlying record is confirmed again. It
+ * used to win permanently, which quietly broke the app: a correction approved
+ * on the 14th kept overriding data re-verified on the 24th, so ten days of
+ * imports were invisible on the live site while the adhan times beside them
+ * updated normally. Every fresh import made that worse rather than better,
+ * and nothing in the UI could show it, because the app had no idea it was
+ * displaying anything other than the file it shipped with.
+ *
+ * ISO dates are compared as strings on purpose: both sides are
+ * `YYYY-MM-DD` on Toronto's clock, where lexical order is chronological.
+ * Ties go to the correction, since a human checking a masjid on the same day
+ * a sheet was compiled is the more specific of the two.
+ */
+function stillApplies(row: ApprovedTime, masjid: Masjid): boolean {
+  const verified = masjid.lastVerified;
+  if (!verified) return true;
+
+  const reviewed = reviewedOn(row.reviewed_at);
+  // A row with no usable timestamp keeps the old behaviour rather than being
+  // silently dropped — losing a real correction is the worse failure.
+  if (!reviewed) return true;
+
+  return reviewed >= verified;
+}
+
+/**
  * Lay approved corrections over the scraped baseline.
  *
  * masjids.json is what the scraper believes; an approved correction is what a
- * person confirmed against the masjid. The correction wins, and it takes effect
- * the moment an admin approves it — no commit, no redeploy.
+ * person confirmed against the masjid. The correction wins while it is the
+ * more recent of the two — see `stillApplies`.
  */
 export function applyOverrides(
   masjids: Masjid[],
@@ -41,6 +93,8 @@ export function applyOverrides(
     let jumuah = masjid.jumuah;
 
     for (const row of rows) {
+      if (!stillApplies(row, masjid)) continue;
+
       // An offset tracks that day's adhan; a clock time is absolute.
       const rule: IqamahRule | null =
         row.offset_minutes != null
@@ -81,7 +135,10 @@ export function useApprovedTimes(): {
     // every visitor, and pulling in the client library just to read a public
     // view would put ~60 kB in front of the prayer times.
     fetch(
-      `${SUPABASE_URL}/rest/v1/approved_times?select=masjid_id,slot,suggested_time,offset_minutes`,
+      // reviewed_at is required, not decorative: without it a correction has
+      // no date to be weighed against the baseline's lastVerified and would
+      // override re-verified data forever.
+      `${SUPABASE_URL}/rest/v1/approved_times?select=masjid_id,slot,suggested_time,offset_minutes,reviewed_at`,
       {
         headers: {
           apikey: SUPABASE_ANON_KEY,

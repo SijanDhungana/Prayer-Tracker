@@ -15,7 +15,8 @@
     "check:next-up": "tsx scripts/check-next-up.ts",
     "check:addin": "tsx scripts/check-addin.ts",
     "check:reject-impossible": "tsx scripts/check-reject-impossible.ts",
-    "check": "npm run check:jumuah && npm run check:discover && npm run check:plan-prayer && npm run check:next-up && npm run check:addin && npm run check:reject-impossible"
+    "check:overrides": "tsx scripts/check-overrides.ts",
+    "check": "npm run check:jumuah && npm run check:discover && npm run check:plan-prayer && npm run check:next-up && npm run check:addin && npm run check:reject-impossible && npm run check:overrides"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.112.2",

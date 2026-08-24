@@ -6,7 +6,12 @@
     "lib": ["ES2023", "DOM"],
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "types": ["node"],
+    // "vite/client" alongside node because the check:* scripts exercise real
+    // app modules, and some of those read import.meta.env (supabase.ts,
+    // googleMaps.ts). Without it, a test that imports one of them fails to
+    // compile here even though the same file compiles fine in the app project,
+    // which would push those modules out of test coverage for the wrong reason.
+    "types": ["node", "vite/client"],
     "resolveJsonModule": true,
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
