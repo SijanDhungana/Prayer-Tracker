@@ -1,0 +1,326 @@
+{
+  "date": "2026-08-24",
+  "source": "operator-compiled spreadsheet (live site checks)",
+  "rows": [
+    {
+      "name": "Masjid Ali (Eslah Islamic Association)",
+      "website": "masjidali.ca",
+      "fajr": "5:45 AM",
+      "dhuhr": "1:45 PM",
+      "asr": "6:30 PM",
+      "maghrib": "Sunset",
+      "isha": "10:10 PM",
+      "notes": "Site shows static times, not date-specific"
+    },
+    {
+      "name": "Al-Misbah Islamic Centre",
+      "website": "amiccanada.ca",
+      "fajr": "5:50 AM",
+      "dhuhr": "1:45 PM",
+      "asr": "6:30 PM",
+      "maghrib": "8:10 PM",
+      "isha": "9:30 PM",
+      "notes": ""
+    },
+    {
+      "name": "Spiritual Society of Canada",
+      "website": "spiritualsocietycanada.com",
+      "fajr": null,
+      "dhuhr": null,
+      "asr": null,
+      "maghrib": null,
+      "isha": null,
+      "notes": "Skipped - robots.txt disallows scraping; check manually"
+    },
+    {
+      "name": "Masjid Omar Farooq (Anjuman Khadimul Muslimein)",
+      "website": "masjidomarfarooq.com",
+      "fajr": "5:45 AM",
+      "dhuhr": "2:00 PM",
+      "asr": "6:45 PM",
+      "maghrib": "8:11 PM",
+      "isha": "9:30 PM",
+      "notes": ""
+    },
+    {
+      "name": "Masjid Zakariya",
+      "website": "masjidzakariya.com",
+      "fajr": "5:55 AM",
+      "dhuhr": "1:45 PM",
+      "asr": "6:30 PM",
+      "maghrib": "8:05 PM",
+      "isha": "9:50 PM",
+      "notes": "Ad-Din platform; full month table pulled"
+    },
+    {
+      "name": "Central Mosque Scarborough (Jaame Masjid)",
+      "website": "centralmosque.ca",
+      "fajr": "6:00 AM",
+      "dhuhr": "1:45 PM",
+      "asr": "6:45 PM",
+      "maghrib": "8:09 PM",
+      "isha": "9:45 PM",
+      "notes": ""
+    },
+    {
+      "name": "Masjid Bilal Muslim Association",
+      "website": "masjidbilal.ca",
+      "fajr": "5:45 AM",
+      "dhuhr": "1:45 PM",
+      "asr": "7:00 PM",
+      "maghrib": "8:11 PM",
+      "isha": "9:45 PM",
+      "notes": ""
+    },
+    {
+      "name": "Masjid Al-Jannah (Sri Lanka Islamic Foundation of Ontario)",
+      "website": "slifo.ca",
+      "fajr": "5:45 AM",
+      "dhuhr": "2:00 PM",
+      "asr": "6:30 PM",
+      "maghrib": "8:17 PM",
+      "isha": "10:00 PM",
+      "notes": ""
+    },
+    {
+      "name": "Islamic Foundation of Toronto",
+      "website": "islamicfoundation.ca",
+      "fajr": "5:45 AM",
+      "dhuhr": "1:45 PM",
+      "asr": "6:30 PM",
+      "maghrib": "8:10 PM",
+      "isha": "9:45 PM",
+      "notes": "Ad-Din platform"
+    },
+    {
+      "name": "Scarborough Muslim Association (Jame Abu Bakr Siddique)",
+      "website": "smacanada.ca",
+      "fajr": "6:00 AM",
+      "dhuhr": "1:45 PM",
+      "asr": "6:45 PM",
+      "maghrib": "8:13 PM",
+      "isha": "9:45 PM",
+      "notes": "Widget is on homepage (image-based)"
+    },
+    {
+      "name": "Masjid Al-Hidaya (Toronto Markaz)",
+      "website": "mah.ad-din.site",
+      "fajr": "6:00 AM",
+      "dhuhr": "1:45 PM",
+      "asr": "6:40 PM",
+      "maghrib": "8:07 PM",
+      "isha": "9:45 PM",
+      "notes": "Ad-Din platform"
+    },
+    {
+      "name": "Sunatul Jamaat of Ontario",
+      "website": "sunatuljamaat.com",
+      "fajr": "5:50 AM",
+      "dhuhr": "1:45 PM",
+      "asr": "6:50 PM",
+      "maghrib": "Sunset",
+      "isha": "10:00 PM",
+      "notes": ""
+    },
+    {
+      "name": "Islamic Institute of Toronto",
+      "website": "islam.ca",
+      "fajr": "5:30 AM",
+      "dhuhr": "2:10 PM",
+      "asr": "5:30 PM",
+      "maghrib": "8:09 PM",
+      "isha": "10:00 PM",
+      "notes": ""
+    },
+    {
+      "name": "Madinah Masjid (Jamiatul Muslemin of Toronto)",
+      "website": "madinahmasjid.ca",
+      "fajr": "6:00 AM",
+      "dhuhr": "1:45 PM",
+      "asr": "6:30 PM",
+      "maghrib": "8:13 PM",
+      "isha": "9:30 PM",
+      "notes": "Table found on /services page"
+    },
+    {
+      "name": "Masjid Toronto (Dundas)",
+      "website": "masjidtoronto.com",
+      "fajr": "5:45 AM",
+      "dhuhr": "1:30 PM",
+      "asr": "6:00 PM",
+      "maghrib": "8:13 PM",
+      "isha": "9:45 PM",
+      "notes": ""
+    },
+    {
+      "name": "Islamic Information & Dawah Centre International",
+      "website": "islaminfo.com",
+      "fajr": "5:30 AM",
+      "dhuhr": "1:45 PM",
+      "asr": "5:45 PM",
+      "maghrib": "8:09 PM",
+      "isha": "10:00 PM",
+      "notes": "Page appears static/undated"
+    },
+    {
+      "name": "Abu Huraira Center",
+      "website": "abuhuraira.org",
+      "fajr": "5:45 AM",
+      "dhuhr": "1:45 PM",
+      "asr": "5:30 PM",
+      "maghrib": "Sunset + 10 min",
+      "isha": "9:45 PM",
+      "notes": ""
+    },
+    {
+      "name": "Masjid Al-Istiqama",
+      "website": "istiqamamasjid.com",
+      "fajr": "5:45 AM",
+      "dhuhr": "1:45 PM",
+      "asr": "6:00 PM",
+      "maghrib": "Sunset",
+      "isha": "9:45 PM",
+      "notes": "Static times, not date-specific"
+    },
+    {
+      "name": "Anjuman E Anwarul Islam of Malton",
+      "website": "maltonmasjid.ad-din.site",
+      "fajr": "5:50 AM",
+      "dhuhr": "1:45 PM",
+      "asr": "7:00 PM",
+      "maghrib": "8:08 PM",
+      "isha": "9:50 PM",
+      "notes": "Ad-Din platform"
+    },
+    {
+      "name": "Baitul Mukarram",
+      "website": "bmis.ca",
+      "fajr": "6:00 AM",
+      "dhuhr": "2:00 PM",
+      "asr": "6:45 PM",
+      "maghrib": "8:10 PM",
+      "isha": "9:50 PM",
+      "notes": ""
+    },
+    {
+      "name": "Cambridge Muslim Society",
+      "website": "cambridgemuslimsociety.org",
+      "fajr": "6:00 AM",
+      "dhuhr": "1:45 PM",
+      "asr": "6:45 PM",
+      "maghrib": "8:13 PM",
+      "isha": "9:45 PM",
+      "notes": "Ad-Din platform; ~100km SW of Toronto"
+    },
+    {
+      "name": "Ibrahim Jame Mosque",
+      "website": "ibrahimjamemosque.com",
+      "fajr": "5:40 AM",
+      "dhuhr": "1:35 PM",
+      "asr": "6:25 PM",
+      "maghrib": "8:13 PM",
+      "isha": "9:55 PM",
+      "notes": "Hamilton, ~65km away; homepage widget showed stale July 27 data"
+    },
+    {
+      "name": "Islamic Centre of Oshawa",
+      "website": "oshawamosque.com",
+      "fajr": "6:00 AM",
+      "dhuhr": "1:45 PM",
+      "asr": "6:30 PM",
+      "maghrib": "Sunset",
+      "isha": "9:45 PM",
+      "notes": ""
+    },
+    {
+      "name": "Islamic Society of Toronto",
+      "website": "islamicsocietyoftoronto.com",
+      "fajr": "5:45 AM",
+      "dhuhr": "1:45 PM",
+      "asr": "6:30 PM",
+      "maghrib": "8:11 PM",
+      "isha": "9:45 PM",
+      "notes": ""
+    },
+    {
+      "name": "Markham Masjid",
+      "website": "markhammasjid.ca",
+      "fajr": "6:00 AM",
+      "dhuhr": "1:45 PM",
+      "asr": "6:30 PM",
+      "maghrib": "8:09 PM",
+      "isha": "9:30 PM",
+      "notes": ""
+    },
+    {
+      "name": "Masjid El Noor",
+      "website": "masjidelnoor.ca",
+      "fajr": null,
+      "dhuhr": null,
+      "asr": null,
+      "maghrib": null,
+      "isha": null,
+      "notes": "Skipped - Ad-Din masjid ID unverified; avoid showing wrong masjid's times"
+    },
+    {
+      "name": "Masjid Vaughan",
+      "website": "masjidvaughan.ca",
+      "fajr": "5:50 AM",
+      "dhuhr": "1:35 PM",
+      "asr": "6:25 PM",
+      "maghrib": "Sunset + 5 min",
+      "isha": "9:40 PM",
+      "notes": "Range: Aug 21-31"
+    },
+    {
+      "name": "Masjidur Rahmah (Central Toronto Islamic Foundation)",
+      "website": "centraltorontoislamicfoundation.com",
+      "fajr": "5:45 AM",
+      "dhuhr": "2:00 PM",
+      "asr": "6:30 PM",
+      "maghrib": "8:11 PM",
+      "isha": "9:45 PM",
+      "notes": ""
+    },
+    {
+      "name": "Pickering Islamic Centre",
+      "website": "masjid.ca",
+      "fajr": "5:45 AM",
+      "dhuhr": "2:00 PM",
+      "asr": "6:30 PM",
+      "maghrib": "8:17 PM",
+      "isha": "9:45 PM",
+      "notes": "From annual iqama PDF chart (21-Aug/23-Aug brackets)"
+    },
+    {
+      "name": "Towfiq Islamic Centre",
+      "website": "torontotic.com",
+      "fajr": "5:30 AM",
+      "dhuhr": "1:40 PM",
+      "asr": "5:30 PM",
+      "maghrib": "8:12 PM",
+      "isha": "9:45 PM",
+      "notes": "Table on /resources page"
+    },
+    {
+      "name": "Townline Muslim Centre",
+      "website": "townlinemuslimcentre.ca",
+      "fajr": "6:00 AM",
+      "dhuhr": "2:00 PM",
+      "asr": "6:30 PM",
+      "maghrib": "8:12 PM",
+      "isha": "10:00 PM",
+      "notes": ""
+    },
+    {
+      "name": "Windsor Islamic Association",
+      "website": "windsorislamicassociation.com",
+      "fajr": "6:00 AM",
+      "dhuhr": "2:00 PM",
+      "asr": "6:15 PM",
+      "maghrib": "8:31 PM",
+      "isha": "10:00 PM",
+      "notes": "~370km away"
+    }
+  ]
+}
