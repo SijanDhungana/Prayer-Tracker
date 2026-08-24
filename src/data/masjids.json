@@ -41,8 +41,8 @@
       }
     ],
     "lastVerified": "2026-08-24",
-    "needsReview": false,
-    "source": "manual",
+    "needsReview": true,
+    "source": "scrape",
     "platform": "plain-html"
   },
   {
@@ -88,7 +88,7 @@
     ],
     "lastVerified": "2026-08-24",
     "needsReview": false,
-    "source": "manual",
+    "source": "scrape",
     "timesUrl": "https://amiccanada.ca/#prayer-times",
     "platform": "athanplus"
   },
@@ -185,7 +185,7 @@
     ],
     "lastVerified": "2026-08-24",
     "needsReview": false,
-    "source": "manual",
+    "source": "scrape",
     "platform": "ad-din",
     "adDinMasjidId": 95
   },
@@ -232,7 +232,7 @@
     ],
     "lastVerified": "2026-08-24",
     "needsReview": false,
-    "source": "manual",
+    "source": "scrape",
     "platform": "ad-din",
     "adDinMasjidId": 359
   },
@@ -281,7 +281,7 @@
       }
     ],
     "lastVerified": "2026-08-24",
-    "needsReview": false,
+    "needsReview": true,
     "source": "manual",
     "platform": "athanplus"
   },
@@ -328,7 +328,7 @@
     ],
     "lastVerified": "2026-08-24",
     "needsReview": false,
-    "source": "manual",
+    "source": "scrape",
     "platform": "unknown"
   },
   {
@@ -373,7 +373,7 @@
       }
     ],
     "lastVerified": "2026-08-24",
-    "needsReview": false,
+    "needsReview": true,
     "source": "manual",
     "platform": "ad-din"
   },
@@ -417,7 +417,7 @@
     ],
     "lastVerified": "2026-08-24",
     "needsReview": false,
-    "source": "manual",
+    "source": "scrape",
     "platform": "ad-din",
     "adDinMasjidId": 14
   },
@@ -463,7 +463,7 @@
       }
     ],
     "lastVerified": "2026-08-24",
-    "needsReview": false,
+    "needsReview": true,
     "source": "manual",
     "platform": "pdf"
   },
@@ -493,7 +493,7 @@
       },
       "maghrib": {
         "type": "offset",
-        "minutes": 1
+        "minutes": 7
       },
       "isha": {
         "type": "fixed",
@@ -507,7 +507,7 @@
     ],
     "lastVerified": "2026-08-24",
     "needsReview": false,
-    "source": "manual",
+    "source": "scrape",
     "platform": "ad-din"
   },
   {
@@ -552,8 +552,8 @@
       }
     ],
     "lastVerified": "2026-08-24",
-    "needsReview": false,
-    "source": "manual",
+    "needsReview": true,
+    "source": "scrape",
     "platform": "unknown"
   },
   {
@@ -596,7 +596,7 @@
     ],
     "lastVerified": "2026-08-24",
     "needsReview": false,
-    "source": "manual",
+    "source": "scrape",
     "platform": "unknown"
   },
   {
@@ -642,7 +642,7 @@
     ],
     "lastVerified": "2026-08-24",
     "needsReview": false,
-    "source": "manual",
+    "source": "scrape",
     "platform": "unknown"
   },
   {
@@ -691,7 +691,7 @@
     ],
     "lastVerified": "2026-08-24",
     "needsReview": false,
-    "source": "manual",
+    "source": "scrape",
     "platform": "unknown"
   },
   {
@@ -737,7 +737,7 @@
     ],
     "lastVerified": "2026-08-24",
     "needsReview": false,
-    "source": "manual",
+    "source": "scrape",
     "platform": "unknown"
   },
   {
@@ -782,7 +782,7 @@
       }
     ],
     "lastVerified": "2026-08-24",
-    "needsReview": false,
+    "needsReview": true,
     "source": "manual",
     "platform": "unknown"
   },
@@ -825,8 +825,8 @@
       }
     ],
     "lastVerified": "2026-08-24",
-    "needsReview": false,
-    "source": "manual",
+    "needsReview": true,
+    "source": "scrape",
     "timesUrl": "https://istiqamamasjid.com/#pyayer",
     "platform": "unknown"
   },
@@ -856,7 +856,7 @@
       },
       "maghrib": {
         "type": "offset",
-        "minutes": 0
+        "minutes": 3
       },
       "isha": {
         "type": "fixed",
@@ -873,7 +873,7 @@
     ],
     "lastVerified": "2026-08-24",
     "needsReview": false,
-    "source": "manual",
+    "source": "scrape",
     "platform": "ad-din"
   },
   {
@@ -922,7 +922,7 @@
     ],
     "lastVerified": "2026-08-24",
     "needsReview": false,
-    "source": "manual",
+    "source": "scrape",
     "platform": "unknown"
   },
   {
@@ -951,7 +951,7 @@
       },
       "maghrib": {
         "type": "offset",
-        "minutes": 3
+        "minutes": 6
       },
       "isha": {
         "type": "fixed",
@@ -968,7 +968,7 @@
     ],
     "lastVerified": "2026-08-24",
     "needsReview": false,
-    "source": "manual",
+    "source": "scrape",
     "platform": "ad-din"
   },
   {
@@ -1059,8 +1059,8 @@
       }
     ],
     "lastVerified": "2026-08-24",
-    "needsReview": false,
-    "source": "manual",
+    "needsReview": true,
+    "source": "scrape",
     "platform": "unknown"
   },
   {
@@ -1108,7 +1108,7 @@
       }
     ],
     "lastVerified": "2026-08-24",
-    "needsReview": false,
+    "needsReview": true,
     "source": "manual",
     "platform": "unknown"
   },
@@ -1158,7 +1158,7 @@
     ],
     "lastVerified": "2026-08-24",
     "needsReview": false,
-    "source": "manual",
+    "source": "scrape",
     "platform": "unknown"
   },
   {
@@ -1199,7 +1199,7 @@
         "khutbah": "14:00"
       }
     ],
-    "lastVerified": "2026-08-23",
+    "lastVerified": "2026-08-24",
     "needsReview": false,
     "source": "scrape",
     "timesUrl": "https://masjidelnoor.ca/#prayer-times",
@@ -1246,8 +1246,8 @@
       }
     ],
     "lastVerified": "2026-08-24",
-    "needsReview": false,
-    "source": "manual",
+    "needsReview": true,
+    "source": "scrape",
     "platform": "plain-html"
   },
   {
@@ -1292,7 +1292,7 @@
       }
     ],
     "lastVerified": "2026-08-24",
-    "needsReview": false,
+    "needsReview": true,
     "source": "manual",
     "platform": "unknown"
   },
@@ -1341,7 +1341,7 @@
       }
     ],
     "lastVerified": "2026-08-24",
-    "needsReview": false,
+    "needsReview": true,
     "source": "manual",
     "platform": "custom"
   },
@@ -1388,7 +1388,7 @@
     ],
     "lastVerified": "2026-08-24",
     "needsReview": false,
-    "source": "manual",
+    "source": "scrape",
     "platform": "unknown"
   },
   {
@@ -1433,8 +1433,8 @@
       }
     ],
     "lastVerified": "2026-08-24",
-    "needsReview": false,
-    "source": "manual",
+    "needsReview": true,
+    "source": "scrape",
     "platform": "unknown"
   },
   {
@@ -1483,7 +1483,7 @@
     ],
     "lastVerified": "2026-08-24",
     "needsReview": false,
-    "source": "manual",
+    "source": "scrape",
     "timesUrl": "https://windsorislamicassociation.com/prayer-times",
     "platform": "unknown"
   }
