@@ -985,7 +985,7 @@
     "iqamah": {
       "fajr": {
         "type": "fixed",
-        "time": "05:30"
+        "time": "05:40"
       },
       "dhuhr": {
         "type": "fixed",
@@ -993,15 +993,15 @@
       },
       "asr": {
         "type": "fixed",
-        "time": "18:35"
+        "time": "18:25"
       },
       "isha": {
         "type": "fixed",
-        "time": "22:05"
+        "time": "21:55"
       },
       "maghrib": {
         "type": "offset",
-        "minutes": 4
+        "minutes": 5
       }
     },
     "jumuah": [
@@ -1009,7 +1009,7 @@
         "khutbah": "13:30"
       }
     ],
-    "lastVerified": "2026-08-17",
+    "lastVerified": "2026-08-24",
     "needsReview": true,
     "source": "manual",
     "platform": "unknown"
