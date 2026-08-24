@@ -177,10 +177,10 @@
     },
     "jumuah": [
       {
-        "khutbah": "13:30"
+        "khutbah": "14:10"
       },
       {
-        "khutbah": "14:55"
+        "khutbah": "15:10"
       }
     ],
     "lastVerified": "2026-08-24",
@@ -215,7 +215,7 @@
       },
       "maghrib": {
         "type": "offset",
-        "minutes": 0
+        "minutes": 2
       },
       "isha": {
         "type": "fixed",
@@ -224,10 +224,10 @@
     },
     "jumuah": [
       {
-        "khutbah": "13:30"
+        "khutbah": "13:50"
       },
       {
-        "khutbah": "15:10"
+        "khutbah": "15:30"
       }
     ],
     "lastVerified": "2026-08-24",
@@ -412,10 +412,7 @@
     },
     "jumuah": [
       {
-        "khutbah": "13:30"
-      },
-      {
-        "khutbah": "14:35"
+        "khutbah": "14:00"
       }
     ],
     "lastVerified": "2026-08-24",
@@ -505,7 +502,7 @@
     },
     "jumuah": [
       {
-        "khutbah": "13:30"
+        "khutbah": "14:00"
       }
     ],
     "lastVerified": "2026-08-24",
@@ -637,7 +634,7 @@
     },
     "jumuah": [
       {
-        "khutbah": "13:40"
+        "khutbah": "13:55"
       },
       {
         "khutbah": "15:30"
@@ -1052,7 +1049,13 @@
     },
     "jumuah": [
       {
-        "khutbah": "13:15"
+        "khutbah": "13:45"
+      },
+      {
+        "khutbah": "14:45"
+      },
+      {
+        "khutbah": "16:30"
       }
     ],
     "lastVerified": "2026-08-24",
@@ -1095,7 +1098,7 @@
     },
     "jumuah": [
       {
-        "khutbah": "13:45"
+        "khutbah": "13:30"
       },
       {
         "khutbah": "14:45"
@@ -1172,7 +1175,7 @@
     "iqamah": {
       "fajr": {
         "type": "fixed",
-        "time": "05:30"
+        "time": "05:45"
       },
       "dhuhr": {
         "type": "fixed",
@@ -1184,11 +1187,11 @@
       },
       "maghrib": {
         "type": "offset",
-        "minutes": 3
+        "minutes": 5
       },
       "isha": {
         "type": "fixed",
-        "time": "22:00"
+        "time": "21:45"
       }
     },
     "jumuah": [
@@ -1196,9 +1199,9 @@
         "khutbah": "14:00"
       }
     ],
-    "lastVerified": "2026-08-17",
+    "lastVerified": "2026-08-23",
     "needsReview": false,
-    "source": "manual",
+    "source": "scrape",
     "timesUrl": "https://masjidelnoor.ca/#prayer-times",
     "platform": "ad-din",
     "adDinMasjidId": 11,
@@ -1423,10 +1426,10 @@
     },
     "jumuah": [
       {
-        "khutbah": "13:30"
+        "khutbah": "14:00"
       },
       {
-        "khutbah": "14:50"
+        "khutbah": "15:20"
       }
     ],
     "lastVerified": "2026-08-24",
