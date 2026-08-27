@@ -17,9 +17,15 @@ export interface Cached<T> {
   data: T;
 }
 
-export function readCache<T>(): Cached<T> | null {
+/**
+ * `key` so more than one thing can be cached without colliding: corrections
+ * and the masjid directory both want last-known-good storage but must not
+ * overwrite each other. Defaulting to the original key keeps existing callers
+ * reading what they already wrote.
+ */
+export function readCache<T>(key: string = KEY): Cached<T> | null {
   try {
-    const raw = window.localStorage.getItem(KEY);
+    const raw = window.localStorage.getItem(key);
     if (!raw) return null;
     const parsed = JSON.parse(raw) as Cached<T>;
     return typeof parsed?.at === "number" ? parsed : null;
@@ -28,9 +34,9 @@ export function readCache<T>(): Cached<T> | null {
   }
 }
 
-export function writeCache<T>(data: T): void {
+export function writeCache<T>(data: T, key: string = KEY): void {
   try {
-    window.localStorage.setItem(KEY, JSON.stringify({ at: Date.now(), data }));
+    window.localStorage.setItem(key, JSON.stringify({ at: Date.now(), data }));
   } catch {
     // Quota or private mode — the app works, it just won't remember.
   }

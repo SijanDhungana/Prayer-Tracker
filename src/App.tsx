@@ -1,7 +1,7 @@
 import { Suspense, lazy, useMemo } from "react";
 import AppShell from "./components/AppShell";
-import { masjids as baseMasjids } from "./data/masjids";
 import { AuthProvider } from "./lib/auth";
+import { useMasjidData } from "./lib/masjidData";
 import { ClockProvider, useClock } from "./lib/clock";
 import { useReferencePoint } from "./lib/location";
 import { applyOverrides, useApprovedTimes } from "./lib/overrides";
@@ -43,12 +43,19 @@ function Shell() {
   // they're approved — no commit, no redeploy.
   const { approved, refresh: refreshApproved } = useApprovedTimes();
   const { asr } = useSettings();
+  // The directory the deployment is serving now, falling back to the copy this
+  // build shipped with. A packaged app would otherwise be frozen on its own
+  // build date — see src/lib/masjidData.ts.
+  const { masjids: baseMasjids } = useMasjidData();
   // One place to apply both: every view below reads this list, so neither an
   // approved correction nor the visitor's Asr school can be missed by a view
   // that forgot to ask for it.
   const masjids = useMemo(
     () => applyAsrPreference(applyOverrides(baseMasjids, approved), asr),
-    [approved, asr],
+    // baseMasjids belongs here now that it is state rather than a module
+    // constant: without it the runtime fetch lands, the cache updates, and the
+    // screen goes on rendering the copy the build shipped with.
+    [baseMasjids, approved, asr],
   );
 
   const loading = <p className="p-4 text-body text-ink-3">Loading…</p>;
