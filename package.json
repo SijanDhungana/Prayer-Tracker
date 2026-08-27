@@ -20,6 +20,9 @@
     "check": "npm run check:jumuah && npm run check:discover && npm run check:plan-prayer && npm run check:next-up && npm run check:addin && npm run check:reject-impossible && npm run check:overrides && npm run check:masjid-data"
   },
   "dependencies": {
+    "@capacitor/android": "^8.5.0",
+    "@capacitor/core": "^8.5.0",
+    "@capacitor/ios": "^8.5.0",
     "@supabase/supabase-js": "^2.112.2",
     "adhan": "^4.4.3",
     "react": "^18.3.1",
@@ -27,6 +30,7 @@
   },
   "devDependencies": {
     "@anthropic-ai/sdk": "^0.30.0",
+    "@capacitor/cli": "^8.5.0",
     "@tailwindcss/vite": "^4.0.0",
     "@types/google.maps": "^3.65.5",
     "@types/node": "^26.2.0",
