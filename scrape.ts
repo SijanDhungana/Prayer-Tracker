@@ -227,7 +227,35 @@ export async function capturePage(
 
     await page.waitForTimeout(5000);
 
-    const text = (await page.innerText("body")).slice(0, 6000);
+    /**
+     * A widget embedded as an iframe — Masjidal's is one, and it is a common
+     * enough pattern that this was going to hit a Toronto masjid eventually
+     * too — has its times sitting in a document `page.innerText("body")`
+     * cannot see at all: that call only ever reads the main page. McKinney
+     * Islamic Association's homepage genuinely has its times displayed, in
+     * plain sight, and still read as "no times found" until this, because
+     * the text extraction was only ever looking at one of the two documents
+     * actually on the page.
+     *
+     * Playwright's own Frame.innerText() is not blocked by this the way an
+     * in-page `iframe.contentDocument` reference from page.evaluate() would
+     * be — it talks to the browser at the automation-protocol level, not as
+     * JS running inside the page, so it reads a cross-origin frame the same
+     * as same-origin one. A frame that errors (detached, still loading, an
+     * ad slot that never settles) is skipped rather than failing the whole
+     * capture over content that was never the times to begin with.
+     */
+    const frameTexts = await Promise.all(
+      page
+        .frames()
+        .filter((frame) => frame !== page.mainFrame())
+        .map((frame) => frame.innerText("body").catch(() => "")),
+    );
+
+    const text = [await page.innerText("body"), ...frameTexts]
+      .filter(Boolean)
+      .join("\n\n")
+      .slice(0, 8000);
 
     if (CHALLENGE.test(text)) {
       console.warn(
