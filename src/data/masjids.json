@@ -40,7 +40,7 @@
         "khutbah": "14:35"
       }
     ],
-    "lastVerified": "2026-08-27",
+    "lastVerified": "2026-08-28",
     "needsReview": true,
     "source": "scrape",
     "platform": "plain-html"
@@ -86,10 +86,9 @@
         "khutbah": "14:45"
       }
     ],
-    "lastVerified": "2026-08-27",
+    "lastVerified": "2026-08-28",
     "needsReview": false,
     "source": "scrape",
-    "timesUrl": "https://amiccanada.ca/#prayer-times",
     "platform": "athanplus"
   },
   {
@@ -156,7 +155,7 @@
     "iqamah": {
       "fajr": {
         "type": "fixed",
-        "time": "05:45"
+        "time": "06:00"
       },
       "dhuhr": {
         "type": "fixed",
@@ -164,7 +163,7 @@
       },
       "asr": {
         "type": "fixed",
-        "time": "18:45"
+        "time": "18:30"
       },
       "maghrib": {
         "type": "offset",
@@ -183,7 +182,7 @@
         "khutbah": "15:10"
       }
     ],
-    "lastVerified": "2026-08-27",
+    "lastVerified": "2026-08-28",
     "needsReview": false,
     "source": "scrape",
     "platform": "ad-din",
@@ -224,13 +223,13 @@
     },
     "jumuah": [
       {
-        "khutbah": "13:30"
+        "khutbah": "13:50"
       },
       {
         "khutbah": "15:30"
       }
     ],
-    "lastVerified": "2026-08-27",
+    "lastVerified": "2026-08-28",
     "needsReview": false,
     "source": "scrape",
     "platform": "ad-din",
@@ -260,29 +259,29 @@
         "type": "fixed",
         "time": "18:45"
       },
-      "isha": {
-        "type": "fixed",
-        "time": "21:45"
-      },
       "maghrib": {
         "type": "offset",
         "minutes": 3
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:45"
       }
     },
     "jumuah": [
       {
-        "khutbah": "13:45"
+        "khutbah": "14:00"
       },
       {
-        "khutbah": "14:45"
+        "khutbah": "15:00"
       },
       {
-        "khutbah": "15:30"
+        "khutbah": "15:45"
       }
     ],
-    "lastVerified": "2026-08-24",
-    "needsReview": true,
-    "source": "manual",
+    "lastVerified": "2026-08-28",
+    "needsReview": false,
+    "source": "scrape",
     "platform": "athanplus"
   },
   {
@@ -299,7 +298,7 @@
     "iqamah": {
       "fajr": {
         "type": "fixed",
-        "time": "05:45"
+        "time": "06:00"
       },
       "dhuhr": {
         "type": "fixed",
@@ -307,7 +306,7 @@
       },
       "asr": {
         "type": "fixed",
-        "time": "19:00"
+        "time": "18:30"
       },
       "maghrib": {
         "type": "offset",
@@ -315,7 +314,7 @@
       },
       "isha": {
         "type": "fixed",
-        "time": "21:45"
+        "time": "21:30"
       }
     },
     "jumuah": [
@@ -326,7 +325,7 @@
         "khutbah": "15:30"
       }
     ],
-    "lastVerified": "2026-08-27",
+    "lastVerified": "2026-08-28",
     "needsReview": false,
     "source": "scrape",
     "platform": "unknown"
@@ -413,10 +412,13 @@
     "jumuah": [
       {
         "khutbah": "14:00"
+      },
+      {
+        "khutbah": "14:45"
       }
     ],
-    "lastVerified": "2026-08-27",
-    "needsReview": true,
+    "lastVerified": "2026-08-28",
+    "needsReview": false,
     "source": "scrape",
     "platform": "ad-din",
     "adDinMasjidId": 14
@@ -435,7 +437,7 @@
     "iqamah": {
       "fajr": {
         "type": "fixed",
-        "time": "06:00"
+        "time": "06:10"
       },
       "dhuhr": {
         "type": "fixed",
@@ -451,20 +453,23 @@
       },
       "isha": {
         "type": "fixed",
-        "time": "21:45"
+        "time": "21:30"
       }
     },
     "jumuah": [
       {
-        "khutbah": "13:25"
+        "khutbah": "13:45"
       },
       {
-        "khutbah": "14:50"
+        "khutbah": "15:00"
+      },
+      {
+        "khutbah": "15:45"
       }
     ],
-    "lastVerified": "2026-08-24",
-    "needsReview": true,
-    "source": "manual",
+    "lastVerified": "2026-08-28",
+    "needsReview": false,
+    "source": "scrape",
     "platform": "pdf"
   },
   {
@@ -493,7 +498,7 @@
       },
       "maghrib": {
         "type": "offset",
-        "minutes": 7
+        "minutes": 6
       },
       "isha": {
         "type": "fixed",
@@ -505,7 +510,7 @@
         "khutbah": "14:00"
       }
     ],
-    "lastVerified": "2026-08-27",
+    "lastVerified": "2026-08-28",
     "needsReview": false,
     "source": "scrape",
     "platform": "ad-din"
@@ -551,7 +556,7 @@
         "khutbah": "14:45"
       }
     ],
-    "lastVerified": "2026-08-27",
+    "lastVerified": "2026-08-28",
     "needsReview": true,
     "source": "scrape",
     "platform": "unknown"
@@ -595,7 +600,7 @@
       }
     ],
     "lastVerified": "2026-08-27",
-    "needsReview": false,
+    "needsReview": true,
     "source": "scrape",
     "platform": "unknown"
   },
@@ -625,7 +630,7 @@
       },
       "maghrib": {
         "type": "offset",
-        "minutes": 7
+        "minutes": 6
       },
       "isha": {
         "type": "fixed",
@@ -640,7 +645,7 @@
         "khutbah": "15:30"
       }
     ],
-    "lastVerified": "2026-08-27",
+    "lastVerified": "2026-08-28",
     "needsReview": false,
     "source": "scrape",
     "platform": "unknown"
@@ -689,7 +694,7 @@
         "khutbah": "14:10"
       }
     ],
-    "lastVerified": "2026-08-27",
+    "lastVerified": "2026-08-28",
     "needsReview": false,
     "source": "scrape",
     "platform": "unknown"
@@ -735,7 +740,7 @@
         "khutbah": "14:00"
       }
     ],
-    "lastVerified": "2026-08-27",
+    "lastVerified": "2026-08-28",
     "needsReview": false,
     "source": "scrape",
     "platform": "unknown"
@@ -824,7 +829,7 @@
         "khutbah": "13:30"
       }
     ],
-    "lastVerified": "2026-08-27",
+    "lastVerified": "2026-08-28",
     "needsReview": true,
     "source": "scrape",
     "timesUrl": "https://istiqamamasjid.com/#pyayer",
@@ -871,7 +876,7 @@
         "khutbah": "15:15"
       }
     ],
-    "lastVerified": "2026-08-27",
+    "lastVerified": "2026-08-28",
     "needsReview": false,
     "source": "scrape",
     "platform": "ad-din"
@@ -920,7 +925,7 @@
         "khutbah": "15:45"
       }
     ],
-    "lastVerified": "2026-08-27",
+    "lastVerified": "2026-08-28",
     "needsReview": false,
     "source": "scrape",
     "platform": "unknown"
@@ -951,7 +956,7 @@
       },
       "maghrib": {
         "type": "offset",
-        "minutes": 6
+        "minutes": 7
       },
       "isha": {
         "type": "fixed",
@@ -960,13 +965,13 @@
     },
     "jumuah": [
       {
-        "khutbah": "13:45"
+        "khutbah": "13:30"
       },
       {
         "khutbah": "15:30"
       }
     ],
-    "lastVerified": "2026-08-27",
+    "lastVerified": "2026-08-28",
     "needsReview": false,
     "source": "scrape",
     "platform": "ad-din"
@@ -1058,7 +1063,7 @@
         "khutbah": "16:30"
       }
     ],
-    "lastVerified": "2026-08-27",
+    "lastVerified": "2026-08-28",
     "needsReview": true,
     "source": "scrape",
     "platform": "unknown"
@@ -1138,7 +1143,7 @@
       },
       "maghrib": {
         "type": "offset",
-        "minutes": 3
+        "minutes": 2
       },
       "isha": {
         "type": "fixed",
@@ -1156,7 +1161,7 @@
         "khutbah": "15:15"
       }
     ],
-    "lastVerified": "2026-08-27",
+    "lastVerified": "2026-08-28",
     "needsReview": false,
     "source": "scrape",
     "platform": "unknown"
@@ -1183,11 +1188,11 @@
       },
       "asr": {
         "type": "fixed",
-        "time": "18:30"
+        "time": "18:15"
       },
       "maghrib": {
         "type": "offset",
-        "minutes": 5
+        "minutes": 6
       },
       "isha": {
         "type": "fixed",
@@ -1199,10 +1204,9 @@
         "khutbah": "14:00"
       }
     ],
-    "lastVerified": "2026-08-27",
+    "lastVerified": "2026-08-28",
     "needsReview": false,
     "source": "scrape",
-    "timesUrl": "https://masjidelnoor.ca/#prayer-times",
     "platform": "ad-din",
     "adDinMasjidId": 11,
     "adDinUnverified": true
@@ -1245,7 +1249,7 @@
         "khutbah": "13:35"
       }
     ],
-    "lastVerified": "2026-08-27",
+    "lastVerified": "2026-08-28",
     "needsReview": true,
     "source": "scrape",
     "platform": "plain-html"
@@ -1320,29 +1324,29 @@
         "type": "fixed",
         "time": "18:30"
       },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 5
+      },
       "isha": {
         "type": "fixed",
         "time": "21:45"
-      },
-      "maghrib": {
-        "type": "offset",
-        "minutes": 11
       }
     },
     "jumuah": [
       {
-        "khutbah": "13:25"
+        "khutbah": "14:00"
       },
       {
-        "khutbah": "15:20"
+        "khutbah": "15:45"
       },
       {
-        "khutbah": "16:25"
+        "khutbah": "16:45"
       }
     ],
-    "lastVerified": "2026-08-24",
-    "needsReview": true,
-    "source": "manual",
+    "lastVerified": "2026-08-28",
+    "needsReview": false,
+    "source": "scrape",
     "platform": "custom"
   },
   {
@@ -1359,7 +1363,7 @@
     "iqamah": {
       "fajr": {
         "type": "fixed",
-        "time": "05:30"
+        "time": "05:45"
       },
       "dhuhr": {
         "type": "fixed",
@@ -1375,7 +1379,7 @@
       },
       "isha": {
         "type": "fixed",
-        "time": "21:45"
+        "time": "21:30"
       }
     },
     "jumuah": [
@@ -1386,7 +1390,7 @@
         "khutbah": "13:45"
       }
     ],
-    "lastVerified": "2026-08-27",
+    "lastVerified": "2026-08-28",
     "needsReview": false,
     "source": "scrape",
     "platform": "unknown"
@@ -1417,7 +1421,7 @@
       },
       "maghrib": {
         "type": "offset",
-        "minutes": 2
+        "minutes": 3
       },
       "isha": {
         "type": "fixed",
@@ -1432,7 +1436,7 @@
         "khutbah": "15:20"
       }
     ],
-    "lastVerified": "2026-08-27",
+    "lastVerified": "2026-08-28",
     "needsReview": false,
     "source": "scrape",
     "platform": "unknown"
@@ -1459,7 +1463,7 @@
       },
       "asr": {
         "type": "fixed",
-        "time": "18:15"
+        "time": "18:00"
       },
       "maghrib": {
         "type": "offset",
@@ -1467,7 +1471,7 @@
       },
       "isha": {
         "type": "fixed",
-        "time": "22:00"
+        "time": "21:45"
       }
     },
     "jumuah": [
@@ -1481,10 +1485,9 @@
         "khutbah": "15:00"
       }
     ],
-    "lastVerified": "2026-08-27",
+    "lastVerified": "2026-08-28",
     "needsReview": false,
     "source": "scrape",
-    "timesUrl": "https://windsorislamicassociation.com/prayer-times",
     "platform": "unknown"
   }
 ]
