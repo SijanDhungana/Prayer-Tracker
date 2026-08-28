@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Masjid Times</string>
+    <string name="title_activity_main">Masjid Times</string>
+    <string name="package_name">com.sijandhungana.masjidtimes</string>
+    <string name="custom_url_scheme">com.sijandhungana.masjidtimes</string>
+</resources>
