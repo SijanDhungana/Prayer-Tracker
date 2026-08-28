@@ -107,7 +107,15 @@ export default function AppShell({
         id="main"
         className={
           (isDesktop ? "lg:pl-[264px] " : "") +
-          (bleed ? "" : "mx-auto w-full max-w-[720px] px-4 pt-5 md:px-6 ") +
+          // The top inset is as load-bearing as the bottom one below it. Since
+          // the viewport declares viewport-fit=cover, the web view extends
+          // under the status bar, so a flat pt-5 put the title and the location
+          // chip beneath the clock and the battery on a real phone. Resolves to
+          // exactly the old 20px anywhere without a notch, so the desktop and
+          // browser layouts are unchanged.
+          (bleed
+            ? ""
+            : "mx-auto w-full max-w-[720px] px-4 pt-[calc(env(safe-area-inset-top)+1.25rem)] md:px-6 ") +
           // Clear the floating bar (§7). The map opts out and insets its own
           // furniture instead.
           (bleed || isDesktop ? "" : "pb-[calc(88px+env(safe-area-inset-bottom))]")
