@@ -45,7 +45,7 @@ const MODEL = "claude-sonnet-5";
 // Overridable so the crawl can be exercised against local fixtures without
 // touching the real directory, the same way discover.ts and geocode.ts work.
 const DATA_FILE = process.env.SCRAPE_DATA ?? "./src/data/masjids.json";
-const POLITE_DELAY_MS = 3000; // be kind to masjid servers between requests
+export const POLITE_DELAY_MS = 3000; // be kind to masjid servers between requests
 
 const anthropic = new Anthropic(); // reads ANTHROPIC_API_KEY from env
 
@@ -109,7 +109,7 @@ const TIMES_LINK =
   /prayer|salah|salaah|salat|namaz|iqamah|iqama|jamaah|timing|timetable|times|schedule/i;
 
 /** At most this many pages per masjid, so discovery stays cheap and polite. */
-const MAX_PAGES_PER_MASJID = 3;
+export const MAX_PAGES_PER_MASJID = 3;
 
 /** Words that only appear near a prayer timetable. */
 const PRAYER_WORD =
