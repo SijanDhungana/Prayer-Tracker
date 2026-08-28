@@ -301,7 +301,7 @@ export function sizeOfPng(png: Buffer): { width: number; height: number } {
   return { width: png.readUInt32BE(16), height: png.readUInt32BE(20) };
 }
 
-async function readTimes(capture: Capture): Promise<any | null> {
+export async function readTimes(capture: Capture): Promise<any | null> {
   const { screenshot, text } = capture;
   // The text leads; the picture is there for times drawn as an image.
   try {
