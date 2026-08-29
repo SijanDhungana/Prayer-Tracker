@@ -89,6 +89,17 @@ interface Candidate {
   lng: number;
   address: string | null;
   placeId: string;
+  /** Set when the website is a shared network homepage with no page of its own. */
+  flag?: string;
+}
+
+/** True if the URL points somewhere more specific than a bare domain root. */
+function hasDistinguishingPath(url: string): boolean {
+  try {
+    return new URL(url).pathname.replace(/\/+$/, "").length > 0;
+  } catch {
+    return true;
+  }
 }
 
 function domain(url: string): string {
@@ -213,14 +224,25 @@ function main() {
       continue;
     }
 
-    candidates.push({
+    const candidate: Candidate = {
       name: place.name,
       website: place.website,
       lat: place.lat,
       lng: place.lng,
       address: place.address,
       placeId: place.placeId,
-    });
+    };
+
+    // A shared domain with no path of its own (ahmadiyya.ca, not
+    // ahmadiyya.ca/some-branch) is a national homepage, not this specific
+    // mosque's page — scraping it can't tell branches apart, and if the
+    // homepage happens to show any time at all, every branch scraped from
+    // it would wrongly get the same one. Flagged, not auto-scraped.
+    if (place.website && sharedDomains.has(domain(place.website)) && !hasDistinguishingPath(place.website)) {
+      candidate.flag = "website is a shared network homepage, not this mosque's own page — needs a specific URL found by hand before scraping";
+    }
+
+    candidates.push(candidate);
   }
 
   console.log(`Google Places results: ${rawAll.length}`);
@@ -254,11 +276,13 @@ function main() {
     }
   }
 
-  const withSite = candidates.filter((c) => c.website);
   const withoutSite = candidates.filter((c) => !c.website);
+  const flaggedSite = candidates.filter((c) => c.website && c.flag);
+  const withSite = candidates.filter((c) => c.website && !c.flag);
 
   console.log(`\nNew candidates (not in masjids.json or the OSM list): ${candidates.length}`);
-  console.log(`  with a website (scrapeable): ${withSite.length}`);
+  console.log(`  with a website, safe to auto-scrape: ${withSite.length}`);
+  console.log(`  with only a shared network homepage, needs a specific URL by hand: ${flaggedSite.length}`);
   console.log(`  without a website: ${withoutSite.length}`);
 
   if (withoutSite.length) {
@@ -266,7 +290,12 @@ function main() {
     for (const c of withoutSite) console.log(`  ${c.name}${c.address ? `  (${c.address})` : ""}`);
   }
 
-  console.log(`\nNew candidates with a website:`);
+  if (flaggedSite.length) {
+    console.log(`\nOnly a shared network homepage — find each one's actual page before scraping:`);
+    for (const c of flaggedSite) console.log(`  ${c.name}  ->  ${c.website}`);
+  }
+
+  console.log(`\nNew candidates with a website, safe to auto-scrape:`);
   for (const c of withSite) console.log(`  ${c.name}  ->  ${c.website}`);
 
   if (write) {
