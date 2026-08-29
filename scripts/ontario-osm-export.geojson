@@ -1,0 +1,4266 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2026-08-29T05:32:05Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/1395514",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "denomination": "shia",
+        "name": "Bab ul Ilm - Bani Hashim Society",
+        "old_amenity": "place_of_worship",
+        "old_landuse": "residential",
+        "religion": "muslim",
+        "type": "multipolygon",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.6319295,
+          43.6250053
+        ]
+      },
+      "id": "relation/1395514"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/32707332",
+        "addr:housenumber": "2074",
+        "addr:street": "Kipling Avenue",
+        "amenity": "place_of_worship",
+        "building": "commercial",
+        "building:levels": "1",
+        "name": "Ummah Nabawiah Masjid",
+        "religion": "muslim",
+        "roof:levels": "0",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.5692053,
+          43.7149002
+        ]
+      },
+      "id": "way/32707332"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/32999667",
+        "addr:city": "Mississauga",
+        "addr:housenumber": "2200",
+        "addr:province": "Ontario",
+        "addr:street": "South Sheridan Way",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "denomination": "sunni",
+        "name": "Isna Canada",
+        "phone": "+1-905-403-8406",
+        "religion": "muslim",
+        "source": "Yahoo;local knowledge",
+        "website": "https://www.isnacanada.com/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.6503299,
+          43.5202656
+        ]
+      },
+      "id": "way/32999667"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/33042529",
+        "addr:city": "Mississauga",
+        "addr:housenumber": "2550",
+        "addr:postcode": "L5L 1T1",
+        "addr:province": "ON",
+        "addr:street": "Dunwin Drive",
+        "air_conditioning": "yes",
+        "amenity": "place_of_worship",
+        "building": "community_centre",
+        "building:levels": "2",
+        "image": "https://tse3.mm.bing.net/th/id/OIP.B_grAdj5H5ivREa1WEPD1gHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+        "name": "Islamic Community Centre of Ontario (ICCO) MAC Masjid/Mosque",
+        "phone": "+1-289-430-5171",
+        "religion": "muslim",
+        "short_name": "ICCO",
+        "source": "Yahoo",
+        "website": "https://centres.macnet.ca/icco/",
+        "wheelchair": "designated",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.6809409,
+          43.5285496
+        ]
+      },
+      "id": "way/33042529"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/33542835",
+        "addr:city": "Toronto",
+        "addr:housenumber": "441",
+        "addr:street": "Nugget Avenue",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "name": "Islamic Foundation of Toronto",
+        "opendata:type": "109001",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.24167,
+          43.7980215
+        ]
+      },
+      "id": "way/33542835"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/33710731",
+        "addr:housenumber": "1605",
+        "addr:street": "Argentia Road",
+        "amenity": "place_of_worship",
+        "demolished:building": "mosque",
+        "name": "Anjuman-e-Fakhri Dawoodi Bohra Jamaat",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.7310574,
+          43.6071805
+        ]
+      },
+      "id": "way/33710731"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/33712441",
+        "addr:city": "Mississauga",
+        "addr:housenumber": "7037",
+        "addr:postcode": "L5N 7H5",
+        "addr:street": "Financial Drive",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "denomination": "ismaili",
+        "name": "Meadowvale Ismaili Centre",
+        "religion": "muslim",
+        "source": "Yahoo",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.7490987,
+          43.6129821
+        ]
+      },
+      "id": "way/33712441"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/33729099",
+        "addr:city": "Mississauga",
+        "addr:housenumber": "7150",
+        "addr:postcode": "L5S 1Z1",
+        "addr:province": "ON",
+        "addr:street": "Edwards Boulevard",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Sayeda Khadija Centre",
+        "phone": "+1-905-564-5509",
+        "religion": "muslim",
+        "source": "Yahoo",
+        "website": "https://www.sayedakhadijacentre.com/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.7085726,
+          43.6504787
+        ]
+      },
+      "id": "way/33729099"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/34204564",
+        "addr:city": "Mississauga",
+        "addr:housenumber": "5671",
+        "addr:postcode": "L4Z 1N9",
+        "addr:street": "McAdam Road",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "email": "info@alhudainstitute.ca",
+        "name": "Al Huda Institute Canada",
+        "phone": "+1-905-624-2030",
+        "religion": "muslim",
+        "source": "Yahoo",
+        "website": "https://alhudainstitute.ca/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.665951,
+          43.6249079
+        ]
+      },
+      "id": "way/34204564"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/34204832",
+        "addr:housenumber": "5761",
+        "addr:street": "Coopers Avenue",
+        "amenity": "place_of_worship",
+        "building": "industrial",
+        "email": "info@ipcontario.com",
+        "name": "Jame Masjid",
+        "phone": "+1-905-507-3323",
+        "religion": "muslim",
+        "source": "Mapbox",
+        "website": "https://ipcontario.com/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.6578696,
+          43.6322732
+        ]
+      },
+      "id": "way/34204832"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/34550567",
+        "addr:city": "Mississauga",
+        "addr:housenumber": "1194",
+        "addr:postcode": "L4W 1Y2",
+        "addr:province": "Ontario",
+        "addr:street": "Matheson Boulevard East",
+        "alt_name": "Bait-ul-Hamd Mosque;Baitul Hamd;Bait-ul-Hamd",
+        "alt_name:ur": "بیت الحمد",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "check_date": "2025-05-24",
+        "contact:fax": "+1 905-206-1144",
+        "denomination": "ahmadiyya",
+        "name": "Baitul Hamd Mosque",
+        "name:ur": "مسجد بیت الحمد",
+        "phone": "+1 905-206-1364",
+        "religion": "muslim",
+        "wikidata": "Q14875081",
+        "wikipedia": "en:Baitul Hamd Mosque (Mississauga)",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.6369498,
+          43.6373731
+        ]
+      },
+      "id": "way/34550567"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/34550870",
+        "addr:city": "Mississauga",
+        "addr:housenumber": "5280",
+        "addr:postcode": "L4W 1G5",
+        "addr:street": "Maingate Drive",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "email": "info@anatoliacentre.ca",
+        "name": "Anatolia Islamic Centre",
+        "phone": "+1-905-629-0477",
+        "religion": "muslim",
+        "source": "Yahoo",
+        "website": "http://www.anatoliacentre.ca/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.6324889,
+          43.6332267
+        ]
+      },
+      "id": "way/34550870"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/34749303",
+        "addr:city": "Mississauga",
+        "addr:housenumber": "6836",
+        "addr:postcode": "L4V 1X6",
+        "addr:street": "Professional Court",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "denomination": "sunni",
+        "name": "Malton Islamic Centre",
+        "phone": "+1-905-453-6943",
+        "religion": "muslim",
+        "source": "Bing/Region of Peel",
+        "website": "https://www.maltonislamiccentre.com/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.6310944,
+          43.7075165
+        ]
+      },
+      "id": "way/34749303"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/43804339",
+        "addr:city": "Toronto",
+        "addr:housename": "Jami Mosque",
+        "addr:housenumber": "56",
+        "addr:postcode": "M6R 1Y9",
+        "addr:street": "Boustead Avenue",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "name": "Jami Mosque",
+        "religion": "muslim",
+        "wikidata": "Q6146372",
+        "wikipedia": "en:Jami Mosque, Toronto",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.45448,
+          43.6533205
+        ]
+      },
+      "id": "way/43804339"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/43805181",
+        "addr:city": "Toronto",
+        "addr:housenumber": "1",
+        "addr:postcode": "M1L 1X4",
+        "addr:province": "Ontario",
+        "addr:street": "Stamford Square North",
+        "amenity": "place_of_worship",
+        "attribution": "Natural Resources Canada",
+        "building": "yes",
+        "canvec:CODE": "2010392",
+        "canvec:UUID": "18a9c7cf567a4565921694b60c6f8c39",
+        "name": "Islamic Research Center of Canada Inc.",
+        "religion": "muslim",
+        "source": "CanVec_Import_2009",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.2951115,
+          43.7111375
+        ]
+      },
+      "id": "way/43805181"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/43807049",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.309026,
+          43.721558
+        ]
+      },
+      "id": "way/43807049"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/43940186",
+        "addr:housenumber": "221",
+        "addr:postcode": "L8R 1Y6",
+        "addr:street": "York Boulevard",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "check_date": "2026-03-15",
+        "contact:facebook": "HamiltonDowntownMosque",
+        "contact:instagram": "downtownmosque",
+        "contact:twitter": "Downtownmosque",
+        "email": "admin@downtownmosque.com",
+        "height": "10",
+        "name": "Hamilton Downtown Mosque",
+        "phone": "+1-905-527-7371",
+        "religion": "muslim",
+        "website": "http://downtownmosque.com",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.8755949,
+          43.2610287
+        ]
+      },
+      "id": "way/43940186"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/56202083",
+        "addr:housenumber": "741",
+        "addr:postcode": "M1K 2C6",
+        "addr:street": "Kennedy Road",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "check_date": "2026-04-02",
+        "denomination": "sunni",
+        "email": "info@salahedddin.org",
+        "name": "Salaheddin Islamic Centre",
+        "phone": "+1-416-264-3900",
+        "religion": "muslim",
+        "website": "https://www.salaheddin.org/",
+        "wikidata": "Q7403458",
+        "wikipedia": "en:Salaheddin Islamic Centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.2659976,
+          43.7308697
+        ]
+      },
+      "id": "way/56202083"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/58566249",
+        "addr:city": "Etobicoke",
+        "addr:housenumber": "122",
+        "addr:street": "North Queen Street",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "building:colour": "beige",
+        "building:levels": "1",
+        "check_date": "2026-05-03",
+        "name": "Bosnian Islamic Association Gazi Husrev-Beg",
+        "religion": "muslim",
+        "website": "https://www.biaghb.com/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.55001,
+          43.6207841
+        ]
+      },
+      "id": "way/58566249"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/58849209",
+        "addr:city": "Etobicoke",
+        "addr:housenumber": "2050",
+        "addr:street": "Kipling Avenue",
+        "amenity": "place_of_worship",
+        "building": "commercial",
+        "name": "Dar Al-Hijrah Islamic Center",
+        "religion": "muslim",
+        "source": "yahoo",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.5685136,
+          43.7133519
+        ]
+      },
+      "id": "way/58849209"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/59024052",
+        "addr:city": "Toronto",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "denomination": "ismaili",
+        "name": "Ismaili Jamatkhana Scarborough",
+        "religion": "muslim",
+        "website": "https://ismaili.net/heritage/node/21420",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.2597495,
+          43.8169155
+        ]
+      },
+      "id": "way/59024052"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/60119177",
+        "addr:city": "Scarborough",
+        "addr:housenumber": "3340",
+        "addr:postcode": "M1L 1C6",
+        "addr:province": "Ontario",
+        "addr:street": "Danforth Avenue",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "denomination": "sunni",
+        "name": "Baitul Mukarram Islamic Society",
+        "religion": "muslim",
+        "website": "https://baitulmukarramtoronto.ca/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.277756,
+          43.693917
+        ]
+      },
+      "id": "way/60119177"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/60483157",
+        "addr:city": "Toronto",
+        "addr:housenumber": "99",
+        "addr:postcode": "M3L 1A2",
+        "addr:street": "Beverly Hills Drive",
+        "amenity": "place_of_worship",
+        "building": "commercial",
+        "denomination": "sunni",
+        "name": "Toronto and Region Islamic Congregation",
+        "phone": "+1-416-245-5675",
+        "religion": "muslim",
+        "website": "https://taric.org/",
+        "wikidata": "Q7826581",
+        "wikipedia": "en:Toronto and Region Islamic Congregation",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.5159802,
+          43.7179654
+        ]
+      },
+      "id": "way/60483157"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/61955974",
+        "addr:city": "Thornhill",
+        "addr:housenumber": "7340",
+        "addr:street": "Bayview Avenue",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Imam Mahdi Islamic Centre",
+        "phone": "+1-416-762-8200",
+        "religion": "muslim",
+        "source": "yahoo",
+        "website": "https://imammahdi.ca/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.4001251,
+          43.8111725
+        ]
+      },
+      "id": "way/61955974"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/66979961",
+        "addr:city": "Toronto",
+        "addr:housenumber": "26",
+        "addr:postcode": "M3J 1Z9",
+        "addr:street": "Le Page Court",
+        "amenity": "place_of_worship",
+        "building": "industrial",
+        "building:levels": "1",
+        "name": "Imdadul Islamic Jamat",
+        "phone": "+1-416-636-0044",
+        "religion": "muslim",
+        "source": "CanVec 6.0 - NRCan",
+        "wheelchair": "limited",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.4869955,
+          43.7590279
+        ]
+      },
+      "id": "way/66979961"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/67141470",
+        "addr:city": "Scarborough",
+        "addr:housenumber": "18",
+        "addr:street": "Progress Avenue",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "denomination": "sunni",
+        "name": "Masjid Huzaifah",
+        "opendata:type": "115001",
+        "religion": "muslim",
+        "website": "https://www.masjidhuzaifah.com/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.280662,
+          43.770228
+        ]
+      },
+      "id": "way/67141470"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/67162340",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "name": "Islamic Society of York Region",
+        "religion": "muslim",
+        "source": "CanVec 6.0 - NRCan",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.4069923,
+          43.9366856
+        ]
+      },
+      "id": "way/67162340"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/67298317",
+        "addr:city": "Markham",
+        "addr:housenumber": "1330",
+        "addr:postcode": "L6E 1A4",
+        "addr:province": "ON",
+        "addr:street": "Castlemore Avenue",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Masjid Darul Iman",
+        "religion": "muslim",
+        "source": "CanVec 6.0 - NRCan",
+        "website": "https://daruliman.org/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.2639906,
+          43.9052155
+        ]
+      },
+      "id": "way/67298317"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/68657390",
+        "addr:housenumber": "241",
+        "addr:street": "Northwestern Avenue",
+        "amenity": "place_of_worship",
+        "building": "church",
+        "check_date": "2025-06-08",
+        "denomination": "united",
+        "religion": "muslim",
+        "source": "City of Ottawa",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.7416005,
+          45.401979
+        ]
+      },
+      "id": "way/68657390"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/68658999",
+        "addr:housenumber": "2335",
+        "addr:street": "St-Laurent Boulevard",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "building:levels": "2",
+        "check_date": "2026-02-22",
+        "name": "Ottawa Islamic Centre & Assalam Mosque",
+        "religion": "muslim",
+        "source": "City of Ottawa",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.620526,
+          45.383107
+        ]
+      },
+      "id": "way/68658999"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/76828887",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "denomination": "ismaili",
+        "name": "Ismaili Jamatkhana",
+        "religion": "muslim",
+        "source": "CanVec 6.0 - NRCan",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.8795867,
+          43.92653
+        ]
+      },
+      "id": "way/76828887"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/78592355",
+        "addr:city": "Brampton",
+        "addr:housenumber": "8450",
+        "addr:postcode": "L6T 4M9",
+        "addr:street": "Torbram Road",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "building:levels": "2",
+        "name": "Jame Makki Masjid Brampton",
+        "name:en": "Makki Masjid",
+        "religion": "muslim",
+        "source": "Region of Peel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.6905252,
+          43.7216539
+        ]
+      },
+      "id": "way/78592355"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/79880277",
+        "addr:housenumber": "251",
+        "addr:postcode": "K1Y 0M1",
+        "addr:street": "Northwestern Avenue",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "building:levels": "3",
+        "check_date": "2025-06-08",
+        "denomination": "sunni",
+        "name": "Ottawa Muslim Association",
+        "phone": "+1-613-722-8763",
+        "religion": "muslim",
+        "source": "City of Ottawa",
+        "website": "https://www.ottawamosque.ca/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.7413381,
+          45.401468
+        ]
+      },
+      "id": "way/79880277"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/82251132",
+        "addr:city": "Toronto",
+        "addr:housenumber": "75",
+        "addr:street": "Kirkdene Drive",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Usman Gousi Mosque",
+        "note": "former church",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.138474,
+          43.7945587
+        ]
+      },
+      "id": "way/82251132"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/89342355",
+        "addr:city": "Mississauga",
+        "addr:housenumber": "79",
+        "addr:postcode": "L5C 4S3",
+        "addr:province": "On",
+        "addr:street": "Cedarglen Gate",
+        "addr:unit": "3024",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "building:levels": "3",
+        "denomination": "muslim",
+        "name": "Shalimar Islamic Centre",
+        "phone": "+1-647-920-3024",
+        "religion": "muslim",
+        "website": "https://shalimarislamiccentre.ca/",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.6426708,
+          43.5584348
+        ]
+      },
+      "id": "way/89342355"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/98057018",
+        "addr:housenumber": "1545",
+        "addr:postcode": "L8W 3P8",
+        "addr:street": "Stone Church Road East",
+        "alt_name": "Hamilton Mosque",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "check_date": "2026-03-15",
+        "contact:facebook": "muslim.association.hamilton",
+        "contact:instagram": "hamiltonmosque",
+        "contact:twitter": "Muslim_Hamilton",
+        "name": "Hamilton Mountain Masjid",
+        "phone": "+1-905-929-1526",
+        "religion": "muslim",
+        "source": "NRCan-CanVec-7.0",
+        "website": "https://hamiltonmosque.com/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.8205373,
+          43.1955722
+        ]
+      },
+      "id": "way/98057018"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/123518024",
+        "addr:city": "London",
+        "addr:housenumber": "151",
+        "addr:street": "Oxford Street West",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "name": "London Muslim Mosque",
+        "religion": "muslim",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.2705905,
+          42.9909133
+        ]
+      },
+      "id": "way/123518024"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/129445111",
+        "addr:city": "London",
+        "addr:housenumber": "951",
+        "addr:postcode": "N6N1C3",
+        "addr:province": "ON",
+        "addr:street": "Pond Mills Road",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Islamic Centre of Southwest Ontario",
+        "religion": "muslim",
+        "website": "https://islamiccentre.ca/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.1919677,
+          42.9317152
+        ]
+      },
+      "id": "way/129445111"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/135778701",
+        "addr:city": "London",
+        "addr:housenumber": "282",
+        "addr:street": "Hamilton Road",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "check_date": "2026-08-06",
+        "name": "Hyatt Mosque and Center",
+        "religion": "muslim",
+        "website": "https://www.hyattmosquecenter.com/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.2240953,
+          42.9815977
+        ]
+      },
+      "id": "way/135778701"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/139934389",
+        "addr:city": "London",
+        "addr:housenumber": "546",
+        "addr:postcode": "N6H 2M6",
+        "addr:province": "Ontario",
+        "addr:street": "Beaverbrook Avenue",
+        "alt_name": "Bait-ul-Ahad Mosque;Baitul Ahad;Bait-ul-Ahad",
+        "alt_name:ur": "بیت الاحد",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "contact:website": "https://www.ahmadiyya.ca/mosques/baitul-ahad",
+        "denomination": "ahmadiyya",
+        "name": "Baitul Ahad Mosque",
+        "name:ur": "مسجد بیت الاحد",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.278067,
+          42.9804165
+        ]
+      },
+      "id": "way/139934389"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/145387376",
+        "addr:city": "Waterloo",
+        "addr:housenumber": "213",
+        "addr:street": "Erb Street West",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "name": "Waterloo Masjid",
+        "religion": "muslim",
+        "source": "Ground",
+        "website": "https://waterloomasjid.com/main/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.5354741,
+          43.4590603
+        ]
+      },
+      "id": "way/145387376"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/156973419",
+        "addr:city": "Kitchener",
+        "addr:housenumber": "1017",
+        "addr:street": "Victoria Street North",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "name": "Kitchener Masjid",
+        "phone": "+1-519-743-9111",
+        "religion": "muslim",
+        "source": "Bing",
+        "website": "http://kitchenermasjid.com",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.4604245,
+          43.4647895
+        ]
+      },
+      "id": "way/156973419"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/162136224",
+        "addr:city": "Milton",
+        "addr:housenumber": "8069",
+        "addr:postcode": "L9T7L4",
+        "addr:province": "ON",
+        "addr:street": "Esquesing Line",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "email": "iccm@icna.ca",
+        "name": "Islamic Community Centre of Milton",
+        "phone": "+1-905-878-3292",
+        "religion": "muslim",
+        "short_name": "ICCM",
+        "source": "Bing;local knowledge",
+        "website": "https://www.icnamilton.com/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.8768764,
+          43.5427096
+        ]
+      },
+      "id": "way/162136224"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/166535798",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Dawoodi Bohra Al Masjid Al Saifee Anjuman-e-Burhani",
+        "religion": "muslim",
+        "source": "Bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.4074797,
+          43.8492852
+        ]
+      },
+      "id": "way/166535798"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/170023709",
+        "addr:city": "Brampton",
+        "addr:housenumber": "291",
+        "addr:postcode": "L6R 2Z4",
+        "addr:street": "Great Lakes Drive",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "check_date": "2025-11-12",
+        "name": "Jamiat-Ul-Ansar of Brampton",
+        "phone": "+1-905-792-7576",
+        "religion": "muslim",
+        "source": "Peel Open Data",
+        "website": "http://www.jamiatulansar.ca/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.7695094,
+          43.7374773
+        ]
+      },
+      "id": "way/170023709"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/170746233",
+        "addr:city": "Newmarket",
+        "addr:housenumber": "700",
+        "addr:postcode": "L3Y9C1",
+        "addr:province": "Ontario",
+        "addr:street": "Mulock Drive",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Newmarket Islamic Centre",
+        "phone": "+19058958886",
+        "religion": "muslim",
+        "source": "Bing",
+        "website": "https://nmic.ca/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.443425,
+          44.0426668
+        ]
+      },
+      "id": "way/170746233"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/172429631",
+        "addr:city": "Vaughan",
+        "addr:housenumber": "10610",
+        "addr:postcode": "L6A 3A2",
+        "addr:province": "Ontario",
+        "addr:street": "Jane Street",
+        "alt_name": "Bait-ul-Islam Mosque;Baitul Islam;Bait-ul-Islam",
+        "alt_name:ur": "بیت الاسلام",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "capacity": "1500",
+        "contact:fax": "+1 905-832-3220",
+        "denomination": "ahmadiyya",
+        "name": "Baitul Islam Mosque",
+        "name:ur": "مسجد بیت الاسلام",
+        "phone": "+1 905-303-4000",
+        "religion": "muslim",
+        "website": "https://www.ahmadiyya.ca/",
+        "wikidata": "Q803987",
+        "wikipedia": "en:Baitul Islam Mosque",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.5429879,
+          43.8648527
+        ]
+      },
+      "id": "way/172429631"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/178564272",
+        "addr:housenumber": "204",
+        "addr:street": "Madison Avenue South",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "denomination": "shia",
+        "name": "Al Zahra Shia Association of Waterloo Region",
+        "religion": "muslim",
+        "source": "Bing",
+        "website": "https://www.alzahra.ca/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.4873513,
+          43.441332
+        ]
+      },
+      "id": "way/178564272"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/206928941",
+        "addr:city": "Mississauga",
+        "addr:housenumber": "205",
+        "addr:postcode": "L5A 1A4",
+        "addr:street": "North Service Road",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "name": "Masjid Rahmatul-lil-Alameen",
+        "religion": "muslim",
+        "website": "https://www.rahmatmasjid.com/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.5952994,
+          43.5735625
+        ]
+      },
+      "id": "way/206928941"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/229623196",
+        "addr:housenumber": "4509",
+        "addr:street": "Innes Road",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "denomination": "sunni",
+        "name": "Masjid Bilal, Islamic Society of Cumberland",
+        "phone": "+1-613-841-0786",
+        "religion": "muslim",
+        "website": "https://www.masjidbilal.org/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.4846875,
+          45.4621642
+        ]
+      },
+      "id": "way/229623196"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/229680075",
+        "addr:city": "North York",
+        "addr:housenumber": "49",
+        "addr:postcode": "M3C 1K1",
+        "addr:street": "Wynford Drive",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "check_date": "2026-04-03",
+        "denomination": "ismaili",
+        "name": "Ismaili Centre Toronto",
+        "religion": "muslim",
+        "wikidata": "Q14875211",
+        "wikipedia": "en:Ismaili Centre, Toronto",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.333445,
+          43.7238587
+        ]
+      },
+      "id": "way/229680075"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/232714937",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "name": "Pickering Islamic Centre",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.0764039,
+          43.8534967
+        ]
+      },
+      "id": "way/232714937"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/233908909",
+        "addr:housenumber": "2575",
+        "addr:street": "Bond Street",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "name": "Albatool Fatima Association",
+        "religion": "muslim",
+        "source": "City of Ottawa",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.7878475,
+          45.3638405
+        ]
+      },
+      "id": "way/233908909"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/242780311",
+        "addr:city": "Brampton",
+        "addr:housenumber": "7580",
+        "addr:postcode": "L6W 0A1",
+        "addr:province": "ON",
+        "addr:street": "Kennedy Road South",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "email": "management@masumeen.org",
+        "name": "Masumeen Islamic Centre",
+        "phone": "+1-905-459-0891",
+        "religion": "muslim",
+        "website": "https://jaffari.org/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.7116013,
+          43.6674141
+        ]
+      },
+      "id": "way/242780311"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/244593877",
+        "addr:housenumber": "2871",
+        "addr:street": "St. Joseph Boulevard",
+        "amenity": "place_of_worship",
+        "building": "commercial",
+        "name": "Rhoda Masjid and Institute",
+        "religion": "muslim",
+        "source": "City of Ottawa",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.5191812,
+          45.4745532
+        ]
+      },
+      "id": "way/244593877"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/249272479",
+        "addr:housenumber": "7",
+        "addr:street": "Fairbairn Street",
+        "amenity": "place_of_worship",
+        "building": "church",
+        "name": "Ottawa South Mosque",
+        "religion": "muslim",
+        "source": "City of Ottawa",
+        "website": "https://ottawasouthmosque.ca/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.6812937,
+          45.3948791
+        ]
+      },
+      "id": "way/249272479"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/251872867",
+        "addr:city": "Markham",
+        "addr:housenumber": "2900",
+        "addr:street": "Denison Street",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "name": "Jam'e Masjid Markham",
+        "operator": "Islamic Society of Markham",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.2645245,
+          43.841864
+        ]
+      },
+      "id": "way/251872867"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/262858031",
+        "addr:city": "Saint Petersburg",
+        "addr:housenumber": "1000",
+        "addr:street": "Knechtel Court",
+        "amenity": "place_of_worship",
+        "name": "Wilmot Muslim Centre",
+        "religion": "muslim",
+        "wikidata": "Q135673024",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.5382781,
+          43.3993619
+        ]
+      },
+      "id": "way/262858031"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/275527293",
+        "addr:housenumber": "3225",
+        "addr:street": "Conroy Road",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "denomination": "ismaili",
+        "name": "Ismaili Jamat Khana",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.6241075,
+          45.3744894
+        ]
+      },
+      "id": "way/275527293"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/279149911",
+        "addr:city": "Cambridge",
+        "addr:housenumber": "64",
+        "addr:postcode": "N3C 1L6",
+        "addr:province": "Ontario",
+        "addr:street": "Winston Boulevard",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "name": "MAC Hespeler Masjid",
+        "religion": "muslim",
+        "website": "https://hespelermasjid.ca/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.3177917,
+          43.4254334
+        ]
+      },
+      "id": "way/279149911"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/281671453",
+        "addr:housenumber": "168",
+        "addr:postcode": "M5G 1C6",
+        "addr:street": "Dundas Street West",
+        "amenity": "place_of_worship",
+        "branch": "Dundas",
+        "check_date": "2026-01-29",
+        "email": "info@masjidtoronto.com",
+        "name": "Masjid Toronto",
+        "phone": "+1-416-596-0507",
+        "religion": "muslim",
+        "website": "https://centres.macnet.ca/masjidtoronto/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3858908,
+          43.6553756
+        ]
+      },
+      "id": "node/281671453"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/282523880",
+        "addr:housenumber": "75",
+        "addr:postcode": "M8V 2C3",
+        "addr:province": "ON",
+        "addr:street": "Birmingham Street",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "building:levels": "2",
+        "email": "info@bictoronto.com",
+        "name": "Bosnian Islamic Centre",
+        "phone": "+1-416-255-8338",
+        "religion": "muslim",
+        "source": "survey",
+        "website": "https://bictoronto.com/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.5042513,
+          43.603482
+        ]
+      },
+      "id": "way/282523880"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/287886696",
+        "addr:city": "Courtice",
+        "addr:housenumber": "1660",
+        "addr:province": "ON",
+        "addr:street": "Regional Highway 2",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "check_date": "2026-06-11",
+        "name": "Al Rayan Islamic Centre",
+        "religion": "muslim",
+        "source": "CanVec 6.0 - NRCan",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.7865665,
+          43.911339
+        ]
+      },
+      "id": "way/287886696"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/288668015",
+        "addr:housenumber": "3990",
+        "addr:postcode": "K2H 6P6",
+        "addr:street": "Old Richmond Road",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "denomination": "sunni",
+        "name": "Jami Omar",
+        "phone": "+1-613-864-6511",
+        "religion": "muslim",
+        "source": "City of Ottawa",
+        "website": "https://www.jamiomar.org/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.828436,
+          45.3116695
+        ]
+      },
+      "id": "way/288668015"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/289666913",
+        "amenity": "place_of_worship",
+        "building": "church",
+        "name": "Islamic Society of Belleville",
+        "religion": "muslim",
+        "source": "CanVec 6.0 - NRCan",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.3880989,
+          44.1682058
+        ]
+      },
+      "id": "way/289666913"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/293062093",
+        "addr:city": "Sudbury",
+        "addr:housenumber": "755",
+        "addr:province": "ON",
+        "addr:street": "Churchill Avenue",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "building:levels": "1",
+        "name": "Sudbury Mosque",
+        "operator": "Islamic Association of Sudbury",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.9345732,
+          46.5131805
+        ]
+      },
+      "id": "way/293062093"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/304926661",
+        "addr:housenumber": "3856",
+        "addr:street": "Old Richmond Road",
+        "amenity": "place_of_worship",
+        "building": "commercial",
+        "denomination": "shia",
+        "name": "Islamic Shia Ithna Asheri Asociation of Ottawa",
+        "religion": "muslim",
+        "source": "City of Ottawa",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.8257328,
+          45.3214673
+        ]
+      },
+      "id": "way/304926661"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/305805121",
+        "addr:housenumber": "273",
+        "addr:street": "Donald Street",
+        "amenity": "place_of_worship",
+        "building": "church",
+        "name": "Abu Thar al-Gofary Mosque, Ottawa",
+        "religion": "muslim",
+        "source": "City of Ottawa",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.6568356,
+          45.4282963
+        ]
+      },
+      "id": "way/305805121"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/311209215",
+        "addr:city": "Mississauga",
+        "addr:housenumber": "7097",
+        "addr:postcode": "L4T2G7",
+        "addr:province": "ON",
+        "addr:street": "Airport Road",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "denomination": "sunni",
+        "name": "Malton Masjid",
+        "name:en": "Anjuman-E-Anwarul Islam of Malton",
+        "phone": "+19056718777",
+        "religion": "muslim",
+        "website": "https://maltonmasjid.ad-din.site/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.6444861,
+          43.7063905
+        ]
+      },
+      "id": "way/311209215"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/319153252",
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "6735",
+        "addr:postcode": "L2G 5A6",
+        "addr:street": "Caledonia Street",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "level": "1",
+        "name": "The Peace Mosque",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.1069196,
+          43.0737417
+        ]
+      },
+      "id": "way/319153252"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/320608539",
+        "addr:city": "Toronto",
+        "addr:housenumber": "2665",
+        "addr:street": "Lawrence Avenue East",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "building:colour": "white",
+        "name": "Scarborough Muslim Association - Jame Abu Bakr Siddique Masjid",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.262164,
+          43.7514785
+        ]
+      },
+      "id": "way/320608539"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/330677110",
+        "addr:city": "Mississauga",
+        "addr:housenumber": "935",
+        "addr:street": "Eglinton Avenue West",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "denomination": "sunni",
+        "name": "Masjid Al Farooq",
+        "opening_hours:covid19": "closed",
+        "religion": "muslim",
+        "website": "https://www.masjidfarooq.com/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.6759189,
+          43.5870808
+        ]
+      },
+      "id": "way/330677110"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/331321271",
+        "addr:city": "Brampton",
+        "addr:housenumber": "160",
+        "addr:postcode": "L7A 0G2",
+        "addr:street": "Salvation Road",
+        "alt_name": "Masjid Al-Salam",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "contact:facebook": "https://www.facebook.com/masjidalsalamca/",
+        "name": "Mount Pleasant Islamic Center",
+        "note": "The building was originally Mount Pleasant Presbyterian Church with an address of10600 Creditview Road",
+        "old_name": "Mount Pleasant Presbyterian Church",
+        "phone": "+1-905-840-5454",
+        "religion": "muslim",
+        "website": "https://www.mpicbrampton.com/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.8195695,
+          43.6766727
+        ]
+      },
+      "id": "way/331321271"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/369580571",
+        "addr:housenumber": "351",
+        "addr:street": "Sandhill Road",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "building:levels": "3",
+        "name": "Kanata Muslim Association",
+        "religion": "muslim",
+        "source": "City of Ottawa",
+        "start_date": "1976..1991",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.9283763,
+          45.3560684
+        ]
+      },
+      "id": "way/369580571"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/372984153",
+        "addr:city": "Thunder Bay",
+        "addr:housenumber": "591",
+        "addr:postcode": "P7B 1Y8",
+        "addr:street": "John Street",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Thunder Bay Masjid",
+        "religion": "muslim",
+        "website": "https://thunderbaymasjid.ca/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.2478948,
+          48.431952
+        ]
+      },
+      "id": "way/372984153"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/387913351",
+        "addr:city": "Niagara Falls",
+        "addr:postcode": "L2G 3X2",
+        "addr:province": "ON",
+        "addr:street": "Stanley Avenue",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "check_date": "2024-04-13",
+        "name": "As-Salaam Alaykum Masjid Aisha",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.08484,
+          43.0940132
+        ]
+      },
+      "id": "way/387913351"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/391854003",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "denomination": "sunni",
+        "name": "Sayyidah Zainab",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.0232252,
+          43.8515393
+        ]
+      },
+      "id": "way/391854003"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/420539138",
+        "amenity": "place_of_worship",
+        "check_date": "2026-01-10",
+        "name": "Madina Masjid",
+        "religion": "muslim",
+        "wheelchair": "limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3360717,
+          43.6804092
+        ]
+      },
+      "id": "node/420539138"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/421342729",
+        "addr:city": "Waterloo",
+        "addr:housenumber": "510",
+        "addr:postcode": "N2J 3Z4",
+        "addr:street": "Erbsville Road",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "name": "Islamic Center of Waterloo",
+        "religion": "muslim",
+        "website": "https://www.icwaterloo.com",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.5891625,
+          43.4685221
+        ]
+      },
+      "id": "way/421342729"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/421916933",
+        "addr:housenumber": "778",
+        "addr:postcode": "L8M 1A6",
+        "addr:street": "King Street East",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "check_date": "2026-05-26",
+        "contact:facebook": "ibrahim.jame.372",
+        "email": "info@ibrahimjamemosque.com",
+        "name": "Ibrahim Jame Mosque",
+        "phone": "+1-905-527-2392",
+        "religion": "muslim",
+        "website": "https://www.ibrahimjamemosque.com/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.8441998,
+          43.2512039
+        ]
+      },
+      "id": "way/421916933"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/429006382",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "House of the Commandments",
+        "religion": "muslim",
+        "source": "CanVec 6.0 - NRCan",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.5806063,
+          44.1011149
+        ]
+      },
+      "id": "way/429006382"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/445605456",
+        "addr:housenumber": "4269",
+        "addr:street": "Limebank Road",
+        "amenity": "place_of_worship",
+        "building": "detached",
+        "religion": "muslim",
+        "source": "City of Ottawa",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.6713085,
+          45.290371
+        ]
+      },
+      "id": "way/445605456"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/452100145",
+        "addr:housenumber": "734",
+        "addr:postcode": "L8H 3R2",
+        "addr:street": "Rennie Street",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "check_date": "2026-04-07",
+        "check_date:opening_hours": "2026-04-07",
+        "name": "Umar Mosque",
+        "opening_hours": "Mo-Su 06:00-22:00",
+        "phone": "+1-905-544-9016",
+        "religion": "muslim",
+        "website": "https://www.mahcanada.com/mosques/umar",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.7741582,
+          43.2465045
+        ]
+      },
+      "id": "way/452100145"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/458493343",
+        "addr:city": "Mississauga",
+        "addr:housenumber": "6680",
+        "addr:postcode": "L5N 2L8",
+        "addr:street": "Campobello Road",
+        "alt_name": "Riyad Ul Jannah Mosque",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Masjid Riyad Ul Jannah",
+        "phone": "+1-905-567-1786",
+        "religion": "muslim",
+        "website": "http://jamiariyadhuljannah.com/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.7336717,
+          43.6086461
+        ]
+      },
+      "id": "way/458493343"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/470244940",
+        "addr:city": "Cumberland",
+        "addr:housenumber": "2620",
+        "addr:postcode": "K4C 1A3",
+        "addr:province": "Ontario",
+        "addr:street": "Market Street",
+        "alt_name": "Bait-un-Naseer;Bait-un-Naseer Mosque",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "contact:fax": "+1 613-833-0827",
+        "contact:phone": "+1 613-833-0968",
+        "denomination": "ahmadiyya",
+        "name": "Baitun Naseer Mosque",
+        "name:en": "Baitun Naseer Mosque",
+        "name:ur": "مسجد بیت النصیر",
+        "religion": "muslim",
+        "source": "City of Ottawa",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.4034007,
+          45.5165977
+        ]
+      },
+      "id": "way/470244940"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/478964239",
+        "addr:housenumber": "3020",
+        "addr:postcode": "K2J 4G3",
+        "addr:street": "Woodroffe Avenue",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "building:start_date": "2011..2014",
+        "denomination": "sunni",
+        "email": "info@snmc.ca",
+        "name": "SNMC Center & Masjid",
+        "opening_hours": "Tu-Sa 13:30-21:30",
+        "phone": "+1-613-440-6300",
+        "religion": "muslim",
+        "source": "City of Ottawa",
+        "website": "https://www.snmc.ca/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.7266492,
+          45.2890632
+        ]
+      },
+      "id": "way/478964239"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/482524672",
+        "addr:city": "Oavkville",
+        "addr:housenumber": "2478",
+        "addr:street": "9th Line",
+        "amenity": "place_of_worship",
+        "building": "house",
+        "name": "Masjid Noor-ul-Haram",
+        "phone": "+1-905-257-1342",
+        "religion": "muslim",
+        "website": "https://wimcanada.com/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.6958258,
+          43.5062371
+        ]
+      },
+      "id": "way/482524672"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/483089921",
+        "addr:housenumber": "1216",
+        "addr:street": "Hunt Club Road",
+        "alt_name:en": "Mosque of Mercy",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "denomination": "sunni",
+        "name": "Masjid ar-Rahmah",
+        "name:ar": "مسجد الرحمة",
+        "name:en": "Masjid ar-Rahmah",
+        "religion": "muslim",
+        "source": "City of Ottawa;local knowledge",
+        "website": "https://www.mymasjid.ca",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.647315,
+          45.351783
+        ]
+      },
+      "id": "way/483089921"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/483702355",
+        "addr:housenumber": "1606",
+        "addr:street": "Walkley Road",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "check_date": "2023-05-15",
+        "denomination": "shia",
+        "name": "Iman Ali (As) Masjid",
+        "phone": "+1 613-656-9888",
+        "religion": "muslim",
+        "source": "City of Ottawa",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.6459075,
+          45.3771035
+        ]
+      },
+      "id": "way/483702355"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/490698765",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "religion": "muslim",
+        "source": "NRCan-CanVec-10.0",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.9965779,
+          42.2275459
+        ]
+      },
+      "id": "way/490698765"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/506312353",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "building:levels": "3",
+        "name": "Windsor Mosque",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.0320469,
+          42.2774203
+        ]
+      },
+      "id": "way/506312353"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/524718674",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Oshawa Mosque",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.8623798,
+          43.8924569
+        ]
+      },
+      "id": "way/524718674"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/536724829",
+        "addr:city": "Hawkesbury",
+        "addr:housenumber": "651",
+        "addr:postcode": "K6A 1B3",
+        "addr:street": "Main Street East",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Hawkesbury Mosque",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.6004479,
+          45.6105951
+        ]
+      },
+      "id": "way/536724829"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/547565136",
+        "addr:city": "Stratford",
+        "addr:housenumber": "97",
+        "addr:street": "Woods Street",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "name": "Stratford Mosque",
+        "phone": "+1-519-305-1516",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.9954739,
+          43.3652278
+        ]
+      },
+      "id": "way/547565136"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/552941695",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Masjid Alhakeem Bowmanville",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6831859,
+          43.9105436
+        ]
+      },
+      "id": "way/552941695"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/601868710",
+        "alt_name:en": "Al-Aqsa Mosque",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "building:levels": "2",
+        "denomination": "sunni",
+        "name": "Jamia Masjid Al-Aqsa",
+        "name:ar": "جامع مسجد الاقصى",
+        "name:en": "Jamia Masjid Al-Aqsa",
+        "religion": "muslim",
+        "website": "https://moonode.com/entity/al-aqsa-jamia-974445-507-pitt-st-cornwall",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.7312012,
+          45.0233307
+        ]
+      },
+      "id": "way/601868710"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/605740007",
+        "addr:city": "Sarnia",
+        "addr:housenumber": "1609",
+        "addr:postcode": "N7W 1A9",
+        "addr:street": "London Line",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "name": "Sarnia Muslim Association",
+        "phone": "+1-519-541-1335",
+        "religion": "muslim",
+        "website": "https://sarniamuslim.com/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.3354944,
+          42.9831922
+        ]
+      },
+      "id": "way/605740007"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/628607976",
+        "addr:housenumber": "2835",
+        "addr:street": "Dumaurier Avenue",
+        "amenity": "place_of_worship",
+        "building": "retail",
+        "name": "Musalla As-Sahaba",
+        "religion": "muslim",
+        "source": "CanVec 6.0 - NRCan",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.7937122,
+          45.3506479
+        ]
+      },
+      "id": "way/628607976"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/644961689",
+        "addr:city": "Windsor",
+        "addr:province": "Ontario",
+        "addr:street": "Lincoln Road",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "denomination": "sunni",
+        "name": "Noor-ul-Islam",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.0159066,
+          42.3210224
+        ]
+      },
+      "id": "way/644961689"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/653770080",
+        "addr:city": "Windsor",
+        "addr:housenumber": "1957",
+        "addr:postcode": "N8W 1V7",
+        "addr:province": "ON",
+        "addr:street": "Head Avenue",
+        "alt_name": "Bait-ul-Ehsaan Mosque;Baitul Ahsaan Mosque;Bait-ul-Ahsaan Mosque;Baitul Ehsaan;Baitul Ahsaan;Bait-ul-Ehsaan;Bait-ul-Ahsaan;Baitul Ehsan;Baitul Ahsan;Bait-ul-Ehsan",
+        "alt_name:ur": "بیت الاحسان",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "contact:fax": "+1 519-962-8995",
+        "contact:phone": "+1 519-256-4166",
+        "contact:website": "https://www.ahmadiyya.ca/mosques/baitul-ehsaan",
+        "denomination": "ahmadiyya",
+        "name": "Baitul Ehsaan Mosque",
+        "name:ur": "مسجد بیت الاحسان",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.9919258,
+          42.2910944
+        ]
+      },
+      "id": "way/653770080"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/656853729",
+        "addr:city": "Kingston",
+        "amenity": "place_of_worship",
+        "building": "church",
+        "name": "Islamic Centre of Kingston",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.5420575,
+          44.284521
+        ]
+      },
+      "id": "way/656853729"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/659459666",
+        "addr:city": "Toronto",
+        "addr:housenumber": "1630",
+        "addr:postcode": "M1X 1S3",
+        "addr:province": "Ontario",
+        "addr:street": "Neilson Road",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "name": "Islamic Institute of Toronto",
+        "phone": "+1-416-335-9173",
+        "religion": "muslim",
+        "website": "https://islam.ca/",
+        "wikidata": "Q13428612",
+        "wikipedia": "en:Islamic Institute of Toronto",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.229839,
+          43.818755
+        ]
+      },
+      "id": "way/659459666"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/660074754",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "name": "Spiritual Society Canada",
+        "religion": "muslim",
+        "website": "https://ssci.ad-din.site/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.1842505,
+          43.7743525
+        ]
+      },
+      "id": "way/660074754"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/661276513",
+        "addr:city": "Toronto",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "check_date": "2026-08-03",
+        "name": "Al-Huda Islamic Centre",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.2725585,
+          43.744817
+        ]
+      },
+      "id": "way/661276513"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/662151879",
+        "addr:city": "Toronto",
+        "addr:housenumber": "277",
+        "addr:province": "ON",
+        "addr:street": "Scott Road",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "name": "Masjid El Noor",
+        "religion": "muslim",
+        "website": "https://masjidelnoor.ca/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.4719435,
+          43.6896555
+        ]
+      },
+      "id": "way/662151879"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/662783001",
+        "addr:city": "Maple",
+        "addr:housenumber": "9954",
+        "addr:province": "Ontario",
+        "addr:street": "Keele Street",
+        "addr:unit": "L6A 3Y4",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Masjid Vaughan",
+        "note": "formerly a Korean Presbyterian Church",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.5126835,
+          43.853548
+        ]
+      },
+      "id": "way/662783001"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/663846455",
+        "addr:city": "Brampton",
+        "addr:housenumber": "6",
+        "addr:postcode": "L7A 1C4",
+        "addr:street": "Lowry Drive",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "name": "Brampton Islamic Center",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.8046835,
+          43.701851
+        ]
+      },
+      "id": "way/663846455"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/669015220",
+        "amenity": "place_of_worship",
+        "check_date": "2025-05-27",
+        "name": "Winston Churchill Mosque",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.7618968,
+          43.5809559
+        ]
+      },
+      "id": "node/669015220"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/681506911",
+        "addr:city": "Cornwall",
+        "addr:housenumber": "341",
+        "addr:postcode": "K6H 3G6",
+        "addr:province": "Ontario",
+        "addr:street": "Balmoral Avenue",
+        "alt_name": "Bait-un-Nasir Mosque;Baitun Nasir;Bait-un-Nasir",
+        "alt_name:ur": "بیت الناصر",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "building:levels": "1",
+        "contact:fax": "+1 613-937-0027",
+        "contact:phone": "+1 613-361-9243",
+        "contact:website": "https://www.ahmadiyya.ca/mosques/masjid-baitun-nasir",
+        "denomination": "ahmadiyya",
+        "name": "Baitun Nasir Mosque",
+        "name:ur": "مسجد بیت الناصر",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.7368045,
+          45.0407431
+        ]
+      },
+      "id": "way/681506911"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/750633853",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Jami' Masjid Chatham",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.1797045,
+          42.3900824
+        ]
+      },
+      "id": "way/750633853"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/773659063",
+        "addr:city": "Guelph",
+        "addr:housenumber": "44",
+        "addr:street": "Marlborough Road",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Masjid Aisha",
+        "phone": "+1-226-486-1143",
+        "religion": "muslim",
+        "website": "http://masjidaisha.ca",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.2640327,
+          43.5605888
+        ]
+      },
+      "id": "way/773659063"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/781917069",
+        "addr:city": "Cornwall",
+        "addr:housenumber": "333",
+        "addr:postcode": "K6H 1Y8",
+        "addr:province": "ON",
+        "addr:street": "Second Street East",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "building:levels": "2",
+        "denomination": "sunni",
+        "email": "contact@alrashid.ca",
+        "name": "Jami' Masjid Zakariya",
+        "name:ar": "جامع مسجد زكريا",
+        "operator:website": "https://alrashid.ca/",
+        "phone": "+1-613-662-3402",
+        "religion": "muslim",
+        "source:addr": "City of Cornwall;https://data-cornwallcity.opendata.arcgis.com/datasets/cornwallcity::address-points",
+        "website": "https://cornwallmasjid.ca/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.7208737,
+          45.0208156
+        ]
+      },
+      "id": "way/781917069"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/785399687",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Windsor Islamic Association Centre",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.031353,
+          42.2743805
+        ]
+      },
+      "id": "way/785399687"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/787964229",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.9051377,
+          42.2733874
+        ]
+      },
+      "id": "way/787964229"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/795980103",
+        "addr:housenumber": "182",
+        "amenity": "place_of_worship",
+        "building": "detached",
+        "name": "Faith Mosque",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3196679,
+          43.6702656
+        ]
+      },
+      "id": "way/795980103"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/844801469",
+        "addr:city": "Hamilton",
+        "addr:housenumber": "2301",
+        "addr:postcode": "L8K 1X6",
+        "addr:province": "Ontario",
+        "addr:street": "King Street East",
+        "alt_name": "Baitun Nur;Baitun Noor;Bait-un-Nur;Bait-un-Noor;Bait-un-Nur Mosque;Bait-un-Noor Mosque",
+        "alt_name:ur": "بیت النور",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "check_date": "2026-04-07",
+        "contact:facebook": "ahmadiyyacanada",
+        "contact:fax": "+1 905-549-9373",
+        "contact:phone": "+1 905-544-3110",
+        "contact:twitter": "AhmadiyyaCanada",
+        "contact:website": "https://www.ahmadiyya.ca/mosques/baitun-nur-mosque",
+        "denomination": "ahmadiyya",
+        "name": "Baitun Nur Mosque",
+        "name:ur": "مسجد بیت النور",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.7957217,
+          43.2296292
+        ]
+      },
+      "id": "way/844801469"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/931652604",
+        "addr:city": "Guelph",
+        "addr:housenumber": "126",
+        "addr:postcode": "N1E2G7",
+        "addr:province": "ON",
+        "addr:street": "Norwich Street East",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Islamic Society of Guelph",
+        "religion": "muslim",
+        "website": "http://isofg.ca/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.2519393,
+          43.5515302
+        ]
+      },
+      "id": "way/931652604"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/998240981",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Masjid Al-Salaam",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.3487231,
+          44.3092946
+        ]
+      },
+      "id": "way/998240981"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1123778839",
+        "addr:housenumber": "817",
+        "addr:street": "Yonge Street",
+        "amenity": "place_of_worship",
+        "name": "Toronto Islamic Centre (TIC) & Community Services",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3874634,
+          43.6725134
+        ]
+      },
+      "id": "node/1123778839"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1148051859",
+        "addr:city": "Cambridge",
+        "addr:housenumber": "252",
+        "addr:postcode": "N1R 7H9",
+        "addr:street": "Elgin Street North",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "email": "farooqmasjid@outlook.com",
+        "fax": "+1-519-623-0564",
+        "name": "Cambridge Muslim Society",
+        "name:ar": "Jamia Umar Al-Farooq Masjid",
+        "phone": "+1-519-623-0568",
+        "religion": "muslim",
+        "website": "https://www.cambridgemuslimsociety.org",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.303962,
+          43.3740144
+        ]
+      },
+      "id": "way/1148051859"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1149484869",
+        "addr:city": "Brampton",
+        "addr:housenumber": "10545",
+        "addr:postcode": "L6Z 2V9",
+        "addr:province": "ON",
+        "addr:street": "Hurontario Street",
+        "alt_name": "Masjid Mubarak",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "contact:website": "https://www.ahmadiyya.ca/mosques/masjid-mubarak",
+        "denomination": "ahmadiyya",
+        "name": "Mubarak Mosque",
+        "name:ur": "مسجد مبارک",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.8009379,
+          43.7169056
+        ]
+      },
+      "id": "way/1149484869"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1176398981",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Al-Arqam Islamic Centre",
+        "religion": "muslim",
+        "source": "microsoft/BuildingFootprints",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.853355,
+          43.9492235
+        ]
+      },
+      "id": "way/1176398981"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1183043935",
+        "addr:city": "Ballinafad",
+        "addr:housenumber": "14369",
+        "addr:postcode": "N0B 1H0",
+        "addr:province": "Ontario",
+        "addr:street": "Trafalgar Road",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "denomination": "sunni",
+        "name": "Istiqlal Mosque",
+        "religion": "muslim",
+        "source": "microsoft/BuildingFootprints",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.010826,
+          43.69548
+        ]
+      },
+      "id": "way/1183043935"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1189751238",
+        "addr:city": "Bradford",
+        "addr:housenumber": "3999",
+        "addr:postcode": "L3Z 2A5",
+        "addr:province": "Ontario",
+        "addr:street": "10th Sideroad",
+        "alt_name": "Hadiqa Ahmed;Hadeeqa Ahmad;Hadeeqa Ahmed",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "contact:phone": "+1 905-775-3299",
+        "denomination": "ahmadiyya",
+        "name": "Hadiqa Ahmad",
+        "name:ur": "حدیقہ احمد",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.615089,
+          44.1620864
+        ]
+      },
+      "id": "way/1189751238"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1189752936",
+        "addr:city": "Cambridge",
+        "addr:housenumber": "5",
+        "addr:postcode": "N1R 2J3",
+        "addr:province": "Ontario",
+        "addr:street": "Elliott Street",
+        "alt_name": "Baitul Kareem Mosque;Bait-ul-Karim;Bait-ul-Kareem;Bait-ul-Karim Mosque;Bait-ul-Kareem Mosque",
+        "alt_name:ur": "بیت الکریم",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "contact:phone": "+1-519-267-4220",
+        "contact:website": "https://www.ahmadiyya.ca/mosques/baitul-karim",
+        "denomination": "ahmadiyya",
+        "name": "Baitul Karim Mosque",
+        "name:ur": "مسجد بیت الکریم",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.3124794,
+          43.3526807
+        ]
+      },
+      "id": "way/1189752936"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1189756200",
+        "addr:city": "Locust Hill",
+        "addr:housenumber": "3505",
+        "addr:postcode": "L0H 1J0",
+        "addr:province": "Ontario",
+        "addr:street": "Salem Road",
+        "alt_name": "Bait-ul-Mahdi Mosque;Baitul Mehdi Mosque;Bait-ul-Mehdi Mosque;Bait-ul-Mahdi;Bait-ul-Mehdi",
+        "alt_name:ur": "بیت المہدی",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "denomination": "ahmadiyya",
+        "name": "Baitul Mahdi Mosque",
+        "name:ur": "مسجد بیت المہدی",
+        "phone": "+1 905-427-7479",
+        "religion": "muslim",
+        "website": "https://www.ahmadiyya.ca/mosques/baitul-mahdi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.0420318,
+          43.9262591
+        ]
+      },
+      "id": "way/1189756200"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1189758763",
+        "addr:city": "Barrie",
+        "addr:housenumber": "110",
+        "addr:postcode": "L0L 2X0",
+        "addr:province": "ON",
+        "addr:street": "Oro-Medonte Line 7",
+        "alt_name": "Maryam Mosque;Masjid Maryam;Masjid Mariyam",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "contact:email": "info.barrie@ahmadiyya.ca",
+        "contact:fax": "+1 705-487-0006",
+        "contact:phone": "+1 705-487-0004",
+        "contact:website": "https://www.ahmadiyya.ca/mosques/maryam-mosque",
+        "denomination": "ahmadiyya",
+        "name": "Mary Mosque (Maryam Mosque)",
+        "name:ur": "مسجد مریم",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.5318463,
+          44.4747797
+        ]
+      },
+      "id": "way/1189758763"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1191512048",
+        "addr:city": "Bradford",
+        "addr:postcode": "L3Z1W9",
+        "addr:province": "Ontario",
+        "addr:street": "Elizabeth Street",
+        "alt_name": "Baitul Khabeer;Bait-ul-Khabir;Bait-ul-Khabeer;Khabir Mosque;Khabeer Mosque",
+        "alt_name:ur": "بیت الخبیر",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "denomination": "ahmadiyya",
+        "name": "Baitul Khabir",
+        "name:ur": "مسجد بیت الخبیر",
+        "religion": "muslim",
+        "source": "microsoft/BuildingFootprints",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.5648925,
+          44.1127925
+        ]
+      },
+      "id": "way/1191512048"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1212404165",
+        "addr:city": "Owen Sound",
+        "addr:housenumber": "895",
+        "addr:postcode": "N4K 1K2",
+        "addr:province": "On",
+        "addr:street": "7th Street East",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "denomination": "sunni",
+        "name": "Owen Sound Muslim Association",
+        "religion": "muslim",
+        "website": "https://osmuslim.ca/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.92729,
+          44.5633946
+        ]
+      },
+      "id": "way/1212404165"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1233610675",
+        "addr:city": "Paris",
+        "addr:housenumber": "26",
+        "addr:postcode": "N2L3V2",
+        "addr:province": "Ontario",
+        "addr:street": "Spruce Street",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "name": "Masjid Sayyidna Bilal",
+        "religion": "muslim",
+        "website": "https://parismasjid.ca/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.3958423,
+          43.2023624
+        ]
+      },
+      "id": "way/1233610675"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1285001440",
+        "addr:city": "Erin",
+        "addr:housenumber": "103",
+        "addr:postcode": "N0B 1T0",
+        "addr:province": "Ontario",
+        "addr:street": "Main Street",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Erin Islamic Cultural Center",
+        "phone": "+1-519-833-1035",
+        "religion": "muslim",
+        "website": "https://erinislamiccenter.ca/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0634324,
+          43.770394
+        ]
+      },
+      "id": "way/1285001440"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1307891413",
+        "amenity": "place_of_worship",
+        "denomination": "sunni",
+        "designation": "Food Bank",
+        "name": "Muslim Welfare Center (Masjid and Food Bank)",
+        "religion": "muslim",
+        "website": "https://www.muslimwelfarecentre.com/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.6466592,
+          43.5751086
+        ]
+      },
+      "id": "node/1307891413"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1366369641",
+        "addr:city": "Cambridge",
+        "addr:housenumber": "1170",
+        "addr:postcode": "N1T 2G3",
+        "addr:street": "Townline Road",
+        "amenity": "place_of_worship",
+        "contact:email": "info@townlinemuslimcentre.ca",
+        "contact:phone": "+1-519-651-0335",
+        "contact:website": "https://www.townlinemuslimcentre.ca/contact",
+        "landuse": "religious",
+        "name": "Townline Muslim Centre",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.2767592,
+          43.4022068
+        ]
+      },
+      "id": "way/1366369641"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1434409698",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.9080424,
+          43.9285348
+        ]
+      },
+      "id": "way/1434409698"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1434830620",
+        "amenity": "place_of_worship",
+        "name": "Masjid Mosque",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3312362,
+          43.6809543
+        ]
+      },
+      "id": "node/1434830620"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1616687440",
+        "alt_name": "Masjid al-Noor",
+        "amenity": "place_of_worship",
+        "name": "Masjid an-Noor",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.2406468,
+          43.1663258
+        ]
+      },
+      "id": "node/1616687440"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2439628508",
+        "addr:city": "East York",
+        "addr:housenumber": "80",
+        "addr:postcode": "M4H 1C5",
+        "addr:street": "Overlea Boulevard",
+        "amenity": "place_of_worship",
+        "denomination": "ismaili",
+        "name": "Don Mills Jamatkhana",
+        "opendata:type": "109001",
+        "religion": "muslim",
+        "wheelchair": "limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3400581,
+          43.7087855
+        ]
+      },
+      "id": "node/2439628508"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3451091589",
+        "addr:city": "Oakville",
+        "addr:housenumber": "4269",
+        "addr:postcode": "L6M 4E9",
+        "addr:province": "Ontario",
+        "addr:street": "Regional Road 25",
+        "alt_name": "Halton Islamic Community Center",
+        "amenity": "place_of_worship",
+        "email": "info@miltonmasjid.com",
+        "name": "Muslim Association of Milton",
+        "religion": "muslim",
+        "short_name": "MAM",
+        "website": "https://www.miltonmasjid.com/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.8020295,
+          43.4570228
+        ]
+      },
+      "id": "node/3451091589"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3507050675",
+        "amenity": "place_of_worship",
+        "name": "Islamic Forum of Canada",
+        "religion": "muslim",
+        "source": "Mapillary"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.6962402,
+          43.6920921
+        ]
+      },
+      "id": "node/3507050675"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3507916762",
+        "addr:city": "Toronto",
+        "addr:housenumber": "3114",
+        "addr:postcode": "M1L 1B1",
+        "addr:street": "Danforth Avenue",
+        "amenity": "place_of_worship",
+        "check_date": "2025-08-22",
+        "name": "Baitul Aman Masjid",
+        "religion": "muslim",
+        "website": "http://www.torontomuslims.com/listing/baitul-aman-mosque-danforth-community-center/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.2875074,
+          43.6916305
+        ]
+      },
+      "id": "node/3507916762"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3939878199",
+        "addr:city": "Mississauga",
+        "addr:housenumber": "966",
+        "addr:postcode": "L4Y4H5",
+        "addr:province": "ON",
+        "addr:street": "Dundas Street East",
+        "addr:unit": "14",
+        "amenity": "place_of_worship",
+        "check_date": "2026-08-01",
+        "name": "966 ICNA Masjid",
+        "religion": "muslim",
+        "website": "https://icna.website/966icnamasjid/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.5930752,
+          43.6000719
+        ]
+      },
+      "id": "node/3939878199"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4253527907",
+        "amenity": "place_of_worship",
+        "name": "Masjid Omar Bin Khatab",
+        "religion": "muslim",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3653195,
+          43.6573287
+        ]
+      },
+      "id": "node/4253527907"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4463290119",
+        "addr:city": "Toronto",
+        "addr:housenumber": "3665-3667",
+        "addr:postcode": "M1G 1P7",
+        "addr:street": "Lawrence Avenue East",
+        "amenity": "place_of_worship",
+        "denomination": "sunni",
+        "name": "Jaame Masjid Scarborough",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.2205356,
+          43.7602184
+        ]
+      },
+      "id": "node/4463290119"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4501313672",
+        "addr:city": "Toronto",
+        "addr:housenumber": "4",
+        "addr:postcode": "M4H 1H1",
+        "addr:street": "Thorncliffe Park Drive",
+        "amenity": "place_of_worship",
+        "denomination": "sunni",
+        "name": "Masjid Dar Us Salaam",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3510456,
+          43.7060576
+        ]
+      },
+      "id": "node/4501313672"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4501323464",
+        "amenity": "place_of_worship",
+        "denomination": "sunni",
+        "name": "Islamic Society of Toronto",
+        "religion": "muslim",
+        "website": "https://www.islamicsocietyoftoronto.com/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3508403,
+          43.7061046
+        ]
+      },
+      "id": "node/4501323464"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4730509427",
+        "addr:city": "North York",
+        "addr:housenumber": "36",
+        "addr:street": "Colville Road",
+        "amenity": "place_of_worship",
+        "name": "Al-Hikmah Centre Inc",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.4759196,
+          43.7068238
+        ]
+      },
+      "id": "node/4730509427"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4781941921",
+        "addr:housenumber": "375",
+        "addr:street": "Somerset Street West",
+        "amenity": "place_of_worship",
+        "check_date": "2026-03-27",
+        "name": "Islam Care Centre",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.6968804,
+          45.4152723
+        ]
+      },
+      "id": "node/4781941921"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5026623651",
+        "addr:city": "Toronto",
+        "addr:housenumber": "1168",
+        "addr:street": "Bloor Street West",
+        "amenity": "place_of_worship",
+        "check_date": "2026-06-06",
+        "name": "Islamic Information & Dawah Centre International",
+        "phone": "+1-416-536-8433",
+        "religion": "muslim",
+        "website": "https://www.islaminfo.com/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.4370268,
+          43.6596989
+        ]
+      },
+      "id": "node/5026623651"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5072727158",
+        "addr:city": "Toronto",
+        "addr:housenumber": "564",
+        "addr:postcode": "M6S 2C2",
+        "addr:street": "Annette Street",
+        "amenity": "place_of_worship",
+        "email": "xhamia@albmuslim.ca",
+        "name": "Albanian Mosque - Albanian Muslim Society of Toronto",
+        "name:fr": "Mosquée albanaise - Société albanaise islamique de Toronto",
+        "name:sq": "Xhamia Shqiptare - Shoqëria Shqiptare Islame e Torontos",
+        "phone": "+1-416-763-0612",
+        "religion": "muslim",
+        "source": "personal visit;local_knowledge",
+        "website": "https://www.albmuslim.ca/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.4808509,
+          43.6600317
+        ]
+      },
+      "id": "node/5072727158"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5110834816",
+        "amenity": "place_of_worship",
+        "name": "Masjidur Rahmah",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3663424,
+          43.6598694
+        ]
+      },
+      "id": "node/5110834816"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5119682350",
+        "addr:housenumber": "6768",
+        "addr:street": "Lyons Creek Road",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "name": "Islamic Society of Niagara Peninsula",
+        "phone": "+1-905-295-4845",
+        "religion": "muslim",
+        "website": "https://isnp.ca/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.1060829,
+          43.0326295
+        ]
+      },
+      "id": "node/5119682350"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5155817234",
+        "addr:city": "Mississauga",
+        "addr:housenumber": "1759",
+        "addr:postcode": "L4X 1S7",
+        "addr:province": "Ontario",
+        "addr:street": "Bloor Street",
+        "amenity": "place_of_worship",
+        "name": "Masjid Adam",
+        "phone": "+1-416-873-9994",
+        "religion": "muslim",
+        "website": "https://www.masjidadam.com/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.5871898,
+          43.6250456
+        ]
+      },
+      "id": "node/5155817234"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5689063816",
+        "addr:housenumber": "2803",
+        "addr:street": "St. Joseph Boulevard",
+        "amenity": "place_of_worship",
+        "name": "Darul-Uloom",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.5205888,
+          45.4735064
+        ]
+      },
+      "id": "node/5689063816"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5917075347",
+        "addr:city": "Etobicoke",
+        "addr:housenumber": "1701",
+        "addr:postcode": "M9V 4N4",
+        "addr:street": "Martin Grove Road",
+        "amenity": "place_of_worship",
+        "check_date": "2026-03-22",
+        "denomination": "sunni",
+        "name": "Jannatul Ferdous Mosque",
+        "phone": "+1-416-742-3232",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.5882398,
+          43.7331459
+        ]
+      },
+      "id": "node/5917075347"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5995855529",
+        "addr:housenumber": "967",
+        "addr:street": "St-Laurent Boulevard",
+        "amenity": "place_of_worship",
+        "name": "East Ottawa Masjid",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.6401819,
+          45.4298022
+        ]
+      },
+      "id": "node/5995855529"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6348392718",
+        "amenity": "place_of_worship",
+        "check_date": "2026-02-15",
+        "name": "The Reign of Islamic Da'Wah",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.4809583,
+          43.6833105
+        ]
+      },
+      "id": "node/6348392718"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6495425610",
+        "addr:housenumber": "1287",
+        "addr:postcode": "M6K 1M2",
+        "addr:street": "Queen Street West",
+        "amenity": "place_of_worship",
+        "check_date": "2026-08-01",
+        "name": "Hamza Mosque",
+        "phone": "+1 4165343669",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.432098,
+          43.6414066
+        ]
+      },
+      "id": "node/6495425610"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6549657698",
+        "amenity": "place_of_worship",
+        "name": "Masjid Al Qalam",
+        "phone": "+1-647-435-8472",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.4514591,
+          43.6979569
+        ]
+      },
+      "id": "node/6549657698"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6593955528",
+        "amenity": "place_of_worship",
+        "name": "Masjid Bilal",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.2199378,
+          43.7443451
+        ]
+      },
+      "id": "node/6593955528"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6594754978",
+        "addr:housenumber": "2201",
+        "addr:street": "Ellesmere Road",
+        "amenity": "place_of_worship",
+        "check_date": "2026-04-05",
+        "contact:facebook": "majslifo",
+        "contact:instagram": "slifomaj",
+        "email": "info@slifo.ca",
+        "name": "Masjid Al Jannah",
+        "phone": "+1-647-342-7544",
+        "religion": "muslim",
+        "website": "https://www.masjidaljannah.ca/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.2302198,
+          43.7764183
+        ]
+      },
+      "id": "node/6594754978"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6685146763",
+        "addr:city": "Markham",
+        "addr:housenumber": "10992",
+        "addr:postcode": "L6C 1P1",
+        "addr:province": "Ontario",
+        "addr:street": "Kennedy Road",
+        "amenity": "place_of_worship",
+        "denomination": "shia",
+        "name": "al-Hussain Foundation Centre",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3260271,
+          43.9206951
+        ]
+      },
+      "id": "node/6685146763"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6685168172",
+        "addr:city": "North York",
+        "addr:housenumber": "22",
+        "addr:postcode": "M4A 1Y2",
+        "addr:street": "Hobson Avenue",
+        "amenity": "place_of_worship",
+        "denomination": "shia",
+        "name": "Afghan-Canadian Islamic Community",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3081666,
+          43.7203003
+        ]
+      },
+      "id": "node/6685168172"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7027355629",
+        "amenity": "place_of_worship",
+        "name": "Abu Huraria Centre",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3345756,
+          43.7729913
+        ]
+      },
+      "id": "node/7027355629"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9062811515",
+        "amenity": "place_of_worship",
+        "name": "Baitul Jannah Islamic Center",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.2402546,
+          43.7188156
+        ]
+      },
+      "id": "node/9062811515"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9972630089",
+        "addr:city": "Etobicoke",
+        "addr:housenumber": "127",
+        "addr:postcode": "M9V 3Y6",
+        "addr:province": "ON",
+        "addr:street": "Westmore Drive",
+        "addr:unit": "107",
+        "amenity": "place_of_worship",
+        "email": "info@rexdalemasjid.ca",
+        "name": "Rexdale Jame Masjid",
+        "phone": "+1-416-744-3474",
+        "religion": "muslim",
+        "website": "http://rexdalemasjid.ca/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.6008166,
+          43.7358347
+        ]
+      },
+      "id": "node/9972630089"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10087958870",
+        "addr:city": "Vaughan",
+        "addr:housenumber": "9100",
+        "addr:postcode": "L4K 0A4",
+        "addr:province": "Ontario",
+        "addr:street": "Jane Street",
+        "addr:unit": "22-24",
+        "amenity": "place_of_worship",
+        "denomination": "sunni",
+        "name": "Islamic Society of Vaughan",
+        "phone": "+1-905-597-3233",
+        "religion": "muslim",
+        "website": "http://www.islamicsocietyvaughan.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.5328807,
+          43.8296836
+        ]
+      },
+      "id": "node/10087958870"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10278276945",
+        "addr:housenumber": "129",
+        "addr:street": "East Drive",
+        "amenity": "place_of_worship",
+        "name": "Naqshbandi Sufi Toronto",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.6890563,
+          43.7117703
+        ]
+      },
+      "id": "node/10278276945"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10555317739",
+        "addr:city": "Mississauga",
+        "addr:housenumber": "3520",
+        "addr:postcode": "L5K 7N4",
+        "addr:province": "ON",
+        "addr:street": "Odyssey Drive",
+        "amenity": "place_of_worship",
+        "email": "info@mnnexus.ca",
+        "name": "Muslim Neighbour Nexus",
+        "phone": "+1-833-666-3520",
+        "religion": "muslim",
+        "website": "https://mnnexus.ca/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.723061,
+          43.535318
+        ]
+      },
+      "id": "node/10555317739"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11375843499",
+        "addr:city": "Kitchener",
+        "addr:housenumber": "300",
+        "addr:postcode": "N2M 5G8",
+        "addr:province": "Ontario",
+        "addr:street": "Mill Street",
+        "addr:unit": "10",
+        "amenity": "place_of_worship",
+        "name": "Al-Salaam Islamic Centre",
+        "phone": "+1-519-498-7985",
+        "religion": "muslim",
+        "website": "https://www.alsalaam.ca"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.4841013,
+          43.4365784
+        ]
+      },
+      "id": "node/11375843499"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11386712347",
+        "amenity": "place_of_worship",
+        "name": "MAC Qurtuba Islamic Centre",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.7199946,
+          45.3260789
+        ]
+      },
+      "id": "node/11386712347"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11495864137",
+        "addr:city": "Milton",
+        "addr:housenumber": "50",
+        "addr:postcode": "L9T 4W9",
+        "addr:province": "ON",
+        "addr:street": "Steeles Avenue East",
+        "addr:unit": "8",
+        "amenity": "place_of_worship",
+        "email": "info@ahlehadithcanada.org",
+        "name": "Imam Bukhari Centre",
+        "phone": "+1-647-204-1261",
+        "religion": "muslim",
+        "website": "https://ahlehadithcanada.org/toronto/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.8972278,
+          43.5177898
+        ]
+      },
+      "id": "node/11495864137"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12470604106",
+        "addr:city": "Tillsonburg",
+        "addr:housenumber": "169",
+        "addr:postcode": "N4G 3P9",
+        "addr:province": "ON",
+        "addr:street": "Broadway Street",
+        "amenity": "place_of_worship",
+        "denomination": "sunni",
+        "name": "Muslim Association of Tillsonburg",
+        "phone": "+1-519 957 9009",
+        "religion": "muslim",
+        "website": "https://muslimassociationtillsonburg.ca/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.7288747,
+          42.8613247
+        ]
+      },
+      "id": "node/12470604106"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12557744443",
+        "amenity": "place_of_worship",
+        "name": "Regent Park Islamic Resource Center",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3636854,
+          43.6602569
+        ]
+      },
+      "id": "node/12557744443"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13275652357",
+        "addr:housenumber": "336",
+        "addr:street": "Pape Avenue",
+        "amenity": "place_of_worship",
+        "name": "https://papemosque.ca/",
+        "religion": "muslim",
+        "website": "https://papemosque.ca/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3403977,
+          43.6676635
+        ]
+      },
+      "id": "node/13275652357"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13699079532",
+        "alt_name": "Cornwall Islamic Centre",
+        "amenity": "place_of_worship",
+        "denomination": "sunni",
+        "name": "Cornwall Masjid",
+        "religion": "muslim",
+        "website": "https://cornwallislamiccentre.ca/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.7354129,
+          45.0290051
+        ]
+      },
+      "id": "node/13699079532"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13751194168",
+        "amenity": "place_of_worship",
+        "check_date": "2026-04-21",
+        "name": "Towfiq Islamic Centre",
+        "phone": "+1 416-614-6565",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.5322668,
+          43.7079137
+        ]
+      },
+      "id": "node/13751194168"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13946430795",
+        "amenity": "place_of_worship",
+        "check_date": "2026-06-16",
+        "name": "Canadian Islamic Civic Academy",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.6063599,
+          43.7428283
+        ]
+      },
+      "id": "node/13946430795"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13952318078",
+        "amenity": "place_of_worship",
+        "denomination": "ahmadiyat",
+        "name": "Mosque",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.8498638,
+          43.4796239
+        ]
+      },
+      "id": "node/13952318078"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/14077163402",
+        "addr:housenumber": "41",
+        "addr:postcode": "N6J 2P9",
+        "addr:street": "Holborn Avenue",
+        "amenity": "place_of_worship",
+        "check_date": "2026-08-06",
+        "name": "Bosnian Canadian Islamic Centre",
+        "religion": "muslim",
+        "website": "https://bkic.ca/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.2624967,
+          42.9631287
+        ]
+      },
+      "id": "node/14077163402"
+    }
+  ]
+}

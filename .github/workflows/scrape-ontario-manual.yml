@@ -1,0 +1,57 @@
+# .github/workflows/scrape-ontario-manual.yml
+# A manual, on-demand run of scripts/scrape-ontario.ts on GitHub's servers —
+# for when there's no computer to run it from. Trigger it from a phone
+# browser: this repo on github.com → Actions tab → "Ontario mosque reader
+# (manual)" → Run workflow. A few minutes later the finished run has a
+# downloadable report attached at the bottom of its page.
+#
+# Deliberately manual-only (no schedule) and does not commit anything back —
+# this reads the new-candidate Ontario mosques (already deduplicated against
+# the Toronto app's own masjids.json by import-osm-ontario.ts) for
+# exploration, not the app's own data, so unlike daily-scrape.yml this
+# workflow needs no write access to the repo.
+
+name: Ontario mosque reader (manual)
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm ci
+
+      - run: npx playwright install --with-deps chromium
+
+      # Fails loudly rather than burning a whole run to produce nothing.
+      - name: Check for API key
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "::error::ANTHROPIC_API_KEY repo secret is not set — add it under Settings → Secrets and variables → Actions."
+            exit 1
+          fi
+
+      - name: Read the Ontario mosques
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: npx tsx scripts/scrape-ontario.ts
+
+      # The runner is thrown away the moment this job ends, so the report has
+      # to leave as an artifact or it's gone. Shows up as a download at the
+      # bottom of the finished run's page.
+      - name: Upload the report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ontario-mosques-report
+          path: scripts/ontario-mosques-report.json
+          retention-days: 14
