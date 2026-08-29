@@ -54,6 +54,7 @@ const RAW = path.join(HERE, "google-places-ontario-raw.json");
 const MASJIDS = path.join(HERE, "..", "src", "data", "masjids.json");
 const OSM_CANDIDATES = path.join(HERE, "ontario-mosques-new.json");
 const OUTPUT = path.join(HERE, "google-places-new.json");
+const SCRAPE_INPUT_OUTPUT = path.join(HERE, "google-places-mosques.json");
 
 const MATCH_RADIUS_KM = 0.075;
 const REVIEW_RADIUS_KM = 0.25;
@@ -301,6 +302,12 @@ function main() {
   if (write) {
     fs.writeFileSync(OUTPUT, JSON.stringify(candidates, null, 2) + "\n");
     console.log(`\nwrote ${OUTPUT}`);
+
+    // Only the ones with their own page — scrape-google-places.ts reads
+    // exactly this shape, same as dfw-mosques.json and ontario-mosques.json.
+    const scrapeInput = withSite.map((c) => ({ name: c.name, website: c.website }));
+    fs.writeFileSync(SCRAPE_INPUT_OUTPUT, JSON.stringify(scrapeInput, null, 2) + "\n");
+    console.log(`wrote ${SCRAPE_INPUT_OUTPUT} (${scrapeInput.length} scrapeable)`);
   } else {
     console.log(`\ndry run — pass --write to save the candidate list`);
   }
