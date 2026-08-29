@@ -13,6 +13,35 @@
  * doesn't, and anything close-but-unconfirmed goes to a review list instead
  * of being guessed either way.
  *
+ * Three extra filters exist only because Text Search actually needed them,
+ * discovered from a real run against all of Ontario:
+ *
+ *  - Text Search isn't geographically restricted, only "biased" — with few
+ *    real local matches it happily returned mosques in Mecca, Jerusalem,
+ *    Michigan, and upstate New York, and non-mosque businesses (a church, a
+ *    grocery store) near small towns. Addresses outside Ontario are dropped
+ *    before matching even runs.
+ *
+ *  - A worse bug, found by inspecting a real run rather than assumed:
+ *    distinct, real mosques that belong to the same national network
+ *    (every Ahmadiyya mosque links to ahmadiyya.ca; several unrelated MAC
+ *    branches link to centres.macnet.ca) were being merged into ONE existing
+ *    entry purely because they share that umbrella domain — a false merge,
+ *    the opposite failure from "Markham Masjid" vs "Toronto Markaz" but
+ *    exactly as dangerous, since it silently hides a real masjid instead of
+ *    confusing two. A domain is only trusted as a match signal if it never
+ *    shows up on two Google results more than MATCH_RADIUS_KM apart —
+ *    otherwise it's a shared network domain, not one location's own site,
+ *    and only distance/name are left to confirm a match.
+ *
+ *  - Google's Text Search also drags in real places with no religious
+ *    connection at all when a search area comes up thin (a Lutheran church,
+ *    a Buddhist center, a computer repair shop). A candidate is only kept
+ *    if its name or website contains an Islam-related term; anything that
+ *    clears the geography and dedup checks but fails this goes to a
+ *    separate "uncertain" list for a human to glance at rather than being
+ *    silently scraped or silently dropped.
+ *
  * Run: npx tsx scripts/import-google-places.ts [--write]
  */
 import fs from "node:fs";
@@ -28,6 +57,14 @@ const OUTPUT = path.join(HERE, "google-places-new.json");
 
 const MATCH_RADIUS_KM = 0.075;
 const REVIEW_RADIUS_KM = 0.25;
+
+// Google's own formatted addresses put the province right after the city,
+// e.g. "123 Main St, Oshawa, ON L1G 4X9, Canada" — anything that doesn't
+// have that isn't in Ontario, whatever the search was biased toward.
+const ONTARIO_ADDRESS = /,\s*ON(?=[\s,]|$)/i;
+
+const ISLAMIC_TERM =
+  /masjid|mosque|islam|muslim|jama|jame|dar[\s-]?ul|imam|musalla|jamatkhana|ismaili|dawah|shia|sunni|ansar|ummah|quran|ahlul|hussain|husayn|khadija|bilal|aisha|zainab|omar|khattab|mahdi|noor|iqra|taqwa|tawheed|tawhid|rahma|salaam|salam|hidaya|maryam|fatima|bohra|dawoodi|sufi/i;
 
 interface Known {
   name: string;
@@ -73,6 +110,36 @@ function normalizeName(name: string): string | null {
   return stripped.split(" ").filter(Boolean).length >= 2 ? stripped : null;
 }
 
+/**
+ * A domain is only a useful match signal if it identifies ONE location. If
+ * the same domain shows up on two Google results genuinely far apart, it's
+ * a shared organization-wide site (an umbrella domain, a network of
+ * branches) and matching on it would silently hide every branch but one.
+ */
+function findSharedDomains(raw: RawPlace[]): Set<string> {
+  const byDomain = new Map<string, RawPlace[]>();
+  for (const p of raw) {
+    if (!p.website) continue;
+    const d = domain(p.website);
+    const list = byDomain.get(d) ?? [];
+    list.push(p);
+    byDomain.set(d, list);
+  }
+
+  const shared = new Set<string>();
+  for (const [d, places] of byDomain) {
+    outer: for (let i = 0; i < places.length; i++) {
+      for (let j = i + 1; j < places.length; j++) {
+        if (haversineKm(places[i], places[j]) > MATCH_RADIUS_KM) {
+          shared.add(d);
+          break outer;
+        }
+      }
+    }
+  }
+  return shared;
+}
+
 function main() {
   const write = process.argv.includes("--write");
 
@@ -81,10 +148,15 @@ function main() {
     process.exit(1);
   }
 
-  const raw: RawPlace[] = JSON.parse(fs.readFileSync(RAW, "utf8"));
+  const rawAll: RawPlace[] = JSON.parse(fs.readFileSync(RAW, "utf8"));
   const masjids: Known[] = JSON.parse(fs.readFileSync(MASJIDS, "utf8"));
   const osmCandidates: Known[] = JSON.parse(fs.readFileSync(OSM_CANDIDATES, "utf8"));
   const known: Known[] = [...masjids, ...osmCandidates];
+
+  const outOfRegion = rawAll.filter((p) => !p.address || !ONTARIO_ADDRESS.test(p.address));
+  const raw = rawAll.filter((p) => p.address && ONTARIO_ADDRESS.test(p.address));
+
+  const sharedDomains = findSharedDomains(raw);
 
   const byDomain = new Map<string, Known>();
   const byName = new Map<string, Known>();
@@ -96,10 +168,11 @@ function main() {
 
   const matched: { google: string; known: string; via: string }[] = [];
   const needsReview: { google: string; known: string; distanceM: number }[] = [];
+  const uncertain: RawPlace[] = [];
   const candidates: Candidate[] = [];
 
   for (const place of raw) {
-    if (place.website) {
+    if (place.website && !sharedDomains.has(domain(place.website))) {
       const hit = byDomain.get(domain(place.website));
       if (hit) {
         matched.push({ google: place.name, known: hit.name, via: `website (${domain(place.website)})` });
@@ -135,6 +208,11 @@ function main() {
       continue;
     }
 
+    if (!ISLAMIC_TERM.test(`${place.name} ${place.website ?? ""}`)) {
+      uncertain.push(place);
+      continue;
+    }
+
     candidates.push({
       name: place.name,
       website: place.website,
@@ -145,14 +223,34 @@ function main() {
     });
   }
 
-  console.log(`Google Places results: ${raw.length}`);
-  console.log(`Already known (matched): ${matched.length}`);
+  console.log(`Google Places results: ${rawAll.length}`);
+
+  if (outOfRegion.length) {
+    console.log(`\nOutside Ontario, dropped (${outOfRegion.length}):`);
+    for (const p of outOfRegion) console.log(`  ${p.name}${p.address ? `  (${p.address})` : "  (no address)"}`);
+  }
+
+  if (sharedDomains.size) {
+    console.log(`\nShared/network domains found — not trusted as a match signal on their own (${sharedDomains.size}):`);
+    for (const d of sharedDomains) console.log(`  ${d}`);
+  }
+
+  console.log(`\nAlready known (matched): ${matched.length}`);
   for (const m of matched) console.log(`  ${m.google}  ->  ${m.known}  [${m.via}]`);
 
   if (needsReview.length) {
     console.log(`\nNeeds a human look — close but not confirmed (${needsReview.length}), excluded from candidates:`);
     for (const r of needsReview) {
       console.log(`  "${r.google}" is ${r.distanceM}m from "${r.known}" — no name or website agreement`);
+    }
+  }
+
+  if (uncertain.length) {
+    console.log(
+      `\nNo Islam-related term in name or website — not auto-included, check by hand if one of these looks real (${uncertain.length}):`,
+    );
+    for (const p of uncertain) {
+      console.log(`  ${p.name}${p.website ? `  ${p.website}` : ""}${p.address ? `  (${p.address})` : ""}`);
     }
   }
 
