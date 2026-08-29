@@ -19,17 +19,27 @@
  * writes a one-time snapshot to decide what's worth adding by hand, not a
  * database kept in permanent sync with Google.
  *
- * Uses the legacy Places API (Nearby Search + Place Details) over the newer
- * v1 API — simple GET requests with a key in the query string, no request
- * body or field-mask headers to get wrong, and "mosque" is one of its
- * built-in place types.
+ * Uses Places API (New) Text Search — a single call per city returns name,
+ * address, coordinates AND website together (no separate Details lookup
+ * needed), and it paginates up to 60 results per city if a field mask asks
+ * for nextPageToken. "mosque" as a search term catches more than the strict
+ * `mosque` place type would (islamic centres, musallas that Google hasn't
+ * categorized as a place of worship at all).
+ *
+ * The API key for this MUST be a key with Application restriction "None" —
+ * a "Websites" restriction checks the browser Referer header, which a
+ * server-side script never sends, so every request from a website-restricted
+ * key gets rejected here regardless of which APIs are enabled on it. Use a
+ * separate key from the one shipped in the app; the app's public key should
+ * stay restricted to your actual domains.
  *
  * Run:
  *   GOOGLE_PLACES_API_KEY=... npx tsx scripts/discover-google-places.ts
  *
- * Get a key at console.cloud.google.com: enable "Places API", create an API
- * key, restrict it to that API only. Billing must be on for the project, but
- * Google's $200/month free credit comfortably covers a run this size.
+ * Get a key at console.cloud.google.com: enable "Places API (New)", create
+ * an API key, restrict it to that API only with no application restriction.
+ * Billing must be on for the project, but Google's $200/month free credit
+ * comfortably covers a run this size.
  */
 import { writeFileSync } from "node:fs";
 import path from "node:path";
@@ -41,7 +51,7 @@ const OUTPUT = path.join(HERE, "google-places-ontario-raw.json");
 // 20km covers a city and its immediate suburbs without so much overlap
 // between neighbouring cities that the same mosque gets pulled twice from
 // unrelated searches (harmless if it happens — results are deduped by
-// place_id below — but wasteful of quota).
+// place id below — but wasteful of quota).
 const RADIUS_M = 20_000;
 
 const CITIES: { name: string; lat: number; lng: number }[] = [
@@ -83,57 +93,55 @@ interface RawPlace {
   website: string | null;
 }
 
-async function nearbySearch(apiKey: string, lat: number, lng: number): Promise<any[]> {
+const FIELD_MASK = [
+  "places.id",
+  "places.displayName",
+  "places.formattedAddress",
+  "places.location",
+  "places.websiteUri",
+  "nextPageToken",
+].join(",");
+
+async function textSearch(apiKey: string, lat: number, lng: number): Promise<any[]> {
   const results: any[] = [];
   let pageToken: string | undefined;
 
   for (let page = 0; page < 3; page++) {
-    const url = new URL("https://maps.googleapis.com/maps/api/place/nearbysearch/json");
-    url.searchParams.set("key", apiKey);
-    if (pageToken) {
-      url.searchParams.set("pagetoken", pageToken);
-    } else {
-      url.searchParams.set("location", `${lat},${lng}`);
-      url.searchParams.set("radius", String(RADIUS_M));
-      url.searchParams.set("type", "mosque");
-    }
+    const body: Record<string, unknown> = pageToken
+      ? { pageToken }
+      : {
+          textQuery: "mosque",
+          locationBias: {
+            circle: { center: { latitude: lat, longitude: lng }, radius: RADIUS_M },
+          },
+          pageSize: 20,
+        };
 
-    // A fresh page token needs a moment to activate server-side — using it
-    // immediately gets INVALID_REQUEST back.
+    // A fresh page token needs a moment to activate server-side.
     if (pageToken) await new Promise((r) => setTimeout(r, 2000));
 
-    const res = await fetch(url);
-    const body: any = await res.json();
+    const res = await fetch("https://places.googleapis.com/v1/places:searchText", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Goog-Api-Key": apiKey,
+        "X-Goog-FieldMask": FIELD_MASK,
+      },
+      body: JSON.stringify(body),
+    });
+    const data: any = await res.json();
 
-    if (body.status !== "OK" && body.status !== "ZERO_RESULTS") {
-      console.error(`  ! ${body.status}${body.error_message ? `: ${body.error_message}` : ""}`);
+    if (!res.ok) {
+      console.error(`  ! ${res.status}: ${data.error?.message ?? "unknown error"}`);
       break;
     }
 
-    results.push(...(body.results ?? []));
-    if (!body.next_page_token) break;
-    pageToken = body.next_page_token;
+    results.push(...(data.places ?? []));
+    if (!data.nextPageToken) break;
+    pageToken = data.nextPageToken;
   }
 
   return results;
-}
-
-async function placeDetails(
-  apiKey: string,
-  placeId: string,
-): Promise<{ address: string | null; website: string | null }> {
-  const url = new URL("https://maps.googleapis.com/maps/api/place/details/json");
-  url.searchParams.set("key", apiKey);
-  url.searchParams.set("place_id", placeId);
-  url.searchParams.set("fields", "formatted_address,website");
-
-  const res = await fetch(url);
-  const body: any = await res.json();
-  if (body.status !== "OK") return { address: null, website: null };
-  return {
-    address: body.result?.formatted_address ?? null,
-    website: body.result?.website ?? null,
-  };
 }
 
 async function main() {
@@ -141,7 +149,8 @@ async function main() {
   if (!apiKey) {
     console.error(
       "GOOGLE_PLACES_API_KEY is not set. Get one from console.cloud.google.com " +
-        "(enable the Places API, create a key restricted to it) and run again as: " +
+        "(enable Places API (New), create a key restricted to it with no application " +
+        "restriction) and run again as: " +
         "GOOGLE_PLACES_API_KEY=... npx tsx scripts/discover-google-places.ts",
     );
     process.exit(1);
@@ -151,37 +160,27 @@ async function main() {
 
   for (const city of CITIES) {
     console.log(`Searching ${city.name} …`);
-    const results = await nearbySearch(apiKey, city.lat, city.lng);
+    const results = await textSearch(apiKey, city.lat, city.lng);
     console.log(`  ${results.length} result(s)`);
 
-    for (const r of results) {
-      if (seen.has(r.place_id)) continue;
-      seen.set(r.place_id, {
-        placeId: r.place_id,
-        name: r.name,
-        lat: r.geometry.location.lat,
-        lng: r.geometry.location.lng,
-        address: r.vicinity ?? null,
-        website: null,
+    for (const p of results) {
+      if (seen.has(p.id)) continue;
+      seen.set(p.id, {
+        placeId: p.id,
+        name: p.displayName?.text ?? "(unnamed)",
+        lat: p.location?.latitude,
+        lng: p.location?.longitude,
+        address: p.formattedAddress ?? null,
+        website: p.websiteUri ?? null,
       });
     }
-  }
 
-  console.log(`\n${seen.size} unique place(s) found — fetching address + website for each …`);
-
-  let i = 0;
-  for (const place of seen.values()) {
-    i++;
-    const details = await placeDetails(apiKey, place.placeId);
-    place.address = details.address ?? place.address;
-    place.website = details.website;
-    console.log(`  [${i}/${seen.size}] ${place.name}${place.website ? ` -> ${place.website}` : ""}`);
-    await new Promise((r) => setTimeout(r, 100));
+    await new Promise((r) => setTimeout(r, 200));
   }
 
   const places = [...seen.values()];
   writeFileSync(OUTPUT, JSON.stringify(places, null, 2) + "\n");
-  console.log(`\nwrote ${OUTPUT} (${places.length} places)`);
+  console.log(`\n${places.length} unique place(s) found. wrote ${OUTPUT}`);
 }
 
 main().catch((e) => {
