@@ -23,11 +23,12 @@ jobs:
 
       - run: npm ci
       - run: npm run build
-      # check:iframe-text launches a real Chromium — the only one of these
-      # suites that does — to prove capturePage actually reads a widget's
-      # iframe rather than trusting the source. Every other check here is
-      # pure logic and has run fine without a browser installed; this one
-      # step exists only because that changed.
+      # check:iframe-text and check:slow-widget launch a real Chromium — the
+      # only suites that do — to prove capturePage genuinely reads a widget's
+      # iframe, waits out a slow-painting one, and clicks a "Prayer Times" tab
+      # open, rather than trusting the source. Every other check here is pure
+      # logic and has run fine without a browser installed; this one step
+      # exists only because that changed.
       - run: npx playwright install --with-deps chromium
       # The scraper's own logic — Jumu'ah merging, the Ad-Din mapping, the
       # invariant checks — has no other guard. It runs unattended against a

@@ -24,7 +24,7 @@
  * Model + SDK reference: https://docs.claude.com/en/api/overview
  */
 
-import { chromium, type Browser } from "playwright";
+import { chromium, type Browser, type Page } from "playwright";
 import Anthropic from "@anthropic-ai/sdk";
 import { readFile, writeFile } from "node:fs/promises";
 import { basename } from "node:path";
@@ -158,6 +158,86 @@ export function hasTimetableText(text: string): boolean {
   return prayers >= 4 && times >= 5;
 }
 
+/** Floor: below this even a fast widget has not painted. */
+export const SETTLE_MIN_MS = 2500;
+/** Ceiling: past this a page is not slow, it has nothing to show. */
+export const SETTLE_MAX_MS = 12000;
+const SETTLE_POLL_MS = 750;
+
+/**
+ * Read every document on the page — the main one plus any iframe — as one blob.
+ * A widget's times commonly live in a cross-origin frame that
+ * page.innerText("body") cannot see; Frame.innerText() reads it anyway because
+ * it works at the automation-protocol level rather than as JS inside the page.
+ */
+async function allFrameText(page: Page): Promise<string> {
+  const frames = await Promise.all(
+    page
+      .frames()
+      .filter((frame) => frame !== page.mainFrame())
+      .map((frame) => frame.innerText("body").catch(() => "")),
+  );
+  const main = await page.innerText("body").catch(() => "");
+  return [main, ...frames].filter(Boolean).join("\n\n");
+}
+
+/**
+ * Wait for a timetable to actually appear, instead of assuming one fixed pause
+ * is enough for every site.
+ *
+ * This used to be a flat five seconds. That silently lost real masjids: several
+ * sites in the Ontario run reported "no times found" whose homepages do publish
+ * their times — the widget simply had not painted yet when the screenshot was
+ * taken, and we photographed an empty placeholder. Checked by hand afterwards,
+ * the times were right there.
+ *
+ * So poll instead, and stop the moment the times are on screen. A fast site
+ * still costs ~2.5s rather than a flat 5, which buys back most of what the
+ * slower ceiling spends across a 160-site run. Reaching the ceiling is not
+ * treated as failure: the capture proceeds and Claude still reads the
+ * screenshot, since a page can render times as an image this text check cannot
+ * see.
+ */
+async function settleForTimetable(page: Page): Promise<void> {
+  await page.waitForTimeout(SETTLE_MIN_MS);
+
+  const deadline = Date.now() + (SETTLE_MAX_MS - SETTLE_MIN_MS);
+  while (Date.now() < deadline) {
+    if (hasTimetableText(await allFrameText(page))) return;
+    await page.waitForTimeout(SETTLE_POLL_MS);
+  }
+}
+
+/**
+ * Some homepages do carry their times, behind a control that is not a link:
+ * a "Prayer Times" tab, an accordion header, a <button> that swaps a panel.
+ * Collecting `a[href]` never sees those, and following a link goes to the
+ * wrong page or nowhere, so the read came back empty from a page that was
+ * showing the times one click away.
+ *
+ * Click the first thing that names itself after prayer times and re-check.
+ * Deliberately conservative: only when nothing has rendered yet, only visible
+ * controls, at most a couple of tries, and a click that navigates is fine
+ * since everything downstream re-reads the page afterwards either way.
+ */
+async function revealByClick(page: Page): Promise<void> {
+  const candidates = page
+    .locator('button, summary, [role="button"], [role="tab"], a:not([href])')
+    .filter({ hasText: TIMES_LINK });
+
+  const count = await candidates.count().catch(() => 0);
+  for (let i = 0; i < Math.min(count, 2); i++) {
+    const control = candidates.nth(i);
+    if (!(await control.isVisible().catch(() => false))) continue;
+
+    // A control can be covered, disabled, or detach mid-click; none of that is
+    // worth failing the capture over, since the page is still readable as-is.
+    await control.click({ timeout: 3000 }).catch(() => {});
+    await settleForTimetable(page);
+    if (hasTimetableText(await allFrameText(page))) return;
+  }
+}
+
 /**
  * Tag the smallest element that looks like a timetable, so it can be cropped to.
  *
@@ -225,7 +305,13 @@ export async function capturePage(
       return null;
     }
 
-    await page.waitForTimeout(5000);
+    await settleForTimetable(page);
+
+    // Nothing rendered on its own — the times may be behind a tab or button
+    // on this same page rather than on another page entirely.
+    if (!hasTimetableText(await allFrameText(page))) {
+      await revealByClick(page);
+    }
 
     /**
      * A widget embedded as an iframe — Masjidal's is one, and it is a common
@@ -245,17 +331,7 @@ export async function capturePage(
      * ad slot that never settles) is skipped rather than failing the whole
      * capture over content that was never the times to begin with.
      */
-    const frameTexts = await Promise.all(
-      page
-        .frames()
-        .filter((frame) => frame !== page.mainFrame())
-        .map((frame) => frame.innerText("body").catch(() => "")),
-    );
-
-    const text = [await page.innerText("body"), ...frameTexts]
-      .filter(Boolean)
-      .join("\n\n")
-      .slice(0, 8000);
+    const text = (await allFrameText(page)).slice(0, 8000);
 
     if (CHALLENGE.test(text)) {
       console.warn(
