@@ -1,13 +1,13 @@
-# Masjids found but not live (176)
+# Masjids found but not live (155)
 
-The app currently shows **113**. These are the rest, grouped by what is
+The app currently shows **134**. These are the rest, grouped by what is
 actually blocking each one. The groups need different work, so they are kept apart.
 
 | Blocked by | Count | What would unblock it |
 | --- | ---: | --- |
 | Times read but impossible | 5 | Check the site yourself and send the real times |
-| Times read but a prayer was blank | 4 | Same — one missing prayer each |
-| Website loads, no times found | 101 | Re-run the scraper, or find their times page by hand |
+| Times read but a prayer was blank | 3 | Same — one missing prayer each |
+| Website loads, no times found | 81 | Re-run the scraper, or find their times page by hand |
 | Only a shared org homepage | 10 | Find that branch's own page |
 | No website in OSM or Google | 56 | Search for one by name — several of these DO have sites |
 
@@ -24,17 +24,16 @@ times, send them over and these go live immediately.
 - [Mevlana Masjid](https://a-than.info/vv.php?code=MEVLANA01) — Maghrib 19:09 is ~55 min before sunset in Toronto — verify against the masjid
 - [Zawiya Fellowship - Annoor Jami Mosque](https://zawiyafellowship.com/) — Fajr 04:36 is ~1h earlier than neighbouring masjids — verify
 
-## 2. Times read but a prayer was blank (4)
+## 2. Times read but a prayer was blank (3)
 
 Everything read except one or two prayers. Note the Shia centres are legitimately
 combining prayers, so a blank there may be correct rather than a bad read.
 
-- [Anatolia Islamic Centre](http://www.anatoliacentre.ca/) — no asr
 - [Imam Mahdi Islamic Centre](https://imammahdi.ca/) — no asr, isha
 - [Al Zahra Shia Association of Waterloo Region](https://www.alzahra.ca/) — no asr, isha
 - [Islamic Centre of Cambridge](http://iccambridge.com/) — no dhuhr
 
-## 3. Website loads but no times found (101)
+## 3. Website loads but no times found (81)
 
 The realistic target. Some are transient; some genuinely publish nothing online.
 
@@ -45,12 +44,7 @@ The realistic target. Some are transient; some genuinely publish nothing online.
 - [Jami Mosque](http://www.isnacanada.com/our-spaces/jami-masjid/)
 - [Islamic Research Center of Canada Inc.](http://www.irccan.com/)
 - [Ismaili Jamatkhana Scarborough](https://ismaili.net/heritage/node/21420) — no times found on the page
-- [Imdadul Islamic Jamat](https://imdadulmasjid.com/)
 - [Masjid Huzaifah](https://www.masjidhuzaifah.com/) — no times found on the page (page text holds 7 prayer names and 7 times)
-- [Masjid Darul Iman](https://daruliman.org/) — no times found on the page
-- [Ottawa Islamic Centre & Assalam Mosque](https://assalammosque.com/)
-- [Jame Makki Masjid Brampton](http://www.makkimasjid.ca/)
-- [Shalimar Islamic Centre](https://shalimarislamiccentre.ca/) — no times found on the page
 - [Hamilton Mountain Masjid](https://hamiltonmosque.com/) — no times found on the page
 - [London Muslim Mosque](http://www.londonmosque.ca/)
 - [Islamic Centre of Southwest Ontario](https://islamiccentre.ca/) — no times found on the page
@@ -58,34 +52,22 @@ The realistic target. Some are transient; some genuinely publish nothing online.
 - [Jamiat-Ul-Ansar of Brampton](http://www.jamiatulansar.ca/) — site could not be opened
 - [Baitul Islam Mosque](https://www.ahmadiyya.ca/) — site could not be opened
 - [Masumeen Islamic Centre](https://jaffari.org/) — low confidence (0.3)
-- [Ottawa South Mosque](https://ottawasouthmosque.ca/) — site could not be opened
-- [Wilmot Muslim Centre](https://wilmotmuslimcentre.ca/)
-- [Al Rayan Islamic Centre](https://alrayanislamiccentre.org/)
 - [Islamic Society of Belleville](http://bellevillemasjid.ca/)
 - [Sudbury Mosque](http://www.iasudbury.com/)
 - [Abu Thar al-Gofary Mosque, Ottawa](https://www.facebook.com/AbuTharAlGhafariMosque/)
-- [The Peace Mosque](https://peacecommunitycenter.com/)
 - [Mount Pleasant Islamic Center](https://www.mpicbrampton.com/) — site could not be opened
-- [As-Salaam Alaykum Masjid Aisha](https://www.mosqueaisha.ca/)
-- [Sayyidah Zainab](https://ajaxmosque.ca/)
 - [Umar Mosque](https://www.mahcanada.com/mosques/umar) — no times found on the page
-- [Masjid Riyad Ul Jannah](http://jamiariyadhuljannah.com/) — site could not be opened
 - [SNMC Center & Masjid](https://www.snmc.ca/) — site could not be opened
 - [Masjid Noor-ul-Haram](https://wimcanada.com/) — no times found on the page
 - [Masjid ar-Rahmah](https://www.mymasjid.ca) — no times found on the page
 - [Iman Ali (As) Masjid](https://imamalimasjid.ca/)
-- [Windsor Mosque](https://windsorislamicassociation.com/)
-- [Masjid Alhakeem Bowmanville](https://alhakeem.ca/)
 - [Noor-ul-Islam](https://noorulislam.ca/)
 - [Baitul Ehsaan Mosque](https://www.ahmadiyya.ca/mosques/baitul-ehsaan) — site could not be opened
 - [Islamic Centre of Kingston](http://www.kingstonmuslims.ca/)
-- [Brampton Islamic Center](https://bsia.ca/)
 - [Winston Churchill Mosque](https://mici.org/)
 - [Baitun Nasir Mosque](https://www.ahmadiyya.ca/mosques/masjid-baitun-nasir) — site could not be opened
-- [Jami' Masjid Chatham](https://jmc.ad-din.site/)
 - [Baitun Nur Mosque](https://www.ahmadiyya.ca/mosques/baitun-nur-mosque) — site could not be opened
 - [Masjid Al-Salaam](https://www.kmrapeterborough.org/)
-- [Toronto Islamic Centre (TIC) & Community Services](http://www.torontoislamiccentre.com/)
 - [Mubarak Mosque](https://www.ahmadiyya.ca/mosques/masjid-mubarak) — site could not be opened
 - [Baitul Karim Mosque](https://www.ahmadiyya.ca/mosques/baitul-karim) — site could not be opened
 - [Baitul Mahdi Mosque](https://www.ahmadiyya.ca/mosques/baitul-mahdi) — site could not be opened
@@ -96,13 +78,10 @@ The realistic target. Some are transient; some genuinely publish nothing online.
 - [Muslim Welfare Center (Masjid and Food Bank)](https://www.muslimwelfarecentre.com/) — no times found on the page
 - [Masjid an-Noor](https://islamicsocietyofstcatharines.ca/)
 - [Baitul Aman Masjid](http://www.torontomuslims.com/listing/baitul-aman-mosque-danforth-community-center/) — no times found on the page
-- [Masjid Omar Bin Khatab](https://www.masjidomarbinkhatab.ca/)
 - [Islam Care Centre](http://islamcare.ca/)
 - [Albanian Mosque - Albanian Muslim Society of Toronto](https://www.albmuslim.ca/) — site could not be opened
 - [Islamic Society of Niagara Peninsula](https://isnp.ca/) — no times found on the page
 - [Darul-Uloom](http://www.darululoomottawa.org/)
-- [East Ottawa Masjid](https://eomcc.ca/)
-- [Masjid Al Qalam](https://alqalamcenter.org/)
 - [al-Hussain Foundation Centre](https://www.alhussainfoundation.ca/)
 - [Islamic Society of Vaughan](http://www.islamicsocietyvaughan.com) — no times found on the page
 - [Cornwall Masjid](https://cornwallislamiccentre.ca/) — site could not be opened
