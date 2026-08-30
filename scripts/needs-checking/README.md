@@ -1,0 +1,84 @@
+# Mosques with no prayer times yet (2026-08-29)
+
+## Site would not load — try re-running first (32)
+
+- [Mississauga Muslim Community Center](https://mmcc-canada.org/)
+- [Al-Nadwa Educational Islamic Centre](https://alnadwacentre.ca/)
+- [Masjid Subhan Ajax](https://www.subhanislamicassociation.org/)
+- [Islamic Centre of Bowmanville](https://icbmasjid.com/)
+- [Ebu Bekir Islamic Centre](http://www.ebu-bekir.com)
+- [Islamic Community of West Niagara](http://www.icwn.ca/)
+- [Masjid - Muslim Society of Guelph](http://www.msofg.org/)
+- [St. Thomas Islamic Centre](https://stislamiccentre.com/)
+- [The Clear Islam Information Center](https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0z4t60o92hvea5hLZI3nZvR_nmE2GOQM9KPaDn-AlVXlHgjsTbX03JQX9X_8M99zffqbwZsfzA?pli=1)
+- [Jafri Islamic Centre of Canada (Shia Mosque)](https://jiccwindsor.org/)
+- [Barrie Islamic School](https://barriemosque.ca/sunday-islamic-school/)
+- [Masjid Al-Abrar](http://www.alabrar.ca/)
+- [Islamic Centre of Northern Ontario](http://www.iconosudbury.com/)
+- [Al Huda Institute Canada](https://alhudainstitute.ca/)
+- [Baitul Ahad Mosque](https://www.ahmadiyya.ca/mosques/baitul-ahad)
+- [Jamiat-Ul-Ansar of Brampton](http://www.jamiatulansar.ca/)
+- [Baitul Islam Mosque](https://www.ahmadiyya.ca/)
+- [Ottawa South Mosque](https://ottawasouthmosque.ca/)
+- [Mount Pleasant Islamic Center](https://www.mpicbrampton.com/)
+- [Masjid Riyad Ul Jannah](http://jamiariyadhuljannah.com/)
+- [SNMC Center & Masjid](https://www.snmc.ca/)
+- [Baitul Ehsaan Mosque](https://www.ahmadiyya.ca/mosques/baitul-ehsaan)
+- [Baitun Nasir Mosque](https://www.ahmadiyya.ca/mosques/masjid-baitun-nasir)
+- [Baitun Nur Mosque](https://www.ahmadiyya.ca/mosques/baitun-nur-mosque)
+- [Mubarak Mosque](https://www.ahmadiyya.ca/mosques/masjid-mubarak)
+- [Baitul Karim Mosque](https://www.ahmadiyya.ca/mosques/baitul-karim)
+- [Baitul Mahdi Mosque](https://www.ahmadiyya.ca/mosques/baitul-mahdi)
+- [Mary Mosque (Maryam Mosque)](https://www.ahmadiyya.ca/mosques/maryam-mosque)
+- [Erin Islamic Cultural Center](https://erinislamiccenter.ca/)
+- [Albanian Mosque - Albanian Muslim Society of Toronto](https://www.albmuslim.ca/)
+- [Rexdale Jame Masjid](http://rexdalemasjid.ca/)
+- [Cornwall Masjid](https://cornwallislamiccentre.ca/)
+
+## Page loaded but had no times — needs a human (45)
+
+- [Jamia Islamia Canada](http://www.jamiaislamia.org/) — no times found on the page
+- [Richmond Hill Muslim Association](http://rhmacanada.com/) — only 0 of 5 prayers found (missing fajr, dhuhr, asr, maghrib, isha)
+- [Talimul Islam Masjid](https://talimul.com/) — no times found on the page
+- [WHITBY MUSLIM SOCIETY (Masjid)](https://whitbymuslims.ca/) — only 0 of 5 prayers found (missing fajr, dhuhr, asr, maghrib, isha)
+- [Mohawk Mashjid/Mosque (Room A006c)](https://www.facebook.com/MHAWK.ISA/) — no times found on the page
+- [Kitchener Headquarters Jamatkhana - Ismaili Community Centre](https://the.ismaili/) — no times found on the page
+- [Muslim Social Services Waterloo Region](http://msswr.org/) — no times found on the page
+- [Muslim Wellness Network](https://www.muslimwellness.ca/) — no times found on the page
+- [Al Mahdi Islamic Community Centre](https://almahdicentre.org/) — low confidence (0.4)
+- [Al-Taqwa Mosque](https://altaqwamosque.com/) — no times found on the page
+- [Muslim Resource Centre for Social Support & Integration (MRCSSI)](https://mrcssi.com/) — no times found on the page
+- [Imam Hussain Foundation](http://facebook.com/ihfwindsor) — no times found on the page
+- [Darul Uloom Canada](http://www.ducanada.org/) — no times found on the page
+- [Sarnia Masjid](http://www.bangladesh2000.com/bdcom/islam/dir/masjid_directory_ontario.html) — no times found on the page
+- [Uyghur Mosque](http://www.uyghurmosque.com/) — no times found on the page
+- [Zainabiya Community Centre](https://jaffari.org/zic/) — reader returned nothing (page text holds 4 prayer names and 12 times)
+- [Al-Rashid Islamic Institute](http://www.alrashid.ca/) — no times found on the page
+- [Cornwall Islamic Foundation](http://cornwallislamicfoundation.ca/) — no times found on the page
+- [Peterborough Lakefield Mosque Masjid (Ahle Sunnah Wal Jamaah)](https://peterboroughmosque.ca/) — only 0 of 5 prayers found (missing fajr, dhuhr, asr, maghrib, isha)
+- [Port Hope Muslim Community (Masjid/Mosque)](http://porthopemuslim.ca/) — only 0 of 5 prayers found (missing fajr, dhuhr, asr, maghrib, isha)
+- [Islamic Association of Sault Ste. Marie](http://www.iassm.ca/) — only 0 of 5 prayers found (missing fajr, dhuhr, asr, maghrib, isha)
+- [Isna Canada](https://www.isnacanada.com/) — no times found on the page
+- [Sayeda Khadija Centre](https://www.sayedakhadijacentre.com/) — no times found on the page
+- [Jame Masjid](https://ipcontario.com/) — no times found on the page
+- [Anatolia Islamic Centre](http://www.anatoliacentre.ca/) — no times found on the page
+- [Ismaili Jamatkhana Scarborough](https://ismaili.net/heritage/node/21420) — no times found on the page
+- [Toronto and Region Islamic Congregation](https://taric.org/) — no times found on the page
+- [Masjid Huzaifah](https://www.masjidhuzaifah.com/) — no times found on the page (page text holds 7 prayer names and 7 times)
+- [Masjid Darul Iman](https://daruliman.org/) — no times found on the page
+- [Shalimar Islamic Centre](https://shalimarislamiccentre.ca/) — no times found on the page
+- [Hamilton Mountain Masjid](https://hamiltonmosque.com/) — no times found on the page
+- [Islamic Centre of Southwest Ontario](https://islamiccentre.ca/) — no times found on the page
+- [Masjid Rahmatul-lil-Alameen](https://www.rahmatmasjid.com/) — no times found on the page
+- [Masumeen Islamic Centre](https://jaffari.org/) — low confidence (0.3)
+- [Jami Omar](https://www.jamiomar.org/) — no times found on the page
+- [Thunder Bay Masjid](https://thunderbaymasjid.ca/) — no times found on the page
+- [Umar Mosque](https://www.mahcanada.com/mosques/umar) — no times found on the page
+- [Masjid Noor-ul-Haram](https://wimcanada.com/) — no times found on the page
+- [Masjid ar-Rahmah](https://www.mymasjid.ca) — no times found on the page
+- [Owen Sound Muslim Association](https://osmuslim.ca/) — no times found on the page
+- [Muslim Welfare Center (Masjid and Food Bank)](https://www.muslimwelfarecentre.com/) — no times found on the page
+- [Baitul Aman Masjid](http://www.torontomuslims.com/listing/baitul-aman-mosque-danforth-community-center/) — no times found on the page
+- [Islamic Society of Niagara Peninsula](https://isnp.ca/) — no times found on the page
+- [Islamic Society of Vaughan](http://www.islamicsocietyvaughan.com) — no times found on the page
+- [Muslim Association of Tillsonburg](https://muslimassociationtillsonburg.ca/) — no times found on the page

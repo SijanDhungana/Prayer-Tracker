@@ -1,0 +1,277 @@
+{
+  "what": "The page loaded but carried no timetable. Re-running will not help — someone has to find the real prayer-times page, or accept that this mosque does not publish times online.",
+  "collected": "2026-08-29",
+  "count": 45,
+  "mosques": [
+    {
+      "name": "Jamia Islamia Canada",
+      "website": "http://www.jamiaislamia.org/",
+      "reason": "no times found on the page",
+      "source": "google-places"
+    },
+    {
+      "name": "Richmond Hill Muslim Association",
+      "website": "http://rhmacanada.com/",
+      "reason": "only 0 of 5 prayers found (missing fajr, dhuhr, asr, maghrib, isha)",
+      "source": "google-places"
+    },
+    {
+      "name": "Talimul Islam Masjid",
+      "website": "https://talimul.com/",
+      "reason": "no times found on the page",
+      "source": "google-places"
+    },
+    {
+      "name": "WHITBY MUSLIM SOCIETY (Masjid)",
+      "website": "https://whitbymuslims.ca/",
+      "reason": "only 0 of 5 prayers found (missing fajr, dhuhr, asr, maghrib, isha)",
+      "source": "google-places"
+    },
+    {
+      "name": "Mohawk Mashjid/Mosque (Room A006c)",
+      "website": "https://www.facebook.com/MHAWK.ISA/",
+      "reason": "no times found on the page",
+      "source": "google-places"
+    },
+    {
+      "name": "Kitchener Headquarters Jamatkhana - Ismaili Community Centre",
+      "website": "https://the.ismaili/",
+      "reason": "no times found on the page",
+      "source": "google-places"
+    },
+    {
+      "name": "Muslim Social Services Waterloo Region",
+      "website": "http://msswr.org/",
+      "reason": "no times found on the page",
+      "source": "google-places"
+    },
+    {
+      "name": "Muslim Wellness Network",
+      "website": "https://www.muslimwellness.ca/",
+      "reason": "no times found on the page",
+      "source": "google-places"
+    },
+    {
+      "name": "Al Mahdi Islamic Community Centre",
+      "website": "https://almahdicentre.org/",
+      "reason": "low confidence (0.4)",
+      "source": "google-places"
+    },
+    {
+      "name": "Al-Taqwa Mosque",
+      "website": "https://altaqwamosque.com/",
+      "reason": "no times found on the page",
+      "source": "google-places"
+    },
+    {
+      "name": "Muslim Resource Centre for Social Support & Integration (MRCSSI)",
+      "website": "https://mrcssi.com/",
+      "reason": "no times found on the page",
+      "source": "google-places"
+    },
+    {
+      "name": "Imam Hussain Foundation",
+      "website": "http://facebook.com/ihfwindsor",
+      "reason": "no times found on the page",
+      "source": "google-places"
+    },
+    {
+      "name": "Darul Uloom Canada",
+      "website": "http://www.ducanada.org/",
+      "reason": "no times found on the page",
+      "source": "google-places"
+    },
+    {
+      "name": "Sarnia Masjid",
+      "website": "http://www.bangladesh2000.com/bdcom/islam/dir/masjid_directory_ontario.html",
+      "reason": "no times found on the page",
+      "source": "google-places"
+    },
+    {
+      "name": "Uyghur Mosque",
+      "website": "http://www.uyghurmosque.com/",
+      "reason": "no times found on the page",
+      "source": "google-places"
+    },
+    {
+      "name": "Zainabiya Community Centre",
+      "website": "https://jaffari.org/zic/",
+      "reason": "reader returned nothing (page text holds 4 prayer names and 12 times)",
+      "source": "google-places"
+    },
+    {
+      "name": "Al-Rashid Islamic Institute",
+      "website": "http://www.alrashid.ca/",
+      "reason": "no times found on the page",
+      "source": "google-places"
+    },
+    {
+      "name": "Cornwall Islamic Foundation",
+      "website": "http://cornwallislamicfoundation.ca/",
+      "reason": "no times found on the page",
+      "source": "google-places"
+    },
+    {
+      "name": "Peterborough Lakefield Mosque Masjid (Ahle Sunnah Wal Jamaah)",
+      "website": "https://peterboroughmosque.ca/",
+      "reason": "only 0 of 5 prayers found (missing fajr, dhuhr, asr, maghrib, isha)",
+      "source": "google-places"
+    },
+    {
+      "name": "Port Hope Muslim Community (Masjid/Mosque)",
+      "website": "http://porthopemuslim.ca/",
+      "reason": "only 0 of 5 prayers found (missing fajr, dhuhr, asr, maghrib, isha)",
+      "source": "google-places"
+    },
+    {
+      "name": "Islamic Association of Sault Ste. Marie",
+      "website": "http://www.iassm.ca/",
+      "reason": "only 0 of 5 prayers found (missing fajr, dhuhr, asr, maghrib, isha)",
+      "source": "google-places"
+    },
+    {
+      "name": "Isna Canada",
+      "website": "https://www.isnacanada.com/",
+      "reason": "no times found on the page",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Sayeda Khadija Centre",
+      "website": "https://www.sayedakhadijacentre.com/",
+      "reason": "no times found on the page",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Jame Masjid",
+      "website": "https://ipcontario.com/",
+      "reason": "no times found on the page",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Anatolia Islamic Centre",
+      "website": "http://www.anatoliacentre.ca/",
+      "reason": "no times found on the page",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Ismaili Jamatkhana Scarborough",
+      "website": "https://ismaili.net/heritage/node/21420",
+      "reason": "no times found on the page",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Toronto and Region Islamic Congregation",
+      "website": "https://taric.org/",
+      "reason": "no times found on the page",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Masjid Huzaifah",
+      "website": "https://www.masjidhuzaifah.com/",
+      "reason": "no times found on the page (page text holds 7 prayer names and 7 times)",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Masjid Darul Iman",
+      "website": "https://daruliman.org/",
+      "reason": "no times found on the page",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Shalimar Islamic Centre",
+      "website": "https://shalimarislamiccentre.ca/",
+      "reason": "no times found on the page",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Hamilton Mountain Masjid",
+      "website": "https://hamiltonmosque.com/",
+      "reason": "no times found on the page",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Islamic Centre of Southwest Ontario",
+      "website": "https://islamiccentre.ca/",
+      "reason": "no times found on the page",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Masjid Rahmatul-lil-Alameen",
+      "website": "https://www.rahmatmasjid.com/",
+      "reason": "no times found on the page",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Masumeen Islamic Centre",
+      "website": "https://jaffari.org/",
+      "reason": "low confidence (0.3)",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Jami Omar",
+      "website": "https://www.jamiomar.org/",
+      "reason": "no times found on the page",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Thunder Bay Masjid",
+      "website": "https://thunderbaymasjid.ca/",
+      "reason": "no times found on the page",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Umar Mosque",
+      "website": "https://www.mahcanada.com/mosques/umar",
+      "reason": "no times found on the page",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Masjid Noor-ul-Haram",
+      "website": "https://wimcanada.com/",
+      "reason": "no times found on the page",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Masjid ar-Rahmah",
+      "website": "https://www.mymasjid.ca",
+      "reason": "no times found on the page",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Owen Sound Muslim Association",
+      "website": "https://osmuslim.ca/",
+      "reason": "no times found on the page",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Muslim Welfare Center (Masjid and Food Bank)",
+      "website": "https://www.muslimwelfarecentre.com/",
+      "reason": "no times found on the page",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Baitul Aman Masjid",
+      "website": "http://www.torontomuslims.com/listing/baitul-aman-mosque-danforth-community-center/",
+      "reason": "no times found on the page",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Islamic Society of Niagara Peninsula",
+      "website": "https://isnp.ca/",
+      "reason": "no times found on the page",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Islamic Society of Vaughan",
+      "website": "http://www.islamicsocietyvaughan.com",
+      "reason": "no times found on the page",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Muslim Association of Tillsonburg",
+      "website": "https://muslimassociationtillsonburg.ca/",
+      "reason": "no times found on the page",
+      "source": "osm-ontario"
+    }
+  ]
+}

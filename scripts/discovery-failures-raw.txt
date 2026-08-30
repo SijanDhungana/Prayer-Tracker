@@ -1,0 +1,77 @@
+[google-places] Jamia Islamia Canada: FAILED — no times found on the page
+[google-places] Mississauga Muslim Community Center: FAILED — site could not be opened
+[google-places] Richmond Hill Muslim Association: FAILED — only 0 of 5 prayers found (missing fajr, dhuhr, asr, maghrib, isha)
+[google-places] Al-Nadwa Educational Islamic Centre: FAILED — site could not be opened
+[google-places] Talimul Islam Masjid: FAILED — no times found on the page
+[google-places] WHITBY MUSLIM SOCIETY (Masjid): FAILED — only 0 of 5 prayers found (missing fajr, dhuhr, asr, maghrib, isha)
+[google-places] Masjid Subhan Ajax: FAILED — site could not be opened
+[google-places] Islamic Centre of Bowmanville: FAILED — site could not be opened
+[google-places] Mohawk Mashjid/Mosque (Room A006c): FAILED — no times found on the page
+[google-places] Ebu Bekir Islamic Centre: FAILED — site could not be opened
+[google-places] Islamic Community of West Niagara: FAILED — site could not be opened
+[google-places] Masjid - Muslim Society of Guelph: FAILED — site could not be opened
+[google-places] Kitchener Headquarters Jamatkhana - Ismaili Community Centre: FAILED — no times found on the page
+[google-places] Muslim Social Services Waterloo Region: FAILED — no times found on the page
+[google-places] Muslim Wellness Network: FAILED — no times found on the page
+[google-places] Al Mahdi Islamic Community Centre: FAILED — low confidence (0.4)
+[google-places] Al-Taqwa Mosque: FAILED — no times found on the page
+[google-places] St. Thomas Islamic Centre: FAILED — site could not be opened
+[google-places] Muslim Resource Centre for Social Support & Integration (MRCSSI): FAILED — no times found on the page
+[google-places] The Clear Islam Information Center: FAILED — site could not be opened
+[google-places] Imam Hussain Foundation: FAILED — no times found on the page
+[google-places] Jafri Islamic Centre of Canada (Shia Mosque): FAILED — site could not be opened
+[google-places] Darul Uloom Canada: FAILED — no times found on the page
+[google-places] Sarnia Masjid: FAILED — no times found on the page
+[google-places] Uyghur Mosque: FAILED — no times found on the page
+[google-places] Barrie Islamic School: FAILED — site could not be opened
+[google-places] Zainabiya Community Centre: FAILED — reader returned nothing (page text holds 4 prayer names and 12 times)
+[google-places] Masjid Al-Abrar: FAILED — site could not be opened
+[google-places] Al-Rashid Islamic Institute: FAILED — no times found on the page
+[google-places] Cornwall Islamic Foundation: FAILED — no times found on the page
+[google-places] Peterborough Lakefield Mosque Masjid (Ahle Sunnah Wal Jamaah): FAILED — only 0 of 5 prayers found (missing fajr, dhuhr, asr, maghrib, isha)
+[google-places] Port Hope Muslim Community (Masjid/Mosque): FAILED — only 0 of 5 prayers found (missing fajr, dhuhr, asr, maghrib, isha)
+[google-places] Islamic Centre of Northern Ontario: FAILED — site could not be opened
+[google-places] Islamic Association of Sault Ste. Marie: FAILED — only 0 of 5 prayers found (missing fajr, dhuhr, asr, maghrib, isha)
+[osm-ontario] Isna Canada: FAILED — no times found on the page
+[osm-ontario] Sayeda Khadija Centre: FAILED — no times found on the page
+[osm-ontario] Al Huda Institute Canada: FAILED — site could not be opened
+[osm-ontario] Jame Masjid: FAILED — no times found on the page
+[osm-ontario] Anatolia Islamic Centre: FAILED — no times found on the page
+[osm-ontario] Ismaili Jamatkhana Scarborough: FAILED — no times found on the page
+[osm-ontario] Toronto and Region Islamic Congregation: FAILED — no times found on the page
+[osm-ontario] Masjid Huzaifah: FAILED — no times found on the page (page text holds 7 prayer names and 7 times)
+[osm-ontario] Masjid Darul Iman: FAILED — no times found on the page
+[osm-ontario] Shalimar Islamic Centre: FAILED — no times found on the page
+[osm-ontario] Hamilton Mountain Masjid: FAILED — no times found on the page
+[osm-ontario] Islamic Centre of Southwest Ontario: FAILED — no times found on the page
+[osm-ontario] Baitul Ahad Mosque: FAILED — site could not be opened
+[osm-ontario] Jamiat-Ul-Ansar of Brampton: FAILED — site could not be opened
+[osm-ontario] Baitul Islam Mosque: FAILED — site could not be opened
+[osm-ontario] Masjid Rahmatul-lil-Alameen: FAILED — no times found on the page
+[osm-ontario] Masumeen Islamic Centre: FAILED — low confidence (0.3)
+[osm-ontario] Ottawa South Mosque: FAILED — site could not be opened
+[osm-ontario] Jami Omar: FAILED — no times found on the page
+[osm-ontario] Mount Pleasant Islamic Center: FAILED — site could not be opened
+[osm-ontario] Thunder Bay Masjid: FAILED — no times found on the page
+[osm-ontario] Umar Mosque: FAILED — no times found on the page
+[osm-ontario] Masjid Riyad Ul Jannah: FAILED — site could not be opened
+[osm-ontario] SNMC Center & Masjid: FAILED — site could not be opened
+[osm-ontario] Masjid Noor-ul-Haram: FAILED — no times found on the page
+[osm-ontario] Masjid ar-Rahmah: FAILED — no times found on the page
+[osm-ontario] Baitul Ehsaan Mosque: FAILED — site could not be opened
+[osm-ontario] Baitun Nasir Mosque: FAILED — site could not be opened
+[osm-ontario] Baitun Nur Mosque: FAILED — site could not be opened
+[osm-ontario] Mubarak Mosque: FAILED — site could not be opened
+[osm-ontario] Baitul Karim Mosque: FAILED — site could not be opened
+[osm-ontario] Baitul Mahdi Mosque: FAILED — site could not be opened
+[osm-ontario] Mary Mosque (Maryam Mosque): FAILED — site could not be opened
+[osm-ontario] Owen Sound Muslim Association: FAILED — no times found on the page
+[osm-ontario] Erin Islamic Cultural Center: FAILED — site could not be opened
+[osm-ontario] Muslim Welfare Center (Masjid and Food Bank): FAILED — no times found on the page
+[osm-ontario] Baitul Aman Masjid: FAILED — no times found on the page
+[osm-ontario] Albanian Mosque - Albanian Muslim Society of Toronto: FAILED — site could not be opened
+[osm-ontario] Islamic Society of Niagara Peninsula: FAILED — no times found on the page
+[osm-ontario] Rexdale Jame Masjid: FAILED — site could not be opened
+[osm-ontario] Islamic Society of Vaughan: FAILED — no times found on the page
+[osm-ontario] Muslim Association of Tillsonburg: FAILED — no times found on the page
+[osm-ontario] Cornwall Masjid: FAILED — site could not be opened

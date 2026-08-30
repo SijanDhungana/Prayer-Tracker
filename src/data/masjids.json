@@ -1489,5 +1489,1306 @@
     "needsReview": false,
     "source": "scrape",
     "platform": "unknown"
+  },
+  {
+    "id": "966-icna-masjid",
+    "name": "966 ICNA Masjid",
+    "address": "966 Dundas Street East Mississauga ON L4Y4H5",
+    "lat": 43.6000719,
+    "lng": -79.5930752,
+    "website": "https://icna.website/966icnamasjid/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:30"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:40"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:30"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "19:59"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:45"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:30"
+      },
+      {
+        "khutbah": "14:30"
+      },
+      {
+        "khutbah": "15:30"
+      }
+    ],
+    "lastVerified": "2026-08-29",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "al-zahra-shia-association-of-waterloo-region",
+    "name": "Al Zahra Shia Association of Waterloo Region",
+    "address": "204 Madison Avenue South",
+    "lat": 43.441332,
+    "lng": -80.4873513,
+    "website": "https://www.alzahra.ca/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "04:59"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:24"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "20:19"
+      }
+    },
+    "jumuah": [],
+    "lastVerified": "2026-08-29",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "al-salaam-islamic-centre",
+    "name": "Al-Salaam Islamic Centre",
+    "address": "300 Mill Street Kitchener Ontario N2M 5G8",
+    "lat": 43.4365784,
+    "lng": -80.4841013,
+    "website": "https://www.alsalaam.ca",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:45"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:45"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:30"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "20:08"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:45"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:30"
+      }
+    ],
+    "lastVerified": "2026-08-29",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "bosnian-islamic-association-gazi-husrev-beg",
+    "name": "Bosnian Islamic Association Gazi Husrev-Beg",
+    "address": "122 North Queen Street Etobicoke",
+    "lat": 43.6207841,
+    "lng": -79.55001,
+    "website": "https://www.biaghb.com/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:45"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:40"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:30"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 5
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:45"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:30"
+      },
+      {
+        "khutbah": "14:30"
+      }
+    ],
+    "lastVerified": "2026-08-29",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "bosnian-islamic-centre",
+    "name": "Bosnian Islamic Centre",
+    "address": "75 Birmingham Street ON M8V 2C3",
+    "lat": 43.603482,
+    "lng": -79.5042513,
+    "website": "https://bictoronto.com/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:35"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:30"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "17:10"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "20:01"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:30"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:30"
+      },
+      {
+        "khutbah": "14:30"
+      }
+    ],
+    "lastVerified": "2026-08-29",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "hamilton-downtown-mosque",
+    "name": "Hamilton Downtown Mosque",
+    "address": "221 York Boulevard L8R 1Y6",
+    "lat": 43.2610287,
+    "lng": -79.8755949,
+    "website": "http://downtownmosque.com",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:45"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:30"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "17:30"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "20:02"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:30"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:30"
+      }
+    ],
+    "lastVerified": "2026-08-29",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "hyatt-mosque-and-center",
+    "name": "Hyatt Mosque and Center",
+    "address": "282 Hamilton Road London",
+    "lat": 42.9815977,
+    "lng": -81.2240953,
+    "website": "https://www.hyattmosquecenter.com/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:00"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:37"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "17:20"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "20:10"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:37"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:30"
+      },
+      {
+        "khutbah": "14:30"
+      }
+    ],
+    "lastVerified": "2026-08-29",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "imam-bukhari-centre",
+    "name": "Imam Bukhari Centre",
+    "address": "50 Steeles Avenue East Milton ON L9T 4W9",
+    "lat": 43.5177898,
+    "lng": -79.8972278,
+    "website": "https://ahlehadithcanada.org/toronto/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:41"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "14:00"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "17:19"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "20:07"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:26"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "14:00"
+      }
+    ],
+    "lastVerified": "2026-08-29",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "imam-mahdi-islamic-centre",
+    "name": "Imam Mahdi Islamic Centre",
+    "address": "7340 Bayview Avenue Thornhill",
+    "lat": 43.8111725,
+    "lng": -79.4001251,
+    "website": "https://imammahdi.ca/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "04:56"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:18"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "20:19"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:30"
+      }
+    ],
+    "lastVerified": "2026-08-29",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "islamic-center-of-waterloo",
+    "name": "Islamic Center of Waterloo",
+    "address": "510 Erbsville Road Waterloo N2J 3Z4",
+    "lat": 43.4685221,
+    "lng": -80.5891625,
+    "website": "https://www.icwaterloo.com",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:45"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:45"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:30"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "20:08"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:45"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:30"
+      },
+      {
+        "khutbah": "14:30"
+      },
+      {
+        "khutbah": "15:30"
+      }
+    ],
+    "lastVerified": "2026-08-29",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "islamic-community-centre-of-milton",
+    "name": "Islamic Community Centre of Milton",
+    "address": "8069 Esquesing Line Milton ON L9T7L4",
+    "lat": 43.5427096,
+    "lng": -79.8768764,
+    "website": "https://www.icnamilton.com/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:45"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:40"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:30"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "20:08"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "22:00"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:30"
+      },
+      {
+        "khutbah": "14:45"
+      },
+      {
+        "khutbah": "15:45"
+      }
+    ],
+    "lastVerified": "2026-08-29",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "islamic-community-centre-of-ontario-icco-mac-masjid-mosque",
+    "name": "Islamic Community Centre of Ontario (ICCO) MAC Masjid/Mosque",
+    "address": "2550 Dunwin Drive Mississauga ON L5L 1T1",
+    "lat": 43.5285496,
+    "lng": -79.6809409,
+    "website": "https://centres.macnet.ca/icco/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:45"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "14:00"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "17:45"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "20:07"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:30"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "12:00"
+      },
+      {
+        "khutbah": "13:15"
+      },
+      {
+        "khutbah": "14:45"
+      }
+    ],
+    "lastVerified": "2026-08-29",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "islamic-society-of-guelph",
+    "name": "Islamic Society of Guelph",
+    "address": "126 Norwich Street East Guelph ON N1E2G7",
+    "lat": 43.5515302,
+    "lng": -80.2519393,
+    "website": "http://isofg.ca/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:45"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:45"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "17:45"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "20:01"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:30"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:50"
+      }
+    ],
+    "lastVerified": "2026-08-29",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "jamia-masjid-al-aqsa",
+    "name": "Jamia Masjid Al-Aqsa",
+    "address": "",
+    "lat": 45.0233307,
+    "lng": -74.7312012,
+    "website": "https://moonode.com/entity/al-aqsa-jamia-974445-507-pitt-st-cornwall",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:30"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:30"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:15"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "19:46"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:45"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:30"
+      },
+      {
+        "khutbah": "14:30"
+      }
+    ],
+    "lastVerified": "2026-08-29",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "kitchener-masjid",
+    "name": "Kitchener Masjid",
+    "address": "1017 Victoria Street North Kitchener",
+    "lat": 43.4647895,
+    "lng": -80.4604245,
+    "website": "http://kitchenermasjid.com",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:45"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:45"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:30"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "20:09"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:45"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "12:15"
+      },
+      {
+        "khutbah": "13:15"
+      },
+      {
+        "khutbah": "14:15"
+      }
+    ],
+    "lastVerified": "2026-08-29",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "mac-hespeler-masjid",
+    "name": "MAC Hespeler Masjid",
+    "address": "64 Winston Boulevard Cambridge Ontario N3C 1L6",
+    "lat": 43.4254334,
+    "lng": -80.3177917,
+    "website": "https://hespelermasjid.ca/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:45"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:45"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:30"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "20:03"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "22:00"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:30"
+      }
+    ],
+    "lastVerified": "2026-08-29",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "malton-islamic-centre",
+    "name": "Malton Islamic Centre",
+    "address": "6836 Professional Court Mississauga L4V 1X6",
+    "lat": 43.7075165,
+    "lng": -79.6310944,
+    "website": "https://www.maltonislamiccentre.com/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:30"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:30"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:15"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "20:04"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:30"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:30"
+      }
+    ],
+    "lastVerified": "2026-08-29",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "masjid-adam",
+    "name": "Masjid Adam",
+    "address": "1759 Bloor Street Mississauga Ontario L4X 1S7",
+    "lat": 43.6250456,
+    "lng": -79.5871898,
+    "website": "https://www.masjidadam.com/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:45"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "14:00"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:15"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 5
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:30"
+      }
+    },
+    "jumuah": [],
+    "lastVerified": "2026-08-29",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "masjid-aisha",
+    "name": "Masjid Aisha",
+    "address": "44 Marlborough Road Guelph",
+    "lat": 43.5605888,
+    "lng": -80.2640327,
+    "website": "http://masjidaisha.ca",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:00"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:45"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "17:15"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "20:07"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:30"
+      }
+    },
+    "jumuah": [],
+    "lastVerified": "2026-08-29",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "masjid-al-farooq",
+    "name": "Masjid Al Farooq",
+    "address": "935 Eglinton Avenue West Mississauga",
+    "lat": 43.5870808,
+    "lng": -79.6759189,
+    "website": "https://www.masjidfarooq.com/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:45"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:40"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "17:30"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "20:06"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:45"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "16:00"
+      }
+    ],
+    "lastVerified": "2026-08-29",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "masjid-bilal-islamic-society-of-cumberland",
+    "name": "Masjid Bilal, Islamic Society of Cumberland",
+    "address": "4509 Innes Road",
+    "lat": 45.4621642,
+    "lng": -75.4846875,
+    "website": "https://www.masjidbilal.org/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:30"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:30"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:00"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 5
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:30"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:15"
+      },
+      {
+        "khutbah": "14:20"
+      },
+      {
+        "khutbah": "15:10"
+      }
+    ],
+    "lastVerified": "2026-08-29",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "masjid-sayyidna-bilal",
+    "name": "Masjid Sayyidna Bilal",
+    "address": "26 Spruce Street Paris Ontario N2L3V2",
+    "lat": 43.2023624,
+    "lng": -80.3958423,
+    "website": "https://parismasjid.ca/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:50"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:45"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:45"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "20:12"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:40"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:50"
+      }
+    ],
+    "lastVerified": "2026-08-29",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "muslim-association-of-milton",
+    "name": "Muslim Association of Milton",
+    "address": "4269 Regional Road 25 Oakville Ontario L6M 4E9",
+    "lat": 43.4570228,
+    "lng": -79.8020295,
+    "website": "https://www.miltonmasjid.com/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:45"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "14:00"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:30"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "20:06"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:45"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:30"
+      },
+      {
+        "khutbah": "14:30"
+      },
+      {
+        "khutbah": "15:30"
+      }
+    ],
+    "lastVerified": "2026-08-29",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "muslim-neighbour-nexus",
+    "name": "Muslim Neighbour Nexus",
+    "address": "3520 Odyssey Drive Mississauga ON L5K 7N4",
+    "lat": 43.535318,
+    "lng": -79.723061,
+    "website": "https://mnnexus.ca/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:00"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:45"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:15"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "20:02"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:30"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:15"
+      },
+      {
+        "khutbah": "14:15"
+      },
+      {
+        "khutbah": "15:00"
+      }
+    ],
+    "lastVerified": "2026-08-29",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "newmarket-islamic-centre",
+    "name": "Newmarket Islamic Centre",
+    "address": "700 Mulock Drive Newmarket Ontario L3Y9C1",
+    "lat": 44.0426668,
+    "lng": -79.443425,
+    "website": "https://nmic.ca/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:45"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:30"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:00"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 5
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:45"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "14:00"
+      },
+      {
+        "khutbah": "15:00"
+      }
+    ],
+    "lastVerified": "2026-08-29",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "ottawa-muslim-association",
+    "name": "Ottawa Muslim Association",
+    "address": "251 Northwestern Avenue K1Y 0M1",
+    "lat": 45.401468,
+    "lng": -75.7413381,
+    "website": "https://www.ottawamosque.ca/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:23"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:20"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "17:15"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "19:51"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:18"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:00"
+      },
+      {
+        "khutbah": "14:00"
+      }
+    ],
+    "lastVerified": "2026-08-29",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "pape-mosque",
+    "name": "Pape Mosque",
+    "address": "336 Pape Avenue",
+    "lat": 43.6676635,
+    "lng": -79.3403977,
+    "website": "https://papemosque.ca/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:15"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "14:00"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "17:30"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "20:07"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:45"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "14:00"
+      }
+    ],
+    "lastVerified": "2026-08-29",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "salaheddin-islamic-centre",
+    "name": "Salaheddin Islamic Centre",
+    "address": "741 Kennedy Road M1K 2C6",
+    "lat": 43.7308697,
+    "lng": -79.2659976,
+    "website": "https://www.salaheddin.org/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:45"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:40"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "17:45"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 5
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:45"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:30"
+      },
+      {
+        "khutbah": "14:30"
+      }
+    ],
+    "lastVerified": "2026-08-29",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "sarnia-muslim-association",
+    "name": "Sarnia Muslim Association",
+    "address": "1609 London Line Sarnia N7W 1A9",
+    "lat": 42.9831922,
+    "lng": -82.3354944,
+    "website": "https://sarniamuslim.com/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:15"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "14:00"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:45"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "20:12"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "22:00"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "14:00"
+      }
+    ],
+    "lastVerified": "2026-08-29",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "waterloo-masjid",
+    "name": "Waterloo Masjid",
+    "address": "213 Erb Street West Waterloo",
+    "lat": 43.4590603,
+    "lng": -80.5354741,
+    "website": "https://waterloomasjid.com/main/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:45"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:45"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:30"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "20:08"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:45"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:40"
+      }
+    ],
+    "lastVerified": "2026-08-29",
+    "needsReview": true,
+    "source": "discovery"
   }
 ]

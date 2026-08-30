@@ -1,0 +1,199 @@
+{
+  "what": "The site never loaded. Often transient — worth re-running before any manual work.",
+  "collected": "2026-08-29",
+  "count": 32,
+  "mosques": [
+    {
+      "name": "Mississauga Muslim Community Center",
+      "website": "https://mmcc-canada.org/",
+      "reason": "site could not be opened",
+      "source": "google-places"
+    },
+    {
+      "name": "Al-Nadwa Educational Islamic Centre",
+      "website": "https://alnadwacentre.ca/",
+      "reason": "site could not be opened",
+      "source": "google-places"
+    },
+    {
+      "name": "Masjid Subhan Ajax",
+      "website": "https://www.subhanislamicassociation.org/",
+      "reason": "site could not be opened",
+      "source": "google-places"
+    },
+    {
+      "name": "Islamic Centre of Bowmanville",
+      "website": "https://icbmasjid.com/",
+      "reason": "site could not be opened",
+      "source": "google-places"
+    },
+    {
+      "name": "Ebu Bekir Islamic Centre",
+      "website": "http://www.ebu-bekir.com",
+      "reason": "site could not be opened",
+      "source": "google-places"
+    },
+    {
+      "name": "Islamic Community of West Niagara",
+      "website": "http://www.icwn.ca/",
+      "reason": "site could not be opened",
+      "source": "google-places"
+    },
+    {
+      "name": "Masjid - Muslim Society of Guelph",
+      "website": "http://www.msofg.org/",
+      "reason": "site could not be opened",
+      "source": "google-places"
+    },
+    {
+      "name": "St. Thomas Islamic Centre",
+      "website": "https://stislamiccentre.com/",
+      "reason": "site could not be opened",
+      "source": "google-places"
+    },
+    {
+      "name": "The Clear Islam Information Center",
+      "website": "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0z4t60o92hvea5hLZI3nZvR_nmE2GOQM9KPaDn-AlVXlHgjsTbX03JQX9X_8M99zffqbwZsfzA?pli=1",
+      "reason": "site could not be opened",
+      "source": "google-places"
+    },
+    {
+      "name": "Jafri Islamic Centre of Canada (Shia Mosque)",
+      "website": "https://jiccwindsor.org/",
+      "reason": "site could not be opened",
+      "source": "google-places"
+    },
+    {
+      "name": "Barrie Islamic School",
+      "website": "https://barriemosque.ca/sunday-islamic-school/",
+      "reason": "site could not be opened",
+      "source": "google-places"
+    },
+    {
+      "name": "Masjid Al-Abrar",
+      "website": "http://www.alabrar.ca/",
+      "reason": "site could not be opened",
+      "source": "google-places"
+    },
+    {
+      "name": "Islamic Centre of Northern Ontario",
+      "website": "http://www.iconosudbury.com/",
+      "reason": "site could not be opened",
+      "source": "google-places"
+    },
+    {
+      "name": "Al Huda Institute Canada",
+      "website": "https://alhudainstitute.ca/",
+      "reason": "site could not be opened",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Baitul Ahad Mosque",
+      "website": "https://www.ahmadiyya.ca/mosques/baitul-ahad",
+      "reason": "site could not be opened",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Jamiat-Ul-Ansar of Brampton",
+      "website": "http://www.jamiatulansar.ca/",
+      "reason": "site could not be opened",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Baitul Islam Mosque",
+      "website": "https://www.ahmadiyya.ca/",
+      "reason": "site could not be opened",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Ottawa South Mosque",
+      "website": "https://ottawasouthmosque.ca/",
+      "reason": "site could not be opened",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Mount Pleasant Islamic Center",
+      "website": "https://www.mpicbrampton.com/",
+      "reason": "site could not be opened",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Masjid Riyad Ul Jannah",
+      "website": "http://jamiariyadhuljannah.com/",
+      "reason": "site could not be opened",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "SNMC Center & Masjid",
+      "website": "https://www.snmc.ca/",
+      "reason": "site could not be opened",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Baitul Ehsaan Mosque",
+      "website": "https://www.ahmadiyya.ca/mosques/baitul-ehsaan",
+      "reason": "site could not be opened",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Baitun Nasir Mosque",
+      "website": "https://www.ahmadiyya.ca/mosques/masjid-baitun-nasir",
+      "reason": "site could not be opened",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Baitun Nur Mosque",
+      "website": "https://www.ahmadiyya.ca/mosques/baitun-nur-mosque",
+      "reason": "site could not be opened",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Mubarak Mosque",
+      "website": "https://www.ahmadiyya.ca/mosques/masjid-mubarak",
+      "reason": "site could not be opened",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Baitul Karim Mosque",
+      "website": "https://www.ahmadiyya.ca/mosques/baitul-karim",
+      "reason": "site could not be opened",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Baitul Mahdi Mosque",
+      "website": "https://www.ahmadiyya.ca/mosques/baitul-mahdi",
+      "reason": "site could not be opened",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Mary Mosque (Maryam Mosque)",
+      "website": "https://www.ahmadiyya.ca/mosques/maryam-mosque",
+      "reason": "site could not be opened",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Erin Islamic Cultural Center",
+      "website": "https://erinislamiccenter.ca/",
+      "reason": "site could not be opened",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Albanian Mosque - Albanian Muslim Society of Toronto",
+      "website": "https://www.albmuslim.ca/",
+      "reason": "site could not be opened",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Rexdale Jame Masjid",
+      "website": "http://rexdalemasjid.ca/",
+      "reason": "site could not be opened",
+      "source": "osm-ontario"
+    },
+    {
+      "name": "Cornwall Masjid",
+      "website": "https://cornwallislamiccentre.ca/",
+      "reason": "site could not be opened",
+      "source": "osm-ontario"
+    }
+  ]
+}
