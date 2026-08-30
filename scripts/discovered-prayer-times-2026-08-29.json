@@ -1,0 +1,1240 @@
+{
+  "collected": "2026-08-29",
+  "note": "One-off discovery snapshot, NOT app data. Read by scrape-ontario.ts and scrape-google-places.ts from the deduplicated candidate lists. Iqamah times are community-collected and unverified — confirm with each masjid before relying on them. A null Maghrib is normal: most masjids set it as an offset from the adhan rather than publishing a fixed clock time. Shia centres legitimately show no separate Asr or Isha, since those are combined with Dhuhr and Maghrib.",
+  "totals": {
+    "read": 83,
+    "attempted": 160,
+    "googlePlaces": "51/85",
+    "osmOntario": "32/75"
+  },
+  "mosques": [
+    {
+      "name": "966 ICNA Masjid",
+      "source": "osm-ontario",
+      "iqamah": {
+        "fajr": "05:30",
+        "dhuhr": "13:40",
+        "asr": "18:30",
+        "maghrib": "19:59",
+        "isha": "21:45"
+      },
+      "jumuah": [
+        "13:30",
+        "14:30",
+        "15:30"
+      ]
+    },
+    {
+      "name": "Aal Muhammad Imam Bargah / Hussainyah",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "04:54",
+        "dhuhr": "13:07",
+        "asr": "16:51",
+        "maghrib": "20:06",
+        "isha": "21:06"
+      },
+      "jumuah": []
+    },
+    {
+      "name": "Abu Bakr Musalla",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:22",
+        "dhuhr": "13:30",
+        "asr": "17:03",
+        "maghrib": "19:53",
+        "isha": "21:19"
+      },
+      "jumuah": [
+        "13:00",
+        "13:45"
+      ]
+    },
+    {
+      "name": "Al Zahra Shia Association of Waterloo Region",
+      "source": "osm-ontario",
+      "iqamah": {
+        "fajr": "04:59",
+        "dhuhr": "13:24",
+        "asr": null,
+        "maghrib": "20:19",
+        "isha": null
+      },
+      "jumuah": []
+    },
+    {
+      "name": "Al-Eman Islamic Centre of Canada INC.",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:40",
+        "dhuhr": "14:00",
+        "asr": "18:30",
+        "maghrib": null,
+        "isha": "22:15"
+      },
+      "jumuah": [
+        "13:30",
+        "14:15"
+      ]
+    },
+    {
+      "name": "Al-Firdous Islamic Centre",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:30",
+        "dhuhr": "13:45",
+        "asr": "17:30",
+        "maghrib": null,
+        "isha": "21:50"
+      },
+      "jumuah": [
+        "13:30"
+      ]
+    },
+    {
+      "name": "Al-Salaam Islamic Centre",
+      "source": "osm-ontario",
+      "iqamah": {
+        "fajr": "05:45",
+        "dhuhr": "13:45",
+        "asr": "18:30",
+        "maghrib": "20:08",
+        "isha": "21:45"
+      },
+      "jumuah": [
+        "13:30"
+      ]
+    },
+    {
+      "name": "ALBER Mosque",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "06:15",
+        "dhuhr": "14:00",
+        "asr": "18:00",
+        "maghrib": "20:20",
+        "isha": "21:45"
+      },
+      "jumuah": [
+        "13:35",
+        "14:30"
+      ]
+    },
+    {
+      "name": "Barrie Mosque",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "06:00",
+        "dhuhr": "13:40",
+        "asr": "18:00",
+        "maghrib": "20:03",
+        "isha": "21:30"
+      },
+      "jumuah": [
+        "13:30",
+        "14:30"
+      ]
+    },
+    {
+      "name": "Bosnian Canadian Islamic Centre",
+      "source": "osm-ontario",
+      "iqamah": {
+        "fajr": "03:58",
+        "dhuhr": "13:26",
+        "asr": "17:31",
+        "maghrib": "21:06",
+        "isha": "22:54"
+      },
+      "jumuah": [
+        "13:20"
+      ],
+      "needsReview": "Maghrib 21:06 / Fajr 03:58 / Isha 22:54 look like Bosnian local time, not Ontario — verify"
+    },
+    {
+      "name": "Bosnian Islamic Association Gazi Husrev-Beg",
+      "source": "osm-ontario",
+      "iqamah": {
+        "fajr": "05:45",
+        "dhuhr": "13:40",
+        "asr": "18:30",
+        "maghrib": null,
+        "isha": "21:45"
+      },
+      "jumuah": [
+        "13:30",
+        "14:30"
+      ]
+    },
+    {
+      "name": "Bosnian Islamic Centre",
+      "source": "osm-ontario",
+      "iqamah": {
+        "fajr": "05:35",
+        "dhuhr": "13:30",
+        "asr": "17:10",
+        "maghrib": "20:01",
+        "isha": "21:30"
+      },
+      "jumuah": [
+        "13:30",
+        "14:30"
+      ]
+    },
+    {
+      "name": "Bosnjacki Islamski Centar Hamilton",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:17",
+        "dhuhr": "13:21",
+        "asr": "18:03",
+        "maghrib": "20:01",
+        "isha": "21:25"
+      },
+      "jumuah": [
+        "13:25",
+        "15:00"
+      ]
+    },
+    {
+      "name": "Bradford Islamic Community Centre",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "06:00",
+        "dhuhr": "13:30",
+        "asr": "18:30",
+        "maghrib": null,
+        "isha": "21:45"
+      },
+      "jumuah": [
+        "13:30"
+      ]
+    },
+    {
+      "name": "Bramalea Islamic Cultural Centre (BICC)",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:45",
+        "dhuhr": "14:00",
+        "asr": "18:30",
+        "maghrib": "20:06",
+        "isha": "22:00"
+      },
+      "jumuah": [
+        "13:30",
+        "14:30",
+        "15:30"
+      ]
+    },
+    {
+      "name": "Bukhari Community Centre & Masjid",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:15",
+        "dhuhr": "13:30",
+        "asr": "17:15",
+        "maghrib": "19:53",
+        "isha": "21:30"
+      },
+      "jumuah": [
+        "13:30",
+        "14:30"
+      ]
+    },
+    {
+      "name": "Caledonia Islamic Center",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:45",
+        "dhuhr": "13:45",
+        "asr": "18:15",
+        "maghrib": "20:07",
+        "isha": "21:30"
+      },
+      "jumuah": [
+        "14:00"
+      ]
+    },
+    {
+      "name": "Centretown Mosque",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:13",
+        "dhuhr": "13:30",
+        "asr": "17:30",
+        "maghrib": "19:53",
+        "isha": "21:18"
+      },
+      "jumuah": [
+        "13:00",
+        "14:00"
+      ]
+    },
+    {
+      "name": "Chatham Islamic Centre",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "06:10",
+        "dhuhr": "14:00",
+        "asr": "18:00",
+        "maghrib": "20:17",
+        "isha": "21:40"
+      },
+      "jumuah": [
+        "14:00"
+      ]
+    },
+    {
+      "name": "Dar Al-Tawheed Islamic Centre",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:30",
+        "dhuhr": "13:45",
+        "asr": "17:30",
+        "maghrib": "20:07",
+        "isha": "21:45"
+      },
+      "jumuah": [
+        "13:30",
+        "14:30"
+      ]
+    },
+    {
+      "name": "Durham United Ahlul Bayt Centre- Dua Centre",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:05",
+        "dhuhr": "13:17",
+        "asr": "17:01",
+        "maghrib": "20:15",
+        "isha": "21:15"
+      },
+      "jumuah": []
+    },
+    {
+      "name": "Galt Islamic Centre",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "06:10",
+        "dhuhr": "14:30",
+        "asr": "18:30",
+        "maghrib": "20:10",
+        "isha": "21:50"
+      },
+      "jumuah": [
+        "14:30"
+      ]
+    },
+    {
+      "name": "Hamilton Downtown Mosque",
+      "source": "osm-ontario",
+      "iqamah": {
+        "fajr": "05:45",
+        "dhuhr": "13:30",
+        "asr": "17:30",
+        "maghrib": "20:02",
+        "isha": "21:30"
+      },
+      "jumuah": [
+        "13:30"
+      ]
+    },
+    {
+      "name": "HIA Musalla - Masjid",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:45",
+        "dhuhr": "13:45",
+        "asr": "17:30",
+        "maghrib": "20:06",
+        "isha": "21:40"
+      },
+      "jumuah": [
+        "13:55",
+        "14:50",
+        "15:35"
+      ]
+    },
+    {
+      "name": "Hyatt Mosque and Center",
+      "source": "osm-ontario",
+      "iqamah": {
+        "fajr": "06:00",
+        "dhuhr": "13:37",
+        "asr": "17:20",
+        "maghrib": "20:10",
+        "isha": "21:37"
+      },
+      "jumuah": [
+        "13:30",
+        "14:30"
+      ]
+    },
+    {
+      "name": "ICNA Ar-Rehman Islamic Center",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:45",
+        "dhuhr": "13:45",
+        "asr": "18:15",
+        "maghrib": null,
+        "isha": "21:45"
+      },
+      "jumuah": [
+        "13:05",
+        "13:40",
+        "14:15",
+        "14:50"
+      ]
+    },
+    {
+      "name": "ICNR-Masjid Bayt Al Iman",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:15",
+        "dhuhr": "13:30",
+        "asr": "18:15",
+        "maghrib": "20:00",
+        "isha": "21:45"
+      },
+      "jumuah": [
+        "14:00",
+        "15:00"
+      ]
+    },
+    {
+      "name": "Imam Bukhari Centre",
+      "source": "osm-ontario",
+      "iqamah": {
+        "fajr": "05:41",
+        "dhuhr": "14:00",
+        "asr": "17:19",
+        "maghrib": "20:07",
+        "isha": "21:26"
+      },
+      "jumuah": [
+        "14:00"
+      ]
+    },
+    {
+      "name": "Imam Mahdi Islamic Centre",
+      "source": "osm-ontario",
+      "iqamah": {
+        "fajr": "04:56",
+        "dhuhr": "13:18",
+        "asr": null,
+        "maghrib": "20:19",
+        "isha": null
+      },
+      "jumuah": [
+        "13:30"
+      ]
+    },
+    {
+      "name": "Iqra Masjid - Durham Islamic Centre",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:45",
+        "dhuhr": "14:00",
+        "asr": "18:30",
+        "maghrib": "19:59",
+        "isha": "21:45"
+      },
+      "jumuah": [
+        "14:00",
+        "15:00",
+        "16:00"
+      ]
+    },
+    {
+      "name": "Islamic Center of Waterloo",
+      "source": "osm-ontario",
+      "iqamah": {
+        "fajr": "05:45",
+        "dhuhr": "13:45",
+        "asr": "18:30",
+        "maghrib": "20:08",
+        "isha": "21:45"
+      },
+      "jumuah": [
+        "13:30",
+        "14:30",
+        "15:30"
+      ]
+    },
+    {
+      "name": "Islamic Centre of Brant / Brant Quran Academy",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:45",
+        "dhuhr": "13:45",
+        "asr": "18:30",
+        "maghrib": "20:06",
+        "isha": "21:29"
+      },
+      "jumuah": [
+        "13:20",
+        "15:10"
+      ]
+    },
+    {
+      "name": "Islamic Centre of Cambridge",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:45",
+        "dhuhr": null,
+        "asr": "18:30",
+        "maghrib": "20:08",
+        "isha": "21:45"
+      },
+      "jumuah": [
+        "13:30",
+        "14:45"
+      ]
+    },
+    {
+      "name": "Islamic Community Centre of Milton",
+      "source": "osm-ontario",
+      "iqamah": {
+        "fajr": "05:45",
+        "dhuhr": "13:40",
+        "asr": "18:30",
+        "maghrib": "20:08",
+        "isha": "22:00"
+      },
+      "jumuah": [
+        "13:30",
+        "14:45",
+        "15:45"
+      ]
+    },
+    {
+      "name": "Islamic Community Centre of Ontario (ICCO) MAC Masjid/Mosque",
+      "source": "osm-ontario",
+      "iqamah": {
+        "fajr": "05:45",
+        "dhuhr": "14:00",
+        "asr": "17:45",
+        "maghrib": "20:07",
+        "isha": "21:30"
+      },
+      "jumuah": [
+        "12:00",
+        "13:15",
+        "14:45"
+      ]
+    },
+    {
+      "name": "Islamic Society of Ajax - Masjid Quba",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "06:00",
+        "dhuhr": "14:00",
+        "asr": "18:15",
+        "maghrib": "20:00",
+        "isha": "21:45"
+      },
+      "jumuah": [
+        "13:45",
+        "15:00",
+        "16:00"
+      ]
+    },
+    {
+      "name": "Islamic Society of Guelph",
+      "source": "osm-ontario",
+      "iqamah": {
+        "fajr": "05:45",
+        "dhuhr": "13:45",
+        "asr": "17:45",
+        "maghrib": "20:01",
+        "isha": "21:30"
+      },
+      "jumuah": [
+        "13:50"
+      ]
+    },
+    {
+      "name": "Islamic Society of Sandy Hill",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:15",
+        "dhuhr": "13:30",
+        "asr": "17:15",
+        "maghrib": "19:53",
+        "isha": "21:19"
+      },
+      "jumuah": [
+        "13:25",
+        "14:25"
+      ]
+    },
+    {
+      "name": "Jami' Masjid Zakariya",
+      "source": "osm-ontario",
+      "iqamah": {
+        "fajr": "04:30",
+        "dhuhr": "13:30",
+        "asr": "18:30",
+        "maghrib": null,
+        "isha": "23:15"
+      },
+      "jumuah": [
+        "13:35"
+      ],
+      "needsReview": "Fajr 04:30 and Isha 23:15 both fall outside any Ontario schedule — verify"
+    },
+    {
+      "name": "Jamia Masjid Al-Aqsa",
+      "source": "osm-ontario",
+      "iqamah": {
+        "fajr": "05:30",
+        "dhuhr": "13:30",
+        "asr": "18:15",
+        "maghrib": "19:46",
+        "isha": "21:45"
+      },
+      "jumuah": [
+        "13:30",
+        "14:30"
+      ]
+    },
+    {
+      "name": "Jamia Masjid Khaatam Ul Anbiyah (KTA Masjid) Muslim Council of Ontario",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:45",
+        "dhuhr": "14:00",
+        "asr": "19:00",
+        "maghrib": "20:07",
+        "isha": "22:15"
+      },
+      "jumuah": [
+        "14:00",
+        "15:00"
+      ]
+    },
+    {
+      "name": "Kitchener Masjid",
+      "source": "osm-ontario",
+      "iqamah": {
+        "fajr": "05:45",
+        "dhuhr": "13:45",
+        "asr": "18:30",
+        "maghrib": "20:09",
+        "isha": "21:45"
+      },
+      "jumuah": [
+        "12:15",
+        "13:15",
+        "14:15"
+      ]
+    },
+    {
+      "name": "Leamington musalla",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:00",
+        "dhuhr": "14:00",
+        "asr": "18:00",
+        "maghrib": "20:18",
+        "isha": "21:37"
+      },
+      "jumuah": [
+        "13:30",
+        "14:00"
+      ]
+    },
+    {
+      "name": "MAC Barrhaven Islamic Centre (BIC)",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:30",
+        "dhuhr": "13:30",
+        "asr": "17:45",
+        "maghrib": "19:50",
+        "isha": "21:17"
+      },
+      "jumuah": [
+        "13:00",
+        "14:30"
+      ]
+    },
+    {
+      "name": "MAC Hespeler Masjid",
+      "source": "osm-ontario",
+      "iqamah": {
+        "fajr": "05:45",
+        "dhuhr": "13:45",
+        "asr": "18:30",
+        "maghrib": "20:03",
+        "isha": "22:00"
+      },
+      "jumuah": [
+        "13:30"
+      ]
+    },
+    {
+      "name": "MAC Hyde Park Masjid & Youth Centre",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:54",
+        "dhuhr": "14:00",
+        "asr": "17:45",
+        "maghrib": "20:13",
+        "isha": "21:38"
+      },
+      "jumuah": [
+        "12:30",
+        "13:30"
+      ]
+    },
+    {
+      "name": "MAC Noor Gardens",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:54",
+        "dhuhr": "14:00",
+        "asr": "17:45",
+        "maghrib": "20:13",
+        "isha": "21:43"
+      },
+      "jumuah": [
+        "12:00",
+        "14:00"
+      ]
+    },
+    {
+      "name": "Malton Islamic Centre",
+      "source": "osm-ontario",
+      "iqamah": {
+        "fajr": "05:30",
+        "dhuhr": "13:30",
+        "asr": "18:15",
+        "maghrib": "20:04",
+        "isha": "21:30"
+      },
+      "jumuah": [
+        "13:30"
+      ]
+    },
+    {
+      "name": "Masjid Adam",
+      "source": "osm-ontario",
+      "iqamah": {
+        "fajr": "05:45",
+        "dhuhr": "14:00",
+        "asr": "18:15",
+        "maghrib": null,
+        "isha": "21:30"
+      },
+      "jumuah": []
+    },
+    {
+      "name": "Masjid Aisha",
+      "source": "osm-ontario",
+      "iqamah": {
+        "fajr": "06:00",
+        "dhuhr": "13:45",
+        "asr": "17:15",
+        "maghrib": "20:07",
+        "isha": "21:30"
+      },
+      "jumuah": []
+    },
+    {
+      "name": "Masjid Al Farooq",
+      "source": "osm-ontario",
+      "iqamah": {
+        "fajr": "05:45",
+        "dhuhr": "13:40",
+        "asr": "17:30",
+        "maghrib": "20:06",
+        "isha": "21:45"
+      },
+      "jumuah": [
+        "16:00"
+      ]
+    },
+    {
+      "name": "Masjid Al-Ghafoor",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:15",
+        "dhuhr": "13:30",
+        "asr": "17:30",
+        "maghrib": "19:59",
+        "isha": "21:30"
+      },
+      "jumuah": [
+        "13:30"
+      ]
+    },
+    {
+      "name": "Masjid Al-Mu'mineen",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:35",
+        "dhuhr": "13:45",
+        "asr": "17:11",
+        "maghrib": "20:02",
+        "isha": "21:45"
+      },
+      "jumuah": [
+        "13:00",
+        "14:00"
+      ]
+    },
+    {
+      "name": "Masjid Alwadood",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:45",
+        "dhuhr": "13:45",
+        "asr": "18:45",
+        "maghrib": "19:59",
+        "isha": "21:45"
+      },
+      "jumuah": [
+        "13:45"
+      ]
+    },
+    {
+      "name": "Masjid Ameer Hamza - Sunni mosque",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "06:00",
+        "dhuhr": "14:00",
+        "asr": "18:15",
+        "maghrib": null,
+        "isha": "22:00"
+      },
+      "jumuah": [
+        "14:00"
+      ]
+    },
+    {
+      "name": "Masjid Bilal, Islamic Society of Cumberland",
+      "source": "osm-ontario",
+      "iqamah": {
+        "fajr": "05:30",
+        "dhuhr": "13:30",
+        "asr": "18:00",
+        "maghrib": null,
+        "isha": "21:30"
+      },
+      "jumuah": [
+        "13:15",
+        "14:20",
+        "15:10"
+      ]
+    },
+    {
+      "name": "Masjid Khadijah (mosque)",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:45",
+        "dhuhr": "13:45",
+        "asr": "18:30",
+        "maghrib": "20:07",
+        "isha": "21:45"
+      },
+      "jumuah": [
+        "13:45",
+        "14:30",
+        "15:00",
+        "15:30"
+      ]
+    },
+    {
+      "name": "Masjid Sayyidna Bilal",
+      "source": "osm-ontario",
+      "iqamah": {
+        "fajr": "05:50",
+        "dhuhr": "13:45",
+        "asr": "18:45",
+        "maghrib": "20:12",
+        "isha": "21:40"
+      },
+      "jumuah": [
+        "13:50"
+      ]
+    },
+    {
+      "name": "Masjid Sirat Al Mustaqim",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:30",
+        "dhuhr": "13:30",
+        "asr": "17:45",
+        "maghrib": "20:05",
+        "isha": "21:45"
+      },
+      "jumuah": [
+        "13:30"
+      ]
+    },
+    {
+      "name": "Masjid Toronto @ Adelaide",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:45",
+        "dhuhr": "13:30",
+        "asr": "18:00",
+        "maghrib": "20:05",
+        "isha": "21:45"
+      },
+      "jumuah": [
+        "12:10",
+        "13:10",
+        "14:10"
+      ]
+    },
+    {
+      "name": "Masjid-E-Aqsa",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:30",
+        "dhuhr": "14:00",
+        "asr": "18:45",
+        "maghrib": null,
+        "isha": "22:00"
+      },
+      "jumuah": [
+        "14:00",
+        "14:45",
+        "15:30",
+        "16:30"
+      ]
+    },
+    {
+      "name": "Masjid-e-Ayesha — Whitby",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "06:00",
+        "dhuhr": "13:45",
+        "asr": "18:15",
+        "maghrib": null,
+        "isha": "21:20"
+      },
+      "jumuah": [
+        "13:45",
+        "14:45",
+        "15:45"
+      ]
+    },
+    {
+      "name": "Mevlana Masjid",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:30",
+        "dhuhr": "13:45",
+        "asr": "17:45",
+        "maghrib": "19:09",
+        "isha": "21:45"
+      },
+      "jumuah": [
+        "13:40"
+      ],
+      "needsReview": "Maghrib 19:09 is ~55 min before sunset in Toronto — verify against the masjid"
+    },
+    {
+      "name": "Muslim Association of Canada (MAC) Westmount Centre",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:54",
+        "dhuhr": "14:00",
+        "asr": "17:45",
+        "maghrib": "20:13",
+        "isha": "21:38"
+      },
+      "jumuah": [
+        "12:15",
+        "13:30"
+      ]
+    },
+    {
+      "name": "Muslim Association of Milton",
+      "source": "osm-ontario",
+      "iqamah": {
+        "fajr": "05:45",
+        "dhuhr": "14:00",
+        "asr": "18:30",
+        "maghrib": "20:06",
+        "isha": "21:45"
+      },
+      "jumuah": [
+        "13:30",
+        "14:30",
+        "15:30"
+      ]
+    },
+    {
+      "name": "Muslim Association of Whitby",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "06:00",
+        "dhuhr": "13:45",
+        "asr": "18:15",
+        "maghrib": null,
+        "isha": "21:20"
+      },
+      "jumuah": [
+        "13:45",
+        "14:45",
+        "15:45"
+      ]
+    },
+    {
+      "name": "Muslim Neighbour Nexus",
+      "source": "osm-ontario",
+      "iqamah": {
+        "fajr": "06:00",
+        "dhuhr": "13:45",
+        "asr": "18:15",
+        "maghrib": "20:02",
+        "isha": "21:30"
+      },
+      "jumuah": [
+        "13:15",
+        "14:15",
+        "15:00"
+      ]
+    },
+    {
+      "name": "Newmarket Islamic Centre",
+      "source": "osm-ontario",
+      "iqamah": {
+        "fajr": "05:45",
+        "dhuhr": "13:30",
+        "asr": "18:00",
+        "maghrib": null,
+        "isha": "21:45"
+      },
+      "jumuah": [
+        "14:00",
+        "15:00"
+      ]
+    },
+    {
+      "name": "NOOR UL QURAN CANADA",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:45",
+        "dhuhr": "14:00",
+        "asr": "18:15",
+        "maghrib": "20:00",
+        "isha": "21:45"
+      },
+      "jumuah": [
+        "14:00",
+        "14:45"
+      ]
+    },
+    {
+      "name": "North Bay Mosque",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "06:00",
+        "dhuhr": "14:00",
+        "asr": "17:30",
+        "maghrib": "20:07",
+        "isha": "21:45"
+      },
+      "jumuah": [
+        "13:35"
+      ]
+    },
+    {
+      "name": "North London Islamic Centre",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "06:15",
+        "dhuhr": "13:45",
+        "asr": "18:15",
+        "maghrib": null,
+        "isha": "21:40"
+      },
+      "jumuah": [
+        "13:45"
+      ]
+    },
+    {
+      "name": "Northern Muslim Association",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:11",
+        "dhuhr": "13:25",
+        "asr": "17:11",
+        "maghrib": "20:10",
+        "isha": "21:39"
+      },
+      "jumuah": []
+    },
+    {
+      "name": "Ottawa Muslim Association",
+      "source": "osm-ontario",
+      "iqamah": {
+        "fajr": "05:23",
+        "dhuhr": "13:20",
+        "asr": "17:15",
+        "maghrib": "19:51",
+        "isha": "21:18"
+      },
+      "jumuah": [
+        "13:00",
+        "14:00"
+      ]
+    },
+    {
+      "name": "Pape Mosque",
+      "source": "osm-ontario",
+      "iqamah": {
+        "fajr": "06:15",
+        "dhuhr": "14:00",
+        "asr": "17:30",
+        "maghrib": "20:07",
+        "isha": "21:45"
+      },
+      "jumuah": [
+        "14:00"
+      ]
+    },
+    {
+      "name": "Qasimul Uloom Islamic Centre Canada",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "06:00",
+        "dhuhr": "13:35",
+        "asr": "18:30",
+        "maghrib": null,
+        "isha": "21:30"
+      },
+      "jumuah": [
+        "13:30",
+        "14:00",
+        "14:30",
+        "15:00",
+        "15:30"
+      ]
+    },
+    {
+      "name": "Rahmat Centre",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:45",
+        "dhuhr": "13:45",
+        "asr": "18:30",
+        "maghrib": null,
+        "isha": "21:45"
+      },
+      "jumuah": [
+        "13:30"
+      ]
+    },
+    {
+      "name": "Salaheddin Islamic Centre",
+      "source": "osm-ontario",
+      "iqamah": {
+        "fajr": "05:45",
+        "dhuhr": "13:40",
+        "asr": "17:45",
+        "maghrib": null,
+        "isha": "21:45"
+      },
+      "jumuah": [
+        "13:30",
+        "14:30"
+      ]
+    },
+    {
+      "name": "Sarnia Muslim Association",
+      "source": "osm-ontario",
+      "iqamah": {
+        "fajr": "06:15",
+        "dhuhr": "14:00",
+        "asr": "18:45",
+        "maghrib": "20:12",
+        "isha": "22:00"
+      },
+      "jumuah": [
+        "14:00"
+      ]
+    },
+    {
+      "name": "Sayyidah Aminah Islamic Centre",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "06:00",
+        "dhuhr": "13:40",
+        "asr": "18:00",
+        "maghrib": "20:05",
+        "isha": "21:45"
+      },
+      "jumuah": [
+        "13:45",
+        "14:45"
+      ]
+    },
+    {
+      "name": "Taqwa mosque",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:15",
+        "dhuhr": "13:30",
+        "asr": "17:15",
+        "maghrib": "19:53",
+        "isha": "21:19"
+      },
+      "jumuah": [
+        "13:25",
+        "14:25"
+      ]
+    },
+    {
+      "name": "Waterloo Masjid",
+      "source": "osm-ontario",
+      "iqamah": {
+        "fajr": "05:45",
+        "dhuhr": "13:45",
+        "asr": "18:30",
+        "maghrib": "20:08",
+        "isha": "21:45"
+      },
+      "jumuah": [
+        "13:40"
+      ]
+    },
+    {
+      "name": "West End Islamic Center",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "05:45",
+        "dhuhr": "14:00",
+        "asr": "18:30",
+        "maghrib": "20:02",
+        "isha": "22:00"
+      },
+      "jumuah": [
+        "13:30",
+        "14:30",
+        "15:30"
+      ]
+    },
+    {
+      "name": "Zawiya Fellowship - Annoor Jami Mosque",
+      "source": "google-places",
+      "iqamah": {
+        "fajr": "04:36",
+        "dhuhr": "13:30",
+        "asr": "17:27",
+        "maghrib": "20:45",
+        "isha": "22:20"
+      },
+      "jumuah": [
+        "13:30"
+      ],
+      "needsReview": "Fajr 04:36 is ~1h earlier than neighbouring masjids — verify"
+    }
+  ]
+}
