@@ -1539,36 +1539,6 @@
     "source": "discovery"
   },
   {
-    "id": "al-zahra-shia-association-of-waterloo-region",
-    "name": "Al Zahra Shia Association of Waterloo Region",
-    "address": "204 Madison Avenue South",
-    "lat": 43.441332,
-    "lng": -80.4873513,
-    "website": "https://www.alzahra.ca/",
-    "calc": {
-      "method": "NorthAmerica",
-      "madhab": "hanafi"
-    },
-    "iqamah": {
-      "fajr": {
-        "type": "fixed",
-        "time": "04:59"
-      },
-      "dhuhr": {
-        "type": "fixed",
-        "time": "13:24"
-      },
-      "maghrib": {
-        "type": "fixed",
-        "time": "20:19"
-      }
-    },
-    "jumuah": [],
-    "lastVerified": "2026-08-29",
-    "needsReview": true,
-    "source": "discovery"
-  },
-  {
     "id": "al-salaam-islamic-centre",
     "name": "Al-Salaam Islamic Centre",
     "address": "300 Mill Street Kitchener Ontario N2M 5G8",
@@ -1823,40 +1793,6 @@
     "jumuah": [
       {
         "khutbah": "14:00"
-      }
-    ],
-    "lastVerified": "2026-08-29",
-    "needsReview": true,
-    "source": "discovery"
-  },
-  {
-    "id": "imam-mahdi-islamic-centre",
-    "name": "Imam Mahdi Islamic Centre",
-    "address": "7340 Bayview Avenue Thornhill",
-    "lat": 43.8111725,
-    "lng": -79.4001251,
-    "website": "https://imammahdi.ca/",
-    "calc": {
-      "method": "NorthAmerica",
-      "madhab": "hanafi"
-    },
-    "iqamah": {
-      "fajr": {
-        "type": "fixed",
-        "time": "04:56"
-      },
-      "dhuhr": {
-        "type": "fixed",
-        "time": "13:18"
-      },
-      "maghrib": {
-        "type": "fixed",
-        "time": "20:19"
-      }
-    },
-    "jumuah": [
-      {
-        "khutbah": "13:30"
       }
     ],
     "lastVerified": "2026-08-29",
@@ -3716,47 +3652,6 @@
       },
       {
         "khutbah": "15:10"
-      }
-    ],
-    "lastVerified": "2026-08-29",
-    "needsReview": true,
-    "source": "discovery"
-  },
-  {
-    "id": "islamic-centre-of-cambridge",
-    "name": "Islamic Centre of Cambridge",
-    "address": "1550 Dunbar Rd, Cambridge, ON N1R 8J5, Canada",
-    "lat": 43.390551599999995,
-    "lng": -80.31781269999999,
-    "website": "http://iccambridge.com/",
-    "calc": {
-      "method": "NorthAmerica",
-      "madhab": "hanafi"
-    },
-    "iqamah": {
-      "fajr": {
-        "type": "fixed",
-        "time": "05:45"
-      },
-      "asr": {
-        "type": "fixed",
-        "time": "18:30"
-      },
-      "maghrib": {
-        "type": "fixed",
-        "time": "20:08"
-      },
-      "isha": {
-        "type": "fixed",
-        "time": "21:45"
-      }
-    },
-    "jumuah": [
-      {
-        "khutbah": "13:30"
-      },
-      {
-        "khutbah": "14:45"
       }
     ],
     "lastVerified": "2026-08-29",
