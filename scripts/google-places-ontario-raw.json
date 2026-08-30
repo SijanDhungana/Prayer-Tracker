@@ -1,0 +1,2490 @@
+[
+  {
+    "placeId": "ChIJX5ivsb4zK4gRjCI1UfKqlH0",
+    "name": "Al-Firdous Islamic Centre",
+    "lat": 43.7066163,
+    "lng": -79.44311470000001,
+    "address": "342A Marlee Ave, North York, ON M6B 3H8, Canada",
+    "website": "http://alfirdous.ca/"
+  },
+  {
+    "placeId": "ChIJkyfDe-wzK4gR6NnSyHfNsog",
+    "name": "Alqalam Islamic community Center",
+    "lat": 43.6979113,
+    "lng": -79.4515888,
+    "address": "2430 Dufferin St, York, ON M6E 3T1, Canada",
+    "website": "https://alqalamcenter.org/"
+  },
+  {
+    "placeId": "ChIJWYls4Ms0K4gRYYmwyFpvgyM",
+    "name": "Masjid Toronto",
+    "lat": 43.655407600000004,
+    "lng": -79.3857459,
+    "address": "168 Dundas St W, Toronto, ON M5G 1C6, Canada",
+    "website": "http://www.masjidtoronto.com/"
+  },
+  {
+    "placeId": "ChIJjaZGyLM0K4gRF1LONDY8Xp4",
+    "name": "Toronto Islamic Centre & Community Services",
+    "lat": 43.672526399999995,
+    "lng": -79.3874306,
+    "address": "817 Yonge St, Toronto, ON M4W 2G9, Canada",
+    "website": "http://www.torontoislamiccentre.com/"
+  },
+  {
+    "placeId": "ChIJ0XzFD80zK4gRT42OyruG_4Y",
+    "name": "Masjid Daru-Al-Ullum Education Community center [Car Wash Building]",
+    "lat": 43.7207285,
+    "lng": -79.4571387,
+    "address": "16 Orfus Rd Unit 204, North York, ON M6A 2T5, Canada",
+    "website": null
+  },
+  {
+    "placeId": "ChIJ1w0ix1UxK4gRTK60h_Zksz4",
+    "name": "Masjid-El-Noor",
+    "lat": 43.6896876,
+    "lng": -79.47194669999999,
+    "address": "277 Scott Rd, York, ON M6M 3V3, Canada",
+    "website": "http://www.masjidelnoor.ca/"
+  },
+  {
+    "placeId": "ChIJVTgGL_zN1IkRiHCUT34RCSg",
+    "name": "Masjid Darussalam (Islamic Society of Toronto)",
+    "lat": 43.7047205,
+    "lng": -79.3515266,
+    "address": "20 Overlea Blvd, East York, ON M4H 1A4, Canada",
+    "website": "http://islamicsocietyoftoronto.com/"
+  },
+  {
+    "placeId": "ChIJ4bQKiYdDK4gRTjvESYsZu9A",
+    "name": "ISNA Canada",
+    "lat": 43.520475,
+    "lng": -79.650684,
+    "address": "2200 S Sheridan Way, Mississauga, ON L5J 2M4, Canada",
+    "website": "http://www.isnacanada.com/"
+  },
+  {
+    "placeId": "ChIJK0CdnYfM1IkRUrlZPhRyqbA",
+    "name": "Madinah Masjid (Mosque)",
+    "lat": 43.6804494,
+    "lng": -79.3361776,
+    "address": "1015 Danforth Ave, Toronto, ON M4J 1M1, Canada",
+    "website": "https://madinahmasjid.ca/"
+  },
+  {
+    "placeId": "ChIJQYiHZTHL1IkRnElmQH_Ymks",
+    "name": "Masjid Toronto @ Adelaide",
+    "lat": 43.6514455,
+    "lng": -79.3743362,
+    "address": "86 Adelaide St E, Toronto, ON M5C 1K6, Canada",
+    "website": "https://centres.macnet.ca/masjidtoronto/"
+  },
+  {
+    "placeId": "ChIJN2kUT-kzK4gRciXAoNiBbhc",
+    "name": "Jamaat of Ontario",
+    "lat": 43.698610099999996,
+    "lng": -79.4550623,
+    "address": "110 Fairbank Ave, York, ON M6E 3Z1, Canada",
+    "website": null
+  },
+  {
+    "placeId": "ChIJtdErZ0M0K4gRXljhU3ZBc-Q",
+    "name": "Islamic Information & Dawah Centre International",
+    "lat": 43.659633,
+    "lng": -79.43698640000001,
+    "address": "1168 Bloor St W, Toronto, ON M6H 1N2, Canada",
+    "website": "http://www.islaminfo.com/"
+  },
+  {
+    "placeId": "ChIJaXQJQQXO1IkRqfCFHBSfiYU",
+    "name": "Masjid Al-Hidaya (Toronto Markaz)",
+    "lat": 43.735518,
+    "lng": -79.2804141,
+    "address": "1100 Birchmount Rd, Scarborough, ON M1K 5H9, Canada",
+    "website": "http://mah.ad-din.site/"
+  },
+  {
+    "placeId": "ChIJQcylZUfL1IkR8o9jkYPLAsI",
+    "name": "Masjid Omar Bin Al-Khatab",
+    "lat": 43.657341599999995,
+    "lng": -79.3653326,
+    "address": "232 Parliament St, Toronto, ON M5A 2Z4, Canada",
+    "website": "https://www.masjidomarbinkhatab.ca/"
+  },
+  {
+    "placeId": "ChIJ3cqDLzE0K4gRaHTU24QQL2c",
+    "name": "Jami Mosque Toronto | ISNA Canada",
+    "lat": 43.6533245,
+    "lng": -79.454465,
+    "address": "56 Boustead Ave, Toronto, ON M6R 1Y9, Canada",
+    "website": "http://www.isnacanada.com/our-spaces/jami-masjid/"
+  },
+  {
+    "placeId": "ChIJLyRYVkbL1IkRIDC8ywmda3Q",
+    "name": "Masjidur Rahmah",
+    "lat": 43.6599009,
+    "lng": -79.3663339,
+    "address": "328 Parliament St, Toronto, ON M5A 2Z7, Canada",
+    "website": "https://centraltorontoislamicfoundation.com/"
+  },
+  {
+    "placeId": "ChIJZyS2C9TN1IkRn9ic5IoiQWc",
+    "name": "Masjid Al Abedeen, Islamic Research Center of Canada Inc.",
+    "lat": 43.7112398,
+    "lng": -79.29515599999999,
+    "address": "1 Stamford Square N, Scarborough, ON M1L 1X4, Canada",
+    "website": "http://www.irccan.com/"
+  },
+  {
+    "placeId": "ChIJr5wvApUoK4gRt79oNUC2EBk",
+    "name": "Baitul Islam Mosque",
+    "lat": 43.864863299999996,
+    "lng": -79.54299820000001,
+    "address": "10610 Jane St, Maple, ON L6A 3A2, Canada",
+    "website": "http://www.ahmadiyya.ca/"
+  },
+  {
+    "placeId": "ChIJxXe-YXExK4gRGK6eVwSJ1ZU",
+    "name": "Mevlana Masjid",
+    "lat": 43.727680199999995,
+    "lng": -79.4751815,
+    "address": "951 Wilson Ave #7, North York, ON M3K 2A7, Canada",
+    "website": "https://a-than.info/vv.php?code=MEVLANA01"
+  },
+  {
+    "placeId": "ChIJ65AnsFjS1IkR6YMxGOwfMiA",
+    "name": "Abu Huraira Centre",
+    "lat": 43.7731126,
+    "lng": -79.334424,
+    "address": "270 Yorkland Blvd, North York, ON M2J 5C9, Canada",
+    "website": "http://www.abuhuraira.org/"
+  },
+  {
+    "placeId": "ChIJo-Z6jyZHK4gR1JuKMloVayg",
+    "name": "Al-Eman Islamic Centre of Canada INC.",
+    "lat": 43.591286,
+    "lng": -79.6350659,
+    "address": "265 Enfield Pl #100d, Mississauga, ON L5B 3Y6, Canada",
+    "website": "http://www.al-eman.ca/"
+  },
+  {
+    "placeId": "ChIJjaf0EB9BK4gRB68C-uVKDa4",
+    "name": "Masjid Al-Farooq",
+    "lat": 43.586849199999996,
+    "lng": -79.6759623,
+    "address": "935 Eglinton Ave W, Mississauga, ON L5V 1R6, Canada",
+    "website": "http://www.masjidfarooq.com/"
+  },
+  {
+    "placeId": "ChIJ-617Q8xGK4gRrt2hFyuy8qw",
+    "name": "Muslim Welfare Center - Mussalah Al-Abbas",
+    "lat": 43.575226099999995,
+    "lng": -79.6467909,
+    "address": "3490 Mavis Rd, Mississauga, ON L5C 1T8, Canada",
+    "website": "http://www.muslimwelfarecentre.com/"
+  },
+  {
+    "placeId": "ChIJGzEVawBHK4gRcDM59P2-HYc",
+    "name": "Al eman masjid",
+    "lat": 43.5908504,
+    "lng": -79.63536119999999,
+    "address": "265 Enfield Pl, Mississauga, ON L5B 3Y7, Canada",
+    "website": null
+  },
+  {
+    "placeId": "ChIJ8cJtMKxHK4gR-TbGLJeGGcQ",
+    "name": "Jamia Islamia Canada",
+    "lat": 43.587334999999996,
+    "lng": -79.597608,
+    "address": "2380 Tedlo St, Mississauga, ON L5A 3V3, Canada",
+    "website": "http://www.jamiaislamia.org/"
+  },
+  {
+    "placeId": "ChIJI2xwZrBGK4gRWwKXwPwkqvs",
+    "name": "Shalimar Islamic Centre",
+    "lat": 43.5583282,
+    "lng": -79.6426285,
+    "address": "3024 Cedarglen Gate #79, Mississauga, ON L5C 4S3, Canada",
+    "website": "http://shalimarislamiccentre.ca/"
+  },
+  {
+    "placeId": "ChIJbflstFA_K4gRQsp2IP2xDJU",
+    "name": "Jame Masjid",
+    "lat": 43.632425500000004,
+    "lng": -79.65782399999999,
+    "address": "5761 Coopers Ave, Mississauga, ON L4Z 0C5, Canada",
+    "website": "http://ipcontario.com/"
+  },
+  {
+    "placeId": "ChIJX9X7QqM4K4gRECJDfibJWr4",
+    "name": "Anatolia Islamic Centre, Mississauga",
+    "lat": 43.633333300000004,
+    "lng": -79.6325,
+    "address": "5280 Maingate Dr, Mississauga, ON L4W 1G5, Canada",
+    "website": "http://www.anatoliacentre.ca/"
+  },
+  {
+    "placeId": "ChIJNZqNSQBHK4gR3dGUswFVx5M",
+    "name": "NOOR UL QURAN CANADA",
+    "lat": 43.5829543,
+    "lng": -79.6212336,
+    "address": "3154 Hurontario St, Mississauga, ON L5B 1N9, Canada",
+    "website": "http://noorulqurancanada.com/"
+  },
+  {
+    "placeId": "ChIJYy2J_6hAK4gR_5cgKug1Fi8",
+    "name": "Dar Al-Tawheed Islamic Centre",
+    "lat": 43.624809899999995,
+    "lng": -79.65873069999999,
+    "address": "5550 McAdam Rd, Mississauga, ON L4Z 1P1, Canada",
+    "website": "https://daraltawheed.ca/"
+  },
+  {
+    "placeId": "ChIJ73noBFBGK4gR7qKajpgxX5I",
+    "name": "Masjid Rahmatul-lil-Alameen ﷺ",
+    "lat": 43.573741600000005,
+    "lng": -79.5948822,
+    "address": "205 N Service Rd, Mississauga, ON L5A 1A4, Canada",
+    "website": "http://rahmatmasjid.com/"
+  },
+  {
+    "placeId": "ChIJy8SuegpDK4gRNDIVcJa36cA",
+    "name": "Muslim Neighbour Nexus",
+    "lat": 43.5354423,
+    "lng": -79.7231216,
+    "address": "3520 Odyssey Dr, Mississauga, ON L5M 7N4, Canada",
+    "website": "http://mnnexus.ca/"
+  },
+  {
+    "placeId": "ChIJsXM6peJCK4gR_92p5EgQgXA",
+    "name": "Jame Masjid Oakville : Noor-UL- Haram",
+    "lat": 43.5062809,
+    "lng": -79.6958095,
+    "address": "2478 Ninth Line, Oakville, ON L6H 7G9, Canada",
+    "website": "https://wimcanada.com/"
+  },
+  {
+    "placeId": "ChIJTXYv4-xHK4gRBUFgEUwubR8",
+    "name": "Mississauga Muslim Community Center",
+    "lat": 43.607951799999995,
+    "lng": -79.5809544,
+    "address": "2505 Dixie Rd, Mississauga, ON L4Y 2A1, Canada",
+    "website": "https://mmcc-canada.org/"
+  },
+  {
+    "placeId": "ChIJ80Xa1LtDK4gRYzCzBvwLzH4",
+    "name": "Islamic Community Centre of Ontario (ICCO) MAC Masjid/Mosque",
+    "lat": 43.5286287,
+    "lng": -79.6810974,
+    "address": "2550 Dunwin Dr, Mississauga, ON L5L 1T1, Canada",
+    "website": "http://icco.ca/"
+  },
+  {
+    "placeId": "ChIJkUs5JABdK4gRHB7HXxnwj9k",
+    "name": "Dar Foundation",
+    "lat": 43.442274999999995,
+    "lng": -79.69488419999999,
+    "address": "485 Morden Rd, Oakville, ON L6K 3W6, Canada",
+    "website": "http://www.darfoundation.com/"
+  },
+  {
+    "placeId": "ChIJMVrMTVBCK4gRcanPyih9C-w",
+    "name": "West End Islamic Center",
+    "lat": 43.5307896,
+    "lng": -79.7186414,
+    "address": "4161 Sladeview Crescent #12-13, Mississauga, ON L5L 5R3, Canada",
+    "website": "https://www.weicenter.ca/"
+  },
+  {
+    "placeId": "ChIJjbr2gVduK4gRMaTuq3rI-W0",
+    "name": "Islamic Community Centre of Milton",
+    "lat": 43.5425215,
+    "lng": -79.8769341,
+    "address": "8069 Esquesing Line, Milton, ON L9T 7L4, Canada",
+    "website": "http://www.icnamilton.com/"
+  },
+  {
+    "placeId": "ChIJiUrMvc5BK4gRAph68tRWhWo",
+    "name": "Qasimul Uloom Islamic Centre Canada",
+    "lat": 43.5899794,
+    "lng": -79.72337689999999,
+    "address": "Streetsville Plaza, 51 Queen St N, Mississauga, ON L5N 1A1, Canada",
+    "website": "https://qasimululoomcanada.com/"
+  },
+  {
+    "placeId": "ChIJNYXqYUEWK4gR7FHXauJLrLQ",
+    "name": "MASJID Jamiat-Ul-Ansar,",
+    "lat": 43.7374669,
+    "lng": -79.7694988,
+    "address": "1 Masjid Dr, Brampton, ON L6R 2R8, Canada",
+    "website": "http://www.jamiatalansar.ca/"
+  },
+  {
+    "placeId": "ChIJ06ra750WK4gRPuSaLIn5LFA",
+    "name": "Masjid Mubarak",
+    "lat": 43.716761399999996,
+    "lng": -79.8010458,
+    "address": "10545 Hurontario St, Brampton, ON L6Z 2V9, Canada",
+    "website": "http://ahmadiyya.ca/"
+  },
+  {
+    "placeId": "ChIJabySEhcWK4gR5aZUlZUZk-8",
+    "name": "Brampton Jamatkhana",
+    "lat": 43.7270916,
+    "lng": -79.7532999,
+    "address": "525 N Park Dr, Brampton, ON L6S 5X4, Canada",
+    "website": null
+  },
+  {
+    "placeId": "ChIJZ-un38kXK4gRcN_NukApCr4",
+    "name": "Brampton North Community Centre",
+    "lat": 43.7569091,
+    "lng": -79.7629872,
+    "address": "20 Dewside Dr #7, Brampton, ON L6R 3Y3, Canada",
+    "website": "http://bnlc.ca/"
+  },
+  {
+    "placeId": "ChIJw8P30ek9K4gRQKemdOPzuaU",
+    "name": "Bramalea Islamic Cultural Centre (BICC)",
+    "lat": 43.7205951,
+    "lng": -79.71832069999999,
+    "address": "7, 25 Kings Cross Rd B, Brampton, ON L6T 3V5, Canada",
+    "website": "http://bramaleaicc.ca/"
+  },
+  {
+    "placeId": "ChIJ327YNDE8K4gR2rTqQBU9ges",
+    "name": "Jame Makki Masjid",
+    "lat": 43.7217184,
+    "lng": -79.69055620000002,
+    "address": "8450 Torbram Rd, Brampton, ON L6T 4M9, Canada",
+    "website": "http://www.makkimasjid.ca/"
+  },
+  {
+    "placeId": "ChIJd_aMOYYUK4gR9ldZVnP0_-0",
+    "name": "Masjid Al-Salam / Al-Salam School",
+    "lat": 43.676720599999996,
+    "lng": -79.8196827,
+    "address": "160 Salvation Rd, Brampton, ON L7A 0W7, Canada",
+    "website": "http://www.mpicbrampton.com/"
+  },
+  {
+    "placeId": "ChIJl1XwxTE-K4gRXdyxNj711uU",
+    "name": "Masjid-E-Aqsa",
+    "lat": 43.678338,
+    "lng": -79.7286244,
+    "address": "30 Rambler Dr, Brampton, ON L6W 1E2, Canada",
+    "website": "http://www.masjidaqsabrampton.org/"
+  },
+  {
+    "placeId": "ChIJwQ6dVRdTV0ARLce3NrlpZGk",
+    "name": "Sayeda Khadija Centre",
+    "lat": 43.650555600000004,
+    "lng": -79.70833329999999,
+    "address": "7150 Edwards Blvd, Mississauga, ON L5S 1Z1, Canada",
+    "website": "http://www.sayedakhadijacentre.com/"
+  },
+  {
+    "placeId": "ChIJQ3j4YT4UK4gRZYl2yKB49ag",
+    "name": "Brampton Islamic Centre",
+    "lat": 43.7018546,
+    "lng": -79.80468979999999,
+    "address": "6 Lowry Dr, Brampton, ON L7A 1C4, Canada",
+    "website": "https://bsia.ca/"
+  },
+  {
+    "placeId": "ChIJuQaV9UMWK4gRDn6e-PFYss4",
+    "name": "Great Lakes Dr s/of Masjid Dr",
+    "lat": 43.736832,
+    "lng": -79.769173,
+    "address": "Brampton, ON L6R 2R8, Canada",
+    "website": null
+  },
+  {
+    "placeId": "ChIJpeUweRE9K4gRCmlsr2jEeac",
+    "name": "Ar-Rashaad Centre",
+    "lat": 43.75804060000001,
+    "lng": -79.71159689999999,
+    "address": "18 Automatic Rd #2, Brampton, ON L6S 5N5, Canada",
+    "website": "http://www.arrashaad.com/"
+  },
+  {
+    "placeId": "ChIJ3eM1xCY-K4gRYdBBvJRLDEE",
+    "name": "Masjid Sirat Al Mustaqim",
+    "lat": 43.68695,
+    "lng": -79.73841,
+    "address": "105 Kennedy Rd S, Brampton, ON L6W 3G2, Canada",
+    "website": "http://www.thestraightpath.ca/"
+  },
+  {
+    "placeId": "ChIJuyS-qf47K4gROkh8wC8tZ10",
+    "name": "Malton Mosque",
+    "lat": 43.7063889,
+    "lng": -79.6444444,
+    "address": "7097 Airport Rd, Mississauga, ON L4T 2G7, Canada",
+    "website": "http://maltonmasjid.ca/"
+  },
+  {
+    "placeId": "ChIJLRaERRMrK4gRQT-G2Kz0bWI",
+    "name": "Dawoodi Bohra Al Masjid Al Saifee Anjuman-e-Burhani (Toronto)",
+    "lat": 43.849096499999995,
+    "lng": -79.408682,
+    "address": "8929 Bayview Ave, Richmond Hill, ON L4B 4W4, Canada",
+    "website": "https://www.torontojamat.com/"
+  },
+  {
+    "placeId": "ChIJvX8O8srU1IkR61_PPWNeQ38",
+    "name": "Richmond Hill Muslim Association",
+    "lat": 43.8493521,
+    "lng": -79.3781978,
+    "address": "155 East Beaver Creek Rd Unit 16, Richmond Hill, ON L4B 2N1, Canada",
+    "website": "http://rhmacanada.com/"
+  },
+  {
+    "placeId": "ChIJF_cCrvArK4gRN3-p7ZWPa5I",
+    "name": "Jaffari Community Centre",
+    "lat": 43.8417281,
+    "lng": -79.4607315,
+    "address": "9000 Bathurst St, Thornhill, ON L4J 8A7, Canada",
+    "website": "http://www.jaffari.org/"
+  },
+  {
+    "placeId": "ChIJCfFFDlYqK4gR5EnVG9nJwK0",
+    "name": "Al-Nadwa Educational Islamic Centre",
+    "lat": 43.882276999999995,
+    "lng": -79.4406987,
+    "address": "2 Levendale Rd, Richmond Hill, ON L4C 4H2, Canada",
+    "website": "https://alnadwacentre.ca/"
+  },
+  {
+    "placeId": "ChIJz1CSgevW1IkR1X7C59Fu9oU",
+    "name": "Islamic Society of Markham - Jam'e Masjid Markham",
+    "lat": 43.841651299999995,
+    "lng": -79.2646632,
+    "address": "2900 Denison St, Markham, ON L3S 4J8, Canada",
+    "website": "http://www.markhammasjid.ca/"
+  },
+  {
+    "placeId": "ChIJQaFQMTkvK4gRWEAN2OURIDA",
+    "name": "Islamic Society of Vaughan",
+    "lat": 43.8296541,
+    "lng": -79.5328597,
+    "address": "9100 Jane St Unit 22-24, Vaughan, ON L4K 0L8, Canada",
+    "website": "https://islamicsocietyvaughan.ca/"
+  },
+  {
+    "placeId": "ChIJEdrNNBjVKogRaG7HkjvnvTc",
+    "name": "Islamic Society of York",
+    "lat": 43.935995899999995,
+    "lng": -79.4068692,
+    "address": "1380 Stouffville Rd, Richmond Hill, ON L4E 3S3, Canada",
+    "website": "https://isyr.org/"
+  },
+  {
+    "placeId": "ChIJ7wtjYsAsK4gRxEhQ2h_-jj4",
+    "name": "Imam Mahdi Islamic Centre",
+    "lat": 43.811102999999996,
+    "lng": -79.4001572,
+    "address": "7340 Bayview Ave, Thornhill, ON L3T 2R7, Canada",
+    "website": "http://imammahdi.ca/"
+  },
+  {
+    "placeId": "ChIJSYv6-gIrK4gRH5yKlXnZTQc",
+    "name": "Rahmat Centre",
+    "lat": 43.8775258,
+    "lng": -79.3889106,
+    "address": "9853 Leslie St, Richmond Hill, ON L4B 3Y4, Canada",
+    "website": "http://rahmatcentre.blogspot.com/?m=1"
+  },
+  {
+    "placeId": "ChIJx_ENYVowV0ARXQZdOyb3nnk",
+    "name": "Islamic Centre of Markham / Masjid Darul Iman",
+    "lat": 43.9050876,
+    "lng": -79.2636058,
+    "address": "1330 Castlemore Ave, Markham, ON L6E 1A4, Canada",
+    "website": "http://www.daruliman.org/"
+  },
+  {
+    "placeId": "ChIJYYINtI_R1IkRrumwL2cJmRk",
+    "name": "Masjid Huzaifah",
+    "lat": 43.7701323,
+    "lng": -79.2806615,
+    "address": "18 Progress Ave, Scarborough, ON M1P 2Y4, Canada",
+    "website": "http://www.masjidhuzaifah.com/"
+  },
+  {
+    "placeId": "ChIJneALN97Q1IkRb76QeBK4M94",
+    "name": "Islamic Foundation of Toronto",
+    "lat": 43.797987000000006,
+    "lng": -79.2417524,
+    "address": "441 Nugget Ave, Scarborough, ON M1S 5E1, Canada",
+    "website": "http://www.islamicfoundation.ca/"
+  },
+  {
+    "placeId": "ChIJBdkI_OMxK4gR-9CgOJHWKTc",
+    "name": "Imdadul Islamic Centre",
+    "lat": 43.758986199999995,
+    "lng": -79.486989,
+    "address": "26 Lepage Ct, North York, ON M3J 1Z9, Canada",
+    "website": "https://imdadulmasjid.com/"
+  },
+  {
+    "placeId": "ChIJIyhFkFjQ1IkR4Xnc6VHSzOc",
+    "name": "Masjid Al-Jannah",
+    "lat": 43.7764592,
+    "lng": -79.2302849,
+    "address": "2201 Ellesmere Rd, Scarborough, ON M1G 3M6, Canada",
+    "website": "http://www.slifo.ca/"
+  },
+  {
+    "placeId": "ChIJFw51TMPR1IkRDCMrsPoLD3U",
+    "name": "Scarborough Muslim Association - Jame Abu Bakr Siddique Masjid",
+    "lat": 43.7516537,
+    "lng": -79.26225300000002,
+    "address": "2665 Lawrence Ave E, Scarborough, ON M1P 2S2, Canada",
+    "website": "http://www.smacanada.ca/"
+  },
+  {
+    "placeId": "ChIJOeCU5kIwK4gRwur0_CnphcM",
+    "name": "Talimul Islam Masjid",
+    "lat": 43.7406521,
+    "lng": -79.5357676,
+    "address": "86 Rivalda Rd, North York, ON M9M 2M8, Canada",
+    "website": "https://talimul.com/"
+  },
+  {
+    "placeId": "ChIJDQWoUzZBK4gRkWxZbFouzVQ",
+    "name": "Al Falah Islamic Centre",
+    "lat": 43.5040009,
+    "lng": -79.7362505,
+    "address": "391 Burnhamthorpe Rd E, Oakville, ON L6H 7B4, Canada",
+    "website": "https://icna.website/alfalahcentre/"
+  },
+  {
+    "placeId": "ChIJ1aiuBXJvK4gRp_j_13pZkyA",
+    "name": "Muslim Association Of Milton (MAM)",
+    "lat": 43.456938099999995,
+    "lng": -79.8020801,
+    "address": "4269 Regional Rd 25, Oakville, ON L9E 0K2, Canada",
+    "website": "http://miltonmasjid.com/"
+  },
+  {
+    "placeId": "ChIJ9XSRIFlgK4gRhVMZBTuCxV0",
+    "name": "Halton Islamic Association (HIA) - Masjid",
+    "lat": 43.367692600000005,
+    "lng": -79.76916059999999,
+    "address": "4310 Fairview St, Burlington, ON L7L 0C4, Canada",
+    "website": "http://www.masjidhalton.com/"
+  },
+  {
+    "placeId": "ChIJCROxgc1vK4gRXNw_DvJ3f_o",
+    "name": "Masjid Khadijah (mosque)",
+    "lat": 43.5199323,
+    "lng": -79.8718785,
+    "address": "100 Nipissing Rd #7, Milton, ON L9T 5B2, Canada",
+    "website": "http://masjidkhadijah.ca/"
+  },
+  {
+    "placeId": "ChIJKb4TKXRqK4gRbrNoZcwrwNA",
+    "name": "ICNA Ar-Rehman Islamic Center",
+    "lat": 43.5823496,
+    "lng": -79.74308789999999,
+    "address": "6120 Montevideo Rd, Mississauga, ON L5N 3W5, Canada",
+    "website": "https://aric-icna.ca/"
+  },
+  {
+    "placeId": "ChIJVcb3sNxrK4gR2O2qrln-hyA",
+    "name": "Meadowvale Islamic Centre",
+    "lat": 43.5809972,
+    "lng": -79.7619358,
+    "address": "6508 Winston Churchill Blvd, Mississauga, ON L5N 3W4, Canada",
+    "website": "https://mici.org/"
+  },
+  {
+    "placeId": "ChIJFc2Q3R8d1YkR1r2NiC7kSpU",
+    "name": "Oshawa Mosque مسجد",
+    "lat": 43.892490099999996,
+    "lng": -78.8623717,
+    "address": "23 Lloyd St, Oshawa, ON L1H 1X2, Canada",
+    "website": "http://www.oshawamosque.com/"
+  },
+  {
+    "placeId": "ChIJpcFD67kd1YkRvQw-WPpQaoo",
+    "name": "Muslim Association of Whitby",
+    "lat": 43.886534399999995,
+    "lng": -78.9011033,
+    "address": "221 Kendalwood Rd, Whitby, ON L1N 2G1, Canada",
+    "website": "http://www.whitbymasjid.ca/"
+  },
+  {
+    "placeId": "ChIJZ2zk-rkd1YkRFLBSF74RPyc",
+    "name": "Masjid-e-Ayesha — Whitby",
+    "lat": 43.8864953,
+    "lng": -78.9011091,
+    "address": "221 Kendalwood Rd, Whitby, ON L1N 2G1, Canada",
+    "website": "https://www.whitbymasjid.ca/"
+  },
+  {
+    "placeId": "ChIJ-VN9S0Ub1YkR-aH_l1Q1xuA",
+    "name": "Al Rayan Islamic Centre",
+    "lat": 43.9113338,
+    "lng": -78.7866015,
+    "address": "1660 Durham Regional Hwy 2, Courtice, ON L1E 2R6, Canada",
+    "website": "https://alrayanislamiccentre.org/"
+  },
+  {
+    "placeId": "ChIJi80N-gwc1YkRNxinx5OUwP4",
+    "name": "Ummah Foundation Of Durham",
+    "lat": 43.9283534,
+    "lng": -78.90860409999999,
+    "address": "1423 Thornton Rd N, Oshawa, ON L1L 0P6, Canada",
+    "website": "http://ummahfoundation.ca/"
+  },
+  {
+    "placeId": "ChIJf-3GGRQg1YkRqCXs_YBBJ4A",
+    "name": "Islamic Society of Ajax - Masjid Quba",
+    "lat": 43.8876347,
+    "lng": -79.0348838,
+    "address": "1501 Harwood Ave N, Ajax, ON L1T 4T9, Canada",
+    "website": "http://www.ajaxmasjid.ca/"
+  },
+  {
+    "placeId": "ChIJDdr4agcb1YkRSltWcNsNBXg",
+    "name": "Al-Arqam Islamic Centre",
+    "lat": 43.9492256,
+    "lng": -78.8534025,
+    "address": "1709 Harmony Rd N, Oshawa, ON L1K 0Z8, Canada",
+    "website": "http://www.alarqam.ca/"
+  },
+  {
+    "placeId": "ChIJZ5rhm1sf1YkRns1bTIS5mWI",
+    "name": "Iqra Masjid - Durham Islamic Centre",
+    "lat": 43.920398299999995,
+    "lng": -78.9826496,
+    "address": "4618 Country Ln, Whitby, ON L1P 1Y7, Canada",
+    "website": "https://durhamislamiccentre.ca/"
+  },
+  {
+    "placeId": "ChIJKTPVM97f1IkRK_bwkLehyvo",
+    "name": "Masjid Al-Aqsaa",
+    "lat": 43.8508907,
+    "lng": -79.022487,
+    "address": "43 Station St, Ajax, ON L1S 1S2, Canada",
+    "website": "http://masjidalaqsaa.com/"
+  },
+  {
+    "placeId": "ChIJvSB7CvAf1YkRjHmkySY3baM",
+    "name": "WHITBY MUSLIM SOCIETY (Masjid)",
+    "lat": 43.877959999999995,
+    "lng": -78.9437961,
+    "address": "201 Centre St S, Whitby, ON L1N 4V7, Canada",
+    "website": "https://whitbymuslims.ca/"
+  },
+  {
+    "placeId": "ChIJ_1yM-BHf1IkR-iVl3tfx2v4",
+    "name": "Masjid Usman(Pickering Islamic Centre)",
+    "lat": 43.853394,
+    "lng": -79.0765077,
+    "address": "2065 Brock Rd, Pickering, ON L1X 0E2, Canada",
+    "website": "http://www.masjid.ca/"
+  },
+  {
+    "placeId": "ChIJbbOKDMsA1YkRrhfRpqebPvE",
+    "name": "Masjid Alhakeem Bowmanville",
+    "lat": 43.9126714,
+    "lng": -78.7239152,
+    "address": "2197 Maple Grove Rd, Bowmanville, ON L1C 6N1, Canada",
+    "website": "https://alhakeem.ca/"
+  },
+  {
+    "placeId": "ChIJzRDrZoqp1YkRFltzQom1RoU",
+    "name": "Masjid Alwadood",
+    "lat": 43.976653899999995,
+    "lng": -78.6158117,
+    "address": "111 Church St N, Orono, ON L0B 1M0, Canada",
+    "website": "https://www.wadood.ca/"
+  },
+  {
+    "placeId": "ChIJNypIlSzf1IkRE6rbWl4326o",
+    "name": "Jamia Masjid Sayyidah Zainab مسجد",
+    "lat": 43.85149200000001,
+    "lng": -79.0232333,
+    "address": "40 Station St, Ajax, ON L1S 2H8, Canada",
+    "website": "https://ajaxmosque.ca/"
+  },
+  {
+    "placeId": "ChIJDdy5gHXf1IkRfUxPrt_IVO0",
+    "name": "Masjid Subhan Ajax",
+    "lat": 43.8556412,
+    "lng": -79.048777,
+    "address": "465 Kingston Rd W, Ajax, ON L1S 6M1, Canada",
+    "website": "https://www.subhanislamicassociation.org/"
+  },
+  {
+    "placeId": "ChIJRRkzVOcB1YkRQwn538rAEUE",
+    "name": "Islamic Centre of Bowmanville",
+    "lat": 43.9111013,
+    "lng": -78.6882938,
+    "address": "4 Division St, Bowmanville, ON L1C 2Z1, Canada",
+    "website": "https://icbmasjid.com/"
+  },
+  {
+    "placeId": "ChIJmxr9NgAh1YkRxhVyNAI_KJs",
+    "name": "Baitul Mahdi",
+    "lat": 43.9262237,
+    "lng": -79.042059,
+    "address": "3505 Salem Rd, Pickering, ON L1X 0J7, Canada",
+    "website": "https://www.ahmadiyya.ca/mosque"
+  },
+  {
+    "placeId": "ChIJxdO9OQAb1YkRkQlL0Y7WObk",
+    "name": "Al-Arqam Islamic Centre - Friday Location",
+    "lat": 43.939188,
+    "lng": -78.88459379999999,
+    "address": "1626 Simcoe St N, Oshawa, ON L1G 4X9, Canada",
+    "website": null
+  },
+  {
+    "placeId": "ChIJs5_Ellvf1IkRzkp859i8gvY",
+    "name": "Durham United Ahlul Bayt Centre- Dua Centre",
+    "lat": 43.8324607,
+    "lng": -79.032327,
+    "address": "487 Westney Rd S, Ajax, ON L1S 6W7, Canada",
+    "website": "https://www.duacentre.ca/"
+  },
+  {
+    "placeId": "ChIJm65ciYWbLIgRqayD_u67McI",
+    "name": "Hamilton Downtown Mosque",
+    "lat": 43.2611158,
+    "lng": -79.8755783,
+    "address": "221 York Blvd, Hamilton, ON L8R 1Y6, Canada",
+    "website": "http://downtownmosque.com/"
+  },
+  {
+    "placeId": "ChIJYUIpSe6bLIgR7zY8DXc8_Bk",
+    "name": "Ibrahim Jame Mosque",
+    "lat": 43.251397,
+    "lng": -79.84415299999999,
+    "address": "778 King St E, Hamilton, ON L8M 1A6, Canada",
+    "website": "http://www.ibrahimjamemosque.ca/"
+  },
+  {
+    "placeId": "ChIJX_V6X_CZLIgRdrBWh0yo63s",
+    "name": "Hamilton Mountain Masjid",
+    "lat": 43.1955593,
+    "lng": -79.820593,
+    "address": "1545 Stone Church Rd E, Hamilton, ON L8W 3P8, Canada",
+    "website": "http://mahcanada.com/"
+  },
+  {
+    "placeId": "ChIJ3Z_ePACbLIgRYbz1dxHGVpE",
+    "name": "Mohawk Mashjid/Mosque (Room A006c)",
+    "lat": 43.237978399999996,
+    "lng": -79.8849825,
+    "address": "Hamilton, ON L9C 0E5, Canada",
+    "website": "https://www.facebook.com/MHAWK.ISA/"
+  },
+  {
+    "placeId": "ChIJuyPWANCYLIgR8-DbE7Tf3is",
+    "name": "Umar Mosque",
+    "lat": 43.2465147,
+    "lng": -79.7741508,
+    "address": "734 Rennie St, Hamilton, ON L8H 3R2, Canada",
+    "website": "https://www.hamiltonmosque.com/"
+  },
+  {
+    "placeId": "ChIJiUxQb_uZLIgRj3EXeOjFRp4",
+    "name": "Faizan-E-Madinah Hamilton Masjid & islamic centre",
+    "lat": 43.237175099999995,
+    "lng": -79.7892829,
+    "address": "1202 Dunsmure Rd, Hamilton, ON L8H 1L4, Canada",
+    "website": "http://www.dawateislamicanada.net/"
+  },
+  {
+    "placeId": "ChIJGW9AK3ObLIgRY0eEV3kvuXc",
+    "name": "Baitun Nusrat Mosque",
+    "lat": 43.2220187,
+    "lng": -79.8510835,
+    "address": "815 Upper Sherman Ave, Hamilton, ON L8V 3M9, Canada",
+    "website": "http://ahmadiyya.ca/"
+  },
+  {
+    "placeId": "ChIJt8Ba9HSiLIgRjgKCBf8dYYg",
+    "name": "Bošnjački Islamski Centar Hamilton",
+    "lat": 43.231404,
+    "lng": -79.7360332,
+    "address": "202 Barton St, Stoney Creek, ON L8E 2K2, Canada",
+    "website": "http://bichamilton.com/"
+  },
+  {
+    "placeId": "ChIJs1nRoAuPLIgR5Y0v1nYSBYo",
+    "name": "Sayyidah Aminah Islamic Centre",
+    "lat": 43.18769950000001,
+    "lng": -79.9515622,
+    "address": "1085 Southcote Rd, Ancaster, ON L9G 3L1, Canada",
+    "website": "http://saicancaster.com/"
+  },
+  {
+    "placeId": "ChIJl9pWqxqZLIgR0-gNlUm2zi4",
+    "name": "Ahmadiyya Muslim Community of Hamilton",
+    "lat": 43.2296451,
+    "lng": -79.7956818,
+    "address": "2301 King St E, Hamilton, ON L8K 1X6, Canada",
+    "website": "http://www.ahmadiyya.ca/"
+  },
+  {
+    "placeId": "ChIJq-GxNCGZLIgR1hbq0bYfdEg",
+    "name": "Ebu Bekir Islamic Centre",
+    "lat": 43.243123499999996,
+    "lng": -79.7887684,
+    "address": "238 Parkdale Ave N, Hamilton, ON L8H 5X5, Canada",
+    "website": "http://www.ebu-bekir.com"
+  },
+  {
+    "placeId": "ChIJK-_-UDqNLIgReumylPlT2G0",
+    "name": "Caledonia Islamic Center",
+    "lat": 43.0732608,
+    "lng": -79.9509437,
+    "address": "29 Caithness St E 2nd floor, Caledonia, ON N3W 1B7, Canada",
+    "website": "http://caledoniaislamiccenter.ca/"
+  },
+  {
+    "placeId": "ChIJ1ZdVNdSYLIgRxem5wE2b0z8",
+    "name": "Razavi Community Centre",
+    "lat": 43.2534065,
+    "lng": -79.78190169999999,
+    "address": "95 Mead Ave, Hamilton, ON L8H 3T6, Canada",
+    "website": "https://www.jaffari.org/rcc/"
+  },
+  {
+    "placeId": "ChIJ01dz-PqZLIgRFMSkAvtIk24",
+    "name": "Ismaili Community Centre And Jamatkhana - Hamilton",
+    "lat": 43.191565499999996,
+    "lng": -79.82077939999999,
+    "address": "61 Harlowe Rd, Hamilton, ON L8W 3R5, Canada",
+    "website": null
+  },
+  {
+    "placeId": "ChIJ4T89q4ZdK4gRNXnEY8ulg-k",
+    "name": "Madina Institute - Canada",
+    "lat": 43.4361618,
+    "lng": -79.6987111,
+    "address": "520 Speers Rd, Oakville, ON L6K 2G3, Canada",
+    "website": "https://www.madinainstitute.ca/"
+  },
+  {
+    "placeId": "ChIJ0-cnwVthK4gROrp1cgMk6sU",
+    "name": "HIA Musalla - Masjid",
+    "lat": 43.4006343,
+    "lng": -79.82310849999999,
+    "address": "4265 Thomas Alton Blvd Units 201-203, Burlington, ON L7M 0M9, Canada",
+    "website": "https://masjidhalton.com/hia-musallah/"
+  },
+  {
+    "placeId": "ChIJAbG0ROybLIgRT5PvCmpu4dw",
+    "name": "Al - Moustafa Islamic Centre",
+    "lat": 43.250055499999995,
+    "lng": -79.848579,
+    "address": "545 Main St E, Hamilton, ON L8M 1H9, Canada",
+    "website": null
+  },
+  {
+    "placeId": "ChIJ8Uh0zFVQ04kRC1wAeEQP2m4",
+    "name": "Masjid An Noor (Islamic Society of St. Catharines)",
+    "lat": 43.1663693,
+    "lng": -79.2407032,
+    "address": "117 Geneva St, St. Catharines, ON L2R 4N3, Canada",
+    "website": "https://islamicsocietyofstcatharines.ca/"
+  },
+  {
+    "placeId": "ChIJ71IJHRVD04kRkL0WwWudsdA",
+    "name": "Mosque Aisha",
+    "lat": 43.0940164,
+    "lng": -79.0848484,
+    "address": "5550 Stanley Ave, Niagara Falls, ON L2G 3X2, Canada",
+    "website": "https://www.mosqueaisha.ca/"
+  },
+  {
+    "placeId": "ChIJe6VzKIdD04kRmZoOEQHeWkk",
+    "name": "Peace Community Centre",
+    "lat": 43.0737568,
+    "lng": -79.1069699,
+    "address": "6735 Caledonia St, Niagara Falls, ON L2G 5A6, Canada",
+    "website": "https://peacecommunitycenter.com/"
+  },
+  {
+    "placeId": "ChIJARSZy9db04kRLJMzroAk1V0",
+    "name": "Mosque Aisha Thorold",
+    "lat": 43.1306053,
+    "lng": -79.1952826,
+    "address": "70 St David St E, Thorold, ON L2V 4V4, Canada",
+    "website": "https://www.mosqueaisha.ca/"
+  },
+  {
+    "placeId": "ChIJC2poh7dC04kRNin4FKl9WtQ",
+    "name": "Tawba Mosque of Niagara Falls",
+    "lat": 43.1015224,
+    "lng": -79.0400511,
+    "address": "1737 Pierce Ave, Niagara Falls, NY 14301, USA",
+    "website": "http://masjidtawba.com/"
+  },
+  {
+    "placeId": "ChIJ8ThV9hqvLIgRIe9C0xLtQhg",
+    "name": "Islamic Community of West Niagara",
+    "lat": 43.166019899999995,
+    "lng": -79.47849839999999,
+    "address": "4287 William St, Beamsville, ON L0R 1B0, Canada",
+    "website": "http://www.icwn.ca/"
+  },
+  {
+    "placeId": "ChIJ7Sg7DGlp04kR47elSiAlwX0",
+    "name": "Masjid Al Ibrahim",
+    "lat": 43.083697,
+    "lng": -78.99956379999999,
+    "address": "5604 Lindbergh Ave, Niagara Falls, NY 14304, USA",
+    "website": null
+  },
+  {
+    "placeId": "ChIJhyOJylNB04kRQK0-Tp58Df8",
+    "name": "Islamic Society of Niagara Peninsula",
+    "lat": 43.0326376,
+    "lng": -79.1067344,
+    "address": "6768 Lyons Creek Rd, Niagara Falls, ON L2G 0L6, Canada",
+    "website": "http://isnp.ca/"
+  },
+  {
+    "placeId": "ChIJ_Ulw3qVF04kRKp_CldJ7-LY",
+    "name": "ICNR-Masjid Bayt Al Iman",
+    "lat": 43.0609782,
+    "lng": -79.1751195,
+    "address": "1935 Thorold Townline Rd, Thorold, ON L0S 1K0, Canada",
+    "website": "https://icnr.ca/"
+  },
+  {
+    "placeId": "ChIJcQGMaABT04kRXywzu23z8ng",
+    "name": "Baitul Quddus Mosque",
+    "lat": 43.1793129,
+    "lng": -79.31577639999999,
+    "address": "1421 Gregory Rd, St. Catharines, ON L2R 6P9, Canada",
+    "website": "http://www.ahmadiyya.ca/"
+  },
+  {
+    "placeId": "ChIJq6paylVQ04kR6XPLTJpqXDg",
+    "name": "Islamic Society Of St. Catharines",
+    "lat": 43.1663728,
+    "lng": -79.2407537,
+    "address": "117 Geneva St, St. Catharines, ON L2R 4N3, Canada",
+    "website": "https://islamicsocietyofstcatharines.ca/"
+  },
+  {
+    "placeId": "ChIJSxwzZ7tD04kRtphcUn2DBYs",
+    "name": "Muslim Center Of Niagara Falls",
+    "lat": 43.1065286,
+    "lng": -79.03993539999999,
+    "address": "1920 18th St, Niagara Falls, NY 14305, USA",
+    "website": "https://mconf.square.site/"
+  },
+  {
+    "placeId": "ChIJXf32ZsU304kRk5d3Icmx99A",
+    "name": "Masjid Al-Mu'mineen",
+    "lat": 42.9751752,
+    "lng": -79.2514484,
+    "address": "663 King St, Welland, ON L3B 3L5, Canada",
+    "website": "https://masjidalmumineen.ca/"
+  },
+  {
+    "placeId": "ChIJLUB8RQA304kRyRBN-gBkHYg",
+    "name": "Masjid Ameer Hamza - Sunni mosque",
+    "lat": 42.972849599999996,
+    "lng": -79.24394099999999,
+    "address": "109 Chaffey St, Welland, ON L3B 2Y6, Canada",
+    "website": "http://www.masjidameerhamza.org/"
+  },
+  {
+    "placeId": "ChIJjZpq4ehp04kRPpWXKlwhmjo",
+    "name": "Island Mosque (SAMA)",
+    "lat": 43.0505703,
+    "lng": -78.9597502,
+    "address": "1822 Huth Rd, Grand Island, NY 14072, USA",
+    "website": "https://www.samagi.org/"
+  },
+  {
+    "placeId": "ChIJNSD4zlVQ04kRodKjo_11O0I",
+    "name": "Alnoor Halal Food Market",
+    "lat": 43.166574499999996,
+    "lng": -79.24075119999999,
+    "address": "121 Geneva St, St. Catharines, ON L2R 4N3, Canada",
+    "website": "https://alnoorgrocery.ca/"
+  },
+  {
+    "placeId": "ChIJvaIsGw1p04kRZyr1UBANKzk",
+    "name": "DARUL ULOOM NIAGARA FALLS NY",
+    "lat": 43.0952949,
+    "lng": -79.0162951,
+    "address": "3920 Pine Ave, Niagara Falls, NY 14301, USA",
+    "website": null
+  },
+  {
+    "placeId": "ChIJq8MJ1L9o04kRXEOGC7_zL80",
+    "name": "Masjid Mahdi -Ahmadiyya Muslim Community- Buffalo Chapter",
+    "lat": 43.0853466,
+    "lng": -78.9511012,
+    "address": "9610 Colvin Blvd, Niagara Falls, NY 14304, USA",
+    "website": "http://www.ahmadiyya.us/index.php/chapters/buffalo/110"
+  },
+  {
+    "placeId": "ChIJV1Yy5klR04kROGFhJQnQSAU",
+    "name": "Madina Halal Meat & Grocery",
+    "lat": 43.1665412,
+    "lng": -79.2362399,
+    "address": "86 Niagara St #4, St. Catharines, ON L2R 4L1, Canada",
+    "website": null
+  },
+  {
+    "placeId": "ChIJT8MwWan0K4gR4BpHyc88nBM",
+    "name": "Kitchener Masjid (Muslim Association of Canada)",
+    "lat": 43.4648905,
+    "lng": -80.4606744,
+    "address": "1017 Victoria St N, Kitchener, ON N2B 3C7, Canada",
+    "website": "http://kitchenermasjid.com/"
+  },
+  {
+    "placeId": "ChIJV4Nechn0K4gRHi0IK6jdfUA",
+    "name": "Waterloo Masjid",
+    "lat": 43.459121599999996,
+    "lng": -80.5353781,
+    "address": "213 Erb St. W, Waterloo, ON N2L 1V6, Canada",
+    "website": "http://waterloomasjid.com/"
+  },
+  {
+    "placeId": "ChIJ3XblUW31K4gRmHRkcQduSkA",
+    "name": "Al-Salaam Islamic Centre",
+    "lat": 43.4430791,
+    "lng": -80.4954336,
+    "address": "585 Queen St S, Kitchener, ON N2G 4S4, Canada",
+    "website": "https://www.alsalaam.ca/"
+  },
+  {
+    "placeId": "ChIJh2L980v1K4gRwhKvocqIUqo",
+    "name": "Umul Qura Learning Centre Kitchener,ON",
+    "lat": 43.458679499999995,
+    "lng": -80.48368839999999,
+    "address": "300 Victoria St N, Kitchener, ON N2H 6R9, Canada",
+    "website": "https://umulquralc.com/"
+  },
+  {
+    "placeId": "ChIJt9RnkuP0K4gR0iCAQuf-U3w",
+    "name": "Al Zahra Shia Association of Waterloo Region",
+    "lat": 43.4413263,
+    "lng": -80.4873566,
+    "address": "204 Madison Ave S, Kitchener, ON N2G 3M8, Canada",
+    "website": "http://alzahra.ca/"
+  },
+  {
+    "placeId": "ChIJnZPQLZiLK4gRjBJluh2H3ek",
+    "name": "Jamia Masjid Khaatam Ul Anbiyah (KTA Masjid) Muslim Council of Ontario",
+    "lat": 43.4330867,
+    "lng": -80.4495431,
+    "address": "26 Franklin St S, Kitchener, ON N2C 1R4, Canada",
+    "website": "https://ktamasjid.ad-din.site/"
+  },
+  {
+    "placeId": "ChIJx_XucTKIK4gR8jAOkNf8Rk8",
+    "name": "Islamic Centre of Cambridge",
+    "lat": 43.390551599999995,
+    "lng": -80.31781269999999,
+    "address": "1550 Dunbar Rd, Cambridge, ON N1R 8J5, Canada",
+    "website": "http://iccambridge.com/"
+  },
+  {
+    "placeId": "ChIJtfPGP9x3LIgRXCaoAFWPJ6c",
+    "name": "Cambridge Muslim Society (Jamia Umar Al-Farooq Masjid) cms",
+    "lat": 43.374017200000004,
+    "lng": -80.3039807,
+    "address": "282 Elgin St N, Cambridge, ON N1R 8E4, Canada",
+    "website": "http://www.cambridgemuslimsociety.org/"
+  },
+  {
+    "placeId": "ChIJ97xhkSf3K4gR7n4ZGIE-RYo",
+    "name": "Islamic Centre of Waterloo - ICW",
+    "lat": 43.4685658,
+    "lng": -80.5893382,
+    "address": "510 Erbsville Rd, Waterloo, ON N2V 2R4, Canada",
+    "website": "http://icwaterloo.com/"
+  },
+  {
+    "placeId": "ChIJQU7wG7oBWkAReMKJh20NjCc",
+    "name": "Masjid - Muslim Society of Guelph",
+    "lat": 43.5291965,
+    "lng": -80.2532154,
+    "address": "286 Water St, Guelph, ON N1G 1B8, Canada",
+    "website": "http://www.msofg.org/"
+  },
+  {
+    "placeId": "ChIJ3wJeuUn1K4gRh5lIrF4eFtw",
+    "name": "WMC Wilmot Muslim Centre",
+    "lat": 43.3993749,
+    "lng": -80.53826719999999,
+    "address": "1000 Knechtel Ct, Wilmot, ON N0B 1E0, Canada",
+    "website": "https://wilmotmuslimcentre.ca/"
+  },
+  {
+    "placeId": "ChIJifRlPo-aK4gRqbRPZPbEync",
+    "name": "Masjid Aisha",
+    "lat": 43.560605599999995,
+    "lng": -80.26402159999999,
+    "address": "44 Marlborough Rd, Guelph, ON N1E 3X2, Canada",
+    "website": "http://www.masjidaisha.ca/"
+  },
+  {
+    "placeId": "ChIJNT7aAi6HK4gRyoHZ-thVXgc",
+    "name": "Townline Muslim Centre",
+    "lat": 43.401943599999996,
+    "lng": -80.2764278,
+    "address": "1170 Townline Rd, Cambridge, ON N0B 2J0, Canada",
+    "website": "http://www.townlinemuslimcentre.ca/"
+  },
+  {
+    "placeId": "ChIJb44vlAOJK4gRMaJCChloo-0",
+    "name": "Hespeler Masjid",
+    "lat": 43.425430399999996,
+    "lng": -80.3177863,
+    "address": "64 Winston Blvd, Cambridge, ON N3C 1L6, Canada",
+    "website": "https://centres.macnet.ca/hespelermasjid/"
+  },
+  {
+    "placeId": "ChIJT9goh-yaK4gRqoGqB_AI6ts",
+    "name": "Islamic Society of Guelph",
+    "lat": 43.5514729,
+    "lng": -80.2519973,
+    "address": "126 Norwich St E, Guelph, ON N1E 2G7, Canada",
+    "website": "http://isofg.ca/"
+  },
+  {
+    "placeId": "ChIJYY5s7px3LIgRSitXY39DZZc",
+    "name": "Galt Islamic Centre",
+    "lat": 43.370877199999995,
+    "lng": -80.3119676,
+    "address": "431 Dundas St N, Cambridge, ON N1R 5R5, Canada",
+    "website": "https://www.galtislamic.com/"
+  },
+  {
+    "placeId": "ChIJvxiRjU70K4gR8MknyHgBoJk",
+    "name": "Kitchener Headquarters Jamatkhana - Ismaili Community Centre",
+    "lat": 43.440965299999995,
+    "lng": -80.5137874,
+    "address": "299 Lawrence Ave, Kitchener, ON N2M 1Y5, Canada",
+    "website": "https://the.ismaili/"
+  },
+  {
+    "placeId": "ChIJiSBqiSP1K4gRtM_8eIHaGY4",
+    "name": "Muslim Social Services Waterloo Region",
+    "lat": 43.443139300000006,
+    "lng": -80.4753168,
+    "address": "480 Charles St E, Kitchener, ON N2G 4K5, Canada",
+    "website": "http://msswr.org/"
+  },
+  {
+    "placeId": "ChIJpT-rTrB3LIgRTpJ6hj6BDOI",
+    "name": "Bai'tul Kareem Mosque, Ahmadiyya Muslim Community",
+    "lat": 43.352714,
+    "lng": -80.31259,
+    "address": "5 Elliott St, Cambridge, ON N1R 2J3, Canada",
+    "website": "https://ahmadiyya.ca/"
+  },
+  {
+    "placeId": "ChIJw5MrXa13LIgRv65TjM8640k",
+    "name": "Zawiya Fellowship - Annoor Jami Mosque",
+    "lat": 43.3511781,
+    "lng": -80.32002080000001,
+    "address": "55 Victoria Ave, Cambridge, ON N1S 1X2, Canada",
+    "website": "https://zawiyafellowship.com/"
+  },
+  {
+    "placeId": "ChIJLVDua-GbK4gRHo8NRL1Jdos",
+    "name": "Al-Fatema Islamic Center",
+    "lat": 43.5524835,
+    "lng": -80.2326977,
+    "address": "70 Stevenson St S, Guelph, ON N1E 5N4, Canada",
+    "website": null
+  },
+  {
+    "placeId": "ChIJJRDNxubxLogRPpSfykEBvAY",
+    "name": "London Muslim Mosque",
+    "lat": 42.9906958,
+    "lng": -81.2700577,
+    "address": "151 Oxford St W, London, ON N6H 1S3, Canada",
+    "website": "http://www.londonmosque.ca/"
+  },
+  {
+    "placeId": "ChIJmxpZd27yLogR_2WSx9achok",
+    "name": "Hyatt Mosque & Centre",
+    "lat": 42.9815987,
+    "lng": -81.2240964,
+    "address": "282 Hamilton Rd, London, ON N5Z 1R3, Canada",
+    "website": "https://www.hyattmosquecenter.com/"
+  },
+  {
+    "placeId": "ChIJV9K5RBPzLogRngHm3fHlKQM",
+    "name": "Islamic Centre of Southwest Ontario",
+    "lat": 42.9318556,
+    "lng": -81.19167759999999,
+    "address": "951 Pond Mills Rd, London, ON N6N 1C3, Canada",
+    "website": "https://islamiccentre.ca/"
+  },
+  {
+    "placeId": "ChIJz4nHqm_xLogRPv8kDQdKWUU",
+    "name": "Muslim Association of Canada (MAC) Westmount Centre",
+    "lat": 42.9554213,
+    "lng": -81.276584,
+    "address": "‪312 Commissioners Rd W Unit 5, London, ON N6J 1Y3, Canada",
+    "website": "https://centres.macnet.ca/westmount/"
+  },
+  {
+    "placeId": "ChIJi5WiHQDzLogRY9QGZeMXCvg",
+    "name": "Intercity Prayer Hall",
+    "lat": 42.9802909,
+    "lng": -81.25076469999999,
+    "address": "101 York St, London, ON N6A 1A6, Canada",
+    "website": null
+  },
+  {
+    "placeId": "ChIJAbT2EIHxLogRfOzveSjdjh0",
+    "name": "MAC Hyde Park Masjid & Youth Centre",
+    "lat": 42.989202399999996,
+    "lng": -81.32525059999999,
+    "address": "1175 Hyde Park Rd Unit 9, London, ON N6H 5K5, Canada",
+    "website": "https://centres.macnet.ca/machydepark/"
+  },
+  {
+    "placeId": "ChIJ_33sn4bxLogRHk2nttSx9R4",
+    "name": "Muslim Wellness Network",
+    "lat": 42.998445499999995,
+    "lng": -81.32892989999999,
+    "address": "990 Gainsborough Rd, London, ON N6H 5L4, Canada",
+    "website": "https://www.muslimwellness.ca/"
+  },
+  {
+    "placeId": "ChIJU0IOz4TxLogRZ_jB7ffPerk",
+    "name": "Bosnian Canadian Islamic Centre",
+    "lat": 42.96340910000001,
+    "lng": -81.2624874,
+    "address": "41 Holborn Ave, London, ON N6J 2P9, Canada",
+    "website": "http://bkic.ca/joomla30/"
+  },
+  {
+    "placeId": "ChIJL9k-mSHtLogRfnfC4ZrTgAY",
+    "name": "Baitur-Rasheed Mosque",
+    "lat": 42.9894651,
+    "lng": -81.170985,
+    "address": "70 Charterhouse Crescent, London, ON N5W 5V5, Canada",
+    "website": "https://ahmadiyya.ca/"
+  },
+  {
+    "placeId": "ChIJsWobQ_PzLogRqA9QI4ApSzI",
+    "name": "Al Mahdi Islamic Community Centre",
+    "lat": 42.9213802,
+    "lng": -81.2313432,
+    "address": "91 Meg Dr, London, ON N6E 3T7, Canada",
+    "website": "https://almahdicentre.org/"
+  },
+  {
+    "placeId": "ChIJYYA7cQDtLogRdfpnGlxbUmg",
+    "name": "Al-Taqwa Mosque",
+    "lat": 42.9990816,
+    "lng": -81.17809489999999,
+    "address": "1837 Churchill Ave, London, ON N5W 2L3, Canada",
+    "website": "https://altaqwamosque.com/"
+  },
+  {
+    "placeId": "ChIJoz-UEADxLogRf9akxQQNeZM",
+    "name": "Baitul Ahad Mosque",
+    "lat": 42.980676800000005,
+    "lng": -81.2781866,
+    "address": "546 Beaverbrook Ave, London, ON N6H 2M6, Canada",
+    "website": "http://www.ahmadiyya.ca/"
+  },
+  {
+    "placeId": "ChIJ2Zp3aVtfLogR6xvq3eDwTvc",
+    "name": "St. Thomas Islamic Centre",
+    "lat": 42.7757402,
+    "lng": -81.19511899999999,
+    "address": "55 Southwick St, St Thomas, ON N5R 3S3, Canada",
+    "website": "https://stislamiccentre.com/"
+  },
+  {
+    "placeId": "ChIJl2qynXr7LogRpVtu1v8GFjY",
+    "name": "North London Islamic Centre",
+    "lat": 43.001571,
+    "lng": -81.42276950000002,
+    "address": "23266 Nairn Rd, Komoka, ON N0L 1R0, Canada",
+    "website": "http://www.northlondonislamiccentre.com/"
+  },
+  {
+    "placeId": "ChIJP_Js1LvzLogRmLuR_QcKct0",
+    "name": "Muslim Youth Association Of London",
+    "lat": 42.941813499999995,
+    "lng": -81.2242158,
+    "address": "889 Wellingsboro Rd, London, ON N6E 1N3, Canada",
+    "website": null
+  },
+  {
+    "placeId": "ChIJ_yIpAhfyLogRbbgV6jVQia8",
+    "name": "Muslim Resource Centre for Social Support & Integration (MRCSSI)",
+    "lat": 42.9768981,
+    "lng": -81.2385024,
+    "address": "111 Waterloo St #101, London, ON N6B 2M4, Canada",
+    "website": "https://mrcssi.com/"
+  },
+  {
+    "placeId": "ChIJ6zeGE-fxLogRGHW5T-O09A0",
+    "name": "London Islamic School",
+    "lat": 42.9910272,
+    "lng": -81.2708299,
+    "address": "151 Oxford St W, London, ON N6H 1S3, Canada",
+    "website": "http://www.londonislamicschool.com/"
+  },
+  {
+    "placeId": "ChIJH74JFADxLogRmCxOPeFHFqU",
+    "name": "MAC Noor Gardens",
+    "lat": 42.938182999999995,
+    "lng": -81.28595969999999,
+    "address": "457 Southdale Rd W, London, ON N6P 1M7, Canada",
+    "website": "https://centres.macnet.ca/macnoorgardens/"
+  },
+  {
+    "placeId": "ChIJfbhUJlbtLogRnutii5Vn9u0",
+    "name": "Hindu Cultural Center",
+    "lat": 42.9889097,
+    "lng": -81.17166309999999,
+    "address": "62 Charterhouse Crescent, London, ON N5W 5V5, Canada",
+    "website": "http://www.hcclondon.ca/"
+  },
+  {
+    "placeId": "ChIJTVJP0P7tLogRjUv14UOCV4c",
+    "name": "Mac Youth Centre",
+    "lat": 42.9975527,
+    "lng": -81.247084,
+    "address": "366 Oxford St E, London, ON N6A 1V7, Canada",
+    "website": null
+  },
+  {
+    "placeId": "ChIJSQ7SeGQtO4gRZmgr844ZpLM",
+    "name": "ALBER Mosque 🕌 مسجد البِرّ",
+    "lat": 42.3023233,
+    "lng": -83.02771919999999,
+    "address": "65 Ellis St E, Windsor, ON N8X 2G8, Canada",
+    "website": "https://www.masjidalber.com/"
+  },
+  {
+    "placeId": "ChIJUZGFbcAsO4gRFyWEwClt4rY",
+    "name": "Masjid Noor-ul-Islam",
+    "lat": 42.320982099999995,
+    "lng": -83.0159063,
+    "address": "659 Lincoln Rd, Windsor, ON N8Y 2G8, Canada",
+    "website": "https://noorulislam.ca/"
+  },
+  {
+    "placeId": "ChIJQZz3ODQsO4gRij8h__157e0",
+    "name": "Windsor Mosque",
+    "lat": 42.2772278,
+    "lng": -83.0318968,
+    "address": "1320 Northwood St, Windsor, ON N9E 1A4, Canada",
+    "website": "https://windsorislamicassociation.com/"
+  },
+  {
+    "placeId": "ChIJAfQfDgAtO4gRnhD96hL1Byk",
+    "name": "The Clear Islam Information Center",
+    "lat": 42.3151234,
+    "lng": -83.03891820000001,
+    "address": "471 Pelissier St, Windsor, ON N9A 4L2, Canada",
+    "website": "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0z4t60o92hvea5hLZI3nZvR_nmE2GOQM9KPaDn-AlVXlHgjsTbX03JQX9X_8M99zffqbwZsfzA?pli=1"
+  },
+  {
+    "placeId": "ChIJfYcldMIsO4gRa2-u9879ZNo",
+    "name": "Ahlul-Bayt Mosque",
+    "lat": 42.3193633,
+    "lng": -83.0217206,
+    "address": "1065 Wyandotte St E, Windsor, ON N9A 3K3, Canada",
+    "website": null
+  },
+  {
+    "placeId": "ChIJG5fwsS_LJIgRGFeNuYe7fVE",
+    "name": "Islamic Center of America",
+    "lat": 42.3300613,
+    "lng": -83.2296458,
+    "address": "19500 Ford Rd, Dearborn, MI 48128, USA",
+    "website": "http://www.icofa.com/"
+  },
+  {
+    "placeId": "ChIJWdkqeIU0O4gRsApP7VhHZH0",
+    "name": "Masjid Alsalam",
+    "lat": 42.316421299999995,
+    "lng": -83.17480239999999,
+    "address": "3900 Schaefer Rd, Dearborn, MI 48126, USA",
+    "website": "https://www.dccalsalam.org/"
+  },
+  {
+    "placeId": "ChIJnyyCDJ8zO4gRZc3CVseQ16I",
+    "name": "American Moslem Society (Masjid Dearborn)",
+    "lat": 42.3042945,
+    "lng": -83.143546,
+    "address": "9945 Vernor Hwy, Dearborn, MI 48120, USA",
+    "website": "https://amsdearborn.org/"
+  },
+  {
+    "placeId": "ChIJMxzwUrrSJIgRTOLHPdxYVgA",
+    "name": "Wayne State University Islamic Center of Detroit",
+    "lat": 42.3536299,
+    "lng": -83.0650004,
+    "address": "4646 Cass Ave, Detroit, MI 48201, USA",
+    "website": "http://www.facebook.com/cassmosque"
+  },
+  {
+    "placeId": "ChIJewdUS2bSJIgRGO50fJTELEI",
+    "name": "Abu-Bakr Al-Siddique Islamic Center",
+    "lat": 42.3887259,
+    "lng": -83.0603994,
+    "address": "8904 Saint Aubin St, Hamtramck, MI 48212, USA",
+    "website": "http://www.alsideeq.org/"
+  },
+  {
+    "placeId": "ChIJSVj4S0rLJIgRUcjBpixk2P4",
+    "name": "Islamic Center of Detroit - ICD",
+    "lat": 42.351925699999995,
+    "lng": -83.18380309999999,
+    "address": "14350 Tireman Ave, Detroit, MI 48228, USA",
+    "website": "http://icdonline.org/"
+  },
+  {
+    "placeId": "ChIJqT_F1xTSJIgRaXJsu__cXb0",
+    "name": "Islamic Center of Hamtramck",
+    "lat": 42.400347200000006,
+    "lng": -83.0606803,
+    "address": "11347 Joseph Campau Ave, Hamtramck, MI 48212, USA",
+    "website": null
+  },
+  {
+    "placeId": "ChIJkRd3yHQ4O4gRB9lLxhriYYc",
+    "name": "Masjid Umar bin Khattab / Islamic Association of Michigan",
+    "lat": 42.175258799999995,
+    "lng": -83.2465945,
+    "address": "18105 Racho Rd, Brownstown Township, MI 48193, USA",
+    "website": "https://www.masjidubk.org/"
+  },
+  {
+    "placeId": "ChIJLXA1JzE1O4gRLBt-kfztbe4",
+    "name": "Masjid Tawheed",
+    "lat": 42.343591800000006,
+    "lng": -83.2228399,
+    "address": "18640 W Warren Ave, Detroit, MI 48228, USA",
+    "website": "http://masjidtawheed.org/"
+  },
+  {
+    "placeId": "ChIJWxU-5TMsO4gRkrJOjkCryIU",
+    "name": "Windsor Islamic Association Centre",
+    "lat": 42.274404,
+    "lng": -83.03125200000001,
+    "address": "2555 McKay Ave, Windsor, ON N9E 2P4, Canada",
+    "website": "https://windsorislamicassociation.com/"
+  },
+  {
+    "placeId": "ChIJAXn4zk3SJIgR9rRU3sf0qJw",
+    "name": "Iman Islamic Complex (Masjid Mu’ath Bin Jabal)",
+    "lat": 42.3912027,
+    "lng": -83.04036730000001,
+    "address": "6096 Dorothy St, Detroit, MI 48211, USA",
+    "website": "https://www.facebook.com/MasjidMuath/"
+  },
+  {
+    "placeId": "ChIJKSD5sRDSJIgRNTV74Ytvrw0",
+    "name": "Masjid Al-Falah",
+    "lat": 42.410055899999996,
+    "lng": -83.064368,
+    "address": "12555 McDougall, Detroit, MI 48212, USA",
+    "website": "https://masjidalfalah.org/"
+  },
+  {
+    "placeId": "ChIJ4wICC7rNJIgRzvzW6PCwuaU",
+    "name": "The Muslim Center",
+    "lat": 42.396803399999996,
+    "lng": -83.1110569,
+    "address": "1605 W Davison St, Detroit, MI 48238, USA",
+    "website": "https://www.themuslimcenter.com/"
+  },
+  {
+    "placeId": "ChIJtYaaOlUsO4gRSswfLdmvgyQ",
+    "name": "Imam Hussain Foundation",
+    "lat": 42.2987292,
+    "lng": -83.03542650000001,
+    "address": "1485 Janette Ave, Windsor, ON N8X 1Z2, Canada",
+    "website": "http://facebook.com/ihfwindsor"
+  },
+  {
+    "placeId": "ChIJ-WCekJIsO4gRudRDWDhAg5I",
+    "name": "Jafri Islamic Centre of Canada (Shia Mosque)",
+    "lat": 42.309407799999995,
+    "lng": -83.0129159,
+    "address": "1219 Ottawa St, Windsor, ON N8X 2E5, Canada",
+    "website": "https://jiccwindsor.org/"
+  },
+  {
+    "placeId": "ChIJJ4RoCVH4L4gROymAc6F9smI",
+    "name": "Darul Uloom Canada",
+    "lat": 42.4090991,
+    "lng": -82.1780764,
+    "address": "51 Prince St N, Chatham, ON N7M 4J7, Canada",
+    "website": "http://www.ducanada.org/"
+  },
+  {
+    "placeId": "ChIJo1YlBOX4L4gR7RNYaJ7bph8",
+    "name": "Jami Masjid / Mosque Chatham",
+    "lat": 42.3901444,
+    "lng": -82.17959479999999,
+    "address": "416 Lacroix St, Chatham, ON N7M 2W3, Canada",
+    "website": "https://jmc.ad-din.site/"
+  },
+  {
+    "placeId": "ChIJn1-T3fr5L4gRUAsawc4EsDE",
+    "name": "Chatham Islamic Centre",
+    "lat": 42.407472,
+    "lng": -82.2102891,
+    "address": "310 McNaughton Ave W, Chatham, ON N7L 1R9, Canada",
+    "website": "https://www.thecic.ca/"
+  },
+  {
+    "placeId": "ChIJq0Ul5DvCJIgROr_UW7UjMfI",
+    "name": "IAGD",
+    "lat": 42.6347655,
+    "lng": -83.1495575,
+    "address": "879 W Auburn Rd, Rochester Hills, MI 48307, USA",
+    "website": "http://iagd.net/"
+  },
+  {
+    "placeId": "ChIJjVoGLufAOogRKuH7kYNtEzY",
+    "name": "Leamington musalla",
+    "lat": 42.0703168,
+    "lng": -82.53006169999999,
+    "address": "555 Talbot Rd E, Leamington, ON N8H 3V6, Canada",
+    "website": "http://leamingtonmasjid.ca/"
+  },
+  {
+    "placeId": "ChIJ0-VWIDzWJIgR6unAGQLlA8M",
+    "name": "Albanian Islamic Center of Michigan",
+    "lat": 42.4341752,
+    "lng": -82.92313170000001,
+    "address": "19775 Harper Ave, Harper Woods, MI 48225, USA",
+    "website": "https://www.aicod.org/"
+  },
+  {
+    "placeId": "ChIJDau_BEUzO4gRjD-nU0r56Ic",
+    "name": "Al-Huda Islamic Association",
+    "lat": 42.344241499999995,
+    "lng": -83.1549608,
+    "address": "8835 Warren Ave, Dearborn, MI 48126, USA",
+    "website": "http://www.alhudamosque.org/"
+  },
+  {
+    "placeId": "ChIJiRYC9UqTMIgRAIaasSRpvGg",
+    "name": "Islamic Center of Westlake",
+    "lat": 41.4688884,
+    "lng": -81.9012111,
+    "address": "1255 Columbia Rd, Westlake, OH 44145, USA",
+    "website": "https://wcmamasjid.com/"
+  },
+  {
+    "placeId": "ChIJh0ojepCDJYgRsTMgfVncHE4",
+    "name": "Sarnia Muslim Association",
+    "lat": 42.9831935,
+    "lng": -82.33556689999999,
+    "address": "1609 London Line, Sarnia, ON N7W 1A9, Canada",
+    "website": "http://sarniamuslim.com/"
+  },
+  {
+    "placeId": "ChIJ2e4_Bi_dJIgRNKz3dky8mAw",
+    "name": "American Muslim Diversity Association",
+    "lat": 42.6227789,
+    "lng": -83.07028079999999,
+    "address": "44760 Ryan Rd, Sterling Heights, MI 48314, USA",
+    "website": "https://www.amda.info/"
+  },
+  {
+    "placeId": "ChIJq31du82cJYgRQtjgTgUdyN4",
+    "name": "Sarnia Masjid",
+    "lat": 42.9717862,
+    "lng": -82.3918095,
+    "address": "281 Cobden St, Sarnia, ON N7T 4A2, Canada",
+    "website": "http://www.bangladesh2000.com/bdcom/islam/dir/masjid_directory_ontario.html"
+  },
+  {
+    "placeId": "ChIJoyiq7IGcJYgRarcPoasbOPw",
+    "name": "Port Huron Mosque",
+    "lat": 43.000583500000005,
+    "lng": -82.4273151,
+    "address": "2405 Gratiot Ave, Port Huron, MI 48060, USA",
+    "website": null
+  },
+  {
+    "placeId": "ChIJf_ZYF4rBJIgR3lFALhnMLX0",
+    "name": "Mahmood Mosque",
+    "lat": 42.63639,
+    "lng": -83.165954,
+    "address": "1730 W Auburn Rd, Rochester Hills, MI 48309, USA",
+    "website": "https://masjidmahmood.us/"
+  },
+  {
+    "placeId": "ChIJ-7L22qXaJIgRS77SCtc4oTw",
+    "name": "IONA",
+    "lat": 42.5034081,
+    "lng": -83.06660269999999,
+    "address": "28630 Ryan Rd, Warren, MI 48092, USA",
+    "website": "https://ionamasjid.org/"
+  },
+  {
+    "placeId": "ChIJ4yakd6jcJIgR534YKwxQT2I",
+    "name": "Muslim Community of Michigan (Masjid Baitul Mamur)",
+    "lat": 42.5780143,
+    "lng": -83.068907,
+    "address": "38810 Ryan Rd, Sterling Heights, MI 48310, USA",
+    "website": "http://mcmmasjid.org/"
+  },
+  {
+    "placeId": "ChIJdUZT1mbnJIgRRTXfyxMA9DU",
+    "name": "Islamic Center of Shelby",
+    "lat": 42.656885599999995,
+    "lng": -82.9951828,
+    "address": "49147 Schoenherr Rd, Shelby Township, MI 48315, USA",
+    "website": "http://shelbymasjid.org/"
+  },
+  {
+    "placeId": "ChIJW4L6DiyxJIgRMYh0hvAdQiA",
+    "name": "Tawheed Center",
+    "lat": 42.4699282,
+    "lng": -83.34075349999999,
+    "address": "29707 W 10 Mile Rd, Farmington, MI 48336, USA",
+    "website": "http://tawheedcenter.org/"
+  },
+  {
+    "placeId": "ChIJrYFuCg5mLIgRLcd9cVI5OK4",
+    "name": "Brantford Mosque",
+    "lat": 43.1358925,
+    "lng": -80.25807859999999,
+    "address": "192 Greenwich St, Brantford, ON N3S 2X6, Canada",
+    "website": "http://www.brantfordmosque.ca/"
+  },
+  {
+    "placeId": "ChIJQ44oBQBnLIgRxxvDMPPzLgw",
+    "name": "Baitul Haleem Ahmadiyya Mosque",
+    "lat": 43.1320981,
+    "lng": -80.27640889999999,
+    "address": "150 Colborne St W, Brantford, ON N3T 1L2, Canada",
+    "website": null
+  },
+  {
+    "placeId": "ChIJhaKteBJmLIgR1vWgsLbRtvc",
+    "name": "Islamic Centre of Brantford",
+    "lat": 43.1355936,
+    "lng": -80.257584,
+    "address": "200 Greenwich St, Brantford, ON N3S 2X6, Canada",
+    "website": "https://brantfordmosque.ca/"
+  },
+  {
+    "placeId": "ChIJo03886VtLIgR5Fawazw8JSI",
+    "name": "Jamia Masjid (Mosque) Bilal & Community Centre",
+    "lat": 43.202401599999995,
+    "lng": -80.3958301,
+    "address": "26 Spruce St, Paris, ON N3L 3A4, Canada",
+    "website": "http://parismasjid.ca/"
+  },
+  {
+    "placeId": "ChIJfa4zyrBtLIgRoAj-W816EgU",
+    "name": "Islamic Centre of Brant / Brant Quran Academy",
+    "lat": 43.1839343,
+    "lng": -80.3910131,
+    "address": "143 King Edward St, Paris, ON N3L 3E3, Canada",
+    "website": "https://icbrant.ca/"
+  },
+  {
+    "placeId": "ChIJDW_tAABlLIgR47Wc5Zo5-BY",
+    "name": "North End Centre (a project of MAB)",
+    "lat": 43.186199099999996,
+    "lng": -80.2508847,
+    "address": "627 Park Rd N #8, Brantford, ON N3T 5L8, Canada",
+    "website": "https://brantfordmosque.ca/"
+  },
+  {
+    "placeId": "ChIJbZpCxgVmLIgRlvXiMD_anyE",
+    "name": "St. Andrew's United Church",
+    "lat": 43.1402283,
+    "lng": -80.2627471,
+    "address": "95 Darling St, Brantford, ON N3T 2K7, Canada",
+    "website": "https://www.standrewsbrantford.com/"
+  },
+  {
+    "placeId": "ChIJIxPuEgBlLIgRG224E_EWiJ0",
+    "name": "جامع",
+    "lat": 43.164322299999995,
+    "lng": -80.2409838,
+    "address": "19 Holiday Dr, Brantford, ON N3R 7J4, Canada",
+    "website": null
+  },
+  {
+    "placeId": "ChIJ7659P6J9LIgR74JIVhr7oqw",
+    "name": "Uyghur Mosque",
+    "lat": 43.260655299999996,
+    "lng": -80.18478209999999,
+    "address": "2299 Troy Rd, Troy, ON L0R 2B0, Canada",
+    "website": "http://www.uyghurmosque.com/"
+  },
+  {
+    "placeId": "ChIJ9RfwdRyjKogRsK9QzrnHhH4",
+    "name": "Barrie Mosque",
+    "lat": 44.4086368,
+    "lng": -79.68931909999999,
+    "address": "155 Ferris Ln, Barrie, ON L4M 1Z3, Canada",
+    "website": "http://barriemosque.ca/"
+  },
+  {
+    "placeId": "ChIJ4cZxlPOoKogReQq45rwkGwA",
+    "name": "Maryam Mosque, Ahmadiyya Muslim Community Barrie",
+    "lat": 44.4748172,
+    "lng": -79.53155939999999,
+    "address": "110 Line 7 S, Oro-Medonte, ON L0L 2X0, Canada",
+    "website": "http://ahmadiyya.ca/"
+  },
+  {
+    "placeId": "ChIJ9RfwdRyjKogRlFpGTzJFiMQ",
+    "name": "Barrie Islamic School",
+    "lat": 44.408639099999995,
+    "lng": -79.6893186,
+    "address": "155 Ferris Ln, Barrie, ON L4M 3A2, Canada",
+    "website": "https://barriemosque.ca/sunday-islamic-school/"
+  },
+  {
+    "placeId": "ChIJlT7A1IG_KogRQJrHf8LoCec",
+    "name": "Zainabiya Community Centre",
+    "lat": 44.2708455,
+    "lng": -79.7231352,
+    "address": "7 Robert St, Thornton, ON L0L 2N0, Canada",
+    "website": "https://jaffari.org/zic/"
+  },
+  {
+    "placeId": "ChIJ5ZpACTDFKogRcA02pMDqFao",
+    "name": "Bradford Mosque - Bait-ul-Khabir",
+    "lat": 44.1128374,
+    "lng": -79.564893,
+    "address": "Bradford, ON L3Z 1Y2, Canada",
+    "website": "http://www.ahmadiyya.ca/"
+  },
+  {
+    "placeId": "ChIJj62xbwCTKogRcMfqX4clnTQ",
+    "name": "Friday Mosque - CFB Borden Multifaith Facility",
+    "lat": 44.284681,
+    "lng": -79.8890902,
+    "address": "499 Dieppe Rd, Borden, ON L0M 1C0, Canada",
+    "website": null
+  },
+  {
+    "placeId": "ChIJg86O-n3PKogRYkjmgITja5A",
+    "name": "Bradford Islamic Community Centre",
+    "lat": 44.114902699999995,
+    "lng": -79.5597733,
+    "address": "136 Holland St E Unit 07, Bradford, ON L3Z 1W6, Canada",
+    "website": "http://www.bradfordmosque.com/"
+  },
+  {
+    "placeId": "ChIJweDOP2rSKogROazkS6NQlyU",
+    "name": "Newmarket Islamic Centre",
+    "lat": 44.04276,
+    "lng": -79.4433672,
+    "address": "700 Mulock Dr, Newmarket, ON L3Y 8H8, Canada",
+    "website": "http://nmic.ca/"
+  },
+  {
+    "placeId": "ChIJ2VAkLDapKogR1YLvb53Ef9E",
+    "name": "Ahmadiyya Muslim Elementary School Barrie",
+    "lat": 44.4748172,
+    "lng": -79.53155939999999,
+    "address": "110 Line 7 S, Oro-Medonte, ON L0L 2X0, Canada",
+    "website": "https://barrie.ahmadiyyaschool.ca/"
+  },
+  {
+    "placeId": "ChIJKQtWJeCiKogRBvE1PBSONto",
+    "name": "The Church of Jesus Christ of Latter-day Saints",
+    "lat": 44.4049123,
+    "lng": -79.6948013,
+    "address": "79 Ferris Ln, Barrie, ON L4M 2Y1, Canada",
+    "website": "https://local.churchofjesuschrist.org/en/ca/on/barrie/79-ferris-lane?utm_source=gmb&utm_medium=yext&y_source=1_NjcwOTIzNzUtNzE1LWxvY2F0aW9uLndlYnNpdGU%3D"
+  },
+  {
+    "placeId": "ChIJfQq3wDPX1IkRZWoEsXYCtdU",
+    "name": "Islamic Institute of Toronto (IIT)",
+    "lat": 43.8187109,
+    "lng": -79.22987169999999,
+    "address": "1630 Neilson Rd, Scarborough, ON M1X 1S3, Canada",
+    "website": "https://islam.ca/?utm_source=google&utm_medium=organic&utm_campaign=gmb_profile"
+  },
+  {
+    "placeId": "ChIJob-FXRDTKogRvoZnp0U8bdc",
+    "name": "Masjid Al-Abrar",
+    "lat": 43.999716199999995,
+    "lng": -79.4660482,
+    "address": "33 Wellington St E, Aurora, ON L4G 1H4, Canada",
+    "website": "http://www.alabrar.ca/"
+  },
+  {
+    "placeId": "ChIJAWW9HV0q1YkRucimuuER77Q",
+    "name": "Al Hussain Foundation Centre",
+    "lat": 43.9206706,
+    "lng": -79.325943,
+    "address": "10992 Kennedy Rd, Markham, ON L6C 1P1, Canada",
+    "website": "https://www.alhussainfoundation.ca/"
+  },
+  {
+    "placeId": "ChIJl1YX-yYpK4gRa4pZl9x2m_0",
+    "name": "Masjid Vaughan",
+    "lat": 43.853549799999996,
+    "lng": -79.5128625,
+    "address": "9954 Keele St, Maple, ON L6A 3Z4, Canada",
+    "website": "http://masjidvaughan.ca/"
+  },
+  {
+    "placeId": "ChIJA8icMzqpKk0RACwqPHevPZ8",
+    "name": "Information Orillia",
+    "lat": 44.6081839,
+    "lng": -79.4209367,
+    "address": "36 Mississaga St W, Orillia, ON L3V 5G2, Canada",
+    "website": "http://www.informationorillia.org/"
+  },
+  {
+    "placeId": "ChIJHzMEECHT1IkRl-IPFzf-JHg",
+    "name": "Masjid Al Kuwait",
+    "lat": 43.7728065,
+    "lng": -79.3337945,
+    "address": "280 Yorkland Blvd, North York, ON M2J 4W9, Canada",
+    "website": "https://abuhuraira.org/"
+  },
+  {
+    "placeId": "ChIJ63xWC_oFzkwRlg_u0UO-arM",
+    "name": "Islam Care Centre Mosque",
+    "lat": 45.415258,
+    "lng": -75.69692859999999,
+    "address": "375 Somerset St W, Ottawa, ON K2P 1X6, Canada",
+    "website": "http://islamcare.ca/"
+  },
+  {
+    "placeId": "ChIJnSNBxQcFzkwR-fk8s84kGhg",
+    "name": "Ottawa Multifaith Room",
+    "lat": 45.4225548,
+    "lng": -75.68387229999999,
+    "address": "University of Ottawa, 121 University Private, Ottawa, ON K1N 1H3, Canada",
+    "website": null
+  },
+  {
+    "placeId": "ChIJ3SHhJgAFzkwRtF3He2q6CFI",
+    "name": "Centretown Mosque",
+    "lat": 45.412005699999995,
+    "lng": -75.6962699,
+    "address": "397 Kent St, Ottawa, ON K2P 2B1, Canada",
+    "website": "https://centretownmosque.ca/"
+  },
+  {
+    "placeId": "ChIJl67O3AoFzkwR_M-xdW_GkMI",
+    "name": "Islamic Society of Sandy Hill",
+    "lat": 45.421327399999996,
+    "lng": -75.6720196,
+    "address": "117 Mann Ave, Ottawa, ON K1N 5A4, Canada",
+    "website": "https://isosh.ca/"
+  },
+  {
+    "placeId": "ChIJ66uFzocEzkwRuiRByuw9zFA",
+    "name": "Outaouais Islamic Centre",
+    "lat": 45.4290252,
+    "lng": -75.73211409999999,
+    "address": "4 Rue Lois, Gatineau, QC J8Y 3R2, Canada",
+    "website": "http://cio-oic.ca/"
+  },
+  {
+    "placeId": "ChIJqety-hAEzkwRHUDZzvRlgG4",
+    "name": "Ottawa Muslim Association",
+    "lat": 45.401481700000005,
+    "lng": -75.74132150000001,
+    "address": "251 Northwestern Ave, Ottawa, ON K1A 0K9, Canada",
+    "website": "http://www.ottawamosque.ca/"
+  },
+  {
+    "placeId": "ChIJH4ZfDvwFzkwRkUNGKJ8aoJw",
+    "name": "Madina Masjid Ottawa (Dawat-e-Islami)",
+    "lat": 45.432466999999995,
+    "lng": -75.6480141,
+    "address": "415 McArthur Ave., Ottawa, ON K1K 1G5, Canada",
+    "website": "http://www.dawateislamicanada.net/"
+  },
+  {
+    "placeId": "ChIJX5AvE9YFzkwROnDyj68BEbg",
+    "name": "Ottawa South Mosque",
+    "lat": 45.394948,
+    "lng": -75.681212,
+    "address": "240 Sunnyside Ave, Ottawa, ON K1S 0R4, Canada",
+    "website": "https://ottawasouthmosque.ca/"
+  },
+  {
+    "placeId": "ChIJBQcEwm8FzkwR5Qm1gDe6W18",
+    "name": "Abo-Ther Alghafari Mosque",
+    "lat": 45.4282939,
+    "lng": -75.6568289,
+    "address": "273 Donald St, Ottawa, ON K1K 1N1, Canada",
+    "website": "https://www.facebook.com/AbuTharAlGhafariMosque/"
+  },
+  {
+    "placeId": "ChIJJxcKkOsIzkwR7_T40s8PHWA",
+    "name": "Masjid Ar-Rahmah",
+    "lat": 45.351772,
+    "lng": -75.6473275,
+    "address": "1216 Hunt Club Rd, Ottawa, ON K1V 2P1, Canada",
+    "website": "https://mymasjid.ca/"
+  },
+  {
+    "placeId": "ChIJ1dNCWxb-zUwRD8iSc7WYRpI",
+    "name": "Jami Omar",
+    "lat": 45.3115423,
+    "lng": -75.8284395,
+    "address": "3990 Old Richmond Rd, Nepean, ON K2H 8R5, Canada",
+    "website": "http://www.jamiomar.org/"
+  },
+  {
+    "placeId": "ChIJG7r8Xi8PzkwRI1hJJUz1Ncc",
+    "name": "The Ottawa Islamic Centre and Assalam Mosque",
+    "lat": 45.383103399999996,
+    "lng": -75.62029869999999,
+    "address": "Unit 100, 2335 St. Laurent Blvd #100, Ottawa, ON K1G 5G6, Canada",
+    "website": "https://assalammosque.com/"
+  },
+  {
+    "placeId": "ChIJm53YZjj9zUwRzCeuSonVU1Q",
+    "name": "SNMC Mosque",
+    "lat": 45.289146699999996,
+    "lng": -75.7264618,
+    "address": "3020 Woodroffe Ave, Nepean, ON K2J 6B4, Canada",
+    "website": "http://www.snmc.ca/"
+  },
+  {
+    "placeId": "ChIJJ62nA4oPzkwRbpfZtxkao7M",
+    "name": "East Ottawa Masjid and Community Centre (EOMCC)",
+    "lat": 45.4298224,
+    "lng": -75.6401111,
+    "address": "967 St. Laurent Blvd Unit 3, Ottawa, ON K1J 8W3, Canada",
+    "website": "https://eomcc.ca/"
+  },
+  {
+    "placeId": "ChIJLZsbB2APzkwR3ASgS5rNZps",
+    "name": "Bukhari Community Centre & Masjid",
+    "lat": 45.4269691,
+    "lng": -75.6392004,
+    "address": "Address:, 1052 St. Laurent Blvd Unit 2, Ottawa, ON K1K 3B4, Canada",
+    "website": "http://bukharicentre.com/"
+  },
+  {
+    "placeId": "ChIJVc32nZoGzkwRhY-_4zXp_6k",
+    "name": "Abu Bakr Musalla",
+    "lat": 45.3791088,
+    "lng": -75.73287239999999,
+    "address": "1023 Merivale Rd, Ottawa, ON K1Z 6A7, Canada",
+    "website": "https://faithfultimes.net/masjid/abubakr/all"
+  },
+  {
+    "placeId": "ChIJKWbV0bQIzkwRok9mla9YB7A",
+    "name": "Imam Ali Masjid",
+    "lat": 45.377133099999995,
+    "lng": -75.6459739,
+    "address": "1606 Walkley Rd, Ottawa, ON K1V 0E7, Canada",
+    "website": "https://imamalimasjid.ca/"
+  },
+  {
+    "placeId": "ChIJHfDcPZARzkwRVQc3zL6uKA0",
+    "name": "Darul Uloom Ottawa (Masjid&Center)",
+    "lat": 45.473507399999995,
+    "lng": -75.52058,
+    "address": "Darul-Uloom Masjid-Center, 2803 St Joseph Blvd, Orléans, ON K1C 1G6, Canada",
+    "website": "http://www.darululoomottawa.org/"
+  },
+  {
+    "placeId": "ChIJMWYb4AISzkwRjvGPZOdi4DE",
+    "name": "Masjid Bilal",
+    "lat": 45.4621395,
+    "lng": -75.48465929999999,
+    "address": "4509 Innes Rd, Orléans, ON K4A 3J7, Canada",
+    "website": "http://www.masjidbilal.org/"
+  },
+  {
+    "placeId": "ChIJVdMd84AFzkwRAh16EuipUUo",
+    "name": "Taqwa mosque",
+    "lat": 45.4213202,
+    "lng": -75.67203429999999,
+    "address": "117 Mann Ave, Ottawa, ON K1N 5A4, Canada",
+    "website": "https://isosh.ca/"
+  },
+  {
+    "placeId": "ChIJ3353PlcXzEwRKdu9icMEReo",
+    "name": "Jamia Masjid Al Aqsa",
+    "lat": 45.0233492,
+    "lng": -74.7312031,
+    "address": "507 Pitt St, Cornwall, ON K6J 3R4, Canada",
+    "website": "http://www.alaqsamasjid.ca/"
+  },
+  {
+    "placeId": "ChIJtSJIpqwQzEwRb6jXH9pmNUo",
+    "name": "Jami Masjid Zakariya",
+    "lat": 45.0208079,
+    "lng": -74.7209244,
+    "address": "333 Second St E, Cornwall, ON K6H 1Y8, Canada",
+    "website": "http://www.cornwallmasjid.ca/"
+  },
+  {
+    "placeId": "ChIJ_w0E1JQXzEwRMh9xbITReB8",
+    "name": "Cornwall Islamic Centre",
+    "lat": 45.0186333,
+    "lng": -74.7279264,
+    "address": "19 Second St E, Cornwall, ON K6H 1Y2, Canada",
+    "website": "http://cornwallislamiccentre.ca/"
+  },
+  {
+    "placeId": "ChIJAyMPd8IZzEwRqGDlhpVk7Tk",
+    "name": "Baitun Nasir Mosque",
+    "lat": 45.040687999999996,
+    "lng": -74.7368065,
+    "address": "341 Balmoral Ave, Cornwall, ON K6H 3G6, Canada",
+    "website": "https://www.alislam.org/"
+  },
+  {
+    "placeId": "ChIJt08vWgAZzEwRJwbTE96oHpg",
+    "name": "A new mosque",
+    "lat": 45.0289266,
+    "lng": -74.7354754,
+    "address": "900 Pitt St, Cornwall, ON K6J 3S5, Canada",
+    "website": null
+  },
+  {
+    "placeId": "ChIJh34sxsAazEwRl6HBTVTvV5o",
+    "name": "Al-Rashid Islamic Institute",
+    "lat": 45.0353925,
+    "lng": -74.6354994,
+    "address": "18345 County Rd 2, Cornwall, ON K6H 5R5, Canada",
+    "website": "http://www.alrashid.ca/"
+  },
+  {
+    "placeId": "ChIJ-5w55WoXzEwRa1hSof3zRc8",
+    "name": "Cornwall Islamic Foundation",
+    "lat": 45.0264459,
+    "lng": -74.7412019,
+    "address": "314 C, Ninth St W, Cornwall, ON K6J 3A7, Canada",
+    "website": "http://cornwallislamicfoundation.ca/"
+  },
+  {
+    "placeId": "ChIJv-2L3xxIyUwROjyYdGpDBCQ",
+    "name": "Centre Culturel Islamique de Vaudreuil-Soulanges",
+    "lat": 45.366071399999996,
+    "lng": -74.0355388,
+    "address": "2400 Rang Saint-Antoine, Vaudreuil-Dorion, QC J7V 8P2, Canada",
+    "website": "http://islamvaudreuil.ca/"
+  },
+  {
+    "placeId": "ChIJJ3hFLt2jzkwRIJbKOeGC6po",
+    "name": "Alexandria Islamic Centre",
+    "lat": 45.300337,
+    "lng": -74.6272173,
+    "address": "431 Main St S Unit D, Alexandria, ON K0C 1A0, Canada",
+    "website": null
+  },
+  {
+    "placeId": "ChIJVQUJn9dgzEwRASQt8mEotm0",
+    "name": "Potsdam Masjid",
+    "lat": 44.670295499999995,
+    "lng": -74.9659496,
+    "address": "110 Elm St, Potsdam, NY 13676, USA",
+    "website": "https://potsdammasjid.netlify.app/"
+  },
+  {
+    "placeId": "ChIJ9br9JlfjzUwR5dgfG6CzPYo",
+    "name": "MAC Barrhaven Islamic Centre (BIC)",
+    "lat": 45.2364361,
+    "lng": -75.7255711,
+    "address": "3971 Greenbank Rd, Nepean, ON K2C 3H2, Canada",
+    "website": "http://www.macbic.ca/"
+  },
+  {
+    "placeId": "ChIJgYn0y5uu0kwRC_EJetwVKUA",
+    "name": "Islamic Centre of Kingston",
+    "lat": 44.284577999999996,
+    "lng": -76.5420213,
+    "address": "1477 Sydenham Rd, Kingston, ON K7L 4V4, Canada",
+    "website": "http://www.kingstonmuslims.ca/"
+  },
+  {
+    "placeId": "ChIJZaDq1p0iyUwRCqD2-AB7Xp8",
+    "name": "Islamic Centre of Quebec - El Markaz Islami",
+    "lat": 45.521260299999994,
+    "lng": -73.7047613,
+    "address": "2520 Chem. Laval, Saint-Laurent, QC H4L 3A1, Canada",
+    "website": "https://www.icqmontreal.com/"
+  },
+  {
+    "placeId": "ChIJrVTJbher0kwRtetAA5Yl7k8",
+    "name": "MUSALLAH QUMSA",
+    "lat": 44.2284453,
+    "lng": -76.4946731,
+    "address": "John Deutsch University Centre 87 Union Street West #232, 2nd Floor, Room 232, Kingston, ON K1M 1R9, Canada",
+    "website": null
+  },
+  {
+    "placeId": "ChIJCyfgcACr0kwRfHeeFkrRcsI",
+    "name": "Ismaili Jamatkhana Kingston",
+    "lat": 44.2690158,
+    "lng": -76.4801142,
+    "address": "105 Sutherland Dr Unit 7, Kingston, ON K7K 5V6, Canada",
+    "website": null
+  },
+  {
+    "placeId": "ChIJORj50jWt0kwRJ5JSNsEnIPI",
+    "name": "Aal Muhammad Imam Bargah / Hussainyah",
+    "lat": 44.2372848,
+    "lng": -76.5873169,
+    "address": "1941 Bath Rd, Kingston, ON K7M 4Y3, Canada",
+    "website": "https://aalmuhammad.ca/"
+  },
+  {
+    "placeId": "ChIJ3cZMe2Oy00wRbRjETVVN4S8",
+    "name": "Mosque Lake",
+    "lat": 45.0137176,
+    "lng": -76.9131657,
+    "address": "Mosque Lake, North Frontenac, ON K0H 2J0, Canada",
+    "website": null
+  },
+  {
+    "placeId": "ChIJo_XWj9UN3okRnB_UDKwGt0U",
+    "name": "Al-Hidaya Center Latham",
+    "lat": 42.7422432,
+    "lng": -73.7484939,
+    "address": "322 Troy-Schenectady Rd, Latham, NY 12110, USA",
+    "website": "http://www.al-hidaya.org/"
+  },
+  {
+    "placeId": "ChIJWYxZPF0l1okRy5sgoiMI94E",
+    "name": "Islamic Society of Belleville",
+    "lat": 44.1682211,
+    "lng": -77.38808879999999,
+    "address": "33 Moira St W, Belleville, ON K8P 1S1, Canada",
+    "website": "http://bellevillemasjid.ca/"
+  },
+  {
+    "placeId": "ChIJZ04B7r4N04kRypsqR4_tqPw",
+    "name": "Masjid Al Salam",
+    "lat": 42.9229128,
+    "lng": -78.8131033,
+    "address": "1190 E Delavan Ave, Buffalo, NY 14215, USA",
+    "website": "http://www.mosqueprayertimes.com/masjidalsalam"
+  },
+  {
+    "placeId": "ChIJ31RsITyN1YkRGF_KtAwv6OA",
+    "name": "Kawartha Muslim Religious Association",
+    "lat": 44.3092733,
+    "lng": -78.3487212,
+    "address": "784 Parkhill Rd W, Peterborough, ON K9J 6N9, Canada",
+    "website": "https://www.kmrapeterborough.org/"
+  },
+  {
+    "placeId": "ChIJYwmu9hjL1EwRm9opTRgLV54",
+    "name": "Peterborough Lakefield Mosque Masjid (Ahle Sunnah Wal Jamaah)",
+    "lat": 44.4190069,
+    "lng": -78.2945606,
+    "address": "1349 Buckhorn Rd, Selwyn, ON K0L 2H0, Canada",
+    "website": "https://peterboroughmosque.ca/"
+  },
+  {
+    "placeId": "ChIJ3wkAKeGM1YkR3gVTMRJ4nl0",
+    "name": "The Buddhist Place",
+    "lat": 44.306789099999996,
+    "lng": -78.3178566,
+    "address": "99 Brock St, Peterborough, ON K9H 2K6, Canada",
+    "website": "https://www.thebuddhistplace.org/"
+  },
+  {
+    "placeId": "ChIJF8UsPwC_1YkRFr5WddPbNvE",
+    "name": "Islamic centre of Port Hope",
+    "lat": 44.0979288,
+    "lng": -78.3342328,
+    "address": "9182 Northumberland County Rd 28, Port Hope, ON K9A 4K1, Canada",
+    "website": null
+  },
+  {
+    "placeId": "ChIJj4t-Q6qp1YkRGZPwYE-vKXA",
+    "name": "Port Hope Muslim Community (Masjid/Mosque)",
+    "lat": 43.953771499999995,
+    "lng": -78.2974843,
+    "address": "34 South St, Port Hope, ON L1A 3C7, Canada",
+    "website": "http://porthopemuslim.ca/"
+  },
+  {
+    "placeId": "ChIJoxqZLZ7F1YkRx5YnUCdERtg",
+    "name": "Masjid Al-Ghafoor",
+    "lat": 43.9610576,
+    "lng": -78.1662853,
+    "address": "277 Division St #2, Cobourg, ON K9A 3R2, Canada",
+    "website": "http://www.al-ghafoor.com/"
+  },
+  {
+    "placeId": "ChIJcbXJ7P2qL00RskRQE7g_cSA",
+    "name": "Northern Muslim Association",
+    "lat": 46.5040055,
+    "lng": -81.0016904,
+    "address": "468 Antwerp Ave, Greater Sudbury, ON P3C 4N1, Canada",
+    "website": "http://www.nmasudbury.com/"
+  },
+  {
+    "placeId": "ChIJq6pqZqX_Lk0R_1Xs0dLjGkw",
+    "name": "Islamic Centre of Northern Ontario",
+    "lat": 46.4358108,
+    "lng": -80.94128049999999,
+    "address": "1534 Pioneer Rd, Sudbury, ON P3G 1A3, Canada",
+    "website": "http://www.iconosudbury.com/"
+  },
+  {
+    "placeId": "ChIJ49LQDI4AL00RidxyHQwpOfQ",
+    "name": "Islamic Association of Sudbury",
+    "lat": 46.513135,
+    "lng": -80.93454729999999,
+    "address": "755 Churchill Ave, Greater Sudbury, ON P3A 4A1, Canada",
+    "website": "http://www.iasudbury.com/"
+  },
+  {
+    "placeId": "ChIJk7Q_TbcEwhURhUcJjk_50VU",
+    "name": "Masjid al-Haram",
+    "lat": 21.423658,
+    "lng": 39.8253597,
+    "address": "Al Haram, Makkah 24231, Saudi Arabia",
+    "website": "https://alharamain.gov.sa/public/?page=masjid-haram-ar"
+  },
+  {
+    "placeId": "ChIJLbP40DK2t4kRuoplPNhTABs",
+    "name": "Islamic Center of Washington DC",
+    "lat": 38.9171044,
+    "lng": -77.05680079999999,
+    "address": "2551 Massachusetts Ave NW, Washington, DC 20008, USA",
+    "website": "https://theislamiccenter.us/"
+  },
+  {
+    "placeId": "ChIJBxxERkzJRIYRsUBhKtzHMZA",
+    "name": "North Austin Muslim Community Center (NAMCC - Masjid Aisha)",
+    "lat": 30.3901865,
+    "lng": -97.68398069999999,
+    "address": "11900 N Lamar Blvd, Austin, TX 78753, USA",
+    "website": "https://www.namcc.org/"
+  },
+  {
+    "placeId": "ChIJFUyNcqq_vRURL4656KnMyTk",
+    "name": "Al Masjid-e-Nabawi",
+    "lat": 24.4674061,
+    "lng": 39.611058899999996,
+    "address": "Al Haram, Madinah 42311, Saudi Arabia",
+    "website": "https://alharamain.gov.sa/public/?page=masjid-nabawi-ar"
+  },
+  {
+    "placeId": "ChIJUTpvyckpAxURrYokyVgGiJ0",
+    "name": "Al-Aqsa Mosque",
+    "lat": 31.776069200000002,
+    "lng": 35.2357802,
+    "address": "Jerusalem",
+    "website": null
+  },
+  {
+    "placeId": "ChIJrfgtw0VLDogRp0Rq5ndprvU",
+    "name": "Albanian-American Islamic Center",
+    "lat": 41.88916340000001,
+    "lng": -87.9143776,
+    "address": "5825 St Charles Rd, Berkeley, IL 60163, USA",
+    "website": "https://albanianamericanislamiccenter.com/"
+  },
+  {
+    "placeId": "ChIJYbTOMDEtW4YRTXizT9pl5u8",
+    "name": "Islamic Center of Brushy Creek (ICBC)",
+    "lat": 30.508117199999997,
+    "lng": -97.792182,
+    "address": "1950 Brushy Creek Rd, Cedar Park, TX 78613, USA",
+    "website": "http://icbrushycreek.org/"
+  },
+  {
+    "placeId": "ChIJv8L-PqwtDogR5308TMzCLRc",
+    "name": "Downtown Islamic Center",
+    "lat": 41.878692,
+    "lng": -87.62734929999999,
+    "address": "231 S State St #4, Chicago, IL 60604, USA",
+    "website": "https://dicchicago.org/"
+  },
+  {
+    "placeId": "ChIJda6luKKqKU0RyitKFsZlrTM",
+    "name": "North Bay Mosque",
+    "lat": 46.320018,
+    "lng": -79.45628590000001,
+    "address": "423 McPhail St, North Bay, ON P1B 5Z1, Canada",
+    "website": "https://masjidbox.com/prayer-times/northbaymosque"
+  },
+  {
+    "placeId": "ChIJ4TEjG0k4Nk0RyUo-ExWg3T0",
+    "name": "Islamic Association of Sault Ste. Marie",
+    "lat": 46.507591700000006,
+    "lng": -84.32496239999999,
+    "address": "2 Towers St, Sault Ste. Marie, ON P6A 2B1, Canada",
+    "website": "http://www.iassm.ca/"
+  },
+  {
+    "placeId": "ChIJ_UeQu5whWU0Ry4xMtHKg5vM",
+    "name": "Thunder Bay Masjid",
+    "lat": 48.4319615,
+    "lng": -89.2478524,
+    "address": "Canada, 591 John St, Thunder Bay, ON P7B 1Y8, Canada",
+    "website": "http://thunderbaymasjid.ca/"
+  },
+  {
+    "placeId": "ChIJiTQZOHGlPE0RehXNhfDYbu4",
+    "name": "Timmins Masjid & Community Centre",
+    "lat": 48.475452,
+    "lng": -81.3278985,
+    "address": "36 Pine St S, Timmins, ON P4N 2J8, Canada",
+    "website": null
+  },
+  {
+    "placeId": "ChIJt9VmP5uqKU0RZjocM-hzqHw",
+    "name": "Trinity United Church",
+    "lat": 46.3105745,
+    "lng": -79.4629635,
+    "address": "111 McIntyre St E, North Bay, ON P1B 1C5, Canada",
+    "website": "https://trinitynorthbay.ca/"
+  },
+  {
+    "placeId": "ChIJnVV2OJyqKU0R99UNN-_Tyes",
+    "name": "St. Andrew's United Church",
+    "lat": 46.3135883,
+    "lng": -79.4658919,
+    "address": "399 Cassells St, North Bay, ON P1B 3Z4, Canada",
+    "website": "https://standrews-northbay.ca/"
+  },
+  {
+    "placeId": "ChIJN3A9bJ6qKU0RTx1aOxqWnOM",
+    "name": "Pro-Cathedral of the Assumption",
+    "lat": 46.3154997,
+    "lng": -79.4664576,
+    "address": "480 McIntyre St W, North Bay, ON P1B 2Z4, Canada",
+    "website": "http://procathedral.ca/"
+  },
+  {
+    "placeId": "ChIJf4sCZpqqKU0RSLWwo2R34K0",
+    "name": "Redeemer Lutheran Church",
+    "lat": 46.3123314,
+    "lng": -79.4591445,
+    "address": "725 Ferguson St, North Bay, ON P1B 1X8, Canada",
+    "website": "https://www.redeemernorthbay.ca/"
+  },
+  {
+    "placeId": "ChIJe_jyC4WqKU0ReZ147mZWHDQ",
+    "name": "St John's Anglican Church",
+    "lat": 46.307163599999996,
+    "lng": -79.461696,
+    "address": "301 Main St E, North Bay, ON P1B 1B3, Canada",
+    "website": "http://www.stjohndivine.ca/"
+  },
+  {
+    "placeId": "ChIJAzJTF5GqKU0RJk8BNtT5PaA",
+    "name": "Paroisse Saint-Vincent-De-Paul",
+    "lat": 46.312087399999996,
+    "lng": -79.45405079999999,
+    "address": "1265 Wyld St, North Bay, ON P1B 2A9, Canada",
+    "website": "http://paroissestvincentnorthbay.ca/"
+  },
+  {
+    "placeId": "ChIJ6cDkha-qKU0RidMFUr1GWgs",
+    "name": "Omond Memorial United Church",
+    "lat": 46.3283499,
+    "lng": -79.4536861,
+    "address": "319 McKenzie Ave, North Bay, ON P1B 7E3, Canada",
+    "website": null
+  },
+  {
+    "placeId": "ChIJUaifxJeqKU0RSR9D10BI_Ws",
+    "name": "St. Brice’s Anglican Church",
+    "lat": 46.317810400000006,
+    "lng": -79.4541921,
+    "address": "1225 Cassells St, North Bay, ON P1B 4B8, Canada",
+    "website": "https://www.stbriceschurch.com/wordpress/"
+  },
+  {
+    "placeId": "ChIJc3saV72qKU0RVrZlIczW6aM",
+    "name": "First Baptist Church",
+    "lat": 46.3183562,
+    "lng": -79.45359169999999,
+    "address": "1250 Cassells St, North Bay, ON P1B 4B7, Canada",
+    "website": "http://www.fbcnb.ca/"
+  },
+  {
+    "placeId": "ChIJqS1RgWGqKU0RQRuEaqlyjT0",
+    "name": "Holy Name of Jesus Church",
+    "lat": 46.2975193,
+    "lng": -79.4576878,
+    "address": "895 Memorial Dr, North Bay, ON P1A 1B1, Canada",
+    "website": "http://www.holynamestalphonsus.com/"
+  },
+  {
+    "placeId": "ChIJp-jiAjiqKU0RSIRLRSvAHh4",
+    "name": "Emmanuel United Church",
+    "lat": 46.27862210000001,
+    "lng": -79.4465436,
+    "address": "395 Lakeshore Dr, North Bay, ON P1A 2C5, Canada",
+    "website": "http://www.emmanuelunitednorthbay.ca/"
+  },
+  {
+    "placeId": "ChIJ_cph8Z6qKU0RjCadsT8Y_0o",
+    "name": "Calvin Presbyterian Church",
+    "lat": 46.316452999999996,
+    "lng": -79.4650123,
+    "address": "401 1st Ave W, North Bay, ON P1B 3C5, Canada",
+    "website": "http://www.calvinnorthbay.ca/"
+  },
+  {
+    "placeId": "ChIJBWMM7D6rKU0ROVz-vhxSWZs",
+    "name": "Future Tech",
+    "lat": 46.3140587,
+    "lng": -79.440529,
+    "address": "1500 Fisher St Unit 157, North Bay, ON P1B 2H3, Canada",
+    "website": "http://www.futuretechcanada.com/"
+  },
+  {
+    "placeId": "ChIJBwMsv62qKU0R6vjUlAMOAqA",
+    "name": "Calvary Church North Bay",
+    "lat": 46.333611999999995,
+    "lng": -79.45188,
+    "address": "271 Ski Club Rd, North Bay, ON P1B 7R1, Canada",
+    "website": "http://calvarynorthbay.com/"
+  },
+  {
+    "placeId": "ChIJBZQkIuuqKU0RzQbjF8iVmCc",
+    "name": "Cellmania Enterprise",
+    "lat": 46.313755099999995,
+    "lng": -79.4402329,
+    "address": "1500 Fisher St K04, North Bay, ON P1B 2H3, Canada",
+    "website": "https://www.facebook.com/cellmania1234/about"
+  },
+  {
+    "placeId": "ChIJu97NeqqqKU0RDOxJwOqn9sc",
+    "name": "St Peter the Apostle Roman Catholic Church",
+    "lat": 46.3334634,
+    "lng": -79.46136779999999,
+    "address": "299 Airport Rd, North Bay, ON P1B 8W7, Canada",
+    "website": "http://www.stpetertheapostle.ca/"
+  },
+  {
+    "placeId": "ChIJf2QZTLOrKU0RUM5jCiJA_JM",
+    "name": "Gateway Pentecostal Church",
+    "lat": 46.2833514,
+    "lng": -79.43106139999999,
+    "address": "147 Marshall Ave E, North Bay, ON P1A 4K6, Canada",
+    "website": "http://www.gpchurch.ca/"
+  }
+]
