@@ -4880,5 +4880,227 @@
     "lastVerified": "2026-08-29",
     "needsReview": true,
     "source": "discovery"
+  },
+  {
+    "id": "toronto-and-region-islamic-congregation",
+    "name": "Toronto and Region Islamic Congregation",
+    "address": "99 Beverly Hills Drive Toronto M3L 1A2",
+    "lat": 43.7179654,
+    "lng": -79.5159802,
+    "website": "https://taric.org/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:35"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:40"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:15"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "20:00"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:40"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:30"
+      }
+    ],
+    "lastVerified": "2026-08-30",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "masjid-rahmatul-lil-alameen",
+    "name": "Masjid Rahmatul-lil-Alameen",
+    "address": "205 North Service Road Mississauga L5A 1A4",
+    "lat": 43.5735625,
+    "lng": -79.5952994,
+    "website": "https://www.rahmatmasjid.com/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:30"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:40"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:15"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 5
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:45"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:30"
+      },
+      {
+        "khutbah": "14:30"
+      }
+    ],
+    "lastVerified": "2026-08-30",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "jami-omar",
+    "name": "Jami Omar",
+    "address": "3990 Old Richmond Road K2H 6P6",
+    "lat": 45.3116695,
+    "lng": -75.828436,
+    "website": "https://www.jamiomar.org/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:45"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:30"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "17:55"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 5
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:15"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "12:45"
+      },
+      {
+        "khutbah": "13:45"
+      }
+    ],
+    "lastVerified": "2026-08-30",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "thunder-bay-masjid",
+    "name": "Thunder Bay Masjid",
+    "address": "591 John Street Thunder Bay P7B 1Y8",
+    "lat": 48.431952,
+    "lng": -89.2478948,
+    "website": "https://thunderbaymasjid.ca/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:15"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "14:15"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:45"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "20:50"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "22:30"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "14:00"
+      },
+      {
+        "khutbah": "15:15"
+      }
+    ],
+    "lastVerified": "2026-08-30",
+    "needsReview": true,
+    "source": "discovery"
+  },
+  {
+    "id": "rexdale-jame-masjid",
+    "name": "Rexdale Jame Masjid",
+    "address": "127 Westmore Drive Etobicoke ON M9V 3Y6",
+    "lat": 43.7358347,
+    "lng": -79.6008166,
+    "website": "http://rexdalemasjid.ca/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:00"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "14:00"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:30"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "20:00"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:30"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "14:00"
+      },
+      {
+        "khutbah": "15:15"
+      }
+    ],
+    "lastVerified": "2026-08-30",
+    "needsReview": true,
+    "source": "discovery"
   }
 ]

@@ -27,12 +27,23 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
-const TIMES = path.join(HERE, "discovered-prayer-times-2026-08-29.json");
 const OSM_CANDIDATES = path.join(HERE, "ontario-mosques-new.json");
 const GP_CANDIDATES = path.join(HERE, "google-places-new.json");
 const MASJIDS = path.join(HERE, "..", "src", "data", "masjids.json");
 
-const COLLECTED = "2026-08-29";
+/**
+ * Every discovery snapshot, oldest first — the filename carries the date it
+ * was collected, so sorting by name sorts by run. A later run supersedes an
+ * earlier one for the same masjid: a re-run exists precisely because the first
+ * read was wrong or missing, so the newest reading is the one to keep.
+ */
+function snapshotFiles(): string[] {
+  return fs
+    .readdirSync(HERE)
+    .filter((f) => /^discovered-prayer-times-\d{4}-\d{2}-\d{2}\.json$/.test(f))
+    .sort()
+    .map((f) => path.join(HERE, f));
+}
 
 interface Discovered {
   name: string;
@@ -40,6 +51,8 @@ interface Discovered {
   iqamah: Record<string, string | null>;
   jumuah: string[];
   needsReview?: string;
+  /** Date of the run this reading came from, filled in from the filename. */
+  collected?: string;
 }
 
 interface Located {
@@ -60,10 +73,24 @@ function slug(name: string): string {
     .slice(0, 60);
 }
 
+const PRAYERS = ["fajr", "dhuhr", "asr", "maghrib", "isha"] as const;
+
 function main() {
   const write = process.argv.includes("--write");
-  const snapshot = JSON.parse(fs.readFileSync(TIMES, "utf8"));
-  const discovered: Discovered[] = snapshot.mosques;
+
+  // Later snapshots overwrite earlier ones for the same masjid.
+  const byName = new Map<string, Discovered>();
+  const files = snapshotFiles();
+  for (const file of files) {
+    const snapshot = JSON.parse(fs.readFileSync(file, "utf8"));
+    const collected = snapshot.collected ?? path.basename(file).slice(-15, -5);
+    for (const m of snapshot.mosques as Discovered[]) {
+      byName.set(m.name, { ...m, collected });
+    }
+  }
+  const discovered = [...byName.values()];
+  console.log(`Snapshots read: ${files.map((f) => path.basename(f)).join(", ")}`);
+
   const existing = JSON.parse(fs.readFileSync(MASJIDS, "utf8"));
 
   const located = new Map<string, Located>();
@@ -84,10 +111,22 @@ function main() {
   const skippedNoCoords: string[] = [];
   const skippedSuspect: string[] = [];
   const skippedDuplicate: string[] = [];
+  const skippedIncomplete: string[] = [];
 
   for (const d of discovered) {
     if (d.needsReview) {
       skippedSuspect.push(d.name);
+      continue;
+    }
+
+    // Every prayer must resolve to something on screen. A blank row in a
+    // prayer app reads as "no congregation" rather than "we could not read
+    // this", which is worse than the masjid simply not being listed yet.
+    // Maghrib is the one exception: absent means the offset rule below, which
+    // does render a real time.
+    const blank = PRAYERS.filter((p) => !d.iqamah[p] && p !== "maghrib");
+    if (blank.length) {
+      skippedIncomplete.push(`${d.name} (no ${blank.join(", ")})`);
       continue;
     }
 
@@ -131,7 +170,7 @@ function main() {
       calc: { method: "NorthAmerica", madhab: "hanafi" },
       iqamah,
       jumuah: d.jumuah.map((khutbah) => ({ khutbah })),
-      lastVerified: COLLECTED,
+      lastVerified: d.collected ?? "",
       // Read by a machine, checked by nobody. Stays true until a human confirms.
       needsReview: true,
       source: "discovery",
@@ -146,6 +185,10 @@ function main() {
   if (skippedSuspect.length) {
     console.log(`\nRefused — times cannot be right for Ontario (${skippedSuspect.length}):`);
     for (const n of skippedSuspect) console.log(`  ! ${n}`);
+  }
+  if (skippedIncomplete.length) {
+    console.log(`\nSkipped — a prayer would render blank (${skippedIncomplete.length}):`);
+    for (const n of skippedIncomplete) console.log(`  ~ ${n}`);
   }
   if (skippedDuplicate.length) {
     console.log(`\nSkipped — id already in masjids.json (${skippedDuplicate.length}):`);
