@@ -4,10 +4,6 @@
     "website": "https://www.isnacanada.com/"
   },
   {
-    "name": "Islamic Community Centre of Ontario (ICCO) MAC Masjid/Mosque",
-    "website": "https://centres.macnet.ca/icco/"
-  },
-  {
     "name": "Sayeda Khadija Centre",
     "website": "https://www.sayedakhadijacentre.com/"
   },
@@ -24,32 +20,24 @@
     "website": "http://www.anatoliacentre.ca/"
   },
   {
-    "name": "Malton Islamic Centre",
-    "website": "https://www.maltonislamiccentre.com/"
+    "name": "Jami Mosque",
+    "website": "http://www.isnacanada.com/our-spaces/jami-masjid/"
   },
   {
-    "name": "Hamilton Downtown Mosque",
-    "website": "http://downtownmosque.com"
-  },
-  {
-    "name": "Salaheddin Islamic Centre",
-    "website": "https://www.salaheddin.org/"
-  },
-  {
-    "name": "Bosnian Islamic Association Gazi Husrev-Beg",
-    "website": "https://www.biaghb.com/"
+    "name": "Islamic Research Center of Canada Inc.",
+    "website": "http://www.irccan.com/"
   },
   {
     "name": "Ismaili Jamatkhana Scarborough",
     "website": "https://ismaili.net/heritage/node/21420"
   },
   {
-    "name": "Toronto and Region Islamic Congregation",
-    "website": "https://taric.org/"
-  },
-  {
     "name": "Imam Mahdi Islamic Centre",
     "website": "https://imammahdi.ca/"
+  },
+  {
+    "name": "Imdadul Islamic Jamat",
+    "website": "https://imdadulmasjid.com/"
   },
   {
     "name": "Masjid Huzaifah",
@@ -60,8 +48,12 @@
     "website": "https://daruliman.org/"
   },
   {
-    "name": "Ottawa Muslim Association",
-    "website": "https://www.ottawamosque.ca/"
+    "name": "Ottawa Islamic Centre & Assalam Mosque",
+    "website": "https://assalammosque.com/"
+  },
+  {
+    "name": "Jame Makki Masjid Brampton",
+    "website": "http://www.makkimasjid.ca/"
   },
   {
     "name": "Shalimar Islamic Centre",
@@ -72,36 +64,20 @@
     "website": "https://hamiltonmosque.com/"
   },
   {
-    "name": "Islamic Centre of Southwest Ontario",
-    "website": "https://islamiccentre.ca/"
+    "name": "London Muslim Mosque",
+    "website": "http://www.londonmosque.ca/"
   },
   {
-    "name": "Hyatt Mosque and Center",
-    "website": "https://www.hyattmosquecenter.com/"
+    "name": "Islamic Centre of Southwest Ontario",
+    "website": "https://islamiccentre.ca/"
   },
   {
     "name": "Baitul Ahad Mosque",
     "website": "https://www.ahmadiyya.ca/mosques/baitul-ahad"
   },
   {
-    "name": "Waterloo Masjid",
-    "website": "https://waterloomasjid.com/main/"
-  },
-  {
-    "name": "Kitchener Masjid",
-    "website": "http://kitchenermasjid.com"
-  },
-  {
-    "name": "Islamic Community Centre of Milton",
-    "website": "https://www.icnamilton.com/"
-  },
-  {
     "name": "Jamiat-Ul-Ansar of Brampton",
     "website": "http://www.jamiatulansar.ca/"
-  },
-  {
-    "name": "Newmarket Islamic Centre",
-    "website": "https://nmic.ca/"
   },
   {
     "name": "Baitul Islam Mosque",
@@ -112,14 +88,6 @@
     "website": "https://www.alzahra.ca/"
   },
   {
-    "name": "Masjid Rahmatul-lil-Alameen",
-    "website": "https://www.rahmatmasjid.com/"
-  },
-  {
-    "name": "Masjid Bilal, Islamic Society of Cumberland",
-    "website": "https://www.masjidbilal.org/"
-  },
-  {
     "name": "Masumeen Islamic Centre",
     "website": "https://jaffari.org/"
   },
@@ -128,32 +96,40 @@
     "website": "https://ottawasouthmosque.ca/"
   },
   {
-    "name": "MAC Hespeler Masjid",
-    "website": "https://hespelermasjid.ca/"
+    "name": "Wilmot Muslim Centre",
+    "website": "https://wilmotmuslimcentre.ca/"
   },
   {
-    "name": "Bosnian Islamic Centre",
-    "website": "https://bictoronto.com/"
+    "name": "Al Rayan Islamic Centre",
+    "website": "https://alrayanislamiccentre.org/"
   },
   {
-    "name": "Jami Omar",
-    "website": "https://www.jamiomar.org/"
+    "name": "Islamic Society of Belleville",
+    "website": "http://bellevillemasjid.ca/"
   },
   {
-    "name": "Masjid Al Farooq",
-    "website": "https://www.masjidfarooq.com/"
+    "name": "Sudbury Mosque",
+    "website": "http://www.iasudbury.com/"
+  },
+  {
+    "name": "Abu Thar al-Gofary Mosque, Ottawa",
+    "website": "https://www.facebook.com/AbuTharAlGhafariMosque/"
+  },
+  {
+    "name": "The Peace Mosque",
+    "website": "https://peacecommunitycenter.com/"
   },
   {
     "name": "Mount Pleasant Islamic Center",
     "website": "https://www.mpicbrampton.com/"
   },
   {
-    "name": "Thunder Bay Masjid",
-    "website": "https://thunderbaymasjid.ca/"
+    "name": "As-Salaam Alaykum Masjid Aisha",
+    "website": "https://www.mosqueaisha.ca/"
   },
   {
-    "name": "Islamic Center of Waterloo",
-    "website": "https://www.icwaterloo.com"
+    "name": "Sayyidah Zainab",
+    "website": "https://ajaxmosque.ca/"
   },
   {
     "name": "Umar Mosque",
@@ -176,24 +152,44 @@
     "website": "https://www.mymasjid.ca"
   },
   {
-    "name": "Jamia Masjid Al-Aqsa",
-    "website": "https://moonode.com/entity/al-aqsa-jamia-974445-507-pitt-st-cornwall"
+    "name": "Iman Ali (As) Masjid",
+    "website": "https://imamalimasjid.ca/"
   },
   {
-    "name": "Sarnia Muslim Association",
-    "website": "https://sarniamuslim.com/"
+    "name": "Windsor Mosque",
+    "website": "https://windsorislamicassociation.com/"
+  },
+  {
+    "name": "Masjid Alhakeem Bowmanville",
+    "website": "https://alhakeem.ca/"
+  },
+  {
+    "name": "Noor-ul-Islam",
+    "website": "https://noorulislam.ca/"
   },
   {
     "name": "Baitul Ehsaan Mosque",
     "website": "https://www.ahmadiyya.ca/mosques/baitul-ehsaan"
   },
   {
+    "name": "Islamic Centre of Kingston",
+    "website": "http://www.kingstonmuslims.ca/"
+  },
+  {
+    "name": "Brampton Islamic Center",
+    "website": "https://bsia.ca/"
+  },
+  {
+    "name": "Winston Churchill Mosque",
+    "website": "https://mici.org/"
+  },
+  {
     "name": "Baitun Nasir Mosque",
     "website": "https://www.ahmadiyya.ca/mosques/masjid-baitun-nasir"
   },
   {
-    "name": "Masjid Aisha",
-    "website": "http://masjidaisha.ca"
+    "name": "Jami' Masjid Chatham",
+    "website": "https://jmc.ad-din.site/"
   },
   {
     "name": "Jami' Masjid Zakariya",
@@ -204,8 +200,12 @@
     "website": "https://www.ahmadiyya.ca/mosques/baitun-nur-mosque"
   },
   {
-    "name": "Islamic Society of Guelph",
-    "website": "http://isofg.ca/"
+    "name": "Masjid Al-Salaam",
+    "website": "https://www.kmrapeterborough.org/"
+  },
+  {
+    "name": "Toronto Islamic Centre (TIC) & Community Services",
+    "website": "http://www.torontoislamiccentre.com/"
   },
   {
     "name": "Mubarak Mosque",
@@ -224,12 +224,12 @@
     "website": "https://www.ahmadiyya.ca/mosques/maryam-mosque"
   },
   {
-    "name": "Owen Sound Muslim Association",
-    "website": "https://osmuslim.ca/"
+    "name": "Baitul Khabir",
+    "website": "http://www.ahmadiyya.ca/"
   },
   {
-    "name": "Masjid Sayyidna Bilal",
-    "website": "https://parismasjid.ca/"
+    "name": "Owen Sound Muslim Association",
+    "website": "https://osmuslim.ca/"
   },
   {
     "name": "Erin Islamic Cultural Center",
@@ -240,16 +240,24 @@
     "website": "https://www.muslimwelfarecentre.com/"
   },
   {
-    "name": "Muslim Association of Milton",
-    "website": "https://www.miltonmasjid.com/"
+    "name": "(unnamed)",
+    "website": "http://ummahfoundation.ca/"
+  },
+  {
+    "name": "Masjid an-Noor",
+    "website": "https://islamicsocietyofstcatharines.ca/"
   },
   {
     "name": "Baitul Aman Masjid",
     "website": "http://www.torontomuslims.com/listing/baitul-aman-mosque-danforth-community-center/"
   },
   {
-    "name": "966 ICNA Masjid",
-    "website": "https://icna.website/966icnamasjid/"
+    "name": "Masjid Omar Bin Khatab",
+    "website": "https://www.masjidomarbinkhatab.ca/"
+  },
+  {
+    "name": "Islam Care Centre",
+    "website": "http://islamcare.ca/"
   },
   {
     "name": "Albanian Mosque - Albanian Muslim Society of Toronto",
@@ -260,36 +268,28 @@
     "website": "https://isnp.ca/"
   },
   {
-    "name": "Masjid Adam",
-    "website": "https://www.masjidadam.com/"
+    "name": "Darul-Uloom",
+    "website": "http://www.darululoomottawa.org/"
   },
   {
-    "name": "Rexdale Jame Masjid",
-    "website": "http://rexdalemasjid.ca/"
+    "name": "East Ottawa Masjid",
+    "website": "https://eomcc.ca/"
+  },
+  {
+    "name": "Masjid Al Qalam",
+    "website": "https://alqalamcenter.org/"
+  },
+  {
+    "name": "al-Hussain Foundation Centre",
+    "website": "https://www.alhussainfoundation.ca/"
   },
   {
     "name": "Islamic Society of Vaughan",
     "website": "http://www.islamicsocietyvaughan.com"
   },
   {
-    "name": "Muslim Neighbour Nexus",
-    "website": "https://mnnexus.ca/"
-  },
-  {
-    "name": "Al-Salaam Islamic Centre",
-    "website": "https://www.alsalaam.ca"
-  },
-  {
-    "name": "Imam Bukhari Centre",
-    "website": "https://ahlehadithcanada.org/toronto/"
-  },
-  {
     "name": "Muslim Association of Tillsonburg",
     "website": "https://muslimassociationtillsonburg.ca/"
-  },
-  {
-    "name": "Pape Mosque",
-    "website": "https://papemosque.ca/"
   },
   {
     "name": "Cornwall Masjid",

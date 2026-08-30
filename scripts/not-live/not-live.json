@@ -1,6 +1,6 @@
 {
   "liveCount": 113,
-  "notLiveCount": 178,
+  "notLiveCount": 176,
   "groups": {
     "impossibleTimes": [
       {
@@ -10,6 +10,7 @@
         "lng": -74.7208737,
         "address": "333 Second Street East Cornwall ON K6H 1Y8",
         "osmId": "way/781917069",
+        "origin": "osm-candidate",
         "detail": "Fajr 04:30 and Isha 23:15 both fall outside any Ontario schedule — verify"
       },
       {
@@ -19,6 +20,7 @@
         "lng": -80.7288747,
         "address": "169 Broadway Street Tillsonburg ON N4G 3P9",
         "osmId": "node/12470604106",
+        "origin": "osm-candidate",
         "detail": "Isha 19:00 falls before Maghrib (~20:05 in Tillsonburg) and Asr 15:15 is hours early — the whole row is misread, not just one cell. Verify against the masjid."
       },
       {
@@ -28,6 +30,7 @@
         "lng": -81.2624967,
         "address": "41 Holborn Avenue N6J 2P9",
         "osmId": "node/14077163402",
+        "origin": "osm-candidate",
         "detail": "Maghrib 21:06 / Fajr 03:58 / Isha 22:54 look like Bosnian local time, not Ontario — verify"
       },
       {
@@ -57,6 +60,7 @@
         "lng": -79.6324889,
         "address": "5280 Maingate Drive Mississauga L4W 1G5",
         "osmId": "way/34550870",
+        "origin": "osm-candidate",
         "detail": "no asr"
       },
       {
@@ -66,6 +70,7 @@
         "lng": -79.4001251,
         "address": "7340 Bayview Avenue Thornhill",
         "osmId": "way/61955974",
+        "origin": "osm-candidate",
         "detail": "no asr, isha"
       },
       {
@@ -75,6 +80,7 @@
         "lng": -80.4873513,
         "address": "204 Madison Avenue South",
         "osmId": "way/178564272",
+        "origin": "osm-candidate",
         "detail": "no asr, isha"
       },
       {
@@ -95,6 +101,7 @@
         "lng": -79.6503299,
         "address": "2200 South Sheridan Way Mississauga Ontario",
         "osmId": "way/32999667",
+        "origin": "osm-candidate",
         "detail": "no times found on the page"
       },
       {
@@ -104,6 +111,7 @@
         "lng": -79.7085726,
         "address": "7150 Edwards Boulevard Mississauga ON L5S 1Z1",
         "osmId": "way/33729099",
+        "origin": "osm-candidate",
         "detail": "no times found on the page"
       },
       {
@@ -113,6 +121,7 @@
         "lng": -79.665951,
         "address": "5671 McAdam Road Mississauga L4Z 1N9",
         "osmId": "way/34204564",
+        "origin": "osm-candidate",
         "detail": "site could not be opened"
       },
       {
@@ -122,7 +131,26 @@
         "lng": -79.6578696,
         "address": "5761 Coopers Avenue",
         "osmId": "way/34204832",
+        "origin": "osm-candidate",
         "detail": "no times found on the page"
+      },
+      {
+        "name": "Jami Mosque",
+        "website": "http://www.isnacanada.com/our-spaces/jami-masjid/",
+        "lat": 43.6533205,
+        "lng": -79.45448,
+        "address": "56 Boustead Avenue Toronto M6R 1Y9",
+        "osmId": "way/43804339",
+        "origin": "osm-candidate"
+      },
+      {
+        "name": "Islamic Research Center of Canada Inc.",
+        "website": "http://www.irccan.com/",
+        "lat": 43.7111375,
+        "lng": -79.2951115,
+        "address": "1 Stamford Square North Toronto Ontario M1L 1X4",
+        "osmId": "way/43805181",
+        "origin": "osm-candidate"
       },
       {
         "name": "Ismaili Jamatkhana Scarborough",
@@ -131,7 +159,17 @@
         "lng": -79.2597495,
         "address": "Toronto",
         "osmId": "way/59024052",
+        "origin": "osm-candidate",
         "detail": "no times found on the page"
+      },
+      {
+        "name": "Imdadul Islamic Jamat",
+        "website": "https://imdadulmasjid.com/",
+        "lat": 43.7590279,
+        "lng": -79.4869955,
+        "address": "26 Le Page Court Toronto M3J 1Z9",
+        "osmId": "way/66979961",
+        "origin": "osm-candidate"
       },
       {
         "name": "Masjid Huzaifah",
@@ -140,6 +178,7 @@
         "lng": -79.280662,
         "address": "18 Progress Avenue Scarborough",
         "osmId": "way/67141470",
+        "origin": "osm-candidate",
         "detail": "no times found on the page (page text holds 7 prayer names and 7 times)"
       },
       {
@@ -149,7 +188,26 @@
         "lng": -79.2639906,
         "address": "1330 Castlemore Avenue Markham ON L6E 1A4",
         "osmId": "way/67298317",
+        "origin": "osm-candidate",
         "detail": "no times found on the page"
+      },
+      {
+        "name": "Ottawa Islamic Centre & Assalam Mosque",
+        "website": "https://assalammosque.com/",
+        "lat": 45.383107,
+        "lng": -75.620526,
+        "address": "2335 St-Laurent Boulevard",
+        "osmId": "way/68658999",
+        "origin": "osm-candidate"
+      },
+      {
+        "name": "Jame Makki Masjid Brampton",
+        "website": "http://www.makkimasjid.ca/",
+        "lat": 43.7216539,
+        "lng": -79.6905252,
+        "address": "8450 Torbram Road Brampton L6T 4M9",
+        "osmId": "way/78592355",
+        "origin": "osm-candidate"
       },
       {
         "name": "Shalimar Islamic Centre",
@@ -158,6 +216,7 @@
         "lng": -79.6426708,
         "address": "79 Cedarglen Gate Mississauga On L5C 4S3",
         "osmId": "way/89342355",
+        "origin": "osm-candidate",
         "detail": "no times found on the page"
       },
       {
@@ -167,7 +226,17 @@
         "lng": -79.8205373,
         "address": "1545 Stone Church Road East L8W 3P8",
         "osmId": "way/98057018",
+        "origin": "osm-candidate",
         "detail": "no times found on the page"
+      },
+      {
+        "name": "London Muslim Mosque",
+        "website": "http://www.londonmosque.ca/",
+        "lat": 42.9909133,
+        "lng": -81.2705905,
+        "address": "151 Oxford Street West London",
+        "osmId": "way/123518024",
+        "origin": "osm-candidate"
       },
       {
         "name": "Islamic Centre of Southwest Ontario",
@@ -176,6 +245,7 @@
         "lng": -81.1919677,
         "address": "951 Pond Mills Road London ON N6N1C3",
         "osmId": "way/129445111",
+        "origin": "osm-candidate",
         "detail": "no times found on the page"
       },
       {
@@ -185,6 +255,7 @@
         "lng": -81.278067,
         "address": "546 Beaverbrook Avenue London Ontario N6H 2M6",
         "osmId": "way/139934389",
+        "origin": "osm-candidate",
         "detail": "site could not be opened"
       },
       {
@@ -194,6 +265,7 @@
         "lng": -79.7695094,
         "address": "291 Great Lakes Drive Brampton L6R 2Z4",
         "osmId": "way/170023709",
+        "origin": "osm-candidate",
         "detail": "site could not be opened"
       },
       {
@@ -203,6 +275,7 @@
         "lng": -79.5429879,
         "address": "10610 Jane Street Vaughan Ontario L6A 3A2",
         "osmId": "way/172429631",
+        "origin": "osm-candidate",
         "detail": "site could not be opened"
       },
       {
@@ -212,6 +285,7 @@
         "lng": -79.7116013,
         "address": "7580 Kennedy Road South Brampton ON L6W 0A1",
         "osmId": "way/242780311",
+        "origin": "osm-candidate",
         "detail": "low confidence (0.3)"
       },
       {
@@ -221,7 +295,62 @@
         "lng": -75.6812937,
         "address": "7 Fairbairn Street",
         "osmId": "way/249272479",
+        "origin": "osm-candidate",
         "detail": "site could not be opened"
+      },
+      {
+        "name": "Wilmot Muslim Centre",
+        "website": "https://wilmotmuslimcentre.ca/",
+        "lat": 43.3993619,
+        "lng": -80.5382781,
+        "address": "1000 Knechtel Court Saint Petersburg",
+        "osmId": "way/262858031",
+        "origin": "osm-candidate"
+      },
+      {
+        "name": "Al Rayan Islamic Centre",
+        "website": "https://alrayanislamiccentre.org/",
+        "lat": 43.911339,
+        "lng": -78.7865665,
+        "address": "1660 Regional Highway 2 Courtice ON",
+        "osmId": "way/287886696",
+        "origin": "osm-candidate"
+      },
+      {
+        "name": "Islamic Society of Belleville",
+        "website": "http://bellevillemasjid.ca/",
+        "lat": 44.1682058,
+        "lng": -77.3880989,
+        "address": "33 Moira St W, Belleville, ON K8P 1S1, Canada",
+        "osmId": "way/289666913",
+        "origin": "osm-candidate"
+      },
+      {
+        "name": "Sudbury Mosque",
+        "website": "http://www.iasudbury.com/",
+        "lat": 46.5131805,
+        "lng": -80.9345732,
+        "address": "755 Churchill Avenue Sudbury ON",
+        "osmId": "way/293062093",
+        "origin": "osm-candidate"
+      },
+      {
+        "name": "Abu Thar al-Gofary Mosque, Ottawa",
+        "website": "https://www.facebook.com/AbuTharAlGhafariMosque/",
+        "lat": 45.4282963,
+        "lng": -75.6568356,
+        "address": "273 Donald Street",
+        "osmId": "way/305805121",
+        "origin": "osm-candidate"
+      },
+      {
+        "name": "The Peace Mosque",
+        "website": "https://peacecommunitycenter.com/",
+        "lat": 43.0737417,
+        "lng": -79.1069196,
+        "address": "6735 Caledonia Street Niagara Falls L2G 5A6",
+        "osmId": "way/319153252",
+        "origin": "osm-candidate"
       },
       {
         "name": "Mount Pleasant Islamic Center",
@@ -230,7 +359,26 @@
         "lng": -79.8195695,
         "address": "160 Salvation Road Brampton L7A 0G2",
         "osmId": "way/331321271",
+        "origin": "osm-candidate",
         "detail": "site could not be opened"
+      },
+      {
+        "name": "As-Salaam Alaykum Masjid Aisha",
+        "website": "https://www.mosqueaisha.ca/",
+        "lat": 43.0940132,
+        "lng": -79.08484,
+        "address": "Stanley Avenue Niagara Falls ON L2G 3X2",
+        "osmId": "way/387913351",
+        "origin": "osm-candidate"
+      },
+      {
+        "name": "Sayyidah Zainab",
+        "website": "https://ajaxmosque.ca/",
+        "lat": 43.8515393,
+        "lng": -79.0232252,
+        "address": "40 Station St, Ajax, ON L1S 2H8, Canada",
+        "osmId": "way/391854003",
+        "origin": "osm-candidate"
       },
       {
         "name": "Umar Mosque",
@@ -239,6 +387,7 @@
         "lng": -79.7741582,
         "address": "734 Rennie Street L8H 3R2",
         "osmId": "way/452100145",
+        "origin": "osm-candidate",
         "detail": "no times found on the page"
       },
       {
@@ -248,6 +397,7 @@
         "lng": -79.7336717,
         "address": "6680 Campobello Road Mississauga L5N 2L8",
         "osmId": "way/458493343",
+        "origin": "osm-candidate",
         "detail": "site could not be opened"
       },
       {
@@ -257,6 +407,7 @@
         "lng": -75.7266492,
         "address": "3020 Woodroffe Avenue K2J 4G3",
         "osmId": "way/478964239",
+        "origin": "osm-candidate",
         "detail": "site could not be opened"
       },
       {
@@ -266,6 +417,7 @@
         "lng": -79.6958258,
         "address": "2478 9th Line Oavkville",
         "osmId": "way/482524672",
+        "origin": "osm-candidate",
         "detail": "no times found on the page"
       },
       {
@@ -275,7 +427,44 @@
         "lng": -75.647315,
         "address": "1216 Hunt Club Road",
         "osmId": "way/483089921",
+        "origin": "osm-candidate",
         "detail": "no times found on the page"
+      },
+      {
+        "name": "Iman Ali (As) Masjid",
+        "website": "https://imamalimasjid.ca/",
+        "lat": 45.3771035,
+        "lng": -75.6459075,
+        "address": "1606 Walkley Road",
+        "osmId": "way/483702355",
+        "origin": "osm-candidate"
+      },
+      {
+        "name": "Windsor Mosque",
+        "website": "https://windsorislamicassociation.com/",
+        "lat": 42.2774203,
+        "lng": -83.0320469,
+        "address": "1320 Northwood St, Windsor, ON N9E 1A4, Canada",
+        "osmId": "way/506312353",
+        "origin": "osm-candidate"
+      },
+      {
+        "name": "Masjid Alhakeem Bowmanville",
+        "website": "https://alhakeem.ca/",
+        "lat": 43.9105436,
+        "lng": -78.6831859,
+        "address": "2197 Maple Grove Rd, Bowmanville, ON L1C 6N1, Canada",
+        "osmId": "way/552941695",
+        "origin": "osm-candidate"
+      },
+      {
+        "name": "Noor-ul-Islam",
+        "website": "https://noorulislam.ca/",
+        "lat": 42.3210224,
+        "lng": -83.0159066,
+        "address": "Lincoln Road Windsor Ontario",
+        "osmId": "way/644961689",
+        "origin": "osm-candidate"
       },
       {
         "name": "Baitul Ehsaan Mosque",
@@ -284,7 +473,35 @@
         "lng": -82.9919258,
         "address": "1957 Head Avenue Windsor ON N8W 1V7",
         "osmId": "way/653770080",
+        "origin": "osm-candidate",
         "detail": "site could not be opened"
+      },
+      {
+        "name": "Islamic Centre of Kingston",
+        "website": "http://www.kingstonmuslims.ca/",
+        "lat": 44.284521,
+        "lng": -76.5420575,
+        "address": "Kingston",
+        "osmId": "way/656853729",
+        "origin": "osm-candidate"
+      },
+      {
+        "name": "Brampton Islamic Center",
+        "website": "https://bsia.ca/",
+        "lat": 43.701851,
+        "lng": -79.8046835,
+        "address": "6 Lowry Drive Brampton L7A 1C4",
+        "osmId": "way/663846455",
+        "origin": "osm-candidate"
+      },
+      {
+        "name": "Winston Churchill Mosque",
+        "website": "https://mici.org/",
+        "lat": 43.5809559,
+        "lng": -79.7618968,
+        "address": "6508 Winston Churchill Blvd, Mississauga, ON L5N 3W4, Canada",
+        "osmId": "node/669015220",
+        "origin": "osm-candidate"
       },
       {
         "name": "Baitun Nasir Mosque",
@@ -293,7 +510,17 @@
         "lng": -74.7368045,
         "address": "341 Balmoral Avenue Cornwall Ontario K6H 3G6",
         "osmId": "way/681506911",
+        "origin": "osm-candidate",
         "detail": "site could not be opened"
+      },
+      {
+        "name": "Jami' Masjid Chatham",
+        "website": "https://jmc.ad-din.site/",
+        "lat": 42.3900824,
+        "lng": -82.1797045,
+        "address": "416 Lacroix St, Chatham, ON N7M 2W3, Canada",
+        "osmId": "way/750633853",
+        "origin": "osm-candidate"
       },
       {
         "name": "Baitun Nur Mosque",
@@ -302,7 +529,26 @@
         "lng": -79.7957217,
         "address": "2301 King Street East Hamilton Ontario L8K 1X6",
         "osmId": "way/844801469",
+        "origin": "osm-candidate",
         "detail": "site could not be opened"
+      },
+      {
+        "name": "Masjid Al-Salaam",
+        "website": "https://www.kmrapeterborough.org/",
+        "lat": 44.3092946,
+        "lng": -78.3487231,
+        "address": "784 Parkhill Rd W, Peterborough, ON K9J 6N9, Canada",
+        "osmId": "way/998240981",
+        "origin": "osm-candidate"
+      },
+      {
+        "name": "Toronto Islamic Centre (TIC) & Community Services",
+        "website": "http://www.torontoislamiccentre.com/",
+        "lat": 43.6725134,
+        "lng": -79.3874634,
+        "address": "817 Yonge Street",
+        "osmId": "node/1123778839",
+        "origin": "osm-candidate"
       },
       {
         "name": "Mubarak Mosque",
@@ -311,6 +557,7 @@
         "lng": -79.8009379,
         "address": "10545 Hurontario Street Brampton ON L6Z 2V9",
         "osmId": "way/1149484869",
+        "origin": "osm-candidate",
         "detail": "site could not be opened"
       },
       {
@@ -320,6 +567,7 @@
         "lng": -80.3124794,
         "address": "5 Elliott Street Cambridge Ontario N1R 2J3",
         "osmId": "way/1189752936",
+        "origin": "osm-candidate",
         "detail": "site could not be opened"
       },
       {
@@ -329,6 +577,7 @@
         "lng": -79.0420318,
         "address": "3505 Salem Road Locust Hill Ontario L0H 1J0",
         "osmId": "way/1189756200",
+        "origin": "osm-candidate",
         "detail": "site could not be opened"
       },
       {
@@ -338,7 +587,17 @@
         "lng": -79.5318463,
         "address": "110 Oro-Medonte Line 7 Barrie ON L0L 2X0",
         "osmId": "way/1189758763",
+        "origin": "osm-candidate",
         "detail": "site could not be opened"
+      },
+      {
+        "name": "Baitul Khabir",
+        "website": "http://www.ahmadiyya.ca/",
+        "lat": 44.1127925,
+        "lng": -79.5648925,
+        "address": "Elizabeth Street Bradford Ontario L3Z1W9",
+        "osmId": "way/1191512048",
+        "origin": "osm-candidate"
       },
       {
         "name": "Owen Sound Muslim Association",
@@ -347,6 +606,7 @@
         "lng": -80.92729,
         "address": "895 7th Street East Owen Sound On N4K 1K2",
         "osmId": "way/1212404165",
+        "origin": "osm-candidate",
         "detail": "no times found on the page"
       },
       {
@@ -356,6 +616,7 @@
         "lng": -80.0634324,
         "address": "103 Main Street Erin Ontario N0B 1T0",
         "osmId": "way/1285001440",
+        "origin": "osm-candidate",
         "detail": "site could not be opened"
       },
       {
@@ -363,9 +624,19 @@
         "website": "https://www.muslimwelfarecentre.com/",
         "lat": 43.5751086,
         "lng": -79.6466592,
-        "address": null,
+        "address": "3490 Mavis Rd, Mississauga, ON L5C 1T8, Canada",
         "osmId": "node/1307891413",
+        "origin": "osm-candidate",
         "detail": "no times found on the page"
+      },
+      {
+        "name": "Masjid an-Noor",
+        "website": "https://islamicsocietyofstcatharines.ca/",
+        "lat": 43.1663258,
+        "lng": -79.2406468,
+        "address": "117 Geneva St, St. Catharines, ON L2R 4N3, Canada",
+        "osmId": "node/1616687440",
+        "origin": "osm-candidate"
       },
       {
         "name": "Baitul Aman Masjid",
@@ -374,7 +645,26 @@
         "lng": -79.2875074,
         "address": "3114 Danforth Avenue Toronto M1L 1B1",
         "osmId": "node/3507916762",
+        "origin": "osm-candidate",
         "detail": "no times found on the page"
+      },
+      {
+        "name": "Masjid Omar Bin Khatab",
+        "website": "https://www.masjidomarbinkhatab.ca/",
+        "lat": 43.6573287,
+        "lng": -79.3653195,
+        "address": "232 Parliament St, Toronto, ON M5A 2Z4, Canada",
+        "osmId": "node/4253527907",
+        "origin": "osm-candidate"
+      },
+      {
+        "name": "Islam Care Centre",
+        "website": "http://islamcare.ca/",
+        "lat": 45.4152723,
+        "lng": -75.6968804,
+        "address": "375 Somerset Street West",
+        "osmId": "node/4781941921",
+        "origin": "osm-candidate"
       },
       {
         "name": "Albanian Mosque - Albanian Muslim Society of Toronto",
@@ -383,6 +673,7 @@
         "lng": -79.4808509,
         "address": "564 Annette Street Toronto M6S 2C2",
         "osmId": "node/5072727158",
+        "origin": "osm-candidate",
         "detail": "site could not be opened"
       },
       {
@@ -392,7 +683,44 @@
         "lng": -79.1060829,
         "address": "6768 Lyons Creek Road",
         "osmId": "node/5119682350",
+        "origin": "osm-candidate",
         "detail": "no times found on the page"
+      },
+      {
+        "name": "Darul-Uloom",
+        "website": "http://www.darululoomottawa.org/",
+        "lat": 45.4735064,
+        "lng": -75.5205888,
+        "address": "2803 St. Joseph Boulevard",
+        "osmId": "node/5689063816",
+        "origin": "osm-candidate"
+      },
+      {
+        "name": "East Ottawa Masjid",
+        "website": "https://eomcc.ca/",
+        "lat": 45.4298022,
+        "lng": -75.6401819,
+        "address": "967 St-Laurent Boulevard",
+        "osmId": "node/5995855529",
+        "origin": "osm-candidate"
+      },
+      {
+        "name": "Masjid Al Qalam",
+        "website": "https://alqalamcenter.org/",
+        "lat": 43.6979569,
+        "lng": -79.4514591,
+        "address": "2430 Dufferin St, York, ON M6E 3T1, Canada",
+        "osmId": "node/6549657698",
+        "origin": "osm-candidate"
+      },
+      {
+        "name": "al-Hussain Foundation Centre",
+        "website": "https://www.alhussainfoundation.ca/",
+        "lat": 43.9206951,
+        "lng": -79.3260271,
+        "address": "10992 Kennedy Road Markham Ontario L6C 1P1",
+        "osmId": "node/6685146763",
+        "origin": "osm-candidate"
       },
       {
         "name": "Islamic Society of Vaughan",
@@ -401,6 +729,7 @@
         "lng": -79.5328807,
         "address": "9100 Jane Street Vaughan Ontario L4K 0A4",
         "osmId": "node/10087958870",
+        "origin": "osm-candidate",
         "detail": "no times found on the page"
       },
       {
@@ -408,8 +737,9 @@
         "website": "https://cornwallislamiccentre.ca/",
         "lat": 45.0290051,
         "lng": -74.7354129,
-        "address": null,
+        "address": "19 Second St E, Cornwall, ON K6H 1Y2, Canada",
         "osmId": "node/13699079532",
+        "origin": "osm-candidate",
         "detail": "site could not be opened"
       },
       {
@@ -638,15 +968,6 @@
         "detail": "no times found on the page"
       },
       {
-        "name": "Barrie Islamic School",
-        "website": "https://barriemosque.ca/sunday-islamic-school/",
-        "lat": 44.408639099999995,
-        "lng": -79.6893186,
-        "address": "155 Ferris Ln, Barrie, ON L4M 3A2, Canada",
-        "placeId": "ChIJ9RfwdRyjKogRlFpGTzJFiMQ",
-        "detail": "site could not be opened"
-      },
-      {
         "name": "Zainabiya Community Centre",
         "website": "https://jaffari.org/zic/",
         "lat": 44.2708455,
@@ -828,7 +1149,8 @@
         "lat": 43.6250053,
         "lng": -79.6319295,
         "address": null,
-        "osmId": "relation/1395514"
+        "osmId": "relation/1395514",
+        "origin": "osm-candidate"
       },
       {
         "name": "Ummah Nabawiah Masjid",
@@ -836,7 +1158,8 @@
         "lat": 43.7149002,
         "lng": -79.5692053,
         "address": "2074 Kipling Avenue",
-        "osmId": "way/32707332"
+        "osmId": "way/32707332",
+        "origin": "osm-candidate"
       },
       {
         "name": "Meadowvale Ismaili Centre",
@@ -844,7 +1167,8 @@
         "lat": 43.6129821,
         "lng": -79.7490987,
         "address": "7037 Financial Drive Mississauga L5N 7H5",
-        "osmId": "way/33712441"
+        "osmId": "way/33712441",
+        "origin": "osm-candidate"
       },
       {
         "name": "Baitul Hamd Mosque",
@@ -852,23 +1176,8 @@
         "lat": 43.6373731,
         "lng": -79.6369498,
         "address": "1194 Matheson Boulevard East Mississauga Ontario L4W 1Y2",
-        "osmId": "way/34550567"
-      },
-      {
-        "name": "Jami Mosque",
-        "website": null,
-        "lat": 43.6533205,
-        "lng": -79.45448,
-        "address": "56 Boustead Avenue Toronto M6R 1Y9",
-        "osmId": "way/43804339"
-      },
-      {
-        "name": "Islamic Research Center of Canada Inc.",
-        "website": null,
-        "lat": 43.7111375,
-        "lng": -79.2951115,
-        "address": "1 Stamford Square North Toronto Ontario M1L 1X4",
-        "osmId": "way/43805181"
+        "osmId": "way/34550567",
+        "origin": "osm-candidate"
       },
       {
         "name": "(unnamed)",
@@ -877,7 +1186,8 @@
         "lng": -79.309026,
         "address": null,
         "osmId": "way/43807049",
-        "flag": "no name in OSM — needs identifying by hand"
+        "flag": "no name in OSM — needs identifying by hand",
+        "origin": "osm-candidate"
       },
       {
         "name": "Dar Al-Hijrah Islamic Center",
@@ -885,15 +1195,8 @@
         "lat": 43.7133519,
         "lng": -79.5685136,
         "address": "2050 Kipling Avenue Etobicoke",
-        "osmId": "way/58849209"
-      },
-      {
-        "name": "Imdadul Islamic Jamat",
-        "website": null,
-        "lat": 43.7590279,
-        "lng": -79.4869955,
-        "address": "26 Le Page Court Toronto M3J 1Z9",
-        "osmId": "way/66979961"
+        "osmId": "way/58849209",
+        "origin": "osm-candidate"
       },
       {
         "name": "Islamic Society of York Region",
@@ -901,15 +1204,8 @@
         "lat": 43.9366856,
         "lng": -79.4069923,
         "address": null,
-        "osmId": "way/67162340"
-      },
-      {
-        "name": "Ottawa Islamic Centre & Assalam Mosque",
-        "website": null,
-        "lat": 45.383107,
-        "lng": -75.620526,
-        "address": "2335 St-Laurent Boulevard",
-        "osmId": "way/68658999"
+        "osmId": "way/67162340",
+        "origin": "osm-candidate"
       },
       {
         "name": "Ismaili Jamatkhana",
@@ -917,15 +1213,8 @@
         "lat": 43.92653,
         "lng": -78.8795867,
         "address": null,
-        "osmId": "way/76828887"
-      },
-      {
-        "name": "Jame Makki Masjid Brampton",
-        "website": null,
-        "lat": 43.7216539,
-        "lng": -79.6905252,
-        "address": "8450 Torbram Road Brampton L6T 4M9",
-        "osmId": "way/78592355"
+        "osmId": "way/76828887",
+        "origin": "osm-candidate"
       },
       {
         "name": "Usman Gousi Mosque",
@@ -933,15 +1222,8 @@
         "lat": 43.7945587,
         "lng": -79.138474,
         "address": "75 Kirkdene Drive Toronto",
-        "osmId": "way/82251132"
-      },
-      {
-        "name": "London Muslim Mosque",
-        "website": null,
-        "lat": 42.9909133,
-        "lng": -81.2705905,
-        "address": "151 Oxford Street West London",
-        "osmId": "way/123518024"
+        "osmId": "way/82251132",
+        "origin": "osm-candidate"
       },
       {
         "name": "Dawoodi Bohra Al Masjid Al Saifee Anjuman-e-Burhani",
@@ -949,7 +1231,8 @@
         "lat": 43.8492852,
         "lng": -79.4074797,
         "address": null,
-        "osmId": "way/166535798"
+        "osmId": "way/166535798",
+        "origin": "osm-candidate"
       },
       {
         "name": "Ismaili Centre Toronto",
@@ -957,7 +1240,8 @@
         "lat": 43.7238587,
         "lng": -79.333445,
         "address": "49 Wynford Drive North York M3C 1K1",
-        "osmId": "way/229680075"
+        "osmId": "way/229680075",
+        "origin": "osm-candidate"
       },
       {
         "name": "Albatool Fatima Association",
@@ -965,7 +1249,8 @@
         "lat": 45.3638405,
         "lng": -75.7878475,
         "address": "2575 Bond Street",
-        "osmId": "way/233908909"
+        "osmId": "way/233908909",
+        "origin": "osm-candidate"
       },
       {
         "name": "Rhoda Masjid and Institute",
@@ -973,15 +1258,8 @@
         "lat": 45.4745532,
         "lng": -75.5191812,
         "address": "2871 St. Joseph Boulevard",
-        "osmId": "way/244593877"
-      },
-      {
-        "name": "Wilmot Muslim Centre",
-        "website": null,
-        "lat": 43.3993619,
-        "lng": -80.5382781,
-        "address": "1000 Knechtel Court Saint Petersburg",
-        "osmId": "way/262858031"
+        "osmId": "way/244593877",
+        "origin": "osm-candidate"
       },
       {
         "name": "Ismaili Jamat Khana",
@@ -989,31 +1267,8 @@
         "lat": 45.3744894,
         "lng": -75.6241075,
         "address": "3225 Conroy Road",
-        "osmId": "way/275527293"
-      },
-      {
-        "name": "Al Rayan Islamic Centre",
-        "website": null,
-        "lat": 43.911339,
-        "lng": -78.7865665,
-        "address": "1660 Regional Highway 2 Courtice ON",
-        "osmId": "way/287886696"
-      },
-      {
-        "name": "Islamic Society of Belleville",
-        "website": null,
-        "lat": 44.1682058,
-        "lng": -77.3880989,
-        "address": null,
-        "osmId": "way/289666913"
-      },
-      {
-        "name": "Sudbury Mosque",
-        "website": null,
-        "lat": 46.5131805,
-        "lng": -80.9345732,
-        "address": "755 Churchill Avenue Sudbury ON",
-        "osmId": "way/293062093"
+        "osmId": "way/275527293",
+        "origin": "osm-candidate"
       },
       {
         "name": "Islamic Shia Ithna Asheri Asociation of Ottawa",
@@ -1021,23 +1276,8 @@
         "lat": 45.3214673,
         "lng": -75.8257328,
         "address": "3856 Old Richmond Road",
-        "osmId": "way/304926661"
-      },
-      {
-        "name": "Abu Thar al-Gofary Mosque, Ottawa",
-        "website": null,
-        "lat": 45.4282963,
-        "lng": -75.6568356,
-        "address": "273 Donald Street",
-        "osmId": "way/305805121"
-      },
-      {
-        "name": "The Peace Mosque",
-        "website": null,
-        "lat": 43.0737417,
-        "lng": -79.1069196,
-        "address": "6735 Caledonia Street Niagara Falls L2G 5A6",
-        "osmId": "way/319153252"
+        "osmId": "way/304926661",
+        "origin": "osm-candidate"
       },
       {
         "name": "Kanata Muslim Association",
@@ -1045,23 +1285,8 @@
         "lat": 45.3560684,
         "lng": -75.9283763,
         "address": "351 Sandhill Road",
-        "osmId": "way/369580571"
-      },
-      {
-        "name": "As-Salaam Alaykum Masjid Aisha",
-        "website": null,
-        "lat": 43.0940132,
-        "lng": -79.08484,
-        "address": "Stanley Avenue Niagara Falls ON L2G 3X2",
-        "osmId": "way/387913351"
-      },
-      {
-        "name": "Sayyidah Zainab",
-        "website": null,
-        "lat": 43.8515393,
-        "lng": -79.0232252,
-        "address": null,
-        "osmId": "way/391854003"
+        "osmId": "way/369580571",
+        "origin": "osm-candidate"
       },
       {
         "name": "House of the Commandments",
@@ -1069,7 +1294,8 @@
         "lat": 44.1011149,
         "lng": -77.5806063,
         "address": null,
-        "osmId": "way/429006382"
+        "osmId": "way/429006382",
+        "origin": "osm-candidate"
       },
       {
         "name": "Baitun Naseer Mosque",
@@ -1077,23 +1303,8 @@
         "lat": 45.5165977,
         "lng": -75.4034007,
         "address": "2620 Market Street Cumberland Ontario K4C 1A3",
-        "osmId": "way/470244940"
-      },
-      {
-        "name": "Iman Ali (As) Masjid",
-        "website": null,
-        "lat": 45.3771035,
-        "lng": -75.6459075,
-        "address": "1606 Walkley Road",
-        "osmId": "way/483702355"
-      },
-      {
-        "name": "Windsor Mosque",
-        "website": null,
-        "lat": 42.2774203,
-        "lng": -83.0320469,
-        "address": null,
-        "osmId": "way/506312353"
+        "osmId": "way/470244940",
+        "origin": "osm-candidate"
       },
       {
         "name": "Oshawa Mosque",
@@ -1101,7 +1312,8 @@
         "lat": 43.8924569,
         "lng": -78.8623798,
         "address": null,
-        "osmId": "way/524718674"
+        "osmId": "way/524718674",
+        "origin": "osm-candidate"
       },
       {
         "name": "Hawkesbury Mosque",
@@ -1109,7 +1321,8 @@
         "lat": 45.6105951,
         "lng": -74.6004479,
         "address": "651 Main Street East Hawkesbury K6A 1B3",
-        "osmId": "way/536724829"
+        "osmId": "way/536724829",
+        "origin": "osm-candidate"
       },
       {
         "name": "Stratford Mosque",
@@ -1117,15 +1330,8 @@
         "lat": 43.3652278,
         "lng": -80.9954739,
         "address": "97 Woods Street Stratford",
-        "osmId": "way/547565136"
-      },
-      {
-        "name": "Masjid Alhakeem Bowmanville",
-        "website": null,
-        "lat": 43.9105436,
-        "lng": -78.6831859,
-        "address": null,
-        "osmId": "way/552941695"
+        "osmId": "way/547565136",
+        "origin": "osm-candidate"
       },
       {
         "name": "Musalla As-Sahaba",
@@ -1133,23 +1339,8 @@
         "lat": 45.3506479,
         "lng": -75.7937122,
         "address": "2835 Dumaurier Avenue",
-        "osmId": "way/628607976"
-      },
-      {
-        "name": "Noor-ul-Islam",
-        "website": null,
-        "lat": 42.3210224,
-        "lng": -83.0159066,
-        "address": "Lincoln Road Windsor Ontario",
-        "osmId": "way/644961689"
-      },
-      {
-        "name": "Islamic Centre of Kingston",
-        "website": null,
-        "lat": 44.284521,
-        "lng": -76.5420575,
-        "address": "Kingston",
-        "osmId": "way/656853729"
+        "osmId": "way/628607976",
+        "origin": "osm-candidate"
       },
       {
         "name": "Al-Huda Islamic Centre",
@@ -1157,31 +1348,8 @@
         "lat": 43.744817,
         "lng": -79.2725585,
         "address": "Toronto",
-        "osmId": "way/661276513"
-      },
-      {
-        "name": "Brampton Islamic Center",
-        "website": null,
-        "lat": 43.701851,
-        "lng": -79.8046835,
-        "address": "6 Lowry Drive Brampton L7A 1C4",
-        "osmId": "way/663846455"
-      },
-      {
-        "name": "Winston Churchill Mosque",
-        "website": null,
-        "lat": 43.5809559,
-        "lng": -79.7618968,
-        "address": null,
-        "osmId": "node/669015220"
-      },
-      {
-        "name": "Jami' Masjid Chatham",
-        "website": null,
-        "lat": 42.3900824,
-        "lng": -82.1797045,
-        "address": null,
-        "osmId": "way/750633853"
+        "osmId": "way/661276513",
+        "origin": "osm-candidate"
       },
       {
         "name": "Faith Mosque",
@@ -1189,23 +1357,8 @@
         "lat": 43.6702656,
         "lng": -79.3196679,
         "address": "182",
-        "osmId": "way/795980103"
-      },
-      {
-        "name": "Masjid Al-Salaam",
-        "website": null,
-        "lat": 44.3092946,
-        "lng": -78.3487231,
-        "address": null,
-        "osmId": "way/998240981"
-      },
-      {
-        "name": "Toronto Islamic Centre (TIC) & Community Services",
-        "website": null,
-        "lat": 43.6725134,
-        "lng": -79.3874634,
-        "address": "817 Yonge Street",
-        "osmId": "node/1123778839"
+        "osmId": "way/795980103",
+        "origin": "osm-candidate"
       },
       {
         "name": "Istiqlal Mosque",
@@ -1213,7 +1366,8 @@
         "lat": 43.69548,
         "lng": -80.010826,
         "address": "14369 Trafalgar Road Ballinafad Ontario N0B 1H0",
-        "osmId": "way/1183043935"
+        "osmId": "way/1183043935",
+        "origin": "osm-candidate"
       },
       {
         "name": "Hadiqa Ahmad",
@@ -1221,15 +1375,8 @@
         "lat": 44.1620864,
         "lng": -79.615089,
         "address": "3999 10th Sideroad Bradford Ontario L3Z 2A5",
-        "osmId": "way/1189751238"
-      },
-      {
-        "name": "Baitul Khabir",
-        "website": null,
-        "lat": 44.1127925,
-        "lng": -79.5648925,
-        "address": "Elizabeth Street Bradford Ontario L3Z1W9",
-        "osmId": "way/1191512048"
+        "osmId": "way/1189751238",
+        "origin": "osm-candidate"
       },
       {
         "name": "Masjid Mosque",
@@ -1237,15 +1384,8 @@
         "lat": 43.6809543,
         "lng": -79.3312362,
         "address": null,
-        "osmId": "node/1434830620"
-      },
-      {
-        "name": "Masjid an-Noor",
-        "website": null,
-        "lat": 43.1663258,
-        "lng": -79.2406468,
-        "address": null,
-        "osmId": "node/1616687440"
+        "osmId": "node/1434830620",
+        "origin": "osm-candidate"
       },
       {
         "name": "Don Mills Jamatkhana",
@@ -1253,7 +1393,8 @@
         "lat": 43.7087855,
         "lng": -79.3400581,
         "address": "80 Overlea Boulevard East York M4H 1C5",
-        "osmId": "node/2439628508"
+        "osmId": "node/2439628508",
+        "origin": "osm-candidate"
       },
       {
         "name": "Islamic Forum of Canada",
@@ -1261,15 +1402,8 @@
         "lat": 43.6920921,
         "lng": -79.6962402,
         "address": null,
-        "osmId": "node/3507050675"
-      },
-      {
-        "name": "Masjid Omar Bin Khatab",
-        "website": null,
-        "lat": 43.6573287,
-        "lng": -79.3653195,
-        "address": null,
-        "osmId": "node/4253527907"
+        "osmId": "node/3507050675",
+        "origin": "osm-candidate"
       },
       {
         "name": "Al-Hikmah Centre Inc",
@@ -1277,23 +1411,8 @@
         "lat": 43.7068238,
         "lng": -79.4759196,
         "address": "36 Colville Road North York",
-        "osmId": "node/4730509427"
-      },
-      {
-        "name": "Islam Care Centre",
-        "website": null,
-        "lat": 45.4152723,
-        "lng": -75.6968804,
-        "address": "375 Somerset Street West",
-        "osmId": "node/4781941921"
-      },
-      {
-        "name": "Darul-Uloom",
-        "website": null,
-        "lat": 45.4735064,
-        "lng": -75.5205888,
-        "address": "2803 St. Joseph Boulevard",
-        "osmId": "node/5689063816"
+        "osmId": "node/4730509427",
+        "origin": "osm-candidate"
       },
       {
         "name": "Jannatul Ferdous Mosque",
@@ -1301,15 +1420,8 @@
         "lat": 43.7331459,
         "lng": -79.5882398,
         "address": "1701 Martin Grove Road Etobicoke M9V 4N4",
-        "osmId": "node/5917075347"
-      },
-      {
-        "name": "East Ottawa Masjid",
-        "website": null,
-        "lat": 45.4298022,
-        "lng": -75.6401819,
-        "address": "967 St-Laurent Boulevard",
-        "osmId": "node/5995855529"
+        "osmId": "node/5917075347",
+        "origin": "osm-candidate"
       },
       {
         "name": "The Reign of Islamic Da'Wah",
@@ -1317,7 +1429,8 @@
         "lat": 43.6833105,
         "lng": -79.4809583,
         "address": null,
-        "osmId": "node/6348392718"
+        "osmId": "node/6348392718",
+        "origin": "osm-candidate"
       },
       {
         "name": "Hamza Mosque",
@@ -1325,23 +1438,8 @@
         "lat": 43.6414066,
         "lng": -79.432098,
         "address": "1287 Queen Street West M6K 1M2",
-        "osmId": "node/6495425610"
-      },
-      {
-        "name": "Masjid Al Qalam",
-        "website": null,
-        "lat": 43.6979569,
-        "lng": -79.4514591,
-        "address": null,
-        "osmId": "node/6549657698"
-      },
-      {
-        "name": "al-Hussain Foundation Centre",
-        "website": null,
-        "lat": 43.9206951,
-        "lng": -79.3260271,
-        "address": "10992 Kennedy Road Markham Ontario L6C 1P1",
-        "osmId": "node/6685146763"
+        "osmId": "node/6495425610",
+        "origin": "osm-candidate"
       },
       {
         "name": "Afghan-Canadian Islamic Community",
@@ -1349,7 +1447,8 @@
         "lat": 43.7203003,
         "lng": -79.3081666,
         "address": "22 Hobson Avenue North York M4A 1Y2",
-        "osmId": "node/6685168172"
+        "osmId": "node/6685168172",
+        "origin": "osm-candidate"
       },
       {
         "name": "Baitul Jannah Islamic Center",
@@ -1357,7 +1456,8 @@
         "lat": 43.7188156,
         "lng": -79.2402546,
         "address": null,
-        "osmId": "node/9062811515"
+        "osmId": "node/9062811515",
+        "origin": "osm-candidate"
       },
       {
         "name": "Naqshbandi Sufi Toronto",
@@ -1365,7 +1465,8 @@
         "lat": 43.7117703,
         "lng": -79.6890563,
         "address": "129 East Drive",
-        "osmId": "node/10278276945"
+        "osmId": "node/10278276945",
+        "origin": "osm-candidate"
       },
       {
         "name": "MAC Qurtuba Islamic Centre",
@@ -1373,7 +1474,8 @@
         "lat": 45.3260789,
         "lng": -75.7199946,
         "address": null,
-        "osmId": "node/11386712347"
+        "osmId": "node/11386712347",
+        "origin": "osm-candidate"
       },
       {
         "name": "Canadian Islamic Civic Academy",
@@ -1381,7 +1483,8 @@
         "lat": 43.7428283,
         "lng": -79.6063599,
         "address": null,
-        "osmId": "node/13946430795"
+        "osmId": "node/13946430795",
+        "origin": "osm-candidate"
       },
       {
         "name": "Mosque",
@@ -1389,7 +1492,8 @@
         "lat": 43.4796239,
         "lng": -79.8498638,
         "address": null,
-        "osmId": "node/13952318078"
+        "osmId": "node/13952318078",
+        "origin": "osm-candidate"
       },
       {
         "name": "Masjid Daru-Al-Ullum Education Community center [Car Wash Building]",
@@ -1406,14 +1510,6 @@
         "lng": -79.4550623,
         "address": "110 Fairbank Ave, York, ON M6E 3Z1, Canada",
         "placeId": "ChIJN2kUT-kzK4gRciXAoNiBbhc"
-      },
-      {
-        "name": "Al eman masjid",
-        "website": null,
-        "lat": 43.5908504,
-        "lng": -79.63536119999999,
-        "address": "265 Enfield Pl, Mississauga, ON L5B 3Y7, Canada",
-        "placeId": "ChIJGzEVawBHK4gRcDM59P2-HYc"
       },
       {
         "name": "Brampton Jamatkhana",

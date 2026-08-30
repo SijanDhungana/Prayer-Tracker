@@ -1,4 +1,4 @@
-# Masjids found but not live (178)
+# Masjids found but not live (176)
 
 The app currently shows **113**. These are the rest, grouped by what is
 actually blocking each one. The groups need different work, so they are kept apart.
@@ -7,9 +7,9 @@ actually blocking each one. The groups need different work, so they are kept apa
 | --- | ---: | --- |
 | Times read but impossible | 5 | Check the site yourself and send the real times |
 | Times read but a prayer was blank | 4 | Same — one missing prayer each |
-| Website loads, no times found | 70 | Re-run the scraper, or find their times page by hand |
+| Website loads, no times found | 101 | Re-run the scraper, or find their times page by hand |
 | Only a shared org homepage | 10 | Find that branch's own page |
-| No website in OSM or Google | 89 | Search for one by name — several of these DO have sites |
+| No website in OSM or Google | 56 | Search for one by name — several of these DO have sites |
 
 ---
 
@@ -34,7 +34,7 @@ combining prayers, so a blank there may be correct rather than a bad read.
 - [Al Zahra Shia Association of Waterloo Region](https://www.alzahra.ca/) — no asr, isha
 - [Islamic Centre of Cambridge](http://iccambridge.com/) — no dhuhr
 
-## 3. Website loads but no times found (70)
+## 3. Website loads but no times found (101)
 
 The realistic target. Some are transient; some genuinely publish nothing online.
 
@@ -42,36 +42,68 @@ The realistic target. Some are transient; some genuinely publish nothing online.
 - [Sayeda Khadija Centre](https://www.sayedakhadijacentre.com/) — no times found on the page
 - [Al Huda Institute Canada](https://alhudainstitute.ca/) — site could not be opened
 - [Jame Masjid](https://ipcontario.com/) — no times found on the page
+- [Jami Mosque](http://www.isnacanada.com/our-spaces/jami-masjid/)
+- [Islamic Research Center of Canada Inc.](http://www.irccan.com/)
 - [Ismaili Jamatkhana Scarborough](https://ismaili.net/heritage/node/21420) — no times found on the page
+- [Imdadul Islamic Jamat](https://imdadulmasjid.com/)
 - [Masjid Huzaifah](https://www.masjidhuzaifah.com/) — no times found on the page (page text holds 7 prayer names and 7 times)
 - [Masjid Darul Iman](https://daruliman.org/) — no times found on the page
+- [Ottawa Islamic Centre & Assalam Mosque](https://assalammosque.com/)
+- [Jame Makki Masjid Brampton](http://www.makkimasjid.ca/)
 - [Shalimar Islamic Centre](https://shalimarislamiccentre.ca/) — no times found on the page
 - [Hamilton Mountain Masjid](https://hamiltonmosque.com/) — no times found on the page
+- [London Muslim Mosque](http://www.londonmosque.ca/)
 - [Islamic Centre of Southwest Ontario](https://islamiccentre.ca/) — no times found on the page
 - [Baitul Ahad Mosque](https://www.ahmadiyya.ca/mosques/baitul-ahad) — site could not be opened
 - [Jamiat-Ul-Ansar of Brampton](http://www.jamiatulansar.ca/) — site could not be opened
 - [Baitul Islam Mosque](https://www.ahmadiyya.ca/) — site could not be opened
 - [Masumeen Islamic Centre](https://jaffari.org/) — low confidence (0.3)
 - [Ottawa South Mosque](https://ottawasouthmosque.ca/) — site could not be opened
+- [Wilmot Muslim Centre](https://wilmotmuslimcentre.ca/)
+- [Al Rayan Islamic Centre](https://alrayanislamiccentre.org/)
+- [Islamic Society of Belleville](http://bellevillemasjid.ca/)
+- [Sudbury Mosque](http://www.iasudbury.com/)
+- [Abu Thar al-Gofary Mosque, Ottawa](https://www.facebook.com/AbuTharAlGhafariMosque/)
+- [The Peace Mosque](https://peacecommunitycenter.com/)
 - [Mount Pleasant Islamic Center](https://www.mpicbrampton.com/) — site could not be opened
+- [As-Salaam Alaykum Masjid Aisha](https://www.mosqueaisha.ca/)
+- [Sayyidah Zainab](https://ajaxmosque.ca/)
 - [Umar Mosque](https://www.mahcanada.com/mosques/umar) — no times found on the page
 - [Masjid Riyad Ul Jannah](http://jamiariyadhuljannah.com/) — site could not be opened
 - [SNMC Center & Masjid](https://www.snmc.ca/) — site could not be opened
 - [Masjid Noor-ul-Haram](https://wimcanada.com/) — no times found on the page
 - [Masjid ar-Rahmah](https://www.mymasjid.ca) — no times found on the page
+- [Iman Ali (As) Masjid](https://imamalimasjid.ca/)
+- [Windsor Mosque](https://windsorislamicassociation.com/)
+- [Masjid Alhakeem Bowmanville](https://alhakeem.ca/)
+- [Noor-ul-Islam](https://noorulislam.ca/)
 - [Baitul Ehsaan Mosque](https://www.ahmadiyya.ca/mosques/baitul-ehsaan) — site could not be opened
+- [Islamic Centre of Kingston](http://www.kingstonmuslims.ca/)
+- [Brampton Islamic Center](https://bsia.ca/)
+- [Winston Churchill Mosque](https://mici.org/)
 - [Baitun Nasir Mosque](https://www.ahmadiyya.ca/mosques/masjid-baitun-nasir) — site could not be opened
+- [Jami' Masjid Chatham](https://jmc.ad-din.site/)
 - [Baitun Nur Mosque](https://www.ahmadiyya.ca/mosques/baitun-nur-mosque) — site could not be opened
+- [Masjid Al-Salaam](https://www.kmrapeterborough.org/)
+- [Toronto Islamic Centre (TIC) & Community Services](http://www.torontoislamiccentre.com/)
 - [Mubarak Mosque](https://www.ahmadiyya.ca/mosques/masjid-mubarak) — site could not be opened
 - [Baitul Karim Mosque](https://www.ahmadiyya.ca/mosques/baitul-karim) — site could not be opened
 - [Baitul Mahdi Mosque](https://www.ahmadiyya.ca/mosques/baitul-mahdi) — site could not be opened
 - [Mary Mosque (Maryam Mosque)](https://www.ahmadiyya.ca/mosques/maryam-mosque) — site could not be opened
+- [Baitul Khabir](http://www.ahmadiyya.ca/)
 - [Owen Sound Muslim Association](https://osmuslim.ca/) — no times found on the page
 - [Erin Islamic Cultural Center](https://erinislamiccenter.ca/) — site could not be opened
 - [Muslim Welfare Center (Masjid and Food Bank)](https://www.muslimwelfarecentre.com/) — no times found on the page
+- [Masjid an-Noor](https://islamicsocietyofstcatharines.ca/)
 - [Baitul Aman Masjid](http://www.torontomuslims.com/listing/baitul-aman-mosque-danforth-community-center/) — no times found on the page
+- [Masjid Omar Bin Khatab](https://www.masjidomarbinkhatab.ca/)
+- [Islam Care Centre](http://islamcare.ca/)
 - [Albanian Mosque - Albanian Muslim Society of Toronto](https://www.albmuslim.ca/) — site could not be opened
 - [Islamic Society of Niagara Peninsula](https://isnp.ca/) — no times found on the page
+- [Darul-Uloom](http://www.darululoomottawa.org/)
+- [East Ottawa Masjid](https://eomcc.ca/)
+- [Masjid Al Qalam](https://alqalamcenter.org/)
+- [al-Hussain Foundation Centre](https://www.alhussainfoundation.ca/)
 - [Islamic Society of Vaughan](http://www.islamicsocietyvaughan.com) — no times found on the page
 - [Cornwall Masjid](https://cornwallislamiccentre.ca/) — site could not be opened
 - [Jamia Islamia Canada](http://www.jamiaislamia.org/) — no times found on the page
@@ -99,7 +131,6 @@ The realistic target. Some are transient; some genuinely publish nothing online.
 - [Darul Uloom Canada](http://www.ducanada.org/) — no times found on the page
 - [Sarnia Masjid](http://www.bangladesh2000.com/bdcom/islam/dir/masjid_directory_ontario.html) — no times found on the page
 - [Uyghur Mosque](http://www.uyghurmosque.com/) — no times found on the page
-- [Barrie Islamic School](https://barriemosque.ca/sunday-islamic-school/) — site could not be opened
 - [Zainabiya Community Centre](https://jaffari.org/zic/) — reader returned nothing (page text holds 4 prayer names and 12 times)
 - [Masjid Al-Abrar](http://www.alabrar.ca/) — site could not be opened
 - [Al-Rashid Islamic Institute](http://www.alrashid.ca/) — no times found on the page
@@ -125,7 +156,7 @@ would give every branch the same times. Each needs its own page found first.
 - [North End Centre (a project of MAB)](https://brantfordmosque.ca/)
 - [Madina Masjid Ottawa (Dawat-e-Islami)](http://www.dawateislamicanada.net/)
 
-## 5. No website found in OpenStreetMap or Google (89)
+## 5. No website found in OpenStreetMap or Google (56)
 
 **This does not mean the masjid has no website.** It means neither OpenStreetMap
 nor Google Places listed one, and nothing here ever searched for it — so some of
@@ -137,67 +168,35 @@ that particular bug is fixed, but the rest still need a real search step.
 - **Ummah Nabawiah Masjid** — 2074 Kipling Avenue
 - **Meadowvale Ismaili Centre** — 7037 Financial Drive Mississauga L5N 7H5
 - **Baitul Hamd Mosque** — 1194 Matheson Boulevard East Mississauga Ontario L4W 1Y2
-- **Jami Mosque** — 56 Boustead Avenue Toronto M6R 1Y9
-- **Islamic Research Center of Canada Inc.** — 1 Stamford Square North Toronto Ontario M1L 1X4
 - **(unnamed)**
 - **Dar Al-Hijrah Islamic Center** — 2050 Kipling Avenue Etobicoke
-- **Imdadul Islamic Jamat** — 26 Le Page Court Toronto M3J 1Z9
 - **Islamic Society of York Region**
-- **Ottawa Islamic Centre & Assalam Mosque** — 2335 St-Laurent Boulevard
 - **Ismaili Jamatkhana**
-- **Jame Makki Masjid Brampton** — 8450 Torbram Road Brampton L6T 4M9
 - **Usman Gousi Mosque** — 75 Kirkdene Drive Toronto
-- **London Muslim Mosque** — 151 Oxford Street West London
 - **Dawoodi Bohra Al Masjid Al Saifee Anjuman-e-Burhani**
 - **Ismaili Centre Toronto** — 49 Wynford Drive North York M3C 1K1
 - **Albatool Fatima Association** — 2575 Bond Street
 - **Rhoda Masjid and Institute** — 2871 St. Joseph Boulevard
-- **Wilmot Muslim Centre** — 1000 Knechtel Court Saint Petersburg
 - **Ismaili Jamat Khana** — 3225 Conroy Road
-- **Al Rayan Islamic Centre** — 1660 Regional Highway 2 Courtice ON
-- **Islamic Society of Belleville**
-- **Sudbury Mosque** — 755 Churchill Avenue Sudbury ON
 - **Islamic Shia Ithna Asheri Asociation of Ottawa** — 3856 Old Richmond Road
-- **Abu Thar al-Gofary Mosque, Ottawa** — 273 Donald Street
-- **The Peace Mosque** — 6735 Caledonia Street Niagara Falls L2G 5A6
 - **Kanata Muslim Association** — 351 Sandhill Road
-- **As-Salaam Alaykum Masjid Aisha** — Stanley Avenue Niagara Falls ON L2G 3X2
-- **Sayyidah Zainab**
 - **House of the Commandments**
 - **Baitun Naseer Mosque** — 2620 Market Street Cumberland Ontario K4C 1A3
-- **Iman Ali (As) Masjid** — 1606 Walkley Road
-- **Windsor Mosque**
 - **Oshawa Mosque**
 - **Hawkesbury Mosque** — 651 Main Street East Hawkesbury K6A 1B3
 - **Stratford Mosque** — 97 Woods Street Stratford
-- **Masjid Alhakeem Bowmanville**
 - **Musalla As-Sahaba** — 2835 Dumaurier Avenue
-- **Noor-ul-Islam** — Lincoln Road Windsor Ontario
-- **Islamic Centre of Kingston** — Kingston
 - **Al-Huda Islamic Centre** — Toronto
-- **Brampton Islamic Center** — 6 Lowry Drive Brampton L7A 1C4
-- **Winston Churchill Mosque**
-- **Jami' Masjid Chatham**
 - **Faith Mosque** — 182
-- **Masjid Al-Salaam**
-- **Toronto Islamic Centre (TIC) & Community Services** — 817 Yonge Street
 - **Istiqlal Mosque** — 14369 Trafalgar Road Ballinafad Ontario N0B 1H0
 - **Hadiqa Ahmad** — 3999 10th Sideroad Bradford Ontario L3Z 2A5
-- **Baitul Khabir** — Elizabeth Street Bradford Ontario L3Z1W9
 - **Masjid Mosque**
-- **Masjid an-Noor**
 - **Don Mills Jamatkhana** — 80 Overlea Boulevard East York M4H 1C5
 - **Islamic Forum of Canada**
-- **Masjid Omar Bin Khatab**
 - **Al-Hikmah Centre Inc** — 36 Colville Road North York
-- **Islam Care Centre** — 375 Somerset Street West
-- **Darul-Uloom** — 2803 St. Joseph Boulevard
 - **Jannatul Ferdous Mosque** — 1701 Martin Grove Road Etobicoke M9V 4N4
-- **East Ottawa Masjid** — 967 St-Laurent Boulevard
 - **The Reign of Islamic Da'Wah**
 - **Hamza Mosque** — 1287 Queen Street West M6K 1M2
-- **Masjid Al Qalam**
-- **al-Hussain Foundation Centre** — 10992 Kennedy Road Markham Ontario L6C 1P1
 - **Afghan-Canadian Islamic Community** — 22 Hobson Avenue North York M4A 1Y2
 - **Baitul Jannah Islamic Center**
 - **Naqshbandi Sufi Toronto** — 129 East Drive
@@ -206,7 +205,6 @@ that particular bug is fixed, but the rest still need a real search step.
 - **Mosque**
 - **Masjid Daru-Al-Ullum Education Community center [Car Wash Building]** — 16 Orfus Rd Unit 204, North York, ON M6A 2T5, Canada
 - **Jamaat of Ontario** — 110 Fairbank Ave, York, ON M6E 3Z1, Canada
-- **Al eman masjid** — 265 Enfield Pl, Mississauga, ON L5B 3Y7, Canada
 - **Brampton Jamatkhana** — 525 N Park Dr, Brampton, ON L6S 5X4, Canada
 - **Al-Arqam Islamic Centre - Friday Location** — 1626 Simcoe St N, Oshawa, ON L1G 4X9, Canada
 - **Ismaili Community Centre And Jamatkhana - Hamilton** — 61 Harlowe Rd, Hamilton, ON L8W 3R5, Canada
