@@ -70,8 +70,10 @@ const ISLAMIC_TERM =
 interface Known {
   name: string;
   website?: string | null;
+  address?: string | null;
   lat: number;
   lng: number;
+  origin?: "app" | "osm-candidate";
 }
 
 interface RawPlace {
@@ -163,6 +165,10 @@ function main() {
   const rawAll: RawPlace[] = JSON.parse(fs.readFileSync(RAW, "utf8"));
   const masjids: Known[] = JSON.parse(fs.readFileSync(MASJIDS, "utf8"));
   const osmCandidates: Known[] = JSON.parse(fs.readFileSync(OSM_CANDIDATES, "utf8"));
+  // Which list a match came from decides whether we can improve it: an OSM
+  // candidate is still ours to edit, an entry already in the app is not.
+  for (const m of masjids) m.origin = "app";
+  for (const m of osmCandidates) m.origin = "osm-candidate";
   const known: Known[] = [...masjids, ...osmCandidates];
 
   const outOfRegion = rawAll.filter((p) => !p.address || !ONTARIO_ADDRESS.test(p.address));
@@ -178,6 +184,37 @@ function main() {
     if (n) byName.set(n, k);
   }
 
+  /**
+   * A match is not just "already known, skip".
+   *
+   * Masjid Omar Bin Khatab is the case that exposed this: OpenStreetMap has it
+   * as four bare tags with no website, Google has the same mosque 2m away with
+   * a working site — and because the two matched, the Google record was
+   * discarded and the OSM one kept, so a mosque with a perfectly good website
+   * was filed under "no website at all". The dedup was answering "is this
+   * new?" and silently threw away the better record for everything that was
+   * not.
+   *
+   * So when a Google result matches an OSM candidate that is missing a field
+   * Google has, fill it in. Only ever fills blanks — an existing value is
+   * never overwritten — and only touches candidates, never an entry already
+   * in the app, which has its own correction flow.
+   */
+  const enriched: { name: string; gained: string[] }[] = [];
+  function enrich(hit: Known, place: RawPlace): void {
+    if (hit.origin !== "osm-candidate") return;
+    const gained: string[] = [];
+    if (!hit.website && place.website) {
+      hit.website = place.website;
+      gained.push("website");
+    }
+    if (!hit.address && place.address) {
+      hit.address = place.address;
+      gained.push("address");
+    }
+    if (gained.length) enriched.push({ name: hit.name, gained });
+  }
+
   const matched: { google: string; known: string; via: string }[] = [];
   const needsReview: { google: string; known: string; distanceM: number }[] = [];
   const uncertain: RawPlace[] = [];
@@ -188,6 +225,7 @@ function main() {
       const hit = byDomain.get(domain(place.website));
       if (hit) {
         matched.push({ google: place.name, known: hit.name, via: `website (${domain(place.website)})` });
+        enrich(hit, place);
         continue;
       }
     }
@@ -203,6 +241,7 @@ function main() {
     }
     if (closest && closestKm < MATCH_RADIUS_KM) {
       matched.push({ google: place.name, known: closest.name, via: `distance (${Math.round(closestKm * 1000)}m)` });
+      enrich(closest, place);
       continue;
     }
 
@@ -210,6 +249,7 @@ function main() {
     const nameHit = normalized ? byName.get(normalized) : undefined;
     if (nameHit) {
       matched.push({ google: place.name, known: nameHit.name, via: "normalized name" });
+      enrich(nameHit, place);
       continue;
     }
 
@@ -258,6 +298,11 @@ function main() {
     for (const d of sharedDomains) console.log(`  ${d}`);
   }
 
+  if (enriched.length) {
+    console.log(`\nFilled in from Google where OSM had nothing (${enriched.length}):`);
+    for (const e of enriched) console.log(`  ${e.name}  +${e.gained.join(", +")}`);
+  }
+
   console.log(`\nAlready known (matched): ${matched.length}`);
   for (const m of matched) console.log(`  ${m.google}  ->  ${m.known}  [${m.via}]`);
 
@@ -300,6 +345,10 @@ function main() {
   for (const c of withSite) console.log(`  ${c.name}  ->  ${c.website}`);
 
   if (write) {
+    if (enriched.length) {
+      fs.writeFileSync(OSM_CANDIDATES, JSON.stringify(osmCandidates, null, 2) + "\n");
+      console.log(`\nupdated ${OSM_CANDIDATES} (${enriched.length} enriched)`);
+    }
     fs.writeFileSync(OUTPUT, JSON.stringify(candidates, null, 2) + "\n");
     console.log(`\nwrote ${OUTPUT}`);
 

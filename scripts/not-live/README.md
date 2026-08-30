@@ -9,7 +9,7 @@ actually blocking each one. The groups need different work, so they are kept apa
 | Times read but a prayer was blank | 4 | Same — one missing prayer each |
 | Website loads, no times found | 70 | Re-run the scraper, or find their times page by hand |
 | Only a shared org homepage | 10 | Find that branch's own page |
-| No website at all | 89 | Nothing to scrape — needs a phone call or a visit |
+| No website in OSM or Google | 89 | Search for one by name — several of these DO have sites |
 
 ---
 
@@ -125,10 +125,13 @@ would give every branch the same times. Each needs its own page found first.
 - [North End Centre (a project of MAB)](https://brantfordmosque.ca/)
 - [Madina Masjid Ottawa (Dawat-e-Islami)](http://www.dawateislamicanada.net/)
 
-## 5. No website at all (89)
+## 5. No website found in OpenStreetMap or Google (89)
 
-No scraper can ever reach these. They would need someone to phone or visit.
-This is the largest group and the hard wall.
+**This does not mean the masjid has no website.** It means neither OpenStreetMap
+nor Google Places listed one, and nothing here ever searched for it — so some of
+these are findable in one search. Masjid Omar Bin Khatab sat in this list with a
+working site because its Google record matched an OSM record and was discarded;
+that particular bug is fixed, but the rest still need a real search step.
 
 - **Bab ul Ilm - Bani Hashim Society**
 - **Ummah Nabawiah Masjid** — 2074 Kipling Avenue
