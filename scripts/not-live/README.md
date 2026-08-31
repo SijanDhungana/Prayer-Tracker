@@ -1,208 +1,171 @@
-# Masjids found but not live — audit update (2026-08-31)
+# Masjids not live — re-audit (2026-08-31)
 
-This is a manual, site-by-site re-check of every entry below, done on August 31, 2026.
-Each site was fetched live (and several were checked in a real browser when the
-automated fetcher hit a bot-block or a JS-only widget). Where a site now shows real,
-current prayer times, they're quoted verbatim so they can be entered directly —
-per this file's own original instruction ("if you can see the real times, send them
-over and these go live immediately").
+Every entry in the original listing below was re-checked by hand on 2026-08-31, each
+site fetched live and several opened in a real browser where the fetcher hit a
+bot-block or a JS-only widget. **19 masjids can go live now** with times read off
+their own sites. The rest are grouped by what is still blocking each one.
 
-**Headline result: 19 masjids can go live right now** with verified real times (listed
-first, below). A handful more have real sites with times that need a small manual
-follow-up (stale dates, a garbled widget, a blocked fetch). The rest remain not-live
-for the same underlying reasons as before, now confirmed current as of today rather
-than whenever they were last scraped. A new section at the bottom flags data-quality
-problems in the tracker itself (duplicate entries, a lake mis-tagged as a mosque, a
-likely name typo, and a cluster of Ismaili jamatkhanas that structurally don't publish
-this kind of schedule).
+| Outcome | Count | What to do |
+| --- | ---: | --- |
+| Ready to go live, real times read | 19 | Convert to `masjids.json` and ship |
+| Real site and real times, one manual step first | 4 | One specific fix each |
+| Times read but impossible | 5 | 3 resolved, 2 still need the masjid |
+| Times read but a prayer was blank | 3 | All 3 explained — 2 are correct as-is |
+| Website loads, no times found | 81 | 12 resolved, 5 dead, 4 not masjids, ~57 unchanged |
+| Only a shared org homepage | 10 | 1 resolved, 2 look like one masjid |
+| No website in OSM or Google | 56 | 16 have a site after all, ~24 genuinely none |
+| Tracker data is wrong | 7 | Fix or delete the entry itself |
 
----
-
-## ✅ Ready to go live now — verified real times (19)
-
-All times below were read directly off each masjid's own site on Monday, August 31,
-2026 and are quoted as shown (Adhan/Begins time first, Iqamah second where both are
-given).
-
-| Masjid | Site | Fajr | Dhuhr | Asr | Maghrib | Isha |
-| --- | --- | --- | --- | --- | --- | --- |
-| Jami' Masjid Zakariya (Cornwall) | [cornwallmasjid.ca](https://cornwallmasjid.ca/) | 4:30 AM | 1:30 PM | 6:30 PM | Sunset | 11:15 PM |
-| Muslim Association of Tillsonburg | [muslimassociationtillsonburg.ca](https://muslimassociationtillsonburg.ca/) | 6:15 AM | 12:30 PM | 3:15 PM | Sunset | 7:00 PM |
-| Mevlana Masjid | [a-than.info](https://a-than.info/vv.php?code=MEVLANA01) | 4:57/5:30 AM | 1:23/1:45 PM | 5:05/5:45 PM | 8:03/8:05 PM | 9:25/9:45 PM |
-| Al Huda Institute Canada | [alhudainstitute.ca](https://alhudainstitute.ca/) | 6:00 AM | 1:40 PM | 5:45 PM | +5 min after Adhan | 9:45 PM |
-| Islamic Research Center of Canada Inc. | [irccan.com](http://www.irccan.com/) | 5:45 AM | 1:45 PM | 6:00 PM | After Sunset | 9:15 PM |
-| London Muslim Mosque | [londonmosque.ca](http://www.londonmosque.ca/) | 5:08 AM | 1:30 PM | 5:20 PM | 8:25 PM | 9:44 PM |
-| Islamic Centre of Southwest Ontario | [islamiccentre.ca](https://islamiccentre.ca/) | 5:26 AM | 1:25 PM | 5:08 PM | 8:01 PM | 9:24 PM |
-| Masjid Noor-ul-Haram | [wimcanada.com](https://wimcanada.com/) | 6:00 AM | 1:45 PM | 6:30 PM | Sunset | 9:45 PM |
-| Erin Islamic Cultural Center | [erinislamiccenter.ca](https://erinislamiccenter.ca/) | 5:30 AM | 2:00 PM | 6:00 PM | Sunset | 8:00 PM |
-| Masjid Al-Salaam (Kawartha Muslim Religious Assoc.) | [kmrapeterborough.org](https://www.kmrapeterborough.org/) | 5:11/5:30 AM | 1:14/1:30 PM | 4:57/5:30 PM | 7:54/7:59 PM | 9:17/9:30 PM |
-| Masjid – Muslim Society of Guelph | [msofg.org](http://www.msofg.org/) | 5:09/6:15 AM | 1:26/1:45 PM | 6:01/6:30 PM | 8:05/8:05 PM | 9:11/9:30 PM |
-| Islamic Centre of Bowmanville | [icbmasjid.com](https://icbmasjid.com/) | 5:13/6:00 AM | 1:15/2:00 PM | 5:55/6:15 PM | 7:52/7:57 PM | 9:16/9:30 PM |
-| Masjid Al-Abrar | [alabrar.ca](http://www.alabrar.ca/) | 5:45 AM | 1:30 PM | 5:30 PM | Sunset | 9:30 PM |
-| Masjid Subhan Ajax — Ajax location | [subhanislamicassociation.org](https://www.subhanislamicassociation.org/) | 6:00 AM | 2:00 PM | 6:15 PM | Sunset | 9:30 PM |
-| Masjid Subhan Ajax — Scarborough location | (same site) | 5:45 AM | 2:00 PM | 6:45 PM | Sunset | 9:30 PM |
-| Islamic Centre of Northern Ontario (ICONO Sudbury) | via [masjidbox.com](https://masjidbox.com/prayer-times/islamic-centre-of-northern-ontario) (linked from iconosudbury.com) | 5:14/5:45 AM | 1:24/1:45 PM | 5:06/6:30 PM | 8:04/8:09 PM | 9:13/9:18 PM |
-| Halton Islamic Association (HIA) | [hia.live](https://www.hia.live/) (the real site — masjidhalton.com just redirects here) | 5:20 AM | 1:20 PM | 5:02 PM | 7:58 PM | 9:14 PM |
-| Ummah Nabawiah Masjid | [theunm.com](https://www.theunm.com/) | 5:45/6:00 AM | 1:30/1:45 PM | 6:15/6:30 PM | Sunset | 9:20/9:30 PM |
-| Dar Al-Hijrah Islamic Center | [darulhijra.org](https://darulhijra.org/) | 5:15 AM | 1:40 PM | 5:30 PM | Sunset | 9:45 PM |
-| Islamic Society of York Region | [isyr.org](https://isyr.org/) | 5:00 AM | 2:00 PM | 5:30 PM | After Sunset | 10:00 PM |
-
-Notes on a few of these:
-- **Jami' Masjid Zakariya**: the original "impossible" flag was right that these times are unusual (a very late 11:15 PM Isha), but the live site genuinely publishes them. That's a masjid-side scheduling question, not a scraper bug — safe to publish as scraped.
-- **Bosnian Canadian Islamic Centre** and **Islamic Centre of Cambridge** are *not* in this list — see the "still flagged" notes in Categories 1 and 2 below; they have real-looking widgets but the numbers themselves don't check out.
+Times are as published on each masjid's own site on 2026-08-31, in 24h. Where a site
+gives both, they read `adhan/iqamah`.
 
 ---
 
-## ⚠️ Real site, real times exist, but needs a manual step first (4)
+## 1. Ready to go live (19) — do these first
 
-- **Kanata Muslim Association** — [kanatamuslims.ca](https://kanatamuslims.ca/) is real and has a live times widget, but the automated reader ran the Adhan/Iqamah pairs together (e.g. "DHUHR 1:041:30"). Needs a human (or a browser-rendered scrape) to read the widget cleanly. Org is currently renting space while it fundraises for a permanent building — worth confirming times are still accurate as they move.
-- **Oshawa Mosque** — [oshawamosque.com](https://oshawamosque.com/) has a full prayer-times table, but it's showing a **stale 2019 schedule**. Needs the masjid to refresh their own page before this is usable.
-- **Al-Arqam Islamic Centre** — [alarqam.ca](http://www.alarqam.ca/) loads but returned empty content to the automated fetcher (likely a JS SPA). Needs a live-browser check.
-- **Al Mahdi Islamic Community Centre** — [almahdicentre.org](https://almahdicentre.org/) shows Fajr 5:26 AM, Dhuhr 1:25 PM, Maghrib 8:17 PM, plus Sunrise/Sunset, but Asr and Isha weren't captured in this pass — needs a closer look at the page for those two.
+Read directly off each site on 2026-08-31. Note this is 19 masjids across 20 rows —
+Masjid Subhan Ajax runs two locations and is listed once per location.
 
----
+- [Jami' Masjid Zakariya](https://cornwallmasjid.ca/) (Cornwall) — Fajr 04:30, Dhuhr 13:30, Asr 18:30, Maghrib sunset, Isha 23:15
+- [Muslim Association of Tillsonburg](https://muslimassociationtillsonburg.ca/) — Fajr 06:15, Dhuhr 12:30, Asr 15:15, Maghrib sunset, Isha 19:00
+- [Mevlana Masjid](https://a-than.info/vv.php?code=MEVLANA01) — Fajr 04:57/05:30, Dhuhr 13:23/13:45, Asr 17:05/17:45, Maghrib 20:03/20:05, Isha 21:25/21:45
+- [Al Huda Institute Canada](https://alhudainstitute.ca/) — Fajr 06:00, Dhuhr 13:40, Asr 17:45, Maghrib adhan +5, Isha 21:45
+- [Islamic Research Center of Canada](http://www.irccan.com/) — Fajr 05:45, Dhuhr 13:45, Asr 18:00, Maghrib after sunset, Isha 21:15
+- [London Muslim Mosque](http://www.londonmosque.ca/) — Fajr 05:08, Dhuhr 13:30, Asr 17:20, Maghrib 20:25, Isha 21:44
+- [Islamic Centre of Southwest Ontario](https://islamiccentre.ca/) — Fajr 05:26, Dhuhr 13:25, Asr 17:08, Maghrib 20:01, Isha 21:24
+- [Masjid Noor-ul-Haram](https://wimcanada.com/) — Fajr 06:00, Dhuhr 13:45, Asr 18:30, Maghrib sunset, Isha 21:45
+- [Erin Islamic Cultural Center](https://erinislamiccenter.ca/) — Fajr 05:30, Dhuhr 14:00, Asr 18:00, Maghrib sunset, Isha 20:00
+- [Masjid Al-Salaam](https://www.kmrapeterborough.org/) (Kawartha, Peterborough) — Fajr 05:11/05:30, Dhuhr 13:14/13:30, Asr 16:57/17:30, Maghrib 19:54/19:59, Isha 21:17/21:30
+- [Masjid — Muslim Society of Guelph](http://www.msofg.org/) — Fajr 05:09/06:15, Dhuhr 13:26/13:45, Asr 18:01/18:30, Maghrib 20:05/20:05, Isha 21:11/21:30
+- [Islamic Centre of Bowmanville](https://icbmasjid.com/) — Fajr 05:13/06:00, Dhuhr 13:15/14:00, Asr 17:55/18:15, Maghrib 19:52/19:57, Isha 21:16/21:30
+- [Masjid Al-Abrar](http://www.alabrar.ca/) — Fajr 05:45, Dhuhr 13:30, Asr 17:30, Maghrib sunset, Isha 21:30
+- [Masjid Subhan Ajax](https://www.subhanislamicassociation.org/) — Ajax location — Fajr 06:00, Dhuhr 14:00, Asr 18:15, Maghrib sunset, Isha 21:30
+- [Masjid Subhan Ajax](https://www.subhanislamicassociation.org/) — Scarborough location — Fajr 05:45, Dhuhr 14:00, Asr 18:45, Maghrib sunset, Isha 21:30
+- [Islamic Centre of Northern Ontario](https://masjidbox.com/prayer-times/islamic-centre-of-northern-ontario) (ICONO Sudbury) — Fajr 05:14/05:45, Dhuhr 13:24/13:45, Asr 17:06/18:30, Maghrib 20:04/20:09, Isha 21:13/21:18 — times live on masjidbox, linked from iconosudbury.com
+- [Halton Islamic Association](https://www.hia.live/) — Fajr 05:20, Dhuhr 13:20, Asr 17:02, Maghrib 19:58, Isha 21:14 — masjidhalton.com just redirects here
+- [Ummah Nabawiah Masjid](https://www.theunm.com/) — Fajr 05:45/06:00, Dhuhr 13:30/13:45, Asr 18:15/18:30, Maghrib sunset, Isha 21:20/21:30
+- [Dar Al-Hijrah Islamic Center](https://darulhijra.org/) — Fajr 05:15, Dhuhr 13:40, Asr 17:30, Maghrib sunset, Isha 21:45
+- [Islamic Society of York Region](https://isyr.org/) — Fajr 05:00, Dhuhr 14:00, Asr 17:30, Maghrib after sunset, Isha 22:00
 
-## 1. Times read but impossible (5) — re-verified
+Two notes before shipping these:
 
-- **[Jami' Masjid Zakariya](https://cornwallmasjid.ca/)** — ✅ moved to the live list above. The scraper read it correctly; the masjid's own site really does say Fajr 4:30 AM / Isha 11:15 PM.
-- **[Muslim Association of Tillsonburg](https://muslimassociationtillsonburg.ca/)** — ✅ moved to the live list above. Worth flagging to the masjid separately: Isha is a fixed 7:00 PM while Maghrib floats with sunset, so on long summer days (like now) Isha can land *before* Maghrib. That's the site's own scheduling, not a read error.
-- **[Bosnian Canadian Islamic Centre](https://bkic.ca/)** — still flagged, unchanged. Live-checked today: Athan Fajr 03:58 / Isha 10:54, Iqamah Fajr 05:00 / Isha 10:45 (Iqamah Isha is *before* Athan Isha — internally inconsistent). Also, this section of the page doesn't render visibly on screen (the numbers are in the HTML but invisible — a display bug on their end), and the times look about an hour too early for August 31 (more like a mid-summer solstice pattern than late August). Recommend contacting the masjid rather than trusting this data as-is.
-- **[Mevlana Masjid](https://a-than.info/vv.php?code=MEVLANA01)** — ✅ moved to the live list above. This site is JS-rendered; a plain fetch just sees "--:--" placeholders. The scraper needs to wait for the page's JS to finish loading (or hit whatever API the widget calls) rather than reading the raw HTML.
-- **[Zawiya Fellowship – Annoor Jami Mosque](https://zawiyafellowship.com/)** — recommend **moving out of "impossible" and into "no full timetable published."** Checked the homepage and the dedicated `/prayers-schedule/` page: the site only ever publishes Zuhr (1:30 PM) and Jumu'ah (1:30 PM). There's no Fajr/Asr/Maghrib/Isha anywhere on the site to confirm or refute the original 4:36 AM Fajr read.
+- **Jami' Masjid Zakariya** — the original "impossible" flag was right that 23:15 Isha is
+  unusual, but the site genuinely publishes it. A masjid-side scheduling choice, not a
+  scraper bug. Safe to publish as read.
+- **Bosnian Canadian Islamic Centre** and **Islamic Centre of Cambridge** are deliberately
+  *not* here — they have real-looking widgets whose numbers do not check out. See §3 and §4.
 
-## 2. Times read but a prayer was blank (3) — re-verified
+## 2. Real site and real times, one manual step first (4)
 
-- **[Imam Mahdi Islamic Centre](https://imammahdi.ca/)** — **confirmed legitimate, not a bug.** The site explicitly states it only publishes Fajr, Dhuhr & Maghrib ("Sunrise, sunset & midnight are reference times, not prayers"), consistent with Shia combined-prayer practice. Leave as-is.
-- **[Al Zahra Shia Association of Waterloo Region](https://www.alzahra.ca/)** — likely the same pattern. Live-checked today: Fajr 5:02 AM, Dhuhr 1:23 PM, Maghrib 8:15 PM are shown; there's no Asr/Isha column on the page at all, not just missing values.
-- **[Islamic Centre of Cambridge](http://iccambridge.com/)** — **found the actual cause: the site's prayer-times widget is stuck on "August 28, 2026" (a Friday) and isn't updating**, confirmed both by the automated fetch and a live browser check on Monday, August 31. Because it's frozen on a Friday, the table shows "Juma Khutbah" in place of a Dhuhr row — that's why Dhuhr reads blank. This is a freshness bug on their site, not a genuinely missing prayer. No reliable Dhuhr time is retrievable until their widget updates itself.
+- [Kanata Muslim Association](https://kanatamuslims.ca/) — live widget, but the reader ran the adhan/iqamah pairs together ("DHUHR 1:041:30"). Needs a browser-rendered scrape. Org is renting space while fundraising, so confirm times are still current
+- [Oshawa Mosque](https://oshawamosque.com/) — full table, but showing a stale **2019** schedule. Blocked until the masjid refreshes their own page
+- [Al-Arqam Islamic Centre](http://www.alarqam.ca/) — loads but returns empty content to the fetcher, likely a JS SPA. Needs a live-browser check
+- [Al Mahdi Islamic Community Centre](https://almahdicentre.org/) — Fajr 05:26, Dhuhr 13:25, Maghrib 20:17 read fine; Asr and Isha were not captured. Needs a closer look for those two
 
-## 3. Website loads, no times found (81 → 12 resolved, 5 confirmed dead, 3 unreachable, 4 not actually masjids, ~57 unchanged)
+## 3. Times read but impossible (5) — re-verified
 
-**Resolved with real times** (see the live-list table above): Al Huda Institute Canada,
-Islamic Research Center of Canada, London Muslim Mosque, Islamic Centre of Southwest
-Ontario, Masjid Noor-ul-Haram, Erin Islamic Cultural Center, Masjid Al-Salaam/Kawartha,
-Masjid – Muslim Society of Guelph, Islamic Centre of Bowmanville, Masjid Al-Abrar,
-Masjid Subhan Ajax (both its Ajax and Scarborough locations), and Islamic Centre of
-Northern Ontario (ICONO Sudbury — the site itself now loads fine; the times live on a
-linked masjidbox.com page, not the main domain).
+- [Jami' Masjid Zakariya](https://cornwallmasjid.ca/) — resolved, moved to §1. Read correctly all along
+- [Muslim Association of Tillsonburg](https://muslimassociationtillsonburg.ca/) — resolved, moved to §1. Worth telling the masjid: Isha is fixed at 19:00 while Maghrib floats with sunset, so on long summer days Isha lands *before* Maghrib. Their scheduling, not a read error
+- [Mevlana Masjid](https://a-than.info/vv.php?code=MEVLANA01) — resolved, moved to §1. JS-rendered, so a plain fetch sees only "--:--" placeholders. The scraper must wait for the page JS or call the widget's API
+- [Bosnian Canadian Islamic Centre](https://bkic.ca/) — still flagged. Adhan Fajr 03:58 / Isha 22:54, iqamah Fajr 05:00 / Isha 22:45 — iqamah Isha lands *before* adhan Isha. The numbers are in the HTML but render invisibly (a display bug on their end), and the whole set looks ~1h early for late August. Contact the masjid rather than trust this
+- [Zawiya Fellowship — Annoor Jami Mosque](https://zawiyafellowship.com/) — move out of "impossible" into "no full timetable published". The homepage and `/prayers-schedule/` only ever publish Dhuhr 13:30 and Jumu'ah 13:30. There is no Fajr/Asr/Maghrib/Isha anywhere on the site to confirm or refute the original 04:36 Fajr
 
-**Confirmed genuinely dead** (domain doesn't resolve, or a hard 404 — not just "could
-not be opened" anymore, actually gone): Jamiat-Ul-Ansar of Brampton, Baitul Ehsaan
-Mosque (404), Baitul Aman Masjid listing page, Ebu Bekir Islamic Centre, Jafri Islamic
-Centre of Canada (Windsor).
+## 4. Times read but a prayer was blank (3) — re-verified
 
-**Not real, fetchable websites** — all three "no times found" Facebook page links
-(Abu Thar al-Gofary Mosque, Mohawk Mashjid, Imam Hussain Foundation) are blocked from
-automated access by Facebook's own robots.txt, and a Facebook page isn't a reliable
-scrape target even by hand. Recommend searching for an actual standalone site for each
-instead of continuing to point the tracker at Facebook.
+- [Imam Mahdi Islamic Centre](https://imammahdi.ca/) — legitimate, not a bug. The site states it publishes only Fajr, Dhuhr and Maghrib ("sunrise, sunset & midnight are reference times, not prayers"), consistent with Shia combined-prayer practice. Leave as-is
+- [Al Zahra Shia Association of Waterloo Region](https://www.alzahra.ca/) — same pattern. Fajr 05:02, Dhuhr 13:23, Maghrib 20:15 are shown; there is no Asr/Isha column on the page at all, not just missing values
+- [Islamic Centre of Cambridge](http://iccambridge.com/) — cause found: the widget is stuck on "August 28, 2026" and is not updating, confirmed by fetch and by browser. Because it is frozen on a Friday it shows "Juma Khutbah" where Dhuhr belongs, which is why Dhuhr reads blank. A freshness bug on their side; no reliable Dhuhr until it updates
 
-**Probably shouldn't be in a masjid list at all** — four of these are legitimate
-organizations that simply aren't mosques: Muslim Social Services Waterloo Region and
-Muslim Resource Centre for Social Support & Integration (MRCSSI) are family/social
-support charities; Muslim Wellness Network is a mental-health org; Cornwall Islamic
-Foundation is an online Islamic school ("CIF Online Islamic School"), not a physical
-masjid. None of the four publish prayer times because they're not places of prayer.
+## 5. Website loads but no times found (81) — re-verified
 
-**Everything else (~57 entries)** was re-checked and the underlying situation is
-unchanged from the original scrape, now confirmed current: the site is live but
-either (a) only publishes Jumu'ah/Friday times, not a full daily table, (b) embeds
-its times via an external widget (Mawaqit, TheMasjidApp, AthanPlus, MasjidBox,
-mosqueassistantonline) that isn't readable as static text, or (c) genuinely doesn't
-publish a schedule anywhere. A few specific notes worth keeping:
-- **Masjid Huzaifah** and **Islamic Society of Belleville** both reference Mawaqit
-  widgets — worth checking mawaqit.net directly for a masjid-specific slug for each.
-- **Masumeen Islamic Centre** and **Zainabiya Community Centre** (both on jaffari.org)
-  have a widget that explicitly says "Prayer times are unavailable for this location" —
-  a configuration bug on their shared platform, not a scraper problem.
-- **St. Thomas Islamic Centre** blocks automated fetching (403) but is reachable in a
-  real browser; its own "Today's Prayer Times" widget was showing a stale date
-  (Aug 29 instead of Aug 31) with no numbers rendered — another site-side freshness bug.
-- **Al-Rashid Islamic Institute** is the parent organization that operates Jami' Masjid
-  Zakariya (per that site's own footer) — worth checking whether this is a duplicate
-  tracker entry rather than a second masjid.
+**12 resolved with real times** — see §1: Al Huda Institute Canada, Islamic Research
+Center of Canada, London Muslim Mosque, Islamic Centre of Southwest Ontario, Masjid
+Noor-ul-Haram, Erin Islamic Cultural Center, Masjid Al-Salaam (Kawartha), Masjid —
+Muslim Society of Guelph, Islamic Centre of Bowmanville, Masjid Al-Abrar, Masjid Subhan
+Ajax (both locations), Islamic Centre of Northern Ontario.
 
-## 4. Only a shared organisation homepage (10) — re-verified
+**5 confirmed dead** — domain does not resolve or hard 404, not just "could not be
+opened": Jamiat-Ul-Ansar of Brampton, Baitul Ehsaan Mosque (404), Baitul Aman Masjid
+listing page, Ebu Bekir Islamic Centre, Jafri Islamic Centre of Canada (Windsor).
 
-- **Halton Islamic Association (HIA)** — ✅ resolved, moved to the live list above. `masjidhalton.com` redirects to `hia.live`, which is the org's own real, working site.
-- **Mosque Aisha Thorold** — this one turns out to already be its **own dedicated single-mosque site**, not actually a shared homepage — may have been mis-filed into this category originally. LIVE+NO-TIMES (no numeric times on the page).
-- **Brantford Mosque** and **Islamic Centre of Brantford** — these two tracker entries point to the same site and appear to be the **same physical masjid** (192 Greenwich St, run by the Muslim Association of Brantford). Recommend merging them into one entry rather than treating as separate masjids.
-- **North End Centre (a project of MAB)** — confirmed **legitimately a separate physical location** from the above, at Park Rd N (vs Greenwich St), still under the Muslim Association of Brantford and the same website. The site's embedded prayer widget appears to only cover the main Greenwich St building — North End Centre's own times aren't separately available yet.
-- **Faizan-E-Madinah Hamilton** and **Madina Masjid Ottawa (Dawat-e-Islami)** — no dedicated website found for either beyond the shared `dawateislamicanada.net` homepage, which has no location-specific times. Madina Masjid Ottawa's address (415 McArthur Ave) is known via third-party aggregators (cmzapp.com, mosquefinder.co.uk) but not from an official source.
-- **Baitun Nusrat Mosque, Baitul Quddus Mosque, Baitur-Rasheed Mosque** — none of these three appear in Ahmadiyya Canada's own `/mosque/` directory (26 mosques checked by name), unlike the other Ahmadiyya branches in Category 3 that do have their own subpages. Baitur-Rasheed's real address was confirmed independently (70 Charterhouse Crescent, London, ON) via Doors Open Ontario and Instagram, but it has no standalone website — only social media.
+**3 are Facebook pages, not fetchable sites** — Abu Thar al-Gofary Mosque, Mohawk
+Mashjid, Imam Hussain Foundation. All blocked by Facebook's robots.txt, and a Facebook
+page is not a reliable scrape target even by hand. Find each a standalone site instead.
 
-## 5. No website found in OpenStreetMap or Google (56) — searched individually
+**4 are not mosques and probably do not belong in this list** — Muslim Social Services
+Waterloo Region and MRCSSI are family/social support charities, Muslim Wellness Network
+is a mental-health org, and Cornwall Islamic Foundation is an online Islamic school.
+None publish prayer times because none are places of prayer.
 
-**16 turned out to have a findable website** — see the live-times table and the
-"needs a manual step" table above for the ones with real, quotable times (Ummah
-Nabawiah Masjid, Dar Al-Hijrah Islamic Center, Islamic Society of York Region, plus
-Halton Islamic Association counted under Category 4). The rest that have a site but
-no scrapeable timetable: Kanata Muslim Association, Oshawa Mosque (stale), Stratford
-Mosque, Naqshbandi Sufi Toronto, Canadian Islamic Civic Academy, Baitul Jannah
-Islamic Center, Al-Arqam Islamic Centre, Al-Moustafa Islamic Centre (Hamilton),
-MUSALLAH QUMSA (Queen's University), and — notably — **Baitul Hamd Mosque, Baitun
-Naseer Mosque, and Hadiqa Ahmad** all turned out to already have pages on
-`ahmadiyya.ca/mosque/...` with matching addresses. The original "no website in
-OSM/Google" claim doesn't mean no website exists at all — it means neither OSM nor
-Google had one on file, and for these three (plus the 13 others above) a plain web
-search found one anyway, which is exactly the gap this category's own header
-predicted.
+**~57 unchanged**, now confirmed current: the site is live but either publishes only
+Jumu'ah, embeds an external widget (Mawaqit, TheMasjidApp, AthanPlus, MasjidBox,
+mosqueassistantonline) that is not readable as static text, or publishes no schedule at
+all. Four worth keeping in view:
 
-**~24 confirmed to genuinely have no dedicated website**, only Facebook pages,
-directory listings, or aggregator sites — this list is unchanged after searching:
-Bab ul Ilm - Bani Hashim Society, Usman Gousi Mosque, Dawoodi Bohra Al Masjid Al
-Saifee Anjuman-e-Burhani (Dawoodi Bohra mosques are typically community-internal and
-don't publish public sites), Albatool Fatima Association, Rhoda Masjid and Institute,
-Islamic Shia Ithna Asheri Association of Ottawa, Hawkesbury Mosque (now going by
-"Hawkesbury Islamic Cultural Centre"), Musalla As-Sahaba, Istiqlal Mosque / Istiqlal
-Islamic Centre of Toronto (Ballinafad), Al-Hikmah Centre Inc, Jannatul Ferdous Mosque,
+- **Masjid Huzaifah** and **Islamic Society of Belleville** — both reference Mawaqit widgets. Check mawaqit.net directly for a masjid-specific slug
+- **Masumeen Islamic Centre** and **Zainabiya Community Centre** (both on jaffari.org) — widget says "Prayer times are unavailable for this location", a config bug on their shared platform, not ours
+- **St. Thomas Islamic Centre** — 403s automated fetching but loads in a browser; its own widget showed a stale date (Aug 29, not Aug 31) with no numbers rendered. Another site-side freshness bug
+- **Al-Rashid Islamic Institute** — the parent org that operates Jami' Masjid Zakariya, per that site's own footer. Check whether this is a duplicate entry rather than a second masjid
+
+## 6. Only a shared organisation homepage (10) — re-verified
+
+- [Halton Islamic Association](https://www.hia.live/) — resolved, moved to §1. masjidhalton.com redirects to hia.live, the org's own real site
+- **Mosque Aisha Thorold** — already its own dedicated single-mosque site, so it was mis-filed into this category. Still no numeric times on the page
+- **Brantford Mosque** and **Islamic Centre of Brantford** — two entries pointing at one site, and they appear to be the **same physical masjid** (192 Greenwich St, run by the Muslim Association of Brantford). Merge them
+- **North End Centre** — confirmed a genuinely separate location from the above (Park Rd N, not Greenwich St), same org and website. The site's widget appears to cover only the Greenwich St building, so North End's own times are not separately available
+- **Faizan-E-Madinah Hamilton** and **Madina Masjid Ottawa (Dawat-e-Islami)** — no dedicated site for either beyond the shared dawateislamicanada.net homepage, which has no per-location times. Madina Masjid Ottawa's address (415 McArthur Ave) is known via aggregators but not from an official source
+- **Baitun Nusrat, Baitul Quddus, Baitur-Rasheed Mosque** — none appear in Ahmadiyya Canada's own `/mosque/` directory (26 checked by name), unlike the other Ahmadiyya branches in §5 that do have subpages. Baitur-Rasheed's address was confirmed independently (70 Charterhouse Crescent, London, ON) via Doors Open Ontario and Instagram, but it has no standalone site
+
+## 7. No website found in OpenStreetMap or Google (56) — searched individually
+
+**16 do have a findable website.** Three with real quotable times are in §1 (Ummah
+Nabawiah Masjid, Dar Al-Hijrah Islamic Center, Islamic Society of York Region), plus
+Halton Islamic Association counted under §6. The rest have a site but no scrapeable
+timetable: Kanata Muslim Association, Oshawa Mosque (stale), Stratford Mosque,
+Naqshbandi Sufi Toronto, Canadian Islamic Civic Academy, Baitul Jannah Islamic Center,
+Al-Arqam Islamic Centre, Al-Moustafa Islamic Centre (Hamilton), MUSALLAH QUMSA
+(Queen's University), and — notably — **Baitul Hamd Mosque**, **Baitun Naseer Mosque**
+and **Hadiqa Ahmad**, all three of which already have pages on `ahmadiyya.ca/mosque/…`
+with matching addresses. "No website in OSM or Google" never meant no website exists,
+only that neither source had one on file, which is exactly what this category's own
+header predicted.
+
+**~24 genuinely have no dedicated website**, only Facebook, directory listings or
+aggregators — unchanged after searching: Bab ul Ilm - Bani Hashim Society, Usman Gousi
+Mosque, Dawoodi Bohra Al Masjid Al Saifee Anjuman-e-Burhani, Albatool Fatima
+Association, Rhoda Masjid and Institute, Islamic Shia Ithna Asheri Association of
+Ottawa, Hawkesbury Mosque (now "Hawkesbury Islamic Cultural Centre"), Musalla
+As-Sahaba, Istiqlal Mosque (Ballinafad), Al-Hikmah Centre Inc, Jannatul Ferdous Mosque,
 Hamza Mosque (Parkdale), Afghan-Canadian Islamic Community, Al-Fatema Islamic Center
 (Guelph), Muslim Youth Association Of London, Ahlul-Bayt Mosque (Windsor), Baitul
-Haleem Ahmadiyya Mosque (Brantford — also absent from Ahmadiyya's own directory),
-Masjid Daru-Al-Ullum ("[Car Wash Building]" suggests a small storefront musalla),
-Friday Mosque - CFB Borden Multifaith Facility (on a military base — unlikely to ever
-have a public civilian site), Alexandria Islamic Centre, Islamic centre of Port Hope,
-Timmins Masjid & Community Centre, MAC Qurtuba Islamic Centre (Ottawa), Jamaat of
-Ontario, and Al-Huda Islamic Centre (Toronto) — **possible duplicate** of "Al Huda
-Institute Canada" already resolved in Category 3, worth a manual dedup check.
+Haleem Ahmadiyya Mosque (Brantford, also absent from Ahmadiyya's directory), Masjid
+Daru-Al-Ullum, Friday Mosque - CFB Borden Multifaith Facility (on a military base),
+Alexandria Islamic Centre, Islamic centre of Port Hope, Timmins Masjid & Community
+Centre, MAC Qurtuba Islamic Centre (Ottawa), Jamaat of Ontario, and Al-Huda Islamic
+Centre (Toronto) — a **possible duplicate** of Al Huda Institute Canada, already
+resolved in §1. Worth a dedup check.
 
-**8 Ismaili jamatkhanas** — Meadowvale Ismaili Centre, the generic "Ismaili
-Jamatkhana" entry, Ismaili Centre Toronto, Ismaili Jamat Khana (Conroy Rd, Ottawa),
-Don Mills Jamatkhana, Brampton Jamatkhana, Ismaili Community Centre And Jamatkhana –
-Hamilton, and Ismaili Jamatkhana Kingston. None have a public site with a
-Fajr/Dhuhr/Asr/Maghrib/Isha-style timetable, and that's expected: Ismaili jamatkhanas
-generally don't publish this kind of public schedule the way Sunni and Shia Ithna
-Asheri mosques do — attendance and timing information is typically for registered
-Jamati members through internal channels, not a public website. Recommend treating
-this whole cluster as **not scrapeable by design**, not as a data gap to keep
-re-chasing.
+**8 Ismaili jamatkhanas — not scrapeable by design.** Meadowvale Ismaili Centre, the
+generic "Ismaili Jamatkhana" entry, Ismaili Centre Toronto, Ismaili Jamat Khana (Conroy
+Rd, Ottawa), Don Mills Jamatkhana, Brampton Jamatkhana, Ismaili Community Centre and
+Jamatkhana (Hamilton), Ismaili Jamatkhana Kingston. None publish a public
+Fajr/Dhuhr/Asr/Maghrib/Isha timetable, and that is expected — Ismaili jamatkhanas
+generally share timing with registered Jamati members through internal channels rather
+than a public site. Treat as a closed cluster, not a gap to keep re-chasing.
 
-**Data-quality issues found in the tracker itself** (not website problems — the
-underlying entries look wrong):
-- **Mosque Lake** (North Frontenac, ON) — this is a **lake**, literally named "Mosque
-  Lake." It is not a mosque. Recommend deleting this entry entirely.
-- **Faith Mosque — "182"** (partial address) — almost certainly a mangled version of
-  **Fatih Mosque, 182 Rhodes Avenue, Toronto** ("Fatih" is a common Turkish mosque name
-  meaning "conqueror"; easy to mistype/OCR as "Faith"). No independent official site
-  was found for Fatih Mosque either, but the name/address should be corrected in the
-  tracker regardless.
-- **House of the Commandments** — real place, full name is "House Of The Commandments
-  Masjid Ul Islam" in Quinte West, ON. No dedicated website found (only aggregator
-  listings), but the tracker's shortened name made it hard to search — worth updating
-  to the full name.
-- **The Reign of Islamic Da'Wah** — this is TROID (The Reign of Islamic Da'Wah,
-  Islamic Information Centre), a known Toronto organization on Weston Road. No
-  official website was confirmed in this pass — worth a manual check.
-- **(unnamed)**, **Mosque**, **Masjid Mosque** — three entries with no usable name or
-  address; nothing to search for. These likely need to be traced back to their
-  original OSM/Google source record to identify what they actually are, or removed.
+## 8. Tracker data is wrong (7) — fix the entry, not the website
+
+- **Mosque Lake** (North Frontenac, ON) — a **lake** literally named "Mosque Lake". Not a mosque. Delete
+- **Faith Mosque — "182"** — almost certainly **Fatih Mosque, 182 Rhodes Avenue, Toronto** ("Fatih" is a common Turkish mosque name, easily mistyped as "Faith"). No official site found either way, but fix the name and address
+- **House of the Commandments** — real place, full name "House Of The Commandments Masjid Ul Islam", Quinte West, ON. No dedicated site, but the shortened name made it hard to search. Use the full name
+- **The Reign of Islamic Da'Wah** — this is TROID (Islamic Information Centre), a known Toronto org on Weston Road. No official site confirmed in this pass — worth a manual check
+- **(unnamed)**, **Mosque**, **Masjid Mosque** — three entries with no usable name or address, nothing to search for. Trace back to the original OSM/Google source record or remove
 
 ---
 
-*Audit performed 2026-08-31. All "live" times above were read directly from each
-masjid's own site earlier the same day and should be double-checked again before
-long-term reliance, since several sites in this list were independently found to
-have stale or inconsistent data on their own end.*
+*Audit performed 2026-08-31. Every "ready to go live" time was read from the masjid's own
+site that same day and should be re-checked before long-term reliance — several sites in
+this list were independently found to carry stale or internally inconsistent data.*
 
 ---
 
