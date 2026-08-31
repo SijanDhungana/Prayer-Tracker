@@ -6055,5 +6055,233 @@
     "lastVerified": "2026-08-31",
     "needsReview": true,
     "source": "scrape"
+  },
+  {
+    "id": "al-huda-institute-canada",
+    "name": "Al Huda Institute Canada",
+    "address": "5671 McAdam Road, Mississauga, ON, L4Z 1N9",
+    "lat": 43.624899,
+    "lng": -79.665973,
+    "website": "https://alhudainstitute.ca/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:00"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:40"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "17:45"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 5
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:45"
+      }
+    },
+    "jumuah": [],
+    "lastVerified": "2026-08-31",
+    "needsReview": true,
+    "source": "manual"
+  },
+  {
+    "id": "islamic-centre-of-southwest-ontario",
+    "name": "Islamic Centre of Southwest Ontario",
+    "address": "951 Pond Mills Road, London, ON, N6N 1C3",
+    "lat": 42.931726,
+    "lng": -81.191969,
+    "website": "https://islamiccentre.ca/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:26"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:25"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "17:08"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "20:01"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:24"
+      }
+    },
+    "jumuah": [],
+    "lastVerified": "2026-08-31",
+    "needsReview": true,
+    "source": "manual"
+  },
+  {
+    "id": "masjid-noor-ul-haram",
+    "name": "Masjid Noor-ul-Haram",
+    "address": "2478 Ninth Line, Oakville, ON, L6H 7P9",
+    "lat": 43.506231,
+    "lng": -79.695792,
+    "website": "https://wimcanada.com/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:00"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:45"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:30"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 0
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:45"
+      }
+    },
+    "jumuah": [],
+    "lastVerified": "2026-08-31",
+    "needsReview": true,
+    "source": "manual"
+  },
+  {
+    "id": "masjid-al-salaam",
+    "name": "Masjid Al-Salaam",
+    "address": "Crowley Crescent, Peterborough, ON, K9J 6S9",
+    "lat": 44.309295,
+    "lng": -78.348723,
+    "website": "https://www.kmrapeterborough.org/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:30"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:30"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "17:30"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 5
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:30"
+      }
+    },
+    "jumuah": [],
+    "lastVerified": "2026-08-31",
+    "needsReview": true,
+    "source": "manual"
+  },
+  {
+    "id": "islamic-centre-of-bowmanville",
+    "name": "Islamic Centre of Bowmanville",
+    "address": "4 Division Street, Clarington, ON, L1C 2Z2",
+    "lat": 43.911134,
+    "lng": -78.688255,
+    "website": "https://icbmasjid.com/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:00"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "14:00"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:15"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 5
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:30"
+      }
+    },
+    "jumuah": [],
+    "lastVerified": "2026-08-31",
+    "needsReview": true,
+    "source": "manual"
+  },
+  {
+    "id": "ummah-nabawiah-masjid",
+    "name": "Ummah Nabawiah Masjid",
+    "address": "2074 Kipling Avenue, Toronto, ON, M9W 2A4",
+    "lat": 43.714909,
+    "lng": -79.569205,
+    "website": "https://www.theunm.com/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:00"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:45"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:30"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 0
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:30"
+      }
+    },
+    "jumuah": [],
+    "lastVerified": "2026-08-31",
+    "needsReview": true,
+    "source": "manual"
   }
 ]
