@@ -213,14 +213,6 @@
     "placeId": "ChIJvxiRjU70K4gR8MknyHgBoJk"
   },
   {
-    "name": "Muslim Social Services Waterloo Region",
-    "website": "http://msswr.org/",
-    "lat": 43.443139300000006,
-    "lng": -80.4753168,
-    "address": "480 Charles St E, Kitchener, ON N2G 4K5, Canada",
-    "placeId": "ChIJiSBqiSP1K4gRtM_8eIHaGY4"
-  },
-  {
     "name": "Zawiya Fellowship - Annoor Jami Mosque",
     "website": "https://zawiyafellowship.com/",
     "lat": 43.3511781,
@@ -284,14 +276,6 @@
     "lng": -81.2242158,
     "address": "889 Wellingsboro Rd, London, ON N6E 1N3, Canada",
     "placeId": "ChIJP_Js1LvzLogRmLuR_QcKct0"
-  },
-  {
-    "name": "Muslim Resource Centre for Social Support & Integration (MRCSSI)",
-    "website": "https://mrcssi.com/",
-    "lat": 42.9768981,
-    "lng": -81.2385024,
-    "address": "111 Waterloo St #101, London, ON N6B 2M4, Canada",
-    "placeId": "ChIJ_yIpAhfyLogRbbgV6jVQia8"
   },
   {
     "name": "The Clear Islam Information Center",
@@ -426,14 +410,6 @@
     "placeId": "ChIJh34sxsAazEwRl6HBTVTvV5o"
   },
   {
-    "name": "Cornwall Islamic Foundation",
-    "website": "http://cornwallislamicfoundation.ca/",
-    "lat": 45.0264459,
-    "lng": -74.7412019,
-    "address": "314 C, Ninth St W, Cornwall, ON K6J 3A7, Canada",
-    "placeId": "ChIJ-5w55WoXzEwRa1hSof3zRc8"
-  },
-  {
     "name": "Alexandria Islamic Centre",
     "website": null,
     "lat": 45.300337,
@@ -456,14 +432,6 @@
     "lng": -76.4801142,
     "address": "105 Sutherland Dr Unit 7, Kingston, ON K7K 5V6, Canada",
     "placeId": "ChIJCyfgcACr0kwRfHeeFkrRcsI"
-  },
-  {
-    "name": "Mosque Lake",
-    "website": null,
-    "lat": 45.0137176,
-    "lng": -76.9131657,
-    "address": "Mosque Lake, North Frontenac, ON K0H 2J0, Canada",
-    "placeId": "ChIJ3cZMe2Oy00wRbRjETVVN4S8"
   },
   {
     "name": "Peterborough Lakefield Mosque Masjid (Ahle Sunnah Wal Jamaah)",

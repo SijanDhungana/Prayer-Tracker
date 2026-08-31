@@ -64,6 +64,33 @@ const REVIEW_RADIUS_KM = 0.25;
 // have that isn't in Ontario, whatever the search was biased toward.
 const ONTARIO_ADDRESS = /,\s*ON(?=[\s,]|$)/i;
 
+/**
+ * Places that clear every other filter and still are not mosques.
+ *
+ * ISLAMIC_TERM keeps a candidate whose name sounds Islamic, which is right
+ * almost always and wrong for these four: three are real Muslim organisations
+ * that hold no congregation, and one is a lake. They were confirmed
+ * individually in the 2026-08-31 audit, not guessed at from their names, so
+ * they are listed by exact normalised name rather than by a pattern — a
+ * pattern broad enough to catch "Cornwall Islamic Foundation" would also
+ * catch real masjids that call themselves foundations.
+ *
+ * This is a filter and not a one-time deletion because the raw Google
+ * snapshot still contains all four: strike them from the candidate lists
+ * alone and the next import quietly puts them back.
+ */
+const NOT_A_MASJID: Record<string, string> = {
+  "muslim social services waterloo region": "counselling and social-services charity",
+  "muslim resource centre for social support & integration (mrcssi)":
+    "family-violence prevention and research charity",
+  "cornwall islamic foundation": "registered private online school, grades 1-8",
+  "mosque lake": "a lake near Ompah, North Frontenac — not a mosque",
+};
+
+const notAMasjid = (name: string): string | undefined =>
+  NOT_A_MASJID[name.trim().toLowerCase().replace(/\s+/g, " ")];
+
+
 const ISLAMIC_TERM =
   /masjid|mosque|islam|muslim|jama|jame|dar[\s-]?ul|imam|musalla|jamatkhana|ismaili|dawah|shia|sunni|ansar|ummah|quran|ahlul|hussain|husayn|khadija|bilal|aisha|zainab|omar|khattab|mahdi|noor|iqra|taqwa|tawheed|tawhid|rahma|salaam|salam|hidaya|maryam|fatima|bohra|dawoodi|sufi/i;
 
@@ -172,7 +199,15 @@ function main() {
   const known: Known[] = [...masjids, ...osmCandidates];
 
   const outOfRegion = rawAll.filter((p) => !p.address || !ONTARIO_ADDRESS.test(p.address));
-  const raw = rawAll.filter((p) => p.address && ONTARIO_ADDRESS.test(p.address));
+  const inRegion = rawAll.filter((p) => p.address && ONTARIO_ADDRESS.test(p.address));
+
+  // Dropped loudly, with the reason, rather than silently — a place vanishing
+  // from a candidate list with no explanation is indistinguishable from a bug.
+  const excluded = inRegion.filter((p) => notAMasjid(p.name ?? ""));
+  for (const p of excluded) {
+    console.log(`  · excluded ${p.name} — ${notAMasjid(p.name ?? "")}`);
+  }
+  const raw = inRegion.filter((p) => !notAMasjid(p.name ?? ""));
 
   const sharedDomains = findSharedDomains(raw);
 
