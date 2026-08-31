@@ -1,0 +1,417 @@
+[
+  {
+    "name": "Muslim Children Education & Civic Center",
+    "website": "https://www.mcecc.com/",
+    "osmIds": [
+      "relation/5331156"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:30",
+      "dhuhr": "14:00",
+      "asr": "18:00",
+      "maghrib": "20:02",
+      "isha": "21:30"
+    },
+    "jumuah": [
+      "13:00",
+      "14:00"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "Islamic Center of Greater Austin",
+    "website": "https://austinmosque.org/",
+    "osmIds": [
+      "way/381791591"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:01",
+      "dhuhr": "13:32",
+      "asr": "17:06",
+      "maghrib": "19:55",
+      "isha": "21:03"
+    },
+    "jumuah": [],
+    "capturedVia": "viewport",
+    "foundAt": "https://austinmosque.org/prayer-timings/"
+  },
+  {
+    "name": "North Austin Muslim Community Center",
+    "website": "https://www.namcc.org/",
+    "osmIds": [
+      "way/382819523"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:30",
+      "dhuhr": "14:00",
+      "asr": "17:30",
+      "maghrib": "20:00",
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "12:15",
+      "13:30",
+      "14:30"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "Madinah Masjid of Carrollton",
+    "website": "https://madinahmasjid.com/",
+    "osmIds": [
+      "way/424223465"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "13:45",
+      "asr": "18:30",
+      "maghrib": "19:58",
+      "isha": "21:30"
+    },
+    "jumuah": [
+      "14:00",
+      "14:30"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "Madrasah Islamiah Masjid Noor",
+    "website": "https://mislamiah.com",
+    "osmIds": [
+      "way/493297860"
+    ],
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Bait-ul-Qayyum Mosque",
+    "website": "https://islaminfortworth.org/",
+    "osmIds": [
+      "way/503805519"
+    ],
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Islamic Society of Greater Houston",
+    "website": "https://isgh.org/",
+    "osmIds": [
+      "way/520283786"
+    ],
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "ISGH Masjid At-Taqwa",
+    "website": "https://masjidattaqwa.com/",
+    "osmIds": [
+      "way/534495235"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:00",
+      "dhuhr": "14:00",
+      "asr": "18:00",
+      "maghrib": "19:48",
+      "isha": "21:30"
+    },
+    "jumuah": [
+      "13:35",
+      "14:40",
+      "15:40"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Bait-ul-Ikram Mosque",
+    "website": "https://islamindallas.org/",
+    "osmIds": [
+      "way/580997456",
+      "way/1102512334"
+    ],
+    "ok": false,
+    "reason": "no times found on the page"
+  },
+  {
+    "name": "Masjid Ibrahim",
+    "website": "https://www.masjidibrahim.org/",
+    "osmIds": [
+      "way/584726498"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:20",
+      "dhuhr": "14:00",
+      "asr": "17:30",
+      "maghrib": "20:02",
+      "isha": "21:20"
+    },
+    "jumuah": [
+      "13:10"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Jamia Masjid",
+    "website": "https://jamiamasjid.us/",
+    "osmIds": [
+      "way/880912133"
+    ],
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Islamic Center of Brushy Creek",
+    "website": "https://icbrushycreek.org/",
+    "osmIds": [
+      "way/898569117"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:00",
+      "asr": "18:15",
+      "maghrib": "20:01",
+      "isha": "21:30"
+    },
+    "jumuah": [
+      "12:00",
+      "13:00",
+      "14:00",
+      "15:00"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Islamic Society of Triplex – Beaumont Mosque",
+    "website": "https://istweb.org/",
+    "osmIds": [
+      "way/1020215557"
+    ],
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Islamic Society of Denton",
+    "website": "https://www.dentonmosque.com/",
+    "osmIds": [
+      "way/1042903044"
+    ],
+    "ok": false,
+    "reason": "only 0 of 5 prayers found (missing fajr, dhuhr, asr, maghrib, isha)"
+  },
+  {
+    "name": "Houston's Blue Mosque",
+    "website": "https://theislamicinstitute.net",
+    "osmIds": [
+      "way/1098995390"
+    ],
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Islamic Society Of South Texas",
+    "website": "https://isstonline.wixsite.com/isstmcallen",
+    "osmIds": [
+      "way/1256728135"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:20",
+      "dhuhr": "13:45",
+      "asr": "17:30",
+      "maghrib": null,
+      "isha": "21:30"
+    },
+    "jumuah": [
+      "13:45"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "DeSoto House of Peace",
+    "website": "https://salamdesoto.org/",
+    "osmIds": [
+      "way/1283361425"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:00",
+      "asr": "17:30",
+      "maghrib": "19:58",
+      "isha": "21:45"
+    },
+    "jumuah": [
+      "13:30"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Cypress Islamic Center",
+    "website": "https://cypressislamiccenter.org",
+    "osmIds": [
+      "way/1306256992"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "13:30",
+      "asr": "18:15",
+      "maghrib": "19:49",
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "13:40",
+      "15:20"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "(unnamed) way/1348862217",
+    "website": "https://rosenbergcommunitycenter.org",
+    "osmIds": [
+      "way/1348862217"
+    ],
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Valley Ranch Islamic Center",
+    "website": "https://vric.org",
+    "osmIds": [
+      "way/1412245411",
+      "node/12977682702"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "13:45",
+      "asr": "17:30",
+      "maghrib": "19:59",
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "13:45",
+      "15:00",
+      "16:00"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "Al-Ghadeer",
+    "website": "https://www.alghadeer.org/",
+    "osmIds": [
+      "way/1418408830"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "05:46",
+      "dhuhr": "13:22",
+      "asr": "17:56",
+      "maghrib": "20:00",
+      "isha": null
+    },
+    "jumuah": [],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "Islamic Center of Euless",
+    "website": "https://icoeuless.com/",
+    "osmIds": [
+      "node/12038368478"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:00",
+      "asr": "17:30",
+      "maghrib": "20:04",
+      "isha": "21:30"
+    },
+    "jumuah": [
+      "13:30",
+      "15:00"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "Masjid Khulafa’a Rashideen",
+    "website": "https://masjidkr.org/",
+    "osmIds": [
+      "node/12978199608"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "05:45",
+      "dhuhr": "14:00",
+      "asr": "18:30",
+      "maghrib": null,
+      "isha": "21:45"
+    },
+    "jumuah": [
+      "13:40"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "City of Knowledge",
+    "website": "https://cfkdfw.org/",
+    "osmIds": [
+      "node/13067658068"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:46",
+      "dhuhr": "14:28",
+      "asr": "18:05",
+      "maghrib": "21:09",
+      "isha": "21:59"
+    },
+    "jumuah": [
+      "13:26"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "HART Islamic Community Center",
+    "website": "https://hart.community/",
+    "osmIds": [
+      "node/13885060062"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:00",
+      "asr": "18:15",
+      "maghrib": null,
+      "isha": "21:15"
+    },
+    "jumuah": [],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Islamic Center of Round Rock",
+    "website": "https://roundrockmasjid.org/",
+    "osmIds": [
+      "node/14027853957"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:00",
+      "asr": "18:40",
+      "maghrib": "20:00",
+      "isha": "21:30"
+    },
+    "jumuah": [
+      "13:40",
+      "14:30"
+    ],
+    "capturedVia": "timetable element"
+  }
+]
