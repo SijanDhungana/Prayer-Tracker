@@ -111,6 +111,61 @@ const TIMES_LINK =
 /** At most this many pages per masjid, so discovery stays cheap and polite. */
 export const MAX_PAGES_PER_MASJID = 3;
 
+/**
+ * Widget hosts that serve a masjid's timetable as static text.
+ *
+ * Masjids embed these as an iframe, and the times then exist only inside a
+ * document a text scrape of the parent page never sees — which is why both
+ * the Ontario and Texas audits found dozens of "no times found" entries that
+ * do publish times. Each host below has a URL that returns the timetable
+ * without any JavaScript, given the id or slug that is already sitting in the
+ * iframe's src. Reading that is cheaper and more reliable than photographing
+ * a widget and hoping it painted.
+ *
+ * `from` pulls the identifier out of an iframe src; `to` builds the static URL.
+ */
+export const WIDGET_FEEDS: { host: RegExp; from: RegExp; to: (id: string) => string }[] = [
+  {
+    host: /athanplus\.com/i,
+    from: /masjid_id=([A-Za-z0-9]+)/,
+    to: (id) => `https://timing.athanplus.com/masjid/widgets/monthly?theme=1&masjid_id=${id}`,
+  },
+  {
+    host: /masjidbox\.com/i,
+    from: /masjidbox\.com\/(?:prayer-times|embed)\/([A-Za-z0-9._-]+)/,
+    to: (id) => `https://masjidbox.com/prayer-times/${id}`,
+  },
+  {
+    host: /themasjidapp\.(org|net)/i,
+    from: /themasjidapp\.(?:org|net)\/([A-Za-z0-9._/-]+?)(?:\/prayers)?(?:[?#]|$)/,
+    to: (id) => `https://themasjidapp.org/${id}/prayers`,
+  },
+  {
+    host: /mohid\.co/i,
+    from: /(us\.mohid\.co\/[A-Za-z0-9._/-]+)/,
+    to: (p) => `https://${p.replace(/\/$/, "")}/masjid/widget/api/index/?m=prayertimings`,
+  },
+  {
+    host: /prayertimedisplay\.com/i,
+    from: /masjid=([A-Za-z0-9]+)/,
+    to: (id) => `https://www.prayertimedisplay.com/ptdp/ldt.php?masjid=${id}`,
+  },
+];
+
+/**
+ * Mawaqit's HTML resists every JavaScript-free fetch, including its own
+ * `/w/` widget path — but its REST API is open and returns today's times as
+ * JSON. Belleville proved it still answers even when the mosque's display is
+ * flagged Offline, so this is strictly better than rendering the page.
+ */
+export const MAWAQIT_SLUG = /mawaqit\.net\/[a-z]{2}\/(?:w\/)?([A-Za-z0-9._-]+)/i;
+
+/** Paths a masjid's timetable commonly sits at when the homepage has none. */
+export const TIMES_PATHS = [
+  "/prayer-times/", "/prayer-timings/", "/prayertimes/", "/prayer-schedule/",
+  "/prayers/", "/salah-times/", "/monthly-prayer-timings/", "/timetable/",
+];
+
 /** Words that only appear near a prayer timetable. */
 const PRAYER_WORD =
   /\b(fajr|fajir|dhuhr|zuhr|duhur|dhuher|asr|maghrib|magrib|isha|esha|ishaa|jum[ua]{1,2}h?|iqamah?|jama'?ah)\b/gi;
@@ -128,6 +183,13 @@ const MIN_PRAYERS_IN_ELEMENT = 3;
 interface Capture {
   screenshot: Buffer;
   text: string;
+  /**
+   * Static-text URLs for the widget hosts embedded on the page. A widget's
+   * own host will serve its timetable as plain text at a predictable URL once
+   * the masjid id or slug is pulled out of the iframe, so these are worth far
+   * more than another screenshot of the same widget failing to render.
+   */
+  feedLinks: string[];
   /** Same-origin links whose text or href looks like a timetable page. */
   timesLinks: string[];
   /** How the picture was taken — reported so a bad read can be explained. */
@@ -360,6 +422,29 @@ export async function capturePage(
 
     const shotSize = sizeOfPng(screenshot);
 
+    // Widget iframes, and any link to a widget host. Both matter: some masjids
+    // embed the widget, others just link to it.
+    const embedded: string[] = await page.$$eval("iframe[src], a[href]", (els) =>
+      els
+        .map((e) => (e as HTMLIFrameElement).src || (e as HTMLAnchorElement).href || "")
+        .filter((u) => u.startsWith("http")),
+    );
+
+    const feedLinks = [
+      ...new Set(
+        embedded.flatMap((src) => {
+          for (const feed of WIDGET_FEEDS) {
+            if (!feed.host.test(src)) continue;
+            const m = feed.from.exec(src);
+            if (m) return [feed.to(m[1])];
+          }
+          const mawaqit = MAWAQIT_SLUG.exec(src);
+          if (mawaqit) return [`mawaqit:${mawaqit[1]}`];
+          return [];
+        }),
+      ),
+    ];
+
     const links: string[] = await page.$$eval("a[href]", (anchors) =>
       anchors
         .map(
@@ -369,7 +454,15 @@ export async function capturePage(
         .filter((entry) => entry.split("\u0000")[1]?.startsWith("http")),
     );
 
-    const origin = new URL(url).origin;
+    /**
+     * The origin AFTER redirects, not the one we asked for. Scoring against
+     * the requested origin is what made a cross-host redirect look like a
+     * dead end: icoeuless.com serves a 302 to icoeuless.org, so every link on
+     * the page it actually returned failed a `startsWith` test against
+     * icoeuless.com and the crawl had nowhere left to go. Same for
+     * hamiltonmosque.com to mahcanada.com and talimul.com to /TuiSite/.
+     */
+    const origin = new URL(page.url()).origin;
     const ranked = links
       .map((entry) => {
         const [label, href] = entry.split("\u0000");
@@ -377,15 +470,19 @@ export async function capturePage(
       })
       .filter(
         (l) =>
-          l.href.startsWith(origin) &&
           l.href !== url &&
-          (TIMES_LINK.test(l.label) || TIMES_LINK.test(new URL(l.href).pathname)),
+          (TIMES_LINK.test(l.label) || TIMES_LINK.test(new URL(l.href).pathname)) &&
+          // Same site, or a widget host — never an arbitrary third party. An
+          // off-site "prayer times" link is usually an aggregator whose data
+          // is not the masjid's own, which is exactly what must not be read.
+          (l.href.startsWith(origin) || WIDGET_FEEDS.some((f) => f.host.test(l.href))),
       )
       .map((l) => l.href);
 
     return {
       screenshot,
       text,
+      feedLinks,
       timesLinks: [...new Set(ranked)],
       shot,
       shotSize,
@@ -705,6 +802,72 @@ async function readFromAdDin(
   }
 }
 
+
+/**
+ * Read today's times from Mawaqit's REST API.
+ *
+ * The audit found Islamic Society of Belleville publishing a Mawaqit display
+ * flagged Offline while this endpoint still answered correctly, so the API is
+ * not merely easier to read than the HTML — it is available when the HTML is
+ * not. The response's `times` array is ordered
+ * [Fajr, Shuruq, Dhuhr, Asr, Maghrib, Isha]; Shuruq is sunrise, not a prayer,
+ * and is dropped. Iqamah is returned as per-prayer offsets in minutes, which
+ * is why they are added to the adhan rather than read as clock times.
+ */
+export function mapMawaqitMosque(m: any): { iqamah: Record<string, string | null>; jumuah: string[] } | null {
+  const times: unknown = m?.times;
+  if (!Array.isArray(times) || times.length < 6) return null;
+  const [fajr, , dhuhr, asr, maghrib, isha] = times as string[];
+  const adhan: Record<string, string | null> = { fajr, dhuhr, asr, maghrib, isha };
+
+  const offsets: unknown = m?.iqamaCalendar ?? m?.iqama;
+  const shift = Array.isArray(offsets) && offsets.length >= 5 ? offsets : null;
+  const keys = ["fajr", "dhuhr", "asr", "maghrib", "isha"] as const;
+
+  const iqamah: Record<string, string | null> = {};
+  keys.forEach((k, i) => {
+    const base = normaliseAdDinTime(adhan[k]);
+    if (!base) { iqamah[k] = null; return; }
+    const raw = shift ? Number(String(shift[i]).replace(/[^0-9-]/g, "")) : NaN;
+    if (!Number.isFinite(raw)) { iqamah[k] = base; return; }
+    const mins = Number(base.slice(0, 2)) * 60 + Number(base.slice(3, 5)) + raw;
+    const wrapped = ((mins % 1440) + 1440) % 1440;
+    iqamah[k] = `${String(Math.floor(wrapped / 60)).padStart(2, "0")}:${String(wrapped % 60).padStart(2, "0")}`;
+  });
+
+  const jumuah = [m?.jumua, m?.jumua2, m?.jumua3]
+    .map((j) => normaliseAdDinTime(j))
+    .filter((j): j is string => Boolean(j));
+
+  return { iqamah, jumuah };
+}
+
+async function readFromMawaqit(slug: string) {
+  try {
+    const res = await fetch(
+      `https://mawaqit.net/api/2.0/mosque/search?word=${encodeURIComponent(slug)}`,
+      { headers: { "User-Agent": "MasjidTimesBot/1.0" }, signal: AbortSignal.timeout(20000) },
+    );
+    if (!res.ok) {
+      console.log(`  · Mawaqit ${slug} returned HTTP ${res.status}`);
+      return null;
+    }
+    const list = await res.json();
+    // Search is fuzzy, so take the mosque whose slug matches exactly rather
+    // than the first hit — a near-name match is another mosque's times.
+    const hit = (Array.isArray(list) ? list : []).find((m: any) => m?.slug === slug)
+      ?? (Array.isArray(list) && list.length === 1 ? list[0] : null);
+    if (!hit) {
+      console.log(`  · Mawaqit ${slug} — no exact slug match in search results`);
+      return null;
+    }
+    return mapMawaqitMosque(hit);
+  } catch (error) {
+    console.log(`  · Mawaqit ${slug} — ${(error as Error).message.split("\n")[0]}`);
+    return null;
+  }
+}
+
 async function findTimes(
   browser: Browser,
   masjid: Masjid,
@@ -759,6 +922,30 @@ async function findTimes(
     if (tried.size === 1) {
       firstReason = verdict.reason;
 
+      /**
+       * A widget host's own static feed, ahead of any other page. The times
+       * are already on this page — inside an iframe a screenshot renders
+       * badly and a text scrape cannot reach — so fetching the host directly
+       * is not a fallback, it is the better read of the same data. Both
+       * audits put this first among the pipeline fixes.
+       */
+      for (const feed of capture.feedLinks) {
+        if (!feed.startsWith("mawaqit:")) continue;
+        const direct = await readFromMawaqit(feed.slice("mawaqit:".length));
+        if (!direct) continue;
+        const v = checkResult({ found: true, confidence: 1, ...direct });
+        if (v.ok) {
+          return {
+            ok: true,
+            result: { found: true, confidence: 1, ...direct },
+            url,
+            missing: v.missing,
+            capture: { ...capture, shot: "Mawaqit API" } as unknown as Capture,
+          };
+        }
+      }
+      const httpFeeds = capture.feedLinks.filter((f) => !f.startsWith("mawaqit:"));
+
       // The homepage plainly carries a timetable — the read failed for some
       // other reason, and a "Prayer Times" subpage is usually a month-long
       // grid that reads worse, not better. Report the real failure instead of
@@ -779,7 +966,19 @@ async function findTimes(
       const remembered =
         masjid.timesUrl && masjid.timesUrl !== url ? [masjid.timesUrl] : [];
 
-      queue.push(...remembered, ...capture.timesLinks);
+      /**
+       * Guessed paths, last and only when the page offered nothing of its own.
+       * A masjid that links its own timetable is always the better source; a
+       * probe list exists for sites whose nav is JavaScript, where the link is
+       * real but invisible to a scrape. Built on the post-redirect origin, so
+       * a site that moved host is probed where it actually lives.
+       */
+      const probes =
+        capture.timesLinks.length === 0 && httpFeeds.length === 0
+          ? TIMES_PATHS.map((path) => new URL(path, url).href).filter((u) => !tried.has(u))
+          : [];
+
+      queue.push(...httpFeeds, ...remembered, ...capture.timesLinks, ...probes);
     }
     await new Promise((r) => setTimeout(r, POLITE_DELAY_MS));
   }
