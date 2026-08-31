@@ -1,0 +1,120 @@
+[
+  {
+    "name": "Mevlana Masjid",
+    "site": "https://a-than.info/vv.php?code=MEVLANA01",
+    "ok": false,
+    "reason": "no postal address found in page text",
+    "pagesRead": [
+      "https://a-than.info/vv.php?code=MEVLANA01"
+    ]
+  },
+  {
+    "name": "Islamic Research Center of Canada",
+    "site": "http://www.irccan.com/",
+    "ok": true,
+    "confidence": "high",
+    "addresses": [
+      {
+        "label": null,
+        "address": "1 Stamford Square N, Scarborough, ON M1L 1X4"
+      }
+    ],
+    "pagesRead": [
+      "http://www.irccan.com/",
+      "https://irccan.com/about-us/",
+      "https://irccan.com/contacts/"
+    ]
+  },
+  {
+    "name": "Muslim Society of Guelph",
+    "site": "http://www.msofg.org/",
+    "ok": true,
+    "confidence": "high",
+    "addresses": [
+      {
+        "label": null,
+        "address": "286 Water Street, Guelph, ON"
+      }
+    ],
+    "pagesRead": [
+      "http://www.msofg.org/",
+      "https://msofg.org/about-us/",
+      "https://msofg.org/contact/"
+    ]
+  },
+  {
+    "name": "Masjid Al-Abrar",
+    "site": "http://www.alabrar.ca/",
+    "ok": true,
+    "confidence": "high",
+    "addresses": [
+      {
+        "label": null,
+        "address": "33 Wellington St. East Aurora L4G 1H4"
+      }
+    ],
+    "pagesRead": [
+      "http://www.alabrar.ca/",
+      "https://alabrar.ca/about/",
+      "https://alabrar.ca/contact/"
+    ]
+  },
+  {
+    "name": "Masjid Subhan (both locations)",
+    "site": "https://www.subhanislamicassociation.org/",
+    "ok": true,
+    "confidence": "high",
+    "addresses": [
+      {
+        "label": "Scarborough",
+        "address": "2956 Eglinton Ave. E, Scarborough, ON, M1J 2E7"
+      },
+      {
+        "label": "Ajax",
+        "address": "465 Kingston Rd W, Ajax, ON"
+      }
+    ],
+    "pagesRead": [
+      "https://www.subhanislamicassociation.org/",
+      "https://subhanislamicassociation.org/blogger-gb-contact/"
+    ]
+  },
+  {
+    "name": "Islamic Centre of Northern Ontario",
+    "site": "https://iconosudbury.com/",
+    "ok": true,
+    "confidence": "high",
+    "addresses": [
+      {
+        "label": null,
+        "address": "1534 Pioneer Rd, Sudbury, ON  P3G 1A8"
+      }
+    ],
+    "pagesRead": [
+      "https://iconosudbury.com/",
+      "https://www.iconosudbury.com/about",
+      "https://www.iconosudbury.com/contact"
+    ]
+  },
+  {
+    "name": "Halton Islamic Association",
+    "site": "https://www.hia.live/",
+    "ok": false,
+    "reason": "no postal address found in page text",
+    "pagesRead": [
+      "https://www.hia.live/",
+      "https://www.hia.live/about"
+    ]
+  },
+  {
+    "name": "Dar Al-Hijrah Islamic Center",
+    "site": "https://darulhijra.org/",
+    "ok": false,
+    "reason": "no postal address found in page text",
+    "pagesRead": [
+      "https://darulhijra.org/",
+      "https://darulhijra.org/about/",
+      "https://darulhijra.org/contact/"
+    ]
+  }
+]

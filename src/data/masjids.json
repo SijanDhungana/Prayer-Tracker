@@ -6283,5 +6283,195 @@
     "lastVerified": "2026-08-31",
     "needsReview": true,
     "source": "manual"
+  },
+  {
+    "id": "islamic-research-center-of-canada",
+    "name": "Islamic Research Center of Canada",
+    "address": "1 Stamford Square N, Scarborough, ON M1L 1X4",
+    "lat": 43.71113,
+    "lng": -79.29503,
+    "website": "http://www.irccan.com/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:45"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:45"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:00"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 0
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:15"
+      }
+    },
+    "jumuah": [],
+    "lastVerified": "2026-08-31",
+    "needsReview": true,
+    "source": "manual"
+  },
+  {
+    "id": "muslim-society-of-guelph",
+    "name": "Muslim Society of Guelph",
+    "address": "286 Water Street, Guelph, ON",
+    "lat": 43.52933,
+    "lng": -80.2535,
+    "website": "http://www.msofg.org/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:15"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:45"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:30"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 0
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:30"
+      }
+    },
+    "jumuah": [],
+    "lastVerified": "2026-08-31",
+    "needsReview": true,
+    "source": "manual"
+  },
+  {
+    "id": "masjid-al-abrar",
+    "name": "Masjid Al-Abrar",
+    "address": "33 Wellington St East, Aurora, ON L4G 1H4",
+    "lat": 43.9999,
+    "lng": -79.46579,
+    "website": "http://www.alabrar.ca/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:45"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:30"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "17:30"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 0
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:30"
+      }
+    },
+    "jumuah": [],
+    "lastVerified": "2026-08-31",
+    "needsReview": true,
+    "source": "manual"
+  },
+  {
+    "id": "masjid-subhan-scarborough",
+    "name": "Masjid Subhan (Scarborough)",
+    "address": "2956 Eglinton Ave E, Scarborough, ON M1J 2E7",
+    "lat": 43.74031,
+    "lng": -79.23408,
+    "website": "https://www.subhanislamicassociation.org/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:45"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "14:00"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:45"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 0
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:30"
+      }
+    },
+    "jumuah": [],
+    "lastVerified": "2026-08-31",
+    "needsReview": true,
+    "source": "manual"
+  },
+  {
+    "id": "masjid-subhan-ajax",
+    "name": "Masjid Subhan (Ajax)",
+    "address": "465 Kingston Rd W, Ajax, ON",
+    "lat": 43.85585,
+    "lng": -79.0492,
+    "website": "https://www.subhanislamicassociation.org/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:00"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "14:00"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:15"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 0
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:30"
+      }
+    },
+    "jumuah": [],
+    "lastVerified": "2026-08-31",
+    "needsReview": true,
+    "source": "manual"
   }
 ]

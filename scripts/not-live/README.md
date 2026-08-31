@@ -23,6 +23,11 @@ gives both, they read `adhan/iqamah`.
 
 ## 1. Ready to go live (19) — do these first
 
+**Outcome: 11 of these shipped, 8 did not. Read §9 before using this list.** Five rows
+below turned out to publish adhan times, not iqamah, and would have put prayers in the
+app up to 24 minutes early. The list is left unedited so the claim and the result can be
+compared.
+
 Read directly off each site on 2026-08-31. Note this is 19 masjids across 20 rows —
 Masjid Subhan Ajax runs two locations and is listed once per location.
 
@@ -160,6 +165,60 @@ than a public site. Treat as a closed cluster, not a gap to keep re-chasing.
 - **House of the Commandments** — real place, full name "House Of The Commandments Masjid Ul Islam", Quinte West, ON. No dedicated site, but the shortened name made it hard to search. Use the full name
 - **The Reign of Islamic Da'Wah** — this is TROID (Islamic Information Centre), a known Toronto org on Weston Road. No official site confirmed in this pass — worth a manual check
 - **(unnamed)**, **Mosque**, **Masjid Mosque** — three entries with no usable name or address, nothing to search for. Trace back to the original OSM/Google source record or remove
+
+---
+
+## 9. Follow-up: what shipped, and what this list got wrong (2026-08-31)
+
+Every entry in §1 was run through the app's own prayer maths before being written to
+`masjids.json` — the same rule `scrape.ts` applies to a scraped read, that an iqamah
+cannot fall before its own adhan (3 minutes of slack for rounding). **Eleven passed and
+are live; the app went from 134 to 145.** Eight did not.
+
+| | Count |
+| --- | ---: |
+| Shipped | 11 |
+| Held — publishes adhan times, not iqamah | 5 |
+| Held — calculation-method disagreement | 1 |
+| Held — no address found on their own site | 3 |
+
+**Shipped (11).** Al Huda Institute Canada, Islamic Centre of Southwest Ontario, Masjid
+Noor-ul-Haram, Masjid Al-Salaam, Islamic Centre of Bowmanville, Ummah Nabawiah Masjid,
+Islamic Research Center of Canada, Muslim Society of Guelph, Masjid Al-Abrar, and Masjid
+Subhan at both its Scarborough and Ajax locations. All carry `needsReview: true` and
+`source: manual` — read by hand here, never confirmed by the scraper.
+
+**The systematic error in this list: five masjids publish adhan times, not iqamah.**
+
+- [Muslim Association of Tillsonburg](https://muslimassociationtillsonburg.ca/) — Dhuhr 12:30, Asr 15:15 and Isha 19:00 all precede their own adhan, and Isha lands before Maghrib. The original listing below called this row misread rather than merely unusual, and it was right — §1 promoted it on the strength of the site publishing the numbers, which is not the same claim
+- [Jami' Masjid Zakariya](https://cornwallmasjid.ca/) — Fajr 04:30 is 24 min before Fajr adhan in Cornwall
+- [London Muslim Mosque](http://www.londonmosque.ca/) — Fajr 05:08 is 18 min before Fajr adhan
+- [Islamic Society of York Region](https://isyr.org/) — Fajr 05:00 is 16 min before Fajr adhan
+- [Erin Islamic Cultural Center](https://erinislamiccenter.ca/) — Isha 20:00 is 81 min before Isha adhan, impossible in Ontario in late August
+
+All five are single-column sites. A congregation is not called before the prayer has
+begun, so a single published column that lands before the adhan is the adhan itself.
+**Do not re-promote these from §1 without confirming which column the site prints.**
+
+**Held for a different reason (1).**
+
+- [Islamic Centre of Northern Ontario](https://iconosudbury.com/) — Isha 21:18 against a computed adhan of 21:33. Not a misread: the site's own adhan is 21:13, so this is a 20-minute calculation-method disagreement at Sudbury's latitude, not a wrong column. Worth resolving by matching the method the masjid uses rather than by discarding the read
+
+**Held for want of an address (3).** Mevlana Masjid, Halton Islamic Association and Dar
+Al-Hijrah Islamic Center publish no postal address on their own sites, so they cannot be
+placed. Name-based geocoding is not a fallback here — it returned Masjid Aisha for
+"Muslim Society of Guelph" and Muslim Association of Milton for "Halton Islamic
+Association", both already in the app under their own entries. A silent duplicate
+carrying another masjid's times is the §14 failure this project exists to avoid.
+
+**One correction to §6 of this document.** It reports that `masjidhalton.com` redirects
+to `hia.live`, "the org's own real site". That is true, but the site prints no address,
+which is why Halton is held rather than shipped.
+
+**Four of the eleven needed `calc.madhab` changed** from hanafi to shafi, inferred the
+way `fix-madhab.ts` does it — whichever school puts the Asr adhan before the published
+iqamah with the smaller gap. Left on hanafi their real Asr times would have been
+rejected as impossible.
 
 ---
 
