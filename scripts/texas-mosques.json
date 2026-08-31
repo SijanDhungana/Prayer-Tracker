@@ -1,0 +1,270 @@
+[
+  {
+    "name": "Muslim Children Education & Civic Center",
+    "website": "https://www.mcecc.com/",
+    "lat": 29.5711952,
+    "lng": -98.5893669,
+    "address": "5821 Casa Bella Street, San Antonio, 78249",
+    "osmIds": [
+      "relation/5331156"
+    ]
+  },
+  {
+    "name": "Islamic Center of Greater Austin",
+    "website": "https://austinmosque.org/",
+    "lat": 30.2996687,
+    "lng": -97.6867872,
+    "address": "5110 Manor Road, Austin, TX, 78723",
+    "osmIds": [
+      "way/381791591"
+    ]
+  },
+  {
+    "name": "North Austin Muslim Community Center",
+    "website": "https://www.namcc.org/",
+    "lat": 30.3903686,
+    "lng": -97.6840079,
+    "address": "11900 North Lamar Boulevard, Austin, TX, 78753",
+    "osmIds": [
+      "way/382819523"
+    ]
+  },
+  {
+    "name": "Madinah Masjid of Carrollton",
+    "website": "https://madinahmasjid.com/",
+    "lat": 32.9751557,
+    "lng": -96.9093891,
+    "address": "2180 Old Denton Road, Carrollton, TX, 75006",
+    "osmIds": [
+      "way/424223465"
+    ]
+  },
+  {
+    "name": "Madrasah Islamiah Masjid Noor",
+    "website": "https://mislamiah.com",
+    "lat": 29.7071981,
+    "lng": -95.5048381,
+    "address": "6665 Bintliff Drive, Houston, TX, 77074",
+    "osmIds": [
+      "way/493297860"
+    ],
+    "denomination": "sunni"
+  },
+  {
+    "name": "Bait-ul-Qayyum Mosque",
+    "website": "https://islaminfortworth.org/",
+    "lat": 32.7177157,
+    "lng": -97.2623461,
+    "address": "2801 Miller Avenue, Fort Worth, TX, 76105",
+    "osmIds": [
+      "way/503805519"
+    ],
+    "denomination": "ahmadiyya"
+  },
+  {
+    "name": "Islamic Society of Greater Houston",
+    "website": "https://isgh.org/",
+    "lat": 29.7368871,
+    "lng": -95.4250552,
+    "address": "3110 Eastside Street, Houston, TX, 77098",
+    "osmIds": [
+      "way/520283786"
+    ]
+  },
+  {
+    "name": "ISGH Masjid At-Taqwa",
+    "website": "https://masjidattaqwa.com/",
+    "lat": 29.665285,
+    "lng": -95.6157566,
+    "address": "10415 Synott Road, Sugar Land, TX, 77498",
+    "osmIds": [
+      "way/534495235"
+    ]
+  },
+  {
+    "name": "Bait-ul-Ikram Mosque",
+    "website": "https://islamindallas.org/",
+    "lat": 33.0865402,
+    "lng": -96.7228994,
+    "address": "1850 Hedgcoxe Road, Allen, TX, 75013",
+    "osmIds": [
+      "way/580997456",
+      "way/1102512334"
+    ],
+    "denomination": "ahmadiyya"
+  },
+  {
+    "name": "Masjid Ibrahim",
+    "website": "https://www.masjidibrahim.org/",
+    "lat": 30.2482314,
+    "lng": -97.8921154,
+    "address": "8521 W TX 71, Austin, TX, 78735",
+    "osmIds": [
+      "way/584726498"
+    ]
+  },
+  {
+    "name": "Jamia Masjid",
+    "website": "https://jamiamasjid.us/",
+    "lat": 30.103981,
+    "lng": -94.1471115,
+    "address": "2394 West Lucas Drive, Beaumont, TX",
+    "osmIds": [
+      "way/880912133"
+    ]
+  },
+  {
+    "name": "Islamic Center of Brushy Creek",
+    "website": "https://icbrushycreek.org/",
+    "lat": 30.5079753,
+    "lng": -97.7920075,
+    "address": "1950 Brushy Creek Road, Cedar Park, TX, 78613",
+    "osmIds": [
+      "way/898569117"
+    ]
+  },
+  {
+    "name": "Islamic Society of Triplex – Beaumont Mosque",
+    "website": "https://istweb.org/",
+    "lat": 30.0336478,
+    "lng": -94.0934969,
+    "address": "1270 West Cardinal Drive, Beaumont, TX, 77705-5804",
+    "osmIds": [
+      "way/1020215557"
+    ]
+  },
+  {
+    "name": "Islamic Society of Denton",
+    "website": "https://www.dentonmosque.com/",
+    "lat": 33.2015757,
+    "lng": -97.1446735,
+    "address": "1105 Greenlee Street, Denton, TX, 76201",
+    "osmIds": [
+      "way/1042903044"
+    ]
+  },
+  {
+    "name": "Houston's Blue Mosque",
+    "website": "https://theislamicinstitute.net",
+    "lat": 29.6548694,
+    "lng": -95.5457303,
+    "address": "9301 West Bellfort Street, TX, 77031",
+    "osmIds": [
+      "way/1098995390"
+    ]
+  },
+  {
+    "name": "Islamic Society Of South Texas",
+    "website": "https://isstonline.wixsite.com/isstmcallen",
+    "lat": 26.2256896,
+    "lng": -98.2570844,
+    "address": "2008 North Ware Road, McAllen, TX, 78051",
+    "osmIds": [
+      "way/1256728135"
+    ]
+  },
+  {
+    "name": "DeSoto House of Peace",
+    "website": "https://salamdesoto.org/",
+    "lat": 32.5905805,
+    "lng": -96.8686256,
+    "address": null,
+    "osmIds": [
+      "way/1283361425"
+    ]
+  },
+  {
+    "name": "Cypress Islamic Center",
+    "website": "https://cypressislamiccenter.org",
+    "lat": 30.0009107,
+    "lng": -95.6988937,
+    "address": "16103 Cypress Rosehill Road, Cypress, TX, 77429",
+    "osmIds": [
+      "way/1306256992"
+    ]
+  },
+  {
+    "name": null,
+    "website": "https://rosenbergcommunitycenter.org",
+    "lat": 29.5061867,
+    "lng": -95.7629631,
+    "address": "6719 Koeblen Road, Rosenberg, Texas, 77469",
+    "osmIds": [
+      "way/1348862217"
+    ],
+    "denomination": "sunni"
+  },
+  {
+    "name": "Valley Ranch Islamic Center",
+    "website": "https://vric.org",
+    "lat": 32.9172554,
+    "lng": -96.9478635,
+    "address": "351 Ranchview Drive, Irving, TX",
+    "osmIds": [
+      "way/1412245411",
+      "node/12977682702"
+    ]
+  },
+  {
+    "name": "Al-Ghadeer",
+    "website": "https://www.alghadeer.org/",
+    "lat": 29.6794424,
+    "lng": -95.5630604,
+    "address": "9260 South Course Drive, Houston, TX, 77099",
+    "osmIds": [
+      "way/1418408830"
+    ]
+  },
+  {
+    "name": "Islamic Center of Euless",
+    "website": "https://icoeuless.com/",
+    "lat": 32.8352985,
+    "lng": -97.0899187,
+    "address": "203 South Ector Drive, Euless, TX, 76040",
+    "osmIds": [
+      "node/12038368478"
+    ]
+  },
+  {
+    "name": "Masjid Khulafa’a Rashideen",
+    "website": "https://masjidkr.org/",
+    "lat": 29.7205228,
+    "lng": -95.497174,
+    "address": "6400 Southwest Freeway Frontage Road, Houston, TX, 77074",
+    "osmIds": [
+      "node/12978199608"
+    ]
+  },
+  {
+    "name": "City of Knowledge",
+    "website": "https://cfkdfw.org/",
+    "lat": 33.0333595,
+    "lng": -96.8863257,
+    "address": "1800 Golden Trail Court, Carrollton, TX, 75010",
+    "osmIds": [
+      "node/13067658068"
+    ],
+    "denomination": "shia"
+  },
+  {
+    "name": "HART Islamic Community Center",
+    "website": "https://hart.community/",
+    "lat": 29.6480702,
+    "lng": -95.7124823,
+    "address": "18802 West Airport Boulevard, Richmond, TX, 77406",
+    "osmIds": [
+      "node/13885060062"
+    ]
+  },
+  {
+    "name": "Islamic Center of Round Rock",
+    "website": "https://roundrockmasjid.org/",
+    "lat": 30.4913113,
+    "lng": -97.6591697,
+    "address": "1951 Hampton Lane, Round Rock, TX, 78664",
+    "osmIds": [
+      "node/14027853957"
+    ],
+    "denomination": "muslim"
+  }
+]

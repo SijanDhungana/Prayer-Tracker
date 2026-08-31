@@ -1,0 +1,2347 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2026-08-31T19:50:35Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/5331156",
+        "addr:city": "San Antonio",
+        "addr:housenumber": "5821",
+        "addr:postcode": "78249",
+        "addr:street": "Casa Bella Street",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Muslim Children Education & Civic Center",
+        "religion": "muslim",
+        "type": "multipolygon",
+        "website": "https://www.mcecc.com/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.5893669,
+          29.5711952
+        ]
+      },
+      "id": "relation/5331156"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/9675813",
+        "alt_name": "Bear Creek Islamic Center",
+        "amenity": "place_of_worship",
+        "denomination": "sunni",
+        "name": "Masjid Al-Mustafa",
+        "operator": "Islamic Society of Greater Houston",
+        "religion": "muslim",
+        "type": "multipolygon",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.6714781,
+          29.8627779
+        ]
+      },
+      "id": "relation/9675813"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/131590581",
+        "amenity": "place_of_worship",
+        "ele": "28",
+        "gnis:feature_id": "2470795",
+        "name": "Elfarouq Mosque",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.5497392,
+          29.7893434
+        ]
+      },
+      "id": "way/131590581"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/260789761",
+        "addr:city": "Houston",
+        "addr:housenumber": "201",
+        "addr:state": "TX",
+        "addr:street": "Travis Street",
+        "amenity": "place_of_worship",
+        "building": "commercial",
+        "check_date": "2022-10-09",
+        "ele": "14",
+        "gnis:feature_id": "2031769",
+        "height": "19",
+        "name": "Islamic Da'wah Center",
+        "old_name": "Houston National Bank",
+        "religion": "muslim",
+        "source": "USGS Geonames",
+        "wikidata": "Q110002189",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.3605815,
+          29.762962
+        ]
+      },
+      "id": "way/260789761"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/265482606",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -106.5116745,
+          31.8186808
+        ]
+      },
+      "id": "way/265482606"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/303684340",
+        "addr:city": "Frisco",
+        "addr:housenumber": "8455",
+        "addr:postcode": "75034",
+        "addr:state": "TX",
+        "addr:street": "Stonebrook Parkway",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "denomination": "sufi",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8112921,
+          33.1389618
+        ]
+      },
+      "id": "way/303684340"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/356855681",
+        "amenity": "place_of_worship",
+        "ele": "133",
+        "gnis:feature_id": "2427812",
+        "name": "Dallas Masjid of al-Islam",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7786768,
+          32.7668737
+        ]
+      },
+      "id": "node/356855681"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/356857076",
+        "amenity": "place_of_worship",
+        "ele": "123",
+        "gnis:feature_id": "2427998",
+        "name": "Allahs House of Islam",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7441971,
+          32.7154121
+        ]
+      },
+      "id": "node/356857076"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/356864393",
+        "amenity": "place_of_worship",
+        "ele": "12",
+        "gnis:feature_id": "2471035",
+        "name": "Islamic Society of Greater Houston",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.2079,
+          29.6335
+        ]
+      },
+      "id": "node/356864393"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/356864397",
+        "amenity": "place_of_worship",
+        "ele": "31",
+        "gnis:feature_id": "2471036",
+        "name": "Islamic Society of Greater Houston",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.4484,
+          29.9558
+        ]
+      },
+      "id": "node/356864397"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/356864402",
+        "amenity": "place_of_worship",
+        "ele": "24",
+        "gnis:feature_id": "2471037",
+        "name": "Islamic Society of Greater Houston",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.5672,
+          29.6595
+        ]
+      },
+      "id": "node/356864402"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/356864548",
+        "amenity": "place_of_worship",
+        "ele": "24",
+        "gnis:feature_id": "2471067",
+        "name": "Makkah Masjid of Greater Houston",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.6042421,
+          29.7233963
+        ]
+      },
+      "id": "node/356864548"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/380922453",
+        "addr:city": "Austin",
+        "addr:housenumber": "1908",
+        "addr:state": "TX",
+        "addr:street": "Nueces Street",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "height": "6.9",
+        "import": "yes",
+        "name": "Nueces Mosque",
+        "religion": "muslim",
+        "source": "City of Austin",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.744345,
+          30.283198
+        ]
+      },
+      "id": "way/380922453"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/381791591",
+        "addr:city": "Austin",
+        "addr:housenumber": "5110",
+        "addr:postcode": "78723",
+        "addr:state": "TX",
+        "addr:street": "Manor Road",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "ele": "175",
+        "email": "contact@austinmosque.org",
+        "gnis:feature_id": "2360535",
+        "height": "10.4",
+        "name": "Islamic Center of Greater Austin",
+        "opening_hours": "Mo-Su 06:00-22:00",
+        "phone": "+1-512-926-9221",
+        "religion": "muslim",
+        "website": "https://austinmosque.org/",
+        "wikidata": "Q16849788",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.6867872,
+          30.2996687
+        ]
+      },
+      "id": "way/381791591"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/382819523",
+        "addr:city": "Austin",
+        "addr:housenumber": "11900",
+        "addr:postcode": "78753",
+        "addr:state": "TX",
+        "addr:street": "North Lamar Boulevard",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "email": "info@namcc.org",
+        "height": "10.8",
+        "name": "North Austin Muslim Community Center",
+        "phone": "+1 512-491-7148",
+        "religion": "muslim",
+        "website": "https://www.namcc.org/",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.6840079,
+          30.3903686
+        ]
+      },
+      "id": "way/382819523"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/383004522",
+        "addr:city": "Round Rock",
+        "addr:housenumber": "800",
+        "addr:postcode": "78681",
+        "addr:state": "TX",
+        "addr:street": "Deep Wood Drive",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "denomination": "ahmadiyya",
+        "height": "9.0",
+        "name": "Baitul Muqeet Mosque - Ahmadiyya Muslim Community",
+        "religion": "muslim",
+        "source": "www.amcaustin.org",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.6985957,
+          30.5010461
+        ]
+      },
+      "id": "way/383004522"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/383025450",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "height": "6.8",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.6348827,
+          30.4710874
+        ]
+      },
+      "id": "way/383025450"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/411792297",
+        "addr:city": "College Station",
+        "addr:housenumber": "417",
+        "addr:postcode": "77840",
+        "addr:state": "TX",
+        "addr:street": "Stasney Street",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Islamic Community of Bryan",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.3474684,
+          30.6222578
+        ]
+      },
+      "id": "way/411792297"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/416819360",
+        "addr:city": "College Station",
+        "addr:housenumber": "1590",
+        "addr:postcode": "77845",
+        "addr:state": "TX",
+        "addr:street": "Arrington Road",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Ismaili Jamatkhana",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.2600921,
+          30.549281
+        ]
+      },
+      "id": "way/416819360"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/423752564",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "name": "Minhaj ul Quran International",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8875328,
+          33.0133608
+        ]
+      },
+      "id": "way/423752564"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/424223465",
+        "addr:city": "Carrollton",
+        "addr:housenumber": "2180",
+        "addr:postcode": "75006",
+        "addr:state": "TX",
+        "addr:street": "Old Denton Road",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Madinah Masjid of Carrollton",
+        "phone": "+1-972-466-1211",
+        "religion": "muslim",
+        "website": "https://madinahmasjid.com/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9093891,
+          32.9751557
+        ]
+      },
+      "id": "way/424223465"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/428174400",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Islamic Center of Amarillo",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -101.9108193,
+          35.2113128
+        ]
+      },
+      "id": "way/428174400"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/460792404",
+        "addr:housenumber": "909",
+        "addr:street": "Allen Central Drive",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "height": "10.0",
+        "religion": "muslim",
+        "roof:shape": "flat",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.6835313,
+          33.097137
+        ]
+      },
+      "id": "way/460792404"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/465539048",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -101.8659502,
+          33.5820272
+        ]
+      },
+      "id": "way/465539048"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/493297858",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "denomination": "sunni",
+        "name": "Masjidul Mu'meneen",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.5315656,
+          29.6584513
+        ]
+      },
+      "id": "way/493297858"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/493297860",
+        "addr:city": "Houston",
+        "addr:housenumber": "6665",
+        "addr:postcode": "77074",
+        "addr:state": "TX",
+        "addr:street": "Bintliff Drive",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "building:levels": "1",
+        "common_name": "Madrasah Islamiah",
+        "denomination": "sunni",
+        "email": "admin@mislamiah.com",
+        "name": "Madrasah Islamiah Masjid Noor",
+        "phone": "+1 713-772-2000",
+        "religion": "muslim",
+        "service_times": "\"see service_times:url\"",
+        "service_times:url": "http://www.mislamiah.com/PS_00_ViewInPDF.asp",
+        "website": "https://mislamiah.com",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.5048381,
+          29.7071981
+        ]
+      },
+      "id": "way/493297860"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/503805519",
+        "addr:city": "Fort Worth",
+        "addr:housenumber": "2801",
+        "addr:postcode": "76105",
+        "addr:state": "TX",
+        "addr:street": "Miller Avenue",
+        "alt_name": "Bait-ul-Qayyum;Baitul Qayyum;Baitul Qayyum Mosque",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "denomination": "ahmadiyya",
+        "name": "Bait-ul-Qayyum Mosque",
+        "name:ur": "مسجد بیت القیوم;بیت القیوم",
+        "religion": "muslim",
+        "service_times": "Fr 13:45",
+        "website": "https://islaminfortworth.org/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.2623461,
+          32.7177157
+        ]
+      },
+      "id": "way/503805519"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/504095694",
+        "addr:housenumber": "4512",
+        "addr:street": "Columbus Trace",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Bayt Al-Karim Islamic Center",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.3917327,
+          32.6286584
+        ]
+      },
+      "id": "way/504095694"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/520283786",
+        "addr:city": "Houston",
+        "addr:housenumber": "3110",
+        "addr:postcode": "77098",
+        "addr:state": "TX",
+        "addr:street": "Eastside Street",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "ele": "17",
+        "email": "info@isgh.org",
+        "gnis:feature_id": "2471033",
+        "name": "Islamic Society of Greater Houston",
+        "phone": "+1-713-524-6615",
+        "religion": "muslim",
+        "short_name": "ISGH",
+        "website": "https://isgh.org/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.4250552,
+          29.7368871
+        ]
+      },
+      "id": "way/520283786"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/525184470",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "height": "11.96",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.3366213,
+          27.6942679
+        ]
+      },
+      "id": "way/525184470"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/525184474",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "height": "15.27",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.3363709,
+          27.6946291
+        ]
+      },
+      "id": "way/525184474"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/534495235",
+        "addr:city": "Sugar Land",
+        "addr:housenumber": "10415",
+        "addr:postcode": "77498",
+        "addr:state": "TX",
+        "addr:street": "Synott Road",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "ISGH Masjid At-Taqwa",
+        "name:ar": "مسجد التقوى",
+        "name:es": "ISGH Mezquita At-Taqwaa",
+        "name:km": "ម៉ាស្ជិឌ អាត់តាក់វ៉ា",
+        "phone": "+1-281-236-2989",
+        "religion": "muslim",
+        "website": "https://masjidattaqwa.com/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.6157566,
+          29.665285
+        ]
+      },
+      "id": "way/534495235"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/580997456",
+        "addr:city": "Allen",
+        "addr:housenumber": "1850",
+        "addr:postcode": "75013",
+        "addr:state": "TX",
+        "addr:street": "Hedgcoxe Road",
+        "alt_name": "Baitul Ikram Mosque;Baitul Ikram;Bait-ul-Ikram;Masjid Bait-ul-Ikram;Ahmadiyya Muslim Community;Allen Mosque",
+        "alt_name:ar": "بيت الإكرام",
+        "alt_name:ur": "بیت الکرام",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "denomination": "ahmadiyya",
+        "name": "Bait-ul-Ikram Mosque",
+        "name:ar": "مسجد بيت الإكرام",
+        "name:ur": "مسجد بیت الاکرام",
+        "religion": "muslim",
+        "website": "https://islamindallas.org/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7228994,
+          33.0865402
+        ]
+      },
+      "id": "way/580997456"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/584726498",
+        "addr:city": "Austin",
+        "addr:housenumber": "8521",
+        "addr:postcode": "78735",
+        "addr:state": "TX",
+        "addr:street": "W TX 71",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Masjid Ibrahim",
+        "phone": "+1-512-693-2924",
+        "religion": "muslim",
+        "website": "https://www.masjidibrahim.org/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.8921154,
+          30.2482314
+        ]
+      },
+      "id": "way/584726498"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/641439121",
+        "addr:city": "San Antonio",
+        "addr:housenumber": "8638",
+        "addr:street": "Fairhaven Street",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Islamic Academy of San Antonio",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.5631983,
+          29.5216118
+        ]
+      },
+      "id": "way/641439121"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/654513276",
+        "amenity": "place_of_worship",
+        "building": "church",
+        "denomination": "sunni",
+        "gnis:feature_id": "2023871",
+        "height": "192",
+        "name": "New Islamic Generation Foundation",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0969495,
+          32.7131211
+        ]
+      },
+      "id": "way/654513276"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/655037002",
+        "amenity": "place_of_worship",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.5598974,
+          30.0090993
+        ]
+      },
+      "id": "way/655037002"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/665708231",
+        "addr:city": "Plano",
+        "addr:housenumber": "6704",
+        "addr:postcode": "75023",
+        "addr:state": "TX",
+        "addr:street": "Alma Drive",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "denomination": "ismaili",
+        "name": "Ismaili Jamatkhana",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7086591,
+          33.0662639
+        ]
+      },
+      "id": "way/665708231"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/670759640",
+        "addr:city": "Watauga",
+        "addr:housenumber": "6005",
+        "addr:postcode": "76148",
+        "addr:state": "TX",
+        "addr:street": "Chapman Road",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "name": "Masjid Al-Sahaabah Watauga Center",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.2517276,
+          32.8682536
+        ]
+      },
+      "id": "way/670759640"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/709095484",
+        "addr:city": "St Paul",
+        "addr:housenumber": "3390",
+        "addr:postcode": "75098",
+        "addr:state": "TX",
+        "addr:street": "Lakeway Drive",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Islamic center of Wylie, Masjid",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.567142,
+          33.048489
+        ]
+      },
+      "id": "way/709095484"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/720742403",
+        "addr:city": "Lubbock",
+        "addr:housenumber": "3419",
+        "addr:postcode": "79407",
+        "addr:state": "TX",
+        "addr:street": "La Salle Avenue",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Islamic Center of Lubbock",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -101.9537991,
+          33.561898
+        ]
+      },
+      "id": "way/720742403"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/880912133",
+        "addr:city": "Beaumont",
+        "addr:housenumber": "2394",
+        "addr:state": "TX",
+        "addr:street": "West Lucas Drive",
+        "amenity": "place_of_worship",
+        "building": "church",
+        "check_date": "2026-01-23",
+        "name": "Jamia Masjid",
+        "operator": "Southeast Texas Islamic Society",
+        "religion": "muslim",
+        "source": "microsoft/BuildingFootprints",
+        "website": "https://jamiamasjid.us/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.1471115,
+          30.103981
+        ]
+      },
+      "id": "way/880912133"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/898569117",
+        "addr:city": "Cedar Park",
+        "addr:housenumber": "1950",
+        "addr:postcode": "78613",
+        "addr:state": "TX",
+        "addr:street": "Brushy Creek Road",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "email": "info@icbrushycreek.org",
+        "name": "Islamic Center of Brushy Creek",
+        "phone": "+1-512-850-4786",
+        "religion": "muslim",
+        "website": "https://icbrushycreek.org/",
+        "wheelchair": "limited",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.7920075,
+          30.5079753
+        ]
+      },
+      "id": "way/898569117"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/902564780",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "building:levels": "2",
+        "denomination": "sunni",
+        "name": "East Plano Islamic Center",
+        "religion": "muslim",
+        "roof:colour": "white",
+        "roof:shape": "flat",
+        "wikidata": "Q21015964",
+        "wikipedia": "en:East Plano Islamic Center",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.6467899,
+          33.0098878
+        ]
+      },
+      "id": "way/902564780"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/924165262",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "religion": "muslim",
+        "source": "microsoft/BuildingFootprints",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.657987,
+          29.6462945
+        ]
+      },
+      "id": "way/924165262"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/943436105",
+        "building": "mosque",
+        "source": "microsoft/BuildingFootprints",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.30335,
+          29.927444
+        ]
+      },
+      "id": "way/943436105"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/995953052",
+        "addr:city": "Longview",
+        "addr:housenumber": "119",
+        "addr:postcode": "75605",
+        "addr:state": "TX",
+        "addr:street": "Amy Street",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "religion": "muslim",
+        "source": "microsoft/BuildingFootprints",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.7501855,
+          32.573788
+        ]
+      },
+      "id": "way/995953052"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1020215557",
+        "addr:city": "Beaumont",
+        "addr:country": "US",
+        "addr:housenumber": "1270",
+        "addr:postcode": "77705-5804",
+        "addr:state": "TX",
+        "addr:street": "West Cardinal Drive",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "contact:facebook": "https://www.facebook.com/BMTMOSQUE/",
+        "contact:youtube": "http://www.youtube.com/@islamicsocietyoftriplex-be3648",
+        "email": "info@istweb.org",
+        "name": "Islamic Society of Triplex – Beaumont Mosque",
+        "operator": "Islamic Society of Triplex",
+        "phone": "+1 409 842 5349",
+        "religion": "muslim",
+        "website": "https://istweb.org/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.0934969,
+          30.0336478
+        ]
+      },
+      "id": "way/1020215557"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1042903044",
+        "addr:city": "Denton",
+        "addr:housenumber": "1105",
+        "addr:postcode": "76201",
+        "addr:state": "TX",
+        "addr:street": "Greenlee Street",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "contact:facebook": "http://facebook.com/Islamic-Society-of-Denton-201875533168156/",
+        "contact:twitter": "http://twitter.com/dentonmosque",
+        "contact:youtube": "http://youtube.com/user/isd1105/featured",
+        "email": "dentonmosque@gmail.com",
+        "name": "Islamic Society of Denton",
+        "phone": "+19404841871",
+        "religion": "muslim",
+        "website": "https://www.dentonmosque.com/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.1446735,
+          33.2015757
+        ]
+      },
+      "id": "way/1042903044"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1098995390",
+        "addr:housenumber": "9301",
+        "addr:postcode": "77031",
+        "addr:state": "TX",
+        "addr:street": "West Bellfort Street",
+        "addr:unit": "B",
+        "amenity": "place_of_worship",
+        "contact:twitter": "https://twitter.com/the_bluemosque",
+        "contact:youtube": "https://www.youtube.com/user/HoustonBlueMosque",
+        "name": "Houston's Blue Mosque",
+        "owner:contact:facebook": "https://www.facebook.com/TheIslamicInstitute",
+        "owner:website": "https://theislamicinstitute.net",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.5457303,
+          29.6548694
+        ]
+      },
+      "id": "way/1098995390"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1099925585",
+        "addr:city": "San Marcos",
+        "addr:housenumber": "434",
+        "addr:postcode": "78666",
+        "addr:state": "TX",
+        "addr:street": "North Comanche Street",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "denomination": "sunni",
+        "name": "San Marcos Masjid",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.9441235,
+          29.8862237
+        ]
+      },
+      "id": "way/1099925585"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1102512334",
+        "building": "mosque",
+        "building:levels": "1",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7232996,
+          33.0867129
+        ]
+      },
+      "id": "way/1102512334"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1130995547",
+        "addr:city": "Flower Mound",
+        "addr:postcode": "75022",
+        "addr:state": "TX",
+        "addr:street": "Peters Colony Road",
+        "amenity": "place_of_worship",
+        "building": "service",
+        "name": "IALFM Mosque",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0830104,
+          33.0354077
+        ]
+      },
+      "id": "way/1130995547"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1219421575",
+        "addr:city": "Richmond",
+        "addr:housenumber": "9550",
+        "addr:postcode": "77407",
+        "addr:state": "TX",
+        "addr:street": "Harlem Road",
+        "air_conditioning": "yes",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "check_date": "2025-02-05",
+        "denomination": "ismaili",
+        "internet_access": "wlan",
+        "name": "Ismaili Jamatkhana and Center - Harvest Green",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.7138677,
+          29.6513724
+        ]
+      },
+      "id": "way/1219421575"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1225215246",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.7603608,
+          30.4400444
+        ]
+      },
+      "id": "way/1225215246"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1247561146",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.6151352,
+          29.6528633
+        ]
+      },
+      "id": "way/1247561146"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1256728135",
+        "addr:city": "McAllen",
+        "addr:housenumber": "2008",
+        "addr:postcode": "78051",
+        "addr:state": "TX",
+        "addr:street": "North Ware Road",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Islamic Society Of South Texas",
+        "phone": "+1-956-618-4180",
+        "religion": "muslim",
+        "website": "https://isstonline.wixsite.com/isstmcallen",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.2570844,
+          26.2256896
+        ]
+      },
+      "id": "way/1256728135"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1283361425",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "name": "DeSoto House of Peace",
+        "religion": "muslim",
+        "website": "https://salamdesoto.org/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8686256,
+          32.5905805
+        ]
+      },
+      "id": "way/1283361425"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1306256992",
+        "addr:city": "Cypress",
+        "addr:housenumber": "16103",
+        "addr:postcode": "77429",
+        "addr:state": "TX",
+        "addr:street": "Cypress Rosehill Road",
+        "air_conditioning": "yes",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "name": "Cypress Islamic Center",
+        "religion": "muslim",
+        "source": "microsoft/BuildingFootprints",
+        "website": "https://cypressislamiccenter.org",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.6988937,
+          30.0009107
+        ]
+      },
+      "id": "way/1306256992"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1322380194",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "denomination": "sunni",
+        "name": "Masjid Arafat",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.6576414,
+          29.6581112
+        ]
+      },
+      "id": "way/1322380194"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1323719988",
+        "building": "mosque",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.6838479,
+          29.5945044
+        ]
+      },
+      "id": "way/1323719988"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1323719989",
+        "addr:city": "Sugar Land",
+        "addr:housenumber": "504",
+        "addr:postcode": "77479",
+        "addr:state": "TX",
+        "addr:street": "Sartartia Road",
+        "amenity": "place_of_worship",
+        "landuse": "religious",
+        "name": "Maryam Islamic Center",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.68427,
+          29.5935051
+        ]
+      },
+      "id": "way/1323719989"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1346085110",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Xhamia Shqiptare DFW",
+        "religion": "muslim",
+        "source": "microsoft/BuildingFootprints",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.1602916,
+          32.8563923
+        ]
+      },
+      "id": "way/1346085110"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1348862217",
+        "addr:city": "Rosenberg",
+        "addr:housenumber": "6719",
+        "addr:postcode": "77469",
+        "addr:state": "Texas",
+        "addr:street": "Koeblen Road",
+        "air_conditioning": "yes",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "denomination": "sunni",
+        "religion": "muslim",
+        "website": "https://rosenbergcommunitycenter.org",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.7629631,
+          29.5061867
+        ]
+      },
+      "id": "way/1348862217"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1367143685",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "name": "Masjid Istiqlal Houston",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.6542335,
+          29.6527273
+        ]
+      },
+      "id": "way/1367143685"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1367143688",
+        "amenity": "place_of_worship",
+        "name": "Masjid Darul-Uloom Texas",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.6527157,
+          29.6440377
+        ]
+      },
+      "id": "way/1367143688"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1369802877",
+        "addr:city": "Jarrell",
+        "addr:housenumber": "9401",
+        "addr:postcode": "76537",
+        "addr:state": "TX",
+        "addr:street": "Farm-to-Market Road 1105",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.5881199,
+          30.7813991
+        ]
+      },
+      "id": "way/1369802877"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1385972314",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -102.1458846,
+          32.0006562
+        ]
+      },
+      "id": "way/1385972314"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1394443121",
+        "addr:city": "Dallas",
+        "addr:housenumber": "2945",
+        "addr:postcode": "75287",
+        "addr:state": "TX",
+        "addr:street": "Frankford Road",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "denomination": "shia",
+        "name": "MOMIN of Texas",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8619783,
+          32.9986738
+        ]
+      },
+      "id": "way/1394443121"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1409484222",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "religion": "muslim",
+        "source": "microsoft/BuildingFootprints",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.5459019,
+          29.6513447
+        ]
+      },
+      "id": "way/1409484222"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1411236118",
+        "addr:city": "Houston",
+        "addr:housenumber": "2600",
+        "addr:postcode": "77063",
+        "addr:state": "TX",
+        "addr:street": "Lazy Hollow Drive",
+        "amenity": "place_of_worship",
+        "building": "office",
+        "building:use": "religious",
+        "name": "Kalkan Masjid Houston",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.5174069,
+          29.7377657
+        ]
+      },
+      "id": "way/1411236118"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1412245411",
+        "building": "mosque",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9478635,
+          32.9172554
+        ]
+      },
+      "id": "way/1412245411"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1412305433",
+        "addr:city": "Houston",
+        "addr:housenumber": "1333",
+        "addr:postcode": "77067",
+        "addr:state": "TX",
+        "addr:street": "Spears Road",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "denomination": "ahmadiyya",
+        "name": "Baitus Samee Mosque",
+        "name:ur": "مسجد بیت السمیع",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.4408293,
+          29.9646368
+        ]
+      },
+      "id": "way/1412305433"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1412305434",
+        "building": "mosque",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.4409991,
+          29.964415
+        ]
+      },
+      "id": "way/1412305434"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1414024242",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Masjid",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.3973955,
+          29.6775566
+        ]
+      },
+      "id": "way/1414024242"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1418381673",
+        "building": "mosque",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8350281,
+          33.1722192
+        ]
+      },
+      "id": "way/1418381673"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1418408830",
+        "addr:city": "Houston",
+        "addr:housenumber": "9260",
+        "addr:postcode": "77099",
+        "addr:state": "TX",
+        "addr:street": "South Course Drive",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "contact:youtube": "https://www.youtube.com/user/AGEFHouston",
+        "email": "directors@alghadeer.org",
+        "name": "Al-Ghadeer",
+        "phone": "+1 832-715-0786",
+        "religion": "muslim",
+        "start_date": "1993",
+        "website": "https://www.alghadeer.org/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.5630604,
+          29.6794424
+        ]
+      },
+      "id": "way/1418408830"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1447830521",
+        "addr:city": "Houston",
+        "addr:housenumber": "2323",
+        "addr:postcode": "77019",
+        "addr:state": "TX",
+        "addr:street": "Allen Parkway Frontage Road",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "denomination": "ismaili",
+        "name": "Ismaili Center Houston",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.3917866,
+          29.7591137
+        ]
+      },
+      "id": "way/1447830521"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1469011389",
+        "addr:city": "Sugar Land",
+        "addr:housenumber": "16500",
+        "addr:postcode": "77498",
+        "addr:state": "TX",
+        "addr:street": "Boss Gaston Road",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "religion": "muslim",
+        "source": "microsoft/BuildingFootprints",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.6746821,
+          29.6695321
+        ]
+      },
+      "id": "way/1469011389"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1484389803",
+        "amenity": "place_of_worship",
+        "building": "mosque",
+        "name": "Dar-Un-Noor",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.6703729,
+          29.6687462
+        ]
+      },
+      "id": "way/1484389803"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1486693878",
+        "building": "mosque",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.579048,
+          29.6188038
+        ]
+      },
+      "id": "way/1486693878"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1486693879",
+        "building": "mosque",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.579943,
+          29.6187113
+        ]
+      },
+      "id": "way/1486693879"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1499350183",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.6595119,
+          29.6648013
+        ]
+      },
+      "id": "way/1499350183"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1513528966",
+        "addr:city": "Corpus Christi",
+        "addr:housenumber": "7341",
+        "addr:postcode": "78412",
+        "addr:state": "TX",
+        "addr:street": "McArdle Road",
+        "amenity": "place_of_worship",
+        "landuse": "religious",
+        "name": "Islamic Society of Southern Texas",
+        "religion": "muslim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.3367168,
+          27.6943224
+        ]
+      },
+      "id": "way/1513528966"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1595716783",
+        "amenity": "place_of_worship",
+        "name": "Dar El Salaam Islamic Center",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.1117016,
+          32.7569927
+        ]
+      },
+      "id": "node/1595716783"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1800465541",
+        "addr:city": "Stafford",
+        "addr:housenumber": "610",
+        "addr:state": "TX",
+        "addr:street": "Brand Lane",
+        "amenity": "place_of_worship",
+        "name": "Masjid As Sabireen",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.5792684,
+          29.6188085
+        ]
+      },
+      "id": "node/1800465541"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235160495",
+        "amenity": "place_of_worship",
+        "name": "McKinney Islamic Center",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.6626104,
+          33.1692169
+        ]
+      },
+      "id": "node/2235160495"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4297111826",
+        "amenity": "place_of_worship",
+        "name": "Masjid al-ahad",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.7044448,
+          29.8322662
+        ]
+      },
+      "id": "node/4297111826"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4694423426",
+        "amenity": "place_of_worship",
+        "name": "East Texas Islamic Society",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.2349539,
+          32.3290554
+        ]
+      },
+      "id": "node/4694423426"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5248219007",
+        "amenity": "place_of_worship",
+        "name": "Masjid E Mohammedi",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.6794511,
+          29.8618504
+        ]
+      },
+      "id": "node/5248219007"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5341746000",
+        "amenity": "place_of_worship",
+        "name": "IALFM Mosque",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0830864,
+          33.0344387
+        ]
+      },
+      "id": "node/5341746000"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8857472534",
+        "addr:city": "Houston",
+        "addr:housenumber": "5645",
+        "addr:postcode": "77036",
+        "addr:state": "TX",
+        "addr:street": "Hillcroft Avenue",
+        "addr:unit": "305",
+        "amenity": "place_of_worship",
+        "name": "Masjid Salah Ad-Deen",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.4999141,
+          29.722096
+        ]
+      },
+      "id": "node/8857472534"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10728837253",
+        "addr:city": "Missouri City",
+        "addr:housenumber": "4502",
+        "addr:postcode": "77459",
+        "addr:state": "TX",
+        "addr:street": "Watts Plantation Road",
+        "amenity": "place_of_worship",
+        "denomination": "sunni",
+        "name": "Masjid Ayesha",
+        "opening_hours": "06:45-21:30",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.5204875,
+          29.5255736
+        ]
+      },
+      "id": "node/10728837253"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11201021741",
+        "amenity": "place_of_worship",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.1299858,
+          31.5195702
+        ]
+      },
+      "id": "node/11201021741"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12038368478",
+        "addr:city": "Euless",
+        "addr:housenumber": "203",
+        "addr:postcode": "76040",
+        "addr:state": "TX",
+        "addr:street": "South Ector Drive",
+        "amenity": "place_of_worship",
+        "name": "Islamic Center of Euless",
+        "name:ar": "مسجد",
+        "religion": "muslim",
+        "website": "https://icoeuless.com/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0899187,
+          32.8352985
+        ]
+      },
+      "id": "node/12038368478"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12228560668",
+        "addr:city": "Edinburg",
+        "addr:housenumber": "1910",
+        "addr:postcode": "78577",
+        "addr:state": "Texas",
+        "addr:street": "West Elsham Avenue",
+        "amenity": "place_of_worship",
+        "name": "Alkhair Islamic Society of RGV",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.1926782,
+          26.2524372
+        ]
+      },
+      "id": "node/12228560668"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12767846634",
+        "amenity": "place_of_worship",
+        "check_date": "2025-04-18",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.6186281,
+          29.7221185
+        ]
+      },
+      "id": "node/12767846634"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12809599401",
+        "addr:housenumber": "5600",
+        "addr:postcode": "76549",
+        "addr:street": "South Fort Hood Street",
+        "amenity": "place_of_worship",
+        "name": "Masjidu Ttaqwa Mosque"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.761,
+          31.0703488
+        ]
+      },
+      "id": "node/12809599401"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12977682702",
+        "addr:city": "Irving",
+        "addr:housenumber": "351",
+        "addr:state": "TX",
+        "addr:street": "Ranchview Drive",
+        "amenity": "place_of_worship",
+        "email": "info@vric.org",
+        "name": "Valley Ranch Islamic Center",
+        "phone": "+1-214-496-9000",
+        "religion": "muslim",
+        "source": "esri/USA_NAD_Addresses",
+        "website": "https://vric.org"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9478424,
+          32.9172725
+        ]
+      },
+      "id": "node/12977682702"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12978199608",
+        "addr:city": "Houston",
+        "addr:housenumber": "6400",
+        "addr:postcode": "77074",
+        "addr:state": "TX",
+        "addr:street": "Southwest Freeway Frontage Road",
+        "addr:unit": "G",
+        "amenity": "place_of_worship",
+        "name": "Masjid Khulafa’a Rashideen",
+        "religion": "muslim",
+        "website": "https://masjidkr.org/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.497174,
+          29.7205228
+        ]
+      },
+      "id": "node/12978199608"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13067658068",
+        "addr:city": "Carrollton",
+        "addr:housenumber": "1800",
+        "addr:postcode": "75010",
+        "addr:state": "TX",
+        "addr:street": "Golden Trail Court",
+        "amenity": "place_of_worship",
+        "denomination": "shia",
+        "name": "City of Knowledge",
+        "religion": "muslim",
+        "website": "https://cfkdfw.org/",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8863257,
+          33.0333595
+        ]
+      },
+      "id": "node/13067658068"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13097142249",
+        "addr:city": "Cedar Park",
+        "addr:housenumber": "2401",
+        "addr:postcode": "78613",
+        "addr:state": "TX",
+        "addr:street": "South Lakeline Boulevard",
+        "amenity": "place_of_worship",
+        "name": "Ismaili Jamatkhana",
+        "religion": "muslim",
+        "source": "esri/USA_NAD_Addresses"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.8183063,
+          30.4766516
+        ]
+      },
+      "id": "node/13097142249"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13752992861",
+        "addr:city": "Euless",
+        "addr:housenumber": "901",
+        "addr:postcode": "76039",
+        "addr:state": "TX",
+        "addr:street": "Clinic Drive",
+        "amenity": "place_of_worship",
+        "name": "HEB Masjid",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0969874,
+          32.8483365
+        ]
+      },
+      "id": "node/13752992861"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13885060062",
+        "addr:city": "Richmond",
+        "addr:housenumber": "18802",
+        "addr:postcode": "77406",
+        "addr:state": "TX",
+        "addr:street": "West Airport Boulevard",
+        "amenity": "place_of_worship",
+        "email": "info@hart.community",
+        "name": "HART Islamic Community Center",
+        "place_of_worship": "musalla",
+        "religion": "muslim",
+        "website": "https://hart.community/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.7124823,
+          29.6480702
+        ]
+      },
+      "id": "node/13885060062"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/14027853957",
+        "addr:city": "Round Rock",
+        "addr:housenumber": "1951",
+        "addr:postcode": "78664",
+        "addr:state": "TX",
+        "addr:street": "Hampton Lane",
+        "air_conditioning": "yes",
+        "amenity": "place_of_worship",
+        "check_date": "2026-07-19",
+        "denomination": "muslim",
+        "name": "Islamic Center of Round Rock",
+        "phone": "+1-512-730-3644",
+        "religion": "muslim",
+        "website": "https://roundrockmasjid.org/",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.6591697,
+          30.4913113
+        ]
+      },
+      "id": "node/14027853957"
+    }
+  ]
+}
