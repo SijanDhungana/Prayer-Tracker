@@ -70,6 +70,73 @@ seven days.
 5. First launch: **Settings → General → VPN & Device Management** on the phone,
    and trust your developer certificate
 
+## The home-screen widget
+
+`ios/App/PrayerWidget/` holds a WidgetKit extension showing the next **iqamah**
+at the masjid nearest you — iqamah and not adhan, because the congregation time
+is the whole point of the app (§2 of CLAUDE.md) and an astronomical time on a
+home screen answers a question nobody asked. The adhan sits underneath it in
+small type, since the gap between the two is what tells you whether you can
+still make it.
+
+It is deliberately self-contained. It fetches the same `masjids.json` the app
+fetches (`MasjidDirectory.url`, which must match `VITE_DATA_URL`), computes
+adhan times with **Adhan-Swift**, and resolves the same `fixed`/`offset` iqamah
+rules `src/lib/prayer.ts` resolves. Using Adhan-Swift rather than reimplementing
+the astronomy is the point: it is the same algorithm by the same authors as the
+web app's `adhan`, so the widget and the app agree by construction instead of by
+two implementations happening to round the same way. That agreement is checked —
+four live masjids, both rule types, matching to the minute.
+
+Two steps have to happen in Xcode's GUI. Creating an app-extension target means
+new build phases and an embed step, and hand-editing `project.pbxproj` to fake
+that is a good way to end up with a project that no longer opens.
+
+**1. Create the target.** `npm run mobile:ios`, then in Xcode:
+**File → New → Target… → Widget Extension**. Name it `PrayerWidget`, leave
+"Include Live Activity" and "Include Configuration App Intent" **unchecked**
+(this widget uses `StaticConfiguration`), and activate the scheme when asked.
+
+Xcode writes its own template files. **Delete the generated `.swift` files** —
+they carry their own `@main`, and two in one target will not build — then drag
+the four real ones in from `ios/App/PrayerWidget/`, ticking the `PrayerWidget`
+target: `MasjidData.swift`, `PrayerMath.swift`, `LocationProvider.swift`,
+`PrayerWidget.swift`.
+
+**2. Add Adhan-Swift.** **File → Add Package Dependencies…**, enter
+`https://github.com/batoulapps/adhan-swift`, and add the `Adhan` product **to
+the PrayerWidget target** (not to App).
+
+Then set the extension's deployment target to **iOS 17** — `containerBackground`
+requires it — and Run.
+
+### Location
+
+The widget asks for one coarse fix per timeline through
+`CLLocationManager.isAuthorizedForWidgetUpdates`. Widgets do not get continuous
+location; they inherit the container app's authorization, and the app having
+permission is not on its own enough — the user also has to allow widget updates.
+`NSLocationWhenInUseUsageDescription` is already in the app's `Info.plist`; add
+the same key to the extension's only if iOS complains.
+
+When there is no fix the widget says "Location off for widgets" rather than
+falling back to a default city. A widget quietly showing another city's masjid
+is worse than one that admits it does not know where you are.
+
+### What it does when things go wrong
+
+- **No network** — the last good directory is cached in the extension's
+  container and reused. Nothing partial is ever cached: the payload is decoded
+  first, and only a payload that parses replaces the last one.
+- **Times past the last Isha** — rolls to tomorrow's Fajr rather than going
+  blank, which is exactly when someone is checking whether they can still make
+  it.
+- **A masjid whose rules will not resolve** — skipped for the next one along.
+  Being closest is not useful if it cannot answer the question.
+- **Times over 45 days old, or never scraper-verified** — marked with a small
+  `exclamationmark.circle`, matching `STALE_AFTER_DAYS` in `src/lib/trust.ts`.
+
+
 ## Submitting to the App Store
 
 1. **Enrolment approved.** Paying is not the same as being approved — wait for
@@ -98,6 +165,9 @@ reviewers look at hardest, so the defence is to do something a web page cannot:
 - **Local notifications for prayer reminders** — the strongest answer, and
   independently the feature most likely to keep the app installed. Not built
   yet.
+- **A home-screen widget** — built, see above. Not as strong as notifications,
+  but it is a real platform feature a web page cannot offer, and it is the kind
+  of thing a reviewer looking at 4.2 can see in a screenshot.
 - **Offline support** — already true: the bundled directory means the app opens
   and shows times with no network at all.
 
