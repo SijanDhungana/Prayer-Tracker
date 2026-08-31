@@ -6,6 +6,7 @@ import TripMap from "../components/TripMap";
 import { formatDistance, haversineKm, type Point } from "../lib/distance";
 import { googleMapsConfigured } from "../lib/googleMaps";
 import type { ReferencePoint } from "../lib/location";
+import { masjidPath } from "../lib/route";
 import {
   currentPlanPrayer,
   isFriday,
@@ -704,12 +705,24 @@ function Verdict({ result, label }: { result: PlanResult; label: string }) {
       }
       role="status"
     >
-      {works
-        ? `You can make ${label} at ${best.masjid.name}` +
-          (best.meetsDeadline ? " and still arrive on time." : ".")
-        : late > 0
-          ? `You'd arrive ${late} minute${late === 1 ? "" : "s"} late.`
-          : `No option here catches ${label} in jamaah.`}
+      {works ? (
+        <>
+          You can make {label} at{" "}
+          {/* The masjid named in the verdict is the one thing here worth
+              tapping — it is the answer, so it opens the answer's details. */}
+          <a
+            href={masjidPath(best.masjid.id)}
+            className="font-semibold underline underline-offset-4"
+          >
+            {best.masjid.name}
+          </a>
+          {best.meetsDeadline ? " and still arrive on time." : "."}
+        </>
+      ) : late > 0 ? (
+        `You'd arrive ${late} minute${late === 1 ? "" : "s"} late.`
+      ) : (
+        `No option here catches ${label} in jamaah.`
+      )}
     </p>
   );
 }
@@ -757,8 +770,21 @@ function OptionCard({
         </p>
       )}
       <div className="flex items-baseline justify-between gap-3">
+        {/*
+          Every other surface — the map list, Jumu'ah, Next up, the home card —
+          makes the masjid's name the way into its detail screen. This one did
+          not, so the trip planner was the only place you could be told to pray
+          somewhere and have no way to check its address, its Jumu'ah sittings,
+          or how stale its times are without going back to the map and finding
+          it again.
+        */}
         <h3 className="min-w-0 text-base font-semibold text-ink">
-          {masjid.name}
+          <a
+            href={masjidPath(masjid.id)}
+            className="underline decoration-line underline-offset-4 hover:decoration-brand"
+          >
+            {masjid.name}
+          </a>
         </h3>
         <span className="shrink-0 text-xs tabular-nums text-ink-3">
           {formatDistance(haversineKm(from, masjid))}
