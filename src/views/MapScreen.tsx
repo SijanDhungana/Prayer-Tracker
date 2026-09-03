@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import BottomSheet, { type Snap } from "../components/BottomSheet";
+import BottomSheet, { HEIGHTS, type Snap } from "../components/BottomSheet";
 import Icon from "../components/Icon";
 import MasjidDetailSheet from "../components/MasjidDetailSheet";
 import TimeRow from "../components/TimeRow";
@@ -8,9 +8,11 @@ import { formatDistance, haversineKm } from "../lib/distance";
 import { useFavourites } from "../lib/favourites";
 import { googleMapsConfigured, loadGoogleMaps } from "../lib/googleMaps";
 import type { ReferencePoint } from "../lib/location";
+import { congregationAdhan, formatRelative, nextCongregation } from "../lib/nextUp";
+import { prayerLabel, resolvePlanIqamah } from "../lib/planPrayer";
 import { adhanTimes, iqamahTimes } from "../lib/prayer";
 import { mapPath, masjidPath } from "../lib/route";
-import { formatTime } from "../lib/time";
+import { formatTime, formatTimeShort } from "../lib/time";
 import FreshnessDot from "../components/FreshnessDot";
 import { nextIqamahAt } from "../components/HomeMasjidCard";
 import { PRAYERS, PRAYER_LABELS, type Masjid, type Prayer } from "../lib/types";
@@ -161,7 +163,7 @@ export default function MapScreen({
     new Map<string, { marker: google.maps.Marker; key: string }>(),
   );
   const you = useRef<google.maps.Marker | null>(null);
-  const { minute, position } = useClock();
+  const { minute } = useClock();
   const { isFavourite, toggle } = useFavourites();
 
   const [status, setStatus] = useState<MapStatus>(
@@ -179,7 +181,21 @@ export default function MapScreen({
   const pointRef = useRef(point);
   pointRef.current = point;
 
-  const prayer = position.window?.prayer ?? "fajr";
+  /**
+   * The list names the congregation you can still get to, the same rule as
+   * Next up. It used to name the current *window's* prayer, which is a
+   * different thing: at 8am the clock is inside Fajr's window, so the sheet
+   * listed Fajr congregations that had all finished two hours earlier — a
+   * page of "ago" under a header for a prayer nobody could still pray. The
+   * next congregation some masjid still holds ahead of now is the answer to
+   * the question the map is opened for, and on a Friday that is Jumu'ah.
+   */
+  const congregation = useMemo(
+    () => nextCongregation(masjids, date, minute),
+    [masjids, date, minute],
+  );
+  const prayer = congregation.prayer;
+  const listDate = congregation.date;
 
   const rows = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -187,8 +203,8 @@ export default function MapScreen({
       .map((masjid) => ({
         masjid,
         km: haversineKm(point, masjid),
-        iqamah: iqamahTimes(masjid, date)[prayer],
-        adhan: adhanTimes(masjid, date)[prayer],
+        iqamah: resolvePlanIqamah(masjid, prayer, minute, listDate),
+        adhan: congregationAdhan(masjid, prayer, listDate),
         // What the pin prints: this masjid's own next congregation, which
         // rolls to tomorrow's Fajr once today's are done.
         next: nextIqamahAt(masjid, date, minute),
@@ -203,7 +219,7 @@ export default function MapScreen({
         );
       })
       .sort((a, b) => a.km - b.km);
-  }, [masjids, point, date, prayer, query, onlyFavourites, onlyJumuah, isFavourite, minute]);
+  }, [masjids, point, date, listDate, prayer, query, onlyFavourites, onlyJumuah, isFavourite, minute]);
 
   const detail = masjidId
     ? (masjids.find((m) => m.id === masjidId) ?? null)
@@ -453,7 +469,7 @@ export default function MapScreen({
               type="button"
               onClick={() => setQuery("")}
               aria-label="Clear search"
-              className="flex h-9 w-9 items-center justify-center rounded-full text-ink-2 hover:text-ink"
+              className="-mr-2 flex h-11 w-11 items-center justify-center rounded-full text-ink-2 hover:text-ink"
             >
               <Icon name="x" size={18} />
             </button>
@@ -489,9 +505,17 @@ export default function MapScreen({
           "absolute right-4 z-20 flex h-11 w-11 items-center justify-center rounded-full border bg-surface shadow-float " +
           (reference.status === "active"
             ? "border-line text-brand"
-            : "border-line text-ink-2 hover:text-ink")
+            : "border-line text-ink-2 hover:text-ink") +
+          // At Full the sheet is the whole screen and the map is gone; a
+          // recentre button floating over a list has nothing to recentre.
+          (snap === "full" ? " invisible" : "")
         }
-        style={{ bottom: "calc(50vh + 24px)" }}
+        // Rides just above the sheet at every snap. It used to be pinned to
+        // the half-height position, which left it hanging mid-screen at Peek.
+        style={{
+          bottom: `calc(${HEIGHTS[snap]} + 16px)`,
+          transition: "bottom var(--base) var(--spring)",
+        }}
       >
         <span className={reference.status === "locating" ? "animate-pulse" : ""}>
           <Icon name="crosshair" size={20} />
@@ -506,14 +530,16 @@ export default function MapScreen({
             date={date}
             favourite={isFavourite(selected.masjid.id)}
             onToggleFavourite={() => toggle(selected.masjid.id)}
-            currentPrayer={prayer}
+            // Jumu'ah sits in Dhuhr's column of the five-up grid.
+            currentPrayer={prayer === "jumuah" ? "dhuhr" : prayer}
           />
         ) : (
           <>
             <p className="px-4 pb-2 text-meta text-ink-3" aria-live="polite">
               {rows.length} masjid{rows.length === 1 ? "" : "s"} nearby ·{" "}
-              {PRAYER_LABELS[prayer]} adhan{" "}
+              {prayerLabel(prayer)} adhan{" "}
               {rows[0] ? formatTime(rows[0].adhan) : "—"}
+              {congregation.isTomorrow ? " tomorrow" : ""}
             </p>
             {/* Clears the floating tab bar, which is drawn over the sheet. */}
             <ul style={{ paddingBottom: "calc(88px + env(safe-area-inset-bottom))" }}>
@@ -527,7 +553,7 @@ export default function MapScreen({
                   km={row.km}
                   relative={
                     row.iqamah
-                      ? relative(row.iqamah.getTime() - minute.getTime())
+                      ? formatRelative((row.iqamah.getTime() - minute.getTime()) / 60_000)
                       : undefined
                   }
                   favourite={isFavourite(row.masjid.id)}
@@ -638,16 +664,18 @@ function SelectedMasjid({
                   (current ? "" : "text-ink")
                 }
               >
-                {iqamah[p] ? formatTime(iqamah[p]!) : "—"}
+                {iqamah[p] ? formatTimeShort(iqamah[p]!) : "—"}
               </span>
               <span className="block font-num text-[11px] text-ink-3">
-                {formatTime(adhan[p])}
+                {formatTimeShort(adhan[p])}
               </span>
             </li>
           );
         })}
       </ul>
-      <p className="mt-1 text-meta text-ink-3">Iqamah · adhan below</p>
+      <p className="mt-1 text-meta text-ink-3">
+        Iqamah on top, adhan beneath. Morning times are AM, the rest PM.
+      </p>
 
       <a
         href={masjidPath(masjid.id)}
@@ -674,7 +702,7 @@ function Chip({
       onClick={onClick}
       aria-pressed={active}
       className={
-        "flex h-9 shrink-0 items-center rounded-full border px-3 text-meta font-medium backdrop-blur-xl " +
+        "flex min-h-11 shrink-0 items-center rounded-full border px-3 text-meta font-medium backdrop-blur-xl " +
         (active
           ? "border-brand bg-brand-wash text-brand"
           : "border-line text-ink-2")
@@ -704,11 +732,3 @@ function zIndexFor(selected: boolean, at: Date | null): number {
   return Math.max(1, 900_000 - Math.floor(at.getTime() / 60_000) / 1000);
 }
 
-function relative(ms: number): string {
-  const m = Math.round(ms / 60_000);
-  if (m < 0) return `${Math.abs(m)} min ago`;
-  if (m === 0) return "now";
-  if (m < 60) return `in ${m} min`;
-  const h = Math.floor(m / 60);
-  return m % 60 === 0 ? `in ${h} h` : `in ${h} h ${m % 60} min`;
-}

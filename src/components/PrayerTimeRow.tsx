@@ -1,5 +1,5 @@
 import { PRAYERS, PRAYER_LABELS, type Prayer } from "../lib/types";
-import { formatTime } from "../lib/time";
+import { formatTimeShort } from "../lib/time";
 
 /**
  * Five-across strip of a day's times. Iqamah is the headline — it's the thing
@@ -22,14 +22,14 @@ export default function PrayerTimeRow({
           <dd>
             <span
               className={
-                "mt-0.5 block text-base font-semibold tabular-nums " +
+                "mt-0.5 block font-num text-body " +
                 (iqamah[prayer] ? "text-ink" : "text-ink-3")
               }
             >
-              {iqamah[prayer] ? formatTime(iqamah[prayer]!) : "—"}
+              {iqamah[prayer] ? formatTimeShort(iqamah[prayer]!) : "—"}
             </span>
-            <span className="block text-[11px] tabular-nums text-ink-3">
-              {formatTime(adhan[prayer])}
+            <span className="block font-num text-[11px] text-ink-3">
+              {formatTimeShort(adhan[prayer])}
             </span>
           </dd>
         </div>

@@ -5,6 +5,7 @@ import { useClock } from "../lib/clock";
 import { formatDistance, haversineKm, type Point } from "../lib/distance";
 import { useFavourites } from "../lib/favourites";
 import { orderedJumuah } from "../lib/prayer";
+import { formatRelative } from "../lib/nextUp";
 import { isFriday } from "../lib/planPrayer";
 import { masjidPath } from "../lib/route";
 import { clockMinutes, formatClock, zonedTimeOnDate } from "../lib/time";
@@ -120,7 +121,7 @@ export default function Jummah({
           style={{ background: "var(--now-wash)", color: "var(--now)" }}
         >
           <span className="font-medium">Today</span> · next khutbah{" "}
-          {relative(nextToday.at.getTime() - minute.getTime())} at{" "}
+          {formatRelative((nextToday.at.getTime() - minute.getTime()) / 60_000)} at{" "}
           {nextToday.masjid.name}
         </p>
       )}
@@ -256,12 +257,4 @@ export default function Jummah({
       </p>
     </section>
   );
-}
-
-function relative(ms: number): string {
-  const m = Math.round(ms / 60_000);
-  if (m <= 0) return "now";
-  if (m < 60) return `in ${m} min`;
-  const h = Math.floor(m / 60);
-  return m % 60 === 0 ? `in ${h} h` : `in ${h} h ${m % 60} min`;
 }

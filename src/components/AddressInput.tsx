@@ -146,6 +146,9 @@ export default function AddressInput({
         onKeyDown={onKeyDown}
         onFocus={() => suggestions.length > 0 && setOpen(true)}
         placeholder={placeholder}
+        // The placeholder is an example address, not a name; without this the
+        // field announced as "Costco, 50 Overlea Blvd, edit text".
+        aria-label="Address"
         autoComplete="off"
         role="combobox"
         aria-expanded={open}
@@ -154,7 +157,9 @@ export default function AddressInput({
         aria-activedescendant={
           active >= 0 ? `${listId}-${active}` : undefined
         }
-        className="w-full rounded-lg bg-surface px-3 py-2 text-sm text-ink ring-1 ring-line placeholder:text-ink-3"
+        // text-body, not text-sm: iOS Safari zooms the whole page into any
+        // input under 16px the moment it is focused, and the form jumps.
+        className="min-h-11 w-full rounded-lg bg-surface px-3 py-2 text-body text-ink ring-1 ring-line placeholder:text-ink-3"
       />
 
       {open && (

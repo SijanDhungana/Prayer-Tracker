@@ -130,6 +130,18 @@ export function formatTime(date: Date, timeZone: string = TZ): string {
 }
 
 /**
+ * "4:45" — the same clock without its meridiem.
+ *
+ * For the five-across grids only. At 375px each of those cells is about 67px
+ * wide, and "12:15 PM" at body size does not fit, so the last column wrapped
+ * or clipped. The prayer name above each cell already says which half of the
+ * day it is; the AM/PM was carrying no information there.
+ */
+export function formatTimeShort(date: Date, timeZone: string = TZ): string {
+  return formatTime(date, timeZone).replace(/\s*(AM|PM)$/i, "");
+}
+
+/**
  * "13:30" → "1:30 PM".
  *
  * For stored clock times that belong to a weekday rather than to today —

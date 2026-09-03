@@ -128,22 +128,24 @@ export default function AdminSuggestions({ date }: { date: Date }) {
     else await load();
   }
 
-  if (loading) return <p className="text-sm text-ink-3">Checking…</p>;
+  if (loading) return <p className="text-meta text-ink-3">Checking…</p>;
 
   if (!isAdmin) {
     return (
       <section>
-        <h1 className="text-2xl font-semibold tracking-tight">Suggestions</h1>
-        <p className="mt-3 rounded-xl border border-dashed border-line-strong p-6 text-sm text-ink-2">
+        <h1 className="font-display text-title font-semibold">Suggestions</h1>
+        <p className="mt-3 rounded-lg border border-dashed border-line-strong p-6 text-body text-ink-2">
           {session
             ? "This page is for admins. Your account doesn't have that role."
             : "Sign in with an admin account to review suggestions."}
         </p>
         <a
           href={session ? settingsPath : signInPath}
-          className="mt-4 inline-block text-sm font-medium text-brand underline underline-offset-2"
+          className="mt-4 inline-flex min-h-11 items-center text-meta font-medium text-brand underline underline-offset-2"
         >
-          {session ? "← All masjids" : "Sign in"}
+          {/* The link goes to Settings, so it says so. It read "All masjids"
+              while pointing somewhere else entirely. */}
+          {session ? "← Back to Settings" : "Sign in"}
         </a>
       </section>
     );
@@ -151,8 +153,8 @@ export default function AdminSuggestions({ date }: { date: Date }) {
 
   return (
     <section>
-      <h1 className="text-2xl font-semibold tracking-tight">Suggestions</h1>
-      <p className="mt-1 text-sm text-ink-2">
+      <h1 className="font-display text-title font-semibold">Suggestions</h1>
+      <p className="mt-1 text-body text-ink-2">
         Approving publishes the time to everyone immediately.
       </p>
 
@@ -163,7 +165,7 @@ export default function AdminSuggestions({ date }: { date: Date }) {
             type="button"
             onClick={() => setFilter(f)}
             className={
-              "rounded-full px-3 py-1.5 text-sm font-medium capitalize " +
+              "inline-flex min-h-11 items-center rounded-full px-3 text-meta font-medium capitalize " +
               (filter === f
                 ? "bg-brand text-brand-ink"
                 : "bg-surface text-ink-2 ring-1 ring-line")

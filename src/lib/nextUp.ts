@@ -210,6 +210,27 @@ export function formatSince(minutes: number): string {
 }
 
 /**
+ * "in 12 min", "in 2 h 5 min", "now", "8 min ago", "2 h ago" — the one
+ * relative-time formatter for every list row and card.
+ *
+ * Four screens each carried their own copy of this, and they had drifted:
+ * only one of them handled the past at all, and that one printed "120 min
+ * ago" because it never rolled minutes into hours in that direction. A
+ * congregation that began two hours ago is exactly the case where a row
+ * needs to read clearly as gone rather than as a large number to decode.
+ */
+export function formatRelative(minutes: number): string {
+  const m = Math.round(minutes);
+  if (m === 0) return "now";
+  const abs = Math.abs(m);
+  const h = Math.floor(abs / 60);
+  const rest = abs % 60;
+  const span =
+    abs < 60 ? `${abs} min` : rest === 0 ? `${h} h` : `${h} h ${rest} min`;
+  return m > 0 ? `in ${span}` : `${span} ago`;
+}
+
+/**
  * Whether the next Jumu'ah sitting a masjid offers is still ahead of `now`.
  * Exported for the tests that pin the sitting-selection rule.
  */

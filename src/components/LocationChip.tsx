@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Icon from "./Icon";
 import Sheet from "./Sheet";
 import { PRESETS, type ReferencePoint } from "../lib/location";
@@ -20,8 +20,18 @@ export default function LocationChip({
   block?: boolean;
 }) {
   const [open, setOpen] = useState(false);
-  const { status, presetId, selectPreset, useDeviceLocation } = reference;
+  const { status, error, presetId, selectPreset, useDeviceLocation } = reference;
   const usingDevice = status === "active";
+
+  /**
+   * The sheet closes when a fix lands, not when the button is tapped. Closing
+   * on tap hid the "Locating…" state and, worse, hid the failure: a denied or
+   * timed-out request produced an error nobody could see, and the chip simply
+   * went on saying "Downtown Toronto" as if nothing had been asked.
+   */
+  useEffect(() => {
+    if (status === "active") setOpen(false);
+  }, [status]);
   const label = usingDevice ? "My location" : reference.label;
 
   return (
@@ -75,16 +85,19 @@ export default function LocationChip({
         {!usingDevice && (
           <button
             type="button"
-            onClick={() => {
-              useDeviceLocation();
-              setOpen(false);
-            }}
+            onClick={() => useDeviceLocation()}
             disabled={status === "locating"}
             className="mt-3 flex min-h-[44px] w-full items-center justify-center gap-2 rounded-md bg-brand px-4 font-medium text-brand-ink disabled:opacity-60"
           >
             <Icon name="crosshair" size={18} />
             {status === "locating" ? "Locating…" : "Use my location"}
           </button>
+        )}
+
+        {status === "error" && error && (
+          <p role="alert" className="mt-2 rounded-md bg-caution-wash px-3 py-2 text-meta text-caution">
+            {error}
+          </p>
         )}
       </Sheet>
     </>

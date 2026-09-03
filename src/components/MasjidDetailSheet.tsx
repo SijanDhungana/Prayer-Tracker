@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FreshnessDot from "./FreshnessDot";
 import Icon from "./Icon";
 import SuggestTimeForm from "./SuggestTimeForm";
@@ -39,6 +39,29 @@ export default function MasjidDetailSheet({
   const [suggesting, setSuggesting] = useState<Prayer | "jumuah" | null>(null);
   const starred = isFavourite(masjid.id);
 
+  /**
+   * Behave like the dialog the markup claims to be. It carried
+   * aria-modal="true" with none of what that promises: Escape did nothing,
+   * and the page behind it kept scrolling under a finger that had missed
+   * the sheet. Sheet.tsx does both for every other overlay; this is the
+   * same contract for the one overlay that is a route rather than state.
+   */
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        onClose();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [onClose]);
+
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
     `${masjid.name}, ${masjid.address}`,
   )}`;
@@ -50,7 +73,10 @@ export default function MasjidDetailSheet({
       role="dialog"
       aria-modal="true"
       aria-label={masjid.name}
-      className="absolute inset-x-0 bottom-0 top-8 z-40 flex flex-col overflow-y-auto rounded-t-xl border-t border-line bg-surface shadow-sheet"
+      className="absolute inset-x-0 bottom-0 z-40 flex flex-col overflow-y-auto rounded-t-xl border-t border-line bg-surface shadow-sheet"
+      // The sheet's sticky header used to start a flat 32px from the top of
+      // the web view, which on a phone with a notch is underneath the clock.
+      style={{ top: "calc(env(safe-area-inset-top) + 2rem)" }}
     >
       <div className="sticky top-0 z-10 flex items-start gap-3 border-b border-line bg-surface p-4">
         <div className="min-w-0 flex-1">
@@ -149,7 +175,7 @@ export default function MasjidDetailSheet({
                       <button
                         type="button"
                         onClick={() => setSuggesting(prayer)}
-                        className="text-meta font-medium text-brand underline underline-offset-2"
+                        className="inline-flex min-h-11 items-center text-meta font-medium text-brand underline underline-offset-2"
                       >
                         Add times →
                       </button>

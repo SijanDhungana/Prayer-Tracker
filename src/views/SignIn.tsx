@@ -15,15 +15,15 @@ export default function SignIn() {
   if (!authConfigured) {
     return (
       <section>
-        <h1 className="text-2xl font-semibold tracking-tight">Sign in</h1>
-        <p className="mt-3 rounded-xl border border-dashed border-line-strong p-6 text-sm text-ink-2">
+        <h1 className="font-display text-title font-semibold">Sign in</h1>
+        <p className="mt-3 rounded-lg border border-dashed border-line-strong p-6 text-body text-ink-2">
           Accounts aren&rsquo;t set up on this deployment yet. Prayer times work
           normally without one — signing in is only needed to suggest a
           correction.
         </p>
         <a
           href={nextPath}
-          className="mt-4 inline-block text-sm font-medium text-brand underline underline-offset-2"
+          className="mt-4 inline-flex min-h-11 items-center text-meta font-medium text-brand underline underline-offset-2"
         >
           ← All masjids
         </a>
@@ -34,13 +34,13 @@ export default function SignIn() {
   if (signedInAs) {
     return (
       <section>
-        <h1 className="text-2xl font-semibold tracking-tight">Signed in</h1>
-        <p className="mt-2 text-sm text-ink-2">
+        <h1 className="font-display text-title font-semibold">Signed in</h1>
+        <p className="mt-2 text-body text-ink-2">
           You&rsquo;re signed in as {signedInAs}.
         </p>
         <a
           href={nextPath}
-          className="mt-4 inline-block text-sm font-medium text-brand underline underline-offset-2"
+          className="mt-4 inline-flex min-h-11 items-center text-meta font-medium text-brand underline underline-offset-2"
         >
           ← All masjids
         </a>
@@ -50,10 +50,10 @@ export default function SignIn() {
 
   return (
     <section>
-      <h1 className="text-2xl font-semibold tracking-tight">
+      <h1 className="font-display text-title font-semibold">
         {mode === "in" ? "Sign in" : "Create an account"}
       </h1>
-      <p className="mt-1 text-sm text-ink-2">
+      <p className="mt-1 text-body text-ink-2">
         An account is only needed to suggest a prayer time. Browsing works
         without one.
       </p>

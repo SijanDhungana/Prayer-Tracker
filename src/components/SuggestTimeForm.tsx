@@ -179,7 +179,7 @@ export default function SuggestTimeForm({
               type="button"
               onClick={() => setMode(m)}
               className={
-                "rounded-lg py-2 text-center text-sm font-medium transition-colors " +
+                "min-h-11 rounded-lg text-center text-body font-medium transition-colors " +
                 (mode === m
                   ? "bg-surface text-ink shadow-sm"
                   : "text-ink-2 hover:text-ink")
@@ -287,11 +287,11 @@ function Header({
 }) {
   return (
     <div className="flex items-baseline justify-between gap-3">
-      <h3 className="text-base font-semibold">{title}</h3>
+      <h3 className="font-display text-name font-semibold">{title}</h3>
       <button
         type="button"
         onClick={onClose}
-        className="text-sm text-ink-3 hover:text-ink"
+        className="-mr-2 inline-flex min-h-11 items-center px-2 text-meta text-ink-3 hover:text-ink"
       >
         Close
       </button>

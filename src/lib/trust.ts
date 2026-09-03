@@ -81,7 +81,11 @@ function shortDate(iso: string): string {
 }
 
 export function freshness(
-  masjid: { lastVerified: string | null; iqamah?: Record<string, unknown> },
+  masjid: {
+    lastVerified: string | null;
+    iqamah?: Record<string, unknown>;
+    needsReview?: boolean;
+  },
   today: Date,
 ): Freshness {
   // Nothing collected at all outranks any date: the times on screen are
@@ -93,6 +97,25 @@ export function freshness(
   const days = daysSinceVerified(masjid.lastVerified, today);
   if (days == null || days < 0) {
     return { level: "none", label: "No iqamah times yet" };
+  }
+
+  /**
+   * The scraper's own doubt outranks the date. `needsReview` is set when a
+   * read failed or looked wrong and the previous value was kept (CLAUDE.md
+   * §10), and it was being ignored here — so a masjid whose times the
+   * scraper had explicitly flagged still read "Checked today", the most
+   * confident label on offer. Under §14 that is the one thing a trust label
+   * must never do. It is shown at the stale level, which is the caution
+   * treatment every screen already renders.
+   */
+  if (masjid.needsReview) {
+    return {
+      level: "stale",
+      label:
+        days === 0
+          ? "Read today, not yet confirmed"
+          : `Not yet confirmed · last read ${shortDate(masjid.lastVerified!)}`,
+    };
   }
   if (days === 0) return { level: "verified", label: "Checked today" };
   if (days <= RECENT_AFTER_DAYS) {

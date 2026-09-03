@@ -20,8 +20,13 @@ import {
 export type Snap = "peek" | "half" | "full";
 
 /** Fractions of viewport height, matching the table in §8.1. */
-const HEIGHTS: Record<Snap, string> = {
-  peek: "120px",
+export const HEIGHTS: Record<Snap, string> = {
+  // Measured from the viewport's bottom edge, which the floating tab bar
+  // covers to 88px plus the home-indicator inset (AppShell). A flat 120px
+  // left about 30px of sheet showing above the bar — the handle and nothing
+  // else, so "peek" showed no times at all. This keeps the header line and
+  // the first row in view over the bar.
+  peek: "calc(176px + env(safe-area-inset-bottom))",
   half: "50vh",
   full: "92vh",
 };

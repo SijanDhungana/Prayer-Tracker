@@ -232,8 +232,8 @@ export default function PlanTrip({
   if (!googleMapsConfigured) {
     return (
       <section>
-        <h1 className="text-2xl font-semibold tracking-tight">Plan a trip</h1>
-        <p className="mt-3 rounded-xl border border-dashed border-line-strong p-6 text-center text-sm text-ink-2">
+        <h1 className="font-display text-title font-semibold">Plan a trip</h1>
+        <p className="mt-3 rounded-lg border border-dashed border-line-strong p-6 text-center text-body text-ink-2">
           Trip planning needs a Google Maps API key. Everything else on the
           site works without it.
         </p>
@@ -243,8 +243,8 @@ export default function PlanTrip({
 
   return (
     <section>
-      <h1 className="text-2xl font-semibold tracking-tight">Plan a trip</h1>
-      <p className="mt-1 text-sm text-ink-2">
+      <h1 className="font-display text-title font-semibold">Plan a trip</h1>
+      <p className="mt-1 text-body text-ink-2">
         Where are you headed? We&rsquo;ll find masjids on the way and work out
         whether you can pray and still get there.
       </p>
@@ -602,7 +602,7 @@ function Results({
       {!nothing && <Verdict result={result} label={label} />}
 
       {nothing ? (
-        <p className="mt-3 rounded-xl border border-dashed border-line-strong p-6 text-center text-sm text-ink-2">
+        <p className="mt-3 rounded-lg border border-dashed border-line-strong p-6 text-center text-body text-ink-2">
           {searched === 0
             ? "No masjids sit anywhere near that route. Try a destination across town, or check the Map tab."
             : `None of the ${searched} masjids on that route can fit ${label} in — the prayer window closes before you'd arrive.`}

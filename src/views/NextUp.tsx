@@ -8,6 +8,7 @@ import TimeRow from "../components/TimeRow";
 import { useClock } from "../lib/clock";
 import { haversineKm, type Point } from "../lib/distance";
 import { useFavourites } from "../lib/favourites";
+import { formatRelative } from "../lib/nextUp";
 import { useSettings } from "../lib/settings";
 import type { ReferencePoint } from "../lib/location";
 import { adhanTimes, iqamahTimes } from "../lib/prayer";
@@ -296,7 +297,10 @@ export default function NextUp({
         </label>
       </div>
 
-      <p className="mt-3 text-meta text-ink-3" aria-live="polite">
+      {/* Not aria-live: this line re-renders every minute, and a live region
+          would read the whole sentence aloud each time. The sr-only twin above
+          already carries the countdown for screen readers, on its own terms. */}
+      <p className="mt-3 text-meta text-ink-3">
         {PRAYER_LABELS[prayer]} adhan{" "}
         {countdownTo ? formatTime(countdownTo) : "—"}
         {rollsOver && " tomorrow"}. Soonest congregation first.
@@ -306,14 +310,16 @@ export default function NextUp({
             <button
               type="button"
               onClick={() => setWithinKm(null)}
-              className="font-medium text-brand underline underline-offset-2"
+              className="inline-flex min-h-11 items-center font-medium text-brand underline underline-offset-2"
             >
               {beyond} further out →
             </button>
           </>
         )}
       </p>
-      <p className="mt-1 text-meta text-ink-3">Iqamah · adhan below</p>
+      <p className="mt-1 text-meta text-ink-3">
+        Big time is the iqamah; the adhan is the small one under each name.
+      </p>
 
       {starred.length > 0 && (
         <>
@@ -344,8 +350,9 @@ export default function NextUp({
 
       {rest.length === 0 ? (
         <p className="mt-2 rounded-lg border border-line bg-surface p-6 text-center text-body text-ink-2">
-          No masjid within {withinKm ?? "any"} km has a {PRAYER_LABELS[prayer]}{" "}
-          iqamah on file.
+          {withinKm == null
+            ? `No masjid has a ${PRAYER_LABELS[prayer]} iqamah on file.`
+            : `No masjid within ${withinKm} km has a ${PRAYER_LABELS[prayer]} iqamah on file.`}
         </p>
       ) : (
         <ul className="mt-2 overflow-hidden rounded-lg border border-line bg-surface">
@@ -400,14 +407,4 @@ function countdownText(now: Date, target: Date | null): string {
   return h > 0
     ? `${h}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`
     : `${m}:${String(s).padStart(2, "0")}`;
-}
-
-function formatRelative(minutes: number): string {
-  const m = Math.round(minutes);
-  if (m < 0) return `${Math.abs(m)} min ago`;
-  if (m === 0) return "now";
-  if (m < 60) return `in ${m} min`;
-  const h = Math.floor(m / 60);
-  const rest = m % 60;
-  return rest === 0 ? `in ${h} h` : `in ${h} h ${rest} min`;
 }

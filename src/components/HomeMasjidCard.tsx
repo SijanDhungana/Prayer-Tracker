@@ -3,6 +3,7 @@ import FreshnessDot from "./FreshnessDot";
 import { useClock } from "../lib/clock";
 import { iqamahTimes } from "../lib/prayer";
 import { masjidPath } from "../lib/route";
+import { formatRelative } from "../lib/nextUp";
 import { formatTime } from "../lib/time";
 import { PRAYERS, PRAYER_LABELS, type Masjid, type Prayer } from "../lib/types";
 
@@ -82,7 +83,14 @@ export default function HomeMasjidCard({
     <a
       href={masjidPath(masjid.id)}
       className="mt-4 block rounded-lg border p-4"
-      style={{ borderColor: "var(--now)", background: "var(--now-wash)" }}
+      // Tinted with the prayer the card *names*, not the current window.
+      // Using --now here meant an Asr-orange card announcing "Maghrib 7:52",
+      // the colour contradicting the text it was framing. With nothing on
+      // file there is no prayer to name, so it falls back to the window.
+      style={{
+        borderColor: `var(--${next?.prayer ?? "now"})`,
+        background: `var(--${next?.prayer ?? "now"}-wash)`,
+      }}
     >
       <span className="flex items-center gap-2">
         <FreshnessDot masjid={masjid} today={today} showLabel={false} />
@@ -117,12 +125,4 @@ export default function HomeMasjidCard({
       )}
     </a>
   );
-}
-
-function formatRelative(minutes: number): string {
-  const m = Math.round(minutes);
-  if (m <= 0) return "now";
-  if (m < 60) return `in ${m} min`;
-  const h = Math.floor(m / 60);
-  return m % 60 === 0 ? `in ${h} h` : `in ${h} h ${m % 60} min`;
 }

@@ -81,11 +81,14 @@ export default function AppShell({
   children,
   /** The map takes the whole viewport and manages its own scrolling. */
   bleed = false,
+  /** One line above the content when the times on screen are not live. */
+  notice = null,
 }: {
   route: Route;
   reference: ReferencePoint;
   children: ReactNode;
   bleed?: boolean;
+  notice?: ReactNode;
 }) {
   const isDesktop = useIsDesktop();
   const active = activeTab(route);
@@ -121,7 +124,21 @@ export default function AppShell({
           (bleed || isDesktop ? "" : "pb-[calc(88px+env(safe-area-inset-bottom))]")
         }
       >
-        {bleed ? children : <div className="pb-8">{children}</div>}
+        {bleed ? (
+          children
+        ) : (
+          <div className="pb-8">
+            {notice && (
+              <p
+                role="status"
+                className="mb-3 rounded-md bg-caution-wash px-3 py-2 text-meta text-caution"
+              >
+                {notice}
+              </p>
+            )}
+            {children}
+          </div>
+        )}
       </main>
     </div>
   );

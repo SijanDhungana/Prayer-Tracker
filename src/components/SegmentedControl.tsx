@@ -1,4 +1,4 @@
-import { useRef, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 
 /**
  * One segmented control, used by the prayer selector, the theme switch, Plan's
@@ -35,6 +35,24 @@ export default function SegmentedControl<T extends string>({
 }) {
   const refs = useRef<(HTMLButtonElement | null)[]>([]);
 
+  /**
+   * A scrollable track keeps the chosen option in view. The prayer selector
+   * is wider than a 375px phone — "Maghrib" alone is 86px at body size — so
+   * on load "Isha" sits clipped past the right edge, and the clock's own
+   * choice of prayer could land there too. Scrolling it into view on every
+   * change means the thumb is never somewhere the user cannot see; `nearest`
+   * leaves the track alone when it already is.
+   */
+  const selectedIndex = options.findIndex((o) => o.value === value);
+  useEffect(() => {
+    if (!scrollable) return;
+    refs.current[selectedIndex]?.scrollIntoView({
+      block: "nearest",
+      inline: "nearest",
+      behavior: "smooth",
+    });
+  }, [scrollable, selectedIndex]);
+
   function onKeyDown(event: React.KeyboardEvent, index: number) {
     const delta =
       event.key === "ArrowRight" || event.key === "ArrowDown"
@@ -56,7 +74,24 @@ export default function SegmentedControl<T extends string>({
       aria-label={label}
       className={
         "flex gap-1 rounded-full bg-surface-2 p-1 " +
-        (scrollable ? "overflow-x-auto" : "")
+        // No visible scrollbar: on a phone it drew a grey bar under the
+        // prayer names that read as a broken underline, and the edge fade
+        // below already says "there is more". Keyboard and swipe still scroll.
+        (scrollable
+          ? "overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          : "")
+      }
+      style={
+        scrollable
+          ? {
+              // Soft edges instead of a hard clip, so a half-visible "Isha"
+              // reads as "scroll for more" rather than as a layout bug.
+              maskImage:
+                "linear-gradient(to right, transparent, black 12px, black calc(100% - 12px), transparent)",
+              WebkitMaskImage:
+                "linear-gradient(to right, transparent, black 12px, black calc(100% - 12px), transparent)",
+            }
+          : undefined
       }
     >
       {options.map((option, index) => {
