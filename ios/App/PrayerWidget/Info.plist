@@ -7,5 +7,9 @@
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.widgetkit-extension</string>
 	</dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>The Masjid Times widget uses your location to show the next congregation at the masjid nearest you. Without it the widget cannot pick a masjid, and says so rather than guessing a city.</string>
+	<key>NSWidgetWantsLocation</key>
+	<true/>
 </dict>
 </plist>

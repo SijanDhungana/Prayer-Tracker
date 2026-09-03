@@ -115,9 +115,13 @@ requires it — and Run.
 The widget asks for one coarse fix per timeline through
 `CLLocationManager.isAuthorizedForWidgetUpdates`. Widgets do not get continuous
 location; they inherit the container app's authorization, and the app having
-permission is not on its own enough — the user also has to allow widget updates.
-`NSLocationWhenInUseUsageDescription` is already in the app's `Info.plist`; add
-the same key to the extension's only if iOS complains.
+permission is not on its own enough. **The extension's own `Info.plist` must
+declare `NSWidgetWantsLocation = YES`** — without it that property is always
+false, and the first device build shipped exactly that way: the app showed
+"My location" while the widget on the same phone said "Location off for
+widgets". The extension also carries its own
+`NSLocationWhenInUseUsageDescription`, since a location manager in an extension
+reads the extension's plist, not the app's.
 
 When there is no fix the widget says "Location off for widgets" rather than
 falling back to a default city. A widget quietly showing another city's masjid
