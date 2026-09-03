@@ -1,4 +1,5 @@
 import WidgetKit
+import CoreLocation
 import SwiftUI
 
 /// The home-screen widget: the next iqamah at the nearest masjid.
