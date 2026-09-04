@@ -22,9 +22,10 @@
     "check:masjid-data": "tsx scripts/check-masjid-data.ts",
     "check:iframe-text": "tsx scripts/check-iframe-text.ts",
     "check:slow-widget": "tsx scripts/check-slow-widget.ts",
-    "check": "npm run check:jumuah && npm run check:discover && npm run check:plan-prayer && npm run check:next-up && npm run check:addin && npm run check:reject-impossible && npm run check:overrides && npm run check:masjid-data && npm run check:iframe-text && npm run check:slow-widget && npm run check:widget-feeds && npm run check:enrichment",
+    "check": "npm run check:jumuah && npm run check:discover && npm run check:plan-prayer && npm run check:next-up && npm run check:addin && npm run check:reject-impossible && npm run check:overrides && npm run check:masjid-data && npm run check:iframe-text && npm run check:slow-widget && npm run check:widget-feeds && npm run check:enrichment && npm run check:scrape-window",
     "check:widget-feeds": "tsx scripts/check-widget-feeds.ts",
-    "check:enrichment": "tsx scripts/check-enrichment.ts"
+    "check:enrichment": "tsx scripts/check-enrichment.ts",
+    "check:scrape-window": "tsx scripts/check-scrape-window.ts"
   },
   "dependencies": {
     "@capacitor/android": "^8.5.0",

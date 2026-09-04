@@ -1,13 +1,25 @@
 # .github/workflows/daily-scrape.yml
-# Runs the scraper once a day on GitHub's servers (free for public repos) and
-# commits the refreshed src/data/masjids.json. No server or laptop needed.
+# Refreshes src/data/masjids.json once a day and commits it. No server or
+# laptop needed.
+#
+# The cron is hourly, but the scrape itself happens once — scripts/scrape-window.ts
+# decides which hour. That indirection exists because a fixed UTC cron cannot
+# stay ahead of Fajr: Toronto's Fajr runs from 07:45 UTC in late June to 11:23
+# UTC in January, and daylight saving moves it again. This used to be a flat
+# "0 9 * * *", which meant that all summer the refresh landed AFTER Fajr had
+# passed — stale at the one moment of the day it most needed to be current.
+#
+# A skipped hour costs about fifteen seconds: the window is decided before
+# Playwright's browser download, which is the expensive step.
 
 name: Daily prayer-time scrape
 
 on:
   schedule:
-    - cron: "0 9 * * *" # 09:00 UTC daily — adjust to taste
-  workflow_dispatch: {} # lets you also run it manually from the Actions tab
+    # Hourly. scrape-window.ts lets exactly one of these through per day,
+    # two hours before Toronto's Fajr — see that file for why two and not one.
+    - cron: "0 * * * *"
+  workflow_dispatch: {} # a hand-triggered run always scrapes, window or not
 
 permissions:
   contents: write # needed to commit the updated JSON back
@@ -24,12 +36,21 @@ jobs:
 
       - run: npm ci
 
+      # Before the browser download, so the 23 skipped runs stay cheap.
+      - name: Is this the hour?
+        id: window
+        env:
+          GITHUB_EVENT_NAME: ${{ github.event_name }}
+        run: npx tsx scripts/scrape-window.ts
+
       # Install the headless browser Playwright drives.
-      - run: npx playwright install --with-deps chromium
+      - if: steps.window.outputs.run == 'true'
+        run: npx playwright install --with-deps chromium
 
       # Fails loudly rather than burning a whole run to produce nothing.
       # The secret goes through env, never interpolated into the shell command.
       - name: Check for API key
+        if: steps.window.outputs.run == 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
@@ -39,14 +60,18 @@ jobs:
           fi
 
       - name: Run scraper
+        if: steps.window.outputs.run == 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: npx tsx scrape.ts
 
       - name: Commit refreshed times
+        if: steps.window.outputs.run == 'true'
         run: |
           git config user.name  "prayer-times-bot"
           git config user.email "bot@users.noreply.github.com"
           git add src/data/masjids.json
           git diff --staged --quiet || git commit -m "chore: refresh prayer times ($(date -u +%F))"
+          # Another job may have landed on main while this run was scraping.
+          git pull --rebase origin main
           git push
