@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import AddressInput from "../components/AddressInput";
+import SegmentedControl from "../components/SegmentedControl";
 import { useAuth } from "../lib/auth";
 import TripMap from "../components/TripMap";
 import { formatDistance, haversineKm, type Point } from "../lib/distance";
@@ -251,7 +252,8 @@ export default function PlanTrip({
 
       <form onSubmit={plan} className="mt-4 space-y-4">
         <Field label="Leaving from">
-          <Segmented
+          <SegmentedControl
+            label="Leaving from"
             options={[
               { value: "here", label: locationLabel },
               { value: "address", label: "An address" },
@@ -261,11 +263,11 @@ export default function PlanTrip({
           />
           {originMode === "here" ? (
             reference.status === "active" ? (
-              <p className="mt-1.5 text-xs text-brand">
+              <p className="mt-1.5 text-meta text-brand">
                 Using your device&rsquo;s location.
               </p>
             ) : (
-              <p className="mt-1.5 text-xs text-ink-3">
+              <p className="mt-1.5 text-meta text-ink-3">
                 Set above, or{" "}
                 <button
                   type="button"
@@ -294,7 +296,8 @@ export default function PlanTrip({
         </Field>
 
         <Field label="Leaving at">
-          <Segmented
+          <SegmentedControl
+            label="Leaving at"
             options={[
               { value: "now", label: "Now" },
               { value: "later", label: "A set time" },
@@ -304,7 +307,7 @@ export default function PlanTrip({
             onChange={(mode) => setDepartMode(mode as DepartMode)}
           />
           {departMode === "latest" && (
-            <p className="mt-1.5 text-xs text-ink-3">
+            <p className="mt-1.5 text-meta text-ink-3">
               We&rsquo;ll work back from each masjid&rsquo;s iqamah and tell
               you the latest you can set off.
             </p>
@@ -318,7 +321,7 @@ export default function PlanTrip({
                 className="mt-1.5 w-full rounded-lg bg-surface px-3 py-2 text-sm tabular-nums text-ink ring-1 ring-line"
               />
               {departAt && departureTime < new Date() && (
-                <p className="mt-1.5 text-xs text-caution">
+                <p className="mt-1.5 text-meta text-caution">
                   That&rsquo;s earlier today — the plan uses today&rsquo;s
                   prayer times, and traffic is estimated for now.
                 </p>
@@ -339,7 +342,7 @@ export default function PlanTrip({
 
         <div className="flex flex-wrap gap-3">
           <label className="min-w-0 flex-1">
-            <span className="text-sm font-medium text-ink-2">
+            <span className="text-body font-medium text-ink-2">
               Arrive by <span className="font-normal text-ink-3">(optional)</span>
             </span>
             <input
@@ -351,7 +354,7 @@ export default function PlanTrip({
           </label>
 
           <label className="min-w-0 flex-1">
-            <span className="text-sm font-medium text-ink-2">Prayer</span>
+            <span className="text-body font-medium text-ink-2">Prayer</span>
             <select
               value={chosenPrayer}
               onChange={(e) => setPrayer(e.target.value as PlanPrayer)}
@@ -364,7 +367,7 @@ export default function PlanTrip({
               ))}
             </select>
             {chosenPrayer === "jumuah" && !jumuahPreview && (
-              <p className="mt-1.5 text-xs text-ink-3">
+              <p className="mt-1.5 text-meta text-ink-3">
                 We&rsquo;ll aim for whichever sitting you can still catch.
               </p>
             )}
@@ -385,7 +388,7 @@ export default function PlanTrip({
         )}
 
         <fieldset className={departMode === "latest" ? "hidden" : undefined}>
-          <legend className="text-sm font-medium text-ink-2">
+          <legend className="text-body font-medium text-ink-2">
             What matters more?
           </legend>
           <div className="mt-1.5 flex gap-2">
@@ -407,7 +410,7 @@ export default function PlanTrip({
         <button
           type="submit"
           disabled={phase === "working" || !destination.trim() || !originReady}
-          className="w-full rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-brand-ink hover:bg-brand-press disabled:opacity-50"
+          className="flex min-h-11 w-full items-center justify-center rounded-md bg-brand px-4 text-body font-semibold text-brand-ink hover:bg-brand-press disabled:opacity-50"
         >
           {phase === "working" ? "Working it out…" : "Find a way"}
         </button>
@@ -452,42 +455,15 @@ function Field({
 }) {
   return (
     <div>
-      <span className="block text-sm font-medium text-ink-2">{label}</span>
+      <span className="block text-body font-medium text-ink-2">{label}</span>
       <div className="mt-1.5">{children}</div>
     </div>
   );
 }
 
-function Segmented({
-  options,
-  value,
-  onChange,
-}: {
-  options: { value: string; label: string }[];
-  value: string;
-  onChange: (value: string) => void;
-}) {
-  return (
-    <div className="flex gap-2">
-      {options.map((option) => (
-        <button
-          key={option.value}
-          type="button"
-          onClick={() => onChange(option.value)}
-          aria-pressed={value === option.value}
-          className={
-            "min-w-0 flex-1 truncate rounded-lg px-3 py-2 text-sm font-medium transition-colors " +
-            (value === option.value
-              ? "bg-brand text-brand-ink"
-              : "bg-surface text-ink-2 ring-1 ring-line hover:text-ink")
-          }
-        >
-          {option.label}
-        </button>
-      ))}
-    </div>
-  );
-}
+// Plan's own segmented buttons are gone: they were the one control in the
+// app that looked and behaved differently from the shared SegmentedControl
+// (aria-pressed buttons, five tab stops, a different thumb), for no reason.
 
 function PriorityChip({
   active,
@@ -506,7 +482,7 @@ function PriorityChip({
       onClick={onClick}
       aria-pressed={active}
       className={
-        "min-w-0 flex-1 rounded-lg px-3 py-2 text-left text-sm transition-colors " +
+        "min-h-11 min-w-0 flex-1 rounded-md px-3 py-2 text-left text-body transition-colors " +
         (active
           ? "bg-brand text-brand-ink"
           : "bg-surface text-ink-2 ring-1 ring-line hover:text-ink")
@@ -515,7 +491,7 @@ function PriorityChip({
       <span className="block font-medium">{label}</span>
       <span
         className={
-          "block text-[11px] " + (active ? "text-brand-wash" : "text-ink-3")
+          "block text-meta " + (active ? "text-brand-wash" : "text-ink-3")
         }
       >
         {hint}

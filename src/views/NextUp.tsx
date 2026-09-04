@@ -258,18 +258,21 @@ export default function NextUp({
         />
       </div>
 
-      <div className="mt-4 flex flex-wrap items-center gap-2">
+      {/* One row that scrolls, not two that wrap. Three chips wrapping onto a
+          second line pushed the first congregation another 52px down a screen
+          whose whole job is to show it. */}
+      <div className="-mx-4 mt-4 flex items-center gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         <button
           type="button"
           onClick={() => setOrder((o) => (o === "earliest" ? "latest" : "earliest"))}
-          className="flex min-h-[44px] items-center gap-1.5 rounded-full border border-line bg-surface px-3 text-meta font-medium text-ink-2 hover:text-ink"
+          className="flex min-h-[44px] shrink-0 items-center gap-1.5 rounded-full border border-line bg-surface px-3 text-meta font-medium text-ink-2 hover:text-ink"
         >
           <Icon name="sliders" size={16} />
           {order === "earliest" ? "Earliest first" : "Latest first"}
         </button>
 
-        <label className="flex min-h-[44px] items-center gap-2 rounded-full border border-line bg-surface px-3 text-meta text-ink-2">
-          <span>Iqamah after</span>
+        <label className="flex min-h-[44px] shrink-0 items-center gap-2 rounded-full border border-line bg-surface px-3 text-meta text-ink-2">
+          <span>After</span>
           <input
             type="time"
             value={after}
@@ -278,7 +281,7 @@ export default function NextUp({
           />
         </label>
 
-        <label className="flex min-h-[44px] items-center gap-2 rounded-full border border-line bg-surface px-3 text-meta text-ink-2">
+        <label className="flex min-h-[44px] shrink-0 items-center gap-2 rounded-full border border-line bg-surface px-3 text-meta text-ink-2">
           <span>Within</span>
           <select
             value={withinKm ?? ""}
@@ -303,7 +306,7 @@ export default function NextUp({
       <p className="mt-3 text-meta text-ink-3">
         {PRAYER_LABELS[prayer]} adhan{" "}
         {countdownTo ? formatTime(countdownTo) : "—"}
-        {rollsOver && " tomorrow"}. Soonest congregation first.
+        {rollsOver && " tomorrow"} · large time is the iqamah, small is the adhan.
         {beyond > 0 && (
           <>
             {" "}
@@ -316,9 +319,6 @@ export default function NextUp({
             </button>
           </>
         )}
-      </p>
-      <p className="mt-1 text-meta text-ink-3">
-        Big time is the iqamah; the adhan is the small one under each name.
       </p>
 
       {starred.length > 0 && (

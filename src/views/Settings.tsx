@@ -11,6 +11,7 @@ import {
   ASR_NOTES,
   THEME_LABELS,
   applyAsrPreference,
+  CLOCK_LABELS,
   useSettings,
   type AsrPreference,
   type Theme,
@@ -37,7 +38,7 @@ export default function Settings({
   date: Date;
   reference: ReferencePoint;
 }) {
-  const { asr, setAsr, theme, setTheme, homeMasjidId, setHomeMasjidId } =
+  const { asr, setAsr, theme, setTheme, homeMasjidId, setHomeMasjidId, clock, setClock } =
     useSettings();
   const home = masjids.find((m) => m.id === homeMasjidId) ?? null;
   const { session, email, isAdmin, signOut } = useAuth();
@@ -150,6 +151,21 @@ export default function Settings({
             options={(["system", "dark", "light"] as Theme[]).map((t) => ({
               value: t,
               label: THEME_LABELS[t],
+            }))}
+          />
+        </div>
+        <div className="border-t border-line px-4 py-4">
+          <h3 className="mb-1 text-body font-medium text-ink">Time format</h3>
+          <p className="mb-3 text-meta text-ink-3">
+            System follows your phone, so the app and its widget always agree.
+          </p>
+          <SegmentedControl
+            label="Time format"
+            value={clock}
+            onChange={setClock}
+            options={(["system", "12h", "24h"] as const).map((c) => ({
+              value: c,
+              label: CLOCK_LABELS[c],
             }))}
           />
         </div>

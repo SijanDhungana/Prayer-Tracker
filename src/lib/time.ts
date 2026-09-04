@@ -120,12 +120,39 @@ export function clockMinutes(hhmm: string): number | null {
   return hours * 60 + minutes;
 }
 
-/** "4:45 AM" */
+/**
+ * 12-hour, 24-hour, or whatever the device says.
+ *
+ * "system" is the default. A phone set to 24-hour time shows 13:45 in every
+ * other app and on this app's own home-screen widget, so the app printing
+ * "1:45 PM" on the same screen was the odd one out. The device's preference
+ * is read from the runtime's default locale, which on iOS follows the
+ * Settings toggle; the explicit choices are for anyone who wants the other.
+ */
+export type ClockFormat = "system" | "12h" | "24h";
+
+let clockFormat: ClockFormat = "system";
+
+/** Set once by SettingsProvider; every formatter below reads it. */
+export function setClockFormat(format: ClockFormat): void {
+  clockFormat = format;
+}
+
+/** Whether times should print as 12-hour under the current preference. */
+export function twelveHour(): boolean {
+  if (clockFormat !== "system") return clockFormat === "12h";
+  const cycle = new Intl.DateTimeFormat(undefined, { hour: "numeric" })
+    .resolvedOptions().hourCycle;
+  return cycle !== "h23" && cycle !== "h24";
+}
+
+/** "4:45 AM", or "04:45" on a 24-hour clock. */
 export function formatTime(date: Date, timeZone: string = TZ): string {
   return new Intl.DateTimeFormat("en-US", {
     timeZone,
     hour: "numeric",
     minute: "2-digit",
+    hourCycle: twelveHour() ? "h12" : "h23",
   }).format(date);
 }
 
@@ -154,9 +181,11 @@ export function formatClock(hhmm: string): string {
   if (minutes == null) return hhmm;
 
   const hours24 = Math.floor(minutes / 60);
+  const mm = String(minutes % 60).padStart(2, "0");
+  if (!twelveHour()) return `${String(hours24).padStart(2, "0")}:${mm}`;
   const hours12 = hours24 % 12 || 12;
   const suffix = hours24 < 12 ? "AM" : "PM";
-  return `${hours12}:${String(minutes % 60).padStart(2, "0")} ${suffix}`;
+  return `${hours12}:${mm} ${suffix}`;
 }
 
 /**

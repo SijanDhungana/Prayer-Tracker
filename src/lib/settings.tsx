@@ -7,6 +7,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { setClockFormat, type ClockFormat } from "./time";
 import type { Masjid } from "./types";
 
 /**
@@ -54,9 +55,28 @@ export const THEME_LABELS: Record<Theme, string> = {
   dark: "Dark",
 };
 
+export const CLOCK_LABELS: Record<ClockFormat, string> = {
+  system: "System",
+  "12h": "12-hour",
+  "24h": "24-hour",
+};
+
 const STORAGE_KEY = "prayer-tracker:asr";
 const THEME_KEY = "prayer-tracker:theme";
 const HOME_KEY = "prayer-tracker:home-masjid";
+const CLOCK_KEY = "prayer-tracker:clock";
+
+const isClockFormat = (value: unknown): value is ClockFormat =>
+  value === "system" || value === "12h" || value === "24h";
+
+function readClock(): ClockFormat {
+  try {
+    const stored = window.localStorage.getItem(CLOCK_KEY);
+    return isClockFormat(stored) ? stored : "system";
+  } catch {
+    return "system";
+  }
+}
 
 const isPreference = (value: unknown): value is AsrPreference =>
   value === "masjid" || value === "hanafi" || value === "standard";
@@ -106,6 +126,8 @@ interface Settings {
   setTheme: (value: Theme) => void;
   homeMasjidId: string | null;
   setHomeMasjidId: (value: string | null) => void;
+  clock: ClockFormat;
+  setClock: (value: ClockFormat) => void;
 }
 
 const SettingsContext = createContext<Settings>({
@@ -115,12 +137,30 @@ const SettingsContext = createContext<Settings>({
   setTheme: () => {},
   homeMasjidId: null,
   setHomeMasjidId: () => {},
+  clock: "system",
+  setClock: () => {},
 });
 
 export function SettingsProvider({ children }: { children: ReactNode }) {
   const [asr, setAsrState] = useState<AsrPreference>(readStored);
   const [theme, setThemeState] = useState<Theme>(readTheme);
   const [homeMasjidId, setHomeState] = useState<string | null>(readHome);
+  const [clock, setClockState] = useState<ClockFormat>(readClock);
+
+  const setClock = useCallback((value: ClockFormat) => {
+    setClockState(value);
+    try {
+      window.localStorage.setItem(CLOCK_KEY, value);
+    } catch {
+      // Storage off: the choice still holds for this visit.
+    }
+  }, []);
+
+  // The formatters are plain functions, not hooks, so the preference reaches
+  // them through one module-level setter rather than a prop on every call.
+  // Applied synchronously on change; the clock re-renders every screen within
+  // the second anyway.
+  setClockFormat(clock);
 
   const setAsr = useCallback((value: AsrPreference) => {
     setAsrState(value);
@@ -169,14 +209,17 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
         setThemeState(event.newValue);
       }
       if (event.key === HOME_KEY) setHomeState(event.newValue);
+      if (event.key === CLOCK_KEY && isClockFormat(event.newValue)) {
+        setClockState(event.newValue);
+      }
     };
     window.addEventListener("storage", onStorage);
     return () => window.removeEventListener("storage", onStorage);
   }, []);
 
   const value = useMemo(
-    () => ({ asr, setAsr, theme, setTheme, homeMasjidId, setHomeMasjidId }),
-    [asr, setAsr, theme, setTheme, homeMasjidId, setHomeMasjidId],
+    () => ({ asr, setAsr, theme, setTheme, homeMasjidId, setHomeMasjidId, clock, setClock }),
+    [asr, setAsr, theme, setTheme, homeMasjidId, setHomeMasjidId, clock, setClock],
   );
 
   return (
