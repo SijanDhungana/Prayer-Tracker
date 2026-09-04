@@ -53,7 +53,37 @@ struct Provider: TimelineProvider {
     }
 
     func getSnapshot(in context: Context, completion: @escaping (PrayerEntry) -> Void) {
+        // The widget gallery renders without location, so a live snapshot
+        // there could only ever say "Location off for widgets" — the wrong
+        // first impression of a widget whose point is a map. The gallery gets
+        // a representative sample; the home screen gets the real thing.
+        if context.isPreview {
+            completion(Self.sample(family: context.family))
+            return
+        }
         Task { completion(await entry(for: Date(), family: context.family)) }
+    }
+
+    /// What the gallery shows: a plausible Toronto afternoon.
+    private static func sample(family: WidgetFamily) -> PrayerEntry {
+        let now = Date()
+        let iqamah = now.addingTimeInterval(38 * 60)
+        let masjid = try! JSONDecoder().decode(Masjid.self, from: Data("""
+        {"id":"sample","name":"Masjid Ali (Eslah Islamic Association)",
+         "address":"151 Morningside Ave","lat":43.76211,"lng":-79.18349,
+         "calc":{"method":"NorthAmerica","madhab":"hanafi"},
+         "iqamah":{"fajr":null,"dhuhr":null,"asr":null,"maghrib":null,"isha":null},
+         "lastVerified":null,"needsReview":false}
+        """.utf8))
+        let upcoming = PrayerMath.Upcoming(
+            masjid: masjid, prayer: .dhuhr, iqamah: iqamah,
+            adhan: now.addingTimeInterval(10 * 60), isTomorrow: false)
+        let travel = Travel(mode: .drive, minutes: 8,
+                            leaveBy: iqamah.addingTimeInterval(-11 * 60))
+        return PrayerEntry(
+            date: now, upcoming: upcoming, distanceKm: 2.4, alsoNearby: [],
+            problem: nil, unverified: false, usingCachedData: false,
+            mapLight: nil, mapDark: nil, travel: travel)
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<PrayerEntry>) -> Void) {
