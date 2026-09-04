@@ -38,6 +38,232 @@ Panhandle and West Texas.
 
 ---
 
+## 0. Full scrape after the Google cross-reference (2026-09-04)
+
+The audit below was written against 26 reachable sites. The Google Places pass, once
+its importer bug was fixed (it wrote every website it found onto a copy and threw the
+copy away), turned 73 unreachable OSM masjids into 26 and added 108 masjids OSM never
+had. The scraper then ran over everything reachable.
+
+| | Count |
+| --- | ---: |
+| Texas masjids known | 207 |
+| With a website, scraped | 181 |
+| **Times read** | **119** |
+| Failed | 62 |
+| — site could not be opened | 39 |
+| — loads, no timetable found | 19 |
+| — timetable read but empty | 4 |
+| No website anywhere | 26 |
+
+Times are 24h as published on 2026-09-04, a Friday. Two patterns in the reads are not
+errors and should not be "fixed":
+
+- **20 rows have no Maghrib.** Their sites publish it as "at sunset" or "+5 min",
+  a rule rather than a time. The scraper leaves it blank instead of inventing one; the
+  app's data model stores exactly that rule as an offset.
+- **9 rows have no Dhuhr.** Today is Friday and those pages show Jumu'ah in
+  Dhuhr's slot. Their weekday Dhuhr needs a non-Friday read.
+
+**Do not publish these 5 — the Maghrib cannot be right.** Texas sunset on
+2026-09-04 is roughly 19:30–20:10; a uniform hour's shift is a timezone or a stale page,
+not a schedule:
+
+- Islamic Society of Denton — Maghrib 18:29
+- City of Knowledge — Maghrib 21:04
+- Kingwood Islamic Center (Kingwood Mosque) — Maghrib 20:42
+- Mercy Community Center - Mosque — Maghrib 18:41
+- Muslim Association of West Texas — Maghrib 21:06
+
+### Read in this run (119)
+
+- [(unnamed) node/11201021741](http://icwbluemosque.org/) — Fajr 05:45, Dhuhr 14:00, Asr 18:00, Maghrib 20:30, Isha 21:45 — Jumu'ah 13:30
+- [(unnamed) way/1369802877](http://icjarrell.org/) — Fajr 06:26, Dhuhr —, Asr 17:30, Maghrib 20:00, Isha 21:17 — Jumu'ah 14:00
+- [(unnamed) way/265482606](http://icelpaso.org/#) — Fajr 05:50, Dhuhr 13:30, Asr 17:00, Maghrib 19:35, Isha 20:40 — Jumu'ah 13:30
+- [(unnamed) way/383025450](http://icptx.org/) — Fajr 06:15, Dhuhr 14:00, Asr 18:30, Maghrib 19:56, Isha 21:30 — Jumu'ah 14:15, 15:30
+- [(unnamed) way/460792404](http://www.allenmasjid.com/) — Fajr 06:15, Dhuhr 14:00, Asr 18:00, Maghrib —, Isha 21:15 — Jumu'ah 14:00, 15:30
+- [(unnamed) way/655037002](https://alsalammasjid.org/) — Fajr 06:15, Dhuhr 13:45, Asr 18:05, Maghrib 19:46, Isha 21:00 — Jumu'ah 13:35, 14:35, 15:15
+- [(unnamed) way/995953052](http://www.icltx.com/) — Fajr 06:20, Dhuhr 14:00, Asr 18:45, Maghrib 19:50, Isha 21:00 — Jumu'ah 13:45
+- [AL NOOR MOSQUE](https://www.alnoormasjid.org/) — Fajr 06:10, Dhuhr 14:00, Asr 18:20, Maghrib 19:45, Isha 21:20 — Jumu'ah 14:00, 15:00
+- [AZAD MASJID](https://i-cwf.org/) — Fajr 05:53, Dhuhr 13:18, Asr 17:51, Maghrib 19:38, Isha 20:44 — Jumu'ah 13:45
+- [Abu Hanifa Mosque](https://masjidabuhanifahiat.org/) — Fajr 05:30, Dhuhr 13:45, Asr 18:30, Maghrib —, Isha 22:10 — Jumu'ah 14:00
+- [Al-Ansar Society](http://alansarsociety.org/new/) — Fajr 06:35, Dhuhr 14:00, Asr 18:00, Maghrib 19:58, Isha 21:10 — Jumu'ah 13:45, 14:45
+- [Al-Ghadeer](https://www.alghadeer.org/) — Fajr 05:48, Dhuhr 13:20, Asr 17:53, Maghrib 19:55, Isha —
+- [Al-Noor Mosque (MCC)](https://alnoormcc.org/) — Fajr 06:15, Dhuhr 13:45, Asr 18:30, Maghrib 19:54, Isha 21:15 — Jumu'ah 13:45
+- [Alkhair Islamic Society of RGV](https://us.mohid.co/tx/txrgn/alkhair) — Fajr 07:00, Dhuhr 14:00, Asr 17:30, Maghrib 19:54, Isha 21:15
+- [Barkaat-Ul-Quran](http://www.barkaatulquran.org/) — Fajr 05:32, Dhuhr 13:27, Asr 18:00, Maghrib 19:52, Isha 21:11 — Jumu'ah 13:35
+- [Bayt Al-Karim Islamic Center](https://www.dncfw.org/) — Fajr 06:30, Dhuhr 13:45, Asr 18:30, Maghrib —, Isha 21:15 — Jumu'ah 13:30
+- [City of Knowledge](https://cfkdfw.org/) — Fajr 06:49, Dhuhr 14:26, Asr 18:02, Maghrib 21:04, Isha 21:53 — Jumu'ah 13:26
+- [Clear Lake Islamic Center - Masjid](http://www.themasjid.org/) — Fajr 06:15, Dhuhr 13:45, Asr 17:15, Maghrib —, Isha 21:15 — Jumu'ah 13:30, 14:45
+- [Cypress Islamic Center](https://cypressislamiccenter.org) — Fajr 06:15, Dhuhr 13:30, Asr 18:15, Maghrib 19:45, Isha 21:00 — Jumu'ah 13:40, 15:20
+- [Dallas Masjid of al-Islam](http://www.masjidalislam.org/) — Fajr 06:15, Dhuhr 13:45, Asr 17:30, Maghrib 19:58, Isha 21:45 — Jumu'ah 13:45
+- [Dar Alhuda Inc مسجد](https://www.daralhudamasjid.com/) — Fajr 06:26, Dhuhr 14:00, Asr 17:22, Maghrib 19:59, Isha 21:15 — Jumu'ah 13:30
+- [Dar El Salaam Islamic Center](http://www.darelsalam.org/) — Fajr 06:15, Dhuhr —, Asr 17:30, Maghrib 19:55, Isha 21:30 — Jumu'ah 14:00
+- [Dar El-Eman Islamic Center (DEIC)](http://www.dareleman.org/) — Fajr 06:15, Dhuhr 14:00, Asr 17:30, Maghrib 19:59, Isha 21:10 — Jumu'ah 13:30, 14:30
+- [DeSoto House of Peace](https://salamdesoto.org/) — Fajr 06:15, Dhuhr 14:00, Asr 17:30, Maghrib 19:53, Isha 21:15 — Jumu'ah 13:30
+- [East Plano Islamic Center](https://www.epicmasjid.org/) — Fajr 06:15, Dhuhr 14:00, Asr 18:00, Maghrib 19:58, Isha 21:15 — Jumu'ah 13:45, 15:15
+- [East Texas Islamic Association - Commerce Mosque](http://commercemosque.weebly.com/contact-us.html) — Fajr 05:41, Dhuhr 13:34, Asr 17:10, Maghrib 19:58, Isha 21:28
+- [East Texas Islamic Society](https://tylermuslim.com/) — Fajr 05:47, Dhuhr 13:22, Asr 16:58, Maghrib 19:47, Isha 20:56 — Jumu'ah 13:45
+- [Elfarouq Mosque](http://www.elfarouq.org/) — Fajr 06:15, Dhuhr 14:00, Asr 17:15, Maghrib —, Isha 21:00 — Jumu'ah 13:30, 14:30
+- [Georgetown Islamic Center (GIC)](https://www.gicmasjid.org/) — Fajr 06:15, Dhuhr 14:00, Asr 18:30, Maghrib 19:55, Isha 21:30 — Jumu'ah 14:30, 15:30
+- [Grand Prairie Masjid](http://grandprairiemasjid.org/) — Fajr 06:15, Dhuhr —, Asr 17:30, Maghrib 20:00, Isha 21:30 — Jumu'ah 13:30
+- [HART Islamic Community Center](https://hart.community/) — Fajr 06:15, Dhuhr 14:00, Asr 18:15, Maghrib —, Isha 21:15
+- [Haj Nabih Masjid](https://hajnabihmasjid.com/) — Fajr 05:53, Dhuhr —, Asr 17:53, Maghrib 19:41, Isha 20:48 — Jumu'ah 12:25
+- [Hawa Masjid](https://hawa-masjid.lovable.app/) — Fajr 05:30, Dhuhr 14:00, Asr 17:45, Maghrib 20:20, Isha 21:45 — Jumu'ah 14:00
+- [IALFM Mosque](http://ialfm.org/) — Fajr 06:30, Dhuhr 14:00, Asr 17:30, Maghrib 19:55, Isha 21:15
+- [IALFM Mosque](http://ialfm.org/) — Fajr 06:30, Dhuhr 14:00, Asr 17:30, Maghrib 19:55, Isha 21:15
+- [ICC - Islamic Center of Coppell](https://iccmasjid.org/) — Fajr 06:15, Dhuhr 14:00, Asr 18:00, Maghrib 19:54, Isha 21:30 — Jumu'ah 14:30, 16:30
+- [ISAT Center Masjid](https://www.centermasjid.com/) — Fajr 06:21, Dhuhr 14:15, Asr 17:30, Maghrib 19:59, Isha 21:15 — Jumu'ah 13:40
+- [ISGH Masjid At-Taqwa](https://masjidattaqwa.com/) — Fajr 06:15, Dhuhr 14:00, Asr 18:00, Maghrib 19:43, Isha 21:00 — Jumu'ah 13:35, 14:40, 15:40
+- [ISGH Masjid Hamza - Mission Bend Islamic Center](http://isghmasjidhamza.org/) — Fajr 06:15, Dhuhr 14:00, Asr 18:00, Maghrib 19:48, Isha 21:00 — Jumu'ah 13:30, 14:50
+- [ISGH Masjid Savoy Wilcrest](http://www.savoymusallah.com/) — Fajr 06:15, Dhuhr 14:00, Asr 18:15, Maghrib —, Isha 21:15 — Jumu'ah 13:40, 14:40
+- [Islamic Academy of San Antonio](https://icsaonline.org/) — Fajr 06:30, Dhuhr 14:10, Asr 17:30, Maghrib 20:03, Isha 21:15 — Jumu'ah 12:30, 14:00
+- [Islamic Association of Carrollton (IAC)](http://www.masjidal-rahman.org/) — Fajr 06:15, Dhuhr 14:00, Asr 18:00, Maghrib —, Isha 21:15 — Jumu'ah 13:30
+- [Islamic Association of Collin County (Plano Mosque)](http://www.planomasjid.org/) — Fajr 06:15, Dhuhr 14:00, Asr 18:00, Maghrib 19:58, Isha 21:15 — Jumu'ah 13:45, 15:00
+- [Islamic Association of Tarrant County](https://iatcmasjid.org/) — Fajr 06:30, Dhuhr 14:00, Asr 17:15, Maghrib 19:58, Isha 21:15 — Jumu'ah 13:25
+- [Islamic Association-Mesquite](https://www.islamicassociationofmesquite.com/) — Fajr 05:55, Dhuhr 13:26, Asr 17:01, Maghrib 19:48, Isha 20:57 — Jumu'ah 12:45, 13:45, 15:00
+- [Islamic Center Of Lake Travis](https://www.iclaketravis.org/) — Fajr 06:15, Dhuhr 13:45, Asr 18:40, Maghrib 19:52, Isha 21:30 — Jumu'ah 13:35
+- [Islamic Center of Amarillo](http://amarillomosque.org/) — Fajr 06:20, Dhuhr 13:58, Asr 17:33, Maghrib 20:21, Isha 21:32 — Jumu'ah 14:15
+- [Islamic Center of Aubrey](https://www.aubreymasjid.org/) — Fajr 06:30, Dhuhr 14:00, Asr 18:30, Maghrib 19:54, Isha 21:15 — Jumu'ah 13:50, 14:45
+- [Islamic Center of Brushy Creek](https://icbrushycreek.org/) — Fajr 06:30, Dhuhr 14:00, Asr 18:15, Maghrib 19:56, Isha 21:15 — Jumu'ah 12:00, 13:00, 14:00, 15:00
+- [Islamic Center of Conroe ICC (Masjid Bilal)](https://iccconroe.com/) — Fajr 06:15, Dhuhr 14:00, Asr 18:25, Maghrib 19:58, Isha 21:15 — Jumu'ah 13:55
+- [Islamic Center of Euless](https://icoeuless.com/) — Fajr 06:15, Dhuhr 14:00, Asr 17:30, Maghrib 19:59, Isha 21:30 — Jumu'ah 13:30, 15:00
+- [Islamic Center of Galveston - Masjid](https://www.galvestonislamiccenter.org/) — Fajr 06:00, Dhuhr 13:30, Asr 17:00, Maghrib —, Isha 21:00 — Jumu'ah 13:30
+- [Islamic Center of Greater Austin](https://austinmosque.org/) — Fajr 06:04, Dhuhr 13:31, Asr 17:04, Maghrib 19:51, Isha 20:58
+- [Islamic Center of Harlingen](https://sites.google.com/view/islamiccenterofharlingen/home) — Fajr 06:00, Dhuhr 14:00, Asr 17:30, Maghrib —, Isha 21:35
+- [Islamic Center of Hays County (Masjid Bilal)](https://masjidbilaltx.org/) — Fajr 06:15, Dhuhr 14:00, Asr 18:00, Maghrib 20:01, Isha 21:15 — Jumu'ah 14:10
+- [Islamic Center of Hewitt / Al- Hidaya Mosque](https://www.islamiccenterofhewitt.org/) — Fajr 06:15, Dhuhr 13:45, Asr 18:15, Maghrib 19:54, Isha 21:30 — Jumu'ah 14:00
+- [Islamic Center of Lake Worth](http://www.icolakeworth.org/) — Fajr 06:30, Dhuhr 14:00, Asr 17:30, Maghrib 20:15, Isha 21:30 — Jumu'ah 14:00
+- [Islamic Center of Laredo مسجد](http://islamiccenteroflaredo.org/) — Fajr 06:33, Dhuhr 13:57, Asr 17:24, Maghrib 20:00, Isha 21:15 — Jumu'ah 13:50
+- [Islamic Center of Round Rock](https://roundrockmasjid.org/) — Fajr 06:15, Dhuhr 14:00, Asr 18:40, Maghrib 19:55, Isha 21:30 — Jumu'ah 13:40, 14:30
+- [Islamic Center of Rowlett](https://icrmasjid.org/) — Fajr 06:30, Dhuhr 14:00, Asr 18:15, Maghrib 20:01, Isha 21:15 — Jumu'ah 13:35
+- [Islamic Center of Southlake](http://southlakemasjid.com/) — Fajr 06:15, Dhuhr 13:45, Asr 18:15, Maghrib 19:55, Isha 21:15 — Jumu'ah 14:00, 15:00
+- [Islamic Center of Victoria مسجد](http://www.victoriaislamiccenter.com/) — Fajr 06:15, Dhuhr 14:00, Asr 17:15, Maghrib —, Isha 21:30 — Jumu'ah 13:30
+- [Islamic Education Center](https://www.iec-houston.org/) — Fajr 05:41, Dhuhr 13:21, Asr 17:53, Maghrib 19:58, Isha 20:43
+- [Islamic Society Of Mesquite](https://islamicsocietyofmesquite.org/) — Fajr 06:15, Dhuhr 13:45, Asr 18:30, Maghrib 20:00, Isha 21:30 — Jumu'ah 14:15
+- [Islamic Society Of South Texas](https://isstonline.wixsite.com/isstmcallen) — Fajr 06:20, Dhuhr 13:45, Asr 17:30, Maghrib —, Isha 21:30 — Jumu'ah 13:45
+- [Islamic Society of Brownsville](https://islamicsocietyofbrownsville.org/) — Fajr 06:30, Dhuhr 14:30, Asr 18:00, Maghrib —, Isha 21:30 — Jumu'ah 14:00
+- [Islamic Society of Denton](https://www.dentonmosque.com/) — Fajr 06:00, Dhuhr 13:00, Asr 16:15, Maghrib 18:29, Isha 19:45
+- [Islamic center of Wylie, Masjid](http://icwtx.org/) — Fajr 06:15, Dhuhr 13:45, Asr 18:15, Maghrib 19:57, Isha 21:30 — Jumu'ah 13:45
+- [Keller Islamic Center (KIC)](http://www.kellerislamiccenter.org/) — Fajr 06:30, Dhuhr 13:45, Asr 18:15, Maghrib 19:58, Isha 21:15 — Jumu'ah 13:35
+- [Kingwood Islamic Center (Kingwood Mosque)](https://kingwoodislamiccenter.com/) — Fajr 06:15, Dhuhr 14:00, Asr 18:15, Maghrib 20:42, Isha 21:00 — Jumu'ah 13:30, 14:40
+- [Klein Islamic Center - Masjid](http://kleinislamiccenter.org/) — Fajr 06:15, Dhuhr 13:45, Asr 18:00, Maghrib 19:47, Isha 21:00 — Jumu'ah 13:30, 14:30
+- [MAS Katy Center (Masjid Al-Rahman)](https://www.maskaty.org/) — Fajr 06:30, Dhuhr 13:35, Asr 17:15, Maghrib 19:47, Isha 21:00 — Jumu'ah 13:30, 15:30
+- [MOMIN of Texas](http://www.momin.org/) — Fajr 05:49, Dhuhr 13:26, Asr 13:26, Maghrib 20:03, Isha 20:03 — Jumu'ah 12:15
+- [Madinah Masjid of Carrollton](https://madinahmasjid.com/) — Fajr 06:15, Dhuhr 13:45, Asr 18:30, Maghrib 19:52, Isha 21:30 — Jumu'ah 14:00, 14:30
+- [Makkah Masjid (Garland Mosque)](https://makkahmasjid.net/) — Fajr 06:30, Dhuhr 14:00, Asr 18:30, Maghrib 19:48, Isha 21:30 — Jumu'ah 14:10, 14:40
+- [Mansfield Islamic Center](http://mansfieldmasjid.org/) — Fajr 06:15, Dhuhr 14:15, Asr 17:30, Maghrib 19:59, Isha 21:15 — Jumu'ah 13:30, 14:30
+- [Masjid](https://masjid.mcisonline.net/) — Fajr 06:15, Dhuhr 14:00, Asr 17:15, Maghrib 19:52, Isha 21:15 — Jumu'ah 13:30
+- [Masjid Abu Huraira](http://woodlandsislamiccenter.com/) — Fajr 06:15, Dhuhr 13:45, Asr 18:00, Maghrib 19:46, Isha 21:00 — Jumu'ah 14:00
+- [Masjid Al Huda](https://alhudamcc.org/) — Fajr 06:15, Dhuhr 13:45, Asr 18:30, Maghrib 19:55, Isha 21:30 — Jumu'ah 14:15
+- [Masjid Al Karim](https://masjidalkarim.net/) — Fajr 06:15, Dhuhr 14:00, Asr 18:00, Maghrib 19:45, Isha 21:00 — Jumu'ah 13:30, 14:30
+- [Masjid Al-Hedayah](https://alhedayahacademy.org/) — Fajr 06:15, Dhuhr 14:00, Asr 17:30, Maghrib 19:59, Isha 21:30 — Jumu'ah 13:25, 14:25
+- [Masjid Al-Sahaabah Watauga Center](https://wataugamasjid.com/) — Fajr 06:15, Dhuhr 13:45, Asr 18:15, Maghrib —, Isha 21:15 — Jumu'ah 13:30, 14:45
+- [Masjid Aqsa](https://www.aqsamasjidkaty.com/) — Fajr 06:20, Dhuhr 14:00, Asr 18:00, Maghrib 19:48, Isha 21:15 — Jumu'ah 13:30, 14:45, 15:45
+- [Masjid Arafat](http://duusa.org/) — Fajr 06:15, Dhuhr 14:00, Asr 18:15, Maghrib 19:44, Isha 21:15 — Jumu'ah 13:30, 15:00
+- [Masjid E Zohra](http://masjidzohra.org/) — Fajr 06:15, Dhuhr —, Asr 18:00, Maghrib 19:46, Isha 21:30 — Jumu'ah 14:00
+- [Masjid Faruq of Grand Prairie TX](http://www.faruqmasjid.org/) — Fajr 05:56, Dhuhr 13:27, Asr 17:02, Maghrib 19:49, Isha 20:58 — Jumu'ah 13:45
+- [Masjid Ibrahim](https://www.masjidibrahim.org/) — Fajr 06:25, Dhuhr 14:00, Asr 17:30, Maghrib 19:57, Isha 21:10 — Jumu'ah 13:10
+- [Masjid Ibrahim](https://masjidibrahimtx.org/) — Fajr 06:20, Dhuhr 14:00, Asr 18:05, Maghrib 19:47, Isha 21:00 — Jumu'ah 13:30, 14:30
+- [Masjid Isa Ibn Maryam (Bammel Musallah)](https://www.islamtx.com/) — Fajr 06:15, Dhuhr 13:40, Asr 18:00, Maghrib 19:41, Isha 21:15 — Jumu'ah 13:30, 14:30
+- [Masjid Istiqlal Houston](http://www.istiqlalhouston.org/) — Fajr 06:15, Dhuhr 13:45, Asr 17:15, Maghrib 19:47, Isha 21:00
+- [Masjid Khulafa’a Rashideen](https://masjidkr.org/) — Fajr 06:15, Dhuhr 14:00, Asr 18:15, Maghrib —, Isha 21:15 — Jumu'ah 13:40
+- [Masjid Salahadeen](http://www.masjidsalahadeen.org/) — Fajr 06:15, Dhuhr —, Asr 18:00, Maghrib 19:53, Isha 21:30 — Jumu'ah 13:45, 14:45
+- [Masjid Yaseen](http://masjidyaseen.org/) — Fajr 06:15, Dhuhr 13:45, Asr 18:15, Maghrib 19:51, Isha 21:30 — Jumu'ah 13:30, 15:00
+- [Masjid al-ahad](http://masjidahad.org/) — Fajr 05:45, Dhuhr 13:45, Asr 18:15, Maghrib 20:12, Isha 21:20 — Jumu'ah 13:05, 14:30, 15:30
+- [Masjid-e-Sajideen](https://www.masjidesajideen.org/) — Fajr 06:15, Dhuhr 14:00, Asr 18:00, Maghrib 19:56, Isha 21:15 — Jumu'ah 13:45, 14:15, 15:15
+- [Masjidu Ttaqwa Mosque](https://www.icgk.org/) — Fajr 06:20, Dhuhr 14:00, Asr 17:30, Maghrib 20:05, Isha 21:30 — Jumu'ah 13:30, 14:30
+- [Masjidul Mu'meneen](http://www.masjidulmumineen.org/) — Fajr 06:00, Dhuhr 14:00, Asr 17:30, Maghrib —, Isha 21:30 — Jumu'ah 13:30
+- [Mercy Community Center - Mosque](https://mercycc.org/) — Fajr 06:13, Dhuhr 14:00, Asr 17:15, Maghrib 18:41, Isha 21:00 — Jumu'ah 13:30, 14:30, 15:15
+- [Minhaj ul Quran International](http://us.mohid.co/tx/dallas/jmcc) — Fajr 06:15, Dhuhr 14:00, Asr 18:15, Maghrib —, Isha 21:20
+- [Muslim Association of West Texas](http://muslim-of-west-texas.poi.place/) — Fajr 06:04, Dhuhr 14:10, Asr 17:56, Maghrib 21:06, Isha 22:30
+- [Muslim Center of San Antonio](https://mcsamasjid.com/) — Fajr 06:20, Dhuhr 14:00, Asr 17:30, Maghrib 20:04, Isha 21:15 — Jumu'ah 13:30
+- [Muslim Children Education & Civic Center](https://www.mcecc.com/) — Fajr 06:30, Dhuhr 14:00, Asr 18:00, Maghrib 19:58, Isha 21:15 — Jumu'ah 13:00, 14:00
+- [Noori Mosque](https://noorimasjid.net/) — Fajr 06:30, Dhuhr 14:00, Asr 18:30, Maghrib 19:51, Isha 21:30 — Jumu'ah 14:00, 15:00
+- [North Austin Muslim Community Center](https://www.namcc.org/) — Fajr 06:30, Dhuhr 14:00, Asr 17:30, Maghrib 19:56, Isha 21:15 — Jumu'ah 12:15, 13:30, 14:30
+- [Pearland Islamic Center (PIC) - ISGH](https://picisgh.org/) — Fajr 06:15, Dhuhr 14:00, Asr 17:30, Maghrib 19:50, Isha 21:15 — Jumu'ah 13:30, 14:30
+- [Princeton Islamic Center](http://www.picmasjid.org/) — Fajr 06:20, Dhuhr 14:00, Asr 18:15, Maghrib 19:53, Isha 21:10 — Jumu'ah 13:40, 14:30
+- [Rahmania Center](https://rahmaniacenter.com/) — Fajr 06:15, Dhuhr 14:00, Asr 18:50, Maghrib —, Isha 21:25 — Jumu'ah 13:35
+- [Richmond Islamic Community Center](https://richmondmasjid.org/) — Fajr 06:15, Dhuhr 14:00, Asr 18:15, Maghrib 19:43, Isha 21:00 — Jumu'ah 13:45, 14:45, 15:30
+- [Sachse Muslim Society](https://sachsemasjid.org/) — Fajr 06:15, Dhuhr 14:00, Asr 18:00, Maghrib 19:54, Isha 21:15 — Jumu'ah 13:30, 14:20, 15:15
+- [Shadow Creek Muslim Community Center](https://thesmcc.org/) — Fajr 06:15, Dhuhr —, Asr 17:15, Maghrib 19:50, Isha 21:15 — Jumu'ah 13:30, 14:30
+- [Shepard Airforce Base Mosque (edited by Ebrahim Chowdhury)](https://i-cwf.org/) — Fajr 05:53, Dhuhr 13:18, Asr 17:51, Maghrib 19:38, Isha 20:44 — Jumu'ah 13:45
+- [Tajweed Institute Masjid](http://tajweedusa.org/) — Fajr 06:15, Dhuhr 14:00, Asr 17:15, Maghrib —, Isha 21:15 — Jumu'ah 13:30
+- [Tyler Islamic Center](https://tylerislamiccenter.org/) — Fajr 06:00, Dhuhr —, Asr 18:15, Maghrib 20:05, Isha 21:45 — Jumu'ah 13:45
+- [Unity Islamic Center - Mansfield Masjid Official](https://www.unityislamiccenter.org/) — Fajr 06:30, Dhuhr —, Asr 17:30, Maghrib 20:00, Isha 21:15 — Jumu'ah 13:45, 14:30
+- [Valley Ranch Islamic Center](https://vric.org) — Fajr 06:15, Dhuhr 13:45, Asr 17:30, Maghrib 19:54, Isha 21:15 — Jumu'ah 13:45, 15:00, 16:00
+- [WIC Masjid](https://woodlandsislamiccenter.com/) — Fajr 06:15, Dhuhr 13:45, Asr 18:00, Maghrib 19:46, Isha 21:00 — Jumu'ah 14:00
+- [WKIC - Masjid Al Firdous](http://wkic.org/) — Fajr 06:15, Dhuhr 15:15, Asr —, Maghrib 19:48, Isha 21:15
+- [Zainabia-SA Islamic Education Center](http://www.zainabiasa.org/) — Fajr 05:17, Dhuhr 13:35, Asr 16:30, Maghrib 20:32, Isha 21:15
+- [Zia ul Quran Masjid](http://www.ziaulquranmasjid.com/) — Fajr 06:15, Dhuhr 14:00, Asr 18:30, Maghrib —, Isha 21:30 — Jumu'ah 14:00
+
+### Still failing
+
+- [(unnamed) way/1247561146](http://www.dawateislamiusa.com/) — no times found on the page
+- [(unnamed) way/1323719988](http://www.maryammasjid.org/contact/) — site could not be opened
+- [(unnamed) way/1348862217](https://rosenbergcommunitycenter.org) — site could not be opened
+- [(unnamed) way/1385972314](https://mustafaislamiccenter.org/) — no times found on the page
+- [(unnamed) way/1418381673](https://friscomasjid.org/) — site could not be opened
+- [(unnamed) way/465539048](https://lubbockmuslims.org/) — site could not be opened
+- [Adam Masjid](http://adammasjid.org/) — no times found on the page
+- [Al Ansaar Masjid - An ISGH Masjid](http://alansaarmasjid.org/) — site could not be opened
+- [Al-Rahma Mosque](https://masjidrahma.com/) — site could not be opened
+- [At-Tawhid Mosque](https://www.tawhidhouston.com/) — no times found on the page (page text holds 7 prayer names and 8 times, shot viewport 1280
+- [Bait-ul-Ikram Mosque](https://islamindallas.org/) — no times found on the page
+- [Bait-ul-Qayyum Mosque](https://islaminfortworth.org/) — site could not be opened
+- [Baitul Muqeet Mosque - Ahmadiyya Muslim Community](http://islaminaustin.org/) — site could not be opened
+- [Baitus Samee Mosque](http://www.alislam.org/) — no times found on the page
+- [Bilal Ibn Rabah of San Antonio (MBIR)](https://www.mbirsa.org/) — no times found on the page
+- [Burmese Muslim Community of Amarillo (BMCAMA)](https://bmcama.org/) — site could not be opened
+- [Dar El-Quran](http://www.linktr.ee/darelquran) — no times found on the page
+- [Dawoodi Bohra Community - Anjuman-e-Najmi, Dallas Inc.](https://usa.thedawoodibohras.com/) — site could not be opened
+- [Dawoodi Bohra Markaz Anjuman-e-Burhani (Austin)](https://usa.thedawoodibohras.com/communities/austin/) — site could not be opened
+- [Houston Masjid of Al-Islam](http://www.masjidwdmohammed.org/) — no times found on the page
+- [Houston's Blue Mosque](https://theislamicinstitute.net) — site could not be opened
+- [Ibrahim Islamic Center & Mosque](http://www.ibrahimcenter.org/) — no times found on the page
+- [Imam Ali Islamic center](https://www.facebook.com/imamalicenterintexas/) — no times found on the page
+- [Islamic Association of North Texas (IANT Masjid)](https://www.iant.com/) — site could not be opened
+- [Islamic Center of Irving](https://irvingmasjid.org/) — site could not be opened
+- [Islamic Center of Lubbock](https://lubbockmuslims.org/) — site could not be opened
+- [Islamic Center of Quad Cities](http://icqcmasjid.org/) — site could not be opened
+- [Islamic Center of South Dallas](https://www.facebook.com/profile.php?id=793627857328461) — no times found on the page
+- [Islamic Community of Bryan](https://icbcs.org/) — only 0 of 5 prayers found (missing fajr, dhuhr, asr, maghrib, isha)
+- [Islamic Da'wah Center](https://www.islamicdawahcenter.org/) — only 0 of 5 prayers found (missing fajr, dhuhr, asr, maghrib, isha)
+- [Islamic Society of Central Texas](https://isctmasjid.org/) — site could not be opened
+- [Islamic Society of Greater Houston](https://isgh.org/) — site could not be opened
+- [Islamic Society of Kingsville (ISK)](https://iskmasjidomar.org/) — site could not be opened
+- [Islamic Society of Southern Texas](https://isstcc.org/) — site could not be opened
+- [Islamic Society of Triplex – Beaumont Mosque](https://istweb.org/) — site could not be opened
+- [Ismaili Center Houston](https://ismailicenter.org/) — no times found on the page
+- [Ismaili Jamatkhana](http://the.ismaili/) — no times found on the page
+- [Ismaili Jamatkhana - San Antonio](https://the.ismaili/) — no times found on the page
+- [Jamia Masjid](https://jamiamasjid.us/) — site could not be opened
+- [MAS Islamic Center Of Dallas](http://www.masdfw.org/) — site could not be opened
+- [Madrasah Islamiah Masjid Noor](https://mislamiah.com) — site could not be opened
+- [Masjid Al Jamia Mesquite](https://masjidaljamiamesquite.com/) — site could not be opened
+- [Masjid Al Quran](https://www.facebook.com/MasjidAlQuranDallasTx/) — only 0 of 5 prayers found (missing fajr, dhuhr, asr, maghrib, isha)
+- [Masjid Al-Ikhlas](https://alikhlasmasjid.com/) — site could not be opened
+- [Masjid Al-Mustafa](https://www.bearcreekic.org/) — site could not be opened
+- [Masjid As Sabireen](http://brandlaneic.com/) — site could not be opened
+- [Masjid Beit El-Maqdes](https://beitelmaqdes.org/) — site could not be opened
+- [Masjid E Mohammedi](https://www.houstonjamaat.com/) — no times found on the page
+- [Masjid Fatima tuz Zahra](https://www.minhaj.org/english/Overseas/tid/34296/USA-Timings-of-Eid-ul-Adha-Prayers-in-Texas.html) — no times found on the page
+- [Masjid Ghous-E-Azam](https://www.facebook.com/Masjid.GhouseAzam) — no times found on the page
+- [Masjid Texarkana](https://texarkanamuslimcommunity.org/) — site could not be opened
+- [McKinney Islamic Center](http://www.mckinneymasjid.org/) — site could not be opened
+- [Mesquite Islamic Center (MIC Mosque)](http://www.micmasjid.com/) — site could not be opened
+- [Muhammad Mosque](http://www.noidallas48.org/) — no times found on the page
+- [Muhammad Mosque #52](http://www.noifortworth.org/) — site could not be opened
+- [Muhammad Mosque No.45](https://www.noihouston.org/) — site could not be opened
+- [Northside Islamic Center of San Antonio](https://www.nicsatx.org/) — site could not be opened
+- [Nour Al-Quran Society](https://www.nouralquran.org/) — site could not be opened
+- [Nueces Mosque](http://nuecesmosque.com/) — site could not be opened
+- [Quad City Islamic Center of North Austin Leander](http://www.qcicmasjid.org/) — site could not be opened
+- [Rahmani Masjid and Learning Center](https://www.rahmanimasjid.com/) — site could not be opened
+- [San Marcos Masjid](http://sanmarcosmasjid.org/) — only 0 of 5 prayers found (missing fajr, dhuhr, asr, maghrib, isha)
+
+---
+
 ## 1. Verified — the source reproduces the row exactly (8)
 
 Re-fetched and matched field by field. These are usable now.

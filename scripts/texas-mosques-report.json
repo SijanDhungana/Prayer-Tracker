@@ -422,5 +422,2127 @@
       "14:30"
     ],
     "capturedVia": "timetable element"
+  },
+  {
+    "name": "Masjid Al-Mustafa",
+    "website": "https://www.bearcreekic.org/",
+    "osmIds": [
+      "relation/9675813"
+    ],
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Elfarouq Mosque",
+    "website": "http://www.elfarouq.org/",
+    "osmIds": [
+      "way/131590581"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:00",
+      "asr": "17:15",
+      "maghrib": null,
+      "isha": "21:00"
+    },
+    "jumuah": [
+      "13:30",
+      "14:30"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "Islamic Da'wah Center",
+    "website": "https://www.islamicdawahcenter.org/",
+    "osmIds": [
+      "way/260789761"
+    ],
+    "ok": false,
+    "reason": "only 0 of 5 prayers found (missing fajr, dhuhr, asr, maghrib, isha)"
+  },
+  {
+    "name": "(unnamed) way/265482606",
+    "website": "http://icelpaso.org/#",
+    "osmIds": [
+      "way/265482606"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "05:50",
+      "dhuhr": "13:30",
+      "asr": "17:00",
+      "maghrib": "19:35",
+      "isha": "20:40"
+    },
+    "jumuah": [
+      "13:30"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "Dallas Masjid of al-Islam",
+    "website": "http://www.masjidalislam.org/",
+    "osmIds": [
+      "node/356855681"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "13:45",
+      "asr": "17:30",
+      "maghrib": "19:58",
+      "isha": "21:45"
+    },
+    "jumuah": [
+      "13:45"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Nueces Mosque",
+    "website": "http://nuecesmosque.com/",
+    "osmIds": [
+      "way/380922453"
+    ],
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Baitul Muqeet Mosque - Ahmadiyya Muslim Community",
+    "website": "http://islaminaustin.org/",
+    "osmIds": [
+      "way/383004522"
+    ],
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "(unnamed) way/383025450",
+    "website": "http://icptx.org/",
+    "osmIds": [
+      "way/383025450"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:00",
+      "asr": "18:30",
+      "maghrib": "19:56",
+      "isha": "21:30"
+    },
+    "jumuah": [
+      "14:15",
+      "15:30"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "Islamic Community of Bryan",
+    "website": "https://icbcs.org/",
+    "osmIds": [
+      "way/411792297"
+    ],
+    "ok": false,
+    "reason": "only 0 of 5 prayers found (missing fajr, dhuhr, asr, maghrib, isha)"
+  },
+  {
+    "name": "Minhaj ul Quran International",
+    "website": "http://us.mohid.co/tx/dallas/jmcc",
+    "osmIds": [
+      "way/423752564"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:00",
+      "asr": "18:15",
+      "maghrib": null,
+      "isha": "21:20"
+    },
+    "jumuah": [],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Islamic Center of Amarillo",
+    "website": "http://amarillomosque.org/",
+    "osmIds": [
+      "way/428174400"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:20",
+      "dhuhr": "13:58",
+      "asr": "17:33",
+      "maghrib": "20:21",
+      "isha": "21:32"
+    },
+    "jumuah": [
+      "14:15"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "(unnamed) way/460792404",
+    "website": "http://www.allenmasjid.com/",
+    "osmIds": [
+      "way/460792404"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:00",
+      "asr": "18:00",
+      "maghrib": null,
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "14:00",
+      "15:30"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "(unnamed) way/465539048",
+    "website": "https://lubbockmuslims.org/",
+    "osmIds": [
+      "way/465539048"
+    ],
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Masjidul Mu'meneen",
+    "website": "http://www.masjidulmumineen.org/",
+    "osmIds": [
+      "way/493297858"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:00",
+      "dhuhr": "14:00",
+      "asr": "17:30",
+      "maghrib": null,
+      "isha": "21:30"
+    },
+    "jumuah": [
+      "13:30"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Bayt Al-Karim Islamic Center",
+    "website": "https://www.dncfw.org/",
+    "osmIds": [
+      "way/504095694"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:30",
+      "dhuhr": "13:45",
+      "asr": "18:30",
+      "maghrib": null,
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "13:30"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Islamic Society of Southern Texas",
+    "website": "https://isstcc.org/",
+    "osmIds": [
+      "way/525184470",
+      "way/525184474",
+      "way/1513528966"
+    ],
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Islamic Academy of San Antonio",
+    "website": "https://icsaonline.org/",
+    "osmIds": [
+      "way/641439121"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:30",
+      "dhuhr": "14:10",
+      "asr": "17:30",
+      "maghrib": "20:03",
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "12:30",
+      "14:00"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "(unnamed) way/655037002",
+    "website": "https://alsalammasjid.org/",
+    "osmIds": [
+      "way/655037002"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "13:45",
+      "asr": "18:05",
+      "maghrib": "19:46",
+      "isha": "21:00"
+    },
+    "jumuah": [
+      "13:35",
+      "14:35",
+      "15:15"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Masjid Al-Sahaabah Watauga Center",
+    "website": "https://wataugamasjid.com/",
+    "osmIds": [
+      "way/670759640"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "13:45",
+      "asr": "18:15",
+      "maghrib": null,
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "13:30",
+      "14:45"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Islamic center of Wylie, Masjid",
+    "website": "http://icwtx.org/",
+    "osmIds": [
+      "way/709095484"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "13:45",
+      "asr": "18:15",
+      "maghrib": "19:57",
+      "isha": "21:30"
+    },
+    "jumuah": [
+      "13:45"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "Islamic Center of Lubbock",
+    "website": "https://lubbockmuslims.org/",
+    "osmIds": [
+      "way/720742403"
+    ],
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "East Plano Islamic Center",
+    "website": "https://www.epicmasjid.org/",
+    "osmIds": [
+      "way/902564780"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:00",
+      "asr": "18:00",
+      "maghrib": "19:58",
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "13:45",
+      "15:15"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "(unnamed) way/995953052",
+    "website": "http://www.icltx.com/",
+    "osmIds": [
+      "way/995953052"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:20",
+      "dhuhr": "14:00",
+      "asr": "18:45",
+      "maghrib": "19:50",
+      "isha": "21:00"
+    },
+    "jumuah": [
+      "13:45"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "San Marcos Masjid",
+    "website": "http://sanmarcosmasjid.org/",
+    "osmIds": [
+      "way/1099925585"
+    ],
+    "ok": false,
+    "reason": "only 0 of 5 prayers found (missing fajr, dhuhr, asr, maghrib, isha)"
+  },
+  {
+    "name": "IALFM Mosque",
+    "website": "http://ialfm.org/",
+    "osmIds": [
+      "way/1130995547"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:30",
+      "dhuhr": "14:00",
+      "asr": "17:30",
+      "maghrib": "19:55",
+      "isha": "21:15"
+    },
+    "jumuah": [],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "(unnamed) way/1247561146",
+    "website": "http://www.dawateislamiusa.com/",
+    "osmIds": [
+      "way/1247561146"
+    ],
+    "ok": false,
+    "reason": "no times found on the page"
+  },
+  {
+    "name": "Masjid Arafat",
+    "website": "http://duusa.org/",
+    "osmIds": [
+      "way/1322380194"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:00",
+      "asr": "18:15",
+      "maghrib": "19:44",
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "13:30",
+      "15:00"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "(unnamed) way/1323719988",
+    "website": "http://www.maryammasjid.org/contact/",
+    "osmIds": [
+      "way/1323719988"
+    ],
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Masjid Istiqlal Houston",
+    "website": "http://www.istiqlalhouston.org/",
+    "osmIds": [
+      "way/1367143685"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "13:45",
+      "asr": "17:15",
+      "maghrib": "19:47",
+      "isha": "21:00"
+    },
+    "jumuah": [],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "(unnamed) way/1369802877",
+    "website": "http://icjarrell.org/",
+    "osmIds": [
+      "way/1369802877"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:26",
+      "dhuhr": null,
+      "asr": "17:30",
+      "maghrib": "20:00",
+      "isha": "21:17"
+    },
+    "jumuah": [
+      "14:00"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "(unnamed) way/1385972314",
+    "website": "https://mustafaislamiccenter.org/",
+    "osmIds": [
+      "way/1385972314"
+    ],
+    "ok": false,
+    "reason": "no times found on the page"
+  },
+  {
+    "name": "MOMIN of Texas",
+    "website": "http://www.momin.org/",
+    "osmIds": [
+      "way/1394443121"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "05:49",
+      "dhuhr": "13:26",
+      "asr": "13:26",
+      "maghrib": "20:03",
+      "isha": "20:03"
+    },
+    "jumuah": [
+      "12:15"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "Baitus Samee Mosque",
+    "website": "http://www.alislam.org/",
+    "osmIds": [
+      "way/1412305433",
+      "way/1412305434"
+    ],
+    "ok": false,
+    "reason": "no times found on the page"
+  },
+  {
+    "name": "Masjid",
+    "website": "https://masjid.mcisonline.net/",
+    "osmIds": [
+      "way/1414024242"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:00",
+      "asr": "17:15",
+      "maghrib": "19:52",
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "13:30"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "(unnamed) way/1418381673",
+    "website": "https://friscomasjid.org/",
+    "osmIds": [
+      "way/1418381673"
+    ],
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Ismaili Center Houston",
+    "website": "https://ismailicenter.org/",
+    "osmIds": [
+      "way/1447830521"
+    ],
+    "ok": false,
+    "reason": "no times found on the page"
+  },
+  {
+    "name": "Masjid As Sabireen",
+    "website": "http://brandlaneic.com/",
+    "osmIds": [
+      "way/1486693878",
+      "node/1800465541"
+    ],
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Dar El Salaam Islamic Center",
+    "website": "http://www.darelsalam.org/",
+    "osmIds": [
+      "node/1595716783"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": null,
+      "asr": "17:30",
+      "maghrib": "19:55",
+      "isha": "21:30"
+    },
+    "jumuah": [
+      "14:00"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "McKinney Islamic Center",
+    "website": "http://www.mckinneymasjid.org/",
+    "osmIds": [
+      "node/2235160495"
+    ],
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Masjid al-ahad",
+    "website": "http://masjidahad.org/",
+    "osmIds": [
+      "node/4297111826"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "05:45",
+      "dhuhr": "13:45",
+      "asr": "18:15",
+      "maghrib": "20:12",
+      "isha": "21:20"
+    },
+    "jumuah": [
+      "13:05",
+      "14:30",
+      "15:30"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "East Texas Islamic Society",
+    "website": "https://tylermuslim.com/",
+    "osmIds": [
+      "node/4694423426"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "05:47",
+      "dhuhr": "13:22",
+      "asr": "16:58",
+      "maghrib": "19:47",
+      "isha": "20:56"
+    },
+    "jumuah": [
+      "13:45"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Masjid E Mohammedi",
+    "website": "https://www.houstonjamaat.com/",
+    "osmIds": [
+      "node/5248219007"
+    ],
+    "ok": false,
+    "reason": "no times found on the page"
+  },
+  {
+    "name": "IALFM Mosque",
+    "website": "http://ialfm.org/",
+    "osmIds": [
+      "node/5341746000"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:30",
+      "dhuhr": "14:00",
+      "asr": "17:30",
+      "maghrib": "19:55",
+      "isha": "21:15"
+    },
+    "jumuah": [],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "(unnamed) node/11201021741",
+    "website": "http://icwbluemosque.org/",
+    "osmIds": [
+      "node/11201021741"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "05:45",
+      "dhuhr": "14:00",
+      "asr": "18:00",
+      "maghrib": "20:30",
+      "isha": "21:45"
+    },
+    "jumuah": [
+      "13:30"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Alkhair Islamic Society of RGV",
+    "website": "https://us.mohid.co/tx/txrgn/alkhair",
+    "osmIds": [
+      "node/12228560668"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "07:00",
+      "dhuhr": "14:00",
+      "asr": "17:30",
+      "maghrib": "19:54",
+      "isha": "21:15"
+    },
+    "jumuah": [],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Ismaili Jamatkhana",
+    "website": "http://the.ismaili/",
+    "osmIds": [
+      "node/13097142249"
+    ],
+    "ok": false,
+    "reason": "no times found on the page"
+  },
+  {
+    "name": "Masjidu Ttaqwa Mosque",
+    "website": "https://www.icgk.org/",
+    "osmIds": [
+      "node/12809599401"
+    ],
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:20",
+      "dhuhr": "14:00",
+      "asr": "17:30",
+      "maghrib": "20:05",
+      "isha": "21:30"
+    },
+    "jumuah": [
+      "13:30",
+      "14:30"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Clear Lake Islamic Center - Masjid",
+    "website": "http://www.themasjid.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "13:45",
+      "asr": "17:15",
+      "maghrib": null,
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "13:30",
+      "14:45"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "ISGH Masjid Hamza - Mission Bend Islamic Center",
+    "website": "http://isghmasjidhamza.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:00",
+      "asr": "18:00",
+      "maghrib": "19:48",
+      "isha": "21:00"
+    },
+    "jumuah": [
+      "13:30",
+      "14:50"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "At-Tawhid Mosque",
+    "website": "https://www.tawhidhouston.com/",
+    "ok": false,
+    "reason": "no times found on the page (page text holds 7 prayer names and 8 times, shot viewport 1280x900)"
+  },
+  {
+    "name": "AL NOOR MOSQUE",
+    "website": "https://www.alnoormasjid.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:10",
+      "dhuhr": "14:00",
+      "asr": "18:20",
+      "maghrib": "19:45",
+      "isha": "21:20"
+    },
+    "jumuah": [
+      "14:00",
+      "15:00"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Muhammad Mosque No.45",
+    "website": "https://www.noihouston.org/",
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Islamic Education Center",
+    "website": "https://www.iec-houston.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "05:41",
+      "dhuhr": "13:21",
+      "asr": "17:53",
+      "maghrib": "19:58",
+      "isha": "20:43"
+    },
+    "jumuah": [],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Houston Masjid of Al-Islam",
+    "website": "http://www.masjidwdmohammed.org/",
+    "ok": false,
+    "reason": "no times found on the page"
+  },
+  {
+    "name": "Hawa Masjid",
+    "website": "https://hawa-masjid.lovable.app/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "05:30",
+      "dhuhr": "14:00",
+      "asr": "17:45",
+      "maghrib": "20:20",
+      "isha": "21:45"
+    },
+    "jumuah": [
+      "14:00"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "MAS Katy Center (Masjid Al-Rahman)",
+    "website": "https://www.maskaty.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:30",
+      "dhuhr": "13:35",
+      "asr": "17:15",
+      "maghrib": "19:47",
+      "isha": "21:00"
+    },
+    "jumuah": [
+      "13:30",
+      "15:30"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "ISGH Masjid Savoy Wilcrest",
+    "website": "http://www.savoymusallah.com/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:00",
+      "asr": "18:15",
+      "maghrib": null,
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "13:40",
+      "14:40"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Masjid Ibrahim",
+    "website": "https://masjidibrahimtx.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:20",
+      "dhuhr": "14:00",
+      "asr": "18:05",
+      "maghrib": "19:47",
+      "isha": "21:00"
+    },
+    "jumuah": [
+      "13:30",
+      "14:30"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Masjid Ghous-E-Azam",
+    "website": "https://www.facebook.com/Masjid.GhouseAzam",
+    "ok": false,
+    "reason": "no times found on the page"
+  },
+  {
+    "name": "Tajweed Institute Masjid",
+    "website": "http://tajweedusa.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:00",
+      "asr": "17:15",
+      "maghrib": null,
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "13:30"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Haj Nabih Masjid",
+    "website": "https://hajnabihmasjid.com/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "05:53",
+      "dhuhr": null,
+      "asr": "17:53",
+      "maghrib": "19:41",
+      "isha": "20:48"
+    },
+    "jumuah": [
+      "12:25"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "Kingwood Islamic Center (Kingwood Mosque)",
+    "website": "https://kingwoodislamiccenter.com/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:00",
+      "asr": "18:15",
+      "maghrib": "20:42",
+      "isha": "21:00"
+    },
+    "jumuah": [
+      "13:30",
+      "14:40"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Ibrahim Islamic Center & Mosque",
+    "website": "http://www.ibrahimcenter.org/",
+    "ok": false,
+    "reason": "no times found on the page"
+  },
+  {
+    "name": "Pearland Islamic Center (PIC) - ISGH",
+    "website": "https://picisgh.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:00",
+      "asr": "17:30",
+      "maghrib": "19:50",
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "13:30",
+      "14:30"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Shadow Creek Muslim Community Center",
+    "website": "https://thesmcc.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": null,
+      "asr": "17:15",
+      "maghrib": "19:50",
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "13:30",
+      "14:30"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Adam Masjid",
+    "website": "http://adammasjid.org/",
+    "ok": false,
+    "reason": "no times found on the page"
+  },
+  {
+    "name": "Masjid Aqsa",
+    "website": "https://www.aqsamasjidkaty.com/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:20",
+      "dhuhr": "14:00",
+      "asr": "18:00",
+      "maghrib": "19:48",
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "13:30",
+      "14:45",
+      "15:45"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Richmond Islamic Community Center",
+    "website": "https://richmondmasjid.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:00",
+      "asr": "18:15",
+      "maghrib": "19:43",
+      "isha": "21:00"
+    },
+    "jumuah": [
+      "13:45",
+      "14:45",
+      "15:30"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "WKIC - Masjid Al Firdous",
+    "website": "http://wkic.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "15:15",
+      "asr": null,
+      "maghrib": "19:48",
+      "isha": "21:15"
+    },
+    "jumuah": [],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Masjid Abu Huraira",
+    "website": "http://woodlandsislamiccenter.com/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "13:45",
+      "asr": "18:00",
+      "maghrib": "19:46",
+      "isha": "21:00"
+    },
+    "jumuah": [
+      "14:00"
+    ],
+    "capturedVia": "viewport",
+    "foundAt": "https://www.woodlandsislamiccenter.com/prayer-timings"
+  },
+  {
+    "name": "Al Ansaar Masjid - An ISGH Masjid",
+    "website": "http://alansaarmasjid.org/",
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Masjid E Zohra",
+    "website": "http://masjidzohra.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": null,
+      "asr": "18:00",
+      "maghrib": "19:46",
+      "isha": "21:30"
+    },
+    "jumuah": [
+      "14:00"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "Klein Islamic Center - Masjid",
+    "website": "http://kleinislamiccenter.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "13:45",
+      "asr": "18:00",
+      "maghrib": "19:47",
+      "isha": "21:00"
+    },
+    "jumuah": [
+      "13:30",
+      "14:30"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "Masjid Al Karim",
+    "website": "https://masjidalkarim.net/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:00",
+      "asr": "18:00",
+      "maghrib": "19:45",
+      "isha": "21:00"
+    },
+    "jumuah": [
+      "13:30",
+      "14:30"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "Islamic Center of Conroe ICC (Masjid Bilal)",
+    "website": "https://iccconroe.com/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:00",
+      "asr": "18:25",
+      "maghrib": "19:58",
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "13:55"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Masjid Fatima tuz Zahra",
+    "website": "https://www.minhaj.org/english/Overseas/tid/34296/USA-Timings-of-Eid-ul-Adha-Prayers-in-Texas.html",
+    "ok": false,
+    "reason": "no times found on the page"
+  },
+  {
+    "name": "Masjid Isa Ibn Maryam (Bammel Musallah)",
+    "website": "https://www.islamtx.com/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "13:40",
+      "asr": "18:00",
+      "maghrib": "19:41",
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "13:30",
+      "14:30"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "WIC Masjid",
+    "website": "https://woodlandsislamiccenter.com/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "13:45",
+      "asr": "18:00",
+      "maghrib": "19:46",
+      "isha": "21:00"
+    },
+    "jumuah": [
+      "14:00"
+    ],
+    "capturedVia": "viewport",
+    "foundAt": "https://www.woodlandsislamiccenter.com/prayer-timings"
+  },
+  {
+    "name": "Mercy Community Center - Mosque",
+    "website": "https://mercycc.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:13",
+      "dhuhr": "14:00",
+      "asr": "17:15",
+      "maghrib": "18:41",
+      "isha": "21:00"
+    },
+    "jumuah": [
+      "13:30",
+      "14:30",
+      "15:15"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Islamic Center of South Dallas",
+    "website": "https://www.facebook.com/profile.php?id=793627857328461",
+    "ok": false,
+    "reason": "no times found on the page"
+  },
+  {
+    "name": "Muhammad Mosque",
+    "website": "http://www.noidallas48.org/",
+    "ok": false,
+    "reason": "no times found on the page"
+  },
+  {
+    "name": "Islamic Center of Irving",
+    "website": "https://irvingmasjid.org/",
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Masjid Al Quran",
+    "website": "https://www.facebook.com/MasjidAlQuranDallasTx/",
+    "ok": false,
+    "reason": "only 0 of 5 prayers found (missing fajr, dhuhr, asr, maghrib, isha)"
+  },
+  {
+    "name": "Islamic Association of North Texas (IANT Masjid)",
+    "website": "https://www.iant.com/",
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Mesquite Islamic Center (MIC Mosque)",
+    "website": "http://www.micmasjid.com/",
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "ICC - Islamic Center of Coppell",
+    "website": "https://iccmasjid.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:00",
+      "asr": "18:00",
+      "maghrib": "19:54",
+      "isha": "21:30"
+    },
+    "jumuah": [
+      "14:30",
+      "16:30"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "Masjid Yaseen",
+    "website": "http://masjidyaseen.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "13:45",
+      "asr": "18:15",
+      "maghrib": "19:51",
+      "isha": "21:30"
+    },
+    "jumuah": [
+      "13:30",
+      "15:00"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "Islamic Association of Carrollton (IAC)",
+    "website": "http://www.masjidal-rahman.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:00",
+      "asr": "18:00",
+      "maghrib": null,
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "13:30"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Grand Prairie Masjid",
+    "website": "http://grandprairiemasjid.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": null,
+      "asr": "17:30",
+      "maghrib": "20:00",
+      "isha": "21:30"
+    },
+    "jumuah": [
+      "13:30"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "MAS Islamic Center Of Dallas",
+    "website": "http://www.masdfw.org/",
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Imam Ali Islamic center",
+    "website": "https://www.facebook.com/imamalicenterintexas/",
+    "ok": false,
+    "reason": "no times found on the page"
+  },
+  {
+    "name": "Sachse Muslim Society",
+    "website": "https://sachsemasjid.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:00",
+      "asr": "18:00",
+      "maghrib": "19:54",
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "13:30",
+      "14:20",
+      "15:15"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "Makkah Masjid (Garland Mosque)",
+    "website": "https://makkahmasjid.net/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:30",
+      "dhuhr": "14:00",
+      "asr": "18:30",
+      "maghrib": "19:48",
+      "isha": "21:30"
+    },
+    "jumuah": [
+      "14:10",
+      "14:40"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Islamic Association-Mesquite",
+    "website": "https://www.islamicassociationofmesquite.com/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "05:55",
+      "dhuhr": "13:26",
+      "asr": "17:01",
+      "maghrib": "19:48",
+      "isha": "20:57"
+    },
+    "jumuah": [
+      "12:45",
+      "13:45",
+      "15:00"
+    ],
+    "capturedVia": "viewport",
+    "foundAt": "https://www.islamicassociationofmesquite.com/prayer"
+  },
+  {
+    "name": "Al-Ansar Society",
+    "website": "http://alansarsociety.org/new/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:35",
+      "dhuhr": "14:00",
+      "asr": "18:00",
+      "maghrib": "19:58",
+      "isha": "21:10"
+    },
+    "jumuah": [
+      "13:45",
+      "14:45"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "Rahmania Center",
+    "website": "https://rahmaniacenter.com/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:00",
+      "asr": "18:50",
+      "maghrib": null,
+      "isha": "21:25"
+    },
+    "jumuah": [
+      "13:35"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Abu Hanifa Mosque",
+    "website": "https://masjidabuhanifahiat.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "05:30",
+      "dhuhr": "13:45",
+      "asr": "18:30",
+      "maghrib": null,
+      "isha": "22:10"
+    },
+    "jumuah": [
+      "14:00"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Islamic Association of Collin County (Plano Mosque)",
+    "website": "http://www.planomasjid.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:00",
+      "asr": "18:00",
+      "maghrib": "19:58",
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "13:45",
+      "15:00"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Noori Mosque",
+    "website": "https://noorimasjid.net/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:30",
+      "dhuhr": "14:00",
+      "asr": "18:30",
+      "maghrib": "19:51",
+      "isha": "21:30"
+    },
+    "jumuah": [
+      "14:00",
+      "15:00"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "Masjid Salahadeen",
+    "website": "http://www.masjidsalahadeen.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": null,
+      "asr": "18:00",
+      "maghrib": "19:53",
+      "isha": "21:30"
+    },
+    "jumuah": [
+      "13:45",
+      "14:45"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "Barkaat-Ul-Quran",
+    "website": "http://www.barkaatulquran.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "05:32",
+      "dhuhr": "13:27",
+      "asr": "18:00",
+      "maghrib": "19:52",
+      "isha": "21:11"
+    },
+    "jumuah": [
+      "13:35"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "Dawoodi Bohra Community - Anjuman-e-Najmi, Dallas Inc.",
+    "website": "https://usa.thedawoodibohras.com/",
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "ISAT Center Masjid",
+    "website": "https://www.centermasjid.com/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:21",
+      "dhuhr": "14:15",
+      "asr": "17:30",
+      "maghrib": "19:59",
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "13:40"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Mansfield Islamic Center",
+    "website": "http://mansfieldmasjid.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:15",
+      "asr": "17:30",
+      "maghrib": "19:59",
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "13:30",
+      "14:30"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Unity Islamic Center - Mansfield Masjid Official",
+    "website": "https://www.unityislamiccenter.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:30",
+      "dhuhr": null,
+      "asr": "17:30",
+      "maghrib": "20:00",
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "13:45",
+      "14:30"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Islamic Association of Tarrant County",
+    "website": "https://iatcmasjid.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:30",
+      "dhuhr": "14:00",
+      "asr": "17:15",
+      "maghrib": "19:58",
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "13:25"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "Islamic Center of Southlake",
+    "website": "http://southlakemasjid.com/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "13:45",
+      "asr": "18:15",
+      "maghrib": "19:55",
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "14:00",
+      "15:00"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Masjid Al-Hedayah",
+    "website": "https://alhedayahacademy.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:00",
+      "asr": "17:30",
+      "maghrib": "19:59",
+      "isha": "21:30"
+    },
+    "jumuah": [
+      "13:25",
+      "14:25"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "Dar El-Eman Islamic Center (DEIC)",
+    "website": "http://www.dareleman.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:00",
+      "asr": "17:30",
+      "maghrib": "19:59",
+      "isha": "21:10"
+    },
+    "jumuah": [
+      "13:30",
+      "14:30"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "Keller Islamic Center (KIC)",
+    "website": "http://www.kellerislamiccenter.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:30",
+      "dhuhr": "13:45",
+      "asr": "18:15",
+      "maghrib": "19:58",
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "13:35"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Dar Alhuda Inc مسجد",
+    "website": "https://www.daralhudamasjid.com/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:26",
+      "dhuhr": "14:00",
+      "asr": "17:22",
+      "maghrib": "19:59",
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "13:30"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Islamic Center of Lake Worth",
+    "website": "http://www.icolakeworth.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:30",
+      "dhuhr": "14:00",
+      "asr": "17:30",
+      "maghrib": "20:15",
+      "isha": "21:30"
+    },
+    "jumuah": [
+      "14:00"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "Zia ul Quran Masjid",
+    "website": "http://www.ziaulquranmasjid.com/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:00",
+      "asr": "18:30",
+      "maghrib": null,
+      "isha": "21:30"
+    },
+    "jumuah": [
+      "14:00"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "Muhammad Mosque #52",
+    "website": "http://www.noifortworth.org/",
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Dar El-Quran",
+    "website": "http://www.linktr.ee/darelquran",
+    "ok": false,
+    "reason": "no times found on the page"
+  },
+  {
+    "name": "Masjid Faruq of Grand Prairie TX",
+    "website": "http://www.faruqmasjid.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "05:56",
+      "dhuhr": "13:27",
+      "asr": "17:02",
+      "maghrib": "19:49",
+      "isha": "20:58"
+    },
+    "jumuah": [
+      "13:45"
+    ],
+    "capturedVia": "viewport",
+    "foundAt": "https://www.faruqmasjid.org/prayer-times/"
+  },
+  {
+    "name": "Islamic Society Of Mesquite",
+    "website": "https://islamicsocietyofmesquite.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "13:45",
+      "asr": "18:30",
+      "maghrib": "20:00",
+      "isha": "21:30"
+    },
+    "jumuah": [
+      "14:15"
+    ],
+    "capturedVia": "timetable element",
+    "foundAt": "https://islamicsocietyofmesquite.org/prayer-times"
+  },
+  {
+    "name": "Nour Al-Quran Society",
+    "website": "https://www.nouralquran.org/",
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Islamic Center of Rowlett",
+    "website": "https://icrmasjid.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:30",
+      "dhuhr": "14:00",
+      "asr": "18:15",
+      "maghrib": "20:01",
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "13:35"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Islamic Center of Quad Cities",
+    "website": "http://icqcmasjid.org/",
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Islamic Center of Aubrey",
+    "website": "https://www.aubreymasjid.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:30",
+      "dhuhr": "14:00",
+      "asr": "18:30",
+      "maghrib": "19:54",
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "13:50",
+      "14:45"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "Princeton Islamic Center",
+    "website": "http://www.picmasjid.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:20",
+      "dhuhr": "14:00",
+      "asr": "18:15",
+      "maghrib": "19:53",
+      "isha": "21:10"
+    },
+    "jumuah": [
+      "13:40",
+      "14:30"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Masjid-e-Sajideen",
+    "website": "https://www.masjidesajideen.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:00",
+      "asr": "18:00",
+      "maghrib": "19:56",
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "13:45",
+      "14:15",
+      "15:15"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "Islamic Center Of Lake Travis",
+    "website": "https://www.iclaketravis.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "13:45",
+      "asr": "18:40",
+      "maghrib": "19:52",
+      "isha": "21:30"
+    },
+    "jumuah": [
+      "13:35"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Al-Noor Mosque (MCC)",
+    "website": "https://alnoormcc.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "13:45",
+      "asr": "18:30",
+      "maghrib": "19:54",
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "13:45"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Quad City Islamic Center of North Austin Leander",
+    "website": "http://www.qcicmasjid.org/",
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Masjid Al Huda",
+    "website": "https://alhudamcc.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "13:45",
+      "asr": "18:30",
+      "maghrib": "19:55",
+      "isha": "21:30"
+    },
+    "jumuah": [
+      "14:15"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "Islamic Center of Hays County (Masjid Bilal)",
+    "website": "https://masjidbilaltx.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:00",
+      "asr": "18:00",
+      "maghrib": "20:01",
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "14:10"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "Georgetown Islamic Center (GIC)",
+    "website": "https://www.gicmasjid.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:00",
+      "asr": "18:30",
+      "maghrib": "19:55",
+      "isha": "21:30"
+    },
+    "jumuah": [
+      "14:30",
+      "15:30"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Dawoodi Bohra Markaz Anjuman-e-Burhani (Austin)",
+    "website": "https://usa.thedawoodibohras.com/communities/austin/",
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Northside Islamic Center of San Antonio",
+    "website": "https://www.nicsatx.org/",
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Masjid Beit El-Maqdes",
+    "website": "https://beitelmaqdes.org/",
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Rahmani Masjid and Learning Center",
+    "website": "https://www.rahmanimasjid.com/",
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Muslim Center of San Antonio",
+    "website": "https://mcsamasjid.com/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:20",
+      "dhuhr": "14:00",
+      "asr": "17:30",
+      "maghrib": "20:04",
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "13:30"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Bilal Ibn Rabah of San Antonio (MBIR)",
+    "website": "https://www.mbirsa.org/",
+    "ok": false,
+    "reason": "no times found on the page"
+  },
+  {
+    "name": "Zainabia-SA Islamic Education Center",
+    "website": "http://www.zainabiasa.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "05:17",
+      "dhuhr": "13:35",
+      "asr": "16:30",
+      "maghrib": "20:32",
+      "isha": "21:15"
+    },
+    "jumuah": [],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Masjid Al-Ikhlas",
+    "website": "https://alikhlasmasjid.com/",
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Ismaili Jamatkhana - San Antonio",
+    "website": "https://the.ismaili/",
+    "ok": false,
+    "reason": "no times found on the page"
+  },
+  {
+    "name": "Islamic Center of Hewitt / Al- Hidaya Mosque",
+    "website": "https://www.islamiccenterofhewitt.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "13:45",
+      "asr": "18:15",
+      "maghrib": "19:54",
+      "isha": "21:30"
+    },
+    "jumuah": [
+      "14:00"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Islamic Society of Central Texas",
+    "website": "https://isctmasjid.org/",
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Islamic Center of Victoria مسجد",
+    "website": "http://www.victoriaislamiccenter.com/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:15",
+      "dhuhr": "14:00",
+      "asr": "17:15",
+      "maghrib": null,
+      "isha": "21:30"
+    },
+    "jumuah": [
+      "13:30"
+    ],
+    "capturedVia": "timetable element",
+    "foundAt": "http://www.victoriaislamiccenter.com/prayer-times/"
+  },
+  {
+    "name": "Islamic Society of Kingsville (ISK)",
+    "website": "https://iskmasjidomar.org/",
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Islamic Center of Laredo مسجد",
+    "website": "http://islamiccenteroflaredo.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:33",
+      "dhuhr": "13:57",
+      "asr": "17:24",
+      "maghrib": "20:00",
+      "isha": "21:15"
+    },
+    "jumuah": [
+      "13:50"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Islamic Center of Harlingen",
+    "website": "https://sites.google.com/view/islamiccenterofharlingen/home",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:00",
+      "dhuhr": "14:00",
+      "asr": "17:30",
+      "maghrib": null,
+      "isha": "21:35"
+    },
+    "jumuah": [],
+    "capturedVia": "viewport",
+    "foundAt": "https://sites.google.com/view/islamiccenterofharlingen/prayer-times"
+  },
+  {
+    "name": "Islamic Society of Brownsville",
+    "website": "https://islamicsocietyofbrownsville.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:30",
+      "dhuhr": "14:30",
+      "asr": "18:00",
+      "maghrib": null,
+      "isha": "21:30"
+    },
+    "jumuah": [
+      "14:00"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Islamic Center of Galveston - Masjid",
+    "website": "https://www.galvestonislamiccenter.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:00",
+      "dhuhr": "13:30",
+      "asr": "17:00",
+      "maghrib": null,
+      "isha": "21:00"
+    },
+    "jumuah": [
+      "13:30"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Tyler Islamic Center",
+    "website": "https://tylerislamiccenter.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:00",
+      "dhuhr": null,
+      "asr": "18:15",
+      "maghrib": "20:05",
+      "isha": "21:45"
+    },
+    "jumuah": [
+      "13:45"
+    ],
+    "capturedVia": "viewport"
+  },
+  {
+    "name": "Masjid Al Jamia Mesquite",
+    "website": "https://masjidaljamiamesquite.com/",
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "East Texas Islamic Association - Commerce Mosque",
+    "website": "http://commercemosque.weebly.com/contact-us.html",
+    "ok": true,
+    "iqamah": {
+      "fajr": "05:41",
+      "dhuhr": "13:34",
+      "asr": "17:10",
+      "maghrib": "19:58",
+      "isha": "21:28"
+    },
+    "jumuah": [],
+    "capturedVia": "viewport",
+    "foundAt": "http://commercemosque.weebly.com/prayer-time.html"
+  },
+  {
+    "name": "Masjid Texarkana",
+    "website": "https://texarkanamuslimcommunity.org/",
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Al-Rahma Mosque",
+    "website": "https://masjidrahma.com/",
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Burmese Muslim Community of Amarillo (BMCAMA)",
+    "website": "https://bmcama.org/",
+    "ok": false,
+    "reason": "site could not be opened"
+  },
+  {
+    "name": "Muslim Association of West Texas",
+    "website": "http://muslim-of-west-texas.poi.place/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:04",
+      "dhuhr": "14:10",
+      "asr": "17:56",
+      "maghrib": "21:06",
+      "isha": "22:30"
+    },
+    "jumuah": [],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "AZAD MASJID",
+    "website": "https://i-cwf.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "05:53",
+      "dhuhr": "13:18",
+      "asr": "17:51",
+      "maghrib": "19:38",
+      "isha": "20:44"
+    },
+    "jumuah": [
+      "13:45"
+    ],
+    "capturedVia": "timetable element"
+  },
+  {
+    "name": "Shepard Airforce Base Mosque (edited by Ebrahim Chowdhury)",
+    "website": "https://i-cwf.org/",
+    "ok": true,
+    "iqamah": {
+      "fajr": "05:53",
+      "dhuhr": "13:18",
+      "asr": "17:51",
+      "maghrib": "19:38",
+      "isha": "20:44"
+    },
+    "jumuah": [
+      "13:45"
+    ],
+    "capturedVia": "timetable element"
   }
 ]
