@@ -30,7 +30,7 @@
  * Costs one Claude call per page read (Sonnet) — pennies for this list.
  */
 import { chromium, type Browser } from "playwright";
-import { readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import {
@@ -52,13 +52,14 @@ interface Candidate {
   lat: number;
   lng: number;
   address: string | null;
-  osmIds: string[];
+  /** Absent on rows that came from Google Places rather than OSM. */
+  osmIds?: string[];
 }
 
 interface Row {
   name: string;
   website: string;
-  osmIds: string[];
+  osmIds?: string[];
   ok: boolean;
   reason?: string;
   foundAt?: string;
@@ -139,10 +140,22 @@ async function main() {
   }
 
   const all: Candidate[] = JSON.parse(readFileSync(INPUT, "utf8"));
-  const mosques = all.slice(0, limit === Infinity ? undefined : limit);
-  if (mosques.length < all.length) {
+
+  // A re-run after the candidate list has grown reads the additions, not the
+  // masjids that already have a row in the report — each read is a Claude
+  // call and a page load against someone's server. --all re-reads everything,
+  // which is what a genuine refresh wants.
+  const previous: Row[] = existsSync(OUTPUT) ? JSON.parse(readFileSync(OUTPUT, "utf8")) : [];
+  const done = new Set(previous.map((r) => r.website));
+  const pending = process.argv.includes("--all") ? all : all.filter((m) => !done.has(m.website));
+  if (pending.length < all.length) {
+    console.log(`Skipping ${all.length - pending.length} already in the report (pass --all to re-read them).\n`);
+  }
+
+  const mosques = pending.slice(0, limit === Infinity ? undefined : limit);
+  if (mosques.length < pending.length) {
     // Never let a truncated run read as full coverage.
-    console.log(`--limit ${limit}: reading ${mosques.length} of ${all.length}. NOT a full run.\n`);
+    console.log(`--limit ${limit}: reading ${mosques.length} of ${pending.length}. NOT a full run.\n`);
   }
 
   const browser = await chromium.launch();
@@ -151,7 +164,8 @@ async function main() {
   for (const mosque of mosques) {
     // Unnamed entries survive the import when a merge gave them a website;
     // the OSM id is the only honest label for them.
-    const label = mosque.name ?? `(unnamed) ${mosque.osmIds[0]}`;
+    // Google-sourced rows carry no OSM id; the site is the only stable label.
+    const label = mosque.name ?? `(unnamed) ${mosque.osmIds?.[0] ?? mosque.website}`;
     console.log(`Reading ${label} …`);
     const found = await findTimes(browser, mosque.website);
     const base = { name: label, website: mosque.website, osmIds: mosque.osmIds };
@@ -180,11 +194,20 @@ async function main() {
   }
 
   await browser.close();
-  writeFileSync(OUTPUT, JSON.stringify(rows, null, 2) + "\n");
+
+  // This run's rows replace their earlier versions; everything else in the
+  // report is kept, so the file stays the whole picture rather than the last
+  // batch.
+  const fresh = new Set(rows.map((r) => r.website));
+  const merged = [...previous.filter((r) => !fresh.has(r.website)), ...rows];
+  writeFileSync(OUTPUT, JSON.stringify(merged, null, 2) + "\n");
 
   const ok = rows.filter((r) => r.ok);
+  const okAll = merged.filter((r) => r.ok);
   console.log(`\n${"=".repeat(60)}`);
-  console.log(`Read ${ok.length}/${rows.length}. Full report: ${OUTPUT}\n`);
+  console.log(
+    `Read ${ok.length}/${rows.length} this run · report now ${okAll.length}/${merged.length}: ${OUTPUT}\n`,
+  );
   for (const r of rows) {
     if (r.ok) {
       const iq = r.iqamah!;

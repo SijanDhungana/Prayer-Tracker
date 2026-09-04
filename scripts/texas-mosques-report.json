@@ -10,8 +10,8 @@
       "fajr": "06:30",
       "dhuhr": "14:00",
       "asr": "18:00",
-      "maghrib": "20:02",
-      "isha": "21:30"
+      "maghrib": "19:58",
+      "isha": "21:15"
     },
     "jumuah": [
       "13:00",
@@ -27,11 +27,11 @@
     ],
     "ok": true,
     "iqamah": {
-      "fajr": "06:01",
-      "dhuhr": "13:32",
-      "asr": "17:06",
-      "maghrib": "19:55",
-      "isha": "21:03"
+      "fajr": "06:04",
+      "dhuhr": "13:31",
+      "asr": "17:04",
+      "maghrib": "19:51",
+      "isha": "20:58"
     },
     "jumuah": [],
     "capturedVia": "viewport",
@@ -48,7 +48,7 @@
       "fajr": "06:30",
       "dhuhr": "14:00",
       "asr": "17:30",
-      "maghrib": "20:00",
+      "maghrib": "19:56",
       "isha": "21:15"
     },
     "jumuah": [
@@ -69,7 +69,7 @@
       "fajr": "06:15",
       "dhuhr": "13:45",
       "asr": "18:30",
-      "maghrib": "19:58",
+      "maghrib": "19:52",
       "isha": "21:30"
     },
     "jumuah": [
@@ -113,11 +113,11 @@
     ],
     "ok": true,
     "iqamah": {
-      "fajr": "06:00",
+      "fajr": "06:15",
       "dhuhr": "14:00",
       "asr": "18:00",
-      "maghrib": "19:48",
-      "isha": "21:30"
+      "maghrib": "19:43",
+      "isha": "21:00"
     },
     "jumuah": [
       "13:35",
@@ -144,11 +144,11 @@
     ],
     "ok": true,
     "iqamah": {
-      "fajr": "06:20",
+      "fajr": "06:25",
       "dhuhr": "14:00",
       "asr": "17:30",
-      "maghrib": "20:02",
-      "isha": "21:20"
+      "maghrib": "19:57",
+      "isha": "21:10"
     },
     "jumuah": [
       "13:10"
@@ -172,11 +172,11 @@
     ],
     "ok": true,
     "iqamah": {
-      "fajr": "06:15",
+      "fajr": "06:30",
       "dhuhr": "14:00",
       "asr": "18:15",
-      "maghrib": "20:01",
-      "isha": "21:30"
+      "maghrib": "19:56",
+      "isha": "21:15"
     },
     "jumuah": [
       "12:00",
@@ -201,8 +201,17 @@
     "osmIds": [
       "way/1042903044"
     ],
-    "ok": false,
-    "reason": "only 0 of 5 prayers found (missing fajr, dhuhr, asr, maghrib, isha)"
+    "ok": true,
+    "iqamah": {
+      "fajr": "06:00",
+      "dhuhr": "13:00",
+      "asr": "16:15",
+      "maghrib": "18:29",
+      "isha": "19:45"
+    },
+    "jumuah": [],
+    "capturedVia": "viewport",
+    "foundAt": "https://www.dentonmasjid.com/2025/02/28/ramadan-prayer-timings-2025/"
   },
   {
     "name": "Houston's Blue Mosque",
@@ -243,8 +252,8 @@
       "fajr": "06:15",
       "dhuhr": "14:00",
       "asr": "17:30",
-      "maghrib": "19:58",
-      "isha": "21:45"
+      "maghrib": "19:53",
+      "isha": "21:15"
     },
     "jumuah": [
       "13:30"
@@ -262,8 +271,8 @@
       "fajr": "06:15",
       "dhuhr": "13:30",
       "asr": "18:15",
-      "maghrib": "19:49",
-      "isha": "21:15"
+      "maghrib": "19:45",
+      "isha": "21:00"
     },
     "jumuah": [
       "13:40",
@@ -292,7 +301,7 @@
       "fajr": "06:15",
       "dhuhr": "13:45",
       "asr": "17:30",
-      "maghrib": "19:59",
+      "maghrib": "19:54",
       "isha": "21:15"
     },
     "jumuah": [
@@ -310,10 +319,10 @@
     ],
     "ok": true,
     "iqamah": {
-      "fajr": "05:46",
-      "dhuhr": "13:22",
-      "asr": "17:56",
-      "maghrib": "20:00",
+      "fajr": "05:48",
+      "dhuhr": "13:20",
+      "asr": "17:53",
+      "maghrib": "19:55",
       "isha": null
     },
     "jumuah": [],
@@ -330,7 +339,7 @@
       "fajr": "06:15",
       "dhuhr": "14:00",
       "asr": "17:30",
-      "maghrib": "20:04",
+      "maghrib": "19:59",
       "isha": "21:30"
     },
     "jumuah": [
@@ -347,11 +356,11 @@
     ],
     "ok": true,
     "iqamah": {
-      "fajr": "05:45",
+      "fajr": "06:15",
       "dhuhr": "14:00",
-      "asr": "18:30",
+      "asr": "18:15",
       "maghrib": null,
-      "isha": "21:45"
+      "isha": "21:15"
     },
     "jumuah": [
       "13:40"
@@ -366,11 +375,11 @@
     ],
     "ok": true,
     "iqamah": {
-      "fajr": "06:46",
-      "dhuhr": "14:28",
-      "asr": "18:05",
-      "maghrib": "21:09",
-      "isha": "21:59"
+      "fajr": "06:49",
+      "dhuhr": "14:26",
+      "asr": "18:02",
+      "maghrib": "21:04",
+      "isha": "21:53"
     },
     "jumuah": [
       "13:26"
@@ -405,7 +414,7 @@
       "fajr": "06:15",
       "dhuhr": "14:00",
       "asr": "18:40",
-      "maghrib": "20:00",
+      "maghrib": "19:55",
       "isha": "21:30"
     },
     "jumuah": [

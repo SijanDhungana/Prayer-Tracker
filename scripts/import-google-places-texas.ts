@@ -75,7 +75,10 @@ function domain(url: string): string {
     .replace(/\/.*$/, "");
 }
 
-function normalizeName(name: string): string | null {
+function normalizeName(name: string | null | undefined): string | null {
+  // OSM entries with no name at all (21 of them in Texas) reach here; a
+  // nameless record can only ever match on domain or distance.
+  if (!name) return null;
   const stripped = name
     .toLowerCase()
     .replace(/[^a-z0-9\s]/g, " ")
@@ -123,10 +126,13 @@ function main() {
   const scrapeable = JSON.parse(fs.readFileSync(SCRAPEABLE, "utf8"));
   const needsWebsite = JSON.parse(fs.readFileSync(NEEDS_WEBSITE, "utf8"));
 
-  const known: Known[] = [
-    ...scrapeable.map((m: any) => ({ ...m, origin: "scrapeable" as const })),
-    ...needsWebsite.map((m: any) => ({ ...m, origin: "needs-website" as const })),
-  ];
+  // Tagged in place, not spread into copies. A spread here is what made the
+  // whole enrichment pass a no-op: every website Google supplied was written
+  // onto a copy, the tally below counted the originals, and --write saved
+  // the originals — so the run printed fills it then threw away.
+  for (const m of scrapeable) m.origin = "scrapeable";
+  for (const m of needsWebsite) m.origin = "needs-website";
+  const known: Known[] = [...scrapeable, ...needsWebsite];
 
   const outOfState = rawAll.filter((p) => !p.address || !TEXAS_ADDRESS.test(p.address));
   const raw = rawAll.filter((p) => p.address && TEXAS_ADDRESS.test(p.address));
@@ -231,13 +237,23 @@ function main() {
   );
 
   if (write) {
-    fs.writeFileSync(NEEDS_WEBSITE, JSON.stringify(needsWebsite, null, 2) + "\n");
+    const untag = ({ origin: _origin, ...m }: any) => m;
+    // An entry that gained a website leaves the blocked list.
+    fs.writeFileSync(
+      NEEDS_WEBSITE,
+      JSON.stringify(needsWebsite.filter((m: any) => !m.website).map(untag), null, 2) + "\n",
+    );
     // Everything the scraper can now attempt: the originals plus the newly
-    // enriched plus anything Google found that OSM never had.
+    // enriched plus anything Google found that OSM never had. Full records,
+    // not name+website pairs — the scraper labels unnamed rows by OSM id and
+    // the report keeps coordinates for the next cross-reference.
     const scrapeList = [
-      ...scrapeable.map((m: any) => ({ name: m.name, website: m.website })),
-      ...needsWebsite.filter((m: any) => m.website).map((m: any) => ({ name: m.name, website: m.website })),
-      ...newWithSite.map((c) => ({ name: c.name, website: c.website })),
+      ...scrapeable.map(untag),
+      ...needsWebsite.filter((m: any) => m.website).map(untag),
+      ...newWithSite.map((c) => ({
+        name: c.name, website: c.website, lat: c.lat, lng: c.lng,
+        address: c.address, placeId: c.placeId,
+      })),
     ];
     fs.writeFileSync(SCRAPEABLE, JSON.stringify(scrapeList, null, 2) + "\n");
     fs.writeFileSync(NEW_OUT, JSON.stringify(candidates, null, 2) + "\n");

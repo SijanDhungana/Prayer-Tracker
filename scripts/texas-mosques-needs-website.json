@@ -1,50 +1,5 @@
 [
   {
-    "name": "Masjid Al-Mustafa",
-    "website": null,
-    "lat": 29.8627779,
-    "lng": -95.6714781,
-    "address": null,
-    "osmIds": [
-      "relation/9675813"
-    ],
-    "denomination": "sunni",
-    "blocked": "no website in OSM"
-  },
-  {
-    "name": "Elfarouq Mosque",
-    "website": null,
-    "lat": 29.7893434,
-    "lng": -95.5497392,
-    "address": null,
-    "osmIds": [
-      "way/131590581"
-    ],
-    "blocked": "no website in OSM"
-  },
-  {
-    "name": "Islamic Da'wah Center",
-    "website": null,
-    "lat": 29.762962,
-    "lng": -95.3605815,
-    "address": "201 Travis Street, Houston, TX",
-    "osmIds": [
-      "way/260789761"
-    ],
-    "blocked": "no website in OSM"
-  },
-  {
-    "name": null,
-    "website": null,
-    "lat": 31.8186808,
-    "lng": -106.5116745,
-    "address": null,
-    "osmIds": [
-      "way/265482606"
-    ],
-    "blocked": "no website and no name in OSM"
-  },
-  {
     "name": null,
     "website": null,
     "lat": 33.1389618,
@@ -55,17 +10,6 @@
     ],
     "denomination": "sufi",
     "blocked": "no website and no name in OSM"
-  },
-  {
-    "name": "Dallas Masjid of al-Islam",
-    "website": null,
-    "lat": 32.7668737,
-    "lng": -96.7786768,
-    "address": null,
-    "osmIds": [
-      "node/356855681"
-    ],
-    "blocked": "no website in OSM"
   },
   {
     "name": "Allahs House of Islam",
@@ -123,51 +67,6 @@
     "blocked": "no website in OSM"
   },
   {
-    "name": "Nueces Mosque",
-    "website": null,
-    "lat": 30.283198,
-    "lng": -97.744345,
-    "address": "1908 Nueces Street, Austin, TX",
-    "osmIds": [
-      "way/380922453"
-    ],
-    "blocked": "no website in OSM"
-  },
-  {
-    "name": "Baitul Muqeet Mosque - Ahmadiyya Muslim Community",
-    "website": null,
-    "lat": 30.5010461,
-    "lng": -97.6985957,
-    "address": "800 Deep Wood Drive, Round Rock, TX, 78681",
-    "osmIds": [
-      "way/383004522"
-    ],
-    "denomination": "ahmadiyya",
-    "blocked": "no website in OSM"
-  },
-  {
-    "name": null,
-    "website": null,
-    "lat": 30.4710874,
-    "lng": -97.6348827,
-    "address": null,
-    "osmIds": [
-      "way/383025450"
-    ],
-    "blocked": "no website and no name in OSM"
-  },
-  {
-    "name": "Islamic Community of Bryan",
-    "website": null,
-    "lat": 30.6222578,
-    "lng": -96.3474684,
-    "address": "417 Stasney Street, College Station, TX, 77840",
-    "osmIds": [
-      "way/411792297"
-    ],
-    "blocked": "no website in OSM"
-  },
-  {
     "name": "Ismaili Jamatkhana",
     "website": null,
     "lat": 30.549281,
@@ -177,97 +76,6 @@
       "way/416819360"
     ],
     "blocked": "ismaili jamatkhana — does not publish a public timetable"
-  },
-  {
-    "name": "Minhaj ul Quran International",
-    "website": null,
-    "lat": 33.0133608,
-    "lng": -96.8875328,
-    "address": null,
-    "osmIds": [
-      "way/423752564"
-    ],
-    "blocked": "no website in OSM"
-  },
-  {
-    "name": "Islamic Center of Amarillo",
-    "website": null,
-    "lat": 35.2113128,
-    "lng": -101.9108193,
-    "address": null,
-    "osmIds": [
-      "way/428174400"
-    ],
-    "blocked": "no website in OSM"
-  },
-  {
-    "name": null,
-    "website": null,
-    "lat": 33.097137,
-    "lng": -96.6835313,
-    "address": "909 Allen Central Drive",
-    "osmIds": [
-      "way/460792404"
-    ],
-    "blocked": "no website and no name in OSM"
-  },
-  {
-    "name": null,
-    "website": null,
-    "lat": 33.5820272,
-    "lng": -101.8659502,
-    "address": null,
-    "osmIds": [
-      "way/465539048"
-    ],
-    "blocked": "no website and no name in OSM"
-  },
-  {
-    "name": "Masjidul Mu'meneen",
-    "website": null,
-    "lat": 29.6584513,
-    "lng": -95.5315656,
-    "address": null,
-    "osmIds": [
-      "way/493297858"
-    ],
-    "denomination": "sunni",
-    "blocked": "no website in OSM"
-  },
-  {
-    "name": "Bayt Al-Karim Islamic Center",
-    "website": null,
-    "lat": 32.6286584,
-    "lng": -97.3917327,
-    "address": "4512 Columbus Trace",
-    "osmIds": [
-      "way/504095694"
-    ],
-    "blocked": "no website in OSM"
-  },
-  {
-    "name": "Islamic Society of Southern Texas",
-    "website": null,
-    "lat": 27.6942679,
-    "lng": -97.3366213,
-    "address": "7341 McArdle Road, Corpus Christi, TX, 78412",
-    "osmIds": [
-      "way/525184470",
-      "way/525184474",
-      "way/1513528966"
-    ],
-    "blocked": "no website in OSM"
-  },
-  {
-    "name": "Islamic Academy of San Antonio",
-    "website": null,
-    "lat": 29.5216118,
-    "lng": -98.5631983,
-    "address": "8638 Fairhaven Street, San Antonio",
-    "osmIds": [
-      "way/641439121"
-    ],
-    "blocked": "no website in OSM"
   },
   {
     "name": "New Islamic Generation Foundation",
@@ -282,17 +90,6 @@
     "blocked": "no website in OSM"
   },
   {
-    "name": null,
-    "website": null,
-    "lat": 30.0090993,
-    "lng": -95.5598974,
-    "address": null,
-    "osmIds": [
-      "way/655037002"
-    ],
-    "blocked": "no website and no name in OSM"
-  },
-  {
     "name": "Ismaili Jamatkhana",
     "website": null,
     "lat": 33.0662639,
@@ -303,51 +100,6 @@
     ],
     "denomination": "ismaili",
     "blocked": "ismaili jamatkhana — does not publish a public timetable"
-  },
-  {
-    "name": "Masjid Al-Sahaabah Watauga Center",
-    "website": null,
-    "lat": 32.8682536,
-    "lng": -97.2517276,
-    "address": "6005 Chapman Road, Watauga, TX, 76148",
-    "osmIds": [
-      "way/670759640"
-    ],
-    "blocked": "no website in OSM"
-  },
-  {
-    "name": "Islamic center of Wylie, Masjid",
-    "website": null,
-    "lat": 33.048489,
-    "lng": -96.567142,
-    "address": "3390 Lakeway Drive, St Paul, TX, 75098",
-    "osmIds": [
-      "way/709095484"
-    ],
-    "blocked": "no website in OSM"
-  },
-  {
-    "name": "Islamic Center of Lubbock",
-    "website": null,
-    "lat": 33.561898,
-    "lng": -101.9537991,
-    "address": "3419 La Salle Avenue, Lubbock, TX, 79407",
-    "osmIds": [
-      "way/720742403"
-    ],
-    "blocked": "no website in OSM"
-  },
-  {
-    "name": "East Plano Islamic Center",
-    "website": null,
-    "lat": 33.0098878,
-    "lng": -96.6467899,
-    "address": null,
-    "osmIds": [
-      "way/902564780"
-    ],
-    "denomination": "sunni",
-    "blocked": "no website in OSM"
   },
   {
     "name": null,
@@ -372,40 +124,6 @@
     "blocked": "no website and no name in OSM"
   },
   {
-    "name": null,
-    "website": null,
-    "lat": 32.573788,
-    "lng": -94.7501855,
-    "address": "119 Amy Street, Longview, TX, 75605",
-    "osmIds": [
-      "way/995953052"
-    ],
-    "blocked": "no website and no name in OSM"
-  },
-  {
-    "name": "San Marcos Masjid",
-    "website": null,
-    "lat": 29.8862237,
-    "lng": -97.9441235,
-    "address": "434 North Comanche Street, San Marcos, TX, 78666",
-    "osmIds": [
-      "way/1099925585"
-    ],
-    "denomination": "sunni",
-    "blocked": "no website in OSM"
-  },
-  {
-    "name": "IALFM Mosque",
-    "website": null,
-    "lat": 33.0354077,
-    "lng": -97.0830104,
-    "address": "Peters Colony Road, Flower Mound, TX, 75022",
-    "osmIds": [
-      "way/1130995547"
-    ],
-    "blocked": "no website in OSM"
-  },
-  {
     "name": "Ismaili Jamatkhana and Center - Harvest Green",
     "website": null,
     "lat": 29.6513724,
@@ -425,40 +143,6 @@
     "address": null,
     "osmIds": [
       "way/1225215246"
-    ],
-    "blocked": "no website and no name in OSM"
-  },
-  {
-    "name": null,
-    "website": null,
-    "lat": 29.6528633,
-    "lng": -95.6151352,
-    "address": null,
-    "osmIds": [
-      "way/1247561146"
-    ],
-    "blocked": "no website and no name in OSM"
-  },
-  {
-    "name": "Masjid Arafat",
-    "website": null,
-    "lat": 29.6581112,
-    "lng": -95.6576414,
-    "address": null,
-    "osmIds": [
-      "way/1322380194"
-    ],
-    "denomination": "sunni",
-    "blocked": "no website in OSM"
-  },
-  {
-    "name": null,
-    "website": null,
-    "lat": 29.5945044,
-    "lng": -95.6838479,
-    "address": null,
-    "osmIds": [
-      "way/1323719988"
     ],
     "blocked": "no website and no name in OSM"
   },
@@ -485,17 +169,6 @@
     "blocked": "no website in OSM"
   },
   {
-    "name": "Masjid Istiqlal Houston",
-    "website": null,
-    "lat": 29.6527273,
-    "lng": -95.6542335,
-    "address": null,
-    "osmIds": [
-      "way/1367143685"
-    ],
-    "blocked": "no website in OSM"
-  },
-  {
     "name": "Masjid Darul-Uloom Texas",
     "website": null,
     "lat": 29.6440377,
@@ -504,40 +177,6 @@
     "osmIds": [
       "way/1367143688"
     ],
-    "blocked": "no website in OSM"
-  },
-  {
-    "name": null,
-    "website": null,
-    "lat": 30.7813991,
-    "lng": -97.5881199,
-    "address": "9401 Farm-to-Market Road 1105, Jarrell, TX, 76537",
-    "osmIds": [
-      "way/1369802877"
-    ],
-    "blocked": "no website and no name in OSM"
-  },
-  {
-    "name": null,
-    "website": null,
-    "lat": 32.0006562,
-    "lng": -102.1458846,
-    "address": null,
-    "osmIds": [
-      "way/1385972314"
-    ],
-    "blocked": "no website and no name in OSM"
-  },
-  {
-    "name": "MOMIN of Texas",
-    "website": null,
-    "lat": 32.9986738,
-    "lng": -96.8619783,
-    "address": "2945 Frankford Road, Dallas, TX, 75287",
-    "osmIds": [
-      "way/1394443121"
-    ],
-    "denomination": "shia",
     "blocked": "no website in OSM"
   },
   {
@@ -563,53 +202,6 @@
     "blocked": "no website in OSM"
   },
   {
-    "name": "Baitus Samee Mosque",
-    "website": null,
-    "lat": 29.9646368,
-    "lng": -95.4408293,
-    "address": "1333 Spears Road, Houston, TX, 77067",
-    "osmIds": [
-      "way/1412305433",
-      "way/1412305434"
-    ],
-    "denomination": "ahmadiyya",
-    "blocked": "no website in OSM"
-  },
-  {
-    "name": "Masjid",
-    "website": null,
-    "lat": 29.6775566,
-    "lng": -95.3973955,
-    "address": null,
-    "osmIds": [
-      "way/1414024242"
-    ],
-    "blocked": "no website in OSM"
-  },
-  {
-    "name": null,
-    "website": null,
-    "lat": 33.1722192,
-    "lng": -96.8350281,
-    "address": null,
-    "osmIds": [
-      "way/1418381673"
-    ],
-    "blocked": "no website and no name in OSM"
-  },
-  {
-    "name": "Ismaili Center Houston",
-    "website": null,
-    "lat": 29.7591137,
-    "lng": -95.3917866,
-    "address": "2323 Allen Parkway Frontage Road, Houston, TX, 77019",
-    "osmIds": [
-      "way/1447830521"
-    ],
-    "denomination": "ismaili",
-    "blocked": "ismaili jamatkhana — does not publish a public timetable"
-  },
-  {
     "name": null,
     "website": null,
     "lat": 29.6695321,
@@ -628,18 +220,6 @@
     "address": null,
     "osmIds": [
       "way/1484389803"
-    ],
-    "blocked": "no website in OSM"
-  },
-  {
-    "name": "Masjid As Sabireen",
-    "website": null,
-    "lat": 29.6188038,
-    "lng": -95.579048,
-    "address": "610 Brand Lane, Stafford, TX",
-    "osmIds": [
-      "way/1486693878",
-      "node/1800465541"
     ],
     "blocked": "no website in OSM"
   },
@@ -664,72 +244,6 @@
       "way/1499350183"
     ],
     "blocked": "no website and no name in OSM"
-  },
-  {
-    "name": "Dar El Salaam Islamic Center",
-    "website": null,
-    "lat": 32.7569927,
-    "lng": -97.1117016,
-    "address": null,
-    "osmIds": [
-      "node/1595716783"
-    ],
-    "blocked": "no website in OSM"
-  },
-  {
-    "name": "McKinney Islamic Center",
-    "website": null,
-    "lat": 33.1692169,
-    "lng": -96.6626104,
-    "address": null,
-    "osmIds": [
-      "node/2235160495"
-    ],
-    "blocked": "no website in OSM"
-  },
-  {
-    "name": "Masjid al-ahad",
-    "website": null,
-    "lat": 29.8322662,
-    "lng": -95.7044448,
-    "address": null,
-    "osmIds": [
-      "node/4297111826"
-    ],
-    "blocked": "no website in OSM"
-  },
-  {
-    "name": "East Texas Islamic Society",
-    "website": null,
-    "lat": 32.3290554,
-    "lng": -95.2349539,
-    "address": null,
-    "osmIds": [
-      "node/4694423426"
-    ],
-    "blocked": "no website in OSM"
-  },
-  {
-    "name": "Masjid E Mohammedi",
-    "website": null,
-    "lat": 29.8618504,
-    "lng": -95.6794511,
-    "address": null,
-    "osmIds": [
-      "node/5248219007"
-    ],
-    "blocked": "no website in OSM"
-  },
-  {
-    "name": "IALFM Mosque",
-    "website": null,
-    "lat": 33.0344387,
-    "lng": -97.0830864,
-    "address": null,
-    "osmIds": [
-      "node/5341746000"
-    ],
-    "blocked": "no website in OSM"
   },
   {
     "name": "Masjid Salah Ad-Deen",
@@ -757,28 +271,6 @@
   {
     "name": null,
     "website": null,
-    "lat": 31.5195702,
-    "lng": -97.1299858,
-    "address": null,
-    "osmIds": [
-      "node/11201021741"
-    ],
-    "blocked": "no website and no name in OSM"
-  },
-  {
-    "name": "Alkhair Islamic Society of RGV",
-    "website": null,
-    "lat": 26.2524372,
-    "lng": -98.1926782,
-    "address": "1910 West Elsham Avenue, Edinburg, Texas, 78577",
-    "osmIds": [
-      "node/12228560668"
-    ],
-    "blocked": "no website in OSM"
-  },
-  {
-    "name": null,
-    "website": null,
     "lat": 29.7221185,
     "lng": -95.6186281,
     "address": null,
@@ -788,17 +280,6 @@
     "blocked": "no website and no name in OSM"
   },
   {
-    "name": "Ismaili Jamatkhana",
-    "website": null,
-    "lat": 30.4766516,
-    "lng": -97.8183063,
-    "address": "2401 South Lakeline Boulevard, Cedar Park, TX, 78613",
-    "osmIds": [
-      "node/13097142249"
-    ],
-    "blocked": "ismaili jamatkhana — does not publish a public timetable"
-  },
-  {
     "name": "HEB Masjid",
     "website": null,
     "lat": 32.8483365,
@@ -806,17 +287,6 @@
     "address": "901 Clinic Drive, Euless, TX, 76039",
     "osmIds": [
       "node/13752992861"
-    ],
-    "blocked": "no website in OSM"
-  },
-  {
-    "name": "Masjidu Ttaqwa Mosque",
-    "website": null,
-    "lat": 31.0703488,
-    "lng": -97.761,
-    "address": "5600 South Fort Hood Street, 76549",
-    "osmIds": [
-      "node/12809599401"
     ],
     "blocked": "no website in OSM"
   }

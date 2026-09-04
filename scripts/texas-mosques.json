@@ -266,5 +266,1399 @@
       "node/14027853957"
     ],
     "denomination": "muslim"
+  },
+  {
+    "name": "Masjid Al-Mustafa",
+    "website": "https://www.bearcreekic.org/",
+    "lat": 29.8627779,
+    "lng": -95.6714781,
+    "address": "17250 Coventry Park Dr, Houston, TX 77084, USA",
+    "osmIds": [
+      "relation/9675813"
+    ],
+    "denomination": "sunni",
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": "Elfarouq Mosque",
+    "website": "http://www.elfarouq.org/",
+    "lat": 29.7893434,
+    "lng": -95.5497392,
+    "address": "1207 Conrad Sauer Dr, Houston, TX 77043, USA",
+    "osmIds": [
+      "way/131590581"
+    ],
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": "Islamic Da'wah Center",
+    "website": "https://www.islamicdawahcenter.org/",
+    "lat": 29.762962,
+    "lng": -95.3605815,
+    "address": "201 Travis Street, Houston, TX",
+    "osmIds": [
+      "way/260789761"
+    ],
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": null,
+    "website": "http://icelpaso.org/#",
+    "lat": 31.8186808,
+    "lng": -106.5116745,
+    "address": "143 Paragon Ln, El Paso, TX 79912, USA",
+    "osmIds": [
+      "way/265482606"
+    ],
+    "blocked": "no website and no name in OSM"
+  },
+  {
+    "name": "Dallas Masjid of al-Islam",
+    "website": "http://www.masjidalislam.org/",
+    "lat": 32.7668737,
+    "lng": -96.7786768,
+    "address": "2604 S Harwood St, Dallas, TX 75215, USA",
+    "osmIds": [
+      "node/356855681"
+    ],
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": "Nueces Mosque",
+    "website": "http://nuecesmosque.com/",
+    "lat": 30.283198,
+    "lng": -97.744345,
+    "address": "1908 Nueces Street, Austin, TX",
+    "osmIds": [
+      "way/380922453"
+    ],
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": "Baitul Muqeet Mosque - Ahmadiyya Muslim Community",
+    "website": "http://islaminaustin.org/",
+    "lat": 30.5010461,
+    "lng": -97.6985957,
+    "address": "800 Deep Wood Drive, Round Rock, TX, 78681",
+    "osmIds": [
+      "way/383004522"
+    ],
+    "denomination": "ahmadiyya",
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": null,
+    "website": "http://icptx.org/",
+    "lat": 30.4710874,
+    "lng": -97.6348827,
+    "address": "920 W Pflugerville Pkwy, Pflugerville, TX 78660, USA",
+    "osmIds": [
+      "way/383025450"
+    ],
+    "blocked": "no website and no name in OSM"
+  },
+  {
+    "name": "Islamic Community of Bryan",
+    "website": "https://icbcs.org/",
+    "lat": 30.6222578,
+    "lng": -96.3474684,
+    "address": "417 Stasney Street, College Station, TX, 77840",
+    "osmIds": [
+      "way/411792297"
+    ],
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": "Minhaj ul Quran International",
+    "website": "http://us.mohid.co/tx/dallas/jmcc",
+    "lat": 33.0133608,
+    "lng": -96.8875328,
+    "address": "3751 N Josey Ln, Carrollton, TX 75007, USA",
+    "osmIds": [
+      "way/423752564"
+    ],
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": "Islamic Center of Amarillo",
+    "website": "http://amarillomosque.org/",
+    "lat": 35.2113128,
+    "lng": -101.9108193,
+    "address": "601 Quail Creek Dr, Amarillo, TX 79124, USA",
+    "osmIds": [
+      "way/428174400"
+    ],
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": null,
+    "website": "http://www.allenmasjid.com/",
+    "lat": 33.097137,
+    "lng": -96.6835313,
+    "address": "909 Allen Central Drive",
+    "osmIds": [
+      "way/460792404"
+    ],
+    "blocked": "no website and no name in OSM"
+  },
+  {
+    "name": null,
+    "website": "https://lubbockmuslims.org/",
+    "lat": 33.5820272,
+    "lng": -101.8659502,
+    "address": "2222 15th St, Lubbock, TX 79401, USA",
+    "osmIds": [
+      "way/465539048"
+    ],
+    "blocked": "no website and no name in OSM"
+  },
+  {
+    "name": "Masjidul Mu'meneen",
+    "website": "http://www.masjidulmumineen.org/",
+    "lat": 29.6584513,
+    "lng": -95.5315656,
+    "address": "8875 Benning Dr, Houston, TX 77031, USA",
+    "osmIds": [
+      "way/493297858"
+    ],
+    "denomination": "sunni",
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": "Bayt Al-Karim Islamic Center",
+    "website": "https://www.dncfw.org/",
+    "lat": 32.6286584,
+    "lng": -97.3917327,
+    "address": "4512 Columbus Trace",
+    "osmIds": [
+      "way/504095694"
+    ],
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": "Islamic Society of Southern Texas",
+    "website": "https://isstcc.org/",
+    "lat": 27.6942679,
+    "lng": -97.3366213,
+    "address": "7341 McArdle Road, Corpus Christi, TX, 78412",
+    "osmIds": [
+      "way/525184470",
+      "way/525184474",
+      "way/1513528966"
+    ],
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": "Islamic Academy of San Antonio",
+    "website": "https://icsaonline.org/",
+    "lat": 29.5216118,
+    "lng": -98.5631983,
+    "address": "8638 Fairhaven Street, San Antonio",
+    "osmIds": [
+      "way/641439121"
+    ],
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": null,
+    "website": "https://alsalammasjid.org/",
+    "lat": 30.0090993,
+    "lng": -95.5598974,
+    "address": "16700 Old Louetta Rd, Spring, TX 77379, USA",
+    "osmIds": [
+      "way/655037002"
+    ],
+    "blocked": "no website and no name in OSM"
+  },
+  {
+    "name": "Masjid Al-Sahaabah Watauga Center",
+    "website": "https://wataugamasjid.com/",
+    "lat": 32.8682536,
+    "lng": -97.2517276,
+    "address": "6005 Chapman Road, Watauga, TX, 76148",
+    "osmIds": [
+      "way/670759640"
+    ],
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": "Islamic center of Wylie, Masjid",
+    "website": "http://icwtx.org/",
+    "lat": 33.048489,
+    "lng": -96.567142,
+    "address": "3390 Lakeway Drive, St Paul, TX, 75098",
+    "osmIds": [
+      "way/709095484"
+    ],
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": "Islamic Center of Lubbock",
+    "website": "https://lubbockmuslims.org/",
+    "lat": 33.561898,
+    "lng": -101.9537991,
+    "address": "3419 La Salle Avenue, Lubbock, TX, 79407",
+    "osmIds": [
+      "way/720742403"
+    ],
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": "East Plano Islamic Center",
+    "website": "https://www.epicmasjid.org/",
+    "lat": 33.0098878,
+    "lng": -96.6467899,
+    "address": "4700 14th St, Plano, TX 75074, USA",
+    "osmIds": [
+      "way/902564780"
+    ],
+    "denomination": "sunni",
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": null,
+    "website": "http://www.icltx.com/",
+    "lat": 32.573788,
+    "lng": -94.7501855,
+    "address": "119 Amy Street, Longview, TX, 75605",
+    "osmIds": [
+      "way/995953052"
+    ],
+    "blocked": "no website and no name in OSM"
+  },
+  {
+    "name": "San Marcos Masjid",
+    "website": "http://sanmarcosmasjid.org/",
+    "lat": 29.8862237,
+    "lng": -97.9441235,
+    "address": "434 North Comanche Street, San Marcos, TX, 78666",
+    "osmIds": [
+      "way/1099925585"
+    ],
+    "denomination": "sunni",
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": "IALFM Mosque",
+    "website": "http://ialfm.org/",
+    "lat": 33.0354077,
+    "lng": -97.0830104,
+    "address": "Peters Colony Road, Flower Mound, TX, 75022",
+    "osmIds": [
+      "way/1130995547"
+    ],
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": null,
+    "website": "http://www.dawateislamiusa.com/",
+    "lat": 29.6528633,
+    "lng": -95.6151352,
+    "address": "13130 Alston Rd, Sugar Land, TX 77478, USA",
+    "osmIds": [
+      "way/1247561146"
+    ],
+    "blocked": "no website and no name in OSM"
+  },
+  {
+    "name": "Masjid Arafat",
+    "website": "http://duusa.org/",
+    "lat": 29.6581112,
+    "lng": -95.6576414,
+    "address": "16300 Old Richmond Rd, Sugar Land, TX 77498, USA",
+    "osmIds": [
+      "way/1322380194"
+    ],
+    "denomination": "sunni",
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": null,
+    "website": "http://www.maryammasjid.org/contact/",
+    "lat": 29.5945044,
+    "lng": -95.6838479,
+    "address": "504 Sartartia Rd, Sugar Land, TX 77479, USA",
+    "osmIds": [
+      "way/1323719988"
+    ],
+    "blocked": "no website and no name in OSM"
+  },
+  {
+    "name": "Masjid Istiqlal Houston",
+    "website": "http://www.istiqlalhouston.org/",
+    "lat": 29.6527273,
+    "lng": -95.6542335,
+    "address": "15303 Mc Kaskle Rd, Sugar Land, TX 77498, USA",
+    "osmIds": [
+      "way/1367143685"
+    ],
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": null,
+    "website": "http://icjarrell.org/",
+    "lat": 30.7813991,
+    "lng": -97.5881199,
+    "address": "9401 Farm-to-Market Road 1105, Jarrell, TX, 76537",
+    "osmIds": [
+      "way/1369802877"
+    ],
+    "blocked": "no website and no name in OSM"
+  },
+  {
+    "name": null,
+    "website": "https://mustafaislamiccenter.org/",
+    "lat": 32.0006562,
+    "lng": -102.1458846,
+    "address": "4704 Andrews Hwy, Midland, TX 79703, USA",
+    "osmIds": [
+      "way/1385972314"
+    ],
+    "blocked": "no website and no name in OSM"
+  },
+  {
+    "name": "MOMIN of Texas",
+    "website": "http://www.momin.org/",
+    "lat": 32.9986738,
+    "lng": -96.8619783,
+    "address": "2945 Frankford Road, Dallas, TX, 75287",
+    "osmIds": [
+      "way/1394443121"
+    ],
+    "denomination": "shia",
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": "Baitus Samee Mosque",
+    "website": "http://www.alislam.org/",
+    "lat": 29.9646368,
+    "lng": -95.4408293,
+    "address": "1333 Spears Road, Houston, TX, 77067",
+    "osmIds": [
+      "way/1412305433",
+      "way/1412305434"
+    ],
+    "denomination": "ahmadiyya",
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": "Masjid",
+    "website": "https://masjid.mcisonline.net/",
+    "lat": 29.6775566,
+    "lng": -95.3973955,
+    "address": "2222 Mansard St, Houston, TX 77054, USA",
+    "osmIds": [
+      "way/1414024242"
+    ],
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": null,
+    "website": "https://friscomasjid.org/",
+    "lat": 33.1722192,
+    "lng": -96.8350281,
+    "address": "11137 Frisco St, Frisco, TX 75033, USA",
+    "osmIds": [
+      "way/1418381673"
+    ],
+    "blocked": "no website and no name in OSM"
+  },
+  {
+    "name": "Ismaili Center Houston",
+    "website": "https://ismailicenter.org/",
+    "lat": 29.7591137,
+    "lng": -95.3917866,
+    "address": "2323 Allen Parkway Frontage Road, Houston, TX, 77019",
+    "osmIds": [
+      "way/1447830521"
+    ],
+    "denomination": "ismaili",
+    "blocked": "ismaili jamatkhana — does not publish a public timetable"
+  },
+  {
+    "name": "Masjid As Sabireen",
+    "website": "http://brandlaneic.com/",
+    "lat": 29.6188038,
+    "lng": -95.579048,
+    "address": "610 Brand Lane, Stafford, TX",
+    "osmIds": [
+      "way/1486693878",
+      "node/1800465541"
+    ],
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": "Dar El Salaam Islamic Center",
+    "website": "http://www.darelsalam.org/",
+    "lat": 32.7569927,
+    "lng": -97.1117016,
+    "address": "500 W Road to Six Flags St, Arlington, TX 76011, USA",
+    "osmIds": [
+      "node/1595716783"
+    ],
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": "McKinney Islamic Center",
+    "website": "http://www.mckinneymasjid.org/",
+    "lat": 33.1692169,
+    "lng": -96.6626104,
+    "address": "2940 Eldorado Pkwy, McKinney, TX 75070, USA",
+    "osmIds": [
+      "node/2235160495"
+    ],
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": "Masjid al-ahad",
+    "website": "http://masjidahad.org/",
+    "lat": 29.8322662,
+    "lng": -95.7044448,
+    "address": "19214 Clay Rd Ste k, Katy, TX 77449, USA",
+    "osmIds": [
+      "node/4297111826"
+    ],
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": "East Texas Islamic Society",
+    "website": "https://tylermuslim.com/",
+    "lat": 32.3290554,
+    "lng": -95.2349539,
+    "address": "10631 State Hwy 64, Tyler, TX 75707, USA",
+    "osmIds": [
+      "node/4694423426"
+    ],
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": "Masjid E Mohammedi",
+    "website": "https://www.houstonjamaat.com/",
+    "lat": 29.8618504,
+    "lng": -95.6794511,
+    "address": "17730 Coventry Park Dr, Houston, TX 77084, USA",
+    "osmIds": [
+      "node/5248219007"
+    ],
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": "IALFM Mosque",
+    "website": "http://ialfm.org/",
+    "lat": 33.0344387,
+    "lng": -97.0830864,
+    "address": "3430 Peters Colony Rd, Flower Mound, TX 75022, USA",
+    "osmIds": [
+      "node/5341746000"
+    ],
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": null,
+    "website": "http://icwbluemosque.org/",
+    "lat": 31.5195702,
+    "lng": -97.1299858,
+    "address": "2725 Benton Dr, Waco, TX 76706, USA",
+    "osmIds": [
+      "node/11201021741"
+    ],
+    "blocked": "no website and no name in OSM"
+  },
+  {
+    "name": "Alkhair Islamic Society of RGV",
+    "website": "https://us.mohid.co/tx/txrgn/alkhair",
+    "lat": 26.2524372,
+    "lng": -98.1926782,
+    "address": "1910 West Elsham Avenue, Edinburg, Texas, 78577",
+    "osmIds": [
+      "node/12228560668"
+    ],
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": "Ismaili Jamatkhana",
+    "website": "http://the.ismaili/",
+    "lat": 30.4766516,
+    "lng": -97.8183063,
+    "address": "2401 South Lakeline Boulevard, Cedar Park, TX, 78613",
+    "osmIds": [
+      "node/13097142249"
+    ],
+    "blocked": "ismaili jamatkhana — does not publish a public timetable"
+  },
+  {
+    "name": "Masjidu Ttaqwa Mosque",
+    "website": "https://www.icgk.org/",
+    "lat": 31.0703488,
+    "lng": -97.761,
+    "address": "5600 South Fort Hood Street, 76549",
+    "osmIds": [
+      "node/12809599401"
+    ],
+    "blocked": "no website in OSM"
+  },
+  {
+    "name": "Clear Lake Islamic Center - Masjid",
+    "website": "http://www.themasjid.org/",
+    "lat": 29.5535386,
+    "lng": -95.1087754,
+    "address": "17511 El Camino Real, Houston, TX 77058, USA",
+    "placeId": "ChIJueQXSVacQIYR2MnuD8WRWjI"
+  },
+  {
+    "name": "ISGH Masjid Hamza - Mission Bend Islamic Center",
+    "website": "http://isghmasjidhamza.org/",
+    "lat": 29.710041099999998,
+    "lng": -95.6380552,
+    "address": "6233 Tres Lagunas Dr, Houston, TX 77083, USA",
+    "placeId": "ChIJ-TJp29PdQIYRNdzKNKoBtrE"
+  },
+  {
+    "name": "At-Tawhid Mosque",
+    "website": "https://www.tawhidhouston.com/",
+    "lat": 29.8106048,
+    "lng": -95.3280556,
+    "address": "5514 Hirsch Rd, Houston, TX 77026, USA",
+    "placeId": "ChIJp23SZnK5QIYRCtg_7nf2H_w"
+  },
+  {
+    "name": "AL NOOR MOSQUE",
+    "website": "https://www.alnoormasjid.org/",
+    "lat": 29.718008500000003,
+    "lng": -95.4938976,
+    "address": "6443 Prestwood Dr, Houston, TX 77081, USA",
+    "placeId": "ChIJJyShQzTCQIYR8WNe7eJ9j5A"
+  },
+  {
+    "name": "Muhammad Mosque No.45",
+    "website": "https://www.noihouston.org/",
+    "lat": 29.706294,
+    "lng": -95.34511099999999,
+    "address": "4443 Old Spanish Trl, Houston, TX 77021, USA",
+    "placeId": "ChIJhWZiuUm-QIYRwERB1itxzsg"
+  },
+  {
+    "name": "Islamic Education Center",
+    "website": "https://www.iec-houston.org/",
+    "lat": 29.7419895,
+    "lng": -95.5002063,
+    "address": "2313 S Voss Rd, Houston, TX 77057, USA",
+    "placeId": "ChIJA45yor_DQIYR4Tfpnfcz1tE"
+  },
+  {
+    "name": "Houston Masjid of Al-Islam",
+    "website": "http://www.masjidwdmohammed.org/",
+    "lat": 29.667718899999997,
+    "lng": -95.3121646,
+    "address": "6641 Bellfort Ave, Houston, TX 77087, USA",
+    "placeId": "ChIJqzKZWeKVQIYRZYOAl7uZSc0"
+  },
+  {
+    "name": "Hawa Masjid",
+    "website": "https://hawa-masjid.lovable.app/",
+    "lat": 29.714151100000002,
+    "lng": -95.5483124,
+    "address": "5880 Ranchester Dr #250, Houston, TX 77036, USA",
+    "placeId": "ChIJG7qpEtnCQIYRAtQpdhxacmI"
+  },
+  {
+    "name": "MAS Katy Center (Masjid Al-Rahman)",
+    "website": "https://www.maskaty.org/",
+    "lat": 29.760896400000004,
+    "lng": -95.7037417,
+    "address": "1800 Baker Rd, Houston, TX 77094, USA",
+    "placeId": "ChIJd1bnesvYQIYRrEJpZOmYGUk"
+  },
+  {
+    "name": "ISGH Masjid Savoy Wilcrest",
+    "website": "http://www.savoymusallah.com/",
+    "lat": 29.6583804,
+    "lng": -95.57079449999999,
+    "address": "11246 Wilcrest Dr Unit 110, Houston, TX 77099, USA",
+    "placeId": "ChIJW3VXc-XnQIYRq6ceAg1ASEg"
+  },
+  {
+    "name": "Masjid Ibrahim",
+    "website": "https://masjidibrahimtx.org/",
+    "lat": 30.077070799999998,
+    "lng": -95.5046189,
+    "address": "5500 Farm to Market 2920, Spring, TX 77388, USA",
+    "placeId": "ChIJA848XQIzR4YRDrkWq1cVfbM"
+  },
+  {
+    "name": "Masjid Ghous-E-Azam",
+    "website": "https://www.facebook.com/Masjid.GhouseAzam",
+    "lat": 30.014215900000004,
+    "lng": -95.3429017,
+    "address": "5511 Farm to Market 1960 Rd E, Humble, TX 77338, USA",
+    "placeId": "ChIJIUFVk_q0QIYR9GN3WulSa5I"
+  },
+  {
+    "name": "Tajweed Institute Masjid",
+    "website": "http://tajweedusa.org/",
+    "lat": 29.718933,
+    "lng": -95.6723947,
+    "address": "16205 Westheimer Rd, Houston, TX 77082, USA",
+    "placeId": "ChIJMfSqp_beQIYRLsim47oAwfo"
+  },
+  {
+    "name": "Haj Nabih Masjid",
+    "website": "https://hajnabihmasjid.com/",
+    "lat": 29.9851677,
+    "lng": -95.4935027,
+    "address": "14420 Sylvanfield Dr Ste 100, Houston, TX 77014, USA",
+    "placeId": "ChIJjx0xVPHNQIYRx9Q3KHgd4t0"
+  },
+  {
+    "name": "Kingwood Islamic Center (Kingwood Mosque)",
+    "website": "https://kingwoodislamiccenter.com/",
+    "lat": 30.0889521,
+    "lng": -95.2368659,
+    "address": "22001 E Martin Dr, Porter, TX 77365, USA",
+    "placeId": "ChIJP0PWUGVNR4YRmAElvRn4FRc"
+  },
+  {
+    "name": "Ibrahim Islamic Center & Mosque",
+    "website": "http://www.ibrahimcenter.org/",
+    "lat": 29.778145700000003,
+    "lng": -95.23826199999999,
+    "address": "618 Baca St, Houston, TX 77013, USA",
+    "placeId": "ChIJ21QXJJy_QIYRIJ_OAjTifwE"
+  },
+  {
+    "name": "Pearland Islamic Center (PIC) - ISGH",
+    "website": "https://picisgh.org/",
+    "lat": 29.582311799999996,
+    "lng": -95.3218577,
+    "address": "1530 Garden Rd, Pearland, TX 77581, USA",
+    "placeId": "ChIJyT2tpfCTQIYRBGH5egIE5EY"
+  },
+  {
+    "name": "Shadow Creek Muslim Community Center",
+    "website": "https://thesmcc.org/",
+    "lat": 29.574614800000003,
+    "lng": -95.40820120000001,
+    "address": "12234 Shadow Creek Pkwy #9, Pearland, TX 77584, USA",
+    "placeId": "ChIJrZYAlJnsQIYRbej7GCn3dzo"
+  },
+  {
+    "name": "Adam Masjid",
+    "website": "http://adammasjid.org/",
+    "lat": 29.622342399999997,
+    "lng": -95.59667890000001,
+    "address": "341 Southwestern Blvd, Sugar Land, TX 77478, USA",
+    "placeId": "ChIJ06EvD1PmQIYRJQcsg6FKy3A"
+  },
+  {
+    "name": "Masjid Aqsa",
+    "website": "https://www.aqsamasjidkaty.com/",
+    "lat": 29.754697099999994,
+    "lng": -95.79475130000002,
+    "address": "2810 Saddlehorn Trail, Katy, TX 77494, USA",
+    "placeId": "ChIJO7QBTLUmQYYRvlcNw8VQUQk"
+  },
+  {
+    "name": "Richmond Islamic Community Center",
+    "website": "https://richmondmasjid.org/",
+    "lat": 29.673648000000004,
+    "lng": -95.75236439999999,
+    "address": "5530 Long Prairie Trace #100, Richmond, TX 77407, USA",
+    "placeId": "ChIJ5_0u79khQYYRBG1OKPHbk_o"
+  },
+  {
+    "name": "WKIC - Masjid Al Firdous",
+    "website": "http://wkic.org/",
+    "lat": 29.732908999999996,
+    "lng": -95.85418229999999,
+    "address": "4015 Fulshear Katy Rd, Katy, TX 77494, USA",
+    "placeId": "ChIJ8SIrQLgjQYYRMtk_NhFjReo"
+  },
+  {
+    "name": "Masjid Abu Huraira",
+    "website": "http://woodlandsislamiccenter.com/",
+    "lat": 30.125222299999997,
+    "lng": -95.4695418,
+    "address": "1701 Sawdust Rd, The Woodlands, TX 77380, USA",
+    "placeId": "ChIJf3h5mw80R4YRE-1E0-UVrqs"
+  },
+  {
+    "name": "Al Ansaar Masjid - An ISGH Masjid",
+    "website": "http://alansaarmasjid.org/",
+    "lat": 30.235976,
+    "lng": -95.5169105,
+    "address": "15217 Sunset Trail, The Woodlands, TX 77384, USA",
+    "placeId": "ChIJsRx4VHw6R4YRxJrS4bYR_ZU"
+  },
+  {
+    "name": "Masjid E Zohra",
+    "website": "http://masjidzohra.org/",
+    "lat": 30.127202799999996,
+    "lng": -95.4277493,
+    "address": "990 Rayford Rd Ste 120, Spring, TX 77386, USA",
+    "placeId": "ChIJ9_QdWOc1R4YRpB4JPAPYn8U"
+  },
+  {
+    "name": "Klein Islamic Center - Masjid",
+    "website": "http://kleinislamiccenter.org/",
+    "lat": 30.0443728,
+    "lng": -95.4907075,
+    "address": "18901 Kuykendahl Rd, Spring, TX 77388, USA",
+    "placeId": "ChIJ35S7XIDNQIYROY0d3IUl8AM"
+  },
+  {
+    "name": "Masjid Al Karim",
+    "website": "https://masjidalkarim.net/",
+    "lat": 30.101990899999997,
+    "lng": -95.39854749999999,
+    "address": "1911 Riley Fuzzel Rd, Spring, TX 77386, USA",
+    "placeId": "ChIJ7wsJ2BY1R4YRNQc5KsEupZg"
+  },
+  {
+    "name": "Islamic Center of Conroe ICC (Masjid Bilal)",
+    "website": "https://iccconroe.com/",
+    "lat": 30.292389500000002,
+    "lng": -95.45673769999999,
+    "address": "1108 A, S Frazier St, Conroe, TX 77301, USA",
+    "placeId": "ChIJIZ7rVxM5R4YRbaQCGchV1Gk"
+  },
+  {
+    "name": "Masjid Fatima tuz Zahra",
+    "website": "https://www.minhaj.org/english/Overseas/tid/34296/USA-Timings-of-Eid-ul-Adha-Prayers-in-Texas.html",
+    "lat": 30.0975709,
+    "lng": -95.23628640000001,
+    "address": "22040 W Ford Rd, Porter, TX 77365, USA",
+    "placeId": "ChIJY8AJz3lNR4YRKC7fDDkeGzE"
+  },
+  {
+    "name": "Masjid Isa Ibn Maryam (Bammel Musallah)",
+    "website": "https://www.islamtx.com/",
+    "lat": 29.978068200000003,
+    "lng": -95.4918608,
+    "address": "13932 Bammel North Houston Rd, Houston, TX 77014, USA",
+    "placeId": "ChIJZWST9mzMQIYRfm_lYBVThWU"
+  },
+  {
+    "name": "WIC Masjid",
+    "website": "https://woodlandsislamiccenter.com/",
+    "lat": 30.125206799999997,
+    "lng": -95.4695579,
+    "address": "1625 Sawdust Rd, Spring, TX 77380, USA",
+    "placeId": "ChIJAxdxhA80R4YRalGOYOmTHrQ"
+  },
+  {
+    "name": "Mercy Community Center - Mosque",
+    "website": "https://mercycc.org/",
+    "lat": 29.717272700000002,
+    "lng": -95.500812,
+    "address": "5922 Hillcroft St # C, Houston, TX 77036, USA",
+    "placeId": "ChIJOb8sQ0rCQIYRFaVwPi00z5w"
+  },
+  {
+    "name": "Islamic Center of South Dallas",
+    "website": "https://www.facebook.com/profile.php?id=793627857328461",
+    "lat": 32.7691205,
+    "lng": -96.76800899999999,
+    "address": "2806 Martin Luther King Jr Blvd, Dallas, TX 75215, USA",
+    "placeId": "ChIJhS0UVoyYToYR71EUkTLRQjM"
+  },
+  {
+    "name": "Muhammad Mosque",
+    "website": "http://www.noidallas48.org/",
+    "lat": 32.766134099999995,
+    "lng": -96.7725316,
+    "address": "2429 Martin Luther King Jr Blvd, Dallas, TX 75215, USA",
+    "placeId": "ChIJPQjmm_SYToYRI0Z_SNsyqlA"
+  },
+  {
+    "name": "Islamic Center of Irving",
+    "website": "https://irvingmasjid.org/",
+    "lat": 32.8433971,
+    "lng": -97.0106522,
+    "address": "2555 Esters Rd, Irving, TX 75062, USA",
+    "placeId": "ChIJfegQy4aBToYRcINprM4zk7M"
+  },
+  {
+    "name": "Masjid Al Quran",
+    "website": "https://www.facebook.com/MasjidAlQuranDallasTx/",
+    "lat": 32.7343289,
+    "lng": -96.7920007,
+    "address": "2420 Cedar Crest Blvd, Dallas, TX 75203, USA",
+    "placeId": "ChIJCTle0DSYToYRTNhGbvt_b34"
+  },
+  {
+    "name": "Islamic Association of North Texas (IANT Masjid)",
+    "website": "https://www.iant.com/",
+    "lat": 32.9392353,
+    "lng": -96.73053709999999,
+    "address": "840 Abrams Rd, Richardson, TX 75081, USA",
+    "placeId": "ChIJJ7Bj_J4fTIYRfWVohOA_w60"
+  },
+  {
+    "name": "Mesquite Islamic Center (MIC Mosque)",
+    "website": "http://www.micmasjid.com/",
+    "lat": 32.796050199999996,
+    "lng": -96.6177553,
+    "address": "2403 Franklin Dr, Mesquite, TX 75150, USA",
+    "placeId": "ChIJBfo8m8ulToYR9ohwTEuA7Dw"
+  },
+  {
+    "name": "ICC - Islamic Center of Coppell",
+    "website": "https://iccmasjid.org/",
+    "lat": 32.9699245,
+    "lng": -96.9762399,
+    "address": "612 E Sandy Lake Rd #100, Coppell, TX 75019, USA",
+    "placeId": "ChIJC9xVGTIpTIYRbXMwcm2PEGk"
+  },
+  {
+    "name": "Masjid Yaseen",
+    "website": "http://masjidyaseen.org/",
+    "lat": 32.9831421,
+    "lng": -96.6507932,
+    "address": "1601 W Campbell Rd, Garland, TX 75044, USA",
+    "placeId": "ChIJhwlMxw8cTIYRcIJztNht0iM"
+  },
+  {
+    "name": "Islamic Association of Carrollton (IAC)",
+    "website": "http://www.masjidal-rahman.org/",
+    "lat": 32.961051999999995,
+    "lng": -96.87812199999999,
+    "address": "1901 Kelly Blvd, Carrollton, TX 75006, USA",
+    "placeId": "ChIJJewiC4omTIYRVeJ0orRW5_k"
+  },
+  {
+    "name": "Grand Prairie Masjid",
+    "website": "http://grandprairiemasjid.org/",
+    "lat": 32.771873,
+    "lng": -97.057057,
+    "address": "802 Greenview Dr suite b, Grand Prairie, TX 75050, USA",
+    "placeId": "ChIJzfstvCOHToYReBF9QBZrDNI"
+  },
+  {
+    "name": "MAS Islamic Center Of Dallas",
+    "website": "http://www.masdfw.org/",
+    "lat": 32.9640177,
+    "lng": -96.6963504,
+    "address": "1515 Blake Dr, Richardson, TX 75081, USA",
+    "placeId": "ChIJ2emwLuYeTIYRj1XCg6y4Adk"
+  },
+  {
+    "name": "Imam Ali Islamic center",
+    "website": "https://www.facebook.com/imamalicenterintexas/",
+    "lat": 32.7450634,
+    "lng": -97.03743349999999,
+    "address": "2330 Dalworth St, Grand Prairie, TX 75050, USA",
+    "placeId": "ChIJAfkWbFiGToYR03w5w3eZNZY"
+  },
+  {
+    "name": "Sachse Muslim Society",
+    "website": "https://sachsemasjid.org/",
+    "lat": 32.9773609,
+    "lng": -96.59918809999999,
+    "address": "2416 3rd St, Sachse, TX 75048, USA",
+    "placeId": "ChIJ28z7rVMDTIYRpmW_HmWfCgs"
+  },
+  {
+    "name": "Makkah Masjid (Garland Mosque)",
+    "website": "https://makkahmasjid.net/",
+    "lat": 32.9317238,
+    "lng": -96.67934849999999,
+    "address": "3301 W Buckingham Rd, Garland, TX 75042, USA",
+    "placeId": "ChIJcTPQKG8eTIYRMds5yfnGyBA"
+  },
+  {
+    "name": "Islamic Association-Mesquite",
+    "website": "https://www.islamicassociationofmesquite.com/",
+    "lat": 32.7973832,
+    "lng": -96.6345372,
+    "address": "2409 Gus Thomasson Rd, Mesquite, TX 75150, USA",
+    "placeId": "ChIJE9I-zjukToYRg0U6GJ0BgmU"
+  },
+  {
+    "name": "Al-Ansar Society",
+    "website": "http://alansarsociety.org/new/",
+    "lat": 32.9369449,
+    "lng": -96.7404528,
+    "address": "1059 S Sherman St Suit #110, Richardson, TX 75081, USA",
+    "placeId": "ChIJ1b4omjwfTIYRC_lxnK8hXCo"
+  },
+  {
+    "name": "Rahmania Center",
+    "website": "https://rahmaniacenter.com/",
+    "lat": 32.9475735,
+    "lng": -96.7287305,
+    "address": "331 E Polk St, Richardson, TX 75081, USA",
+    "placeId": "ChIJWchfunQfTIYR8gS9VAFbDF8"
+  },
+  {
+    "name": "Abu Hanifa Mosque",
+    "website": "https://masjidabuhanifahiat.org/",
+    "lat": 32.9467175,
+    "lng": -96.7044566,
+    "address": "132 N Glenville Dr, Richardson, TX 75081, USA",
+    "placeId": "ChIJ94C-zkgfTIYRJPgZs2ZKyUE"
+  },
+  {
+    "name": "Islamic Association of Collin County (Plano Mosque)",
+    "website": "http://www.planomasjid.org/",
+    "lat": 33.059812199999996,
+    "lng": -96.7515566,
+    "address": "6401 Independence Pkwy, Plano, TX 75023, USA",
+    "placeId": "ChIJq9bOLqciTIYRCcB6F30aiXQ"
+  },
+  {
+    "name": "Noori Mosque",
+    "website": "https://noorimasjid.net/",
+    "lat": 33.0133333,
+    "lng": -96.6652778,
+    "address": "1251 Shiloh Rd, Plano, TX 75074, USA",
+    "placeId": "ChIJqZaI3l8ZTIYRmMxb3T6YAhg"
+  },
+  {
+    "name": "Masjid Salahadeen",
+    "website": "http://www.masjidsalahadeen.org/",
+    "lat": 33.0526741,
+    "lng": -96.693917,
+    "address": "4030 Split Trail Rd, Plano, TX 75074, USA",
+    "placeId": "ChIJcUTYIgAZTIYRzg4RC2RKdT8"
+  },
+  {
+    "name": "Barkaat-Ul-Quran",
+    "website": "http://www.barkaatulquran.org/",
+    "lat": 32.8391363,
+    "lng": -96.9544612,
+    "address": "555 W Airport Fwy #178, Irving, TX 75062, USA",
+    "placeId": "ChIJWxSOxgKDToYR_NAzFqEPFd4"
+  },
+  {
+    "name": "Dawoodi Bohra Community - Anjuman-e-Najmi, Dallas Inc.",
+    "website": "https://usa.thedawoodibohras.com/",
+    "lat": 32.7995066,
+    "lng": -96.9342487,
+    "address": "1320 S Nursery Rd, Irving, TX 75060, USA",
+    "placeId": "ChIJ5cE5lSKDToYRk1ih8_E7zes"
+  },
+  {
+    "name": "ISAT Center Masjid",
+    "website": "https://www.centermasjid.com/",
+    "lat": 32.7184923,
+    "lng": -97.104419,
+    "address": "1700 S Center St, Arlington, TX 76010, USA",
+    "placeId": "ChIJawtfz0J9ToYR9MihBOCNEyE"
+  },
+  {
+    "name": "Mansfield Islamic Center",
+    "website": "http://mansfieldmasjid.org/",
+    "lat": 32.642460899999996,
+    "lng": -97.074488,
+    "address": "6401 New York Ave #135, Arlington, TX 76018, USA",
+    "placeId": "ChIJeTgrLsaJToYRtcOVJIVkLBw"
+  },
+  {
+    "name": "Unity Islamic Center - Mansfield Masjid Official",
+    "website": "https://www.unityislamiccenter.org/",
+    "lat": 32.600653199999996,
+    "lng": -97.12977060000001,
+    "address": "651 E Debbie Ln Bldg 400, Mansfield, TX 76063, USA",
+    "placeId": "ChIJK0qoyDthToYRNkX07NLUvfU"
+  },
+  {
+    "name": "Islamic Association of Tarrant County",
+    "website": "https://iatcmasjid.org/",
+    "lat": 32.726706,
+    "lng": -97.3938914,
+    "address": "4901 Diaz Ave, Fort Worth, TX 76107, USA",
+    "placeId": "ChIJlXeQsapzToYRwEjS8DROgDw"
+  },
+  {
+    "name": "Islamic Center of Southlake",
+    "website": "http://southlakemasjid.com/",
+    "lat": 32.9577441,
+    "lng": -97.1348427,
+    "address": "1280 N Carroll Ave, Southlake, TX 76092, USA",
+    "placeId": "ChIJ3w6tbYfUTYYRiPZYFIgogMM"
+  },
+  {
+    "name": "Masjid Al-Hedayah",
+    "website": "https://alhedayahacademy.org/",
+    "lat": 32.7677225,
+    "lng": -97.1672259,
+    "address": "8601 Randol Mill Rd, Fort Worth, TX 76120, USA",
+    "placeId": "ChIJiw3b8RF8ToYRzzbkDiTmCos"
+  },
+  {
+    "name": "Dar El-Eman Islamic Center (DEIC)",
+    "website": "http://www.dareleman.org/",
+    "lat": 32.65665,
+    "lng": -97.13627799999999,
+    "address": "5511 Mansfield Rd, Arlington, TX 76017, USA",
+    "placeId": "ChIJe3bVAwJjToYRxUtZ8R51FmE"
+  },
+  {
+    "name": "Keller Islamic Center (KIC)",
+    "website": "http://www.kellerislamiccenter.org/",
+    "lat": 32.9395257,
+    "lng": -97.2838562,
+    "address": "3601 W Keller Hicks Rd, Fort Worth, TX 76244, USA",
+    "placeId": "ChIJmXE3eOzZTYYRcW4Q-KnsbVE"
+  },
+  {
+    "name": "Dar Alhuda Inc مسجد",
+    "website": "https://www.daralhudamasjid.com/",
+    "lat": 32.833157199999995,
+    "lng": -97.17820780000001,
+    "address": "1245 Karla Dr, Hurst, TX 76053, USA",
+    "placeId": "ChIJC1hNWyt_ToYRAZM_rWwLe6w"
+  },
+  {
+    "name": "Islamic Center of Lake Worth",
+    "website": "http://www.icolakeworth.org/",
+    "lat": 32.8051806,
+    "lng": -97.4150536,
+    "address": "6100 Shady Oaks Manor Dr, Fort Worth, TX 76135, USA",
+    "placeId": "ChIJtd0eGQB1ToYRRysGfU6zuMc"
+  },
+  {
+    "name": "Zia ul Quran Masjid",
+    "website": "http://www.ziaulquranmasjid.com/",
+    "lat": 32.704236,
+    "lng": -97.06727939999999,
+    "address": "2425 Carter Dr, Arlington, TX 76014, USA",
+    "placeId": "ChIJzwx0vt6HToYRDo7KU3yZM5I"
+  },
+  {
+    "name": "Muhammad Mosque #52",
+    "website": "http://www.noifortworth.org/",
+    "lat": 32.7481335,
+    "lng": -97.2930185,
+    "address": "2401 Scott Ave, Fort Worth, TX 76103, USA",
+    "placeId": "ChIJKSMtZ6hxToYR1BsQJmvVvdo"
+  },
+  {
+    "name": "Dar El-Quran",
+    "website": "http://www.linktr.ee/darelquran",
+    "lat": 32.7371373,
+    "lng": -97.12369900000002,
+    "address": "110 N Davis Dr, Arlington, TX 76013, USA",
+    "placeId": "ChIJY4gTGvl8ToYRZ_gG3qeOng0"
+  },
+  {
+    "name": "Masjid Faruq of Grand Prairie TX",
+    "website": "http://www.faruqmasjid.org/",
+    "lat": 32.7383353,
+    "lng": -97.0347939,
+    "address": "2202 San Antonio St bldg b, Grand Prairie, TX 75051, USA",
+    "placeId": "ChIJQyJgdVuGToYRWJ6vboguRNY"
+  },
+  {
+    "name": "Islamic Society Of Mesquite",
+    "website": "https://islamicsocietyofmesquite.org/",
+    "lat": 32.8475053,
+    "lng": -96.6021274,
+    "address": "5906 Duck Creek Dr Apt 14, Garland, TX 75043, USA",
+    "placeId": "ChIJn9twlN2nToYRAjfD4g68e_s"
+  },
+  {
+    "name": "Nour Al-Quran Society",
+    "website": "https://www.nouralquran.org/",
+    "lat": 32.877061499999996,
+    "lng": -96.6175719,
+    "address": "1015 Stonewall St, Garland, TX 75043, USA",
+    "placeId": "ChIJ5UojRu-nToYR6AypREZYQDE"
+  },
+  {
+    "name": "Islamic Center of Rowlett",
+    "website": "https://icrmasjid.org/",
+    "lat": 32.886069299999996,
+    "lng": -96.5367583,
+    "address": "6710 Garner Rd, Rowlett, TX 75088, USA",
+    "placeId": "ChIJwY1-576pToYRnj4p_ZFrHno"
+  },
+  {
+    "name": "Islamic Center of Quad Cities",
+    "website": "http://icqcmasjid.org/",
+    "lat": 33.1232657,
+    "lng": -96.74846219999999,
+    "address": "14800 Lebanon Rd, Frisco, TX 75035, USA",
+    "placeId": "ChIJafCy8OQ9TIYRiFcDnkLVFNo"
+  },
+  {
+    "name": "Islamic Center of Aubrey",
+    "website": "https://www.aubreymasjid.org/",
+    "lat": 33.220591899999995,
+    "lng": -96.9082566,
+    "address": "26875 US Highway 380 E, Suite 100, Aubrey, TX 76227, USA",
+    "placeId": "ChIJj51w9CI5TIYRtLBk9A3MP8A"
+  },
+  {
+    "name": "Princeton Islamic Center",
+    "website": "http://www.picmasjid.org/",
+    "lat": 33.1797215,
+    "lng": -96.49668679999999,
+    "address": "521 N 4th St, Princeton, TX 75407, USA",
+    "placeId": "ChIJSbTO-QgNTIYRj_BPr62wb-o"
+  },
+  {
+    "name": "Masjid-e-Sajideen",
+    "website": "https://www.masjidesajideen.org/",
+    "lat": 33.152870799999995,
+    "lng": -96.893688,
+    "address": "14111 King Rd Ste 310, Frisco, TX 75036, USA",
+    "placeId": "ChIJ00wCMpE7TIYRkUN7JCiCHJY"
+  },
+  {
+    "name": "Islamic Center Of Lake Travis",
+    "website": "https://www.iclaketravis.org/",
+    "lat": 30.411146199999994,
+    "lng": -97.9301119,
+    "address": "4701 Doss Rd, Austin, TX 78734, USA",
+    "placeId": "ChIJiSwDVVsxW4YRqUIzdZz8jNE"
+  },
+  {
+    "name": "Al-Noor Mosque (MCC)",
+    "website": "https://alnoormcc.org/",
+    "lat": 30.344424,
+    "lng": -97.54356969999999,
+    "address": "1300 Old Hwy 20, Manor, TX 78653, USA",
+    "placeId": "ChIJQbbLEQTHRIYRFTwSwH8Omwk"
+  },
+  {
+    "name": "Quad City Islamic Center of North Austin Leander",
+    "website": "http://www.qcicmasjid.org/",
+    "lat": 30.514955399999995,
+    "lng": -97.8878403,
+    "address": "17317 RM 1431, Leander, TX 78641, USA",
+    "placeId": "ChIJP_n6vcovW4YR0Nvlq0Ip0Oc"
+  },
+  {
+    "name": "Masjid Al Huda",
+    "website": "https://alhudamcc.org/",
+    "lat": 30.452356100000003,
+    "lng": -97.5289154,
+    "address": "19529 Melber Ln, Manor, TX 78653, USA",
+    "placeId": "ChIJW9_HLTHFRIYRXK60SOPsX90"
+  },
+  {
+    "name": "Islamic Center of Hays County (Masjid Bilal)",
+    "website": "https://masjidbilaltx.org/",
+    "lat": 30.031750799999998,
+    "lng": -97.8077984,
+    "address": "2400 Windy Hill Rd, Kyle, TX 78640, USA",
+    "placeId": "ChIJQXYciplTW4YRFi2caZ5c-7A"
+  },
+  {
+    "name": "Georgetown Islamic Center (GIC)",
+    "website": "https://www.gicmasjid.org/",
+    "lat": 30.5604067,
+    "lng": -97.6042633,
+    "address": "7275 Co Rd 110, Round Rock, TX 78665, USA",
+    "placeId": "ChIJ2ybksqbbRIYRuDk4mUBP8Yc"
+  },
+  {
+    "name": "Dawoodi Bohra Markaz Anjuman-e-Burhani (Austin)",
+    "website": "https://usa.thedawoodibohras.com/communities/austin/",
+    "lat": 30.399535599999997,
+    "lng": -97.63616270000001,
+    "address": "13209 Old Gregg Ln, Pflugerville, TX 78660, USA",
+    "placeId": "ChIJObD4iRXPRIYRh2P8JDcsvaE"
+  },
+  {
+    "name": "Northside Islamic Center of San Antonio",
+    "website": "https://www.nicsatx.org/",
+    "lat": 29.637163599999997,
+    "lng": -98.45150679999999,
+    "address": "21003 Encino Commons #110, San Antonio, TX 78259, USA",
+    "placeId": "ChIJucSLLb2JXIYRYDqkSgE2BpE"
+  },
+  {
+    "name": "Masjid Beit El-Maqdes",
+    "website": "https://beitelmaqdes.org/",
+    "lat": 29.460905900000004,
+    "lng": -98.6396029,
+    "address": "7627 Culebra Rd, San Antonio, TX 78251, USA",
+    "placeId": "ChIJ45pPk99cXIYRgp2ods-oG30"
+  },
+  {
+    "name": "Rahmani Masjid and Learning Center",
+    "website": "https://www.rahmanimasjid.com/",
+    "lat": 29.4854007,
+    "lng": -98.6017801,
+    "address": "5403 Jackwood Dr, San Antonio, TX 78238, USA",
+    "placeId": "ChIJZyGJpL1dXIYRtYNXZKVbb7o"
+  },
+  {
+    "name": "Muslim Center of San Antonio",
+    "website": "https://mcsamasjid.com/",
+    "lat": 29.5454094,
+    "lng": -98.7078042,
+    "address": "10915 FM1560, Helotes, TX 78023, USA",
+    "placeId": "ChIJPZNRQwBpXIYRixjDxzoxT4M"
+  },
+  {
+    "name": "Bilal Ibn Rabah of San Antonio (MBIR)",
+    "website": "https://www.mbirsa.org/",
+    "lat": 29.4228891,
+    "lng": -98.4051507,
+    "address": "530 S WW White Rd, San Antonio, TX 78220, USA",
+    "placeId": "ChIJJRtNHj33XIYRK4KjNLshjjA"
+  },
+  {
+    "name": "Zainabia-SA Islamic Education Center",
+    "website": "http://www.zainabiasa.org/",
+    "lat": 29.480415599999997,
+    "lng": -98.62784669999999,
+    "address": "5005 Timberhill Dr, San Antonio, TX 78238, USA",
+    "placeId": "ChIJw0MeBRJdXIYRkk4pR84QwSM"
+  },
+  {
+    "name": "Masjid Al-Ikhlas",
+    "website": "https://alikhlasmasjid.com/",
+    "lat": 29.5247911,
+    "lng": -98.4122803,
+    "address": "9323 Perrin Beitel, San Antonio, TX 78217, USA",
+    "placeId": "ChIJlywcFQCLXIYRKuR2-_w7_Kc"
+  },
+  {
+    "name": "Ismaili Jamatkhana - San Antonio",
+    "website": "https://the.ismaili/",
+    "lat": 29.649072,
+    "lng": -98.4308028,
+    "address": "3559 E Evans Rd, San Antonio, TX 78259, USA",
+    "placeId": "ChIJZa2hF0OJXIYRnctvCCnWYzw"
+  },
+  {
+    "name": "Islamic Center of Hewitt / Al- Hidaya Mosque",
+    "website": "https://www.islamiccenterofhewitt.org/",
+    "lat": 31.479002999999995,
+    "lng": -97.20811789999999,
+    "address": "201 Regal Dr, Hewitt, TX 76643, USA",
+    "placeId": "ChIJeQqMzSKHT4YRz4q2GccksCw"
+  },
+  {
+    "name": "Islamic Society of Central Texas",
+    "website": "https://isctmasjid.org/",
+    "lat": 31.0853275,
+    "lng": -97.4109721,
+    "address": "3033 S Kegley Rd, Temple, TX 76502, USA",
+    "placeId": "ChIJsXcX9ulrRYYR27WZHltgal0"
+  },
+  {
+    "name": "Islamic Center of Victoria مسجد",
+    "website": "http://www.victoriaislamiccenter.com/",
+    "lat": 28.819371999999998,
+    "lng": -97.0033009,
+    "address": "201 E Airline Rd, Victoria, TX 77901, USA",
+    "placeId": "ChIJhcljQipnQoYRfIg1c6cQA74"
+  },
+  {
+    "name": "Islamic Society of Kingsville (ISK)",
+    "website": "https://iskmasjidomar.org/",
+    "lat": 27.5268529,
+    "lng": -97.87642079999999,
+    "address": "702 W Ave B, Kingsville, TX 78363, USA",
+    "placeId": "ChIJHWKd5E0vZoYRpyHYjdoqwGw"
+  },
+  {
+    "name": "Islamic Center of Laredo مسجد",
+    "website": "http://islamiccenteroflaredo.org/",
+    "lat": 27.553903599999998,
+    "lng": -99.4827411,
+    "address": "604 Amistad Dr, Laredo, TX 78041, USA",
+    "placeId": "ChIJUczotwIhYYYRmy8DKtKY8Yc"
+  },
+  {
+    "name": "Islamic Center of Harlingen",
+    "website": "https://sites.google.com/view/islamiccenterofharlingen/home",
+    "lat": 26.1627723,
+    "lng": -97.67798119999999,
+    "address": "601 Kamali Dr, Harlingen, TX 78550, USA",
+    "placeId": "ChIJw9Ou206Db4YRn9iHD1sXQ8s"
+  },
+  {
+    "name": "Islamic Society of Brownsville",
+    "website": "https://islamicsocietyofbrownsville.org/",
+    "lat": 25.955786399999997,
+    "lng": -97.51383489999999,
+    "address": "246 Gilson Rd, Brownsville, TX 78520, USA",
+    "placeId": "ChIJp7p6gLqWb4YRNXV7BwYT8OA"
+  },
+  {
+    "name": "Islamic Center of Galveston - Masjid",
+    "website": "https://www.galvestonislamiccenter.org/",
+    "lat": 29.303786100000004,
+    "lng": -94.7765536,
+    "address": "921 Broadway Avenue J, Galveston, TX 77550, USA",
+    "placeId": "ChIJNz0z1U6eP4YR2M-4moirLbY"
+  },
+  {
+    "name": "Tyler Islamic Center",
+    "website": "https://tylerislamiccenter.org/",
+    "lat": 32.275663,
+    "lng": -95.25845,
+    "address": "6708 Rhones Quarter Rd, Tyler, TX 75707, USA",
+    "placeId": "ChIJq_50LhrNSYYRwtoDkUu8cSA"
+  },
+  {
+    "name": "Masjid Al Jamia Mesquite",
+    "website": "https://masjidaljamiamesquite.com/",
+    "lat": 32.7665305,
+    "lng": -96.6040767,
+    "address": "202 S Walker St, Mesquite, TX 75149, USA",
+    "placeId": "ChIJ69X5F3ClToYRva2Z_cd-eM0"
+  },
+  {
+    "name": "East Texas Islamic Association - Commerce Mosque",
+    "website": "http://commercemosque.weebly.com/contact-us.html",
+    "lat": 33.246873199999996,
+    "lng": -95.9053229,
+    "address": "1703 Live Oak St, Commerce, TX 75428, USA",
+    "placeId": "ChIJeYQavi7GS4YRVZcfS-JBUPk"
+  },
+  {
+    "name": "Masjid Texarkana",
+    "website": "https://texarkanamuslimcommunity.org/",
+    "lat": 33.468461999999995,
+    "lng": -94.1421201,
+    "address": "5509 N Kings Hwy, Texarkana, TX 75503, USA",
+    "placeId": "ChIJy5Z7_dZDNIYRBcLusUTrKAc"
+  },
+  {
+    "name": "Al-Rahma Mosque",
+    "website": "https://masjidrahma.com/",
+    "lat": 31.751634799999998,
+    "lng": -106.3310733,
+    "address": "10911 Pellicano Dr, El Paso, TX 79935, USA",
+    "placeId": "ChIJoW3ZnTNF54YR26bCv2ptNl0"
+  },
+  {
+    "name": "Burmese Muslim Community of Amarillo (BMCAMA)",
+    "website": "https://bmcama.org/",
+    "lat": 35.2266954,
+    "lng": -101.7727046,
+    "address": "1124 Aster St, Amarillo, TX 79107, USA",
+    "placeId": "ChIJJwZUteVJAYcRabOsNX_AE9Q"
+  },
+  {
+    "name": "Muslim Association of West Texas",
+    "website": "http://muslim-of-west-texas.poi.place/",
+    "lat": 31.9726131,
+    "lng": -102.1285851,
+    "address": "1200 S Midland Dr, Midland, TX 79703, USA",
+    "placeId": "ChIJRYJbgsjZ-4YRPPI7xigiIi4"
+  },
+  {
+    "name": "AZAD MASJID",
+    "website": "https://i-cwf.org/",
+    "lat": 33.9662997,
+    "lng": -98.5185652,
+    "address": "1701 Trigg Ln, Wichita Falls, TX 76306, USA",
+    "placeId": "ChIJ_2kHDSsnU4YRge7g4mA1ao4"
+  },
+  {
+    "name": "Shepard Airforce Base Mosque (edited by Ebrahim Chowdhury)",
+    "website": "https://i-cwf.org/",
+    "lat": 33.9662997,
+    "lng": -98.5185652,
+    "address": "1701 Trigg Ln, Wichita Falls, TX 76306, USA",
+    "placeId": "ChIJZz8TJW4nU4YR2-5LIv3HYzE"
   }
 ]
