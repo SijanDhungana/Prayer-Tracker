@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import DayRing from "../components/DayRing";
 import HomeMasjidCard from "../components/HomeMasjidCard";
 import Icon from "../components/Icon";
@@ -9,6 +9,7 @@ import { useClock } from "../lib/clock";
 import { haversineKm, type Point } from "../lib/distance";
 import { useFavourites } from "../lib/favourites";
 import { formatRelative } from "../lib/nextUp";
+import { isFriday, jumuahTimesOn, resolvePlanIqamah } from "../lib/planPrayer";
 import { useSettings } from "../lib/settings";
 import type { ReferencePoint } from "../lib/location";
 import { adhanTimes, iqamahTimes } from "../lib/prayer";
@@ -44,7 +45,7 @@ export default function NextUp({
 }) {
   const { second, minute, today, windows, position } = useClock();
   const { favourites, isFavourite, toggle } = useFavourites();
-  const { homeMasjidId } = useSettings();
+  const { homeMasjidId, onlyMyAsr } = useSettings();
   const home = masjids.find((m) => m.id === homeMasjidId) ?? null;
 
   const reference0 = masjids[0];
@@ -64,6 +65,12 @@ export default function NextUp({
 
 
   const [chosen, setChosen] = useState<Prayer | null>(initialPrayer);
+  // A #/?prayer=asr link tapped while this screen is already open changes
+  // the hash but not the mounted state, so the selector stayed put. Follow
+  // the URL whenever it names a prayer.
+  useEffect(() => {
+    if (initialPrayer) setChosen(initialPrayer);
+  }, [initialPrayer]);
   const prayer = chosen ?? nextPrayer;
 
   const [order, setOrder] = useState<SortOrder>("earliest");
@@ -111,6 +118,18 @@ export default function NextUp({
     [rollsOver, today],
   );
 
+  /**
+   * On a Friday the midday congregation is Jumu'ah, not Dhuhr — a masjid
+   * holds one or the other, never both. The data layer has always known
+   * this (nextUp.ts substitutes it, and the map lists it), but this screen
+   * went on showing every masjid's weekday Dhuhr time on a Friday, which
+   * would send someone to a jamaah that is not happening. Judged on the
+   * date the list is for, so late on a Thursday the rolled-over list is
+   * already Friday's.
+   */
+  const jumuah = isFriday(listDate) && prayer === "dhuhr";
+  const prayerName = jumuah ? "Jumu'ah" : PRAYER_LABELS[prayer];
+
   const countdownTo = useMemo(() => {
     if (!reference0) return null;
     if (inProgress) return null;
@@ -123,7 +142,16 @@ export default function NextUp({
   const rows = useMemo(
     () =>
       masjids.map((masjid) => {
-        const iqamah = iqamahTimes(masjid, listDate)[prayer];
+        // Jumu'ah resolves to the masjid's next sitting still ahead; a
+        // masjid with several sittings names which one this is.
+        const iqamah = jumuah
+          ? resolvePlanIqamah(masjid, "jumuah", minute, listDate)
+          : iqamahTimes(masjid, listDate)[prayer];
+        const sittings = jumuah ? jumuahTimesOn(masjid, listDate) : [];
+        const index =
+          iqamah && sittings.length > 1
+            ? sittings.findIndex((t) => t.getTime() === iqamah.getTime())
+            : -1;
         return {
           masjid,
           iqamah,
@@ -131,12 +159,13 @@ export default function NextUp({
           km: haversineKm(from, masjid),
           minutesAway:
             iqamah == null ? null : (iqamah.getTime() - minute.getTime()) / 60_000,
+          sitting: index === -1 ? null : `sitting ${index + 1} of ${sittings.length}`,
           // §10.1: this masjid's congregation starts before Asr begins by the
           // visitor's own school.
           otherSchool: asrSchoolMismatch(masjid, prayer, listDate),
         };
       }),
-    [masjids, from, listDate, prayer, minute],
+    [masjids, from, listDate, prayer, minute, jumuah],
   );
 
   const cutoff = after ? Number(after.slice(0, 2)) * 60 + Number(after.slice(3)) : null;
@@ -149,6 +178,9 @@ export default function NextUp({
         const mins = row.iqamah.getHours() * 60 + row.iqamah.getMinutes();
         if (mins < cutoff) return false;
       }
+      // The visitor asked to see only masjids praying Asr on their own
+      // school's time. Off by default; see settings.tsx.
+      if (onlyMyAsr && row.otherSchool) return false;
       return true;
     });
 
@@ -157,9 +189,12 @@ export default function NextUp({
       const diff = a.iqamah.getTime() - b.iqamah.getTime();
       return order === "earliest" ? diff : -diff;
     });
-  }, [rows, withinKm, cutoff, order]);
+  }, [rows, withinKm, cutoff, order, onlyMyAsr]);
 
-  const beyond = rows.length - visible.length;
+  // Only the ones the radius hid — the "further out" link widens the radius,
+  // and must not promise masjids the school filter will still keep hidden.
+  const beyond =
+    withinKm == null ? 0 : rows.filter((row) => row.km > withinKm).length;
   const starred = visible.filter((r) => isFavourite(r.masjid.id));
   const rest = visible.filter((r) => !isFavourite(r.masjid.id));
 
@@ -201,6 +236,7 @@ export default function NextUp({
           countdown={countdown}
           countdownLabel={inProgress ? "since" : "until"}
           focus={prayer}
+          focusLabel={prayerName}
           adhan={adhanForFocus}
           onSelectPrayer={setChosen}
         >
@@ -227,7 +263,7 @@ export default function NextUp({
             </a>
           ) : (
             <span className="mt-3 block text-meta text-ink-3">
-              No {PRAYER_LABELS[prayer]} congregation on file
+              No {prayerName} congregation on file
               {rollsOver ? " for tomorrow" : " left today"}
             </span>
           )}
@@ -236,7 +272,7 @@ export default function NextUp({
 
       {/* The accessible twin: re-rendered on the minute, never aria-live (§9). */}
       <p className="sr-only">
-        {countdown} {inProgress ? "since" : "until"} {PRAYER_LABELS[prayer]}
+        {countdown} {inProgress ? "since" : "until"} {prayerName}
         {adhanForFocus ? ` at ${formatTime(adhanForFocus)}` : ""}.
         {target
           ? ` Next congregation at ${target.masjid.name}, ${formatTime(target.iqamah!)}.`
@@ -254,7 +290,10 @@ export default function NextUp({
             // Keep the URL shareable — §3's #/?prayer=asr.
             window.history.replaceState(null, "", prayerPath(p));
           }}
-          options={PRAYERS.map((p) => ({ value: p, label: PRAYER_LABELS[p] }))}
+          options={PRAYERS.map((p) => ({
+            value: p,
+            label: isFriday(listDate) && p === "dhuhr" ? "Jumu'ah" : PRAYER_LABELS[p],
+          }))}
         />
       </div>
 
@@ -304,7 +343,7 @@ export default function NextUp({
           would read the whole sentence aloud each time. The sr-only twin above
           already carries the countdown for screen readers, on its own terms. */}
       <p className="mt-3 text-meta text-ink-3">
-        {PRAYER_LABELS[prayer]} adhan{" "}
+        {prayerName} adhan{" "}
         {countdownTo ? formatTime(countdownTo) : "—"}
         {rollsOver && " tomorrow"} · large time is the iqamah, small is the adhan.
         {beyond > 0 && (
@@ -336,6 +375,7 @@ export default function NextUp({
                 adhan={row.adhan}
                 km={row.km}
                 relative={relative(row.minutesAway)}
+                note={row.sitting ?? undefined}
                 favourite
                 onToggleFavourite={() => toggle(row.masjid.id)}
               />
@@ -351,8 +391,8 @@ export default function NextUp({
       {rest.length === 0 ? (
         <p className="mt-2 rounded-lg border border-line bg-surface p-6 text-center text-body text-ink-2">
           {withinKm == null
-            ? `No masjid has a ${PRAYER_LABELS[prayer]} iqamah on file.`
-            : `No masjid within ${withinKm} km has a ${PRAYER_LABELS[prayer]} iqamah on file.`}
+            ? `No masjid has a ${prayerName} iqamah on file.`
+            : `No masjid within ${withinKm} km has a ${prayerName} iqamah on file.`}
         </p>
       ) : (
         <ul className="mt-2 overflow-hidden rounded-lg border border-line bg-surface">
@@ -368,7 +408,9 @@ export default function NextUp({
               note={
                 row.otherSchool ? (
                   <span className="text-caution">standard Asr</span>
-                ) : undefined
+                ) : (
+                  (row.sitting ?? undefined)
+                )
               }
               favourite={false}
               onToggleFavourite={() => toggle(row.masjid.id)}

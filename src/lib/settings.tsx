@@ -65,6 +65,21 @@ const STORAGE_KEY = "prayer-tracker:asr";
 const THEME_KEY = "prayer-tracker:theme";
 const HOME_KEY = "prayer-tracker:home-masjid";
 const CLOCK_KEY = "prayer-tracker:clock";
+const ONLY_MY_ASR_KEY = "prayer-tracker:only-my-asr";
+
+/**
+ * Whether to hide congregations held before Asr has begun by the visitor's
+ * own school. Off by default: a Hanafi visitor who has not asked for this
+ * still sees every masjid, with the §10.1 note on the ones that pray
+ * earlier, and can decide for themselves.
+ */
+function readOnlyMyAsr(): boolean {
+  try {
+    return window.localStorage.getItem(ONLY_MY_ASR_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
 
 const isClockFormat = (value: unknown): value is ClockFormat =>
   value === "system" || value === "12h" || value === "24h";
@@ -128,6 +143,9 @@ interface Settings {
   setHomeMasjidId: (value: string | null) => void;
   clock: ClockFormat;
   setClock: (value: ClockFormat) => void;
+  /** Hide masjids whose Asr congregation starts before the visitor's Asr. */
+  onlyMyAsr: boolean;
+  setOnlyMyAsr: (value: boolean) => void;
 }
 
 const SettingsContext = createContext<Settings>({
@@ -139,6 +157,8 @@ const SettingsContext = createContext<Settings>({
   setHomeMasjidId: () => {},
   clock: "system",
   setClock: () => {},
+  onlyMyAsr: false,
+  setOnlyMyAsr: () => {},
 });
 
 export function SettingsProvider({ children }: { children: ReactNode }) {
@@ -146,6 +166,16 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>(readTheme);
   const [homeMasjidId, setHomeState] = useState<string | null>(readHome);
   const [clock, setClockState] = useState<ClockFormat>(readClock);
+  const [onlyMyAsr, setOnlyMyAsrState] = useState<boolean>(readOnlyMyAsr);
+
+  const setOnlyMyAsr = useCallback((value: boolean) => {
+    setOnlyMyAsrState(value);
+    try {
+      window.localStorage.setItem(ONLY_MY_ASR_KEY, value ? "1" : "0");
+    } catch {
+      // Storage off: the choice still holds for this visit.
+    }
+  }, []);
 
   const setClock = useCallback((value: ClockFormat) => {
     setClockState(value);
@@ -212,14 +242,19 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
       if (event.key === CLOCK_KEY && isClockFormat(event.newValue)) {
         setClockState(event.newValue);
       }
+      if (event.key === ONLY_MY_ASR_KEY) setOnlyMyAsrState(event.newValue === "1");
     };
     window.addEventListener("storage", onStorage);
     return () => window.removeEventListener("storage", onStorage);
   }, []);
 
   const value = useMemo(
-    () => ({ asr, setAsr, theme, setTheme, homeMasjidId, setHomeMasjidId, clock, setClock }),
-    [asr, setAsr, theme, setTheme, homeMasjidId, setHomeMasjidId, clock, setClock],
+    () => ({
+      asr, setAsr, theme, setTheme, homeMasjidId, setHomeMasjidId,
+      clock, setClock, onlyMyAsr, setOnlyMyAsr,
+    }),
+    [asr, setAsr, theme, setTheme, homeMasjidId, setHomeMasjidId,
+     clock, setClock, onlyMyAsr, setOnlyMyAsr],
   );
 
   return (

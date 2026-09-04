@@ -12,7 +12,9 @@ import { congregationAdhan, formatRelative, nextCongregation } from "../lib/next
 import { prayerLabel, resolvePlanIqamah } from "../lib/planPrayer";
 import { adhanTimes, iqamahTimes } from "../lib/prayer";
 import { mapPath, masjidPath } from "../lib/route";
+import { useSettings } from "../lib/settings";
 import { formatTime, formatTimeShort } from "../lib/time";
+import { asrSchoolMismatch } from "../lib/trust";
 import FreshnessDot from "../components/FreshnessDot";
 import { nextIqamahAt } from "../components/HomeMasjidCard";
 import { PRAYERS, PRAYER_LABELS, type Masjid, type Prayer } from "../lib/types";
@@ -165,6 +167,7 @@ export default function MapScreen({
   const you = useRef<google.maps.Marker | null>(null);
   const { minute } = useClock();
   const { isFavourite, toggle } = useFavourites();
+  const { onlyMyAsr } = useSettings();
 
   const [status, setStatus] = useState<MapStatus>(
     googleMapsConfigured ? "loading" : "unconfigured",
@@ -209,11 +212,15 @@ export default function MapScreen({
         km: haversineKm(point, masjid),
         iqamah: resolvePlanIqamah(masjid, prayer, minute, listDate),
         adhan: congregationAdhan(masjid, prayer, listDate),
+        // §10.1, same rule as Next up: only Asr can differ by school.
+        otherSchool: asrSchoolMismatch(
+          masjid, prayer === "jumuah" ? "dhuhr" : prayer, listDate),
         // What the pin prints: this masjid's own next congregation, which
         // rolls to tomorrow's Fajr once today's are done.
         next: nextIqamahAt(masjid, date, minute),
       }))
-      .filter(({ masjid }) => {
+      .filter(({ masjid, otherSchool }) => {
+        if (onlyMyAsr && otherSchool) return false;
         if (onlyFavourites && !isFavourite(masjid.id)) return false;
         if (onlyJumuah && (masjid.jumuah ?? []).length === 0) return false;
         if (!q) return true;
@@ -223,7 +230,7 @@ export default function MapScreen({
         );
       })
       .sort((a, b) => a.km - b.km);
-  }, [masjids, point, date, listDate, prayer, query, onlyFavourites, onlyJumuah, isFavourite, minute]);
+  }, [masjids, point, date, listDate, prayer, query, onlyFavourites, onlyJumuah, onlyMyAsr, isFavourite, minute]);
 
   const detail = masjidId
     ? (masjids.find((m) => m.id === masjidId) ?? null)

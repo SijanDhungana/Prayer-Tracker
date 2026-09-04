@@ -44,6 +44,7 @@ export default function DayRing({
   /** "until" normally; "since" while the focused window is open. */
   countdownLabel = "until",
   focus,
+  focusLabel,
   adhan,
   onSelectPrayer,
   children,
@@ -53,6 +54,13 @@ export default function DayRing({
   countdown: string;
   countdownLabel?: string;
   focus: Prayer;
+  /**
+   * What to call the focused slot. The ring is the sun's day, so its arcs
+   * and outer labels stay the five prayers; but the congregation in Dhuhr's
+   * slot on a Friday is Jumu'ah, and the centre names what you are counting
+   * down to. Defaults to the prayer's own name.
+   */
+  focusLabel?: string;
   adhan: Date | null;
   onSelectPrayer?: (prayer: Prayer) => void;
   /**
@@ -176,7 +184,7 @@ export default function DayRing({
               className="font-display font-semibold"
               style={{ fontSize: "min(var(--t-3), 6.4cqw)", color: "var(--now)" }}
             >
-              {PRAYER_LABELS[focus]}
+              {focusLabel ?? PRAYER_LABELS[focus]}
             </span>
             {adhan && (
               <span

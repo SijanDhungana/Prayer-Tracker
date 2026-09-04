@@ -38,8 +38,10 @@ export default function Settings({
   date: Date;
   reference: ReferencePoint;
 }) {
-  const { asr, setAsr, theme, setTheme, homeMasjidId, setHomeMasjidId, clock, setClock } =
-    useSettings();
+  const {
+    asr, setAsr, theme, setTheme, homeMasjidId, setHomeMasjidId,
+    clock, setClock, onlyMyAsr, setOnlyMyAsr,
+  } = useSettings();
   const home = masjids.find((m) => m.id === homeMasjidId) ?? null;
   const { session, email, isAdmin, signOut } = useAuth();
 
@@ -102,6 +104,29 @@ export default function Settings({
             <p className="mt-2 text-meta text-ink-3">
               Times shown are today&rsquo;s Asr adhan at {sample.name}.
             </p>
+          )}
+
+          {/* Only meaningful once a school is chosen: with "Match each
+              masjid" there is no visitor time for a congregation to be
+              before. */}
+          {asr !== "masjid" && (
+            <label className="mt-3 flex min-h-11 cursor-pointer items-start gap-3 rounded-md border border-line p-3 hover:bg-surface-2">
+              <input
+                type="checkbox"
+                checked={onlyMyAsr}
+                onChange={(e) => setOnlyMyAsr(e.target.checked)}
+                className="mt-1 h-4 w-4 shrink-0 accent-brand"
+              />
+              <span className="min-w-0 flex-1">
+                <span className="block font-medium text-ink">
+                  Only show masjids on my Asr time
+                </span>
+                <span className="mt-0.5 block text-meta text-ink-3">
+                  Hides Asr congregations held before Asr has begun by the{" "}
+                  {ASR_LABELS[asr]} calculation. Other prayers are unaffected.
+                </span>
+              </span>
+            </label>
           )}
         </div>
 
