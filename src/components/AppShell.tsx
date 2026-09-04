@@ -7,7 +7,6 @@ import {
   jummahPath,
   mapPath,
   nextPath,
-  planPath,
   settingsPath,
   signInPath,
   type Route,
@@ -23,16 +22,20 @@ import { authConfigured } from "../lib/supabase";
  */
 const TABS: { name: Route["name"]; label: string; href: string; icon: IconName }[] =
   [
+    { name: "next", label: "Home", href: nextPath, icon: "mosque" },
     { name: "map", label: "Map", href: mapPath, icon: "map-pin" },
-    { name: "plan", label: "Plan", href: planPath, icon: "route" },
-    { name: "next", label: "Next up", href: nextPath, icon: "clock" },
-    { name: "jummah", label: "Jumu'ah", href: jummahPath, icon: "mosque" },
+    { name: "jummah", label: "Friday", href: jummahPath, icon: "calendar" },
     { name: "settings", label: "Settings", href: settingsPath, icon: "settings" },
   ];
 
-/** Settings owns Suggestions, so that route keeps the Settings tab lit. */
+/**
+ * Four tabs, not five. Plan a trip is reached from a card on Home and from
+ * the map — it is a task you set out to do, not a place you check — and the
+ * bar reads at a glance again with four big targets. Settings owns
+ * Suggestions and the map owns Plan, so those routes keep their tab lit.
+ */
 const activeTab = (route: Route): Route["name"] =>
-  route.name === "suggestions" ? "settings" : route.name;
+  route.name === "suggestions" ? "settings" : route.name === "plan" ? "map" : route.name;
 
 /**
  * Start fetching the Maps SDK the moment a finger lands on Map or Plan,
@@ -159,10 +162,9 @@ function TabBar({ active }: { active: Route["name"] }) {
         background: "color-mix(in srgb, var(--surface) 92%, transparent)",
       }}
     >
-      <ul className="flex items-stretch justify-between px-1">
+      <ul className="flex items-stretch justify-between p-1.5">
         {TABS.map((tab) => {
           const current = tab.name === active;
-          const centre = tab.name === "next";
 
           return (
             <li key={tab.name} className="min-w-0 flex-1">
@@ -171,37 +173,21 @@ function TabBar({ active }: { active: Route["name"] }) {
                 aria-current={current ? "page" : undefined}
                 onTouchStart={() => warmMaps(tab.name)}
                 onPointerEnter={() => warmMaps(tab.name)}
-                className="flex min-h-[56px] flex-col items-center justify-center gap-0.5 rounded-full"
+                className={
+                  "flex min-h-[58px] flex-col items-center justify-center gap-1 rounded-full " +
+                  (current ? "bg-brand-wash text-brand" : "text-ink-3")
+                }
+                style={{ transition: "background var(--fast) var(--ease)" }}
               >
-                {centre ? (
-                  <span
-                    className="-mt-4 flex h-11 w-11 items-center justify-center rounded-full shadow-float"
-                    style={{ background: "var(--now)", color: "var(--paper)" }}
-                  >
-                    <Icon name={tab.icon} size={22} />
-                  </span>
-                ) : (
-                  <span
-                    className={
-                      "flex h-8 w-12 items-center justify-center rounded-full " +
-                      (current ? "bg-brand-wash text-brand" : "text-ink-3")
-                    }
-                    style={{ transition: "background var(--fast) var(--ease)" }}
-                  >
-                    <Icon name={tab.icon} size={22} />
-                  </span>
-                )}
+                <Icon name={tab.icon} size={24} />
                 {/* The bar is fixed-height chrome spanning the viewport, so
                     its labels cannot scale freely with the root font: at a
-                    200% text setting five rem-sized labels push the bar off
+                    200% text setting four rem-sized labels push the bar off
                     screen, which §12 forbids. Capped against the viewport and
                     truncated instead. */}
                 <span
-                  className={
-                    "w-full truncate px-0.5 text-center " +
-                    (current ? "text-brand" : centre ? "text-ink-2" : "text-ink-3")
-                  }
-                  style={{ fontSize: "min(var(--t--1), 3.2vw)" }}
+                  className="w-full truncate px-0.5 text-center font-semibold"
+                  style={{ fontSize: "min(var(--t--1), 3.4vw)" }}
                 >
                   {tab.label}
                 </span>

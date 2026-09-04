@@ -126,20 +126,21 @@ export default function Jummah({
         </p>
       )}
 
-      <div className="mt-4 flex flex-wrap items-center gap-2">
+      {/* One row that scrolls, not three that wrap — same as Home. */}
+      <div className="-mx-4 mt-4 flex items-center gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         <button
           type="button"
           onClick={() =>
             setOrder((o) => (o === "earliest" ? "latest" : "earliest"))
           }
-          className="flex min-h-[44px] items-center gap-1.5 rounded-full border border-line bg-surface px-3 text-meta font-medium text-ink-2 hover:text-ink"
+          className="flex min-h-[44px] shrink-0 items-center gap-1.5 rounded-full border border-line bg-surface px-3 text-meta font-medium text-ink-2 hover:text-ink"
         >
           <Icon name="sliders" size={16} />
           {order === "earliest" ? "Earliest first" : "Latest first"}
         </button>
 
-        <label className="flex min-h-[44px] items-center gap-2 rounded-full border border-line bg-surface px-3 text-meta text-ink-2">
-          <span>Khutbah after</span>
+        <label className="flex min-h-[44px] shrink-0 items-center gap-2 rounded-full border border-line bg-surface px-3 text-meta text-ink-2">
+          <span>After</span>
           <input
             type="time"
             value={after}
@@ -148,7 +149,7 @@ export default function Jummah({
           />
         </label>
 
-        <label className="flex min-h-[44px] items-center gap-2 rounded-full border border-line bg-surface px-3 text-meta text-ink-2">
+        <label className="flex min-h-[44px] shrink-0 items-center gap-2 rounded-full border border-line bg-surface px-3 text-meta text-ink-2">
           <span>Within</span>
           <select
             value={withinKm ?? ""}

@@ -7,12 +7,16 @@ import type { Masjid } from "../lib/types";
 import type { ReactNode } from "react";
 
 /**
- * The 72px row shared by Next up, Jumu'ah and the map's results sheet
- * (design spec v2 §11).
+ * The row shared by Next up, Jumu'ah and the map's results sheet.
  *
  * §5's rule lives here: the iqamah is the primary number, the adhan sits
- * beneath it small and grey, and neither is bolded to tell them apart. One
- * component means the rule cannot drift between the three screens.
+ * beneath the name small and grey, and neither is bolded to tell them apart.
+ * One component means the rule cannot drift between the three screens.
+ *
+ * Redesign: the time sits in its own pill on the right, the name is a size
+ * up, and the whole row is taller. On a phone held in a hurry the two things
+ * that matter are the name and the time, and both should be readable at
+ * arm's length.
  */
 export default function TimeRow({
   masjid,
@@ -28,6 +32,7 @@ export default function TimeRow({
   note,
   favourite,
   onToggleFavourite,
+  /** Overrides navigation — the map uses this to centre a pin instead. */
   onSelect,
   trailing,
 }: {
@@ -40,13 +45,12 @@ export default function TimeRow({
   note?: ReactNode;
   favourite?: boolean;
   onToggleFavourite?: () => void;
-  /** Overrides navigation — the map uses this to centre a pin instead. */
   onSelect?: () => void;
   trailing?: ReactNode;
 }) {
   const meta = [
     formatDistance(km),
-    adhan ? `Adhan ${formatTime(adhan)}` : null,
+    adhan ? `adhan ${formatTime(adhan)}` : null,
   ]
     .filter(Boolean)
     .join(" · ");
@@ -54,24 +58,29 @@ export default function TimeRow({
   const body = (
     <>
       <span className="min-w-0 flex-1">
-        <span className="flex items-center gap-2">
-          <FreshnessDot masjid={masjid} today={today} showLabel={false} />
-          <span className="truncate text-name font-medium text-ink">
-            {masjid.name}
-          </span>
+        <span className="block truncate text-name font-semibold text-ink">
+          {masjid.name}
         </span>
-        <span className="mt-0.5 block truncate text-meta text-ink-3">
-          <span className="font-num">{meta}</span>
-          {note != null && <> · {note}</>}
+        <span className="mt-1 flex items-center gap-2 text-meta text-ink-3">
+          <FreshnessDot masjid={masjid} today={today} showLabel={false} />
+          <span className="truncate">
+            <span className="num">{meta}</span>
+            {note != null && <> · {note}</>}
+          </span>
         </span>
       </span>
 
       <span className="shrink-0 text-right">
-        <span className="block font-num text-section font-medium text-ink">
-          {iqamah ? formatTime(iqamah) : <span className="text-ink-3">—</span>}
+        <span
+          className={
+            "num inline-block rounded-full px-3 py-1.5 text-name font-semibold " +
+            (iqamah ? "bg-surface-2 text-ink" : "text-ink-3")
+          }
+        >
+          {iqamah ? formatTime(iqamah) : "—"}
         </span>
         {relative && (
-          <span className="block font-num text-meta text-ink-3">{relative}</span>
+          <span className="num mt-1 block text-meta text-ink-3">{relative}</span>
         )}
       </span>
       {trailing}
@@ -79,19 +88,17 @@ export default function TimeRow({
   );
 
   const className =
-    "flex min-h-[72px] flex-1 items-center gap-3 py-3 pl-4 text-left transition-colors hover:bg-surface-2 " +
+    // min-w-0 is what lets the name inside truncate instead of pushing the
+    // time pill past the card's edge.
+    "flex min-h-[80px] min-w-0 flex-1 items-center gap-3 py-3 pl-4 text-left transition-colors hover:bg-surface-2 " +
     // Without a star the row owns its right edge; with one, the star's column
     // does, and the time needs to stop short of it.
     (onToggleFavourite ? "pr-1" : "pr-4");
 
   return (
-    // The star is a *sibling column*, not an overlay. It used to be absolutely
-    // positioned at the row's top-right, which is exactly where the iqamah
-    // time sits — so on every row the star sat on top of the "PM".
-    //
-    // A sibling rather than a child because a <button> inside an <a> is
-    // invalid, and because giving it its own 44px column is what guarantees
-    // the two can never collide however long the time string gets.
+    // The star is a *sibling column*, not an overlay, so it can never sit on
+    // top of the time however long the time string gets. A sibling rather
+    // than a child because a <button> inside an <a> is invalid.
     <li className="flex items-stretch border-b border-line last:border-b-0">
       {onSelect ? (
         <button type="button" onClick={onSelect} className={className}>
@@ -114,11 +121,11 @@ export default function TimeRow({
               : `Add ${masjid.name} to your masjids`
           }
           className={
-            "flex w-11 shrink-0 items-center justify-center " +
+            "flex w-12 shrink-0 items-center justify-center " +
             (favourite ? "text-brand" : "text-ink-3 hover:text-ink")
           }
         >
-          <Icon name={favourite ? "star-filled" : "star"} size={18} />
+          <Icon name={favourite ? "star-filled" : "star"} size={20} />
         </button>
       )}
     </li>
