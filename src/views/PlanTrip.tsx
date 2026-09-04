@@ -252,8 +252,12 @@ export default function PlanTrip({
 
       <form onSubmit={plan} className="mt-4 space-y-4">
         <Field label="Leaving from">
+          {/* Content-sized pills: "Downtown Toronto" beside "An address"
+              fits a 375px screen at its natural width but not when both are
+              forced to half the row. */}
           <SegmentedControl
             label="Leaving from"
+            scrollable
             options={[
               { value: "here", label: locationLabel },
               { value: "address", label: "An address" },
@@ -298,6 +302,7 @@ export default function PlanTrip({
         <Field label="Leaving at">
           <SegmentedControl
             label="Leaving at"
+            scrollable
             options={[
               { value: "now", label: "Now" },
               { value: "later", label: "A set time" },

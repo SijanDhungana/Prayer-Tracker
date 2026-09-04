@@ -132,7 +132,7 @@ export default function Settings({
           {home && <HomeMasjidCard masjid={home} compact />}
         </div>
 
-        <Row label="Default location">
+        <Row label="Location">
           <LocationChip reference={reference} />
         </Row>
 

@@ -110,7 +110,10 @@ export default function SegmentedControl<T extends string>({
             onClick={() => onChange(option.value)}
             onKeyDown={(e) => onKeyDown(e, index)}
             className={
-              "min-h-[44px] shrink-0 rounded-full px-4 text-body font-medium transition-colors " +
+              // One line per option, always. "Downtown Toronto" and "Tell me
+              // when" both wrapped inside their pills on a 375px phone, which
+              // made a two-option control taller than the field above it.
+              "min-h-[44px] shrink-0 truncate rounded-full px-3 text-body font-medium transition-colors " +
               (scrollable ? "" : "min-w-0 flex-1 ") +
               (selected
                 ? accent === "now"
