@@ -119,16 +119,23 @@ async function textSearch(apiKey: string, lat: number, lng: number): Promise<any
   const results: any[] = [];
   let pageToken: string | undefined;
 
+  // Every page repeats the original search, with only pageToken added.
+  // Sending the token alone is rejected — "Request parameters for paging
+  // requests must match the initial SearchText request" — and because the
+  // failure is per-page rather than per-search, it looks like success: page
+  // one returns its 20 and the run reports a tidy "20 result(s)" for a city
+  // that had far more. Every metro here came back capped at exactly 20 until
+  // this was fixed.
+  const search: Record<string, unknown> = {
+    textQuery: "mosque",
+    locationBias: {
+      circle: { center: { latitude: lat, longitude: lng }, radius: RADIUS_M },
+    },
+    pageSize: 20,
+  };
+
   for (let page = 0; page < 3; page++) {
-    const body: Record<string, unknown> = pageToken
-      ? { pageToken }
-      : {
-          textQuery: "mosque",
-          locationBias: {
-            circle: { center: { latitude: lat, longitude: lng }, radius: RADIUS_M },
-          },
-          pageSize: 20,
-        };
+    const body = pageToken ? { ...search, pageToken } : search;
 
     // A fresh page token needs a moment to activate server-side.
     if (pageToken) await new Promise((r) => setTimeout(r, 2000));

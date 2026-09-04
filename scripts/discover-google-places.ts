@@ -102,20 +102,47 @@ const FIELD_MASK = [
   "nextPageToken",
 ].join(",");
 
+/**
+ * The Text Search request for one point.
+ *
+ * A paging request must repeat this in full and add pageToken; sending the
+ * token by itself is rejected with "Request parameters for paging requests
+ * must match the initial SearchText request". That failure is per-page rather
+ * than per-search, so it reads as success: page one returns its 20 results and
+ * the run prints a tidy "20 result(s)" for a city that had far more. Both the
+ * Ontario and Texas passes were capped at 20 per point this way, every dense
+ * metro silently truncated at exactly the point coverage mattered most.
+ */
+export function searchBody(lat: number, lng: number): Record<string, unknown> {
+  return {
+    textQuery: "mosque",
+    locationBias: {
+      circle: { center: { latitude: lat, longitude: lng }, radius: RADIUS_M },
+    },
+    pageSize: 20,
+  };
+}
+
+/** What actually goes on the wire for page 1, then for each page after it. */
+export function pagedBody(
+  lat: number,
+  lng: number,
+  pageToken?: string,
+): Record<string, unknown> {
+  const search = searchBody(lat, lng);
+  return pageToken ? { ...search, pageToken } : search;
+}
+
 async function textSearch(apiKey: string, lat: number, lng: number): Promise<any[]> {
   const results: any[] = [];
   let pageToken: string | undefined;
 
+  // Every page repeats the original search, with only pageToken added — see
+  // searchBody() for why sending the token alone silently costs results.
+  const search = searchBody(lat, lng);
+
   for (let page = 0; page < 3; page++) {
-    const body: Record<string, unknown> = pageToken
-      ? { pageToken }
-      : {
-          textQuery: "mosque",
-          locationBias: {
-            circle: { center: { latitude: lat, longitude: lng }, radius: RADIUS_M },
-          },
-          pageSize: 20,
-        };
+    const body = pageToken ? { ...search, pageToken } : search;
 
     // A fresh page token needs a moment to activate server-side.
     if (pageToken) await new Promise((r) => setTimeout(r, 2000));
@@ -183,7 +210,11 @@ async function main() {
   console.log(`\n${places.length} unique place(s) found. wrote ${OUTPUT}`);
 }
 
-main().catch((e) => {
-  console.error(e);
-  process.exit(1);
-});
+// Only when run directly, so check-places-paging.ts can import the request
+// builders without the API-key guard firing and exiting the test.
+if (process.argv[1] && import.meta.url.endsWith(process.argv[1].split("/").pop()!)) {
+  main().catch((e) => {
+    console.error(e);
+    process.exit(1);
+  });
+}
