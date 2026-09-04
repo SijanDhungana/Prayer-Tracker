@@ -170,7 +170,11 @@ export default function MapScreen({
     googleMapsConfigured ? "loading" : "unconfigured",
   );
   const [query, setQuery] = useState("");
-  const [snap, setSnap] = useState<Snap>("half");
+  // Opens lowered. The map is what people come to this tab for; a sheet
+  // covering half of it on arrival made the list the main event and the map
+  // a strip above it. Peek keeps the header line and the first row in view,
+  // and a drag or a search raises it.
+  const [snap, setSnap] = useState<Snap>("peek");
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [onlyFavourites, setOnlyFavourites] = useState(false);
   const [onlyJumuah, setOnlyJumuah] = useState(false);
@@ -371,8 +375,11 @@ export default function MapScreen({
         title: "Your location",
         zIndex: 2000,
       });
-      // Finding you is only useful if the map then shows where that is.
+      // Finding you is only useful if the map then shows where that is —
+      // close enough to tell streets apart, not the city-wide zoom the
+      // preset opens at.
       instance.panTo(point);
+      instance.setZoom(14);
     }
     you.current.setPosition(point);
   }, [status, reference.status, point.lat, point.lng]);
@@ -383,9 +390,28 @@ export default function MapScreen({
    * It used to pan to the reference point, which without a fix is downtown
    * Toronto — so on a phone in Scarborough the button appeared broken: it
    * moved the map somewhere that was not where you are, and nothing on the
-   * map ever showed your position. Location is still never requested on load,
-   * only from this tap (§9).
+   * map ever showed your position. The map now asks for a fix as it opens
+   * (see above); this button re-asks for anyone who said no the first time.
    */
+  /**
+   * Ask for the device's location as soon as the map opens.
+   *
+   * §9 keeps location off the boot path and behind a tap, and opening the
+   * map *is* that tap: nobody comes to a map to see a neighbourhood preset
+   * centred on City Hall. Asked once per visit to this screen, not on every
+   * render; a refusal falls back to the preset exactly as before, with the
+   * reason surfaced in the location chip's sheet.
+   */
+  const asked = useRef(false);
+  useEffect(() => {
+    if (asked.current || reference.status === "active") return;
+    asked.current = true;
+    reference.useDeviceLocation();
+    // Deliberately once: useDeviceLocation is stable, and re-asking on each
+    // status change would re-prompt someone who just said no.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const recenter = () => {
     // Recentring is the button's original job and still happens either way:
     // on your position once we have one, on the chosen neighbourhood until
