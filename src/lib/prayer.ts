@@ -87,8 +87,24 @@ export function iqamahTime(
   if (rule.type === "offset") {
     return new Date(adhan.getTime() + rule.minutes * 60_000);
   }
-  return zonedTimeOnDate(date, rule.time);
+  const at = zonedTimeOnDate(date, rule.time);
+  // §14, at display time. The scraper refuses an iqamah earlier than its own
+  // adhan, but only on the day it reads the page; a fixed time then drifts as
+  // the adhan moves through the season. When the scrape stalled for three
+  // weeks in September 2026, 36 masjids ended up showing a Fajr jamaah before
+  // Fajr had begun. A time that cannot be right shows "—" instead, and the
+  // next successful read brings the real one back.
+  if (at && at.getTime() < adhan.getTime() - IMPOSSIBLE_BEFORE_ADHAN_MINUTES * 60_000) {
+    return null;
+  }
+  return at;
 }
+
+/**
+ * The same tolerance scrape.ts uses: masjids round their published times, so
+ * an iqamah a minute or two before the calculated adhan is rounding, not error.
+ */
+export const IMPOSSIBLE_BEFORE_ADHAN_MINUTES = 3;
 
 /**
  * The prayer worth showing first: the earliest one that still has an iqamah

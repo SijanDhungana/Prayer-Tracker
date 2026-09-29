@@ -52,6 +52,7 @@
   --radius-full: var(--r-full);
 
   --shadow-float: var(--elev-float);
+  --shadow-card: var(--elev-card);
   --shadow-sheet: var(--elev-sheet);
 }
 

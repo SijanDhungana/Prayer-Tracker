@@ -4,7 +4,7 @@ import Icon, { type IconName } from "../components/Icon";
 import LocationChip from "../components/LocationChip";
 import SegmentedControl from "../components/SegmentedControl";
 import Sheet from "../components/Sheet";
-import TimeRow from "../components/TimeRow";
+import MasjidCard, { directionsUrl } from "../components/MasjidCard";
 import { useClock } from "../lib/clock";
 import { haversineKm, type Point } from "../lib/distance";
 import { useFavourites } from "../lib/favourites";
@@ -15,7 +15,7 @@ import type { ReferencePoint } from "../lib/location";
 import { adhanTimes, iqamahTimes } from "../lib/prayer";
 import { planPath, prayerPath } from "../lib/route";
 import { asrSchoolMismatch } from "../lib/trust";
-import { formatCalendarDate, formatTime } from "../lib/time";
+import { formatCalendarDate, formatIsoDate, formatTime } from "../lib/time";
 import { PRAYERS, PRAYER_LABELS, type Masjid, type Prayer } from "../lib/types";
 
 /**
@@ -37,6 +37,8 @@ import { PRAYERS, PRAYER_LABELS, type Masjid, type Prayer } from "../lib/types";
 const RADII = [5, 10, 25, 50];
 /** §10.3: a Toronto app must not silently list a masjid in Windsor. */
 const DEFAULT_RADIUS_KM = 25;
+/** Cards are tall; show a screenful or two, then let the reader ask. */
+const PAGE = 10;
 
 type SortOrder = "earliest" | "latest";
 
@@ -93,6 +95,7 @@ export default function NextUp({
   const [after, setAfter] = useState("");
   const [withinKm, setWithinKm] = useState<number | null>(DEFAULT_RADIUS_KM);
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const [shown, setShown] = useState(PAGE);
 
   const adhanForFocus = reference0 ? adhanTimes(reference0, today)[prayer] : null;
 
@@ -168,6 +171,14 @@ export default function NextUp({
           masjid,
           iqamah,
           adhan: adhanTimes(masjid, listDate)[prayer],
+          // The whole day for the card's five-across strip. On a Friday the
+          // midday slot is the first Jumu'ah sitting, not a Dhuhr the masjid
+          // does not hold.
+          day: {
+            ...iqamahTimes(masjid, listDate),
+            ...(isFriday(listDate) ? { dhuhr: jumuahTimesOn(masjid, listDate)[0] ?? null } : {}),
+          },
+          jumuahTimes: jumuahTimesOn(masjid, listDate),
           km: haversineKm(from, masjid),
           minutesAway:
             iqamah == null ? null : (iqamah.getTime() - minute.getTime()) / 60_000,
@@ -220,6 +231,20 @@ export default function NextUp({
   const beyond =
     withinKm == null ? 0 : rows.filter((row) => row.km > withinKm).length;
   const starred = visible.filter((r) => isFavourite(r.masjid.id));
+
+  /**
+   * One honest line above the list: when the times were last read, and how
+   * many of the masjids in range actually have congregation times. Saying
+   * "31 of 48" up front is what stops a row of dashes reading as a bug.
+   */
+  const inRange = rows.filter((r) => withinKm == null || r.km <= withinKm);
+  const withTimes = inRange.filter(
+    (r) => Object.keys(r.masjid.iqamah ?? {}).length > 0,
+  ).length;
+  const lastRead = masjids.reduce<string | null>(
+    (latest, m) => (m.lastVerified && (!latest || m.lastVerified > latest) ? m.lastVerified : latest),
+    null,
+  );
   const rest = visible.filter((r) => !isFavourite(r.masjid.id));
 
   /**
@@ -232,11 +257,15 @@ export default function NextUp({
    * and the right answer if there is nothing else.
    */
   const target = useMemo(() => {
+    // Only masjids inside the radius. Without this the card crowned whichever
+    // masjid in the whole directory had the earliest time — a Fajr 233 km
+    // away beat every masjid in the city by a few minutes.
     const ahead = rows
+      .filter((r) => withinKm == null || r.km <= withinKm)
       .filter((r) => r.minutesAway != null && r.minutesAway > 0)
       .sort((a, b) => a.minutesAway! - b.minutesAway!);
     return ahead.find((r) => !r.otherSchool) ?? ahead[0] ?? null;
-  }, [rows]);
+  }, [rows, withinKm]);
 
   const countdown = inProgress
     ? countdownText(adhanForFocus ?? second, second)
@@ -246,6 +275,29 @@ export default function NextUp({
 
   const filtersActive =
     order !== "earliest" || after !== "" || withinKm !== DEFAULT_RADIUS_KM;
+
+  const card = (row: (typeof visible)[number], favourite: boolean) => (
+    <MasjidCard
+      key={row.masjid.id}
+      masjid={row.masjid}
+      today={today}
+      focus={prayer}
+      focusLabel={prayerName}
+      day={row.day}
+      jumuah={row.jumuahTimes}
+      km={row.km}
+      relative={relative(row.minutesAway)}
+      note={
+        row.otherSchool ? (
+          <span className="text-caution">Uses the standard Asr time</span>
+        ) : (
+          (row.sitting ?? undefined)
+        )
+      }
+      favourite={favourite}
+      onToggleFavourite={() => toggle(row.masjid.id)}
+    />
+  );
 
   const pick = (p: Prayer) => {
     setChosen(p);
@@ -404,22 +456,17 @@ export default function NextUp({
         </button>
       </div>
 
+      <p className="mt-2 flex items-center gap-1.5 text-meta text-ink-3">
+        <Icon name="check" size={14} className="shrink-0 text-ok" />
+        <span className="num">
+          {lastRead ? `Read from masjid websites · ${formatIsoDate(lastRead)} · ` : ""}
+          {withTimes} of {inRange.length} nearby have times
+        </span>
+      </p>
+
       {starred.length > 0 && (
-        <ul className="mt-3 overflow-hidden rounded-lg border border-line bg-surface">
-          {starred.map((row) => (
-            <TimeRow
-              key={row.masjid.id}
-              masjid={row.masjid}
-              today={today}
-              iqamah={row.iqamah}
-              adhan={row.adhan}
-              km={row.km}
-              relative={relative(row.minutesAway)}
-              note={row.sitting ?? undefined}
-              favourite
-              onToggleFavourite={() => toggle(row.masjid.id)}
-            />
-          ))}
+        <ul className="mt-3 space-y-3">
+          {starred.map((row) => card(row, true))}
         </ul>
       )}
 
@@ -434,31 +481,22 @@ export default function NextUp({
             : `No masjid within ${withinKm} km has a ${prayerName} iqamah on file.`}
         </p>
       ) : (
-        <ul className="mt-3 overflow-hidden rounded-lg border border-line bg-surface">
-          {rest.map((row) => (
-            <TimeRow
-              key={row.masjid.id}
-              masjid={row.masjid}
-              today={today}
-              iqamah={row.iqamah}
-              adhan={row.adhan}
-              km={row.km}
-              relative={relative(row.minutesAway)}
-              note={
-                row.otherSchool ? (
-                  <span className="text-caution">standard Asr</span>
-                ) : (
-                  (row.sitting ?? undefined)
-                )
-              }
-              favourite={false}
-              onToggleFavourite={() => toggle(row.masjid.id)}
-            />
-          ))}
+        <ul className="mt-3 space-y-3">
+          {rest.slice(0, shown).map((row) => card(row, false))}
         </ul>
       )}
 
-      {beyond > 0 && (
+      {rest.length > shown && (
+        <button
+          type="button"
+          onClick={() => setShown((n) => n + PAGE)}
+          className="mt-3 flex min-h-12 w-full items-center justify-center rounded-full border border-line bg-surface text-body font-semibold text-ink"
+        >
+          Show more masjids
+        </button>
+      )}
+
+      {beyond > 0 && rest.length <= shown && (
         <button
           type="button"
           onClick={() => setWithinKm(null)}
@@ -491,9 +529,9 @@ export default function NextUp({
       </a>
 
       <p className="mt-6 text-meta text-ink-3">
-        Big time is the congregation (iqamah); small is the calculated adhan.
-        Iqamah times are collected from each masjid — confirm with the masjid
-        before relying on them.
+        Times on the cards are congregation (iqamah) times, collected from each
+        masjid&rsquo;s own website. Confirm with the masjid before relying on
+        them.
       </p>
 
       <Sheet open={filtersOpen} onClose={() => setFiltersOpen(false)} title="Filters">
@@ -571,10 +609,6 @@ function formatDistanceShort(km: number): string {
   return km < 1 ? `${Math.round(km * 1000)} m` : `${km.toFixed(1)} km`;
 }
 
-/** Google Maps directions to the masjid, opened in the maps app on a phone. */
-function directionsUrl(masjid: Masjid): string {
-  return `https://www.google.com/maps/dir/?api=1&destination=${masjid.lat},${masjid.lng}`;
-}
 
 /**
  * The card's countdown: "2:50:49" with seconds under an hour, "2:50" above

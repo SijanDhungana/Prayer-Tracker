@@ -1,5 +1,5 @@
 import { Coordinates, CalculationMethod, PrayerTimes } from "adhan";
-import { inWindow, LEAD_HOURS } from "./scrape-window";
+import { inWindow, lastScraped, LEAD_HOURS, shouldRun } from "./scrape-window";
 
 /**
  * The daily scrape has to land once a day, before Fajr, all year.
@@ -83,6 +83,21 @@ function main() {
     if (start >= fajr.getTime()) late.push(day.toISOString().slice(0, 10));
   }
   check("the window never opens after Fajr", late.length === 0, late.join(", "));
+
+  // The September 2026 outage: GitHub skipped the one qualifying hour for
+  // three weeks. A run that arrives late, with today's times not yet read,
+  // must scrape; one that arrives after they were read must not.
+  const outageFajr = fajrOn(new Date(2026, 8, 28));
+  const lateRun = new Date(outageFajr.getTime() + 3 * 3600_000); // hours after the window
+  check("a late run still scrapes when today's times are unread", shouldRun(lateRun, outageFajr, "2026-09-07", "2026-09-28"));
+  check("a late run skips once today's times are read", !shouldRun(lateRun, outageFajr, "2026-09-28", "2026-09-28"));
+  const earlyRun = new Date(outageFajr.getTime() - 5 * 3600_000); // before it opens
+  check("nothing runs before the window opens", !shouldRun(earlyRun, outageFajr, "2026-09-27", "2026-09-28"));
+  check("an empty directory is always due", shouldRun(lateRun, outageFajr, null, "2026-09-28"));
+  check(
+    "lastScraped is the newest date",
+    lastScraped([{ lastVerified: "2026-09-01" }, { lastVerified: null }, { lastVerified: "2026-09-07" }]) === "2026-09-07",
+  );
 
   console.log(failed === 0 ? "\nall passed" : `\n${failed} failed`);
   process.exit(failed === 0 ? 0 : 1);

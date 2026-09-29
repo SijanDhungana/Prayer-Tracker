@@ -24,6 +24,13 @@ on:
 permissions:
   contents: write # needed to commit the updated JSON back
 
+# A scrape takes ~50 minutes and the next hourly run can start while it is
+# still going. Queue it instead: by the time it checks out, today's commit is
+# on main and scrape-window.ts sees the times are already read.
+concurrency:
+  group: daily-scrape
+  cancel-in-progress: false
+
 jobs:
   scrape:
     runs-on: ubuntu-latest

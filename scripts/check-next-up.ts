@@ -97,18 +97,20 @@ check("Friday swaps Dhuhr for Jumu'ah rather than adding it",
 // --- groupRows -------------------------------------------------------------
 {
   const cong = { prayer: "isha" as const, date: monday, isTomorrow: false };
-  const now = at(monday, "22:00");
+  // Every time here is after Isha's adhan (about 21:48 on this date): an
+  // earlier fixed time is now hidden as impossible (prayer.ts, §14).
+  const now = at(monday, "23:30");
   const rows = nextUpRows([
-    masjid("soon", { isha: "22:30" }),
-    masjid("later", { isha: "23:00" }),
-    masjid("juststarted", { isha: "21:50" }),
-    masjid("longgone", { isha: "20:00" }),
+    masjid("soon", { isha: "23:40" }),
+    masjid("later", { isha: "23:55" }),
+    masjid("juststarted", { isha: "23:20" }),
+    masjid("longgone", { isha: "22:00" }),
     masjid("nodata", {}),
   ], cong, TORONTO, now);
   const g = groupRows(rows);
   check("upcoming is soonest-first", g.upcoming.map((r) => r.masjid.id), ["soon", "later"]);
   check("a congregation 10 min old counts as just started", g.justStarted.map((r) => r.masjid.id), ["juststarted"]);
-  check("two hours old is missed", g.missed.map((r) => r.masjid.id), ["longgone"]);
+  check("ninety minutes old is missed", g.missed.map((r) => r.masjid.id), ["longgone"]);
   check("no time on file is its own group", g.unknown.map((r) => r.masjid.id), ["nodata"]);
 }
 

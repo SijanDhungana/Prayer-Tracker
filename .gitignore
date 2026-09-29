@@ -5,3 +5,6 @@ dist
 .env
 .vite
 *.tsbuildinfo
+
+# Local code map (graphify) — rebuilt per machine
+graphify-out/

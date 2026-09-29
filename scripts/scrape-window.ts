@@ -26,7 +26,7 @@
  *
  * Run: npx tsx scripts/scrape-window.ts
  */
-import { appendFileSync } from "node:fs";
+import { appendFileSync, readFileSync } from "node:fs";
 import { Coordinates, CalculationMethod, PrayerTimes } from "adhan";
 import { TZ, torontoToday } from "./prayer-invariant";
 
@@ -65,6 +65,48 @@ export function inWindow(now: Date, fajr: Date, leadHours = LEAD_HOURS): boolean
   return now.getTime() >= start && now.getTime() < start + 3600_000;
 }
 
+/**
+ * The newest `lastVerified` in the directory — the Toronto date the scrape
+ * last landed. The scraper stamps every masjid it reads with today's date, so
+ * one successful read anywhere moves this forward.
+ */
+export function lastScraped(masjids: { lastVerified: string | null }[]): string | null {
+  let latest: string | null = null;
+  for (const m of masjids) {
+    if (m.lastVerified && (!latest || m.lastVerified > latest)) latest = m.lastVerified;
+  }
+  return latest;
+}
+
+/**
+ * Whether this run should scrape: the window has opened today and today's
+ * scrape has not landed yet.
+ *
+ * inWindow() alone assumed GitHub fires the hourly cron every hour. It does
+ * not — scheduled runs are best-effort, and in September 2026 they were
+ * arriving four to six times a day at random minutes. The one qualifying hour
+ * kept falling in a gap, every run reported success after skipping, and the
+ * directory went three weeks (7–28 Sep) without a refresh while the Actions
+ * tab stayed green.
+ *
+ * So the window is now where the day's scrape *starts being due*, not the only
+ * hour it may happen: the first run at or after it does the work, and once the
+ * data carries today's date every later run skips. A read that fails outright
+ * leaves the date unchanged, so the next run retries instead of giving up for
+ * the day.
+ */
+export function shouldRun(
+  now: Date,
+  fajr: Date,
+  lastRead: string | null,
+  today: string,
+  leadHours = LEAD_HOURS,
+): boolean {
+  const opens = fajr.getTime() - leadHours * 3600_000;
+  if (now.getTime() < opens) return false;
+  return lastRead == null || lastRead < today;
+}
+
 function clock(d: Date, tz: string): string {
   return new Intl.DateTimeFormat("en-CA", {
     timeZone: tz,
@@ -81,18 +123,28 @@ function main() {
 
   const now = new Date();
   const fajr = fajrToday(now);
-  const go = manual || inWindow(now, fajr);
+  const today = torontoToday();
+  const masjids = JSON.parse(
+    readFileSync(new URL("../src/data/masjids.json", import.meta.url), "utf8"),
+  ) as { lastVerified: string | null }[];
+  const lastRead = lastScraped(masjids);
+  const go = manual || shouldRun(now, fajr, lastRead, today);
 
   const start = new Date(fajr.getTime() - LEAD_HOURS * 3600_000);
   console.log(`now        ${clock(now, TZ)} Toronto (${clock(now, "UTC")} UTC)`);
   console.log(`Fajr today ${clock(fajr, TZ)} Toronto (${clock(fajr, "UTC")} UTC)`);
-  console.log(`window     ${clock(start, TZ)}–${clock(new Date(start.getTime() + 3600_000), TZ)} Toronto`);
+  console.log(`due from   ${clock(start, TZ)} Toronto`);
+  console.log(`last read  ${lastRead ?? "never"} (today is ${today})`);
   console.log(
     manual
       ? "go (triggered by hand — the window does not apply)"
       : go
-        ? `go — a ~${RUN_MINUTES} min run from here finishes well before Fajr`
-        : "skip — not this hour",
+        ? inWindow(now, fajr)
+          ? `go — a ~${RUN_MINUTES} min run from here finishes well before Fajr`
+          : "go — catching up: today's times have not been read yet"
+        : lastRead != null && lastRead >= today
+          ? "skip — today's times are already read"
+          : "skip — not due yet today",
   );
 
   if (process.env.GITHUB_OUTPUT) {

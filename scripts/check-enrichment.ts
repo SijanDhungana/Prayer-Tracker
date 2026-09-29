@@ -1,3 +1,4 @@
+import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import os from "node:os";
@@ -25,7 +26,9 @@ const check = (name: string, ok: boolean, detail?: string) => {
   if (!ok && detail) console.log(`    ${detail}`);
 };
 
-const SCRIPTS = path.dirname(new URL(import.meta.url).pathname);
+// fileURLToPath, not .pathname: the latter keeps "%20" for the space in a
+// folder like "Prayer Tracker", and every file under it then fails to open.
+const SCRIPTS = path.dirname(fileURLToPath(import.meta.url));
 
 function main() {
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "enrich-"));

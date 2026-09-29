@@ -75,6 +75,7 @@
   /* ---- Shape & depth: rounder than before, on purpose ---- */
   --r-sm: 14px; --r-md: 18px; --r-lg: 24px; --r-xl: 32px; --r-full: 999px;
   --elev-float: 0 10px 30px -12px rgb(22 34 29 / 0.25), 0 0 0 1px var(--line);
+  --elev-card: 0 1px 2px rgb(22 34 29 / 0.05), 0 4px 14px -6px rgb(22 34 29 / 0.10);
   --elev-sheet: 0 -12px 40px -16px rgb(22 34 29 / 0.28);
 
   /* ---- Motion ---- */
@@ -103,6 +104,7 @@
     --caution: #E8BE62; --caution-wash: #2C2516;
     --danger: #EA8378;  --danger-wash: #2E1816;
     --elev-float: 0 10px 32px -12px rgb(0 0 0 / 0.7), 0 0 0 1px var(--line);
+    --elev-card: none;
     --elev-sheet: 0 -12px 40px -16px rgb(0 0 0 / 0.8);
 
     color-scheme: dark;
@@ -123,6 +125,7 @@
   --caution: #E8BE62; --caution-wash: #2C2516;
   --danger: #EA8378;  --danger-wash: #2E1816;
   --elev-float: 0 10px 32px -12px rgb(0 0 0 / 0.7), 0 0 0 1px var(--line);
+  --elev-card: none;
   --elev-sheet: 0 -12px 40px -16px rgb(0 0 0 / 0.8);
 
   color-scheme: dark;

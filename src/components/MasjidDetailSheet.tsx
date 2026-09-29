@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import FreshnessDot from "./FreshnessDot";
+import { nextIqamahAt } from "./HomeMasjidCard";
 import Icon from "./Icon";
 import SuggestTimeForm from "./SuggestTimeForm";
 import { formatDistance, haversineKm, type Point } from "../lib/distance";
 import { useFavourites } from "../lib/favourites";
+import { useClock } from "../lib/clock";
+import { formatRelative } from "../lib/nextUp";
 import { adhanTimes, iqamahTimes, orderedJumuah } from "../lib/prayer";
 import { formatClock, formatTime } from "../lib/time";
 import { asrSchoolMismatch } from "../lib/trust";
@@ -38,6 +41,9 @@ export default function MasjidDetailSheet({
   const { isFavourite, toggle } = useFavourites();
   const [suggesting, setSuggesting] = useState<Prayer | "jumuah" | null>(null);
   const starred = isFavourite(masjid.id);
+  const { minute } = useClock();
+  // The one line people open this sheet for, answered before the table.
+  const next = nextIqamahAt(masjid, date, minute);
 
   /**
    * Behave like the dialog the markup claims to be. It carried
@@ -62,9 +68,10 @@ export default function MasjidDetailSheet({
     };
   }, [onClose]);
 
-  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    `${masjid.name}, ${masjid.address}`,
-  )}`;
+  const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${masjid.lat},${masjid.lng}`;
+  // Offered beside Google because on an iPhone it is the maps app people
+  // already have open, and it needs no second app to turn by turn.
+  const appleMapsUrl = `https://maps.apple.com/?daddr=${masjid.lat},${masjid.lng}&q=${encodeURIComponent(masjid.name)}`;
 
   const collected = Object.keys(masjid.iqamah ?? {}).length > 0;
 
@@ -80,7 +87,7 @@ export default function MasjidDetailSheet({
     >
       <div className="sticky top-0 z-10 flex items-start gap-3 border-b border-line bg-surface p-4">
         <div className="min-w-0 flex-1">
-          <h1 className="font-display text-title font-semibold">{masjid.name}</h1>
+          <h1 className="font-display text-section font-semibold leading-tight">{masjid.name}</h1>
           <p className="mt-0.5 text-body text-ink-2">{masjid.address}</p>
           <p className="mt-1 flex items-center gap-2 font-num text-meta text-ink-3">
             {formatDistance(haversineKm(from, masjid))}
@@ -113,28 +120,54 @@ export default function MasjidDetailSheet({
       </div>
 
       <div className="p-4">
-        <div className="flex flex-wrap gap-2">
+        {next && (
+          <div
+            className="mb-4 rounded-lg px-4 py-3"
+            style={{ background: `var(--${next.prayer}-wash)` }}
+          >
+            <p className="text-meta font-semibold" style={{ color: `var(--${next.prayer})` }}>
+              Next iqamah{next.tomorrow && " · tomorrow"}
+            </p>
+            <p className="num mt-0.5 text-section font-semibold text-ink">
+              {PRAYER_LABELS[next.prayer]} {formatTime(next.at)}
+              <span className="ml-2 text-body font-normal text-ink-2">
+                {formatRelative((next.at.getTime() - minute.getTime()) / 60_000)}
+              </span>
+            </p>
+          </div>
+        )}
+
+        <div className="grid grid-cols-2 gap-2">
+          <a
+            href={appleMapsUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand px-4 font-semibold text-brand-ink"
+          >
+            <Icon name="navigation" size={18} />
+            Apple Maps
+          </a>
           <a
             href={mapsUrl}
             target="_blank"
             rel="noreferrer"
-            className="flex min-h-[44px] flex-1 items-center justify-center gap-2 rounded-md bg-brand px-4 font-medium text-brand-ink"
+            className="flex min-h-12 items-center justify-center gap-2 rounded-full border border-line bg-surface px-4 font-semibold text-ink"
           >
             <Icon name="map-pin" size={18} />
-            Directions
+            Google Maps
           </a>
-          {masjid.website && (
-            <a
-              href={masjid.website}
-              target="_blank"
-              rel="noreferrer"
-              className="flex min-h-[44px] items-center justify-center gap-2 rounded-md border border-line px-4 font-medium text-ink-2 hover:text-ink"
-            >
-              <Icon name="globe" size={18} />
-              Website
-            </a>
-          )}
         </div>
+        {masjid.website && (
+          <a
+            href={masjid.website}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-3 flex min-h-11 items-center gap-2 text-meta font-medium text-brand underline underline-offset-2"
+          >
+            <Icon name="globe" size={16} />
+            {masjid.website.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")}
+          </a>
+        )}
 
         {!collected && (
           <p className="mt-4 rounded-md bg-surface-2 p-3 text-body text-ink-2">
@@ -147,17 +180,29 @@ export default function MasjidDetailSheet({
         <table className="mt-2 w-full border-collapse">
           <thead>
             <tr className="text-left text-meta uppercase tracking-[0.08em] text-ink-3">
-              <th className="py-2 font-normal">Prayer</th>
+              <th className="py-2 pl-2 font-normal">Prayer</th>
               <th className="py-2 text-right font-normal">Adhan</th>
-              <th className="py-2 text-right font-normal">Iqamah</th>
+              <th className="py-2 pr-2 text-right font-normal">Iqamah</th>
             </tr>
           </thead>
           <tbody>
             {PRAYERS.map((prayer) => {
               const mismatch = asrSchoolMismatch(masjid, prayer, date);
+              // NextRakaa's cue: the row you're heading for is lit, so the
+              // table answers "which one is next" without reading the clock.
+              const isNext = next != null && !next.tomorrow && next.prayer === prayer;
               return (
-                <tr key={prayer} className="border-t border-line">
-                  <th scope="row" className="py-3 text-left font-medium">
+                <tr
+                  key={prayer}
+                  className="border-t border-line"
+                  style={isNext ? { background: `var(--${prayer}-wash)` } : undefined}
+                  aria-current={isNext ? "time" : undefined}
+                >
+                  <th
+                    scope="row"
+                    className="py-3 pl-2 text-left font-medium"
+                    style={isNext ? { color: `var(--${prayer})` } : undefined}
+                  >
                     {PRAYER_LABELS[prayer]}
                     {mismatch && (
                       <span className="mt-0.5 block text-meta font-normal text-caution">
@@ -168,7 +213,7 @@ export default function MasjidDetailSheet({
                   <td className="py-3 text-right font-num text-meta text-ink-3">
                     {formatTime(adhan[prayer])}
                   </td>
-                  <td className="py-3 text-right font-num text-name font-medium text-ink">
+                  <td className="py-3 pr-2 text-right font-num text-name font-semibold text-ink">
                     {iqamah[prayer] ? (
                       formatTime(iqamah[prayer]!)
                     ) : (
@@ -234,7 +279,7 @@ export default function MasjidDetailSheet({
             onClick={() => setSuggesting("fajr")}
             className="mt-6 flex min-h-[44px] w-full items-center justify-center rounded-md border border-line font-medium text-ink-2 hover:text-ink"
           >
-            Suggest a correction →
+            Report a wrong time
           </button>
         )}
 

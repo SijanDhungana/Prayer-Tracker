@@ -63,8 +63,13 @@ enum PrayerMath {
             return calendar.date(byAdding: .minute, value: minutes,
                                  to: adhan(times, prayer))
         case .fixed(let hour, let minute):
-            return calendar.date(bySettingHour: hour, minute: minute, second: 0,
-                                 of: day, matchingPolicy: .nextTime)
+            guard let at = calendar.date(bySettingHour: hour, minute: minute, second: 0,
+                                         of: day, matchingPolicy: .nextTime) else { return nil }
+            // Same guard as src/lib/prayer.ts: a fixed time that has drifted
+            // more than 3 minutes before its own adhan cannot be right, so the
+            // widget skips it rather than send someone to a Fajr before Fajr.
+            if at < adhan(times, prayer).addingTimeInterval(-3 * 60) { return nil }
+            return at
         }
     }
 
