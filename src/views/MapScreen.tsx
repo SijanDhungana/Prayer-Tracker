@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import BottomSheet, { HEIGHTS, type Snap } from "../components/BottomSheet";
 import Icon from "../components/Icon";
-import MasjidDetailSheet from "../components/MasjidDetailSheet";
 import TimeRow from "../components/TimeRow";
 import { useClock } from "../lib/clock";
 import { formatDistance, haversineKm } from "../lib/distance";
@@ -11,7 +10,7 @@ import type { ReferencePoint } from "../lib/location";
 import { congregationAdhan, formatRelative, nextCongregation } from "../lib/nextUp";
 import { prayerLabel, resolvePlanIqamah } from "../lib/planPrayer";
 import { adhanTimes, cityReference, iqamahTimes } from "../lib/prayer";
-import { mapPath, masjidPath } from "../lib/route";
+import { masjidPath } from "../lib/route";
 import { cityMadhab, useSettings } from "../lib/settings";
 import { formatTime, formatTimeShort } from "../lib/time";
 import { asrSchoolMismatch } from "../lib/trust";
@@ -150,14 +149,10 @@ export default function MapScreen({
   masjids,
   date,
   reference,
-  masjidId,
-  onPublished,
 }: {
   masjids: Masjid[];
   date: Date;
   reference: ReferencePoint;
-  masjidId: string | null;
-  onPublished?: () => void;
 }) {
   const holder = useRef<HTMLDivElement>(null);
   const map = useRef<google.maps.Map | null>(null);
@@ -243,10 +238,6 @@ export default function MapScreen({
       })
       .sort((a, b) => a.km - b.km);
   }, [masjids, point, date, listDate, prayer, query, onlyFavourites, onlyJumuah, onlyMyAsr, isFavourite, minute]);
-
-  const detail = masjidId
-    ? (masjids.find((m) => m.id === masjidId) ?? null)
-    : null;
 
   // Create the map once. Google owns this node outright, so React must never
   // render children into it.
@@ -615,15 +606,6 @@ export default function MapScreen({
         )}
       </BottomSheet>
 
-      {detail && (
-        <MasjidDetailSheet
-          masjid={detail}
-          date={date}
-          from={point}
-          onClose={() => window.location.assign(mapPath)}
-          onPublished={onPublished}
-        />
-      )}
     </div>
   );
 }
@@ -696,7 +678,7 @@ function SelectedMasjid({
               className="rounded-md py-2 text-center"
               style={
                 current
-                  ? { background: "var(--now-wash)", color: "var(--now)" }
+                  ? { background: "var(--now-wash)", color: "var(--now-ink)" }
                   : undefined
               }
             >

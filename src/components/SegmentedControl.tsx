@@ -117,7 +117,7 @@ export default function SegmentedControl<T extends string>({
               (scrollable ? "" : "min-w-0 flex-1 ") +
               (selected
                 ? accent === "now"
-                  ? "bg-now-wash text-now"
+                  ? "bg-now-wash text-now-ink"
                   : "bg-brand text-brand-ink"
                 : "text-ink-2 hover:text-ink")
             }

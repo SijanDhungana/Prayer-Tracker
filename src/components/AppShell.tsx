@@ -32,10 +32,16 @@ const TABS: { name: Route["name"]; label: string; href: string; icon: IconName }
  * Four tabs, not five. Plan a trip is reached from a card on Home and from
  * the map — it is a task you set out to do, not a place you check — and the
  * bar reads at a glance again with four big targets. Settings owns
- * Suggestions and the map owns Plan, so those routes keep their tab lit.
+ * Suggestions. Plan keeps lit whichever of Home or the map it was opened
+ * from; it used to always light Map, so tapping "Going somewhere?" on Home
+ * looked like being sent to another tab.
  */
-const activeTab = (route: Route): Route["name"] =>
-  route.name === "suggestions" ? "settings" : route.name === "plan" ? "map" : route.name;
+const activeTab = (route: Route, lastTab: Route["name"]): Route["name"] =>
+  route.name === "suggestions"
+    ? "settings"
+    : route.name === "plan"
+      ? lastTab === "next" ? "next" : "map"
+      : route.name;
 
 /**
  * Start fetching the Maps SDK the moment a finger lands on Map or Plan,
@@ -80,6 +86,7 @@ function useIsDesktop(): boolean {
 
 export default function AppShell({
   route,
+  lastTab,
   reference,
   children,
   /** The map takes the whole viewport and manages its own scrolling. */
@@ -87,14 +94,17 @@ export default function AppShell({
   /** One line above the content when the times on screen are not live. */
   notice = null,
 }: {
+  /** The screen showing — beneath any masjid overlay, the one that opened it. */
   route: Route;
+  /** The last tab visited, for screens reached from more than one. */
+  lastTab: Route["name"];
   reference: ReferencePoint;
   children: ReactNode;
   bleed?: boolean;
   notice?: ReactNode;
 }) {
   const isDesktop = useIsDesktop();
-  const active = activeTab(route);
+  const active = activeTab(route, lastTab);
 
   return (
     <div className="min-h-dvh bg-paper text-ink">
@@ -215,7 +225,7 @@ function Sidebar({
       <div className="flex items-center gap-2 px-5 py-5">
         <span
           className="flex h-8 w-8 items-center justify-center rounded-full"
-          style={{ background: "var(--now-wash)", color: "var(--now)" }}
+          style={{ background: "var(--now-wash)", color: "var(--now-ink)" }}
         >
           <Icon name="mosque" size={18} />
         </span>

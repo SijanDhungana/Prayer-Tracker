@@ -14,7 +14,7 @@ import { isFriday, jumuahTimesOn, resolvePlanIqamah } from "../lib/planPrayer";
 import { cityMadhab, useSettings } from "../lib/settings";
 import type { ReferencePoint } from "../lib/location";
 import { adhanTimes, cityReference, iqamahTimes } from "../lib/prayer";
-import { planPath, prayerPath } from "../lib/route";
+import { masjidPath, planPath, prayerPath } from "../lib/route";
 import { asrSchoolMismatch, summarizeFreshness } from "../lib/trust";
 import { formatCalendarDate, formatTime, formatTimeShort } from "../lib/time";
 import { PRAYERS, PRAYER_LABELS, type Masjid, type Prayer } from "../lib/types";
@@ -334,7 +334,7 @@ export default function NextUp({
           background: `var(--${prayer}-wash)`,
         }}
       >
-        <div className="flex items-center gap-2" style={{ color: `var(--${prayer})` }}>
+        <div className="flex items-center gap-2" style={{ color: `var(--${prayer}-ink)` }}>
           <Icon name={PRAYER_ICON[prayer]} size={22} />
           <span className="text-body font-semibold">
             {inProgress ? "Now" : "Next"}: {prayerName}
@@ -382,7 +382,7 @@ export default function NextUp({
                 Directions
               </a>
               <a
-                href={`#/map/${target.masjid.id}`}
+                href={masjidPath(target.masjid.id)}
                 className="flex min-h-12 flex-1 items-center justify-center gap-2 rounded-full border border-line bg-surface px-4 text-body font-semibold text-ink"
               >
                 All times
@@ -444,7 +444,7 @@ export default function NextUp({
               className="flex min-w-[76px] shrink-0 flex-col items-center justify-center gap-1 rounded-lg border px-3 py-3 transition-colors"
               style={
                 selected
-                  ? { background: `var(--${p})`, borderColor: `var(--${p})`, color: "var(--brand-ink)" }
+                  ? { background: `var(--${p}-ink)`, borderColor: `var(--${p}-ink)`, color: "var(--brand-ink)" }
                   : { background: "var(--surface)", borderColor: "var(--line)", color: "var(--ink-2)" }
               }
             >

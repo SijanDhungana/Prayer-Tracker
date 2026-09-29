@@ -26,6 +26,7 @@
 
   --color-now: var(--now);
   --color-now-wash: var(--now-wash);
+  --color-now-ink: var(--now-ink);
 
   --color-ok: var(--ok);
   --color-caution: var(--caution);

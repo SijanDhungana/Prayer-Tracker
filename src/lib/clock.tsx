@@ -107,6 +107,7 @@ function useAccent(prayer: Prayer | null) {
 
     root.style.setProperty("--now", `var(--${prayer})`);
     root.style.setProperty("--now-wash", `var(--${prayer}-wash)`);
+    root.style.setProperty("--now-ink", `var(--${prayer}-ink)`);
 
     const changed = previous.current !== null && previous.current !== prayer;
     previous.current = prayer;

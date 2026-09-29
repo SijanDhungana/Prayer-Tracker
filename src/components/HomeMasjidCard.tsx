@@ -105,7 +105,7 @@ export default function HomeMasjidCard({
 
       {next ? (
         <span className="mt-2 flex items-baseline justify-between gap-3">
-          <span className="text-body" style={{ color: "var(--now)" }}>
+          <span className="text-body" style={{ color: `var(--${next.prayer}-ink)` }}>
             {PRAYER_LABELS[next.prayer]} iqamah
             {next.tomorrow && (
               <span className="block text-meta text-ink-3">tomorrow</span>

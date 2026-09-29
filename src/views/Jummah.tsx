@@ -118,7 +118,7 @@ export default function Jummah({
       {nextToday && (
         <p
           className="mt-4 rounded-md px-4 py-3 text-body"
-          style={{ background: "var(--now-wash)", color: "var(--now)" }}
+          style={{ background: "var(--now-wash)", color: "var(--now-ink)" }}
         >
           <span className="font-medium">Today</span> · next khutbah{" "}
           {formatRelative((nextToday.at.getTime() - minute.getTime()) / 60_000)} at{" "}

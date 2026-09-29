@@ -1,11 +1,12 @@
-import { Suspense, lazy, useMemo } from "react";
+import { Suspense, lazy, useCallback, useMemo } from "react";
 import AppShell from "./components/AppShell";
+import MasjidDetailSheet from "./components/MasjidDetailSheet";
 import { AuthProvider } from "./lib/auth";
 import { useMasjidData } from "./lib/masjidData";
 import { ClockProvider, useClock } from "./lib/clock";
 import { useReferencePoint } from "./lib/location";
 import { applyOverrides, useApprovedTimes } from "./lib/overrides";
-import { useHashRoute } from "./lib/route";
+import { isOverlay, pathOf, useHashRoute, useUnderlay, type Screen } from "./lib/route";
 import {
   SettingsProvider,
   applyAsrPreference,
@@ -37,6 +38,10 @@ export default function App() {
 
 function Shell() {
   const route = useHashRoute();
+  // A masjid's details are drawn over the screen that opened it, which keeps
+  // rendering underneath — see useUnderlay.
+  const { base, openedHere, lastTab } = useUnderlay(route);
+  const screen: Screen = isOverlay(route) ? base : route;
   const reference = useReferencePoint();
   const { today } = useClock();
 
@@ -86,43 +91,61 @@ function Shell() {
 
   const loading = <p className="p-4 text-body text-ink-3">Loading…</p>;
 
+  const openMasjid = isOverlay(route)
+    ? (masjids.find((m) => m.id === route.masjidId) ?? null)
+    : null;
+  const closeMasjid = useCallback(() => {
+    // Opened by a tap, the screen that was tapped is the entry right behind
+    // it, so closing is the browser's own Back and history stays clean. Any
+    // other way in, it closes onto that screen in place.
+    if (openedHere) window.history.back();
+    else window.location.replace(pathOf(base));
+  }, [openedHere, base]);
+
   return (
-    <AppShell
-      route={route}
-      reference={reference}
-      bleed={route.name === "map"}
-      notice={notice}
-    >
-      {route.name === "map" ? (
-        <Suspense fallback={loading}>
-          <MapScreen
+    <>
+      <AppShell
+        route={screen}
+        lastTab={lastTab}
+        reference={reference}
+        bleed={screen.name === "map"}
+        notice={notice}
+      >
+        {screen.name === "map" ? (
+          <Suspense fallback={loading}>
+            <MapScreen masjids={masjids} date={today} reference={reference} />
+          </Suspense>
+        ) : screen.name === "plan" ? (
+          <Suspense fallback={loading}>
+            <PlanTrip masjids={masjids} reference={reference} />
+          </Suspense>
+        ) : screen.name === "jummah" ? (
+          <Jummah masjids={masjids} date={today} from={reference.point} />
+        ) : screen.name === "settings" ? (
+          <Settings masjids={masjids} date={today} reference={reference} />
+        ) : screen.name === "suggestions" ? (
+          <AdminSuggestions date={today} />
+        ) : screen.name === "signin" ? (
+          <SignIn />
+        ) : (
+          <NextUp
             masjids={masjids}
-            date={today}
+            from={reference.point}
             reference={reference}
-            masjidId={route.masjidId}
-            onPublished={refreshApproved}
+            initialPrayer={screen.prayer}
           />
-        </Suspense>
-      ) : route.name === "plan" ? (
-        <Suspense fallback={loading}>
-          <PlanTrip masjids={masjids} reference={reference} />
-        </Suspense>
-      ) : route.name === "jummah" ? (
-        <Jummah masjids={masjids} date={today} from={reference.point} />
-      ) : route.name === "settings" ? (
-        <Settings masjids={masjids} date={today} reference={reference} />
-      ) : route.name === "suggestions" ? (
-        <AdminSuggestions date={today} />
-      ) : route.name === "signin" ? (
-        <SignIn />
-      ) : (
-        <NextUp
-          masjids={masjids}
+        )}
+      </AppShell>
+      {openMasjid && (
+        <MasjidDetailSheet
+          key={openMasjid.id}
+          masjid={openMasjid}
+          date={today}
           from={reference.point}
-          reference={reference}
-          initialPrayer={route.prayer}
+          onClose={closeMasjid}
+          onPublished={refreshApproved}
         />
       )}
-    </AppShell>
+    </>
   );
 }

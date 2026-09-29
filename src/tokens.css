@@ -30,10 +30,13 @@
 
   --ink:          #16221D;  /* primary text, iqamah times */
   --ink-2:        #4F5B55;  /* secondary text, labels */
-  --ink-3:        #74807A;  /* meta: distances, captions */
+  --ink-3:        #5F6B65;  /* meta: distances, captions — 4.6:1 or better on
+                               every surface and prayer wash (was #74807A,
+                               3.8:1 on the page, under WCAG's 4.5:1) */
 
-  --brand:        #1F8A70;  /* primary actions, active nav */
-  --brand-press:  #166F5A;
+  --brand:        #17735D;  /* primary actions, active nav — 5.8:1 under
+                               white text, 5.0:1 as text on its wash */
+  --brand-press:  #115E4B;
   --brand-wash:   #E3F3ED;
   --brand-ink:    #FFFFFF;  /* text on --brand */
 
@@ -44,13 +47,25 @@
   --maghrib: #C24B73;  --maghrib-wash: #FAE6EE;  /* sunset */
   --isha:    #5B4FB0;  --isha-wash:    #EBE8F7;  /* night */
 
+  /* Text-safe twins of the five accents, for words and times set in a
+     prayer's colour and for the selected prayer card's fill. The accents
+     above stay for borders, rings and washes: as text on its own wash Dhuhr
+     read at 2.6:1 and Asr at 3.0:1. Each of these clears 4.5:1 on its wash,
+     on white, and under white text. */
+  --fajr-ink:    #4A5DBF;
+  --dhuhr-ink:   #8A5D00;
+  --asr-ink:     #A84E17;
+  --maghrib-ink: #A83C63;
+  --isha-ink:    #5B4FB0;
+
   /* Reassigned on <html> at runtime to the current window.
      Never use a prayer token directly for chrome — always go through --now. */
   --now:      var(--asr);
   --now-wash: var(--asr-wash);
+  --now-ink:  var(--asr-ink);
 
-  --ok:      #1F8A70;
-  --caution: #B26A00;  --caution-wash: #FBF0DA;
+  --ok:      #17735D;
+  --caution: #8C5400;  --caution-wash: #FBF0DA;  /* 5.5:1 on its wash */
   --danger:  #C0392B;  --danger-wash:  #FBE6E3;
 
   /* ---- Type ---- */
@@ -100,6 +115,8 @@
     --asr: #EE9463;   --asr-wash: #2E1E15;
     --maghrib: #E07F9B; --maghrib-wash: #2E1720;
     --isha: #A79DE6;  --isha-wash: #1E1B34;
+    --fajr-ink: #8D9BE8; --dhuhr-ink: #E8BE62; --asr-ink: #EE9463;
+    --maghrib-ink: #E07F9B; --isha-ink: #A79DE6;
     --ok: #4CC49E;
     --caution: #E8BE62; --caution-wash: #2C2516;
     --danger: #EA8378;  --danger-wash: #2E1816;
@@ -121,6 +138,8 @@
   --asr: #EE9463;   --asr-wash: #2E1E15;
   --maghrib: #E07F9B; --maghrib-wash: #2E1720;
   --isha: #A79DE6;  --isha-wash: #1E1B34;
+  --fajr-ink: #8D9BE8; --dhuhr-ink: #E8BE62; --asr-ink: #EE9463;
+  --maghrib-ink: #E07F9B; --isha-ink: #A79DE6;
   --ok: #4CC49E;
   --caution: #E8BE62; --caution-wash: #2C2516;
   --danger: #EA8378;  --danger-wash: #2E1816;

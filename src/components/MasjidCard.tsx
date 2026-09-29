@@ -99,7 +99,7 @@ export default function MasjidCard({
             >
               <span
                 className="w-full truncate text-center text-[12px] font-semibold"
-                style={{ color: lit ? `var(--${p})` : "var(--ink-3)" }}
+                style={{ color: lit ? `var(--${p}-ink)` : "var(--ink-3)" }}
               >
                 {label}
               </span>
@@ -129,7 +129,7 @@ export default function MasjidCard({
         <p className="min-w-0 flex-1 text-meta text-ink-2">
           {collected && day[focus] ? (
             <>
-              <span className="font-semibold" style={{ color: `var(--${focus})` }}>
+              <span className="font-semibold" style={{ color: `var(--${focus}-ink)` }}>
                 {focusLabel}
               </span>{" "}
               <span className="num">
