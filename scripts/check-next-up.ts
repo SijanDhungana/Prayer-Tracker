@@ -6,7 +6,7 @@ import {
   nextCongregation,
   nextUpRows,
 } from "../src/lib/nextUp";
-import { daysSinceVerified, isStale, trustStatus, verifiedAgo } from "../src/lib/trust";
+import { daysSinceVerified, isStale, summarizeFreshness, trustStatus, verifiedAgo } from "../src/lib/trust";
 import { zonedTimeOnDate } from "../src/lib/time";
 import type { Masjid } from "../src/lib/types";
 
@@ -151,6 +151,30 @@ const day = (iso: string, needsReview = false) => ({ lastVerified: iso, needsRev
     trustStatus(day("2026-08-17"), t), { level:"checked", label:"Checked today", warn:false });
 }
 check("a future date counts as stale too", isStale("2026-09-01", new Date(2026, 7, 17)), true);
+
+// --- summarizeFreshness: Home's line above the list ------------------------
+// It wore a green check whatever the cards said; in September 2026 it sat
+// above a screen of cards all labelled "Last checked 7 Sept".
+{
+  const t = new Date(2026, 8, 29);
+  const on = (iso: string | null, needsReview = false) => ({
+    ...masjid("m", { fajr: "06:00" }, [], iso), needsReview,
+  });
+  check("every card recent: the check is earned",
+    summarizeFreshness([on("2026-09-29"), on("2026-09-20")], t),
+    { tone: "ok", newest: "today", cautions: 0 });
+  check("some cards carrying a caution: says how many",
+    summarizeFreshness([on("2026-09-29"), on("2026-09-29", true), on("2026-08-15")], t),
+    { tone: "mixed", newest: "today", cautions: 2 });
+  check("even the newest read old: the whole line is a caution",
+    summarizeFreshness([on("2026-09-07"), on("2026-08-15")], t),
+    { tone: "stale", newest: "22 days ago", cautions: 2 });
+  check("masjids with no times on file don't count either way",
+    summarizeFreshness([on("2026-09-29"), masjid("empty", {}, [], null)], t),
+    { tone: "ok", newest: "today", cautions: 0 });
+  check("nothing read at all says nothing about age",
+    summarizeFreshness([], t), { tone: "ok", newest: null, cautions: 0 });
+}
 
 console.log(failed ? `\n${failed} FAILED` : "\nall passed");
 process.exit(failed ? 1 : 0);

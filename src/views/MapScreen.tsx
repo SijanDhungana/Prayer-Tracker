@@ -10,9 +10,9 @@ import { googleMapsConfigured, loadGoogleMaps } from "../lib/googleMaps";
 import type { ReferencePoint } from "../lib/location";
 import { congregationAdhan, formatRelative, nextCongregation } from "../lib/nextUp";
 import { prayerLabel, resolvePlanIqamah } from "../lib/planPrayer";
-import { adhanTimes, iqamahTimes } from "../lib/prayer";
+import { adhanTimes, cityReference, iqamahTimes } from "../lib/prayer";
 import { mapPath, masjidPath } from "../lib/route";
-import { useSettings } from "../lib/settings";
+import { cityMadhab, useSettings } from "../lib/settings";
 import { formatTime, formatTimeShort } from "../lib/time";
 import { asrSchoolMismatch } from "../lib/trust";
 import FreshnessDot from "../components/FreshnessDot";
@@ -167,7 +167,7 @@ export default function MapScreen({
   const you = useRef<google.maps.Marker | null>(null);
   const { minute } = useClock();
   const { isFavourite, toggle } = useFavourites();
-  const { onlyMyAsr } = useSettings();
+  const { onlyMyAsr, asr } = useSettings();
 
   const [status, setStatus] = useState<MapStatus>(
     googleMapsConfigured ? "loading" : "unconfigured",
@@ -203,6 +203,18 @@ export default function MapScreen({
   );
   const prayer = congregation.prayer;
   const listDate = congregation.date;
+
+  /**
+   * The header's adhan comes from the same city clock as Home's, so the two
+   * screens name the same time. It used to be the nearest masjid's own adhan,
+   * a minute or two off Home's and on whichever school that masjid follows.
+   * Jumu'ah answers to Dhuhr's adhan.
+   */
+  const cityAdhan = useMemo(
+    () => adhanTimes(cityReference(cityMadhab(asr)), listDate)[prayer === "jumuah" ? "dhuhr" : prayer],
+    [asr, listDate, prayer],
+  );
+  const hanafiNote = asr === "masjid" && prayer === "asr" ? " (Hanafi)" : "";
 
   const rows = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -570,8 +582,8 @@ export default function MapScreen({
           <>
             <p className="px-4 pb-2 text-meta text-ink-3" aria-live="polite">
               {rows.length} masjid{rows.length === 1 ? "" : "s"} nearby ·{" "}
-              {prayerLabel(prayer)} adhan{" "}
-              {rows[0] ? formatTime(rows[0].adhan) : "—"}
+              {prayerLabel(prayer)} adhan {formatTime(cityAdhan)}
+              {hanafiNote}
               {congregation.isTomorrow ? " tomorrow" : ""}
             </p>
             {/* Clears the floating tab bar, which is drawn over the sheet. */}

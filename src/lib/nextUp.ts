@@ -15,6 +15,7 @@ import {
   type PlanPrayer,
 } from "./planPrayer";
 import { adhanTimes, effectiveRule } from "./prayer";
+import { freshness } from "./trust";
 import { PRAYERS, type Masjid, type Prayer } from "./types";
 
 /** A congregation that began this recently is still worth showing. */
@@ -86,6 +87,59 @@ export function congregationAdhan(
 ): Date {
   const times = adhanTimes(masjid, date);
   return prayer === "jumuah" ? times.dhuhr : times[prayer];
+}
+
+/** What Home's answer card weighs about one masjid's next congregation. */
+export interface AnswerCandidate {
+  masjid: Masjid;
+  iqamah: Date | null;
+  /** The masjid's own adhan for that prayer. */
+  adhan: Date;
+  km: number;
+  minutesAway: number | null;
+  /** Starts before Asr by the visitor's own school — §10.1. */
+  otherSchool: boolean;
+}
+
+/**
+ * The congregation Home's answer card recommends: still ahead, inside the
+ * radius, and the most trustworthy one on offer before the soonest.
+ *
+ * The card used to take the soonest outright. In September 2026 that was a
+ * Fajr at 5:50 read on 15 August — three minutes before its own adhan, a
+ * summer time the season had walked past — ahead of every masjid checked
+ * since. A card that *is* the answer should not lead with the record the app
+ * trusts least, so doubt ranks first and time second:
+ *
+ *   0  checked in the last 14 days, and not flagged for review
+ *   1  otherwise, but still starting at or after its own adhan
+ *   2  otherwise, and starting before its own adhan — how drift shows itself
+ *
+ * with the other-school Asr case (§10.1) behind all three, as before. Nothing
+ * is dropped: when every record is old the card still answers, and the
+ * freshness label it carries says how far to trust it.
+ */
+export function pickAnswer<T extends AnswerCandidate>(
+  rows: T[],
+  today: Date,
+  withinKm: number | null,
+): T | null {
+  const doubt = (row: T) => {
+    const { level } = freshness(row.masjid, today);
+    const recent = level === "verified" || level === "recent";
+    const drifted = row.iqamah != null && row.iqamah < row.adhan;
+    return (row.otherSchool ? 3 : 0) + (recent ? 0 : drifted ? 2 : 1);
+  };
+
+  const ahead = rows.filter(
+    (row) =>
+      (withinKm == null || row.km <= withinKm) &&
+      row.iqamah != null &&
+      row.minutesAway != null &&
+      row.minutesAway > 0,
+  );
+  ahead.sort((a, b) => doubt(a) - doubt(b) || a.minutesAway! - b.minutesAway!);
+  return ahead[0] ?? null;
 }
 
 export interface NextUpRow {

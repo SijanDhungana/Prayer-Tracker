@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import FreshnessDot from "../components/FreshnessDot";
 import HomeMasjidCard from "../components/HomeMasjidCard";
 import Icon, { type IconName } from "../components/Icon";
 import LocationChip from "../components/LocationChip";
@@ -8,14 +9,14 @@ import MasjidCard, { directionsUrl } from "../components/MasjidCard";
 import { useClock } from "../lib/clock";
 import { haversineKm, type Point } from "../lib/distance";
 import { useFavourites } from "../lib/favourites";
-import { formatRelative } from "../lib/nextUp";
+import { formatRelative, pickAnswer } from "../lib/nextUp";
 import { isFriday, jumuahTimesOn, resolvePlanIqamah } from "../lib/planPrayer";
-import { useSettings } from "../lib/settings";
+import { cityMadhab, useSettings } from "../lib/settings";
 import type { ReferencePoint } from "../lib/location";
-import { adhanTimes, iqamahTimes } from "../lib/prayer";
+import { adhanTimes, cityReference, iqamahTimes } from "../lib/prayer";
 import { planPath, prayerPath } from "../lib/route";
-import { asrSchoolMismatch } from "../lib/trust";
-import { formatCalendarDate, formatIsoDate, formatTime } from "../lib/time";
+import { asrSchoolMismatch, summarizeFreshness } from "../lib/trust";
+import { formatCalendarDate, formatTime, formatTimeShort } from "../lib/time";
 import { PRAYERS, PRAYER_LABELS, type Masjid, type Prayer } from "../lib/types";
 
 /**
@@ -64,10 +65,20 @@ export default function NextUp({
 }) {
   const { second, minute, today, windows } = useClock();
   const { favourites, isFavourite, toggle } = useFavourites();
-  const { homeMasjidId, onlyMyAsr } = useSettings();
+  const { homeMasjidId, onlyMyAsr, asr } = useSettings();
   const home = masjids.find((m) => m.id === homeMasjidId) ?? null;
 
-  const reference0 = masjids[0];
+  /**
+   * Where the screen's adhan times come from: the city centre, on the
+   * visitor's Asr school — the same place and school as the clock's windows,
+   * so the card, the strip and the accent never disagree about a time.
+   */
+  const city = useMemo(() => cityReference(cityMadhab(asr)), [asr]);
+  /**
+   * Under "Match each masjid" the city's Asr is the Hanafi one, and it says
+   * so wherever it is shown; the strip carries the standard time beside it.
+   */
+  const bothAsr = asr === "masjid";
 
   /**
    * The prayer the card counts down to: the next one whose adhan is still
@@ -77,10 +88,9 @@ export default function NextUp({
    * numbers (§9).
    */
   const nextPrayer = useMemo<Prayer>(() => {
-    if (!reference0) return "fajr";
-    const times = adhanTimes(reference0, today);
+    const times = adhanTimes(city, today);
     return PRAYERS.find((p) => times[p] > minute) ?? "fajr";
-  }, [reference0, today, minute]);
+  }, [city, today, minute]);
 
   const [chosen, setChosen] = useState<Prayer | null>(initialPrayer);
   // A #/?prayer=asr link tapped while this screen is already open changes
@@ -97,7 +107,7 @@ export default function NextUp({
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [shown, setShown] = useState(PAGE);
 
-  const adhanForFocus = reference0 ? adhanTimes(reference0, today)[prayer] : null;
+  const adhanForFocus = adhanTimes(city, today)[prayer];
 
   /**
    * Whether the focused prayer's window is open right now.
@@ -118,8 +128,7 @@ export default function NextUp({
    * the card to count down to tomorrow's Fajr while the list underneath said
    * "no congregation left today".
    */
-  const rollsOver =
-    !inProgress && adhanForFocus != null && adhanForFocus <= minute;
+  const rollsOver = !inProgress && adhanForFocus <= minute;
 
   const listDate = useMemo(
     () =>
@@ -139,17 +148,20 @@ export default function NextUp({
   const labelFor = (p: Prayer) =>
     isFriday(listDate) && p === "dhuhr" ? "Jumu'ah" : PRAYER_LABELS[p];
 
-  const countdownTo = useMemo(() => {
-    if (!reference0) return null;
-    if (inProgress) return null;
-    return adhanTimes(reference0, listDate)[prayer];
-  }, [reference0, inProgress, listDate, prayer]);
+  const countdownTo = useMemo(
+    () => (inProgress ? null : adhanTimes(city, listDate)[prayer]),
+    [city, inProgress, listDate, prayer],
+  );
 
   /** Today's adhan for each prayer, for the strip. */
-  const strip = useMemo(
-    () => (reference0 ? adhanTimes(reference0, today) : null),
-    [reference0, today],
+  const strip = useMemo(() => adhanTimes(city, today), [city, today]);
+  /** The standard Asr, shown beside the Hanafi one under "Match each masjid". */
+  const standardAsr = useMemo(
+    () => (bothAsr ? adhanTimes(cityReference("shafi"), today).asr : null),
+    [bothAsr, today],
   );
+  /** "Hanafi " before an Asr adhan the visitor did not choose a school for. */
+  const school = bothAsr && prayer === "asr" ? "Hanafi " : "";
 
   // Rows are recomputed on the minute, not the second: distances and iqamah
   // times don't change sixty times a minute, and §12 asks that they not be
@@ -235,40 +247,34 @@ export default function NextUp({
   /**
    * One honest line above the list: when the times were last read, and how
    * many of the masjids in range actually have congregation times. Saying
-   * "31 of 48" up front is what stops a row of dashes reading as a bug.
+   * "31 of 48" up front is what stops a row of dashes reading as a bug. How
+   * far to trust them comes from the same scale as the cards' own labels.
    */
   const inRange = rows.filter((r) => withinKm == null || r.km <= withinKm);
   const withTimes = inRange.filter(
     (r) => Object.keys(r.masjid.iqamah ?? {}).length > 0,
   ).length;
-  const lastRead = masjids.reduce<string | null>(
-    (latest, m) => (m.lastVerified && (!latest || m.lastVerified > latest) ? m.lastVerified : latest),
-    null,
-  );
+  const readLine = summarizeFreshness(inRange.map((r) => r.masjid), today);
   const rest = visible.filter((r) => !isFavourite(r.masjid.id));
 
   /**
-   * The soonest congregation still ahead — the card's answer.
+   * The card's answer — see `pickAnswer` for how it ranks.
    *
    * Masjids on the other Asr school are ranked last rather than dropped.
    * Their jamaah begins before Asr has started for a Hanafi visitor, so
    * offering it as "the soonest congregation you can catch" would be
    * recommending a prayer they cannot pray — but it is still a real jamaah,
-   * and the right answer if there is nothing else.
+   * and the right answer if there is nothing else. Only masjids inside the
+   * radius count: without that, a Fajr 233 km away once beat every masjid in
+   * the city by a few minutes.
    */
-  const target = useMemo(() => {
-    // Only masjids inside the radius. Without this the card crowned whichever
-    // masjid in the whole directory had the earliest time — a Fajr 233 km
-    // away beat every masjid in the city by a few minutes.
-    const ahead = rows
-      .filter((r) => withinKm == null || r.km <= withinKm)
-      .filter((r) => r.minutesAway != null && r.minutesAway > 0)
-      .sort((a, b) => a.minutesAway! - b.minutesAway!);
-    return ahead.find((r) => !r.otherSchool) ?? ahead[0] ?? null;
-  }, [rows, withinKm]);
+  const target = useMemo(
+    () => pickAnswer(rows, today, withinKm),
+    [rows, today, withinKm],
+  );
 
   const countdown = inProgress
-    ? countdownText(adhanForFocus ?? second, second)
+    ? countdownText(adhanForFocus, second)
     : countdownText(second, countdownTo);
   const relative = (minutes: number | null) =>
     minutes == null ? undefined : formatRelative(minutes);
@@ -334,11 +340,9 @@ export default function NextUp({
             {inProgress ? "Now" : "Next"}: {prayerName}
             {rollsOver && " tomorrow"}
           </span>
-          {adhanForFocus && (
-            <span className="num ml-auto text-meta text-ink-3">
-              adhan {formatTime(countdownTo ?? adhanForFocus)}
-            </span>
-          )}
+          <span className="num ml-auto text-meta text-ink-3">
+            {school}adhan {formatTime(countdownTo ?? adhanForFocus)}
+          </span>
         </div>
 
         {target ? (
@@ -352,7 +356,17 @@ export default function NextUp({
               {target.masjid.name}
               <span className="num text-ink-3"> · {formatDistanceShort(target.km)}</span>
             </p>
-            {target.otherSchool && (
+            {/* The answer carries its age like every other card does (§5):
+                it used to be the one place a masjid's times showed with no
+                label, which made the least-checked record the most
+                confident thing on screen. */}
+            <div className="mt-1.5">
+              <FreshnessDot masjid={target.masjid} today={today} />
+            </div>
+            {(target.otherSchool ||
+              // Under "Match each masjid" the header's Asr is the Hanafi
+              // one, so a congregation before it is on the standard time.
+              (school !== "" && target.iqamah! < (countdownTo ?? adhanForFocus))) && (
               <p className="mt-1 text-meta text-caution">
                 Uses the standard Asr calculation
               </p>
@@ -389,14 +403,15 @@ export default function NextUp({
         )}
 
         <p className="num mt-3 text-meta text-ink-3">
-          {inProgress ? "Started" : "Adhan in"} {countdown}
+          {inProgress ? "Started" : school ? "Hanafi adhan in" : "Adhan in"} {countdown}
         </p>
       </div>
 
       {/* The accessible twin: re-rendered on the minute, never aria-live (§9). */}
       <p className="sr-only">
-        {countdown} {inProgress ? "since" : "until"} {prayerName}
-        {adhanForFocus ? ` at ${formatTime(adhanForFocus)}` : ""}.
+        {countdown} {inProgress ? "since" : "until"} {prayerName} at{" "}
+        {formatTime(adhanForFocus)}
+        {school ? " by the Hanafi calculation" : ""}.
         {target
           ? ` Next congregation at ${target.masjid.name}, ${formatTime(target.iqamah!)}.`
           : ""}
@@ -405,11 +420,17 @@ export default function NextUp({
       {home && <HomeMasjidCard masjid={home} />}
 
       {/* The five prayers as cards. Tapping one re-points the card above and
-          the list below — this is where "compare Asr across the city" lives. */}
+          the list below — this is where "compare Asr across the city" lives.
+          The times on them are the city's adhan, not anyone's congregation;
+          left unlabelled, they read as iqamah. */}
+      <p id="prayer-strip-label" className="mt-5 text-meta font-semibold text-ink-2">
+        Adhan today
+      </p>
       <div
         role="radiogroup"
         aria-label="Prayer"
-        className="-mx-4 mt-5 flex gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        aria-describedby="prayer-strip-label"
+        className="-mx-4 mt-2 flex gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {PRAYERS.map((p) => {
           const selected = p === prayer;
@@ -420,7 +441,7 @@ export default function NextUp({
               role="radio"
               aria-checked={selected}
               onClick={() => pick(p)}
-              className="flex min-w-[76px] shrink-0 flex-col items-center gap-1 rounded-lg border px-3 py-3 transition-colors"
+              className="flex min-w-[76px] shrink-0 flex-col items-center justify-center gap-1 rounded-lg border px-3 py-3 transition-colors"
               style={
                 selected
                   ? { background: `var(--${p})`, borderColor: `var(--${p})`, color: "var(--brand-ink)" }
@@ -429,9 +450,17 @@ export default function NextUp({
             >
               <Icon name={PRAYER_ICON[p]} size={22} />
               <span className="text-meta font-semibold">{labelFor(p)}</span>
-              <span className="num text-meta opacity-90">
-                {strip ? formatTime(strip[p]) : "—"}
-              </span>
+              {p === "asr" && standardAsr ? (
+                // No one city Asr under "Match each masjid": both schools,
+                // each named, earlier first. The Hanafi time alone used to
+                // stand here unlabelled, most of an hour after the standard one.
+                <span className="num flex flex-col items-center text-[12px] leading-tight opacity-90">
+                  <span>Standard {formatTimeShort(standardAsr)}</span>
+                  <span>Hanafi {formatTimeShort(strip.asr)}</span>
+                </span>
+              ) : (
+                <span className="num text-meta opacity-90">{formatTime(strip[p])}</span>
+              )}
             </button>
           );
         })}
@@ -456,11 +485,23 @@ export default function NextUp({
         </button>
       </div>
 
-      <p className="mt-2 flex items-center gap-1.5 text-meta text-ink-3">
-        <Icon name="check" size={14} className="shrink-0 text-ok" />
+      <p
+        className={
+          "mt-2 flex items-center gap-1.5 text-meta " +
+          (readLine.tone === "stale" ? "text-caution" : "text-ink-3")
+        }
+      >
+        {/* The check is earned: only when every card below is recent. */}
+        <Icon
+          name={readLine.tone === "ok" ? "check" : "clock"}
+          size={14}
+          className={"shrink-0" + (readLine.tone === "ok" ? " text-ok" : "")}
+        />
         <span className="num">
-          {lastRead ? `Read from masjid websites · ${formatIsoDate(lastRead)} · ` : ""}
+          {readLine.newest &&
+            `${readLine.tone === "stale" ? "Last read" : "Read"} from masjid websites ${readLine.newest} · `}
           {withTimes} of {inRange.length} nearby have times
+          {readLine.tone === "mixed" && ` · ${readLine.cautions} not confirmed recently`}
         </span>
       </p>
 

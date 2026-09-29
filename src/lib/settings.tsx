@@ -7,25 +7,12 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import type { AsrPreference } from "./asr";
 import { setClockFormat, type ClockFormat } from "./time";
-import type { Masjid } from "./types";
 
-/**
- * Which school's Asr the visitor follows.
- *
- * Asr is the one prayer whose calculated time depends on the school: Hanafi
- * waits until an object's shadow is twice its length, everyone else until it
- * is once. The gap is roughly an hour, which is far too big to paper over.
- *
- * "masjid" is the default and means "whatever each masjid itself calculates",
- * which is what the directory already records per masjid. It is the safe
- * default precisely because it is the status quo: nobody's times change until
- * they ask for a change. Guessing wrong in either direction is harmful — show
- * a Hanafi visitor the standard time and they may pray before Asr has begun
- * for them; show a Shafi visitor the Hanafi time and they may think Asr has
- * not started when it has.
- */
-export type AsrPreference = "masjid" | "hanafi" | "standard";
+// The Asr logic itself is plain TypeScript, so the check scripts can run it.
+export { applyAsrPreference, cityMadhab } from "./asr";
+export type { AsrPreference } from "./asr";
 
 export const ASR_LABELS: Record<AsrPreference, string> = {
   masjid: "Match each masjid",
@@ -263,29 +250,3 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
 }
 
 export const useSettings = () => useContext(SettingsContext);
-
-/**
- * Rewrite each masjid's madhab to the visitor's choice.
- *
- * Applied once, high up, to the same list every view already receives — so a
- * preference reaches every calculation in the app without each call site
- * having to remember to ask for it. A view that forgot would quietly show an
- * Asr an hour out, which is exactly the kind of mistake this app cannot make.
- *
- * Only the *adhan* moves. A masjid's iqamah is a clock time its committee
- * chose, and no visitor preference should rewrite what a masjid published.
- */
-export function applyAsrPreference(
-  masjids: Masjid[],
-  preference: AsrPreference,
-): Masjid[] {
-  if (preference === "masjid") return masjids;
-
-  const madhab = preference === "hanafi" ? "hanafi" : "shafi";
-
-  return masjids.map((masjid) =>
-    masjid.calc.madhab === madhab
-      ? masjid
-      : { ...masjid, calc: { ...masjid.calc, madhab } },
-  );
-}

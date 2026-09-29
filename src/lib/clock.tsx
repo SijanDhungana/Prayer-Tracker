@@ -22,7 +22,8 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { masjids as allMasjids } from "../data/masjids";
+import { cityReference } from "./prayer";
+import { cityMadhab, useSettings } from "./settings";
 import { todayIn } from "./time";
 import { currentWindow, type PrayerWindow, type WindowPosition } from "./windows";
 import type { Prayer } from "./types";
@@ -69,16 +70,13 @@ export function ClockProvider({ children }: { children: ReactNode }) {
   // cannot change mid-minute in any way that matters.
   const today = useMemo(() => todayIn(), [minute]);
 
-  const { windows, position } = useMemo(() => {
-    const reference = allMasjids[0];
-    if (!reference) {
-      return {
-        windows: [] as PrayerWindow[],
-        position: { index: -1, window: null, progress: 0, dayProgress: 0 },
-      };
-    }
-    return currentWindow(reference, today, minute);
-  }, [today, minute]);
+  // The windows follow the visitor's Asr school, so the accent turns and the
+  // answer card says "Now: Asr" at the time their own school does.
+  const { asr } = useSettings();
+  const { windows, position } = useMemo(
+    () => currentWindow(cityReference(cityMadhab(asr)), today, minute),
+    [today, minute, asr],
+  );
 
   const window_ = position.window?.prayer ?? null;
 

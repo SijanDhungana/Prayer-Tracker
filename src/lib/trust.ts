@@ -131,6 +131,48 @@ export function freshness(
 }
 
 /**
+ * A list's freshness in one line — Home's summary above its cards.
+ *
+ * That line used to wear a green check and the newest date in the whole
+ * directory whatever the cards beneath it said: in September 2026 it read
+ * "Read from masjid websites ✓" above a screen of cards all labelled "Last
+ * checked 7 Sept", one of them from 15 August. It now answers from the same
+ * `freshness()` levels the cards use, for the masjids actually listed:
+ *
+ *   ok     every masjid with times is recently checked
+ *   mixed  some carry a caution label of their own
+ *   stale  even the newest read is past the recent window — the directory
+ *          itself is old, as when the daily scrape stalls
+ */
+export interface FreshnessSummary {
+  tone: "ok" | "mixed" | "stale";
+  /** The newest read among them — "today", "3 days ago" — or null if none. */
+  newest: string | null;
+  /** How many show a caution label on their own card. */
+  cautions: number;
+}
+
+export function summarizeFreshness(
+  masjids: Parameters<typeof freshness>[0][],
+  today: Date,
+): FreshnessSummary {
+  let newest: string | null = null;
+  let cautions = 0;
+
+  for (const masjid of masjids) {
+    const { level } = freshness(masjid, today);
+    if (level === "none") continue;
+    if (level === "stale") cautions++;
+    if (!newest || masjid.lastVerified! > newest) newest = masjid.lastVerified;
+  }
+
+  const age = daysSinceVerified(newest, today);
+  const tone =
+    age != null && age > RECENT_AFTER_DAYS ? "stale" : cautions > 0 ? "mixed" : "ok";
+  return { tone, newest: verifiedAgo(newest, today), cautions };
+}
+
+/**
  * Whether a masjid's stored iqamah lands before the adhan the *visitor's*
  * school calculates — design spec v2 §10.1.
  *

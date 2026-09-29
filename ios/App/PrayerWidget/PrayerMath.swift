@@ -50,6 +50,20 @@ enum PrayerMath {
         }
     }
 
+    /// When a prayer's time runs out — the latest its congregation could
+    /// begin. Fajr ends at sunrise, every other prayer when the next one's
+    /// adhan is called; Isha runs on to Fajr. Same table as `windowEnds` in
+    /// src/lib/prayer.ts.
+    private static func windowEnd(_ times: PrayerTimes, _ prayer: Prayer) -> Date? {
+        switch prayer {
+        case .fajr: return times.sunrise
+        case .dhuhr: return times.asr
+        case .asr: return times.maghrib
+        case .maghrib: return times.isha
+        case .isha: return nil
+        }
+    }
+
     /// Resolve one iqamah rule to a wall-clock instant on `day`.
     ///
     /// An offset rule is relative to that prayer's own adhan, which is why
@@ -58,19 +72,26 @@ enum PrayerMath {
     static func iqamah(for prayer: Prayer, masjid: Masjid, times: PrayerTimes,
                        day: Date, calendar: Calendar) -> Date? {
         guard let rule = masjid.iqamah[prayer] else { return nil }
+        let at: Date
         switch rule {
         case .offset(let minutes):
-            return calendar.date(byAdding: .minute, value: minutes,
-                                 to: adhan(times, prayer))
+            guard let resolved = calendar.date(byAdding: .minute, value: minutes,
+                                               to: adhan(times, prayer)) else { return nil }
+            at = resolved
         case .fixed(let hour, let minute):
-            guard let at = calendar.date(bySettingHour: hour, minute: minute, second: 0,
-                                         of: day, matchingPolicy: .nextTime) else { return nil }
+            guard let resolved = calendar.date(bySettingHour: hour, minute: minute, second: 0,
+                                               of: day, matchingPolicy: .nextTime) else { return nil }
             // Same guard as src/lib/prayer.ts: a fixed time that has drifted
             // more than 3 minutes before its own adhan cannot be right, so the
             // widget skips it rather than send someone to a Fajr before Fajr.
-            if at < adhan(times, prayer).addingTimeInterval(-3 * 60) { return nil }
-            return at
+            if resolved < adhan(times, prayer).addingTimeInterval(-3 * 60) { return nil }
+            at = resolved
         }
+        // And from the other side, as in src/lib/prayer.ts: a congregation
+        // cannot begin once its prayer's time is over — an August Asr of
+        // 7:15 PM still on file after sunset had moved to 7:01.
+        if let end = windowEnd(times, prayer), at >= end { return nil }
+        return at
     }
 
     struct Upcoming {

@@ -44,30 +44,67 @@ function parametersFor(calc: CalcConfig): CalculationParameters {
   return params;
 }
 
+/** What the calculation needs: somewhere, and how to calculate for it. */
+export type Place = Pick<Masjid, "lat" | "lng" | "calc">;
+
+function solve(place: Place, date: Date): PrayerTimes {
+  const coords = new Coordinates(place.lat, place.lng);
+  return new PrayerTimes(coords, date, parametersFor(place.calc));
+}
+
+const adhanOf = (t: PrayerTimes): Record<Prayer, Date> => ({
+  fajr: t.fajr,
+  dhuhr: t.dhuhr,
+  asr: t.asr,
+  maghrib: t.maghrib,
+  isha: t.isha,
+});
+
 /**
  * Astronomically calculated adhan times for one masjid on one day.
  * Pure math, no network — see CLAUDE.md §2.
  */
 export function adhanTimes(
-  masjid: Masjid,
+  place: Place,
   date: Date = todayIn(),
 ): Record<Prayer, Date> {
-  const coords = new Coordinates(masjid.lat, masjid.lng);
-  const t = new PrayerTimes(coords, date, parametersFor(masjid.calc));
-
-  return {
-    fajr: t.fajr,
-    dhuhr: t.dhuhr,
-    asr: t.asr,
-    maghrib: t.maghrib,
-    isha: t.isha,
-  };
+  return adhanOf(solve(place, date));
 }
 
 /** Sunrise closes the Fajr window; useful on the detail view. */
-export function sunriseTime(masjid: Masjid, date: Date = todayIn()): Date {
-  const coords = new Coordinates(masjid.lat, masjid.lng);
-  return new PrayerTimes(coords, date, parametersFor(masjid.calc)).sunrise;
+export function sunriseTime(place: Place, date: Date = todayIn()): Date {
+  return solve(place, date).sunrise;
+}
+
+/**
+ * Downtown Toronto — the app's default reference point (CLAUDE.md §9).
+ *
+ * Adhan is near enough identical across the city (§2) that one place can
+ * stand for all of it, so the prayer strip, the answer card's adhan, the
+ * prayer windows and the map's header all read their times from here. They
+ * used to read them from whichever masjid happened to be first in the
+ * directory, which quietly made the whole app's Asr that masjid's school.
+ */
+export const CITY_CENTRE = { lat: 43.6532, lng: -79.3832 };
+
+/** The city's adhan, calculated for one school's Asr. */
+export function cityReference(madhab: CalcConfig["madhab"]): Place {
+  return { ...CITY_CENTRE, calc: { method: DEFAULT_METHOD, madhab } };
+}
+
+/**
+ * When each prayer's time runs out — the latest its congregation could
+ * begin. Fajr ends at sunrise and every other prayer when the next one's
+ * adhan is called. Isha runs on to Fajr and has no bound here.
+ */
+function windowEnds(t: PrayerTimes): Record<Prayer, Date | null> {
+  return {
+    fajr: t.sunrise,
+    dhuhr: t.asr,
+    asr: t.maghrib,
+    maghrib: t.isha,
+    isha: null,
+  };
 }
 
 /**
@@ -82,21 +119,32 @@ export function iqamahTime(
   rule: IqamahRule | undefined,
   adhan: Date,
   date: Date = todayIn(),
+  /** When this prayer's time is over; see `windowEnds`. */
+  windowEnd: Date | null = null,
 ): Date | null {
   if (!rule) return null;
-  if (rule.type === "offset") {
-    return new Date(adhan.getTime() + rule.minutes * 60_000);
-  }
-  const at = zonedTimeOnDate(date, rule.time);
+  const at =
+    rule.type === "offset"
+      ? new Date(adhan.getTime() + rule.minutes * 60_000)
+      : zonedTimeOnDate(date, rule.time);
+  if (!at) return null;
   // §14, at display time. The scraper refuses an iqamah earlier than its own
   // adhan, but only on the day it reads the page; a fixed time then drifts as
   // the adhan moves through the season. When the scrape stalled for three
   // weeks in September 2026, 36 masjids ended up showing a Fajr jamaah before
   // Fajr had begun. A time that cannot be right shows "—" instead, and the
   // next successful read brings the real one back.
-  if (at && at.getTime() < adhan.getTime() - IMPOSSIBLE_BEFORE_ADHAN_MINUTES * 60_000) {
+  if (
+    rule.type === "fixed" &&
+    at.getTime() < adhan.getTime() - IMPOSSIBLE_BEFORE_ADHAN_MINUTES * 60_000
+  ) {
     return null;
   }
+  // The same drift from the other side. The same stall left a masjid's
+  // August Asr of 7:15 PM on file after sunset had moved to 7:01, and Home
+  // listed it as a congregation still to catch. No rounding slack here:
+  // masjids schedule well inside a prayer's time, never minutes from its end.
+  if (windowEnd && at.getTime() >= windowEnd.getTime()) return null;
   return at;
 }
 
@@ -186,12 +234,23 @@ export function iqamahTimes(
   masjid: Masjid,
   date: Date = todayIn(),
 ): Record<Prayer, Date | null> {
-  const adhan = adhanTimes(masjid, date);
+  // Resolved and checked on the masjid's own school, never the visitor's. A
+  // Hanafi preference used to recalculate a standard masjid's Asr adhan most
+  // of an hour later, and iqamahTime's before-adhan check then threw out its
+  // real congregation — 11 of 58 standard masjids lost their Asr outright in
+  // September 2026, instead of showing it with the other-school note §10.1
+  // designed for exactly them.
+  const own = masjid.calc.ownMadhab
+    ? { ...masjid, calc: { ...masjid.calc, madhab: masjid.calc.ownMadhab } }
+    : masjid;
+  const times = solve(own, date);
+  const adhan = adhanOf(times);
+  const ends = windowEnds(times);
 
   return Object.fromEntries(
     PRAYERS.map((prayer) => [
       prayer,
-      iqamahTime(effectiveRule(masjid, prayer).rule, adhan[prayer], date),
+      iqamahTime(effectiveRule(masjid, prayer).rule, adhan[prayer], date, ends[prayer]),
     ]),
   ) as Record<Prayer, Date | null>;
 }

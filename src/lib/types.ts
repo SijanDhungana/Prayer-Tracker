@@ -22,6 +22,12 @@ export interface CalcConfig {
   /** Only changes Asr — "hanafi" runs it roughly an hour later. */
   madhab: "hanafi" | "shafi";
   /**
+   * The masjid's own school, kept when a visitor's Asr preference has
+   * replaced `madhab` (settings.tsx). Its congregation times are resolved
+   * and checked against this; the preference only moves the adhan shown.
+   */
+  ownMadhab?: "hanafi" | "shafi";
+  /**
    * Per-prayer nudges in minutes, for masjids that publish times a minute or
    * two off the pure calculation (usually rounding up). Optional; omitted
    * means no adjustment.

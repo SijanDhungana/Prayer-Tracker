@@ -12,8 +12,8 @@
  * year. In Toronto's June, Isha's arc is visibly short. That is the design
  * carrying true information rather than decorating it.
  */
-import { adhanTimes } from "./prayer";
-import { PRAYERS, type Masjid, type Prayer } from "./types";
+import { adhanTimes, type Place } from "./prayer";
+import { PRAYERS, type Prayer } from "./types";
 
 export interface PrayerWindow {
   prayer: Prayer;
@@ -28,11 +28,12 @@ const addDays = (date: Date, days: number) =>
 /**
  * Today's five windows, in order, starting at Fajr.
  *
- * `reference` is one masjid's coordinates — adhan is near enough identical
- * across the city (CLAUDE.md §2), so the ring uses a single reference rather
- * than trying to average thirty-two.
+ * `reference` is one place's coordinates and calculation — adhan is near
+ * enough identical across the city (CLAUDE.md §2), so the ring uses a single
+ * reference, the city centre (`cityReference`), rather than trying to average
+ * the whole directory.
  */
-export function dayWindows(reference: Masjid, date: Date): PrayerWindow[] {
+export function dayWindows(reference: Place, date: Date): PrayerWindow[] {
   const today = adhanTimes(reference, date);
   const tomorrowFajr = adhanTimes(reference, addDays(date, 1)).fajr;
 
@@ -101,7 +102,7 @@ export function positionInDay(
  * belongs to, so callers can draw the right ring.
  */
 export function currentWindow(
-  reference: Masjid,
+  reference: Place,
   today: Date,
   now: Date,
 ): { windows: PrayerWindow[]; position: WindowPosition; date: Date } {
