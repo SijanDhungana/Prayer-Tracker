@@ -222,7 +222,9 @@ function Sidebar({
 
   return (
     <div className="fixed inset-y-0 left-0 z-40 flex w-[264px] flex-col border-r border-line bg-surface">
-      <div className="flex items-center gap-2 px-5 py-5">
+      {/* Below the status bar: on an iPad the app runs full-screen and the
+          clock otherwise sits on top of the name. */}
+      <div className="flex items-center gap-2 px-5 pb-5 pt-[calc(env(safe-area-inset-top)+1.25rem)]">
         <span
           className="flex h-8 w-8 items-center justify-center rounded-full"
           style={{ background: "var(--now-wash)", color: "var(--now-ink)" }}
@@ -268,7 +270,7 @@ function Sidebar({
       </div>
 
       {/* Account is chrome, not a sentence in the content column (§2). */}
-      <div className="mt-auto border-t border-line px-4 py-4">
+      <div className="mt-auto border-t border-line px-4 pt-4 pb-[calc(env(safe-area-inset-bottom)+1rem)]">
         {authConfigured ? (
           session ? (
             <>
