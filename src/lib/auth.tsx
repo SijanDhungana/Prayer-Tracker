@@ -20,6 +20,8 @@ interface AuthState {
   signIn: (email: string, password: string) => Promise<string | null>;
   signUp: (email: string, password: string) => Promise<string | null>;
   signOut: () => Promise<void>;
+  /** Deletes the signed-in account for good. Resolves to an error message, or null. */
+  deleteAccount: () => Promise<string | null>;
 }
 
 const AuthContext = createContext<AuthState | null>(null);
@@ -97,6 +99,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (pending) await (await pending).auth.signOut();
   }, []);
 
+  // supabase/004_delete_account.sql — the database deletes the caller and
+  // nobody else. The session is then dropped locally: the account it belongs
+  // to no longer exists, so there is nothing left to sign out of server-side.
+  const deleteAccount = useCallback(async () => {
+    const pending = getSupabase();
+    if (!pending) return "Accounts aren't set up on this deployment.";
+    const client = await pending;
+    const { error } = await client.rpc("delete_my_account");
+    if (error) return error.message;
+    await client.auth.signOut({ scope: "local" });
+    return null;
+  }, []);
+
   const value = useMemo<AuthState>(
     () => ({
       loading,
@@ -107,8 +122,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       signIn,
       signUp,
       signOut,
+      deleteAccount,
     }),
-    [loading, session, role, signIn, signUp, signOut],
+    [loading, session, role, signIn, signUp, signOut, deleteAccount],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

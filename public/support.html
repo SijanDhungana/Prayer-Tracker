@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Help &amp; Contact · Masjid Times</title>
+<meta name="description" content="Help with the Masjid Times app, and how to report a wrong prayer time.">
+<link rel="icon" href="/favicon.png">
+<style>
+  :root {
+    --paper: #F7F5EF; --surface: #FFFFFF; --line: #E3E6DE;
+    --ink: #16221D; --ink-2: #4F5B55; --brand: #17735D;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #0F1512; --surface: #182019; --line: #2A342E;
+      --ink: #F2F5F1; --ink-2: #B3BDB7; --brand: #4CC49E;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 42rem; margin: 0 auto; padding: 2.5rem 1rem 4rem; }
+  h1 { font-size: 1.9rem; line-height: 1.2; margin: 0 0 .25rem; }
+  h2 { font-size: 1.15rem; margin: 2rem 0 .5rem; }
+  p, li { color: var(--ink-2); }
+  strong { color: var(--ink); }
+  a { color: var(--brand); }
+  .meta { font-size: .9rem; margin: 0 0 1.5rem; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 1rem 1.25rem; }
+  .card p { margin: .25rem 0; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Help &amp; Contact</h1>
+  <p class="meta">Masjid Times · congregation times for masjids across Ontario</p>
+
+  <div class="card">
+    <p><strong>Found a wrong time?</strong> Open the masjid in the app and tap <strong>Report a wrong time</strong>. For anything else — a missing masjid, a bug, or a question — <a href="https://github.com/SijanDhungana/Prayer-Tracker/issues/new">send us a message</a>.</p>
+  </div>
+
+  <h2>Where do the times come from?</h2>
+  <p>Iqamah (congregation) times are read every day from each masjid's own website or prayer-time screen. Adhan times are calculated on your phone for the masjid's location. Every masjid shows when its times were last checked, and links to its own website.</p>
+
+  <h2>A time doesn't match my masjid's board</h2>
+  <p>Masjids change their times through the year, sometimes before their website does. Always trust the masjid itself, and please report the difference so it can be fixed for everyone.</p>
+
+  <h2>Why does Asr differ between masjids?</h2>
+  <p>Masjids follow either the standard (Shafi'i, Maliki, Hanbali) or the Hanafi calculation for Asr, which can be about an hour later. Settings → Asr calculation lets you choose how it is shown.</p>
+
+  <h2>My masjid is missing</h2>
+  <p>Send us its name and website and we'll add it once we can read its times.</p>
+
+  <h2>Location and privacy</h2>
+  <p>The app works without your location; you can pick a neighbourhood instead. See the <a href="/privacy.html">privacy policy</a> for what the app stores and why.</p>
+
+  <h2>Deleting your account</h2>
+  <p>Accounts are optional. If you made one, go to Settings → Account → Delete account in the app.</p>
+</main>
+</body>
+</html>

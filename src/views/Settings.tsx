@@ -1,9 +1,11 @@
+import { useState } from "react";
 import HomeMasjidCard from "../components/HomeMasjidCard";
 import LocationChip from "../components/LocationChip";
 import SegmentedControl from "../components/SegmentedControl";
 import Icon from "../components/Icon";
 import { useAuth } from "../lib/auth";
 import type { ReferencePoint } from "../lib/location";
+import { DATA_URL } from "../lib/masjidData";
 import { adhanTimes } from "../lib/prayer";
 import { suggestionsPath, signInPath } from "../lib/route";
 import {
@@ -29,6 +31,14 @@ import type { Masjid } from "../lib/types";
  */
 const OPTIONS: AsrPreference[] = ["masjid", "hanafi", "standard"];
 
+/**
+ * A page on the deployment the directory is fetched from. On the web that is
+ * this same site; in the native app, whose own origin is capacitor://, it is
+ * the deployment — so the link opens the live page rather than a stale copy.
+ */
+const sitePage = (path: string) =>
+  new URL(path, new URL(DATA_URL, window.location.href)).href;
+
 export default function Settings({
   masjids,
   date,
@@ -43,7 +53,7 @@ export default function Settings({
     clock, setClock, onlyMyAsr, setOnlyMyAsr,
   } = useSettings();
   const home = masjids.find((m) => m.id === homeMasjidId) ?? null;
-  const { session, email, isAdmin, signOut } = useAuth();
+  const { session, email, isAdmin } = useAuth();
 
   // Any masjid will do to illustrate the gap — they sit within a few minutes
   // of each other across the city — so use the first and name it, rather than
@@ -206,6 +216,11 @@ export default function Settings({
         </p>
       </Group>
 
+      <Group title="About">
+        <LinkRow href={sitePage("/privacy.html")} label="Privacy policy" external />
+        <LinkRow href={sitePage("/support.html")} label="Help & contact" external />
+      </Group>
+
       {authConfigured && (
         <Group title="Account">
           <div className="px-4 py-4">
@@ -217,13 +232,7 @@ export default function Settings({
                     Admin
                   </span>
                 )}
-                <button
-                  type="button"
-                  onClick={() => void signOut()}
-                  className="mt-3 block min-h-[44px] text-body font-medium text-danger"
-                >
-                  Sign out
-                </button>
+                <AccountActions />
               </>
             ) : (
               <a
@@ -237,6 +246,79 @@ export default function Settings({
         </Group>
       )}
     </section>
+  );
+}
+
+/**
+ * Sign out, or delete the account outright — App Store guideline 5.1.1(v)
+ * requires the second wherever accounts can be created. Deleting asks once
+ * more before it goes, because there is no undo.
+ */
+function AccountActions() {
+  const { signOut, deleteAccount } = useAuth();
+  const [confirming, setConfirming] = useState(false);
+  const [deleting, setDeleting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  if (!confirming) {
+    return (
+      <div className="mt-3 flex flex-wrap gap-x-6">
+        <button
+          type="button"
+          onClick={() => void signOut()}
+          className="block min-h-[44px] text-body font-medium text-danger"
+        >
+          Sign out
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            setError(null);
+            setConfirming(true);
+          }}
+          className="block min-h-[44px] text-body text-ink-2"
+        >
+          Delete account
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-3 rounded-lg bg-danger-wash px-3 py-3">
+      <p className="text-body text-ink">
+        Delete your account? Your sign-in and any times you&rsquo;ve suggested
+        are removed for good. Prayer times keep working without an account.
+      </p>
+      <div className="mt-1 flex flex-wrap gap-x-6">
+        <button
+          type="button"
+          disabled={deleting}
+          onClick={async () => {
+            setDeleting(true);
+            const message = await deleteAccount();
+            setDeleting(false);
+            if (message) setError(message);
+          }}
+          className="block min-h-[44px] text-body font-medium text-danger disabled:opacity-60"
+        >
+          {deleting ? "Deleting…" : "Delete account"}
+        </button>
+        <button
+          type="button"
+          disabled={deleting}
+          onClick={() => setConfirming(false)}
+          className="block min-h-[44px] text-body text-ink-2"
+        >
+          Cancel
+        </button>
+      </div>
+      {error && (
+        <p role="alert" className="mt-1 text-meta text-danger">
+          {error}
+        </p>
+      )}
+    </div>
   );
 }
 
@@ -266,14 +348,18 @@ function LinkRow({
   href,
   label,
   badge,
+  external = false,
 }: {
   href: string;
   label: string;
   badge?: string;
+  /** Opens outside the app — in the native build, in Safari. */
+  external?: boolean;
 }) {
   return (
     <a
       href={href}
+      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       className="flex min-h-[56px] items-center gap-3 px-4 text-body text-ink hover:bg-surface-2"
     >
       <span className="flex-1">{label}</span>

@@ -39,6 +39,13 @@ update public.profiles set role = 'admin' where email = 'you@example.com';
 
 Reload the app — a **Suggestions** tab appears in the nav.
 
+## 5. Let people delete their account
+
+Run [`004_delete_account.sql`](./004_delete_account.sql) in the SQL editor
+too. It powers Settings → Account → Delete account, which the App Store
+requires of any app that lets people sign up (guideline 5.1.1(v)). Without it
+the button reports an error instead of deleting anything.
+
 ## How it fits together
 
 - **Guests** see everything: masjids, adhan times, iqamah times, comparisons.
