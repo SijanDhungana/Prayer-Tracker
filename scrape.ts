@@ -157,8 +157,10 @@ export const WIDGET_FEEDS: { host: RegExp; from: RegExp; to: (id: string) => str
  * `/w/` widget path — but its REST API is open and returns today's times as
  * JSON. Belleville proved it still answers even when the mosque's display is
  * flagged Offline, so this is strictly better than rendering the page.
+ * Kingston embeds the mobile `/m/` path instead, which has to yield the same
+ * slug rather than the letter "m".
  */
-export const MAWAQIT_SLUG = /mawaqit\.net\/[a-z]{2}\/(?:w\/)?([A-Za-z0-9._-]+)/i;
+export const MAWAQIT_SLUG = /mawaqit\.net\/[a-z]{2}\/(?:[wm]\/)?([A-Za-z0-9._-]+)/i;
 
 /** Paths a masjid's timetable commonly sits at when the homepage has none. */
 export const TIMES_PATHS = [
@@ -811,8 +813,13 @@ async function readFromAdDin(
  * not merely easier to read than the HTML — it is available when the HTML is
  * not. The response's `times` array is ordered
  * [Fajr, Shuruq, Dhuhr, Asr, Maghrib, Isha]; Shuruq is sunrise, not a prayer,
- * and is dropped. Iqamah is returned as per-prayer offsets in minutes, which
- * is why they are added to the adhan rather than read as clock times.
+ * and is dropped.
+ *
+ * Each iqamah entry is either a clock time the masjid set ("06:00") or an
+ * offset from that prayer's adhan ("+5"), mixed freely within one mosque —
+ * Belleville publishes both on the same day. Reading every entry as an offset
+ * is what turned Belleville's 06:00 Fajr into 15:47. With `iqamaEnabled` off,
+ * the array only echoes the adhan, and an adhan is not a congregation time.
  */
 export function mapMawaqitMosque(m: any): { iqamah: Record<string, string | null>; jumuah: string[] } | null {
   const times: unknown = m?.times;
@@ -820,16 +827,18 @@ export function mapMawaqitMosque(m: any): { iqamah: Record<string, string | null
   const [fajr, , dhuhr, asr, maghrib, isha] = times as string[];
   const adhan: Record<string, string | null> = { fajr, dhuhr, asr, maghrib, isha };
 
-  const offsets: unknown = m?.iqamaCalendar ?? m?.iqama;
-  const shift = Array.isArray(offsets) && offsets.length >= 5 ? offsets : null;
+  const entries: unknown = m?.iqamaEnabled === false ? null : (m?.iqama ?? m?.iqamaCalendar);
+  const rules = Array.isArray(entries) && entries.length >= 5 ? entries : null;
   const keys = ["fajr", "dhuhr", "asr", "maghrib", "isha"] as const;
 
   const iqamah: Record<string, string | null> = {};
   keys.forEach((k, i) => {
+    const rule = rules ? String(rules[i] ?? "").trim() : "";
+    const clock = normaliseAdDinTime(rule);
+    if (clock) { iqamah[k] = clock; return; }
     const base = normaliseAdDinTime(adhan[k]);
-    if (!base) { iqamah[k] = null; return; }
-    const raw = shift ? Number(String(shift[i]).replace(/[^0-9-]/g, "")) : NaN;
-    if (!Number.isFinite(raw)) { iqamah[k] = base; return; }
+    const raw = /^[+-]?\d{1,3}$/.test(rule) ? Number(rule) : NaN;
+    if (!base || !Number.isFinite(raw)) { iqamah[k] = null; return; }
     const mins = Number(base.slice(0, 2)) * 60 + Number(base.slice(3, 5)) + raw;
     const wrapped = ((mins % 1440) + 1440) % 1440;
     iqamah[k] = `${String(Math.floor(wrapped / 60)).padStart(2, "0")}:${String(wrapped % 60).padStart(2, "0")}`;
@@ -842,30 +851,41 @@ export function mapMawaqitMosque(m: any): { iqamah: Record<string, string | null
   return { iqamah, jumuah };
 }
 
+/** Slug words that name no mosque in particular, so they are useless to search on. */
+const MAWAQIT_GENERIC =
+  /^(islamic|islam|muslim|muslims|centre|center|community|cultural|society|association|masjid|mosque|mosquee|jamia|jame|the|and|canada|[a-z]\d[a-z]|\d[a-z]\d)$/i;
+
 async function readFromMawaqit(slug: string) {
-  try {
-    const res = await fetch(
-      `https://mawaqit.net/api/2.0/mosque/search?word=${encodeURIComponent(slug)}`,
-      { headers: { "User-Agent": "MasjidTimesBot/1.0" }, signal: AbortSignal.timeout(20000) },
-    );
-    if (!res.ok) {
-      console.log(`  · Mawaqit ${slug} returned HTTP ${res.status}`);
+  // The search matches words in a mosque's name and address, so the slug
+  // alone misses a listing named in another script — Hawkesbury's centre is
+  // listed under its Arabic name and turns up only for "hawkesbury". The
+  // slug's distinctive words are tried after it; the exact slug still decides.
+  const words = [...new Set(slug.split("-").filter((w) => w.length > 2 && !MAWAQIT_GENERIC.test(w)))];
+  for (const [i, word] of [slug, ...words.slice(0, 2)].entries()) {
+    try {
+      if (i > 0) await new Promise((r) => setTimeout(r, 1000));
+      const res = await fetch(
+        `https://mawaqit.net/api/2.0/mosque/search?word=${encodeURIComponent(word)}`,
+        { headers: { "User-Agent": "MasjidTimesBot/1.0" }, signal: AbortSignal.timeout(20000) },
+      );
+      if (!res.ok) {
+        console.log(`  · Mawaqit ${slug} returned HTTP ${res.status}`);
+        return null;
+      }
+      const list = await res.json();
+      const results: any[] = Array.isArray(list) ? list : [];
+      // Search is fuzzy, so take the mosque whose slug matches exactly rather
+      // than the first hit — a near-name match is another mosque's times.
+      const hit = results.find((m) => m?.slug === slug)
+        ?? (i === 0 && results.length === 1 ? results[0] : null);
+      if (hit) return mapMawaqitMosque(hit);
+    } catch (error) {
+      console.log(`  · Mawaqit ${slug} — ${(error as Error).message.split("\n")[0]}`);
       return null;
     }
-    const list = await res.json();
-    // Search is fuzzy, so take the mosque whose slug matches exactly rather
-    // than the first hit — a near-name match is another mosque's times.
-    const hit = (Array.isArray(list) ? list : []).find((m: any) => m?.slug === slug)
-      ?? (Array.isArray(list) && list.length === 1 ? list[0] : null);
-    if (!hit) {
-      console.log(`  · Mawaqit ${slug} — no exact slug match in search results`);
-      return null;
-    }
-    return mapMawaqitMosque(hit);
-  } catch (error) {
-    console.log(`  · Mawaqit ${slug} — ${(error as Error).message.split("\n")[0]}`);
-    return null;
   }
+  console.log(`  · Mawaqit ${slug} — no exact slug match in search results`);
+  return null;
 }
 
 async function findTimes(
@@ -897,6 +917,26 @@ async function findTimes(
     }
   }
 
+  // A timetable known to live on Mawaqit is read from its API up front. The
+  // homepage crawl only finds a Mawaqit embed on sites that have one, and
+  // several of these masjids have no site at all — the listing is the source.
+  const mawaqitPage = [masjid.timesUrl, masjid.website].find((u) => u && MAWAQIT_SLUG.test(u));
+  if (mawaqitPage) {
+    const direct = await readFromMawaqit(MAWAQIT_SLUG.exec(mawaqitPage)![1]);
+    if (direct) {
+      const verdict = checkResult({ found: true, confidence: 1, ...direct });
+      if (verdict.ok) {
+        return {
+          ok: true,
+          result: { found: true, confidence: 1, ...direct },
+          url: mawaqitPage,
+          missing: verdict.missing,
+          capture: { shot: "Mawaqit API" } as unknown as Capture,
+        };
+      }
+    }
+  }
+
   const homepage = masjid.website || masjid.timesUrl!;
   const tried = new Set<string>();
   const queue: string[] = [homepage];
@@ -910,7 +950,15 @@ async function findTimes(
     tried.add(url);
 
     const capture = await capturePage(browser, url);
-    if (!capture) continue;
+    if (!capture) {
+      // A homepage that turns the crawler away says nothing about the widget
+      // host its times live on: islamicsocietyvaughan.ca answers 403 while
+      // themasjidapp.org serves the same masjid's times. Try where they were.
+      if (tried.size === 1 && masjid.timesUrl && !tried.has(masjid.timesUrl)) {
+        queue.push(masjid.timesUrl);
+      }
+      continue;
+    }
 
     const result = await readTimes(capture);
     const verdict = checkResult(result);

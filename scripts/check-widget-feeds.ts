@@ -46,6 +46,12 @@ async function main() {
 
   check("a mawaqit embed yields its slug",
     MAWAQIT_SLUG.exec("https://mawaqit.net/en/w/belleville-masjid")?.[1] === "belleville-masjid");
+  // Kingston's embed, as it sits in the page.
+  const mobile = MAWAQIT_SLUG.exec(
+    "https://mawaqit.net/en/m/islamic-centre-of-kingston-kingston-k7l-4v4-canada?showNotification=0&view=mobile",
+  )?.[1];
+  check("a mawaqit mobile embed yields its slug, not \"m\"",
+    mobile === "islamic-centre-of-kingston-kingston-k7l-4v4-canada", `got ${mobile}`);
 
   // An unrelated iframe must not be mistaken for a timetable feed.
   check("a non-widget iframe is ignored",
@@ -63,6 +69,30 @@ async function main() {
     mapped?.iqamah.fajr === "05:30" && mapped?.iqamah.maghrib === "19:52",
     `fajr ${mapped?.iqamah.fajr}, maghrib ${mapped?.iqamah.maghrib}`);
   check("mawaqit jumu'ah is carried through", mapped?.jumuah[0] === "13:30");
+
+  // Belleville's real response on 2026-09-29: clock times and an offset side by
+  // side. Read as offsets, the 06:00 Fajr came out as 15:47.
+  const mixed = mapMawaqitMosque({
+    times: ["05:47", "07:06", "12:59", "16:16", "18:52", "20:11"],
+    iqama: ["06:00", "13:30", "17:00", "+5", "20:45"],
+    iqamaEnabled: true,
+    jumua: "13:30",
+  });
+  check("mawaqit clock-time iqamah is read as a clock time",
+    mixed?.iqamah.fajr === "06:00" && mixed?.iqamah.asr === "17:00" && mixed?.iqamah.isha === "20:45",
+    `fajr ${mixed?.iqamah.fajr}, asr ${mixed?.iqamah.asr}, isha ${mixed?.iqamah.isha}`);
+  check("mawaqit offset beside clock times is still added to the adhan",
+    mixed?.iqamah.maghrib === "18:57", `maghrib ${mixed?.iqamah.maghrib}`);
+
+  // With iqamah switched off, Mawaqit echoes the adhan into the iqama array.
+  const off = mapMawaqitMosque({
+    times: ["06:00", "07:00", "13:30", "16:45", "18:45", "20:30"],
+    iqama: ["06:00", "13:30", "16:45", "18:45", "20:30"],
+    iqamaEnabled: false,
+  });
+  check("a mawaqit mosque with iqamah switched off yields no iqamah",
+    !!off && Object.values(off.iqamah).every((t) => t === null),
+    JSON.stringify(off?.iqamah));
   check("a mawaqit response with no times is refused, not half-read",
     mapMawaqitMosque({ times: [] }) === null);
 

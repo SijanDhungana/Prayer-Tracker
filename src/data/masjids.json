@@ -7170,5 +7170,978 @@
     "lastVerified": "2026-09-30",
     "needsReview": true,
     "source": "scrape"
+  },
+  {
+    "id": "mount-pleasant-islamic-centre",
+    "name": "Mount Pleasant Islamic Centre (Masjid Al-Salam)",
+    "address": "160 Salvation Rd, Brampton, ON L7A 0W7",
+    "lat": 43.676721,
+    "lng": -79.819683,
+    "website": "https://www.mpicbrampton.com/",
+    "timesUrl": "https://www.prayertimedisplay.com/ptdp/ldt.php?masjid=MAS001",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:15"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:45"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "17:00"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 7
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "20:45"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:15"
+      },
+      {
+        "khutbah": "14:30"
+      },
+      {
+        "khutbah": "15:30"
+      }
+    ],
+    "lastVerified": "2026-09-29",
+    "needsReview": true,
+    "source": "manual"
+  },
+  {
+    "id": "islamic-society-of-vaughan",
+    "name": "Islamic Society of Vaughan",
+    "address": "9100 Jane St, Units 22-24, Vaughan, ON L4K 0A4",
+    "lat": 43.829654,
+    "lng": -79.53286,
+    "website": "https://islamicsocietyvaughan.ca/",
+    "timesUrl": "https://themasjidapp.org/7680/prayers",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:15"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:45"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "16:45"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 7
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "20:26"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:15"
+      },
+      {
+        "khutbah": "14:15"
+      },
+      {
+        "khutbah": "15:00"
+      },
+      {
+        "khutbah": "15:45"
+      }
+    ],
+    "lastVerified": "2026-09-29",
+    "needsReview": true,
+    "source": "manual"
+  },
+  {
+    "id": "talimul-islam-masjid",
+    "name": "Talimul Islam Masjid",
+    "address": "86 Rivalda Rd, North York, ON M9M 2M8",
+    "lat": 43.740652,
+    "lng": -79.535768,
+    "website": "https://talimul.com/",
+    "timesUrl": "http://talimul.com/TuiSite/prayer-services/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:30"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:30"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "18:00"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 9
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:00"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:30"
+      }
+    ],
+    "lastVerified": "2026-09-29",
+    "needsReview": true,
+    "source": "manual"
+  },
+  {
+    "id": "jamiat-al-ansar",
+    "name": "Jamiat Al Ansar",
+    "address": "1 Masjid Dr, Brampton, ON L6R 2Z4",
+    "lat": 43.737467,
+    "lng": -79.769499,
+    "website": "https://jamiatalansar.ca/",
+    "timesUrl": "https://masjidbox.com/prayer-times/jamiat-ul-ansar",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:25"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:45"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "17:30"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 8
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "21:00"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:40"
+      }
+    ],
+    "lastVerified": "2026-09-29",
+    "needsReview": true,
+    "source": "manual"
+  },
+  {
+    "id": "darul-hijra-islamic-centre",
+    "name": "Darul-Hijra Islamic Centre",
+    "address": "2050 Kipling Ave, Etobicoke, ON M9W 4J9",
+    "lat": 43.713455,
+    "lng": -79.568149,
+    "website": "https://www.darulhijra.org/",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:00"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:40"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "17:15"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 0
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "20:45"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:30"
+      }
+    ],
+    "lastVerified": "2026-09-29",
+    "needsReview": true,
+    "source": "manual"
+  },
+  {
+    "id": "islamic-society-of-belleville",
+    "name": "Islamic Society of Belleville",
+    "address": "33 Moira St W, Belleville, ON",
+    "lat": 44.168285,
+    "lng": -77.388171,
+    "website": "https://bellevillemasjid.ca/",
+    "timesUrl": "https://mawaqit.net/en/islamic-society-of-belleville",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:00"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:30"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "17:00"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 3
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "20:45"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:30"
+      }
+    ],
+    "lastVerified": "2026-09-29",
+    "needsReview": false,
+    "source": "scrape"
+  },
+  {
+    "id": "islamic-centre-of-kingston",
+    "name": "Islamic Centre of Kingston",
+    "address": "1477 Sydenham Rd, Kingston, ON K7L 4V4",
+    "lat": 44.284578,
+    "lng": -76.542021,
+    "website": "https://kingstonmuslims.ca/",
+    "timesUrl": "https://mawaqit.net/en/islamic-centre-of-kingston-kingston-k7l-4v4-canada",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:20"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:30"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "17:15"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 4
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "20:20"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:00"
+      },
+      {
+        "khutbah": "14:30"
+      }
+    ],
+    "lastVerified": "2026-09-29",
+    "needsReview": false,
+    "source": "scrape"
+  },
+  {
+    "id": "masjid-an-noor-st-catharines",
+    "name": "Masjid An-Noor (Islamic Society of St. Catharines)",
+    "address": "117 Geneva St, St. Catharines, ON L2R 4N3",
+    "lat": 43.166369,
+    "lng": -79.240703,
+    "website": "https://mawaqit.net/en/noor-st-catharines",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:30"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:30"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "16:30"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 3
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "20:28"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:00"
+      }
+    ],
+    "lastVerified": "2026-09-29",
+    "needsReview": false,
+    "source": "scrape"
+  },
+  {
+    "id": "south-nepean-muslim-community",
+    "name": "South Nepean Muslim Community (SNMC)",
+    "address": "3020 Woodroffe Ave, Nepean, ON K2J 4G3",
+    "lat": 45.289072,
+    "lng": -75.726657,
+    "website": "https://mawaqit.net/en/south-nepean-muslim-community-snmc-ottawa-k2j-4g3-canada",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:00"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:30"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "17:00"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 3
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "20:16"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:00"
+      },
+      {
+        "khutbah": "14:15"
+      }
+    ],
+    "lastVerified": "2026-09-29",
+    "needsReview": false,
+    "source": "scrape"
+  },
+  {
+    "id": "darul-uloom-ottawa",
+    "name": "Darul-Uloom Masjid & Centre",
+    "address": "2803 St. Joseph Blvd, Orléans, ON K1C 1G6",
+    "lat": 45.473512,
+    "lng": -75.520578,
+    "website": "https://www.darululoomottawa.org/",
+    "timesUrl": "https://mawaqit.net/en/darul-uloom-ottawa-k1c-1g6-canada",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:00"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:30"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "17:00"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 2
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "20:30"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:15"
+      },
+      {
+        "khutbah": "14:15"
+      }
+    ],
+    "lastVerified": "2026-09-29",
+    "needsReview": false,
+    "source": "scrape"
+  },
+  {
+    "id": "ottawa-uyghur-centre",
+    "name": "Ottawa Uyghur Centre",
+    "address": "3555 St. Joseph Blvd, Orléans, ON K4A 0Z7",
+    "lat": 45.487809,
+    "lng": -75.490545,
+    "website": "http://theouc.ca/",
+    "timesUrl": "https://mawaqit.net/en/ottawa-uyghur-centre-orleans-k4a0z7-canada",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:00"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:15"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "16:45"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 3
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "20:30"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:15"
+      }
+    ],
+    "lastVerified": "2026-09-29",
+    "needsReview": false,
+    "source": "scrape"
+  },
+  {
+    "id": "darul-arqum-ottawa",
+    "name": "Darul Arqum",
+    "address": "4269 Limebank Rd, Ottawa, ON K1V 1G5",
+    "lat": 45.29024,
+    "lng": -75.67163,
+    "website": "http://www.darularqum.org/",
+    "timesUrl": "https://mawaqit.net/en/darul-arqum-ottawa-canada-ottawa-k1v-1g5-canada",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:14"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:30"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "17:02"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 3
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "20:30"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:30"
+      },
+      {
+        "khutbah": "14:30"
+      }
+    ],
+    "lastVerified": "2026-09-29",
+    "needsReview": false,
+    "source": "scrape"
+  },
+  {
+    "id": "ottawa-valley-islamic-centre",
+    "name": "Ottawa Valley Islamic Centre",
+    "address": "30 McElligott Dr, Deep River, ON K0J 1P0",
+    "lat": 46.096399,
+    "lng": -77.487762,
+    "website": "https://www.ovicentre.org/",
+    "timesUrl": "https://mawaqit.net/en/ottawa-valley-islamic-center-deep-river-k0j1p0-canada",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:00"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:30"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "17:30"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 1
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "20:30"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:00"
+      }
+    ],
+    "lastVerified": "2026-09-29",
+    "needsReview": false,
+    "source": "scrape"
+  },
+  {
+    "id": "richmond-islamic-community",
+    "name": "Richmond Islamic Community",
+    "address": "6179 Perth St, Unit 30, Richmond, ON K0A 2Z0",
+    "lat": 45.193711,
+    "lng": -75.842143,
+    "website": "https://ricottawa.ca/",
+    "timesUrl": "https://mawaqit.net/en/richmond-islamic-community-ottawa-ottawa-k0a-2z0-canada",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:00"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:30"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "17:30"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 6
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "20:30"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:15"
+      },
+      {
+        "khutbah": "14:30"
+      }
+    ],
+    "lastVerified": "2026-09-29",
+    "needsReview": false,
+    "source": "scrape"
+  },
+  {
+    "id": "abdullah-issa-masjid",
+    "name": "Abdullah Issa Masjid (AIM)",
+    "address": "154 Colonnade Rd S, Nepean, ON K2E 7J4",
+    "lat": 45.342757,
+    "lng": -75.708881,
+    "website": "https://mawaqit.net/en/abdullah-issa-masjid-aim-nepean-k2e-7s8-canada",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:00"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "14:30"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "17:00"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 3
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "20:30"
+      }
+    },
+    "jumuah": [],
+    "lastVerified": "2026-09-29",
+    "needsReview": true,
+    "source": "scrape"
+  },
+  {
+    "id": "mac-qurtuba-islamic-centre",
+    "name": "MAC Qurtuba Islamic Centre",
+    "address": "1950 Merivale Rd, Nepean, ON K2G 5T5",
+    "lat": 45.326052,
+    "lng": -75.719834,
+    "website": "https://centres.macnet.ca/qic/",
+    "timesUrl": "https://mawaqit.net/en/qic-mousque-ottawa-k2g-5t5-canada",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:00"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:30"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "16:45"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 3
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "20:11"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:00"
+      }
+    ],
+    "lastVerified": "2026-09-29",
+    "needsReview": false,
+    "source": "scrape"
+  },
+  {
+    "id": "hawkesbury-jame-masjid",
+    "name": "Hawkesbury Jame Masjid",
+    "address": "878 McGill St, Hawkesbury, ON K6A 1R6",
+    "lat": 45.600891,
+    "lng": -74.619304,
+    "website": "https://mawaqit.net/en/hawkesbury-jamia-masjid-hawkesbury-k6a-1r6-canada",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:14"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:30"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "16:09"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 3
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "20:15"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:30"
+      }
+    ],
+    "lastVerified": "2026-09-29",
+    "needsReview": false,
+    "source": "scrape"
+  },
+  {
+    "id": "masjid-at-taqwa-windsor",
+    "name": "Masjid At-Taqwa (Pious Mosque)",
+    "address": "1970 Tourangeau Rd, Windsor, ON N8W 4N3",
+    "lat": 42.306793,
+    "lng": -82.97497,
+    "website": "https://www.piousmosque.com/",
+    "timesUrl": "https://mawaqit.net/en/pious-windsor",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:26"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "14:00"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "16:51"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 4
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "20:47"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "14:00"
+      }
+    ],
+    "lastVerified": "2026-09-29",
+    "needsReview": false,
+    "source": "scrape"
+  },
+  {
+    "id": "dar-foundation-oakville",
+    "name": "Dar Foundation",
+    "address": "485 Morden Rd, Oakville, ON L6K 3W6",
+    "lat": 43.442275,
+    "lng": -79.694884,
+    "website": "http://www.darfoundation.com/",
+    "timesUrl": "https://mawaqit.net/en/dar-fondation",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:15"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:45"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "17:00"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 6
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "20:30"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "12:15"
+      },
+      {
+        "khutbah": "13:30"
+      },
+      {
+        "khutbah": "14:45"
+      }
+    ],
+    "lastVerified": "2026-09-29",
+    "needsReview": false,
+    "source": "scrape"
+  },
+  {
+    "id": "anatolia-islamic-centre-north-york",
+    "name": "Anatolia Islamic Centre — North York",
+    "address": "73 Alness St, North York, ON M3J 2H2",
+    "lat": 43.774199,
+    "lng": -79.472942,
+    "website": "https://anatolianorthyork.ca/",
+    "timesUrl": "https://mawaqit.net/en/anatolia-north-york",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:15"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:30"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "17:00"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 1
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "20:30"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "14:00"
+      }
+    ],
+    "lastVerified": "2026-09-29",
+    "needsReview": false,
+    "source": "scrape"
+  },
+  {
+    "id": "alkhairia-islamic-centre-of-ancaster",
+    "name": "Alkhairia Islamic Centre of Ancaster",
+    "address": "528 Alberton Rd, Ancaster, ON L0R 1R0",
+    "lat": 43.187207,
+    "lng": -80.072253,
+    "website": "https://www.aiccanada.org/",
+    "timesUrl": "https://mawaqit.net/en/alkhairia-islamic-centre-of-ancaster-hamilton-l0r-1r0-canada",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "hanafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "06:28"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:40"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "17:24"
+      },
+      "maghrib": {
+        "type": "fixed",
+        "time": "19:03"
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "20:27"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:30"
+      }
+    ],
+    "lastVerified": "2026-09-29",
+    "needsReview": false,
+    "source": "scrape"
+  },
+  {
+    "id": "hawkesbury-islamic-community-centre",
+    "name": "Hawkesbury Islamic Community Centre",
+    "address": "388 Main St E, Hawkesbury, ON",
+    "lat": 45.610326,
+    "lng": -74.605405,
+    "website": "http://hicc-ccih.org/",
+    "timesUrl": "https://mawaqit.net/en/hawkesbury-islamic-community-centre-hawkesbury-k6a-1b2-canada",
+    "calc": {
+      "method": "NorthAmerica",
+      "madhab": "shafi"
+    },
+    "iqamah": {
+      "fajr": {
+        "type": "fixed",
+        "time": "05:59"
+      },
+      "dhuhr": {
+        "type": "fixed",
+        "time": "13:08"
+      },
+      "asr": {
+        "type": "fixed",
+        "time": "16:24"
+      },
+      "maghrib": {
+        "type": "offset",
+        "minutes": 8
+      },
+      "isha": {
+        "type": "fixed",
+        "time": "20:12"
+      }
+    },
+    "jumuah": [
+      {
+        "khutbah": "13:30"
+      }
+    ],
+    "lastVerified": "2026-09-29",
+    "needsReview": false,
+    "source": "scrape"
   }
 ]
