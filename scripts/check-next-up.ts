@@ -1,13 +1,15 @@
 import {
   congregationSequence,
+  focusPrayer,
   formatCountdown,
   formatSince,
   groupRows,
   nextCongregation,
   nextUpRows,
 } from "../src/lib/nextUp";
+import { adhanTimes } from "../src/lib/prayer";
 import { daysSinceVerified, isStale, summarizeFreshness, trustStatus, verifiedAgo } from "../src/lib/trust";
-import { zonedTimeOnDate } from "../src/lib/time";
+import { minutesOfDay, zonedTimeOnDate } from "../src/lib/time";
 import type { Masjid } from "../src/lib/types";
 
 let failed = 0;
@@ -174,6 +176,47 @@ check("a future date counts as stale too", isStale("2026-09-01", new Date(2026, 
     { tone: "ok", newest: "today", cautions: 0 });
   check("nothing read at all says nothing about age",
     summarizeFreshness([], t), { tone: "ok", newest: null, cautions: 0 });
+}
+
+// --- focusPrayer: what Home's card is about --------------------------------
+{
+  const city = adhanTimes(
+    { ...TORONTO, calc: { method: "NorthAmerica", madhab: "hanafi" } },
+    monday,
+  );
+  const plus = (d: Date, minutes: number) => new Date(d.getTime() + minutes * 60_000);
+  const hhmm = (d: Date) => {
+    const m = minutesOfDay(d);
+    return `${String(Math.floor(m / 60)).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`;
+  };
+  const m = [masjid("a", {
+    fajr: hhmm(plus(city.fajr, 30)),
+    dhuhr: hhmm(plus(city.dhuhr, 25)),
+    asr: hhmm(plus(city.asr, 15)),
+    maghrib: hhmm(plus(city.maghrib, 5)),
+    isha: hhmm(plus(city.isha, 20)),
+  })];
+
+  check("before Fajr's adhan, the card is about Fajr",
+    focusPrayer(m, city, plus(city.fajr, -60), monday), "fajr");
+  check("after Fajr's adhan, a Fajr still to come keeps the card on Fajr",
+    focusPrayer(m, city, plus(city.fajr, 10), monday), "fajr");
+  check("once every Fajr has begun, the card moves to the next adhan",
+    focusPrayer(m, city, plus(city.fajr, 40), monday), "dhuhr");
+  check("after Isha's adhan, tonight's Isha still to come beats tomorrow's Fajr",
+    focusPrayer(m, city, plus(city.isha, 10), monday), "isha");
+  check("after the last Isha, the card rolls to Fajr",
+    focusPrayer(m, city, plus(city.isha, 40), monday), "fajr");
+  check("with no masjid in range, the next adhan decides",
+    focusPrayer([], city, plus(city.fajr, 10), monday), "dhuhr");
+
+  const fridayCity = adhanTimes(
+    { ...TORONTO, calc: { method: "NorthAmerica", madhab: "hanafi" } },
+    friday,
+  );
+  const jumuah = [masjid("j", {}, [hhmm(plus(fridayCity.dhuhr, 20))])];
+  check("on a Friday, a Jumu'ah still to come keeps the card on the midday prayer",
+    focusPrayer(jumuah, fridayCity, plus(fridayCity.dhuhr, 5), friday), "dhuhr");
 }
 
 console.log(failed ? `\n${failed} FAILED` : "\nall passed");

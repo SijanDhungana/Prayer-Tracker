@@ -9,7 +9,7 @@ import MasjidCard, { directionsUrl } from "../components/MasjidCard";
 import { useClock } from "../lib/clock";
 import { haversineKm, type Point } from "../lib/distance";
 import { useFavourites } from "../lib/favourites";
-import { formatRelative, pickAnswer } from "../lib/nextUp";
+import { focusPrayer, formatRelative, pickAnswer } from "../lib/nextUp";
 import { isFriday, jumuahTimesOn, resolvePlanIqamah } from "../lib/planPrayer";
 import { cityMadhab, useSettings } from "../lib/settings";
 import type { ReferencePoint } from "../lib/location";
@@ -80,17 +80,21 @@ export default function NextUp({
    */
   const bothAsr = asr === "masjid";
 
+  const [withinKm, setWithinKm] = useState<number | null>(DEFAULT_RADIUS_KM);
+
   /**
-   * The prayer the card counts down to: the next one whose adhan is still
-   * ahead. Not the current *window* — at 5:30 PM you are inside Asr, and
-   * counting down to an Asr that began fourteen minutes ago just reads
-   * "now". The window still drives the accent colour; this drives the
-   * numbers (§9).
+   * The prayer the card is about: the one under way while a masjid in range
+   * still has its congregation ahead, otherwise the next adhan's — see
+   * `focusPrayer`. The window still drives the accent colour; this drives
+   * the numbers (§9).
    */
   const nextPrayer = useMemo<Prayer>(() => {
-    const times = adhanTimes(city, today);
-    return PRAYERS.find((p) => times[p] > minute) ?? "fajr";
-  }, [city, today, minute]);
+    const nearby =
+      withinKm == null
+        ? masjids
+        : masjids.filter((masjid) => haversineKm(from, masjid) <= withinKm);
+    return focusPrayer(nearby, adhanTimes(city, today), minute, today);
+  }, [masjids, from, withinKm, city, today, minute]);
 
   const [chosen, setChosen] = useState<Prayer | null>(initialPrayer);
   // A #/?prayer=asr link tapped while this screen is already open changes
@@ -103,7 +107,6 @@ export default function NextUp({
 
   const [order, setOrder] = useState<SortOrder>("earliest");
   const [after, setAfter] = useState("");
-  const [withinKm, setWithinKm] = useState<number | null>(DEFAULT_RADIUS_KM);
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [shown, setShown] = useState(PAGE);
 

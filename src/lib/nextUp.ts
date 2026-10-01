@@ -76,6 +76,41 @@ export function nextCongregation(
 }
 
 /**
+ * The prayer Home's card is about.
+ *
+ * The prayer whose adhan has gone, for as long as a masjid in range still
+ * holds its congregation ahead; after that, the next prayer whose adhan is
+ * still to come, rolling to Fajr once Isha's has passed.
+ *
+ * Counting only to the next adhan skipped the half hour that matters most.
+ * At 6:17 AM, eleven minutes after the Fajr adhan, the card read "Next:
+ * Dhuhr 1:30 PM" while a masjid 325 m away was standing for Fajr at 6:30,
+ * and the same gap opened after every adhan of the day — after Isha's, the
+ * screen jumped to tomorrow's Fajr while tonight's Isha jamaahs were still
+ * to come.
+ *
+ * `masjids` should already be limited to the visitor's radius; `cityAdhan`
+ * is the city's adhan on the visitor's own Asr school, as the clock uses.
+ */
+export function focusPrayer(
+  masjids: Masjid[],
+  cityAdhan: Record<Prayer, Date>,
+  now: Date,
+  today: Date,
+): Prayer {
+  const upcoming = PRAYERS.find((p) => cityAdhan[p] > now) ?? "fajr";
+  const begun = PRAYERS.filter((p) => cityAdhan[p] <= now).pop();
+  if (!begun) return upcoming;
+
+  const slot: PlanPrayer = begun === "dhuhr" && isFriday(today) ? "jumuah" : begun;
+  const stillAhead = masjids.some((masjid) => {
+    const iqamah = resolvePlanIqamah(masjid, slot, now, today);
+    return iqamah != null && iqamah > now;
+  });
+  return stillAhead ? begun : upcoming;
+}
+
+/**
  * The adhan that opens a congregation's window. Jumu'ah runs in Dhuhr's
  * window, so that is the adhan it answers to — `adhanTimes` has no Jumu'ah
  * of its own to give.
