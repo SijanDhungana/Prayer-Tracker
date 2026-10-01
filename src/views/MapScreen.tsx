@@ -5,7 +5,7 @@ import TimeRow from "../components/TimeRow";
 import { useClock } from "../lib/clock";
 import { formatDistance, haversineKm } from "../lib/distance";
 import { useFavourites } from "../lib/favourites";
-import { googleMapsConfigured, loadGoogleMaps } from "../lib/googleMaps";
+import { googleMapsConfigured, loadGoogleMaps, onMapsAuthFailure } from "../lib/googleMaps";
 import type { ReferencePoint } from "../lib/location";
 import { congregationAdhan, formatRelative, nextCongregation } from "../lib/nextUp";
 import { prayerLabel, resolvePlanIqamah } from "../lib/planPrayer";
@@ -143,7 +143,8 @@ function pillLabel(prayer: Prayer, at: Date): string {
   return `${PRAYER_LABELS[prayer]} ${formatTime(at).replace(/\s*(AM|PM)$/i, "")}`;
 }
 
-type MapStatus = "unconfigured" | "loading" | "ready" | "error";
+/** "refused": Google turned the key away — retrying can't change that. */
+type MapStatus = "unconfigured" | "loading" | "ready" | "error" | "refused";
 
 export default function MapScreen({
   masjids,
@@ -178,6 +179,10 @@ export default function MapScreen({
   const [onlyJumuah, setOnlyJumuah] = useState(false);
   /** Bumped by "Try again" so the creation effect runs a second time. */
   const [attempt, setAttempt] = useState(0);
+
+  // A refused key draws nothing and throws nothing, which left a shimmering
+  // empty map that never resolved. Say what happened; the list still works.
+  useEffect(() => onMapsAuthFailure(() => setStatus("refused")), []);
 
   const { point } = reference;
   const pointRef = useRef(point);
@@ -269,12 +274,15 @@ export default function MapScreen({
          * either one is enough.
          */
         const ready = () => {
-          if (!cancelled) setStatus("ready");
+          if (!cancelled) setStatus((now) => (now === "refused" ? now : "ready"));
         };
         google.maps.event.addListenerOnce(instance, "idle", ready);
         google.maps.event.addListenerOnce(instance, "tilesloaded", ready);
       })
-      .catch(() => !cancelled && setStatus("error"));
+      .catch((error: unknown) => {
+        console.error("Couldn't load Google Maps:", error);
+        if (!cancelled) setStatus("error");
+      });
 
     return () => {
       cancelled = true;
@@ -458,11 +466,13 @@ export default function MapScreen({
         <div className="pointer-events-none absolute inset-0 z-10 animate-pulse bg-surface-2" />
       )}
 
-      {(status === "unconfigured" || status === "error") && (
+      {(status === "unconfigured" || status === "error" || status === "refused") && (
         <div className="absolute inset-x-4 top-24 z-20 rounded-lg border border-line bg-surface p-4 text-center text-body text-ink-2">
           {status === "unconfigured"
             ? "The map needs a Google Maps API key. The list below still works."
-            : "Couldn't load the map. The list below still works."}
+            : status === "refused"
+              ? "The map isn't available right now. The list below still works."
+              : "Couldn't load the map. The list below still works."}
           {status === "error" && (
             <button
               type="button"

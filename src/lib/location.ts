@@ -1,3 +1,4 @@
+import { Capacitor } from "@capacitor/core";
 import { useCallback, useRef, useState } from "react";
 import type { Point } from "./distance";
 
@@ -43,6 +44,21 @@ export interface ReferencePoint {
  * persistent red text on every screen forever. These read as information,
  * are shown once in a toast, and never in red.
  */
+/**
+ * The native plugin reports failures as plain errors rather than
+ * GeolocationPositionError codes, so the wording is matched instead.
+ */
+function nativeMessageFor(error: unknown): string {
+  const text = error instanceof Error ? error.message : String(error);
+  if (/denied|not authori[sz]ed|permission/i.test(text)) {
+    return "Using Downtown Toronto. Change it from the location chip.";
+  }
+  if (/time(d)? ?out/i.test(text)) {
+    return "Couldn't find your location in time. Using Downtown Toronto.";
+  }
+  return "Couldn't get your location. Using Downtown Toronto.";
+}
+
 function messageFor(error: GeolocationPositionError): string {
   switch (error.code) {
     case error.PERMISSION_DENIED:
@@ -81,7 +97,7 @@ export function useReferencePoint(): ReferencePoint {
   }, []);
 
   const useDeviceLocation = useCallback(() => {
-    if (!navigator.geolocation) {
+    if (!Capacitor.isNativePlatform() && !navigator.geolocation) {
       setStatus("error");
       setError("This browser can't share a location.");
       return;
@@ -102,26 +118,43 @@ export function useReferencePoint(): ReferencePoint {
       setError(`Still waiting on location permission. Using ${preset.label}.`);
     }, WAIT_FOR_PERMISSION_MS);
 
+    const found = (coords: { latitude: number; longitude: number }) => {
+      window.clearTimeout(giveUp);
+      // Deliberately still accepted after the watchdog fired: someone who
+      // grants permission late should get their location, not a dead end.
+      if (!current()) return;
+      setDevice({ lat: coords.latitude, lng: coords.longitude });
+      setStatus("active");
+      setError(null);
+    };
+    const failed = (message: string) => {
+      window.clearTimeout(giveUp);
+      if (!current()) return;
+      setStatus("error");
+      setError(`${message} Using ${preset.label}.`);
+    };
+    const options = { timeout: 10_000, maximumAge: 300_000 };
+
+    if (Capacitor.isNativePlatform()) {
+      /**
+       * The phone's own location service, not the web view's. Asking through
+       * navigator.geolocation in the app showed two prompts — iOS's, then
+       * WebKit's "“localhost” would like to use your current location" —
+       * and WebKit forgets its answer, so the second came back every launch.
+       */
+      import("@capacitor/geolocation")
+        .then(({ Geolocation }) => Geolocation.getCurrentPosition(options))
+        .then(
+          (position) => found(position.coords),
+          (err: unknown) => failed(nativeMessageFor(err)),
+        );
+      return;
+    }
+
     navigator.geolocation.getCurrentPosition(
-      (position) => {
-        window.clearTimeout(giveUp);
-        // Deliberately still accepted after the watchdog fired: someone who
-        // grants permission late should get their location, not a dead end.
-        if (!current()) return;
-        setDevice({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        });
-        setStatus("active");
-        setError(null);
-      },
-      (err) => {
-        window.clearTimeout(giveUp);
-        if (!current()) return;
-        setStatus("error");
-        setError(`${messageFor(err)} Using ${preset.label}.`);
-      },
-      { timeout: 10_000, maximumAge: 300_000 },
+      (position) => found(position.coords),
+      (err) => failed(messageFor(err)),
+      options,
     );
   }, [preset.label]);
 

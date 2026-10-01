@@ -3,6 +3,10 @@
 declare global {
   interface Window {
     google: typeof google;
+    /** Google calls this by name once the API is ready — see injectScript. */
+    __masjidTimesMapsReady?: () => void;
+    /** Google calls this by name when it refuses the key. */
+    gm_authFailure?: () => void;
   }
 }
 
@@ -64,26 +68,35 @@ export function loadGoogleMaps(): Promise<typeof google> {
   });
 }
 
-function injectScript(): Promise<void> {
-  return new Promise((resolve, reject) => {
-    // A loaded bootstrap leaves `importLibrary` on google.maps. The typings
-    // declare it as always present, so the check is written against the
-    // runtime object rather than the type.
-    if (typeof window.google?.maps?.importLibrary === "function") {
-      resolve();
-      return;
-    }
+let scriptReady: Promise<void> | null = null;
 
-    const existing = document.getElementById(
-      SCRIPT_ID,
-    ) as HTMLScriptElement | null;
-    if (existing) {
-      existing.addEventListener("load", () => resolve());
-      existing.addEventListener("error", () =>
-        reject(new Error("Failed to load Google Maps.")),
-      );
-      return;
-    }
+const authFailureListeners = new Set<() => void>();
+let authFailed = false;
+
+function injectScript(): Promise<void> {
+  // A loaded bootstrap leaves `importLibrary` on google.maps. The typings
+  // declare it as always present, so the check is written against the
+  // runtime object rather than the type.
+  if (typeof window.google?.maps?.importLibrary === "function") {
+    return Promise.resolve();
+  }
+
+  scriptReady ??= new Promise<void>((resolve, reject) => {
+    /**
+     * Ready is Google's callback, not the script tag's `load` event.
+     *
+     * With `loading=async` the tag can report loaded before the bootstrap has
+     * put `importLibrary` on google.maps, so the first visit of every session
+     * failed with "google.maps.importLibrary is not a function" — the map tab
+     * opened to "Couldn't load the map" and only worked after "Try again",
+     * by which time the API had finished arriving. The callback is the API's
+     * own word that it is usable.
+     */
+    window.__masjidTimesMapsReady = () => resolve();
+    window.gm_authFailure = () => {
+      authFailed = true;
+      for (const notify of authFailureListeners) notify();
+    };
 
     const script = document.createElement("script");
     script.id = SCRIPT_ID;
@@ -94,9 +107,28 @@ function injectScript(): Promise<void> {
       // `places` powers the address autocomplete. Requesting it here rather
       // than lazily keeps it to one script fetch, and the app degrades to
       // plain typed addresses if the key can't use it.
-      "&libraries=places&v=weekly&loading=async";
-    script.onload = () => resolve();
-    script.onerror = () => reject(new Error("Failed to load Google Maps."));
+      "&libraries=places&v=weekly&loading=async&callback=__masjidTimesMapsReady";
+    script.onerror = () => {
+      // Gone, so a retry injects a fresh tag rather than waiting on this one.
+      scriptReady = null;
+      script.remove();
+      reject(new Error("Failed to load Google Maps."));
+    };
     document.head.appendChild(script);
   });
+  return scriptReady;
+}
+
+/**
+ * Run `listener` if Google refuses the key — for example a key restricted to
+ * the website's address, opened from somewhere else. Google draws nothing in
+ * that case and raises no error, so without this the map is simply blank.
+ * Returns an unsubscribe.
+ */
+export function onMapsAuthFailure(listener: () => void): () => void {
+  authFailureListeners.add(listener);
+  if (authFailed) listener();
+  return () => {
+    authFailureListeners.delete(listener);
+  };
 }
