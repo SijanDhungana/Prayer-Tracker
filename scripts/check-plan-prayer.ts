@@ -138,6 +138,26 @@ check("isFriday agrees with the fixtures", [isFriday(friday), isFriday(monday)],
   // branches that don't depend on wall-clock time.
   check("empty masjid list defaults to dhuhr", currentPlanPrayer([], friday), "dhuhr");
 }
+{
+  // Fixed instants, so the default no longer depends on when the checks run.
+  const weekday = new Date(2026, 9, 1);
+  const fridayOct = new Date(2026, 9, 2);
+  const toronto = [masjid([])];
+  const at = (day: Date, hhmm: string) => zonedTimeOnDate(day, hhmm)!;
+
+  check("before Fajr's adhan the planner is about Fajr",
+    currentPlanPrayer(toronto, weekday, at(weekday, "04:30")), "fajr");
+  check("between Fajr's adhan and sunrise it is still Fajr",
+    currentPlanPrayer(toronto, weekday, at(weekday, "06:30")), "fajr");
+  check("after sunrise it plans for Dhuhr, not a Fajr whose time has gone",
+    currentPlanPrayer(toronto, weekday, at(weekday, "08:26")), "dhuhr");
+  check("after sunrise on a Friday it plans for Jumu'ah",
+    currentPlanPrayer(toronto, fridayOct, at(fridayOct, "08:26")), "jumuah");
+  check("mid-afternoon on a weekday it is Dhuhr until Asr comes in",
+    currentPlanPrayer(toronto, weekday, at(weekday, "14:00")), "dhuhr");
+  check("late evening it is Isha",
+    currentPlanPrayer(toronto, weekday, at(weekday, "22:30")), "isha");
+}
 
 // --- prayerLabel ------------------------------------------------------------
 check("prayerLabel names Jumu'ah", prayerLabel("jumuah"), "Jumu'ah");

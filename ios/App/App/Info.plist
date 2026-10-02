@@ -41,6 +41,15 @@
 	-->
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Masjid Times uses your location to show which nearby masjids you can still reach in time for the next congregation, and how far away each one is. You can use the app without sharing it — distances are measured from a neighbourhood you pick instead.</string>
+	<!--
+	  Never shown: the app only ever asks for location while in use. It is
+	  here because @capacitor/geolocation is built on a library that is able
+	  to report location in the background, and App Store validation refuses
+	  a binary that links one without this key. Same wording, as the plugin's
+	  own README advises.
+	-->
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Masjid Times uses your location to show which nearby masjids you can still reach in time for the next congregation, and how far away each one is. You can use the app without sharing it — distances are measured from a neighbourhood you pick instead.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

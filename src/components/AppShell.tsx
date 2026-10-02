@@ -119,6 +119,19 @@ export default function AppShell({
         <TabBar active={active} />
       )}
 
+      {/*
+        A strip of page colour behind the status bar. The web view runs under
+        it (viewport-fit=cover), so a scrolling list slid its text through the
+        clock and the battery. Zero-height anywhere without a notch, and left
+        off the map, which is meant to reach the top of the screen.
+      */}
+      {!bleed && (
+        <div
+          aria-hidden
+          className="pointer-events-none fixed inset-x-0 top-0 z-30 h-[env(safe-area-inset-top)] bg-paper/90 backdrop-blur-sm"
+        />
+      )}
+
       <main
         id="main"
         className={

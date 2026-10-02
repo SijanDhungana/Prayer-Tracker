@@ -8,7 +8,7 @@
  * three sittings mean as a single instant" is a resolution question that
  * belongs here, before anything reaches the engine.
  */
-import { adhanTimes, iqamahTimes, orderedJumuah } from "./prayer";
+import { adhanTimes, iqamahTimes, orderedJumuah, sunriseTime } from "./prayer";
 import { minutesOfDay, zonedTimeOnDate } from "./time";
 import { PRAYERS, PRAYER_LABELS, type Masjid, type Prayer } from "./types";
 
@@ -58,17 +58,33 @@ export function planPrayerOptions(
  * midday congregation people are actually heading to is Jumu'ah, not the
  * Dhuhr the calculation alone would name, so that one window defaults there
  * instead.
+ *
+ * Fajr is the one prayer whose time ends with nothing following it: from
+ * sunrise until Dhuhr no prayer is under way. The planner used to sit on
+ * Fajr all morning, and at 8:26 AM announced "You can make Fajr" more than
+ * an hour after its time had gone — so after sunrise the prayer being
+ * planned for is the next one.
  */
-export function currentPlanPrayer(masjids: Masjid[], today: Date): PlanPrayer {
+export function currentPlanPrayer(
+  masjids: Masjid[],
+  today: Date,
+  now: Date = new Date(),
+): PlanPrayer {
   const reference = masjids[0];
   if (!reference) return "dhuhr";
 
   const times = adhanTimes(reference, today);
-  const nowMinutes = minutesOfDay(new Date());
+  const nowMinutes = minutesOfDay(now);
 
   let current: Prayer = "fajr";
   for (const prayer of PRAYERS) {
     if (minutesOfDay(times[prayer]) <= nowMinutes) current = prayer;
+  }
+  if (
+    current === "fajr" &&
+    nowMinutes >= minutesOfDay(sunriseTime(reference, today))
+  ) {
+    current = "dhuhr";
   }
 
   return isFriday(today) && current === "dhuhr" ? "jumuah" : current;
