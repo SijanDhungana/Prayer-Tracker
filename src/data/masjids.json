@@ -38,7 +38,7 @@
       }
     ],
     "lastVerified": "2026-10-03",
-    "needsReview": false,
+    "needsReview": true,
     "source": "scrape",
     "platform": "plain-html"
   },
@@ -84,7 +84,7 @@
       }
     ],
     "lastVerified": "2026-10-03",
-    "needsReview": false,
+    "needsReview": true,
     "source": "scrape",
     "platform": "athanplus"
   },
@@ -180,7 +180,7 @@
       }
     ],
     "lastVerified": "2026-10-03",
-    "needsReview": false,
+    "needsReview": true,
     "source": "scrape",
     "platform": "ad-din",
     "adDinMasjidId": 95
@@ -227,7 +227,7 @@
       }
     ],
     "lastVerified": "2026-10-03",
-    "needsReview": false,
+    "needsReview": true,
     "source": "scrape",
     "platform": "ad-din",
     "adDinMasjidId": 359
@@ -277,7 +277,7 @@
       }
     ],
     "lastVerified": "2026-10-03",
-    "needsReview": false,
+    "needsReview": true,
     "source": "scrape",
     "platform": "athanplus"
   },
@@ -323,7 +323,7 @@
       }
     ],
     "lastVerified": "2026-10-03",
-    "needsReview": false,
+    "needsReview": true,
     "source": "scrape",
     "platform": "unknown"
   },
@@ -415,7 +415,7 @@
       }
     ],
     "lastVerified": "2026-10-03",
-    "needsReview": false,
+    "needsReview": true,
     "source": "scrape",
     "platform": "ad-din",
     "adDinMasjidId": 14
@@ -465,7 +465,7 @@
       }
     ],
     "lastVerified": "2026-10-03",
-    "needsReview": false,
+    "needsReview": true,
     "source": "scrape",
     "platform": "pdf"
   },
@@ -511,7 +511,7 @@
       }
     ],
     "lastVerified": "2026-10-03",
-    "needsReview": false,
+    "needsReview": true,
     "source": "scrape",
     "platform": "ad-din"
   },
@@ -646,7 +646,7 @@
       }
     ],
     "lastVerified": "2026-10-03",
-    "needsReview": false,
+    "needsReview": true,
     "source": "scrape",
     "platform": "unknown"
   },
@@ -695,7 +695,7 @@
       }
     ],
     "lastVerified": "2026-10-03",
-    "needsReview": false,
+    "needsReview": true,
     "source": "scrape",
     "platform": "unknown"
   },
@@ -741,7 +741,7 @@
       }
     ],
     "lastVerified": "2026-10-03",
-    "needsReview": false,
+    "needsReview": true,
     "source": "scrape",
     "platform": "unknown"
   },
@@ -2537,7 +2537,7 @@
     "iqamah": {
       "fajr": {
         "type": "fixed",
-        "time": "06:13"
+        "time": "06:14"
       },
       "dhuhr": {
         "type": "fixed",
@@ -2545,7 +2545,7 @@
       },
       "asr": {
         "type": "fixed",
-        "time": "16:45"
+        "time": "16:30"
       },
       "maghrib": {
         "type": "offset",
@@ -2564,7 +2564,7 @@
         "khutbah": "14:00"
       }
     ],
-    "lastVerified": "2026-10-03",
+    "lastVerified": "2026-10-04",
     "needsReview": false,
     "source": "scrape"
   },
@@ -5210,7 +5210,7 @@
       }
     ],
     "lastVerified": "2026-10-03",
-    "needsReview": false,
+    "needsReview": true,
     "source": "scrape"
   },
   {
@@ -7135,7 +7135,7 @@
       }
     ],
     "lastVerified": "2026-10-03",
-    "needsReview": false,
+    "needsReview": true,
     "source": "scrape"
   },
   {
@@ -7454,7 +7454,7 @@
       }
     ],
     "lastVerified": "2026-10-03",
-    "needsReview": false,
+    "needsReview": true,
     "source": "scrape"
   },
   {
@@ -7500,7 +7500,7 @@
       }
     ],
     "lastVerified": "2026-10-03",
-    "needsReview": false,
+    "needsReview": true,
     "source": "scrape"
   },
   {
@@ -7542,7 +7542,7 @@
       }
     ],
     "lastVerified": "2026-10-03",
-    "needsReview": false,
+    "needsReview": true,
     "source": "scrape"
   },
   {
@@ -7587,7 +7587,7 @@
       }
     ],
     "lastVerified": "2026-10-03",
-    "needsReview": false,
+    "needsReview": true,
     "source": "scrape"
   },
   {
@@ -7633,7 +7633,7 @@
       }
     ],
     "lastVerified": "2026-10-03",
-    "needsReview": false,
+    "needsReview": true,
     "source": "scrape"
   },
   {
@@ -7676,7 +7676,7 @@
       }
     ],
     "lastVerified": "2026-10-03",
-    "needsReview": false,
+    "needsReview": true,
     "source": "scrape"
   },
   {
@@ -7722,7 +7722,7 @@
       }
     ],
     "lastVerified": "2026-10-03",
-    "needsReview": false,
+    "needsReview": true,
     "source": "scrape"
   },
   {
@@ -7765,7 +7765,7 @@
       }
     ],
     "lastVerified": "2026-10-03",
-    "needsReview": false,
+    "needsReview": true,
     "source": "scrape"
   },
   {
@@ -7811,7 +7811,7 @@
       }
     ],
     "lastVerified": "2026-10-03",
-    "needsReview": false,
+    "needsReview": true,
     "source": "scrape"
   },
   {
@@ -7892,7 +7892,7 @@
       }
     ],
     "lastVerified": "2026-10-03",
-    "needsReview": false,
+    "needsReview": true,
     "source": "scrape"
   },
   {
@@ -7934,7 +7934,7 @@
       }
     ],
     "lastVerified": "2026-10-03",
-    "needsReview": false,
+    "needsReview": true,
     "source": "scrape"
   },
   {
@@ -7977,7 +7977,7 @@
       }
     ],
     "lastVerified": "2026-10-03",
-    "needsReview": false,
+    "needsReview": true,
     "source": "scrape"
   },
   {
@@ -8026,7 +8026,7 @@
       }
     ],
     "lastVerified": "2026-10-03",
-    "needsReview": false,
+    "needsReview": true,
     "source": "scrape"
   },
   {
@@ -8069,7 +8069,7 @@
       }
     ],
     "lastVerified": "2026-10-03",
-    "needsReview": false,
+    "needsReview": true,
     "source": "scrape"
   },
   {
@@ -8112,7 +8112,7 @@
       }
     ],
     "lastVerified": "2026-10-03",
-    "needsReview": false,
+    "needsReview": true,
     "source": "scrape"
   },
   {
@@ -8155,7 +8155,7 @@
       }
     ],
     "lastVerified": "2026-10-03",
-    "needsReview": false,
+    "needsReview": true,
     "source": "scrape"
   }
 ]
